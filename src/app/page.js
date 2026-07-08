@@ -1,259 +1,374 @@
 'use client';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { FreeMode, Mousewheel, Pagination } from 'swiper/modules';
+import { Camera, Video, Calendar, Aperture, Building2, Film } from 'lucide-react';
+
+import 'swiper/css';
+import 'swiper/css/free-mode';
+import 'swiper/css/pagination';
 
 export default function Home() {
+  const [activePortfolioTab, setActivePortfolioTab] = useState('ALL');
+
   useEffect(() => {
     const checkReveals = () => {
       const vh = window.innerHeight;
-      
-      document.querySelectorAll('.reveal, .reveal-left, .reveal-scale').forEach(el => {
-        if (el.getBoundingClientRect().top < vh * 0.88) el.classList.add('visible');
-      });
-      document.querySelectorAll('.stagger-children').forEach(el => {
-        if (el.getBoundingClientRect().top < vh * 0.88) el.classList.add('visible');
-      });
-      document.querySelectorAll('.img-mask').forEach(el => {
-        if (el.getBoundingClientRect().top < vh * 0.9) el.classList.add('visible');
-      });
-      document.querySelectorAll('.gold-line, .gold-line-short').forEach(el => {
+      document.querySelectorAll('.reveal, .reveal-left, .reveal-scale, .stagger-children, .img-mask, .gold-line, .gold-line-short').forEach(el => {
         if (el.getBoundingClientRect().top < vh * 0.9) el.classList.add('visible');
       });
     };
-
     window.addEventListener('scroll', checkReveals, { passive: true });
-    // Initial check after a slight delay to allow loader to finish
-    const initialCheck = setTimeout(checkReveals, 2400);
-
-    return () => {
-      window.removeEventListener('scroll', checkReveals);
-      clearTimeout(initialCheck);
-    };
+    setTimeout(checkReveals, 300);
+    return () => window.removeEventListener('scroll', checkReveals);
   }, []);
 
+  const portfolioImages = {
+    ALL: [
+      "/images/cii/CII (7th Bangalore Space Expo-2022) On-05-09-2022-Noor/NMK_0028.JPG",
+      "/images/tcs/TCS -27 - 03 - 2023 - Anzar/DSC01003.JPG",
+      "/images/presidency/PANA9115.jpg",
+      "/images/tata_elxsi/_AMZ0246.JPG",
+      "/images/our_portfolio/Corporate and office/DSC03794.JPG",
+      "/images/our_portfolio/Corporate and office/DSC03789.JPG",
+    ],
+    CORPORATE: [
+      "/images/tcs/TCS -27 - 03 - 2023 - Anzar/DSC01003.JPG",
+      "/images/tata_elxsi/_AMZ0246.JPG",
+    ],
+    EVENTS: [
+      "/images/cii/CII (7th Bangalore Space Expo-2022) On-05-09-2022-Noor/NMK_0028.JPG",
+      "/images/presidency/PANA9115.jpg",
+    ],
+  };
+
+  const activeImages = portfolioImages[activePortfolioTab] || portfolioImages['ALL'];
+
   return (
-    <main className="w-full">
-      {/* ─── HERO ─── */}
-      <section className="relative min-h-screen flex flex-col justify-center pt-[140px] px-[60px] pb-[80px] overflow-hidden bg-[var(--ivory)] before:content-[''] before:absolute before:inset-0 before:pointer-events-none before:bg-[url('data:image/svg+xml,%3Csvg_viewBox=%220_0_512_512%22_xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter_id=%22n%22%3E%3CfeTurbulence_type=%22fractalNoise%22_baseFrequency=%220.75%22_numOctaves=%224%22_stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect_width=%22100%25%22_height=%22100%25%22_filter=%22url(%23n)%22_opacity=%220.03%22/%3E%3C/svg%3E')] before:opacity-40 before:z-0 after:content-[''] after:absolute after:-right-[120px] after:-top-[120px] after:w-[600px] after:h-[600px] after:rounded-full after:border after:border-[rgba(197,164,109,0.12)] after:pointer-events-none after:z-0">
-        <div className="relative z-[2] text-center max-w-[960px] mx-auto mb-[60px]">
-          <span className="inline-block text-[10px] tracking-[0.48em] uppercase text-[var(--gold)] mb-[28px] opacity-0 anim-fade-up delay-200">
-            Bengaluru's Premier Studio
-          </span>
-          <h1 className="font-serif text-[clamp(56px,9vw,128px)] font-light leading-[0.92] tracking-[-0.025em] text-[var(--black)] mb-[32px]">
-            <span className="block overflow-hidden"><span className="block anim-slide-up delay-210" style={{ transform: 'translateY(100%)' }}>Defining Visual</span></span>
-            <span className="block overflow-hidden"><span className="block anim-slide-up delay-225" style={{ transform: 'translateY(100%)' }}>Excellence Since</span></span>
-            <span className="block overflow-hidden"><span className="block anim-slide-up delay-240 text-[var(--gold)] italic" style={{ transform: 'translateY(100%)' }}>1982.</span></span>
+    <main className="w-full bg-[var(--dark)] text-[var(--light)] pb-[100px]">
+      
+      {/* ─── 1. HERO SECTION ─── */}
+      <section className="relative min-h-screen flex items-center justify-between px-[5%] md:px-[8%] pt-[80px] overflow-hidden">
+        <div className="flex-1 max-w-[600px] z-10 relative">
+          <h1 className="font-serif text-[clamp(48px,6vw,90px)] font-light leading-[1] tracking-[-0.02em] mb-[40px] text-white">
+            <span className="block overflow-hidden"><span className="block anim-slide-up delay-100" style={{ transform: 'translateY(100%)' }}>We Capture</span></span>
+            <span className="block overflow-hidden"><span className="block anim-slide-up delay-150" style={{ transform: 'translateY(100%)' }}>Moments.</span></span>
+            <span className="block overflow-hidden"><span className="block anim-slide-up delay-200" style={{ transform: 'translateY(100%)' }}>We Create</span></span>
+            <span className="block overflow-hidden"><span className="block anim-slide-up delay-240 text-[var(--gold)] italic font-medium" style={{ transform: 'translateY(100%)' }}>Legacies.</span></span>
           </h1>
-          <p className="text-[14px] tracking-[0.05em] text-[var(--muted)] max-w-[480px] leading-[1.9] mx-auto opacity-0 anim-fade-up delay-280">
-            Partnering with industry leaders to capture compelling corporate narratives, industrial milestones, and documentary stories.
+          <p className="text-[16px] md:text-[18px] text-[var(--muted)] leading-[1.6] max-w-[400px] opacity-0 anim-fade-up delay-300 mb-[40px]">
+            40+ Years of Storytelling Through The Lens of Excellence
           </p>
-        </div>
-
-        {/* HERO STRIP */}
-        <div className="hero-strip relative z-[2] flex flex-row gap-[8px] w-full max-w-[1200px] mx-auto opacity-0 anim-fade-up delay-300 h-[420px]">
-          <div className="hero-strip-item group relative overflow-hidden rounded-[3px] cursor-none flex-[1] transition-all duration-[550ms] ease-[var(--ease)] min-w-0 hover:flex-[4.2] hover:shadow-[0_24px_70px_rgba(10,10,8,0.22),0_4px_20px_rgba(197,164,109,0.1)]">
-            <div className="strip-img w-full h-full transition-transform duration-[700ms] ease-[var(--ease)] overflow-hidden absolute inset-0 group-hover:scale-[1.04]">
-              <img src="/images/cii/CII (7th Bangalore Space Expo-2022) On-05-09-2022-Noor/NMK_0076.JPG" alt="CII Event" className="w-full h-full object-cover" />
-            </div>
-            <div className="strip-overlay absolute inset-0 z-[2] bg-gradient-to-t from-[rgba(10,10,8,0.85)] via-[rgba(10,10,8,0.1)] to-transparent flex flex-col justify-end p-[22px_20px] opacity-0 translate-y-[8px] transition-all duration-[400ms] ease-out delay-[100ms] group-hover:opacity-100 group-hover:translate-y-0">
-              <span className="strip-label text-[9px] tracking-[0.3em] uppercase text-[var(--gold)] mb-[4px]">CII</span>
-              <h3 className="strip-title font-serif text-[17px] text-[var(--ivory)] font-normal leading-[1.2]">Four Decades of Industry Leadership</h3>
-            </div>
-            <div className="strip-pip absolute top-[14px] left-[14px] z-[3] w-[6px] h-[6px] rounded-full bg-[var(--gold)] opacity-0 scale-0 transition-all duration-[300ms] ease-out delay-[200ms] group-hover:opacity-100 group-hover:scale-100" />
-            <div className="strip-side-label absolute bottom-[24px] left-1/2 -translate-x-1/2 text-[9px] tracking-[0.3em] uppercase text-[rgba(250,248,244,0.45)] whitespace-nowrap [writing-mode:vertical-rl] [text-orientation:mixed] transition-opacity duration-[300ms] ease-out z-[2] group-hover:opacity-0">CII</div>
-          </div>
-
-          <div className="hero-strip-item group relative overflow-hidden rounded-[3px] cursor-none flex-[1] transition-all duration-[550ms] ease-[var(--ease)] min-w-0 hover:flex-[4.2] hover:shadow-[0_24px_70px_rgba(10,10,8,0.22),0_4px_20px_rgba(197,164,109,0.1)]">
-            <div className="strip-img w-full h-full transition-transform duration-[700ms] ease-[var(--ease)] overflow-hidden absolute inset-0 group-hover:scale-[1.04]">
-              <img src="/images/cgi/SKV00055.jpg" alt="CGI Office" className="w-full h-full object-cover" />
-            </div>
-            <div className="strip-overlay absolute inset-0 z-[2] bg-gradient-to-t from-[rgba(10,10,8,0.85)] via-[rgba(10,10,8,0.1)] to-transparent flex flex-col justify-end p-[22px_20px] opacity-0 translate-y-[8px] transition-all duration-[400ms] ease-out delay-[100ms] group-hover:opacity-100 group-hover:translate-y-0">
-              <span className="strip-label text-[9px] tracking-[0.3em] uppercase text-[var(--gold)] mb-[4px]">CGI</span>
-              <h3 className="strip-title font-serif text-[17px] text-[var(--ivory)] font-normal leading-[1.2]">Global-Local Digital Engine</h3>
-            </div>
-            <div className="strip-pip absolute top-[14px] left-[14px] z-[3] w-[6px] h-[6px] rounded-full bg-[var(--gold)] opacity-0 scale-0 transition-all duration-[300ms] ease-out delay-[200ms] group-hover:opacity-100 group-hover:scale-100" />
-            <div className="strip-side-label absolute bottom-[24px] left-1/2 -translate-x-1/2 text-[9px] tracking-[0.3em] uppercase text-[rgba(250,248,244,0.45)] whitespace-nowrap [writing-mode:vertical-rl] [text-orientation:mixed] transition-opacity duration-[300ms] ease-out z-[2] group-hover:opacity-0">CGI</div>
-          </div>
-
-          <div className="hero-strip-item group relative overflow-hidden rounded-[3px] cursor-none flex-[1] transition-all duration-[550ms] ease-[var(--ease)] min-w-0 hover:flex-[4.2] hover:shadow-[0_24px_70px_rgba(10,10,8,0.22),0_4px_20px_rgba(197,164,109,0.1)]">
-            <div className="strip-img w-full h-full transition-transform duration-[700ms] ease-[var(--ease)] overflow-hidden absolute inset-0 group-hover:scale-[1.04]">
-              <img src="/images/presidency/PANA9024.jpg" alt="Presidency University" className="w-full h-full object-cover" />
-            </div>
-            <div className="strip-overlay absolute inset-0 z-[2] bg-gradient-to-t from-[rgba(10,10,8,0.85)] via-[rgba(10,10,8,0.1)] to-transparent flex flex-col justify-end p-[22px_20px] opacity-0 translate-y-[8px] transition-all duration-[400ms] ease-out delay-[100ms] group-hover:opacity-100 group-hover:translate-y-0">
-              <span className="strip-label text-[9px] tracking-[0.3em] uppercase text-[var(--gold)] mb-[4px]">Presidency</span>
-              <h3 className="strip-title font-serif text-[17px] text-[var(--ivory)] font-normal leading-[1.2]">Framing Learning &amp; Legacy</h3>
-            </div>
-            <div className="strip-pip absolute top-[14px] left-[14px] z-[3] w-[6px] h-[6px] rounded-full bg-[var(--gold)] opacity-0 scale-0 transition-all duration-[300ms] ease-out delay-[200ms] group-hover:opacity-100 group-hover:scale-100" />
-            <div className="strip-side-label absolute bottom-[24px] left-1/2 -translate-x-1/2 text-[9px] tracking-[0.3em] uppercase text-[rgba(250,248,244,0.45)] whitespace-nowrap [writing-mode:vertical-rl] [text-orientation:mixed] transition-opacity duration-[300ms] ease-out z-[2] group-hover:opacity-0">PRESIDENCY</div>
-          </div>
-
-          <div className="hero-strip-item group relative overflow-hidden rounded-[3px] cursor-none flex-[1] transition-all duration-[550ms] ease-[var(--ease)] min-w-0 hover:flex-[4.2] hover:shadow-[0_24px_70px_rgba(10,10,8,0.22),0_4px_20px_rgba(197,164,109,0.1)]">
-            <div className="strip-img w-full h-full transition-transform duration-[700ms] ease-[var(--ease)] overflow-hidden absolute inset-0 group-hover:scale-[1.04]">
-              <img src="/images/tata_elxsi/_AMZ0016.JPG" alt="Tata Elxsi" className="w-full h-full object-cover" />
-            </div>
-            <div className="strip-overlay absolute inset-0 z-[2] bg-gradient-to-t from-[rgba(10,10,8,0.85)] via-[rgba(10,10,8,0.1)] to-transparent flex flex-col justify-end p-[22px_20px] opacity-0 translate-y-[8px] transition-all duration-[400ms] ease-out delay-[100ms] group-hover:opacity-100 group-hover:translate-y-0">
-              <span className="strip-label text-[9px] tracking-[0.3em] uppercase text-[var(--gold)] mb-[4px]">Tata Elxsi</span>
-              <h3 className="strip-title font-serif text-[17px] text-[var(--ivory)] font-normal leading-[1.2]">Design Led Innovation</h3>
-            </div>
-            <div className="strip-pip absolute top-[14px] left-[14px] z-[3] w-[6px] h-[6px] rounded-full bg-[var(--gold)] opacity-0 scale-0 transition-all duration-[300ms] ease-out delay-[200ms] group-hover:opacity-100 group-hover:scale-100" />
-            <div className="strip-side-label absolute bottom-[24px] left-1/2 -translate-x-1/2 text-[9px] tracking-[0.3em] uppercase text-[rgba(250,248,244,0.45)] whitespace-nowrap [writing-mode:vertical-rl] [text-orientation:mixed] transition-opacity duration-[300ms] ease-out z-[2] group-hover:opacity-0">TATA ELXSI</div>
+          <div className="opacity-0 anim-fade-up delay-380">
+            <Link href="/portfolio" className="inline-block border border-[rgba(197,164,109,0.4)] text-[var(--light)] uppercase tracking-[0.2em] text-[12px] px-[32px] py-[16px] transition-all duration-300 hover:bg-[var(--gold)] hover:text-[var(--dark)] hover:border-transparent">
+              Explore Our Work
+            </Link>
           </div>
         </div>
-
-        <div className="absolute bottom-[36px] right-[60px] z-[2] flex flex-col items-center gap-[12px] opacity-0 anim-fade-up delay-340">
-          <span className="text-[9px] tracking-[0.3em] uppercase text-[rgba(10,10,10,0.28)] [writing-mode:vertical-rl]">Scroll</span>
-          <div className="w-[1px] h-[60px] bg-[rgba(10,10,10,0.1)] relative overflow-hidden after:content-[''] after:absolute after:top-[-100%] after:left-0 after:w-full after:h-full after:bg-[var(--gold)] after:anim-scroll delay-380" />
+        <div className="absolute right-0 top-0 bottom-0 w-[55%] z-0 img-mask">
+          <div className="absolute inset-0 bg-gradient-to-r from-[var(--dark)] via-transparent to-transparent z-10" />
+          <img src="/images/hero-camera.png" alt="Premium Camera Lens" className="w-full h-full object-cover object-left mask-bg" />
+        </div>
+        <div className="absolute bottom-[40px] left-1/2 -translate-x-1/2 flex flex-col items-center gap-[12px] opacity-0 anim-fade-up delay-380 z-20">
+          <span className="text-[9px] tracking-[0.3em] uppercase text-[var(--muted)]">Scroll</span>
+          <div className="w-[1px] h-[40px] bg-[rgba(245,245,245,0.1)] relative overflow-hidden after:content-[''] after:absolute after:top-[-100%] after:left-0 after:w-full after:h-full after:bg-[var(--gold)] after:anim-scroll delay-380" />
         </div>
       </section>
 
-      {/* ─── MARQUEE ─── */}
-      <section className="bg-[var(--beige)] py-[18px] overflow-hidden border-y border-[rgba(10,10,10,0.06)]">
-        <div className="flex gap-[48px] whitespace-nowrap animate-[marquee_28s_linear_infinite]">
-          {[...Array(6)].map((_, i) => (
-            <span key={i} className="font-bebas text-[18px] tracking-[0.18em] text-[rgba(10,10,10,0.4)]">
-              Corporate Films <span className="text-[var(--gold)] mx-[24px]">·</span>
-              Event Photography <span className="text-[var(--gold)] mx-[24px]">·</span>
-              Documentaries <span className="text-[var(--gold)] mx-[24px]">·</span>
-              Digital Ads <span className="text-[var(--gold)] mx-[24px]">·</span>
-              Product Shoots <span className="text-[var(--gold)] mx-[24px]">·</span>
-            </span>
-          ))}
-        </div>
-      </section>
-
-      {/* ─── ABOUT TEASER ─── */}
-      <section className="py-[120px] px-[60px] grid grid-cols-1 md:grid-cols-2 gap-[120px] items-center bg-[var(--ivory)]">
-        <div className="h-[600px] relative img-mask">
-          <img src="/images/our_portfolio/Corporate and office/DSC03794.JPG" alt="About Us" className="absolute inset-0 w-full h-full object-cover" />
-          <div className="w-[75%] h-[80%] absolute top-0 left-0 bg-gradient-to-br from-[#1a1510] to-[#2d2218] flex items-center justify-center font-serif text-[rgba(250,248,244,0.18)] text-[13px] tracking-[0.12em] opacity-40">
-            VISUAL ARTS
-          </div>
-          <div className="w-[55%] h-[50%] absolute bottom-0 right-0 bg-gradient-to-br from-[#e8e2d9] to-[#d5cbbf] border-[4px] border-[var(--ivory)] flex items-center justify-center font-serif text-[rgba(10,10,10,0.25)] text-[12px] tracking-[0.1em] z-10 opacity-90">
-            EST. 1982
-          </div>
-        </div>
+      {/* ─── 2. WELCOME SECTION ─── */}
+      <section className="py-[120px] px-[5%] md:px-[8%] border-t border-[rgba(255,255,255,0.05)] grid grid-cols-1 md:grid-cols-[1fr_auto] gap-[60px] items-center bg-[var(--dark-panel)]">
         <div>
-          <h2 className="font-serif text-[clamp(42px,4.5vw,64px)] font-light leading-[1.1] mb-[28px] text-[var(--black)] reveal">
-            Capturing the Essence of Enterprise.
-          </h2>
-          <div className="inline-flex items-baseline gap-[8px] font-bebas text-[120px] text-[rgba(10,10,10,0.05)] leading-none mb-[24px] reveal">
-            40+ <span className="text-[40px] text-[var(--gold)] tracking-[0.1em] font-sans uppercase">Years</span>
-          </div>
-          <p className="text-[14px] leading-[1.9] text-[var(--muted)] mb-[16px] reveal">
-            Since 1982, Glamour Photographics has been a trusted visual partner to India’s most respected brands. We don't just record events; we craft narratives that reflect your corporate ethos, innovation, and legacy.
+          <h2 className="text-[18px] font-serif text-[var(--light)] mb-[24px] reveal">Welcome to<br/><span className="text-[28px]">Glamour Photographics</span></h2>
+          <p className="text-[14px] text-[var(--muted)] leading-[1.8] max-w-[500px] reveal delay-100">
+            For over four decades, we've been telling stories for brands, institutions, and people who inspire the world. Through powerful visuals and compelling narratives, we transform ideas into lasting impressions.
           </p>
-          <div className="reveal mt-[32px]">
-            <Link href="/about" className="btn-primary">Discover Our Journey <span className="text-[14px]">→</span></Link>
-          </div>
+        </div>
+        <div className="text-right reveal-left delay-200">
+          <div className="text-[var(--gold)] font-serif text-[80px] leading-none mb-[8px]">40+</div>
+          <div className="text-[12px] tracking-[0.3em] uppercase text-[var(--muted)]">Years of<br/>Excellence</div>
         </div>
       </section>
 
-      {/* ─── CLIENTS ─── */}
-      <section className="py-[100px] px-[60px] bg-[var(--beige)]">
-        <div className="text-center mb-[70px] reveal">
-          <p className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] mb-[16px]">Trusted Partners</p>
-          <h2 className="font-serif text-[clamp(36px,4vw,60px)] font-light tracking-[-0.02em] leading-[1.1] text-[var(--black)]">
-            A Legacy of Collaboration
-          </h2>
-        </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-[2px] stagger-children">
-          {['CII', 'CGI', 'Toyota', 'TCS', 'RTX', 'Tata Elxsi', 'Presidency', 'PAI'].map((client, i) => (
-            <div key={i} className="group py-[40px] px-[30px] border border-[rgba(10,10,10,0.07)] flex items-center justify-center min-h-[120px] cursor-none transition-all duration-[350ms] relative overflow-hidden bg-[var(--ivory)] hover:border-transparent">
-              <div className="absolute inset-0 bg-[var(--gold)] scale-y-0 origin-bottom transition-transform duration-[400ms] ease-[var(--ease)] group-hover:scale-y-100" />
-              <span className="font-serif text-[18px] font-medium tracking-[0.05em] text-center relative z-[1] transition-colors duration-[300ms] text-[var(--black)] group-hover:text-[var(--ivory)]">{client}</span>
+      {/* ─── 3. OUR EXPERTISE ─── */}
+      <section className="py-[100px] px-[5%] md:px-[8%] bg-[var(--dark)]">
+        <h3 className="font-serif text-[28px] text-[var(--light)] mb-[60px] reveal">Our Expertise</h3>
+        <div className="grid grid-cols-2 md:grid-cols-6 gap-[40px] stagger-children">
+          {[
+            { icon: Camera, label: "Corporate\nPhotography" },
+            { icon: Video, label: "Cinematic\nVideography" },
+            { icon: Calendar, label: "Event\nCoverage" },
+            { icon: Aperture, label: "Aerial\nPhotography" },
+            { icon: Building2, label: "Commercial\nShoots" },
+            { icon: Film, label: "Documentary\nStorytelling" },
+          ].map((item, i) => (
+            <div key={i} className="flex flex-col items-center text-center group cursor-none">
+              <div className="w-[60px] h-[60px] flex items-center justify-center border border-[rgba(255,255,255,0.1)] rounded-sm mb-[20px] transition-all duration-300 group-hover:-translate-y-2 group-hover:border-[var(--gold)] group-hover:text-[var(--gold)]">
+                <item.icon strokeWidth={1} size={28} />
+              </div>
+              <span className="text-[11px] tracking-[0.1em] text-[var(--muted)] group-hover:text-[var(--light)] transition-colors whitespace-pre-line leading-[1.4]">{item.label}</span>
             </div>
           ))}
         </div>
       </section>
 
-      {/* ─── RECENT WORKS ─── */}
-      <section className="py-[120px] px-[60px] bg-[var(--beige)]">
-        <div className="reveal">
-          <p className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] mb-[16px]">Selected Projects</p>
-          <h2 className="font-serif text-[clamp(36px,4vw,60px)] font-light tracking-[-0.02em] leading-[1.1] text-[var(--black)]">
-            Our Recent Work
+      {/* ─── 4. FEATURED WORK (Moving Strips) ─── */}
+      <section className="py-[100px] pl-[5%] md:pl-[8%] bg-[var(--dark-panel)] border-y border-[rgba(255,255,255,0.05)] overflow-hidden">
+        <div className="flex justify-between items-end pr-[5%] md:pr-[8%] mb-[60px] reveal">
+          <h3 className="font-serif text-[32px] text-[var(--light)]">Featured Work</h3>
+          <Link href="/portfolio" className="border border-[rgba(255,255,255,0.2)] text-[10px] tracking-[0.2em] uppercase px-[24px] py-[10px] hover:border-[var(--gold)] hover:text-[var(--gold)] transition-colors">View All</Link>
+        </div>
+        <div className="reveal delay-100">
+          <Swiper
+            slidesPerView={1.2}
+            spaceBetween={20}
+            breakpoints={{ 768: { slidesPerView: 2.5 }, 1024: { slidesPerView: 3.5 } }}
+            freeMode={true}
+            modules={[FreeMode]}
+            className="w-full h-[450px]"
+          >
+            {[
+              { img: "/images/cii/CII (7th Bangalore Space Expo-2022) On-05-09-2022-Noor/NMK_0076.JPG", client: "CII", title: "Four Decades of Industry Leadership" },
+              { img: "/images/cgi/SKV00055.jpg", client: "CGI", title: "Global-Local Digital Engine" },
+              { img: "/images/presidency/PANA9024.jpg", client: "PRESIDENCY", title: "Framing Learning & Legacy" },
+              { img: "/images/tata_elxsi/_AMZ0016.JPG", client: "TATA ELXSI", title: "Design Led Innovation" },
+              { img: "/images/our_portfolio/Corporate and office/DSC03794.JPG", client: "TOYOTA", title: "Corporate Facilities Showcase" }
+            ].map((slide, idx) => (
+              <SwiperSlide key={idx} className="h-full">
+                <div className="group relative w-full h-full overflow-hidden rounded-sm cursor-grab active:cursor-grabbing">
+                  <div className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: `url('${slide.img}')` }} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-[rgba(0,0,0,0.2)] to-transparent flex flex-col justify-end p-[30px] opacity-80 group-hover:opacity-100 transition-opacity">
+                    <span className="text-[10px] tracking-[0.3em] text-[var(--gold)] uppercase mb-[8px]">{slide.client}</span>
+                    <h4 className="font-serif text-[20px] text-white leading-[1.2]">{slide.title}</h4>
+                  </div>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+      </section>
+
+      {/* ─── 5. ABOUT US ─── */}
+      <section className="py-[120px] px-[5%] md:px-[8%] bg-[var(--dark)] grid grid-cols-1 md:grid-cols-2 gap-[80px] items-center">
+        <div>
+          <h3 className="text-[14px] text-[var(--muted)] mb-[24px] reveal">About Us</h3>
+          <h2 className="font-serif text-[clamp(32px,4vw,48px)] font-light leading-[1.1] text-white mb-[32px] reveal delay-100">
+            Crafting Visual<br/>Stories Since <span className="text-[var(--gold)] italic">1980</span>
           </h2>
+          <p className="text-[14px] text-[var(--muted)] leading-[1.8] max-w-[480px] mb-[60px] reveal delay-200">
+            Founded in 1980, Glamour Photographics has grown into one of India's most trusted names in corporate photography and film production. We blend creativity, technology, and storytelling to deliver visuals that connect and inspire.
+          </p>
+          <div className="grid grid-cols-4 gap-[20px] stagger-children border-t border-[rgba(255,255,255,0.05)] pt-[40px]">
+            {[ { val: "40+", label: "Years in Business" }, { val: "2000+", label: "Projects Delivered" }, { val: "500+", label: "Happy Clients" }, { val: "50+", label: "Awards Won" } ].map((stat, i) => (
+              <div key={i}>
+                <div className="font-serif text-[28px] text-white mb-[8px]">{stat.val}</div>
+                <div className="text-[10px] tracking-[0.05em] text-[var(--muted)] leading-[1.4]">{stat.label}</div>
+              </div>
+            ))}
+          </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-[3px] mt-[70px] stagger-children">
-          <div className="work-card relative overflow-hidden cursor-none h-[420px] group">
-            <div className="w-full h-full transform transition-transform duration-[700ms] ease-[var(--ease)] group-hover:scale-105 bg-cover bg-center" style={{ backgroundImage: "url('/images/tata_elxsi/_AMZ0246.JPG')" }} />
-            <div className="absolute inset-0 bg-gradient-to-t from-[rgba(10,10,8,0.88)] via-[rgba(10,10,8,0.2)] to-transparent flex flex-col justify-end p-[40px]">
-              <div className="font-bebas text-[80px] text-[rgba(250,248,244,0.06)] absolute top-[20px] right-[28px] leading-none">01</div>
-              <p className="text-[9px] tracking-[0.35em] uppercase text-[var(--gold)] mb-[8px]">Corporate Film</p>
-              <h3 className="font-serif text-[32px] text-[var(--ivory)] font-normal leading-[1.2]">Tata Elxsi Innovation Hub</h3>
-              <div className="absolute bottom-[40px] right-[40px] w-[40px] h-[40px] border border-[rgba(250,248,244,0.2)] rounded-full flex items-center justify-center text-[var(--ivory)] text-[16px] translate-x-[20px] opacity-0 transition-all duration-[400ms] ease-in-out group-hover:translate-x-0 group-hover:opacity-100">→</div>
+        <div className="relative h-[600px] img-mask">
+          <img src="/images/about-silhouette.png" alt="Videographer Silhouette" className="absolute inset-0 w-full h-full object-cover mask-bg grayscale-[30%] contrast-[1.2]" />
+          <div className="absolute inset-0 bg-gradient-to-l from-transparent to-[var(--dark)] opacity-40" />
+        </div>
+      </section>
+
+      {/* ─── 6. WHAT WE DO ─── */}
+      <section className="py-[120px] px-[5%] md:px-[8%] bg-[var(--dark-panel)]">
+        <h3 className="text-[28px] font-serif text-white mb-[60px] reveal">What We Do</h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-[4px] stagger-children">
+          {[
+            { title: "Corporate\nPhotography", img: "/images/tcs/TCS -27 - 03 - 2023 - Anzar/DSC01015.JPG" },
+            { title: "Cinematic\nFilms", img: "/images/tata_elxsi/_AMZ0018.JPG" },
+            { title: "Event\nCoverage", img: "/images/cii/CII (7th Bangalore Space Expo-2022) On-05-09-2022-Noor/NMK_0028.JPG" },
+            { title: "Aerial\nShoots", img: "/images/our_portfolio/Corporate and office/DSC03794.JPG" },
+            { title: "Industrial\nPhotography", img: "/images/presidency/PANA9415.jpg" },
+            { title: "Brand\nStorytelling", img: "/images/our_portfolio/Srk.jpg" },
+          ].map((service, i) => (
+            <div key={i} className="group relative h-[280px] overflow-hidden bg-[var(--dark)] cursor-none">
+              <div className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110 opacity-40 group-hover:opacity-70" style={{ backgroundImage: `url('${service.img}')` }} />
+              <div className="absolute inset-0 bg-gradient-to-t from-[var(--dark)] via-transparent to-transparent opacity-80" />
+              <div className="absolute inset-0 border border-transparent transition-colors duration-500 group-hover:border-[var(--gold)]" />
+              <h4 className="absolute bottom-[30px] left-[30px] font-serif text-[20px] text-white whitespace-pre-line leading-[1.2] transition-transform duration-500 group-hover:-translate-y-[10px]">{service.title}</h4>
             </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ─── 7. OUR CLIENTS ─── */}
+      <section className="py-[120px] px-[5%] md:px-[8%] bg-[var(--dark)]">
+        <h3 className="text-[28px] font-serif text-white mb-[40px] reveal">Our Clients</h3>
+        <p className="text-[12px] text-[var(--gold)] tracking-[0.2em] uppercase mb-[20px] reveal delay-100">Featured Clients</p>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-0 border border-[rgba(255,255,255,0.05)] mb-[40px] stagger-children">
+          {["CII", "CGI", "Presidency\nUniversity", "TATA ELXSI"].map((client, i) => (
+            <div key={i} className="group h-[160px] border border-[rgba(255,255,255,0.05)] flex items-center justify-center p-[20px] hover:border-[var(--gold)] hover:bg-[rgba(197,164,109,0.02)] transition-all cursor-none">
+               <span className="font-serif text-[20px] text-[var(--muted)] group-hover:text-white transition-colors whitespace-pre-line text-center">{client}</span>
+            </div>
+          ))}
+        </div>
+        <div className="text-center mb-[40px] reveal">
+          <button className="border border-[rgba(197,164,109,0.4)] text-[var(--light)] text-[10px] tracking-[0.2em] uppercase px-[30px] py-[12px] hover:bg-[var(--gold)] hover:text-[var(--dark)] transition-all">View All Clients</button>
+        </div>
+        <p className="text-[12px] text-[var(--muted)] tracking-[0.2em] uppercase mb-[20px] reveal">Others</p>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-0 border border-[rgba(255,255,255,0.05)] stagger-children">
+          {["PAI", "Toyota", "TCS", "RTX"].map((client, i) => (
+            <div key={i} className="h-[120px] border border-[rgba(255,255,255,0.05)] flex items-center justify-center p-[20px] text-[var(--muted)] hover:text-white transition-colors cursor-none">
+               <span className="font-serif text-[16px]">{client}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ─── 8. OUR PORTFOLIO (Masonry Tabs) ─── */}
+      <section className="py-[120px] px-[5%] md:px-[8%] bg-[var(--dark-panel)] border-t border-[rgba(255,255,255,0.05)]">
+        <h3 className="text-[28px] font-serif text-white mb-[40px] reveal">Our Portfolio</h3>
+        <div className="flex flex-wrap gap-[30px] border-b border-[rgba(255,255,255,0.1)] pb-[15px] mb-[40px] reveal delay-100">
+          {['ALL', 'CORPORATE', 'EVENTS', 'INDUSTRIAL', 'DOCUMENTARY'].map((tab) => (
+            <button key={tab} onClick={() => setActivePortfolioTab(tab)} className={`text-[10px] tracking-[0.2em] uppercase pb-[15px] relative ${activePortfolioTab === tab ? 'text-[var(--gold)]' : 'text-[var(--muted)] hover:text-white'}`}>
+              {tab}
+              {activePortfolioTab === tab && <div className="absolute bottom-[-16px] left-0 w-full h-[2px] bg-[var(--gold)]" />}
+            </button>
+          ))}
+        </div>
+        <div className="columns-1 md:columns-3 gap-[20px] space-y-[20px] stagger-children">
+          {activeImages.map((img, idx) => (
+            <div key={`${activePortfolioTab}-${idx}`} className="relative break-inside-avoid overflow-hidden rounded-sm group cursor-none">
+              <img src={img} alt={`Portfolio ${idx}`} className="w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                <span className="w-[50px] h-[50px] rounded-full border border-white/30 flex items-center justify-center text-white backdrop-blur-sm">+</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ─── 9. OUR SERVICES (List & Sticky Image) ─── */}
+      <section className="py-[120px] px-[5%] md:px-[8%] bg-[var(--dark)] grid grid-cols-1 md:grid-cols-[1.5fr_1fr] gap-[80px]">
+        <div>
+          <h3 className="text-[28px] font-serif text-white mb-[60px] reveal">Our Services</h3>
+          <div className="space-y-[30px] stagger-children">
+            {[
+              { title: "Corporate Photography", desc: "High-quality photography for corporate profiles, leadership portraits, and workplace culture.", icon: Camera },
+              { title: "Cinematic Videography", desc: "Engaging corporate films, brand stories, and promotional videos.", icon: Video },
+              { title: "Event Coverage", desc: "End-to-end coverage of conferences, seminars, product launches, and more.", icon: Calendar },
+              { title: "Aerial Photography", desc: "Stunning aerial shots for architecture, industries, events, and landscapes.", icon: Aperture },
+              { title: "Industrial Photography", desc: "Specialized photography for manufacturing plants, infrastructure, and processes.", icon: Building2 },
+              { title: "Documentary Storytelling", desc: "Telling impactful stories that create emotion and drive engagement.", icon: Film }
+            ].map((srv, idx) => (
+              <div key={idx} className="flex gap-[20px] group border-b border-[rgba(255,255,255,0.05)] pb-[30px]">
+                <div className="w-[50px] h-[50px] shrink-0 border border-[rgba(255,255,255,0.1)] flex items-center justify-center text-[var(--muted)] group-hover:text-[var(--gold)] group-hover:border-[var(--gold)] transition-colors">
+                  <srv.icon size={20} strokeWidth={1.5} />
+                </div>
+                <div>
+                  <h4 className="text-[16px] text-white font-medium mb-[8px] group-hover:text-[var(--gold)] transition-colors">{srv.title}</h4>
+                  <p className="text-[13px] text-[var(--muted)] leading-[1.6] max-w-[400px]">{srv.desc}</p>
+                </div>
+              </div>
+            ))}
           </div>
-          <div className="work-card relative overflow-hidden cursor-none h-[420px] group">
-            <div className="w-full h-full transform transition-transform duration-[700ms] ease-[var(--ease)] group-hover:scale-105 bg-cover bg-center" style={{ backgroundImage: "url('/images/cii/CII (7th Bangalore Space Expo-2022) On-05-09-2022-Noor/NMK_0028.JPG')" }} />
-            <div className="absolute inset-0 bg-gradient-to-t from-[rgba(10,10,8,0.88)] via-[rgba(10,10,8,0.2)] to-transparent flex flex-col justify-end p-[40px]">
-              <div className="font-bebas text-[80px] text-[rgba(250,248,244,0.06)] absolute top-[20px] right-[28px] leading-none">02</div>
-              <p className="text-[9px] tracking-[0.35em] uppercase text-[var(--gold)] mb-[8px]">Event Coverage</p>
-              <h3 className="font-serif text-[32px] text-[var(--ivory)] font-normal leading-[1.2]">CII Annual Summit</h3>
-              <div className="absolute bottom-[40px] right-[40px] w-[40px] h-[40px] border border-[rgba(250,248,244,0.2)] rounded-full flex items-center justify-center text-[var(--ivory)] text-[16px] translate-x-[20px] opacity-0 transition-all duration-[400ms] ease-in-out group-hover:translate-x-0 group-hover:opacity-100">→</div>
-            </div>
-          </div>
-          <div className="work-card relative overflow-hidden cursor-none h-[420px] group">
-            <div className="w-full h-full transform transition-transform duration-[700ms] ease-[var(--ease)] group-hover:scale-105 bg-cover bg-center" style={{ backgroundImage: "url('/images/our_portfolio/Corporate and office/DSC03789.JPG')" }} />
-            <div className="absolute inset-0 bg-gradient-to-t from-[rgba(10,10,8,0.88)] via-[rgba(10,10,8,0.2)] to-transparent flex flex-col justify-end p-[40px]">
-              <div className="font-bebas text-[80px] text-[rgba(250,248,244,0.06)] absolute top-[20px] right-[28px] leading-none">03</div>
-              <p className="text-[9px] tracking-[0.35em] uppercase text-[var(--gold)] mb-[8px]">Documentary</p>
-              <h3 className="font-serif text-[32px] text-[var(--ivory)] font-normal leading-[1.2]">Toyota Kirloskar CSR</h3>
-              <div className="absolute bottom-[40px] right-[40px] w-[40px] h-[40px] border border-[rgba(250,248,244,0.2)] rounded-full flex items-center justify-center text-[var(--ivory)] text-[16px] translate-x-[20px] opacity-0 transition-all duration-[400ms] ease-in-out group-hover:translate-x-0 group-hover:opacity-100">→</div>
-            </div>
-          </div>
-          <div className="work-card relative overflow-hidden cursor-none h-[420px] group">
-            <div className="w-full h-full transform transition-transform duration-[700ms] ease-[var(--ease)] group-hover:scale-105 bg-cover bg-center" style={{ backgroundImage: "url('/images/presidency/PANA9115.jpg')" }} />
-            <div className="absolute inset-0 bg-gradient-to-t from-[rgba(10,10,8,0.88)] via-[rgba(10,10,8,0.2)] to-transparent flex flex-col justify-end p-[40px]">
-              <div className="font-bebas text-[80px] text-[rgba(250,248,244,0.06)] absolute top-[20px] right-[28px] leading-none">04</div>
-              <p className="text-[9px] tracking-[0.35em] uppercase text-[var(--gold)] mb-[8px]">Brand Visuals</p>
-              <h3 className="font-serif text-[32px] text-[var(--ivory)] font-normal leading-[1.2]">Presidency University</h3>
-              <div className="absolute bottom-[40px] right-[40px] w-[40px] h-[40px] border border-[rgba(250,248,244,0.2)] rounded-full flex items-center justify-center text-[var(--ivory)] text-[16px] translate-x-[20px] opacity-0 transition-all duration-[400ms] ease-in-out group-hover:translate-x-0 group-hover:opacity-100">→</div>
-            </div>
+        </div>
+        <div className="relative hidden md:block">
+          <div className="sticky top-[120px] h-[700px] w-full img-mask rounded-sm overflow-hidden">
+            <img src="/images/services-camera.png" alt="Tripod Camera" className="w-full h-full object-cover mask-bg grayscale-[20%]" />
           </div>
         </div>
       </section>
 
-      {/* ─── TESTIMONIALS ─── */}
-      <section className="py-[120px] px-[60px] bg-[var(--ivory)]">
-        <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-[80px] items-start">
-          <div className="reveal">
-            <p className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] mb-[16px]">Testimonials</p>
-            <h2 className="font-serif text-[clamp(36px,3.5vw,54px)] font-light leading-[1.1] tracking-[-0.02em] text-[var(--black)]">
-              Words From Our Clients
-            </h2>
-            <p className="text-[13px] text-[var(--muted)] mt-[20px] leading-[1.8]">
-              We value long-term partnerships. Here’s what industry leaders say about working with Glamour Photographics.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-[24px] stagger-children">
-            <div className="p-[36px] border border-[rgba(10,10,10,0.08)] bg-[var(--ivory)] transition-all duration-300 hover:border-[var(--gold)] hover:-translate-y-[4px]">
-              <div className="font-serif text-[44px] text-[var(--gold)] leading-none mb-[16px]">"</div>
-              <p className="text-[13px] leading-[1.85] text-[var(--muted)] italic mb-[20px]">
-                Glamour Photographics has consistently delivered beyond our expectations. Their ability to capture the exact mood and professionalism of our corporate events is unmatched.
-              </p>
-              <p className="text-[10px] tracking-[0.2em] uppercase font-medium text-[var(--black)]">Marketing Director</p>
-              <p className="text-[11px] text-[var(--gold)] mt-[4px]">Top IT Firm</p>
+      {/* ─── 10. OUR TEAM ─── */}
+      <section className="py-[120px] px-[5%] md:px-[8%] bg-[var(--dark-panel)] border-t border-[rgba(255,255,255,0.05)]">
+        <h3 className="text-[28px] font-serif text-white mb-[16px] reveal">Our Team</h3>
+        <p className="text-[14px] text-[var(--muted)] max-w-[500px] mb-[60px] reveal delay-100">A passionate team of photographers, filmmakers, editors, and storytellers dedicated to excellence.</p>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-[20px] stagger-children">
+          {[
+            { name: "Pasha Arshad", role: "Founder & Director", img: "/images/our_portfolio/dilquar.jpg" },
+            { name: "John Doe", role: "Creative Head", img: "/images/our_portfolio/kareeshma.jpg" },
+            { name: "Alice Smith", role: "Cinematographer", img: "/images/our_portfolio/dilquar.jpg" },
+            { name: "Mike Ross", role: "Senior Photographer", img: "/images/our_portfolio/kareeshma.jpg" }
+          ].map((member, i) => (
+            <div key={i} className="group relative h-[350px] overflow-hidden cursor-none rounded-sm">
+              <div className="absolute inset-0 bg-cover bg-center grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105" style={{ backgroundImage: `url('${member.img}')` }} />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-80" />
+              <div className="absolute bottom-[20px] left-[20px] transform translate-y-[10px] group-hover:translate-y-0 transition-transform">
+                <h5 className="text-[16px] text-white font-medium mb-[4px]">{member.name}</h5>
+                <p className="text-[11px] text-[var(--gold)] tracking-[0.1em] uppercase">{member.role}</p>
+              </div>
             </div>
-            <div className="p-[36px] border border-[rgba(10,10,10,0.08)] bg-[var(--ivory)] transition-all duration-300 hover:border-[var(--gold)] hover:-translate-y-[4px]">
-              <div className="font-serif text-[44px] text-[var(--gold)] leading-none mb-[16px]">"</div>
-              <p className="text-[13px] leading-[1.85] text-[var(--muted)] italic mb-[20px]">
-                The documentary they produced for our CSR initiative beautifully highlighted our community work. A highly professional team with a great eye for detail.
-              </p>
-              <p className="text-[10px] tracking-[0.2em] uppercase font-medium text-[var(--black)]">Head of CSR</p>
-              <p className="text-[11px] text-[var(--gold)] mt-[4px]">Automotive Leader</p>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
 
-      {/* ─── CTA BANNER ─── */}
-      <section className="bg-[var(--gold)] py-[80px] px-[60px] flex flex-col md:flex-row justify-between items-center gap-[60px] reveal">
-        <h2 className="font-serif text-[clamp(36px,4vw,56px)] font-light text-[var(--black)] leading-[1.1]">
-          Ready to tell your <em>story?</em>
-        </h2>
-        <Link href="/contact" className="btn-dark shrink-0">Contact Us →</Link>
+      {/* ─── 11. WHAT OUR CLIENTS SAY ─── */}
+      <section className="py-[120px] px-[5%] md:px-[8%] bg-[var(--dark)] border-t border-[rgba(255,255,255,0.05)] grid grid-cols-1 md:grid-cols-2 gap-[60px]">
+        <div className="reveal">
+          <h3 className="text-[28px] font-serif text-white mb-[40px]">What Our Clients Say</h3>
+          <div className="h-[300px]">
+            <Swiper
+              modules={[Pagination]}
+              pagination={{ clickable: true }}
+              spaceBetween={50}
+              slidesPerView={1}
+              className="h-full testimonial-swiper"
+            >
+              {[
+                { quote: "Glamour Photographics has been our trusted partner for over four decades. Their professionalism, creativity, and attention to detail are unmatched.", author: "Director General", client: "Confederation of Indian Industry" },
+                { quote: "The absolute best in the business when it comes to high-end corporate coverage. The team is invisible yet captures every perfect moment.", author: "Head of Marketing", client: "Top Tech Firm" }
+              ].map((test, i) => (
+                <SwiperSlide key={i}>
+                  <div className="font-serif text-[60px] text-[var(--gold)] leading-none mb-[20px]">“</div>
+                  <p className="text-[18px] md:text-[22px] leading-[1.6] text-white italic font-light mb-[40px]">
+                    {test.quote}
+                  </p>
+                  <div>
+                    <h5 className="text-[12px] text-white uppercase tracking-[0.1em] mb-[4px]">{test.author}</h5>
+                    <p className="text-[12px] text-[var(--muted)]">{test.client}</p>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+        </div>
+        <div className="relative hidden md:block img-mask">
+          <img src="/images/our_portfolio/Corporate and office/DSC03789.JPG" className="w-full h-[500px] object-cover mask-bg grayscale-[40%]" alt="Testimonials" />
+        </div>
       </section>
+
+      {/* ─── 12. GET IN TOUCH (Footer) ─── */}
+      <section className="py-[120px] px-[5%] md:px-[8%] bg-[var(--dark-panel)] border-t border-[rgba(255,255,255,0.05)] grid grid-cols-1 md:grid-cols-2 gap-[80px]">
+        <div className="reveal">
+          <h3 className="text-[28px] font-serif text-white mb-[20px]">Get In Touch</h3>
+          <h2 className="text-[clamp(32px,4vw,48px)] font-serif font-light text-white leading-[1.1] mb-[60px]">
+            Let's Create Something<br/>Extraordinary Together
+          </h2>
+          <div className="space-y-[20px] text-[14px] text-[var(--muted)]">
+            <p className="flex items-center gap-[16px] hover:text-[var(--gold)] transition-colors cursor-none"><span className="w-[8px] h-[8px] bg-[var(--gold)] rounded-full"/> Bangalore, India</p>
+            <p className="flex items-center gap-[16px] hover:text-[var(--gold)] transition-colors cursor-none"><span className="w-[8px] h-[8px] bg-[var(--gold)] rounded-full"/> +91 80 1234 5678</p>
+            <p className="flex items-center gap-[16px] hover:text-[var(--gold)] transition-colors cursor-none"><span className="w-[8px] h-[8px] bg-[var(--gold)] rounded-full"/> info@glamourphotographics.com</p>
+          </div>
+          <div className="flex gap-[20px] mt-[40px]">
+            {['F','I','L','T'].map((social, i) => (
+              <a key={i} href="#" className="w-[40px] h-[40px] rounded-full border border-[rgba(255,255,255,0.2)] flex items-center justify-center text-[12px] hover:bg-[var(--gold)] hover:border-transparent hover:text-black transition-colors cursor-none">
+                {social}
+              </a>
+            ))}
+          </div>
+        </div>
+        <div className="reveal delay-100">
+          <form className="flex flex-col gap-[30px]" onSubmit={(e) => e.preventDefault()}>
+            <input type="text" placeholder="Your Name" className="bg-transparent border-b border-[rgba(255,255,255,0.1)] pb-[16px] text-white text-[14px] focus:outline-none focus:border-[var(--gold)] transition-colors w-full" />
+            <input type="email" placeholder="Your Email" className="bg-transparent border-b border-[rgba(255,255,255,0.1)] pb-[16px] text-white text-[14px] focus:outline-none focus:border-[var(--gold)] transition-colors w-full" />
+            <input type="tel" placeholder="Phone Number" className="bg-transparent border-b border-[rgba(255,255,255,0.1)] pb-[16px] text-white text-[14px] focus:outline-none focus:border-[var(--gold)] transition-colors w-full" />
+            <textarea placeholder="Your Message" rows={4} className="bg-transparent border-b border-[rgba(255,255,255,0.1)] pb-[16px] text-white text-[14px] focus:outline-none focus:border-[var(--gold)] transition-colors w-full resize-none" />
+            <button type="submit" className="bg-[var(--gold)] text-black font-semibold text-[11px] tracking-[0.2em] uppercase py-[20px] w-full mt-[20px] hover:bg-white transition-colors cursor-none">
+              Send Message
+            </button>
+          </form>
+        </div>
+      </section>
+
+      {/* COPYRIGHT */}
+      <footer className="py-[30px] text-center border-t border-[rgba(255,255,255,0.05)] bg-[var(--dark-panel)]">
+        <p className="text-[11px] text-[var(--muted)] tracking-[0.1em]">© 2026 Glamour Photographics. All Rights Reserved.</p>
+      </footer>
 
     </main>
   );
