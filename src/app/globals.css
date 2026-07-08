@@ -68,7 +68,7 @@
     background: var(--gold);
     border-radius: 50%;
     pointer-events: none;
-    z-index: 9999;
+    z-index: 999999;
     transform: translate(-50%, -50%);
     transition: transform .1s ease, width .2s ease, height .2s ease;
   }
@@ -82,7 +82,7 @@
     border: 1px solid rgba(197, 164, 109, .4);
     border-radius: 50%;
     pointer-events: none;
-    z-index: 9998;
+    z-index: 999998;
     transform: translate(-50%, -50%);
     transition: width .3s ease, height .3s ease, border-color .3s ease, background-color .3s ease;
   }

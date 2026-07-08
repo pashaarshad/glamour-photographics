@@ -125,12 +125,12 @@ export default function Services() {
           {services.map((service, idx) => (
             <div key={idx} className="group relative flex flex-col md:flex-row justify-between items-start md:items-center p-[40px] md:p-[50px] bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.05)] rounded-sm transition-all duration-500 hover:border-[var(--gold)] reveal overflow-hidden cursor-none">
               
-              {/* Background Image Reveal on Hover */}
+              {/* Background Image - Subtle preview by default, scales and fades on hover */}
               <div 
-                className="absolute inset-0 z-0 bg-cover bg-center opacity-0 transition-opacity duration-700 group-hover:opacity-20"
+                className="absolute inset-0 z-0 bg-cover bg-center opacity-[0.07] transition-all duration-[800ms] group-hover:opacity-25 group-hover:scale-[1.02] grayscale group-hover:grayscale-0"
                 style={{ backgroundImage: `url('${service.img}')` }}
               />
-              <div className="absolute inset-0 z-0 bg-black opacity-0 transition-opacity duration-500 group-hover:opacity-60" />
+              <div className="absolute inset-0 z-0 bg-black opacity-30 group-hover:opacity-60 transition-opacity duration-500" />
 
               <div className="relative z-10 flex items-start gap-[40px] md:w-[70%]">
                 <span className="font-serif text-[36px] md:text-[48px] text-[var(--gold)] leading-none italic font-light">
