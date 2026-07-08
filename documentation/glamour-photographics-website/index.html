@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glamour Photographics — Est. 1982</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Inter:wght@300;400;500;600&family=Bebas+Neue&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+
+<!-- LOADER -->
+<div id="loader">
+  <img id="loader-logo" src="images/logo.png" alt="Glamour Photographics">
+  <div id="loader-line"></div>
+  <div id="loader-text">Glamour Photographics</div>
+  <div id="loader-sub">Est. 1982 &nbsp;·&nbsp; Bengaluru &nbsp;·&nbsp; India</div>
+</div>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#" onclick="navigate('home')">Home</a>
+  <a href="#" onclick="navigate('about')">About</a>
+  <a href="#" onclick="navigate('corporate')">Corporate</a>
+  <a href="#" onclick="navigate('studio')">Studio Services</a>
+  <a href="#" onclick="navigate('contact')">Contact</a>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-logo">Glamour<span>.</span>Photographics</div>
+  <ul class="nav-links">
+    <li><a href="#" onclick="navigate('home')"    data-page="home">Home</a></li>
+    <li><a href="#" onclick="navigate('about')"   data-page="about">About</a></li>
+    <li><a href="#" onclick="navigate('corporate')" data-page="corporate">Corporate</a></li>
+    <li><a href="#" onclick="navigate('studio')"  data-page="studio">Studio Services</a></li>
+    <li><a href="#" onclick="navigate('contact')" data-page="contact">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="https://wa.me/918971168868" target="_blank" rel="noopener">WhatsApp Us</a>
+  <div class="hamburger" onclick="toggleMobile()" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ═══════════════════ HOME PAGE ═══════════════════════════ -->
+<div class="page active" id="page-home">
+
+  <!-- HERO -->
+  <section class="hero">
+
+    <!-- Centered headline -->
+    <div class="hero-content-wrap">
+      <p class="hero-eyebrow">Surpassing Expectations Since 1982</p>
+      <h1 class="hero-title">
+        <span class="line"><span class="line-inner">Capturing</span></span>
+        <span class="line"><span class="line-inner"><em class="gold">Life's</em> Finest</span></span>
+        <span class="line"><span class="line-inner">Moments.</span></span>
+      </h1>
+      <p class="hero-sub">A blend of artistic creativity and strategic insight — we bring your vision to life on screen.</p>
+    </div>
+
+    <!-- 4-image editorial strip -->
+    <div class="hero-strip">
+
+      <div class="hero-strip-item" data-tilt>
+        <div class="strip-img strip-img-1"><img src="images/cii-event-coverage.jpg" alt="CII Event Coverage" style="width:100%;height:100%;object-fit:cover;display:block;" /></div>
+        <div class="strip-pip"></div>
+        <div class="strip-side-label">Corporate Events</div>
+        <div class="strip-overlay">
+          <span class="strip-label">Corporate Events</span>
+          <span class="strip-title">CII — India @ 75</span>
+        </div>
+      </div>
+
+      <div class="hero-strip-item" data-tilt>
+        <div class="strip-img strip-img-2"><img src="images/celebrity-portrait.jpg" alt="Celebrity Portrait" style="width:100%;height:100%;object-fit:cover;display:block;" /></div>
+        <div class="strip-pip"></div>
+        <div class="strip-side-label">Celebrity Portrait</div>
+        <div class="strip-overlay">
+          <span class="strip-label">Celebrity Coverage</span>
+          <span class="strip-title">Portrait Session</span>
+        </div>
+      </div>
+
+      <div class="hero-strip-item" data-tilt>
+        <div class="strip-img strip-img-3"><img src="images/outdoor-event.jpg" alt="Outdoor Event" style="width:100%;height:100%;object-fit:cover;display:block;" /></div>
+        <div class="strip-pip"></div>
+        <div class="strip-side-label">Outdoor Coverage</div>
+        <div class="strip-overlay">
+          <span class="strip-label">Events & Media</span>
+          <span class="strip-title">Outdoor Coverage</span>
+        </div>
+      </div>
+
+      <div class="hero-strip-item" data-tilt>
+        <div class="strip-img strip-img-4"><img src="images/corporate-event.jpg" alt="Corporate Event" style="width:100%;height:100%;object-fit:cover;display:block;" /></div>
+        <div class="strip-pip"></div>
+        <div class="strip-side-label">Speaker Series</div>
+        <div class="strip-overlay">
+          <span class="strip-label">Corporate Events</span>
+          <span class="strip-title">Speaker Series</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrapper">
+    <div class="marquee-track">
+      <span>Corporate Films</span><span class="dot">●</span>
+      <span>Wedding Photography</span><span class="dot">●</span>
+      <span>Event Coverage</span><span class="dot">●</span>
+      <span>Digital Advertising</span><span class="dot">●</span>
+      <span>Documentary Films</span><span class="dot">●</span>
+      <span>Studio Portraits</span><span class="dot">●</span>
+      <span>Photo Restoration</span><span class="dot">●</span>
+      <span>Corporate Films</span><span class="dot">●</span>
+      <span>Wedding Photography</span><span class="dot">●</span>
+      <span>Event Coverage</span><span class="dot">●</span>
+      <span>Digital Advertising</span><span class="dot">●</span>
+      <span>Documentary Films</span><span class="dot">●</span>
+      <span>Studio Portraits</span><span class="dot">●</span>
+      <span>Photo Restoration</span><span class="dot">●</span>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <section class="stats-section">
+    <div class="stats-left reveal">
+      <div class="gold-line-short" style="margin-bottom:32px"></div>
+      <h2>Four Decades of <em>Visual Excellence</em></h2>
+      <p>Glamour Photographics, established by Hameed Hussain in 1982, has built a legacy of capturing the most meaningful moments for corporate clients and families across India.</p>
+      <a class="btn-primary" href="#" onclick="navigate('about')">Our Story <span class="btn-arrow">→</span></a>
+    </div>
+    <div class="stats-grid stagger-children">
+      <div class="stat-card">
+        <div class="stat-num"><span class="counter" data-target="40">0</span><span class="suffix">+</span></div>
+        <div class="stat-label">Years of Experience</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num"><span class="counter" data-target="500">0</span><span class="suffix">+</span></div>
+        <div class="stat-label">Clients Served</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num"><span class="counter" data-target="1200">0</span><span class="suffix">+</span></div>
+        <div class="stat-label">Corporate Projects</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num"><span class="counter" data-target="300">0</span><span class="suffix">+</span></div>
+        <div class="stat-label">Weddings Captured</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT TEASER -->
+  <section class="about-teaser">
+    <div class="about-teaser-img img-mask">
+      <div class="img-main">Hameed Hussain, Founder</div>
+      <div class="img-accent">Est. 1982</div>
+    </div>
+    <div class="reveal">
+      <div class="year-tag">1982</div>
+      <p class="about-eyebrow">Our Story</p>
+      <h2>Glamour Photographics</h2>
+      <p>"Our goal is not to merely provide media services, but to serve people through the art of storytelling and media creation."</p>
+      <p>Established by Hameed Hussain in 1982, we embarked on a journey to introduce vibrant colour media to consumers in Bengaluru — proudly serving the corporate and wedding industries ever since.</p>
+      <a class="btn-primary" href="#" onclick="navigate('about')" style="margin-top:16px">Read Our Story <span class="btn-arrow">→</span></a>
+    </div>
+  </section>
+
+  <!-- CLIENTS -->
+  <section class="clients-section">
+    <div class="section-header reveal">
+      <p class="section-eyebrow">Our Clients</p>
+      <h2 class="section-title">Trusted by India's Finest</h2>
+    </div>
+    <div class="clients-grid stagger-children">
+      <div class="client-card"><span class="client-name">CII</span></div>
+      <div class="client-card"><span class="client-name">CGI</span></div>
+      <div class="client-card"><span class="client-name">Toyota</span></div>
+      <div class="client-card"><span class="client-name">RTX</span></div>
+      <div class="client-card"><span class="client-name">TCS</span></div>
+      <div class="client-card"><span class="client-name">Tata Elxsi</span></div>
+      <div class="client-card"><span class="client-name">Presidency Group</span></div>
+      <div class="client-card"><span class="client-name">PAI</span></div>
+    </div>
+  </section>
+
+  <!-- RECENT WORKS -->
+  <section class="works-section">
+    <div class="section-header reveal">
+      <p class="section-eyebrow">Our Portfolio</p>
+      <h2 class="section-title">Recent Works</h2>
+    </div>
+    <div class="works-grid">
+      <div class="work-card img-mask" onclick="navigate('corporate')">
+        <div class="work-card-bg wc-1"></div>
+        <div class="work-overlay">
+          <span class="work-card-num">01</span>
+          <p class="work-card-label">Portfolio</p>
+          <h3 class="work-card-title">Corporate Portfolio</h3>
+        </div>
+        <div class="work-card-arrow">→</div>
+      </div>
+      <div class="work-card img-mask" onclick="navigate('corporate')">
+        <div class="work-card-bg wc-2"></div>
+        <div class="work-overlay">
+          <span class="work-card-num">02</span>
+          <p class="work-card-label">Portfolio</p>
+          <h3 class="work-card-title">Event Portfolio</h3>
+        </div>
+        <div class="work-card-arrow">→</div>
+      </div>
+      <div class="work-card img-mask" onclick="navigate('corporate')">
+        <div class="work-card-bg wc-3"></div>
+        <div class="work-overlay">
+          <span class="work-card-num">03</span>
+          <p class="work-card-label">Portfolio</p>
+          <h3 class="work-card-title">Digital Ads</h3>
+        </div>
+        <div class="work-card-arrow">→</div>
+      </div>
+      <div class="work-card img-mask" onclick="navigate('corporate')">
+        <div class="work-card-bg wc-4"></div>
+        <div class="work-overlay">
+          <span class="work-card-num">04</span>
+          <p class="work-card-label">Portfolio</p>
+          <h3 class="work-card-title">Documentaries</h3>
+        </div>
+        <div class="work-card-arrow">→</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="testi-inner">
+      <div class="reveal">
+        <div class="gold-line-short" style="margin-bottom:28px"></div>
+        <h2>What Our Clients Say</h2>
+        <p>Decades of trust, built one frame at a time. Our clients include some of India's most prestigious corporations and families.</p>
+      </div>
+      <div class="testi-grid stagger-children">
+        <div class="testi-card">
+          <div class="testi-quote">"</div>
+          <p class="testi-text">Glamour Photographics captured our annual conference with unmatched professionalism. Every frame told a story.</p>
+          <p class="testi-name">Corporate Client</p>
+          <p class="testi-org">Confederation of Indian Industry</p>
+        </div>
+        <div class="testi-card">
+          <div class="testi-quote">"</div>
+          <p class="testi-text">The wedding film they created for us is a treasure we will cherish for generations. Pure artistry.</p>
+          <p class="testi-name">Wedding Client</p>
+          <p class="testi-org">Bengaluru, 2023</p>
+        </div>
+        <div class="testi-card">
+          <div class="testi-quote">"</div>
+          <p class="testi-text">Their corporate film elevated our brand narrative. The strategic insight they bring is extraordinary.</p>
+          <p class="testi-name">Marketing Director</p>
+          <p class="testi-org">Tata Elxsi</p>
+        </div>
+        <div class="testi-card">
+          <div class="testi-quote">"</div>
+          <p class="testi-text">Over 15 years of partnership. Their consistency in quality and creativity is unparalleled in the industry.</p>
+          <p class="testi-name">Communications Head</p>
+          <p class="testi-org">Toyota India</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <div class="cta-banner reveal">
+    <h2>Ready to <em>tell your story</em><br>through the lens?</h2>
+    <a class="btn-dark" href="#" onclick="navigate('contact')">Get In Touch →</a>
+  </div>
+
+  <!-- NEWSLETTER -->
+  <div class="newsletter-section reveal">
+    <p class="section-eyebrow">Stay Updated</p>
+    <h2>Subscribe to Our Newsletter</h2>
+    <p>Behind-the-scenes stories, new work, and visual inspiration — delivered to your inbox.</p>
+    <div class="newsletter-form">
+      <input type="email" class="newsletter-input" placeholder="your@email.com">
+      <button class="newsletter-btn">Subscribe</button>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h3>Glamour<span>.</span>Photographics</h3>
+        <p>Established in 1982 by Hameed Hussain. Four decades of serving India's finest corporate and wedding clients through the art of visual storytelling.</p>
+        <div style="display:flex;gap:16px;margin-top:24px">
+          <a class="social-link" href="https://www.facebook.com/p/Glamour-Photographics-100064007321571/" target="_blank" rel="noopener">Facebook</a>
+          <a class="social-link" href="https://www.instagram.com/glamourphotographics/" target="_blank" rel="noopener">Instagram</a>
+          <a class="social-link" href="https://in.linkedin.com/company/glamour-photographics" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="social-link" href="https://www.youtube.com/@ashrafhussain136" target="_blank" rel="noopener">YouTube</a>
+        </div>
+      </div>
+      <div class="footer-col"><h4>Explore</h4><ul>
+        <li><a href="#" onclick="navigate('home')">Home</a></li>
+        <li><a href="#" onclick="navigate('about')">About</a></li>
+        <li><a href="#" onclick="navigate('corporate')">Corporate</a></li>
+        <li><a href="#" onclick="navigate('studio')">Studio Services</a></li>
+        <li><a href="#" onclick="navigate('contact')">Contact</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Portfolio</h4><ul>
+        <li><a href="#" onclick="navigate('corporate')">Corporate Films</a></li>
+        <li><a href="#" onclick="navigate('corporate')">Event Coverage</a></li>
+        <li><a href="#" onclick="navigate('corporate')">Digital Ads</a></li>
+        <li><a href="#" onclick="navigate('corporate')">Documentaries</a></li>
+        <li><a href="#" onclick="navigate('corporate')">Wedding Films</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul>
+        <li><a href="tel:+919845003786">+91 984 5003 786</a></li>
+        <li><a href="mailto:info@glamourphotographics.com">info@glamourphotographics.com</a></li>
+        <li><a href="#">33 Castle St, Ashok Nagar, Bengaluru</a></li>
+        <li><a href="https://wa.me/918971168868" target="_blank" rel="noopener">WhatsApp Us</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Glamour Photographics. All Rights Reserved.</span>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/p/Glamour-Photographics-100064007321571/" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://www.instagram.com/glamourphotographics/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://in.linkedin.com/company/glamour-photographics" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.youtube.com/@ashrafhussain136" target="_blank" rel="noopener">YouTube</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ═══════════════════ ABOUT PAGE ═══════════════════════════ -->
+<div class="page" id="page-about">
+  <section class="page-hero">
+    <div>
+      <span class="page-hero-eyebrow reveal">Our Story</span>
+      <h1 class="reveal">A Legacy<br><em style="font-style:italic;color:var(--gold)">in Frames.</em></h1>
+    </div>
+    <div class="page-hero-right reveal">
+      <p>At Glamour Photographics, we believe in the power of storytelling to connect, inspire, and drive change. Our corporate films are carefully crafted to capture the essence of your brand, convey your unique message, and engage your audience on a deeper level. With a blend of artistic creativity and strategic insight, we bring your vision to life on screen.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="founder-section">
+    <div class="founder-img-wrap">
+      <div class="founder-img img-mask">
+        <span>Founder Portrait</span>
+        <div class="founder-img-label">
+          <span class="gold-txt">Founder</span>
+          <strong>Hameed Hussain</strong>
+          <p>Glamour Photographics, Est. 1982</p>
+        </div>
+      </div>
+    </div>
+    <div class="founder-text">
+      <p class="about-eyebrow reveal">Founder's Note</p>
+      <h2 class="reveal">A Pictorial Time Machine</h2>
+      <p class="subtitle reveal">Glamour Photographics' Journey from 1982 to Now</p>
+      <div class="gold-line-short reveal" style="margin-bottom:36px"></div>
+      <p class="reveal">Dear Friends and patrons,</p>
+      <p class="reveal">As I reflect upon the journey that has led us to this moment, my heart swells with gratitude and nostalgia. It is with immense pleasure that I share this founder's note, celebrating the remarkable odyssey of Glamour Photographics, a dream turned into a legacy.</p>
+      <p class="reveal">In 1982, armed with a camera and insatiable passion for capturing beauty in all its forms, I embarked on a venture that would soon become synonymous with elegance, artistry, and the profound connection between lens and subject. Glamour Photographics was born from the belief that every person, every moment, and every emotion is a canvas waiting to be immortalised.</p>
+      <p class="reveal">Through the decades, we evolved, adapted, and transformed — our lens capturing not merely images, but stories: tales of love, triumph, and the tapestry of life itself. We witnessed countless smiles, shared tears of joy, and stood witness to the quiet moments that often go unnoticed.</p>
+      <p class="reveal">The heart of Glamour Photographics has always been its people. Your unwavering support and faith have fuelled our artistic pursuit and allowed us to thrive in an ever-evolving industry. As we pen this new chapter, I invite you to join us once again in our pursuit of beauty, authenticity, and unbounded creativity.</p>
+      <div class="founder-sign reveal">With deepest appreciation,<br><strong>Hameed Hussain</strong></div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="values-section">
+    <div class="section-header reveal">
+      <p class="section-eyebrow">Why Choose Us</p>
+      <h2 class="section-title">What Sets Us Apart</h2>
+    </div>
+    <div class="values-grid stagger-children">
+      <div class="value-card">
+        <div class="value-icon">◎</div>
+        <h3 class="value-title">Experience</h3>
+        <p class="value-text">Our team brings a wealth of experience from various industries, enabling us to tailor our approach to your unique needs with precision and depth.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">◈</div>
+        <h3 class="value-title">Client-Centric</h3>
+        <p class="value-text">We put your satisfaction at the forefront of everything we do. Your success is our success — every decision serves your vision without compromise.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">◐</div>
+        <h3 class="value-title">Innovation</h3>
+        <p class="value-text">We stay updated with the latest trends and technologies in filmmaking, ensuring your corporate film is fresh, modern, and truly impactful.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">◉</div>
+        <h3 class="value-title">Proven Results</h3>
+        <p class="value-text">Our portfolio speaks for itself. Past projects have driven engagement, increased brand awareness, and delivered measurable business results.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPROACH -->
+  <section class="approach-section">
+    <div class="section-header reveal">
+      <p class="section-eyebrow">How We Work</p>
+      <h2 class="section-title">Our Approach</h2>
+    </div>
+    <div class="approach-items">
+      <div class="approach-item reveal">
+        <div class="approach-num">01</div>
+        <div><h3 class="approach-title">Collaboration</h3></div>
+        <p class="approach-text">We believe in working closely with our clients to understand their vision, objectives, and target audience. Your input is invaluable in shaping the final product.</p>
+      </div>
+      <div class="approach-item reveal">
+        <div class="approach-num">02</div>
+        <div><h3 class="approach-title">Creativity</h3></div>
+        <p class="approach-text">Our team combines creative storytelling with the latest cinematic techniques to create visually stunning films that leave a lasting impression on every audience.</p>
+      </div>
+      <div class="approach-item reveal">
+        <div class="approach-num">03</div>
+        <div><h3 class="approach-title">Strategic Impact</h3></div>
+        <p class="approach-text">Every frame is designed to convey a specific message and evoke emotion. We ensure your film aligns with your broader business goals and drives real results.</p>
+      </div>
+      <div class="approach-item reveal">
+        <div class="approach-num">04</div>
+        <div><h3 class="approach-title">Quality</h3></div>
+        <p class="approach-text">We maintain high production standards to deliver films that reflect the quality and professionalism of your brand — without exception or compromise.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-banner reveal">
+    <h2>Let's create something <em>extraordinary</em> together.</h2>
+    <a class="btn-dark" href="#" onclick="navigate('contact')">Start a Project →</a>
+  </div>
+
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand"><h3>Glamour<span>.</span>Photographics</h3><p>Four decades of visual storytelling from the heart of Bengaluru.</p></div>
+      <div class="footer-col"><h4>Pages</h4><ul>
+        <li><a href="#" onclick="navigate('home')">Home</a></li>
+        <li><a href="#" onclick="navigate('about')">About</a></li>
+        <li><a href="#" onclick="navigate('corporate')">Corporate</a></li>
+        <li><a href="#" onclick="navigate('studio')">Studio Services</a></li>
+        <li><a href="#" onclick="navigate('contact')">Contact</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul>
+        <li><a href="tel:+919845003786">+91 984 5003 786</a></li>
+        <li><a href="mailto:info@glamourphotographics.com">Email Us</a></li>
+        <li><a href="https://wa.me/918971168868" target="_blank" rel="noopener">WhatsApp</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Social</h4><ul>
+        <li><a href="https://www.facebook.com/p/Glamour-Photographics-100064007321571/" target="_blank" rel="noopener">Facebook</a></li>
+        <li><a href="https://www.instagram.com/glamourphotographics/" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://in.linkedin.com/company/glamour-photographics" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://www.youtube.com/@ashrafhussain136" target="_blank" rel="noopener">YouTube</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 Glamour Photographics. All Rights Reserved.</span></div>
+  </footer>
+</div>
+
+<!-- ═══════════════════ STUDIO SERVICES ═══════════════════════ -->
+<div class="page" id="page-studio">
+  <section class="page-hero">
+    <div>
+      <span class="page-hero-eyebrow reveal">Studio Services</span>
+      <h1 class="reveal">Crafted for<br><em style="font-style:italic;color:var(--gold)">Every Need.</em></h1>
+    </div>
+    <div class="page-hero-right reveal">
+      <p>From passport photos to professional headshots, photo restoration to album design — our studio offers a comprehensive range of precision services, all delivered with the quality Glamour Photographics is known for across four decades of service in Bengaluru.</p>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="services-list">
+
+    <div class="service-block">
+      <div class="service-img img-mask">
+        <div class="si-1 service-img-bg" style="height:480px">Passport Photo Studio</div>
+        <div class="service-img-tag">Walk-in Available</div>
+      </div>
+      <div class="service-content reveal">
+        <div class="service-num">01</div>
+        <p class="service-eyebrow">Passport &amp; Visa Photos</p>
+        <h2 class="service-title">Accurate. Instant.<br>Globally Accepted.</h2>
+        <p class="service-subtitle">Compliant with all major embassy and government requirements.</p>
+        <p class="service-text">Need a passport or visa photo that meets international standards? We deliver high-resolution, professionally lit photos compliant with all major embassy and government requirements. Walk in and walk out in minutes — digital and printed formats available, with a 100% acceptance guarantee.</p>
+        <div class="service-feature">High-resolution digital files</div>
+        <div class="service-feature">Printed in multiple sizes</div>
+        <div class="service-feature">Embassy-compliant backgrounds</div>
+        <div class="service-feature">100% acceptance guarantee</div>
+      </div>
+    </div>
+
+    <div class="service-block reverse">
+      <div class="service-img img-mask">
+        <div class="si-2 service-img-bg" style="height:480px">Studio Headshot Setup</div>
+        <div class="service-img-tag">Individual &amp; Corporate</div>
+      </div>
+      <div class="service-content reveal">
+        <div class="service-num">02</div>
+        <p class="service-eyebrow">Studio Head Shots</p>
+        <h2 class="service-title">First Impressions that<br><em style="font-style:italic;color:var(--gold)">Last.</em></h2>
+        <p class="service-subtitle">For LinkedIn, corporate websites, resumes, and press kits.</p>
+        <p class="service-text">Whether it's for LinkedIn, corporate websites, resumes, or press kits, our studio headshots are crafted to highlight your best, most confident self. With flattering lighting, clean backdrops, and expert guidance, we create portraits that elevate your personal or professional brand.</p>
+        <div class="service-feature">Flattering studio lighting</div>
+        <div class="service-feature">Multiple backdrop options</div>
+        <div class="service-feature">Expert posing guidance</div>
+        <div class="service-feature">Available for corporate team shoots</div>
+      </div>
+    </div>
+
+    <div class="service-block">
+      <div class="service-img img-mask">
+        <div class="si-3 service-img-bg" style="height:480px">Photo Restoration</div>
+        <div class="service-img-tag">Digital &amp; Print</div>
+      </div>
+      <div class="service-content reveal">
+        <div class="service-num">03</div>
+        <p class="service-eyebrow">Photo Restoration</p>
+        <h2 class="service-title">Give Your Memories<br>New Life.</h2>
+        <p class="service-subtitle">Damaged, faded, and torn photographs restored with care.</p>
+        <p class="service-text">We expertly restore damaged, faded, or torn photographs as well as video cassettes and DVD conversion with editing — fixing creases, removing stains, and enhancing clarity. Whether it's a cherished family portrait or a vintage memory, we bring back the original charm with modern digital techniques.</p>
+        <div class="service-feature">Damaged photo restoration</div>
+        <div class="service-feature">Video cassette digitisation</div>
+        <div class="service-feature">DVD conversion &amp; editing</div>
+        <div class="service-feature">High-quality reprinting available</div>
+      </div>
+    </div>
+
+    <div class="service-block reverse">
+      <div class="service-img img-mask">
+        <div class="si-4 service-img-bg" style="height:480px">Album Design Studio</div>
+        <div class="service-img-tag">Custom Design</div>
+      </div>
+      <div class="service-content reveal">
+        <div class="service-num">04</div>
+        <p class="service-eyebrow">Album Design</p>
+        <h2 class="service-title">Stories Bound in<br><em style="font-style:italic;color:var(--gold)">Beautiful Albums.</em></h2>
+        <p class="service-subtitle">Custom-designed albums for weddings, corporate events &amp; portraits.</p>
+        <p class="service-text">We design and produce premium photo albums that serve as lasting keepsakes of your most important moments. Every layout is carefully crafted to complement your photos, tell a cohesive story, and reflect your personal aesthetic — printed on archival-quality materials.</p>
+        <div class="service-feature">Custom layout design</div>
+        <div class="service-feature">Premium archival printing</div>
+        <div class="service-feature">Wedding &amp; corporate albums</div>
+        <div class="service-feature">Multiple cover options</div>
+        <a class="btn-primary" href="https://glamourphotographics.com/albums-services/" target="_blank" rel="noopener" style="margin-top:20px">View Album Services <span class="btn-arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-banner reveal">
+    <h2>Visit our studio in <em>Ashok Nagar,</em> Bengaluru.</h2>
+    <a class="btn-dark" href="#" onclick="navigate('contact')">Find Us →</a>
+  </div>
+
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand"><h3>Glamour<span>.</span>Photographics</h3><p>Four decades of visual storytelling from the heart of Bengaluru.</p></div>
+      <div class="footer-col"><h4>Pages</h4><ul>
+        <li><a href="#" onclick="navigate('home')">Home</a></li>
+        <li><a href="#" onclick="navigate('about')">About</a></li>
+        <li><a href="#" onclick="navigate('studio')">Studio Services</a></li>
+        <li><a href="#" onclick="navigate('contact')">Contact</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Services</h4><ul>
+        <li><a href="#">Passport Photos</a></li>
+        <li><a href="#">Studio Headshots</a></li>
+        <li><a href="#">Photo Restoration</a></li>
+        <li><a href="#">Album Design</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul>
+        <li><a href="tel:+919845003786">+91 984 5003 786</a></li>
+        <li><a href="mailto:info@glamourphotographics.com">Email Us</a></li>
+        <li><a href="https://wa.me/918971168868" target="_blank" rel="noopener">WhatsApp</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 Glamour Photographics. All Rights Reserved.</span></div>
+  </footer>
+</div>
+
+<!-- ═══════════════════ CORPORATE PAGE ═══════════════════════ -->
+<div class="page" id="page-corporate">
+  <section class="corporate-intro" style="background:var(--ivory)">
+    <span class="page-hero-eyebrow reveal">Corporate</span>
+    <h1 class="reveal">Visual Narratives<br>for <em style="font-style:italic;color:var(--gold)">India's Best.</em></h1>
+    <p class="reveal" style="margin-top:28px">From Fortune 500 companies to rising enterprises, we craft corporate films, event coverage, digital ads, and documentary content that drives real business impact. At Glamour Photographics, storytelling is our strategy.</p>
+  </section>
+
+  <!-- FILTERABLE PORTFOLIO GALLERY -->
+  <section class="portfolio-section">
+    <!-- Filter Tabs -->
+    <div class="portfolio-tabs">
+      <button class="portfolio-tab active" data-filter="all">All</button>
+      <button class="portfolio-tab" data-filter="events">Events</button>
+      <button class="portfolio-tab" data-filter="corporate">Corporate</button>
+      <button class="portfolio-tab" data-filter="digital">Digital Ads</button>
+      <button class="portfolio-tab" data-filter="documentary">Documentary</button>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div class="portfolio-gallery" id="portfolioGallery">
+
+      <!-- Events -->
+      <div class="gallery-item" data-cat="events">
+        <div class="gallery-bg gb-1"></div>
+        <div class="gallery-overlay">
+          <span class="gallery-cat">Events</span>
+          <h3 class="gallery-title">Conference Coverage</h3>
+          <span class="gallery-arrow">→</span>
+        </div>
+      </div>
+      <div class="gallery-item" data-cat="events">
+        <div class="gallery-bg gb-2"></div>
+        <div class="gallery-overlay">
+          <span class="gallery-cat">Events</span>
+          <h3 class="gallery-title">Award Ceremonies</h3>
+          <span class="gallery-arrow">→</span>
+        </div>
+      </div>
+      <div class="gallery-item" data-cat="events">
+        <div class="gallery-bg gb-3"></div>
+        <div class="gallery-overlay">
+          <span class="gallery-cat">Events</span>
+          <h3 class="gallery-title">Product Launches</h3>
+          <span class="gallery-arrow">→</span>
+        </div>
+      </div>
+
+      <!-- Corporate -->
+      <div class="gallery-item" data-cat="corporate">
+        <div class="gallery-bg gb-4"></div>
+        <div class="gallery-overlay">
+          <span class="gallery-cat">Corporate</span>
+          <h3 class="gallery-title">Brand Story Films</h3>
+          <span class="gallery-arrow">→</span>
+        </div>
+      </div>
+      <div class="gallery-item" data-cat="corporate">
+        <div class="gallery-bg gb-5"></div>
+        <div class="gallery-overlay">
+          <span class="gallery-cat">Corporate</span>
+          <h3 class="gallery-title">Executive Profiles</h3>
+          <span class="gallery-arrow">→</span>
+        </div>
+      </div>
+      <div class="gallery-item" data-cat="corporate">
+        <div class="gallery-bg gb-6"></div>
+        <div class="gallery-overlay">
+          <span class="gallery-cat">Corporate</span>
+          <h3 class="gallery-title">Training Films</h3>
+          <span class="gallery-arrow">→</span>
+        </div>
+      </div>
+
+      <!-- Digital Ads -->
+      <div class="gallery-item" data-cat="digital">
+        <div class="gallery-bg gb-7"></div>
+        <div class="gallery-overlay">
+          <span class="gallery-cat">Digital Ads</span>
+          <h3 class="gallery-title">Ad Campaigns</h3>
+          <span class="gallery-arrow">→</span>
+        </div>
+      </div>
+      <div class="gallery-item" data-cat="digital">
+        <div class="gallery-bg gb-8"></div>
+        <div class="gallery-overlay">
+          <span class="gallery-cat">Digital Ads</span>
+          <h3 class="gallery-title">Social Media Spots</h3>
+          <span class="gallery-arrow">→</span>
+        </div>
+      </div>
+      <div class="gallery-item" data-cat="digital">
+        <div class="gallery-bg gb-9"></div>
+        <div class="gallery-overlay">
+          <span class="gallery-cat">Digital Ads</span>
+          <h3 class="gallery-title">Brand Commercials</h3>
+          <span class="gallery-arrow">→</span>
+        </div>
+      </div>
+
+      <!-- Documentary -->
+      <div class="gallery-item" data-cat="documentary">
+        <div class="gallery-bg gb-10"></div>
+        <div class="gallery-overlay">
+          <span class="gallery-cat">Documentary</span>
+          <h3 class="gallery-title">Industry Portraits</h3>
+          <span class="gallery-arrow">→</span>
+        </div>
+      </div>
+      <div class="gallery-item" data-cat="documentary">
+        <div class="gallery-bg gb-11"></div>
+        <div class="gallery-overlay">
+          <span class="gallery-cat">Documentary</span>
+          <h3 class="gallery-title">Heritage Films</h3>
+          <span class="gallery-arrow">→</span>
+        </div>
+      </div>
+      <div class="gallery-item" data-cat="documentary">
+        <div class="gallery-bg gb-12"></div>
+        <div class="gallery-overlay">
+          <span class="gallery-cat">Documentary</span>
+          <h3 class="gallery-title">Social Impact</h3>
+          <span class="gallery-arrow">→</span>
+        </div>
+      </div>
+
+    </div><!-- /.portfolio-gallery -->
+  </section>
+  <!-- /FILTERABLE PORTFOLIO GALLERY -->
+
+  <section class="clients-showcase">
+    <div class="section-header reveal">
+      <p class="section-eyebrow">Our Corporate Clients</p>
+      <h2 class="section-title">Partnerships Built on Trust</h2>
+    </div>
+    <div class="clients-logo-grid stagger-children">
+      <div class="client-logo-card"><span class="cl-name">CII</span><span class="cl-type">Industry Body</span></div>
+      <div class="client-logo-card"><span class="cl-name">CGI</span><span class="cl-type">Technology</span></div>
+      <div class="client-logo-card"><span class="cl-name">Toyota</span><span class="cl-type">Automotive</span></div>
+      <div class="client-logo-card"><span class="cl-name">RTX</span><span class="cl-type">Aerospace</span></div>
+      <div class="client-logo-card"><span class="cl-name">TCS</span><span class="cl-type">IT Services</span></div>
+      <div class="client-logo-card"><span class="cl-name">Tata Elxsi</span><span class="cl-type">Design &amp; Tech</span></div>
+      <div class="client-logo-card"><span class="cl-name">Presidency Group</span><span class="cl-type">Education</span></div>
+      <div class="client-logo-card"><span class="cl-name">PAI</span><span class="cl-type">Enterprise</span></div>
+    </div>
+  </section>
+
+  <div class="cta-banner reveal">
+    <h2>Let's create your next <em>corporate film.</em></h2>
+    <a class="btn-dark" href="#" onclick="navigate('contact')">Start a Project →</a>
+  </div>
+
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand"><h3>Glamour<span>.</span>Photographics</h3><p>Four decades of visual storytelling from the heart of Bengaluru.</p></div>
+      <div class="footer-col"><h4>Pages</h4><ul>
+        <li><a href="#" onclick="navigate('home')">Home</a></li>
+        <li><a href="#" onclick="navigate('about')">About</a></li>
+        <li><a href="#" onclick="navigate('corporate')">Corporate</a></li>
+        <li><a href="#" onclick="navigate('contact')">Contact</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Portfolio</h4><ul>
+        <li><a href="#">Corporate Films</a></li>
+        <li><a href="#">Event Coverage</a></li>
+        <li><a href="#">Digital Ads</a></li>
+        <li><a href="#">Documentaries</a></li>
+        <li><a href="#">Wedding Films</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul>
+        <li><a href="tel:+919845003786">+91 984 5003 786</a></li>
+        <li><a href="mailto:info@glamourphotographics.com">Email Us</a></li>
+        <li><a href="https://wa.me/918971168868" target="_blank" rel="noopener">WhatsApp</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 Glamour Photographics. All Rights Reserved.</span></div>
+  </footer>
+</div>
+
+<!-- ═══════════════════ CONTACT PAGE ═════════════════════════ -->
+<div class="page" id="page-contact">
+  <div class="contact-grid">
+    <div class="contact-left">
+      <div class="gold-line-short reveal" style="margin-bottom:36px"></div>
+      <h2 class="reveal">Let's <em>Create</em><br>Together.</h2>
+      <p class="reveal">Reach out to begin your project. We're based in Bengaluru and serve clients across India and beyond.</p>
+      <div>
+        <div class="contact-info-item reveal">
+          <p class="contact-info-label">Address</p>
+          <p class="contact-info-value">No. 33, Castle Street, Ashok Nagar,<br>Near Brigade Building, Bengaluru 560025</p>
+        </div>
+        <div class="contact-info-item reveal">
+          <p class="contact-info-label">Call Us</p>
+          <p class="contact-info-value"><a href="tel:+919845003786">+91 984 5003 786</a></p>
+        </div>
+        <div class="contact-info-item reveal">
+          <p class="contact-info-label">Email Us</p>
+          <p class="contact-info-value"><a href="mailto:info@glamourphotographics.com">info@glamourphotographics.com</a></p>
+        </div>
+        <div class="contact-info-item reveal">
+          <p class="contact-info-label">WhatsApp</p>
+          <p class="contact-info-value"><a href="https://wa.me/918971168868" target="_blank" rel="noopener" style="color:var(--gold)">+91 8971168868 →</a></p>
+        </div>
+      </div>
+      <div class="contact-socials">
+        <a class="social-link" href="https://www.facebook.com/p/Glamour-Photographics-100064007321571/" target="_blank" rel="noopener">Facebook</a>
+        <a class="social-link" href="https://www.instagram.com/glamourphotographics/" target="_blank" rel="noopener">Instagram</a>
+        <a class="social-link" href="https://www.youtube.com/@ashrafhussain136" target="_blank" rel="noopener">YouTube</a>
+        <a class="social-link" href="https://in.linkedin.com/company/glamour-photographics" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+    <div class="contact-right">
+      <h3 class="reveal">Send Us a Message</h3>
+      <div class="form-group reveal">
+        <label class="form-label">Your Name</label>
+        <input type="text" class="form-input" placeholder="Full Name">
+      </div>
+      <div class="form-group reveal">
+        <label class="form-label">Email Address</label>
+        <input type="email" class="form-input" placeholder="your@email.com">
+      </div>
+      <div class="form-group reveal">
+        <label class="form-label">Your Message</label>
+        <textarea class="form-input" placeholder="Tell us about your project..."></textarea>
+      </div>
+      <button class="form-submit reveal" onclick="handleSubmit(event)">Send Message <span>→</span></button>
+      <p id="form-msg" style="margin-top:16px;font-size:13px;color:var(--gold);opacity:0;transition:opacity .4s ease"></p>
+    </div>
+  </div>
+
+  <!-- MAP -->
+  <div class="map-embed">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.0257374573!2d77.59720!3d12.97240!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1685b6e19ed3%3A0x3f5f30ef15ba1aa4!2sGLAMOUR%20PHOTOGRAPHICS!5e0!3m2!1sen!2sin!4v1697000000000"
+      allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+      title="Glamour Photographics Location">
+    </iframe>
+  </div>
+
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand"><h3>Glamour<span>.</span>Photographics</h3><p>Four decades of visual storytelling from the heart of Bengaluru.</p></div>
+      <div class="footer-col"><h4>Pages</h4><ul>
+        <li><a href="#" onclick="navigate('home')">Home</a></li>
+        <li><a href="#" onclick="navigate('about')">About</a></li>
+        <li><a href="#" onclick="navigate('corporate')">Corporate</a></li>
+        <li><a href="#" onclick="navigate('studio')">Studio Services</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Contact</h4><ul>
+        <li><a href="tel:+919845003786">+91 984 5003 786</a></li>
+        <li><a href="mailto:info@glamourphotographics.com">Email Us</a></li>
+        <li><a href="https://wa.me/918971168868" target="_blank" rel="noopener">WhatsApp</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Social</h4><ul>
+        <li><a href="https://www.facebook.com/p/Glamour-Photographics-100064007321571/" target="_blank" rel="noopener">Facebook</a></li>
+        <li><a href="https://www.instagram.com/glamourphotographics/" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://www.youtube.com/@ashrafhussain136" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://in.linkedin.com/company/glamour-photographics" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 Glamour Photographics. All Rights Reserved.</span></div>
+  </footer>
+</div>
+
+<script src="script.js"></script>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-img-wrap" id="lbImgWrap">
+    <img id="lbImg" alt="">
+  </div>
+  <button class="lightbox-close" id="lbClose">✕</button>
+  <button class="lightbox-prev" id="lbPrev">←</button>
+  <button class="lightbox-next" id="lbNext">→</button>
+  <div class="lightbox-bar">
+    <div class="lightbox-label">
+      <span id="lbCat"></span>
+      <span id="lbTitle"></span>
+    </div>
+    <div class="lightbox-counter" id="lbCounter"></div>
+  </div>
+</div>
+
+</body>
+</html>
