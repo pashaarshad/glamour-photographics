@@ -49,30 +49,28 @@ export default function Home() {
     <main className="w-full bg-[var(--dark)] text-[var(--light)] pb-[100px]">
       
       {/* ─── 1. HERO SECTION ─── */}
-      <section className="relative min-h-screen flex items-center justify-between px-[5%] md:px-[8%] pt-[80px] overflow-hidden">
-        <div className="flex-1 max-w-[600px] z-10 relative">
-          <h1 className="font-serif text-[clamp(48px,6vw,90px)] font-light leading-[1] tracking-[-0.02em] mb-[40px] text-white">
-            <span className="block overflow-hidden"><span className="block anim-slide-up delay-100" style={{ transform: 'translateY(100%)' }}>We Capture</span></span>
-            <span className="block overflow-hidden"><span className="block anim-slide-up delay-150" style={{ transform: 'translateY(100%)' }}>Moments.</span></span>
-            <span className="block overflow-hidden"><span className="block anim-slide-up delay-200" style={{ transform: 'translateY(100%)' }}>We Create</span></span>
-            <span className="block overflow-hidden"><span className="block anim-slide-up delay-240 text-[var(--gold)] italic font-medium" style={{ transform: 'translateY(100%)' }}>Legacies.</span></span>
+      <section className="relative min-h-[100svh] flex flex-col justify-center md:flex-row md:justify-start md:items-center px-[8%] md:px-[10%] pt-[120px] md:pt-[80px] pb-[60px] md:pb-0 overflow-hidden bg-black">
+        <div className="absolute inset-0 z-0">
+          {/* On mobile, align image to bottom. On desktop, align image to right. This ensures it scales without cropping and fits with the text layout. */}
+          <img src="/images/hero-camera.jpg" alt="Premium Camera Lens" className="w-full h-full object-contain object-[center_bottom] md:object-[right_center]" />
+          {/* Gradient protects text legibility across all screen sizes */}
+          <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black via-[rgba(0,0,0,0.8)] md:via-[rgba(0,0,0,0.6)] to-transparent z-10" />
+        </div>
+        <div className="flex-1 w-full max-w-[650px] z-20 relative pt-[40px] md:pt-[60px] text-left">
+          <h1 className="font-serif text-left text-[clamp(52px,7vw,100px)] font-light leading-[1.05] tracking-[-0.02em] mb-[32px] text-white">
+            <span className="block overflow-hidden pb-[4px]"><span className="block anim-slide-up delay-100" style={{ transform: 'translateY(100%)' }}>We Capture</span></span>
+            <span className="block overflow-hidden pb-[4px]"><span className="block anim-slide-up delay-150" style={{ transform: 'translateY(100%)' }}>Moments.</span></span>
+            <span className="block overflow-hidden pb-[4px]"><span className="block anim-slide-up delay-200" style={{ transform: 'translateY(100%)' }}>We Create</span></span>
+            <span className="block overflow-hidden pb-[4px]"><span className="block anim-slide-up delay-240 text-[var(--gold)] italic font-medium" style={{ transform: 'translateY(100%)' }}>Legacies.</span></span>
           </h1>
-          <p className="text-[16px] md:text-[18px] text-[var(--muted)] leading-[1.6] max-w-[400px] opacity-0 anim-fade-up delay-300 mb-[40px]">
+          <p className="text-[15px] md:text-[17px] text-[rgba(255,255,255,0.7)] leading-[1.7] max-w-[420px] opacity-0 anim-fade-up delay-300 mb-[48px] font-light">
             40+ Years of Storytelling Through The Lens of Excellence
           </p>
           <div className="opacity-0 anim-fade-up delay-380">
-            <Link href="/portfolio" className="inline-block border border-[rgba(197,164,109,0.4)] text-[var(--light)] uppercase tracking-[0.2em] text-[12px] px-[32px] py-[16px] transition-all duration-300 hover:bg-[var(--gold)] hover:text-[var(--dark)] hover:border-transparent">
+            <Link href="/portfolio" className="inline-flex items-center justify-center border border-[rgba(197,164,109,0.5)] text-[var(--light)] uppercase tracking-[0.2em] text-[11px] font-medium px-[36px] py-[18px] transition-all duration-400 hover:bg-[var(--gold)] hover:text-black hover:border-transparent">
               Explore Our Work
             </Link>
           </div>
-        </div>
-        <div className="absolute right-0 top-0 bottom-0 w-[55%] z-0 img-mask">
-          <div className="absolute inset-0 bg-gradient-to-r from-[var(--dark)] via-transparent to-transparent z-10" />
-          <img src="/images/hero-camera.png" alt="Premium Camera Lens" className="w-full h-full object-cover object-left mask-bg" />
-        </div>
-        <div className="absolute bottom-[40px] left-1/2 -translate-x-1/2 flex flex-col items-center gap-[12px] opacity-0 anim-fade-up delay-380 z-20">
-          <span className="text-[9px] tracking-[0.3em] uppercase text-[var(--muted)]">Scroll</span>
-          <div className="w-[1px] h-[40px] bg-[rgba(245,245,245,0.1)] relative overflow-hidden after:content-[''] after:absolute after:top-[-100%] after:left-0 after:w-full after:h-full after:bg-[var(--gold)] after:anim-scroll delay-380" />
         </div>
       </section>
 
@@ -168,7 +166,7 @@ export default function Home() {
           </div>
         </div>
         <div className="relative h-[600px] img-mask">
-          <img src="/images/about-silhouette.png" alt="Videographer Silhouette" className="absolute inset-0 w-full h-full object-cover mask-bg grayscale-[30%] contrast-[1.2]" />
+          <img src="/images/about-silhouette.jpg" alt="Videographer Silhouette" className="absolute inset-0 w-full h-full object-cover mask-bg grayscale-[30%] contrast-[1.2]" />
           <div className="absolute inset-0 bg-gradient-to-l from-transparent to-[var(--dark)] opacity-40" />
         </div>
       </section>
@@ -207,7 +205,7 @@ export default function Home() {
           ))}
         </div>
         <div className="text-center mb-[40px] reveal">
-          <button className="border border-[rgba(197,164,109,0.4)] text-[var(--light)] text-[10px] tracking-[0.2em] uppercase px-[30px] py-[12px] hover:bg-[var(--gold)] hover:text-[var(--dark)] transition-all">View All Clients</button>
+          <button suppressHydrationWarning className="border border-[rgba(197,164,109,0.4)] text-[var(--light)] text-[10px] tracking-[0.2em] uppercase px-[30px] py-[12px] hover:bg-[var(--gold)] hover:text-[var(--dark)] transition-all">View All Clients</button>
         </div>
         <p className="text-[12px] text-[var(--muted)] tracking-[0.2em] uppercase mb-[20px] reveal">Others</p>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-0 border border-[rgba(255,255,255,0.05)] stagger-children">
@@ -224,7 +222,7 @@ export default function Home() {
         <h3 className="text-[28px] font-serif text-white mb-[40px] reveal">Our Portfolio</h3>
         <div className="flex flex-wrap gap-[30px] border-b border-[rgba(255,255,255,0.1)] pb-[15px] mb-[40px] reveal delay-100">
           {['ALL', 'CORPORATE', 'EVENTS', 'INDUSTRIAL', 'DOCUMENTARY'].map((tab) => (
-            <button key={tab} onClick={() => setActivePortfolioTab(tab)} className={`text-[10px] tracking-[0.2em] uppercase pb-[15px] relative ${activePortfolioTab === tab ? 'text-[var(--gold)]' : 'text-[var(--muted)] hover:text-white'}`}>
+            <button suppressHydrationWarning key={tab} onClick={() => setActivePortfolioTab(tab)} className={`text-[10px] tracking-[0.2em] uppercase pb-[15px] relative ${activePortfolioTab === tab ? 'text-[var(--gold)]' : 'text-[var(--muted)] hover:text-white'}`}>
               {tab}
               {activePortfolioTab === tab && <div className="absolute bottom-[-16px] left-0 w-full h-[2px] bg-[var(--gold)]" />}
             </button>
@@ -269,7 +267,7 @@ export default function Home() {
         </div>
         <div className="relative hidden md:block">
           <div className="sticky top-[120px] h-[700px] w-full img-mask rounded-sm overflow-hidden">
-            <img src="/images/services-camera.png" alt="Tripod Camera" className="w-full h-full object-cover mask-bg grayscale-[20%]" />
+            <img src="/images/services-camera.jpg" alt="Tripod Camera" className="w-full h-full object-cover mask-bg grayscale-[20%]" />
           </div>
         </div>
       </section>
@@ -354,11 +352,11 @@ export default function Home() {
         </div>
         <div className="reveal delay-100">
           <form className="flex flex-col gap-[30px]" onSubmit={(e) => e.preventDefault()}>
-            <input type="text" placeholder="Your Name" className="bg-transparent border-b border-[rgba(255,255,255,0.1)] pb-[16px] text-white text-[14px] focus:outline-none focus:border-[var(--gold)] transition-colors w-full" />
-            <input type="email" placeholder="Your Email" className="bg-transparent border-b border-[rgba(255,255,255,0.1)] pb-[16px] text-white text-[14px] focus:outline-none focus:border-[var(--gold)] transition-colors w-full" />
-            <input type="tel" placeholder="Phone Number" className="bg-transparent border-b border-[rgba(255,255,255,0.1)] pb-[16px] text-white text-[14px] focus:outline-none focus:border-[var(--gold)] transition-colors w-full" />
+            <input suppressHydrationWarning type="text" placeholder="Your Name" className="bg-transparent border-b border-[rgba(255,255,255,0.1)] pb-[16px] text-white text-[14px] focus:outline-none focus:border-[var(--gold)] transition-colors w-full" />
+            <input suppressHydrationWarning type="email" placeholder="Your Email" className="bg-transparent border-b border-[rgba(255,255,255,0.1)] pb-[16px] text-white text-[14px] focus:outline-none focus:border-[var(--gold)] transition-colors w-full" />
+            <input suppressHydrationWarning type="tel" placeholder="Phone Number" className="bg-transparent border-b border-[rgba(255,255,255,0.1)] pb-[16px] text-white text-[14px] focus:outline-none focus:border-[var(--gold)] transition-colors w-full" />
             <textarea placeholder="Your Message" rows={4} className="bg-transparent border-b border-[rgba(255,255,255,0.1)] pb-[16px] text-white text-[14px] focus:outline-none focus:border-[var(--gold)] transition-colors w-full resize-none" />
-            <button type="submit" className="bg-[var(--gold)] text-black font-semibold text-[11px] tracking-[0.2em] uppercase py-[20px] w-full mt-[20px] hover:bg-white transition-colors cursor-none">
+            <button suppressHydrationWarning type="submit" className="bg-[var(--gold)] text-black font-semibold text-[11px] tracking-[0.2em] uppercase py-[20px] w-full mt-[20px] hover:bg-white transition-colors cursor-none">
               Send Message
             </button>
           </form>
