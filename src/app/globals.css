@@ -246,3 +246,18 @@
 .delay-300 { animation-delay: 3s; }
 .delay-340 { animation-delay: 3.4s; }
 .delay-380 { animation-delay: 3.8s; }
+
+/* Swiper pagination dots styled as white */
+.testimonial-swiper .swiper-pagination-bullet {
+  background: #ffffff !important;
+  opacity: 0.35 !important;
+  width: 8px !important;
+  height: 8px !important;
+  margin: 0 6px !important;
+  transition: opacity 0.3s ease, transform 0.3s ease !important;
+}
+.testimonial-swiper .swiper-pagination-bullet-active {
+  background: #ffffff !important;
+  opacity: 1 !important;
+  transform: scale(1.2) !important;
+}
