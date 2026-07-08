@@ -53,21 +53,27 @@ export default function Services() {
   ];
 
   return (
-    <main className="w-full bg-[var(--dark)] text-white min-h-screen pt-[160px] pb-[100px] cursor-none relative">
+    <main className="w-full bg-[var(--dark)] text-white min-h-screen pt-0 pb-[100px] cursor-none relative">
       
       {/* ─── HERO SECTION ─── */}
-      <section className="px-[5%] md:px-[8%] max-w-[1400px] mx-auto mb-[100px]">
-        <div className="reveal">
-          <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] mb-[16px] block">
-            Our Capabilities
-          </span>
-          <h1 className="font-serif text-[clamp(44px,6vw,80px)] font-light leading-[1.1] tracking-[-0.02em]">
-            Comprehensive Visual <br />
-            <span className="italic text-[var(--gold)]">Solutions.</span>
-          </h1>
-          <p className="text-[14px] leading-[1.8] text-[var(--muted)] max-w-[600px] mt-[32px] font-light">
-            We offer end-to-end photography and videography services tailored for the corporate sector. Combining technical mastery with creative vision, we deliver assets that elevate your brand.
-          </p>
+      <section className="relative min-h-[60vh] flex items-center px-[5%] md:px-[8%] overflow-hidden bg-black mb-[100px] pt-[120px] md:pt-[100px]">
+        <div className="absolute inset-0 z-0">
+          <img src="/images/servers-hero-section.png" alt="Capabilities Background" className="w-full h-full object-cover opacity-35" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[var(--dark)] via-[rgba(5,5,5,0.7)] to-transparent z-10" />
+        </div>
+        <div className="max-w-[1400px] w-full mx-auto z-20 relative">
+          <div className="reveal">
+            <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] mb-[16px] block">
+              Our Capabilities
+            </span>
+            <h1 className="font-serif text-[clamp(44px,6vw,80px)] font-light leading-[1.1] tracking-[-0.02em] text-white">
+              Comprehensive Visual <br />
+              <span className="italic text-[var(--gold)]">Solutions.</span>
+            </h1>
+            <p className="text-[14px] leading-[1.8] text-[var(--muted)] max-w-[600px] mt-[32px] font-light">
+              We offer end-to-end photography and videography services tailored for the corporate sector. Combining technical mastery with creative vision, we deliver assets that elevate your brand.
+            </p>
+          </div>
         </div>
       </section>
 

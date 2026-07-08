@@ -26,43 +26,75 @@ export default function PortfolioPage() {
 
   const portfolioImages = {
     ALL: [
-      "/images/cii/CII (7th Bangalore Space Expo-2022) On-05-09-2022-Noor/NMK_0028.JPG",
-      "/images/tcs/TCS -27 - 03 - 2023 - Anzar/DSC01003.JPG",
-      "/images/presidency/PANA9115.jpg",
-      "/images/tata_elxsi/_AMZ0246.JPG",
+      "/images/our_portfolio/Srk.jpg",
+      "/images/our_portfolio/Bill clinton.jpeg",
+      "/images/our_portfolio/highlights_3C1A0761.jpg",
+      "/images/our_portfolio/highlights_3C1A0775.jpg",
+      "/images/our_portfolio/highlights_3C1A0782.jpg",
+      "/images/our_portfolio/highlights_3C1A0841.jpg",
       "/images/our_portfolio/cp-7.jpg",
       "/images/our_portfolio/cp-10.jpg",
+      "/images/our_portfolio/cp-12.jpg",
+      "/images/our_portfolio/rtx-1.jpg",
+      "/images/our_portfolio/rtx-4.jpg",
+      "/images/our_portfolio/rtx-9.jpg",
+      "/images/our_portfolio/te3.jpg",
+      "/images/our_portfolio/tcs3.jpg",
+      "/images/our_portfolio/tcs4.jpg",
+      "/images/our_portfolio/dilquar.jpg",
+      "/images/our_portfolio/kareeshma.jpg",
+      "/images/our_portfolio/11.jpg",
       "/images/our_portfolio/22.jpg",
       "/images/our_portfolio/33.jpg",
-      "/images/our_portfolio/rtx-1.jpg",
-      "/images/our_portfolio/te3.jpg",
-      "/images/our_portfolio/cp-12.jpg",
-      "/images/our_portfolio/Highlights_3C1A0761.jpg",
+      "/images/our_portfolio/highlights_DSC_0038.jpg",
+      "/images/our_portfolio/highlights_IMG_0037.jpg",
+      "/images/our_portfolio/highlights_IMG_0069.jpg",
+      "/images/our_portfolio/highlights_IMG_0098.jpg",
+      "/images/our_portfolio/highlights_NMKL0031.jpg",
+      "/images/our_portfolio/highlights_SKV00290.jpg",
+      "/images/our_portfolio/highlights_SKV00387.jpg",
     ],
     CORPORATE: [
-      "/images/tcs/TCS -27 - 03 - 2023 - Anzar/DSC01003.JPG",
-      "/images/tata_elxsi/_AMZ0246.JPG",
       "/images/our_portfolio/cp-7.jpg",
       "/images/our_portfolio/cp-10.jpg",
       "/images/our_portfolio/cp-12.jpg",
+      "/images/our_portfolio/Bill clinton.jpeg",
+      "/images/our_portfolio/dilquar.jpg",
+      "/images/our_portfolio/kareeshma.jpg",
+      "/images/tcs/TCS -27 - 03 - 2023 - Anzar/DSC01003.JPG",
+      "/images/tata_elxsi/_AMZ0246.JPG",
     ],
     EVENTS: [
+      "/images/our_portfolio/33.jpg",
+      "/images/our_portfolio/Srk.jpg",
+      "/images/our_portfolio/highlights_3C1A0761.jpg",
+      "/images/our_portfolio/highlights_3C1A0775.jpg",
+      "/images/our_portfolio/highlights_3C1A0782.jpg",
+      "/images/our_portfolio/highlights_3C1A0841.jpg",
       "/images/cii/CII (7th Bangalore Space Expo-2022) On-05-09-2022-Noor/NMK_0028.JPG",
       "/images/presidency/PANA9115.jpg",
-      "/images/our_portfolio/33.jpg",
-      "/images/our_portfolio/Highlights_3C1A0761.jpg",
     ],
     INDUSTRIAL: [
       "/images/our_portfolio/rtx-1.jpg",
+      "/images/our_portfolio/rtx-4.jpg",
+      "/images/our_portfolio/rtx-9.jpg",
       "/images/our_portfolio/te3.jpg",
+      "/images/our_portfolio/tcs3.jpg",
+      "/images/our_portfolio/tcs4.jpg",
     ],
     DOCUMENTARY: [
+      "/images/our_portfolio/11.jpg",
       "/images/our_portfolio/22.jpg",
+      "/images/our_portfolio/highlights_DSC_0038.jpg",
+      "/images/our_portfolio/highlights_IMG_0037.jpg",
+      "/images/our_portfolio/highlights_IMG_0069.jpg",
+      "/images/our_portfolio/highlights_IMG_0098.jpg",
+      "/images/our_portfolio/highlights_NMKL0031.jpg",
+      "/images/our_portfolio/highlights_SKV00290.jpg",
+      "/images/our_portfolio/highlights_SKV00387.jpg",
     ]
   };
 
-  // Convert highlights uppercase names to lowercase or match actual file names dynamically
-  // If files don't load or error out, we will use default images
   const activeImages = portfolioImages[activeTab] || portfolioImages['ALL'];
 
   return (
@@ -79,7 +111,7 @@ export default function PortfolioPage() {
             <span className="italic text-[var(--gold)]">Across Decades.</span>
           </h1>
           <p className="text-[14px] leading-[1.8] text-[var(--muted)] max-w-[600px] mt-[32px] font-light">
-            Explore our visual archives spanning corporate walkthroughs, high-impact events, drone aerial shots, and legacy industrial documentary films.
+            Explore our visual archives spanning corporate walkthroughs, high-profile events, drone industrial shoots, and brand documentary films.
           </p>
         </div>
       </section>
@@ -97,7 +129,7 @@ export default function PortfolioPage() {
               }`}
             >
               {tab}
-              {activeTab === tab && <div className="absolute bottom-[-16px] left-0 w-full h-[2px] bg-[var(--gold)] animate-pulse" />}
+              {activeTab === tab && <div className="absolute bottom-[-16px] left-0 w-full h-[2px] bg-[var(--gold)]" />}
             </button>
           ))}
         </div>
@@ -106,21 +138,20 @@ export default function PortfolioPage() {
         <div className="columns-1 md:columns-2 lg:columns-3 gap-[24px] [column-fill:_balance] w-full">
           {activeImages.map((src, idx) => (
             <div 
-              key={idx} 
-              className="break-inside-avoid mb-[24px] relative group overflow-hidden rounded-sm border border-[rgba(255,255,255,0.05)] bg-[rgba(255,255,255,0.01)] reveal-scale opacity-0"
-              style={{ transitionDelay: `${idx * 50}ms` }}
+              key={`${activeTab}-${idx}`} 
+              className="break-inside-avoid mb-[24px] relative group overflow-hidden rounded-sm border border-[rgba(255,255,255,0.05)] bg-[rgba(255,255,255,0.02)] reveal-scale opacity-0"
+              style={{ transitionDelay: `${idx * 40}ms` }}
             >
               <img 
                 src={src} 
                 alt={`Portfolio Work ${idx + 1}`} 
                 className="w-full h-auto object-cover transition-transform duration-[800ms] group-hover:scale-105" 
                 onError={(e) => {
-                  // Fallback to standard client directories if some specific files aren't found on disk
                   e.target.style.display = 'none';
                 }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[rgba(0,0,0,0.85)] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-[30px]">
-                <span className="text-[9px] tracking-[0.2em] uppercase text-[var(--gold)] mb-[8px]">Spotlight Spotlight</span>
+                <span className="text-[9px] tracking-[0.2em] uppercase text-[var(--gold)] mb-[8px]">Project Gallery</span>
                 <h4 className="font-serif text-[18px] text-white">Visual Artifact</h4>
               </div>
             </div>

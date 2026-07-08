@@ -580,19 +580,24 @@ export default function Home() {
           >
             {[
               {
-                quote: "Glamour Photographics has been our trusted partner for over four decades. Their professionalism, creativity, and attention to detail are unmatched.",
-                author: "Director General",
-                org: "Confederation of Indian Industry (CII)"
+                quote: "Glamour Photographics captured our annual conference with unmatched professionalism. Every frame told a story.",
+                author: "Corporate Client",
+                org: "Confederation of Indian Industry"
               },
               {
-                quote: "The visual stories they crafted for our Bangalore delivery center perfectly highlighted our corporate culture and infrastructure. Outstanding work.",
-                author: "VP of Communications",
-                org: "CGI India"
+                quote: "The wedding film they created for us is a treasure we will cherish for generations. Pure artistry.",
+                author: "Wedding Client",
+                org: "Bengaluru, 2023"
               },
               {
-                quote: "Their documentary on the school transformation project brought our community work to life with genuine emotion and top-tier visual polish.",
-                author: "CSR Lead",
-                org: "Toyota Kirloskar Motors"
+                quote: "Their corporate film elevated our brand narrative. The strategic insight they bring is extraordinary.",
+                author: "Marketing Director",
+                org: "Tata Elxsi"
+              },
+              {
+                quote: "Over 15 years of partnership. Their consistency in quality and creativity is unparalleled in the industry.",
+                author: "Communications Head",
+                org: "Toyota India"
               }
             ].map((t, idx) => (
               <SwiperSlide key={idx}>
