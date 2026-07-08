@@ -1,20 +1,24 @@
 'use client';
 import { useEffect, useState } from 'react';
 
+// Use a module-level variable to store visited state. 
+// This resets on a hard refresh (meaning the preloader plays) but is preserved
+// during client-side Next.js SPA navigation (meaning the preloader is skipped).
+let hasVisitedGlobal = false;
+
 export default function Preloader() {
   const [out, setOut] = useState(false);
-  const [hide, setHide] = useState(true); // Default to true to prevent flickering for returning users
+  const [hide, setHide] = useState(hasVisitedGlobal);
 
   useEffect(() => {
-    const hasVisited = sessionStorage.getItem('hasVisited');
-    if (!hasVisited) {
+    if (!hasVisitedGlobal) {
       setHide(false);
       // Start fading out after 2.6s, wait 800ms for animation to finish then hide.
       const timerOut = setTimeout(() => {
         setOut(true);
         const timerHide = setTimeout(() => {
           setHide(true);
-          sessionStorage.setItem('hasVisited', 'true');
+          hasVisitedGlobal = true;
         }, 800);
         return () => clearTimeout(timerHide);
       }, 2600);

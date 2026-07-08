@@ -433,17 +433,23 @@ export default function Home() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[24px]">
           {[
-            { title: "Corporate Photography", icon: Camera, desc: "High-end corporate headshots, facility walkthroughs, products and branding campaigns." },
-            { title: "Cinematic Videography", icon: Video, desc: "High-impact brand videos, showreels, office tour media and documentaries." },
-            { title: "Event Coverage", icon: Calendar, desc: "Premium documentation of corporate summits, conventions, and milestone ceremonies." },
-            { title: "Aerial Shoots", icon: Aperture, desc: "Certified industrial drone flights mapping massive campuses and aerial geography." },
-            { title: "Industrial Photography", icon: Building2, desc: "Raw visual documentation for factories, power plants, and technology infrastructure." },
-            { title: "Brand Storytelling", icon: Film, desc: "Custom scriptwriting and visual conceptualization bringing corporate identity to life." },
+            { title: "Corporate Photography", icon: Camera, desc: "High-end corporate headshots, facility walkthroughs, products and branding campaigns.", bg: "/images/our_portfolio/cp-7.jpg" },
+            { title: "Cinematic Videography", icon: Video, desc: "High-impact brand videos, showreels, office tour media and documentaries.", bg: "/images/our_portfolio/22.jpg" },
+            { title: "Event Coverage", icon: Calendar, desc: "Premium documentation of corporate summits, conventions, and milestone ceremonies.", bg: "/images/our_portfolio/33.jpg" },
+            { title: "Aerial Shoots", icon: Aperture, desc: "Certified industrial drone flights mapping massive campuses and aerial geography.", bg: "/images/our_portfolio/rtx-1.jpg" },
+            { title: "Industrial Photography", icon: Building2, desc: "Raw visual documentation for factories, power plants, and technology infrastructure.", bg: "/images/our_portfolio/te3.jpg" },
+            { title: "Brand Storytelling", icon: Film, desc: "Custom scriptwriting and visual conceptualization bringing corporate identity to life.", bg: "/images/our_portfolio/cp-12.jpg" },
           ].map((srv, idx) => (
-            <div key={idx} className="group p-[40px] bg-[var(--dark-panel)] border border-[rgba(255,255,255,0.05)] hover:border-[var(--gold)] rounded-sm transition-all duration-[400ms] cursor-none">
-              <srv.icon className="w-[32px] h-[32px] text-[var(--gold)] mb-[24px] transition-transform duration-300 group-hover:scale-110" />
-              <h3 className="text-[18px] font-serif text-white mb-[12px] group-hover:text-[var(--gold)] transition-colors">{srv.title}</h3>
-              <p className="text-[13px] text-[var(--muted)] leading-[1.6] font-light">{srv.desc}</p>
+            <div key={idx} className="group relative p-[40px] rounded-sm overflow-hidden border border-[rgba(255,255,255,0.05)] hover:border-[var(--gold)] transition-all duration-[400ms] cursor-none min-h-[280px] flex flex-col justify-end">
+              <div className="absolute inset-0 z-0">
+                <img src={srv.bg} alt={srv.title} className="w-full h-full object-cover opacity-20 group-hover:opacity-40 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-[rgba(5,5,5,0.85)] to-[rgba(5,5,5,0.4)]" />
+              </div>
+              <div className="relative z-10">
+                <srv.icon className="w-[32px] h-[32px] text-[var(--gold)] mb-[24px] transition-transform duration-300 group-hover:scale-110" />
+                <h3 className="text-[18px] font-serif text-white mb-[12px] group-hover:text-[var(--gold)] transition-colors">{srv.title}</h3>
+                <p className="text-[13px] text-[var(--muted)] leading-[1.6] font-light">{srv.desc}</p>
+              </div>
             </div>
           ))}
         </div>
@@ -455,13 +461,13 @@ export default function Home() {
         <p className="text-[12px] text-[var(--gold)] tracking-[0.2em] uppercase mb-[20px] reveal opacity-0 anim-fade-up delay-100">Featured Clients</p>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-0 border border-[rgba(255,255,255,0.05)] mb-[40px]">
           {[
-            { name: "CII", slug: "cii" },
-            { name: "CGI", slug: "cgi" },
-            { name: "Presidency\nUniversity", slug: "presidency" },
-            { name: "TATA ELXSI", slug: "tata-elxsi" }
+            { name: "CII", slug: "cii", logo: "/logo-clients/cii.jpg" },
+            { name: "CGI", slug: "cgi", logo: "/logo-clients/CGI_Inc.-Logo.wine.png" },
+            { name: "Presidency University", slug: "presidency", logo: "/logo-clients/presidency-university-yelahanka-bangalore-universities-si0nhgmmkz.jpg" },
+            { name: "TATA ELXSI", slug: "tata-elxsi", logo: "/logo-clients/tata-elxsi-moves-focus-away-from-driverless-tech.avif" }
           ].map((client, i) => (
             <Link href={`/corporate/${client.slug}`} key={i} className="group h-[160px] border border-[rgba(255,255,255,0.05)] flex items-center justify-center p-[20px] hover:border-[var(--gold)] hover:bg-[rgba(197,164,109,0.02)] transition-all cursor-none">
-              <span className="font-serif text-[20px] text-[var(--muted)] group-hover:text-white transition-colors whitespace-pre-line text-center">{client.name}</span>
+              <img src={client.logo} alt={client.name} className="max-h-[60px] max-w-[85%] object-contain grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300" />
             </Link>
           ))}
         </div>
@@ -484,11 +490,15 @@ export default function Home() {
             {[
               { name: "PAI", slug: "pai" },
               { name: "Toyota", slug: "toyota" },
-              { name: "TCS", slug: "tcs" },
-              { name: "RTX", slug: "rtx" }
+              { name: "TCS", slug: "tcs", logo: "/logo-clients/TCS_NewLogo_Final_RGB.png" },
+              { name: "RTX", slug: "rtx", logo: "/logo-clients/RTX.webp" }
             ].map((client, i) => (
-              <Link href={`/corporate/${client.slug}`} key={i} className="h-[120px] border border-[rgba(255,255,255,0.05)] flex items-center justify-center p-[20px] text-[var(--muted)] hover:text-white transition-colors cursor-none hover:border-[var(--gold)] hover:bg-[rgba(197,164,109,0.01)]">
-                <span className="font-serif text-[16px]">{client.name}</span>
+              <Link href={`/corporate/${client.slug}`} key={i} className="group h-[120px] border border-[rgba(255,255,255,0.05)] flex items-center justify-center p-[20px] text-[var(--muted)] hover:text-white transition-colors cursor-none hover:border-[var(--gold)] hover:bg-[rgba(197,164,109,0.01)]">
+                {client.logo ? (
+                  <img src={client.logo} alt={client.name} className="max-h-[40px] max-w-[80%] object-contain grayscale opacity-45 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300" />
+                ) : (
+                  <span className="font-serif text-[16px] text-[var(--muted)] group-hover:text-white transition-colors">{client.name}</span>
+                )}
               </Link>
             ))}
           </div>
@@ -559,15 +569,21 @@ export default function Home() {
           <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] mb-[16px] block">Minds Behind the Lenses</span>
           <h2 className="font-serif text-[clamp(28px,4vw,48px)] font-light leading-[1.2] text-white">Our Team</h2>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-[30px]">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-[30px]">
           {[
-            { name: "Hameed Hussain", role: "Founder & Director" },
-            { name: "Anzar Hussain", role: "Creative Lead" },
-            { name: "Zia Hussain", role: "Head of Operations" }
+            { name: "Hameed Hussain", role: "Founder & Director", img: "/logo-clients/founder-ceo.jpg" },
+            { name: "Anzar Hussain", role: "Creative Lead", img: "/logo-clients/founder-ceo.jpg" },
+            { name: "Zia Hussain", role: "Head of Operations", img: "/logo-clients/founder-ceo.jpg" }
           ].map((member, idx) => (
-            <div key={idx} className="group relative rounded-sm overflow-hidden bg-[var(--dark)] border border-[rgba(255,255,255,0.05)] hover:border-[var(--gold)] transition-all p-[30px] min-h-[180px] flex flex-col justify-end cursor-none">
-              <span className="text-[9px] tracking-[0.25em] uppercase text-[var(--gold)] mb-[8px] font-medium">{member.role}</span>
-              <h3 className="font-serif text-[24px] text-white group-hover:text-[var(--gold)] transition-colors leading-[1.2]">{member.name}</h3>
+            <div key={idx} className="group relative rounded-sm overflow-hidden bg-[var(--dark)] border border-[rgba(255,255,255,0.05)] hover:border-[var(--gold)] transition-all duration-500 cursor-none flex flex-col">
+              <div className="h-[340px] w-full overflow-hidden relative">
+                <img src={member.img} alt={member.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[var(--dark-panel)] via-transparent to-transparent opacity-85" />
+              </div>
+              <div className="p-[24px]">
+                <span className="text-[9px] tracking-[0.25em] uppercase text-[var(--gold)] mb-[8px] block font-medium">{member.role}</span>
+                <h3 className="font-serif text-[22px] text-white group-hover:text-[var(--gold)] transition-colors leading-[1.2]">{member.name}</h3>
+              </div>
             </div>
           ))}
         </div>
