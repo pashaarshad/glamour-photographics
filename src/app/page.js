@@ -458,50 +458,26 @@ export default function Home() {
       {/* ─── 9. OUR CLIENTS ─── */}
       <section className="py-[120px] px-[8%] md:px-[10%] bg-black">
         <h3 className="text-[28px] font-serif text-white mb-[40px] reveal opacity-0 anim-fade-up">Our Clients</h3>
-        <p className="text-[12px] text-[var(--gold)] tracking-[0.2em] uppercase mb-[20px] reveal opacity-0 anim-fade-up delay-100">Featured Clients</p>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-0 border border-[rgba(255,255,255,0.05)] mb-[40px]">
+        <p className="text-[12px] text-[var(--gold)] tracking-[0.2em] uppercase mb-[20px] reveal opacity-0 anim-fade-up delay-100">Our Enterprise Partnerships</p>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-0 border border-[rgba(255,255,255,0.05)]">
           {[
+            { name: "TCS", slug: "tcs", logo: "/logo-clients/TCS_NewLogo_Final_RGB.png" },
             { name: "CII", slug: "cii", logo: "/logo-clients/cii.jpg" },
             { name: "CGI", slug: "cgi", logo: "/logo-clients/CGI_Inc.-Logo.wine.png" },
             { name: "Presidency University", slug: "presidency", logo: "/logo-clients/presidency-university-yelahanka-bangalore-universities-si0nhgmmkz.jpg" },
-            { name: "TATA ELXSI", slug: "tata-elxsi", logo: "/logo-clients/tata-elxsi-moves-focus-away-from-driverless-tech.avif" }
+            { name: "TATA ELXSI", slug: "tata-elxsi", logo: "/logo-clients/tata-elxsi-moves-focus-away-from-driverless-tech.avif" },
+            { name: "RTX", slug: "rtx", logo: "/logo-clients/RTX.webp" },
+            { name: "Toyota", slug: "toyota" },
+            { name: "PAI", slug: "pai" }
           ].map((client, i) => (
             <Link href={`/corporate/${client.slug}`} key={i} className="group h-[160px] border border-[rgba(255,255,255,0.05)] flex items-center justify-center p-[20px] hover:border-[var(--gold)] hover:bg-[rgba(197,164,109,0.02)] transition-all cursor-none">
-              <img src={client.logo} alt={client.name} className="max-h-[60px] max-w-[85%] object-contain grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300" />
+              {client.logo ? (
+                <img src={client.logo} alt={client.name} className="max-h-[60px] max-w-[85%] object-contain grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300" />
+              ) : (
+                <span className="font-serif text-[18px] text-[var(--muted)] group-hover:text-white transition-colors text-center">{client.name}</span>
+              )}
             </Link>
           ))}
-        </div>
-        
-        {/* Expandable Clients Button */}
-        <div className="text-center mb-[40px] reveal opacity-0 anim-fade-up">
-          <button 
-            suppressHydrationWarning
-            onClick={() => setExpandedClients(!expandedClients)} 
-            className="border border-[rgba(197,164,109,0.4)] text-[var(--light)] text-[10px] tracking-[0.2em] uppercase px-[30px] py-[12px] hover:bg-[var(--gold)] hover:text-black hover:border-transparent transition-all cursor-none"
-          >
-            {expandedClients ? "Hide Extended Partners" : "View All Clients"}
-          </button>
-        </div>
-
-        {/* Expandable Box */}
-        <div className={`overflow-hidden transition-all duration-700 ease-in-out ${expandedClients ? 'max-h-[800px] opacity-100' : 'max-h-0 opacity-0'}`}>
-          <p className="text-[12px] text-[var(--muted)] tracking-[0.2em] uppercase mb-[20px]">Others</p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-0 border border-[rgba(255,255,255,0.05)]">
-            {[
-              { name: "PAI", slug: "pai" },
-              { name: "Toyota", slug: "toyota" },
-              { name: "TCS", slug: "tcs", logo: "/logo-clients/TCS_NewLogo_Final_RGB.png" },
-              { name: "RTX", slug: "rtx", logo: "/logo-clients/RTX.webp" }
-            ].map((client, i) => (
-              <Link href={`/corporate/${client.slug}`} key={i} className="group h-[120px] border border-[rgba(255,255,255,0.05)] flex items-center justify-center p-[20px] text-[var(--muted)] hover:text-white transition-colors cursor-none hover:border-[var(--gold)] hover:bg-[rgba(197,164,109,0.01)]">
-                {client.logo ? (
-                  <img src={client.logo} alt={client.name} className="max-h-[40px] max-w-[80%] object-contain grayscale opacity-45 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300" />
-                ) : (
-                  <span className="font-serif text-[16px] text-[var(--muted)] group-hover:text-white transition-colors">{client.name}</span>
-                )}
-              </Link>
-            ))}
-          </div>
         </div>
       </section>
 
