@@ -3,16 +3,24 @@ import { useEffect, useState } from 'react';
 
 export default function Preloader() {
   const [out, setOut] = useState(false);
-  const [hide, setHide] = useState(false);
+  const [hide, setHide] = useState(true); // Default to true to prevent flickering for returning users
 
   useEffect(() => {
-    // Start fading out after 2.6s, wait 800ms for animation to finish then hide.
-    const timerOut = setTimeout(() => {
-      setOut(true);
-      setTimeout(() => setHide(true), 800);
-    }, 2600);
+    const hasVisited = sessionStorage.getItem('hasVisited');
+    if (!hasVisited) {
+      setHide(false);
+      // Start fading out after 2.6s, wait 800ms for animation to finish then hide.
+      const timerOut = setTimeout(() => {
+        setOut(true);
+        const timerHide = setTimeout(() => {
+          setHide(true);
+          sessionStorage.setItem('hasVisited', 'true');
+        }, 800);
+        return () => clearTimeout(timerHide);
+      }, 2600);
 
-    return () => clearTimeout(timerOut);
+      return () => clearTimeout(timerOut);
+    }
   }, []);
 
   if (hide) return null;
