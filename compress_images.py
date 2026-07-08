@@ -2,12 +2,12 @@ import os
 from PIL import Image
 import sys
 
-def compress_images(directory, max_dimension=1920, quality=80):
+def compress_images(directory, max_dimension=1080, quality=60):
     total_saved = 0
     total_original = 0
     processed_count = 0
 
-    print(f"Scanning directory: {directory}")
+    print(f"Scanning directory: {directory} for aggressive compression")
     for root, dirs, files in os.walk(directory):
         for file in files:
             file_lower = file.lower()
@@ -18,12 +18,16 @@ def compress_images(directory, max_dimension=1920, quality=80):
                     original_size = os.path.getsize(filepath)
                     
                     with Image.open(filepath) as img:
-                        # Convert to RGB if saving as JPEG and image has alpha channel
-                        if img.format in ['JPEG', 'JPG'] or file_lower.endswith(('.jpg', '.jpeg')):
+                        # Convert to RGB if saving as JPEG
+                        if file_lower.endswith(('.jpg', '.jpeg')):
                             if img.mode != 'RGB':
                                 img = img.convert('RGB')
+                        elif file_lower.endswith('.png'):
+                            # For PNG, convert to P mode (Palette) for aggressive compression if possible
+                            if img.mode not in ['RGB', 'RGBA', 'P']:
+                                img = img.convert('RGBA')
                         
-                        # Resize if too large
+                        # Resize aggressively
                         width, height = img.size
                         if width > max_dimension or height > max_dimension:
                             if width > height:
@@ -34,31 +38,38 @@ def compress_images(directory, max_dimension=1920, quality=80):
                                 new_width = int(max_dimension * width / height)
                             img = img.resize((new_width, new_height), Image.Resampling.LANCZOS)
                         
-                        # Save to a temporary file
                         temp_filepath = filepath + ".tmp"
                         
                         if file_lower.endswith('.png'):
                             img.save(temp_filepath, "PNG", optimize=True)
                         else:
-                            img.save(temp_filepath, "JPEG", quality=quality, optimize=True)
+                            img.save(temp_filepath, "JPEG", quality=quality, optimize=True, progressive=True)
                             
-                    # Replace original
                     compressed_size = os.path.getsize(temp_filepath)
+                    # Always overwrite if it's smaller, even slightly
                     if compressed_size < original_size:
-                        os.replace(temp_filepath, filepath)
-                        total_original += original_size
-                        total_saved += (original_size - compressed_size)
-                        processed_count += 1
-                        print(f"Compressed: {file} - Saved {((original_size - compressed_size)/1024/1024):.2f} MB")
+                        try:
+                            os.replace(temp_filepath, filepath)
+                            total_original += original_size
+                            total_saved += (original_size - compressed_size)
+                            processed_count += 1
+                            print(f"Super-Compressed: {file} - Saved {((original_size - compressed_size)/1024/1024):.2f} MB")
+                        except PermissionError:
+                            os.remove(temp_filepath)
+                            print(f"Skipped (LOCKED by Next.js): {file} - Please stop 'npm run dev'")
                     else:
-                        # If somehow it got larger, keep original
                         os.remove(temp_filepath)
-                        print(f"Skipped (No size benefit): {file}")
+                        print(f"Skipped (Already max compressed): {file}")
                         
                 except Exception as e:
+                    try:
+                        if os.path.exists(filepath + ".tmp"):
+                            os.remove(filepath + ".tmp")
+                    except:
+                        pass
                     print(f"Error processing {filepath}: {e}")
 
-    print("\n--- Compression Summary ---")
+    print("\n--- Aggressive Compression Summary ---")
     print(f"Images Processed: {processed_count}")
     print(f"Total Space Saved: {(total_saved / 1024 / 1024):.2f} MB")
 
