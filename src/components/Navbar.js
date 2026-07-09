@@ -22,8 +22,12 @@ export default function Navbar() {
           scrolled ? 'bg-[rgba(5,5,5,0.85)] backdrop-blur-[16px] border-b border-[rgba(255,255,255,0.05)]' : 'bg-transparent'
         }`}
       >
-        <Link href="/" className="font-serif text-[24px] font-semibold tracking-[0.05em] text-white transition-colors duration-400 cursor-none">
-          Glamour<span className="text-[var(--gold)]">.</span>
+        <Link href="/" className="flex items-center gap-[10px] cursor-none">
+          <img 
+            src="/images/Glamour_Logo.png" 
+            alt="Glamour Photographics Logo" 
+            className="h-[30px] md:h-[36px] w-auto object-contain"
+          />
         </Link>
         <ul className="hidden md:flex gap-[40px] list-none">
           {['Home', 'About Us', 'Services', 'Portfolio', 'Clients', 'Contact'].map((item) => (

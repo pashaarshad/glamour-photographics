@@ -79,21 +79,45 @@ export default function Home() {
 
   const portfolioImages = {
     ALL: [
-      "/images/cii/CII (7th Bangalore Space Expo-2022) On-05-09-2022-Noor/NMK_0028.JPG",
-      "/images/tcs/TCS -27 - 03 - 2023 - Anzar/DSC01003.JPG",
-      "/images/presidency/PANA9115.jpg",
-      "/images/tata_elxsi/_AMZ0246.JPG",
-      "/images/our_portfolio/Corporate and office/DSC03794.JPG",
-      "/images/our_portfolio/Corporate and office/DSC03789.JPG",
+      "/images/our_portfolio/Srk.jpg",
+      "/images/our_portfolio/Bill clinton.jpeg",
+      "/images/our_portfolio/highlights_3C1A0761.jpg",
+      "/images/our_portfolio/highlights_3C1A0775.jpg",
+      "/images/our_portfolio/highlights_3C1A0782.jpg",
+      "/images/our_portfolio/highlights_3C1A0841.jpg",
+      "/images/our_portfolio/cp-7.jpg",
+      "/images/our_portfolio/cp-10.jpg",
+      "/images/our_portfolio/cp-12.jpg",
+      "/images/our_portfolio/rtx-1.jpg",
+      "/images/our_portfolio/te3.jpg",
+      "/images/our_portfolio/dilquar.jpg",
+      "/images/our_portfolio/11.jpg",
+      "/images/our_portfolio/22.jpg",
+      "/images/our_portfolio/33.jpg",
     ],
     CORPORATE: [
-      "/images/tcs/TCS -27 - 03 - 2023 - Anzar/DSC01003.JPG",
-      "/images/tata_elxsi/_AMZ0246.JPG",
+      "/images/our_portfolio/cp-7.jpg",
+      "/images/our_portfolio/cp-10.jpg",
+      "/images/our_portfolio/cp-12.jpg",
+      "/images/our_portfolio/Bill clinton.jpeg",
+      "/images/our_portfolio/dilquar.jpg",
     ],
     EVENTS: [
-      "/images/cii/CII (7th Bangalore Space Expo-2022) On-05-09-2022-Noor/NMK_0028.JPG",
-      "/images/presidency/PANA9115.jpg",
+      "/images/our_portfolio/33.jpg",
+      "/images/our_portfolio/Srk.jpg",
+      "/images/our_portfolio/highlights_3C1A0761.jpg",
+      "/images/our_portfolio/highlights_3C1A0775.jpg",
+      "/images/our_portfolio/highlights_3C1A0782.jpg",
     ],
+    INDUSTRIAL: [
+      "/images/our_portfolio/rtx-1.jpg",
+      "/images/our_portfolio/te3.jpg",
+    ],
+    DOCUMENTARY: [
+      "/images/our_portfolio/11.jpg",
+      "/images/our_portfolio/22.jpg",
+      "/images/our_portfolio/highlights_3C1A0841.jpg",
+    ]
   };
 
   const activeImages = portfolioImages[activePortfolioTab] || portfolioImages['ALL'];
@@ -499,7 +523,7 @@ export default function Home() {
         </div>
         <div className="columns-1 md:columns-2 lg:columns-3 gap-[24px] [column-fill:_balance] w-full">
           {activeImages.map((src, idx) => (
-            <div key={idx} className="break-inside-avoid mb-[24px] relative group overflow-hidden rounded-sm border border-[rgba(255,255,255,0.05)] reveal-scale opacity-0">
+            <div key={idx} className="break-inside-avoid mb-[24px] relative group overflow-hidden rounded-sm border border-[rgba(255,255,255,0.05)] bg-[rgba(255,255,255,0.01)]">
               <img src={src} alt={`Portfolio Image ${idx + 1}`} className="w-full h-auto object-cover transition-transform duration-[800ms] group-hover:scale-105" />
               <div className="absolute inset-0 bg-gradient-to-t from-[rgba(0,0,0,0.85)] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-[30px]">
                 <span className="text-[9px] tracking-[0.2em] uppercase text-[var(--gold)] mb-[8px]">Gallery Spotlight</span>

@@ -139,8 +139,7 @@ export default function PortfolioPage() {
           {activeImages.map((src, idx) => (
             <div 
               key={`${activeTab}-${idx}`} 
-              className="break-inside-avoid mb-[24px] relative group overflow-hidden rounded-sm border border-[rgba(255,255,255,0.05)] bg-[rgba(255,255,255,0.02)] reveal-scale opacity-0"
-              style={{ transitionDelay: `${idx * 40}ms` }}
+              className="break-inside-avoid mb-[24px] relative group overflow-hidden rounded-sm border border-[rgba(255,255,255,0.05)] bg-[rgba(255,255,255,0.02)]"
             >
               <img 
                 src={src} 
