@@ -28,7 +28,7 @@ export default function About() {
       {/* ─── HERO SECTION ─── */}
       <section className="relative min-h-[50vh] flex items-center px-[5%] md:px-[8%] overflow-hidden bg-black mb-[100px] pt-[120px] md:pt-[100px]">
         <div className="absolute inset-0 z-0">
-          <img src="/images/our_portfolio/33.jpg" alt="About Us Background" className="w-full h-full object-cover opacity-25" />
+          <img src="/images/about-hero-section.png" alt="About Us Background" className="w-full h-full object-cover opacity-25" />
           <div className="absolute inset-0 bg-gradient-to-t from-[var(--dark)] via-[rgba(5,5,5,0.7)] to-transparent z-10" />
         </div>
         <div className="max-w-[1400px] w-full mx-auto z-20 relative">
@@ -46,7 +46,7 @@ export default function About() {
 
       {/* ─── THE CORE LEGACY STORY ─── */}
       <section className="px-[5%] md:px-[8%] max-w-[1400px] mx-auto mb-[140px] grid grid-cols-1 lg:grid-cols-2 gap-[80px] items-center">
-        <div className="h-[550px] md:h-[650px] relative img-mask bg-cover bg-center rounded-sm overflow-hidden border border-[rgba(255,255,255,0.05)]" style={{ backgroundImage: "url('/images/our_portfolio/cp-7.jpg')" }}>
+        <div className="h-[550px] md:h-[650px] relative img-mask bg-cover bg-center rounded-sm overflow-hidden border border-[rgba(255,255,255,0.05)]" style={{ backgroundImage: "url('/images/Four Decades of Storytelling.png')" }}>
           <div className="absolute inset-0 bg-black/45" />
         </div>
         <div className="reveal">
