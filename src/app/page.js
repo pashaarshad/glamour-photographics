@@ -177,6 +177,57 @@ export default function Home() {
         `}</style>
       </div>
 
+      {/* ─── 2.5. EDITORIAL STRIP ─── */}
+      <div className="hero-strip">
+        <div className="hero-strip-item">
+          <div className="strip-img">
+            <img src="/images/cii-event-coverage.jpg" alt="CII Event Coverage" className="w-full h-full object-cover block" />
+          </div>
+          <div className="strip-pip"></div>
+          <div className="strip-side-label">Corporate Events</div>
+          <div className="strip-overlay">
+            <span className="strip-label">Corporate Events</span>
+            <span className="strip-title">CII — India @ 75</span>
+          </div>
+        </div>
+
+        <div className="hero-strip-item">
+          <div className="strip-img">
+            <img src="/images/celebrity-portrait.jpg" alt="Celebrity Portrait" className="w-full h-full object-cover block" />
+          </div>
+          <div className="strip-pip"></div>
+          <div className="strip-side-label">Celebrity Portrait</div>
+          <div className="strip-overlay">
+            <span className="strip-label">Celebrity Coverage</span>
+            <span className="strip-title">Portrait Session</span>
+          </div>
+        </div>
+
+        <div className="hero-strip-item">
+          <div className="strip-img">
+            <img src="/images/outdoor-event.jpg" alt="Outdoor Event" className="w-full h-full object-cover block" />
+          </div>
+          <div className="strip-pip"></div>
+          <div className="strip-side-label">Outdoor Coverage</div>
+          <div className="strip-overlay">
+            <span className="strip-label">Events & Media</span>
+            <span className="strip-title">Outdoor Coverage</span>
+          </div>
+        </div>
+
+        <div className="hero-strip-item">
+          <div className="strip-img">
+            <img src="/images/corporate-event.jpg" alt="Corporate Event" className="w-full h-full object-cover block" />
+          </div>
+          <div className="strip-pip"></div>
+          <div className="strip-side-label">Speaker Series</div>
+          <div className="strip-overlay">
+            <span className="strip-label">Corporate Events</span>
+            <span className="strip-title">Speaker Series</span>
+          </div>
+        </div>
+      </div>
+
       {/* ─── 3. WE TELL STORIES THAT STAY ─── */}
       <section className="py-[120px] px-[8%] md:px-[10%] bg-black relative overflow-hidden">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-[60px] items-center">
