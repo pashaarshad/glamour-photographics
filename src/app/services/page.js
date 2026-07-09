@@ -30,25 +30,25 @@ export default function Services() {
       id: '01',
       title: 'Corporate Films & Documentaries',
       desc: 'We produce high-end corporate films, brand documentaries, and CSR videos that tell your company’s story with cinematic brilliance and emotional resonance. From script to screen, we handle every aspect of production.',
-      img: '/images/our_portfolio/cp-7.jpg'
+      img: '/images/our_portfolio/kareeshma.jpg'
     },
     {
       id: '02',
       title: 'Industrial & Architectural Photography',
       desc: 'Showcase your infrastructure, manufacturing plants, and architectural marvels. We use specialized lighting and perspective control to capture the true scale, safety, and precision of your facilities.',
-      img: '/images/tata_elxsi/_AMZ0246.JPG'
+      img: '/images/our_portfolio/te3.jpg'
     },
     {
       id: '03',
       title: 'Event Coverage & Live Streaming',
       desc: 'Comprehensive coverage of corporate summits, product launches, and annual days. We provide multi-camera setups, live broadcasting solutions, and rapid-turnaround photo and video edits for press and social media.',
-      img: '/images/cii/CII (7th Bangalore Space Expo-2022) On-05-09-2022-Noor/NMK_0028.JPG'
+      img: '/images/outdoor-event.jpg'
     },
     {
       id: '04',
       title: 'Executive Portraits & Headshots',
       desc: 'Professional, approachable, and commanding portraits for your leadership team. We can set up our mobile studio at your corporate office to ensure consistent, premium lighting across all your brand assets.',
-      img: '/images/presidency/PANA9115.jpg'
+      img: '/images/our_portfolio/dilquar.jpg'
     }
   ];
 

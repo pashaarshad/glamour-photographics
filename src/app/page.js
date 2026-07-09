@@ -228,6 +228,34 @@ export default function Home() {
         </div>
       </div>
 
+      {/* ─── 2.7. EDITORIAL MARQUEE (BOTTOM) ─── */}
+      <div className="marquee-wrapper py-[20px] bg-[var(--dark-panel)] border-y border-[rgba(255,255,255,0.05)] overflow-hidden w-full relative z-20">
+        <div className="marquee-track-reverse flex whitespace-nowrap text-[10px] tracking-[0.25em] uppercase text-[var(--gold)] font-medium">
+          {Array.from({ length: 4 }).map((_, i) => (
+            <span key={i} className="flex items-center gap-[24px] shrink-0">
+              <span className="ml-[24px]">Corporate Films</span><span className="text-[6px] text-white select-none">●</span>
+              <span>Wedding Photography</span><span className="text-[6px] text-white select-none">●</span>
+              <span>Event Coverage</span><span className="text-[6px] text-white select-none">●</span>
+              <span>Digital Advertising</span><span className="text-[6px] text-white select-none">●</span>
+              <span>Documentary Films</span><span className="text-[6px] text-white select-none">●</span>
+              <span>Studio Portraits</span><span className="text-[6px] text-white select-none">●</span>
+              <span>Photo Restoration</span><span className="text-[6px] text-white select-none">●</span>
+            </span>
+          ))}
+        </div>
+        <style jsx>{`
+          @keyframes marquee-reverse {
+            0% { transform: translateX(-25%); }
+            100% { transform: translateX(0); }
+          }
+          .marquee-track-reverse {
+            display: flex;
+            width: max-content;
+            animation: marquee-reverse 25s linear infinite;
+          }
+        `}</style>
+      </div>
+
       {/* ─── 3. WE TELL STORIES THAT STAY ─── */}
       <section className="py-[120px] px-[8%] md:px-[10%] bg-black relative overflow-hidden">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-[60px] items-center">
