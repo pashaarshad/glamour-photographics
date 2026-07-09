@@ -127,9 +127,25 @@ export default function Home() {
       
       {/* ─── 1. HERO SECTION ─── */}
       <section className="relative min-h-[100svh] flex flex-col justify-center md:flex-row md:justify-start md:items-center px-[5%] md:px-[8%] pt-[120px] md:pt-[80px] pb-[60px] md:pb-0 overflow-hidden bg-black">
-        <div className="absolute inset-0 z-0">
-          <img src="/images/hero-camera.jpg" alt="Premium Camera Lens" className="w-full h-full object-contain object-[center_bottom] md:object-[right_center]" />
-          <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black via-[rgba(0,0,0,0.8)] md:via-[rgba(0,0,0,0.6)] to-transparent z-10" />
+        <div className="absolute inset-0 z-0 select-none">
+          {/* Desktop image */}
+          <img 
+            src="/images/hero-camera.jpg" 
+            alt="Premium Camera Lens" 
+            className="hidden md:block w-full h-full object-contain object-[right_center] opacity-80" 
+          />
+          {/* Mobile image */}
+          <img 
+            src="/images/hero-camera-mobile.png" 
+            alt="Premium Camera Lens Mobile" 
+            className="block md:hidden w-full h-full object-cover object-center opacity-75" 
+            onError={(e) => {
+              // Fallback to desktop image if mobile one is not uploaded yet
+              e.target.src = "/images/hero-camera.jpg";
+              e.target.className = "block md:hidden w-full h-full object-contain object-[center_bottom] opacity-70";
+            }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black via-[rgba(0,0,0,0.85)] md:via-[rgba(0,0,0,0.65)] to-transparent z-10" />
         </div>
         <div className="w-full max-w-[650px] flex-none z-20 relative pt-[40px] md:pt-[60px] text-left">
           <h1 className="font-serif text-left text-[clamp(52px,7vw,100px)] font-light leading-[1.05] tracking-[-0.02em] mb-[32px] text-white">

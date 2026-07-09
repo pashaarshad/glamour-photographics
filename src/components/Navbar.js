@@ -45,11 +45,6 @@ export default function Navbar() {
           >
             Let's Talk
           </Link>
-          <div className="flex flex-col gap-[5px] cursor-none ml-[20px]" onClick={() => setMobileOpen(true)}>
-            <span className="block w-[24px] h-[1px] bg-white"></span>
-            <span className="block w-[16px] h-[1px] bg-white ml-auto"></span>
-            <span className="block w-[24px] h-[1px] bg-white"></span>
-          </div>
         </div>
         <div className="flex md:hidden flex-col gap-[5px] cursor-none" onClick={() => setMobileOpen(!mobileOpen)}>
           <span className="block w-[24px] h-[1px] bg-white transition-all duration-300"></span>
@@ -67,21 +62,16 @@ export default function Navbar() {
           <Link 
             key={item}
             href={item === 'Home' ? '/' : `/${item.toLowerCase().replace(' ', '-')}`} 
-            className="font-serif text-[42px] font-light text-white tracking-[-0.01em] opacity-0 translate-y-[20px] transition-all duration-500 hover:text-[var(--gold)] cursor-none mobile-link" 
-            style={{ transitionDelay: `${idx * 100}ms` }}
+            className={`font-serif text-[42px] font-light text-white tracking-[-0.01em] transition-all duration-500 hover:text-[var(--gold)] cursor-none ${
+              mobileOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[20px]'
+            }`} 
+            style={{ transitionDelay: `${idx * 80}ms` }}
             onClick={() => setMobileOpen(false)}
           >
             {item}
           </Link>
         ))}
       </div>
-
-      <style jsx>{`
-        .mobile-link {
-          opacity: ${mobileOpen ? 1 : 0};
-          transform: translateY(${mobileOpen ? '0' : '20px'});
-        }
-      `}</style>
     </>
   );
 }
