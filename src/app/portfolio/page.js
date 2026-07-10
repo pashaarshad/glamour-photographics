@@ -98,7 +98,7 @@ export default function PortfolioPage() {
   const activeImages = portfolioImages[activeTab] || portfolioImages['ALL'];
 
   return (
-    <main className="w-full bg-[var(--dark)] text-white min-h-screen pt-[160px] pb-[100px] cursor-none relative">
+    <main className="w-full bg-[var(--dark)] text-[var(--light)] min-h-screen pt-[160px] pb-[100px] cursor-none relative">
       
       {/* ─── HERO SECTION ─── */}
       <section className="px-[5%] md:px-[8%] max-w-[1400px] mx-auto mb-[100px]">
@@ -106,7 +106,7 @@ export default function PortfolioPage() {
           <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] mb-[16px] block">
             Visual Highlights
           </span>
-          <h1 className="font-serif text-[clamp(44px,6vw,80px)] font-light leading-[1.1] tracking-[-0.02em]">
+          <h1 className="font-serif text-[clamp(44px,6vw,80px)] font-light leading-[1.1] tracking-[-0.02em] text-[var(--light)]">
             Selected Works Portfolio <br />
             <span className="italic text-[var(--gold)]">Across Decades.</span>
           </h1>
@@ -118,14 +118,14 @@ export default function PortfolioPage() {
 
       {/* ─── FILTER TABS ─── */}
       <section className="px-[5%] md:px-[8%] max-w-[1400px] mx-auto mb-[60px]">
-        <div className="flex flex-wrap gap-[30px] border-b border-[rgba(255,255,255,0.08)] pb-[15px] mb-[40px] reveal opacity-0 anim-fade-up">
+        <div className="flex flex-wrap gap-[30px] border-b border-[rgba(10,10,10,0.08)] pb-[15px] mb-[40px] reveal opacity-0 anim-fade-up">
           {['ALL', 'CORPORATE', 'EVENTS', 'INDUSTRIAL', 'DOCUMENTARY'].map((tab) => (
             <button 
               suppressHydrationWarning
               key={tab} 
               onClick={() => setActiveTab(tab)} 
               className={`text-[10px] tracking-[0.2em] uppercase pb-[15px] relative cursor-none transition-colors ${
-                activeTab === tab ? 'text-[var(--gold)] font-medium' : 'text-[var(--muted)] hover:text-white'
+                activeTab === tab ? 'text-[var(--gold)] font-medium' : 'text-[var(--muted)] hover:text-[var(--light)]'
               }`}
             >
               {tab}
@@ -139,7 +139,7 @@ export default function PortfolioPage() {
           {activeImages.map((src, idx) => (
             <div 
               key={`${activeTab}-${idx}`} 
-              className="break-inside-avoid mb-[24px] relative group overflow-hidden rounded-sm border border-[rgba(255,255,255,0.05)] bg-[rgba(255,255,255,0.02)]"
+              className="break-inside-avoid mb-[24px] relative group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)]"
             >
               <img 
                 src={src} 
@@ -149,21 +149,18 @@ export default function PortfolioPage() {
                   e.target.style.display = 'none';
                 }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[rgba(0,0,0,0.85)] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-[30px]">
-                <span className="text-[9px] tracking-[0.2em] uppercase text-[var(--gold)] mb-[8px]">Project Gallery</span>
-                <h4 className="font-serif text-[18px] text-white">Visual Artifact</h4>
-              </div>
+              {/* No shading hover overlay */}
             </div>
           ))}
         </div>
       </section>
 
       {/* ─── CONTACT SECTION ─── */}
-      <section className="mt-[140px] py-[100px] px-[5%] md:px-[8%] bg-black text-center reveal border-t border-[rgba(255,255,255,0.05)]">
-        <h2 className="font-serif text-[clamp(32px,4vw,52px)] font-light text-white leading-[1.1] mb-[40px]">
+      <section className="mt-[140px] py-[100px] px-[5%] md:px-[8%] bg-[var(--darker)] text-center reveal border-t border-[rgba(10,10,10,0.06)]">
+        <h2 className="font-serif text-[clamp(32px,4vw,52px)] font-light text-[var(--light)] leading-[1.1] mb-[40px]">
           Want to see more project work?
         </h2>
-        <Link href="/contact" className="inline-block border border-[rgba(197,164,109,0.5)] text-white uppercase tracking-[0.2em] text-[11px] font-semibold px-[36px] py-[18px] transition-all duration-400 hover:bg-[var(--gold)] hover:text-black hover:border-transparent cursor-none">
+        <Link href="/contact" className="inline-block border border-[rgba(10,10,10,0.15)] text-[var(--light)] uppercase tracking-[0.2em] text-[11px] font-semibold px-[36px] py-[18px] transition-all duration-400 hover:bg-[var(--light)] hover:text-[var(--dark)] hover:border-transparent cursor-none">
           Get In Touch
         </Link>
       </section>

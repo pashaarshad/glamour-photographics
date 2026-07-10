@@ -32,7 +32,7 @@ export default function Preloader() {
   return (
     <div
       id="loader"
-      className={`fixed inset-0 bg-[var(--dark)] z-[8000] flex flex-col items-center justify-center p-0 m-0 ${
+      className={`fixed inset-0 bg-[#0A0A0A] z-[8000] flex flex-col items-center justify-center p-0 m-0 ${
         out ? 'loader-out' : ''
       }`}
     >
@@ -44,10 +44,10 @@ export default function Preloader() {
         />
       </div>
       <div id="loader-line" className="h-[1px] bg-[var(--gold)] mb-[14px] loader-line-anim"></div>
-      <div id="loader-text" className="font-sans text-[clamp(13px,2vw,17px)] text-[var(--light)] tracking-[0.52em] uppercase font-light loader-text-anim">
+      <div id="loader-text" className="font-sans text-[clamp(13px,2vw,17px)] text-[rgba(250,248,244,0.88)] tracking-[0.52em] uppercase font-light loader-text-anim">
         Glamour Photographics
       </div>
-      <div id="loader-sub" className="font-sans text-[10px] tracking-[0.38em] uppercase text-[rgba(10,10,10,0.35)] mt-[10px] loader-sub-anim">
+      <div id="loader-sub" className="font-sans text-[10px] tracking-[0.38em] uppercase text-[rgba(250,248,244,0.28)] mt-[10px] loader-sub-anim">
         Visual Storytelling since 1982
       </div>
     </div>

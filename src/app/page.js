@@ -72,10 +72,10 @@ export default function Home() {
   }, []);
 
   // Stats values using the count-up hook
-  const projectsCount = useCountUp(2000, 1800, statsTriggered);
-  const filmsCount = useCountUp(500, 1800, statsTriggered);
-  const clientsCount = useCountUp(300, 1800, statsTriggered);
-  const countriesCount = useCountUp(25, 1800, statsTriggered);
+  const experienceCount = useCountUp(40, 1800, statsTriggered);
+  const clientsCount = useCountUp(500, 1800, statsTriggered);
+  const projectsCount = useCountUp(1200, 1800, statsTriggered);
+  const weddingsCount = useCountUp(300, 1800, statsTriggered);
 
   const portfolioImages = {
     ALL: [
@@ -145,7 +145,7 @@ export default function Home() {
               e.target.className = "block md:hidden w-full h-full object-contain object-[center_bottom] opacity-70";
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[var(--dark)] via-[rgba(250,248,244,0.65)] md:via-[rgba(250,248,244,0.45)] to-transparent z-10" />
+          {/* No shading overlay */}
         </div>
         <div className="w-full max-w-[650px] flex-none z-20 relative pt-[40px] md:pt-[60px] text-left">
           <h1 className="font-serif text-left text-[clamp(52px,7vw,100px)] font-light leading-[1.05] tracking-[-0.02em] mb-[32px] text-[var(--light)]">
@@ -272,123 +272,99 @@ export default function Home() {
         `}</style>
       </div>
 
-      {/* ─── 3. WE TELL STORIES THAT STAY ─── */}
+      {/* ─── 3. WE TELL STORIES THAT STAY (YOUTUBE EMBED) ─── */}
       <section className="py-[120px] px-[8%] md:px-[10%] bg-[var(--dark)] relative overflow-hidden">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-[60px] items-center">
-          <div className="reveal opacity-0 anim-fade-up z-20">
-            <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] mb-[16px] block">
-              We Don't Just Shoot
-            </span>
-            <h2 className="font-serif text-[clamp(36px,5vw,70px)] font-light leading-[1.1] tracking-[-0.01em] text-[var(--light)] mb-[32px]">
-              We Tell Stories <br />
-              <span className="italic text-[var(--gold)] font-medium">That Stay.</span>
-            </h2>
-            <p className="text-[14px] md:text-[15px] leading-[1.8] text-[var(--muted)] max-w-[480px] mb-[40px] font-light">
-              From corporate documentaries that build trust, to powerful commercials and premium event storytelling, we capture moments that create long-lasting brand legacies.
-            </p>
-            <div className="flex flex-wrap gap-[16px]">
-              <Link href="/portfolio" className="border border-[rgba(10,10,10,0.15)] text-[var(--light)] text-[10px] tracking-[0.2em] uppercase py-[16px] px-[32px] hover:bg-[var(--light)] hover:text-[var(--dark)] transition-all duration-300 cursor-none font-medium">
-                Explore Our Work
-              </Link>
-              <button 
-                suppressHydrationWarning
-                onClick={() => setShowreelOpen(true)} 
-                className="flex items-center gap-[12px] bg-[rgba(10,10,10,0.03)] border border-[rgba(10,10,10,0.06)] text-[var(--gold)] text-[10px] tracking-[0.2em] uppercase py-[16px] px-[32px] hover:bg-[var(--gold)] hover:text-white hover:border-transparent transition-all duration-300 cursor-none font-medium"
-              >
-                <Play className="w-[12px] h-[12px] fill-current" />
-                Watch Showreel
-              </button>
+        <div className="max-w-[1400px] mx-auto">
+          {/* Row 1: Left and Right alignment (Left has text, Right has nothing) */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-[40px] items-start mb-[40px] md:mb-[60px]">
+            <div className="lg:col-span-6 reveal opacity-0 anim-fade-up z-20">
+              <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] mb-[16px] block">
+                We Don't Just Shoot
+              </span>
+              <h2 className="font-serif text-[clamp(36px,5vw,70px)] font-light leading-[1.1] tracking-[-0.01em] text-[var(--light)] mb-[32px]">
+                We Tell Stories <br />
+                <span className="italic text-[var(--gold)] font-medium">That Stay.</span>
+              </h2>
+              <p className="text-[14px] md:text-[15px] leading-[1.8] text-[var(--muted)] max-w-[480px] mb-[40px] font-light">
+                From corporate documentaries that build trust, to powerful commercials and premium event storytelling, we capture moments that create long-lasting brand legacies.
+              </p>
+              <div className="flex flex-wrap gap-[16px]">
+                <Link href="/portfolio" className="border border-[rgba(10,10,10,0.15)] text-[var(--light)] text-[10px] tracking-[0.2em] uppercase py-[16px] px-[32px] hover:bg-[var(--light)] hover:text-[var(--dark)] transition-all duration-300 cursor-none font-medium">
+                  Explore Our Work
+                </Link>
+              </div>
             </div>
+            <div className="lg:col-span-6 hidden lg:block"></div>
           </div>
-          <div className="relative h-[480px] md:h-[600px] w-full rounded-sm overflow-hidden img-mask reveal z-10 group">
-            <img src="/images/about-silhouette.jpg" alt="Photographer Silhouette" className="w-full h-full object-cover grayscale-[30%] opacity-85 transition-transform duration-[1200ms] group-hover:scale-105" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
-            
-            {/* Play Button Overlay */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <button 
-                suppressHydrationWarning
-                onClick={() => setShowreelOpen(true)} 
-                className="w-[80px] h-[80px] rounded-full border border-[rgba(197,164,109,0.4)] bg-[rgba(5,5,5,0.65)] hover:bg-[var(--gold)] hover:border-transparent text-white hover:text-black flex items-center justify-center transition-all duration-500 scale-90 hover:scale-100 cursor-none group/play"
-              >
-                <Play className="w-[20px] h-[20px] fill-current ml-[4px] transition-transform duration-300 group-hover/play:scale-110" />
-              </button>
-              <span className="absolute bottom-[40px] text-[9px] tracking-[0.3em] uppercase text-[var(--gold)] font-medium opacity-80">Play Corporate Showreel</span>
+
+          {/* Row 2: Slightly down, on the right side, the YouTube video in a bigger screen */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-[40px]">
+            <div className="lg:col-span-3 hidden lg:block"></div>
+            <div className="lg:col-span-9 w-full aspect-video rounded-sm overflow-hidden border border-[rgba(10,10,10,0.06)] shadow-[0_24px_70px_rgba(10,10,10,0.05)] reveal opacity-0 anim-fade-up delay-100">
+              <iframe
+                className="w-full h-full"
+                src="https://www.youtube.com/embed/oz26LF0gvxg?rel=0"
+                title="Glamour Photographics Corporate Showreel"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ─── 4. CRAFTING VISUAL STORIES SINCE 1980 ─── */}
-      <section className="py-[120px] px-[8%] md:px-[10%] bg-[var(--darker)] border-y border-[rgba(10,10,10,0.06)]">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-[60px] items-center">
+      {/* ─── 4. STATS SECTION (Four Decades of Visual Excellence) ─── */}
+      <section ref={statsRef} className="py-[120px] px-[8%] md:px-[10%] bg-[var(--darker)] border-y border-[rgba(10,10,10,0.06)]">
+        <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-[80px] items-center">
           
-          {/* Left Column Description */}
-          <div className="lg:col-span-4 reveal opacity-0 anim-fade-up">
-            <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] mb-[16px] block">
-              Our Heritage
-            </span>
-            <h3 className="font-serif text-[32px] leading-[1.2] text-[var(--light)] mb-[24px]">
-              Crafting Visual <br />
-              Stories Since <span className="italic text-[var(--gold)] font-light">1980</span>
-            </h3>
-            <p className="text-[14px] leading-[1.8] text-[var(--muted)] mb-[32px] font-light">
-              For over four decades, Glamour Photographics has been the trusted visual partner for leading brands, institutions, and visionary creators across India.
+          {/* Left Column */}
+          <div className="reveal opacity-0 anim-fade-up">
+            <div className="w-[60px] h-[2px] bg-[var(--gold)] mb-[32px]" id="stats-gold-line"></div>
+            <h2 className="font-serif text-[clamp(40px,5vw,72px)] font-light leading-[1.1] tracking-[-0.02em] text-[var(--light)] mb-[32px]">
+              Four Decades of <br />
+              <span className="italic text-[var(--gold)] font-medium">Visual Excellence</span>
+            </h2>
+            <p className="text-[14px] leading-[1.9] text-[var(--muted)] max-w-[420px] mb-[40px] font-light">
+              Glamour Photographics, established by Hameed Hussain in 1982, has built a legacy of capturing the most meaningful moments for corporate clients and families across India.
             </p>
-            <Link href="/about" className="text-[10px] tracking-[0.25em] uppercase text-[var(--light)] pb-[6px] border-b border-[var(--light)] hover:border-[var(--gold)] hover:text-[var(--gold)] transition-colors cursor-none">
-              Read More Details
+            <Link href="/about" className="inline-flex items-center gap-[12px] text-[10px] tracking-[0.3em] uppercase font-semibold pb-[4px] border-b border-[var(--light)] hover:border-[var(--gold)] hover:text-[var(--gold)] hover:gap-[20px] transition-all duration-300 cursor-none">
+              Our Story <span>→</span>
             </Link>
           </div>
 
-          {/* Center Column Video */}
-          <div className="lg:col-span-5 w-full aspect-video rounded-sm overflow-hidden border border-[rgba(10,10,10,0.06)] reveal opacity-0 anim-fade-up delay-100">
-            <iframe
-              className="w-full h-full"
-              src="https://www.youtube.com/embed/oz26LF0gvxg"
-              title="Glamour Photographics Showreel"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
-          </div>
+          {/* Right Column Grid */}
+          <div className="grid grid-cols-2 gap-[2px] bg-[rgba(10,10,10,0.08)] stagger-children border border-[rgba(10,10,10,0.06)]">
+            <div className="p-[40px] bg-[var(--dark)] hover:bg-[rgba(10,10,10,0.02)] transition-colors duration-300 relative group">
+              <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-[var(--gold)] transition-all duration-300 group-hover:w-full"></div>
+              <div className="font-serif text-[64px] md:text-[72px] line-height-[1] text-[var(--light)] font-light flex items-baseline">
+                <span>{experienceCount}</span><span className="text-[var(--gold)] font-medium text-[40px] ml-[2px]">+</span>
+              </div>
+              <div className="text-[10px] tracking-[0.25em] uppercase text-[var(--muted)] mt-[8px]">Years of Experience</div>
+            </div>
+            
+            <div className="p-[40px] bg-[var(--dark)] hover:bg-[rgba(10,10,10,0.02)] transition-colors duration-300 relative group">
+              <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-[var(--gold)] transition-all duration-300 group-hover:w-full"></div>
+              <div className="font-serif text-[64px] md:text-[72px] line-height-[1] text-[var(--light)] font-light flex items-baseline">
+                <span>{clientsCount}</span><span className="text-[var(--gold)] font-medium text-[40px] ml-[2px]">+</span>
+              </div>
+              <div className="text-[10px] tracking-[0.25em] uppercase text-[var(--muted)] mt-[8px]">Clients Served</div>
+            </div>
 
-          {/* Right Column Icons List */}
-          <div className="lg:col-span-3 flex flex-col gap-[32px] reveal opacity-0 anim-fade-up delay-200">
-            <div className="flex gap-[20px] items-start">
-              <div className="p-[10px] bg-[rgba(197,164,109,0.05)] rounded-sm border border-[rgba(197,164,109,0.15)] text-[var(--gold)]">
-                <Award className="w-[18px] h-[18px]" />
+            <div className="p-[40px] bg-[var(--dark)] hover:bg-[rgba(10,10,10,0.02)] transition-colors duration-300 relative group">
+              <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-[var(--gold)] transition-all duration-300 group-hover:w-full"></div>
+              <div className="font-serif text-[64px] md:text-[72px] line-height-[1] text-[var(--light)] font-light flex items-baseline">
+                <span>{projectsCount}</span><span className="text-[var(--gold)] font-medium text-[40px] ml-[2px]">+</span>
               </div>
-              <div>
-                <h4 className="text-[13px] tracking-[0.05em] uppercase font-semibold text-[var(--light)] mb-[6px]">40+ Years of Excellence</h4>
-                <p className="text-[12px] text-[var(--muted)] font-light leading-[1.5]">Decades of visual storytelling and corporate legacy.</p>
-              </div>
+              <div className="text-[10px] tracking-[0.25em] uppercase text-[var(--muted)] mt-[8px]">Corporate Projects</div>
             </div>
-            <div className="flex gap-[20px] items-start">
-              <div className="p-[10px] bg-[rgba(197,164,109,0.05)] rounded-sm border border-[rgba(197,164,109,0.15)] text-[var(--gold)]">
-                <User className="w-[18px] h-[18px]" />
+
+            <div className="p-[40px] bg-[var(--dark)] hover:bg-[rgba(10,10,10,0.02)] transition-colors duration-300 relative group">
+              <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-[var(--gold)] transition-all duration-300 group-hover:w-full"></div>
+              <div className="font-serif text-[64px] md:text-[72px] line-height-[1] text-[var(--light)] font-light flex items-baseline">
+                <span>{weddingsCount}</span><span className="text-[var(--gold)] font-medium text-[40px] ml-[2px]">+</span>
               </div>
-              <div>
-                <h4 className="text-[13px] tracking-[0.05em] uppercase font-semibold text-[var(--light)] mb-[6px]">Creative Directors</h4>
-                <p className="text-[12px] text-[var(--muted)] font-light leading-[1.5]">A passionate team of directors, technicians and editors.</p>
-              </div>
-            </div>
-            <div className="flex gap-[20px] items-start">
-              <div className="p-[10px] bg-[rgba(197,164,109,0.05)] rounded-sm border border-[rgba(197,164,109,0.15)] text-[var(--gold)]">
-                <Camera className="w-[18px] h-[18px]" />
-              </div>
-              <div>
-                <h4 className="text-[13px] tracking-[0.05em] uppercase font-semibold text-[var(--light)] mb-[6px]">High-End Studio Gear</h4>
-                <p className="text-[12px] text-[var(--muted)] font-light leading-[1.5]">Equipped with industry-grade 4K, 8K and drone setups.</p>
-              </div>
-            </div>
-            <div className="flex gap-[20px] items-start">
-              <div className="p-[10px] bg-[rgba(197,164,109,0.05)] rounded-sm border border-[rgba(197,164,109,0.15)] text-[var(--gold)]">
-                <Film className="w-[18px] h-[18px]" />
-              </div>
-              <div>
-                <h4 className="text-[13px] tracking-[0.05em] uppercase font-semibold text-[var(--light)] mb-[6px]">End-to-End Execution</h4>
-                <p className="text-[12px] text-[var(--muted)] font-light leading-[1.5]">From storyboarding and production to final post-edit.</p>
-              </div>
+              <div className="text-[10px] tracking-[0.25em] uppercase text-[var(--muted)] mt-[8px]">Weddings Captured</div>
             </div>
           </div>
 
@@ -397,19 +373,19 @@ export default function Home() {
 
       {/* ─── 5. OUR STORY 1982 OVERLAPPING DESIGN ─── */}
       <section className="py-[120px] px-[8%] md:px-[10%] bg-[var(--dark)] relative">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-[80px] items-center">
+        <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-[80px] items-center">
           
           {/* Left Column Overlapping Boxes */}
           <div className="relative h-[460px] w-full flex items-center justify-center reveal opacity-0 anim-fade-up">
             {/* Box 1 - Dark Background Panel */}
-            <div className="absolute top-[20px] left-[20px] w-[75%] h-[320px] bg-[var(--darker)] border border-[rgba(10,10,10,0.06)] rounded-sm p-[40px] flex flex-col justify-between shadow-2xl z-10">
+            <div className="absolute top-[20px] left-[20px] w-[75%] h-[320px] bg-[var(--darker)] border border-[rgba(10,10,10,0.06)] rounded-sm p-[40px] flex flex-col justify-between z-10 shadow-sm">
               <h4 className="font-serif text-[24px] text-[var(--light)]">Hameed Hussain</h4>
               <p className="text-[11px] tracking-[0.25em] uppercase text-[var(--gold)]">Founder & Creative Visionary</p>
               <div className="w-[40px] h-[1px] bg-[var(--gold)]"></div>
             </div>
 
             {/* Box 2 - Overlapping Golden/Ivory Styled Panel */}
-            <div className="absolute bottom-[20px] right-[20px] w-[65%] h-[240px] bg-[rgba(197,164,109,0.08)] border border-[rgba(197,164,109,0.25)] rounded-sm p-[30px] flex flex-col justify-between shadow-lg z-20 backdrop-blur-md">
+            <div className="absolute bottom-[20px] right-[20px] w-[65%] h-[240px] bg-[rgba(197,164,109,0.04)] border border-[rgba(197,164,109,0.2)] rounded-sm p-[30px] flex flex-col justify-between z-20 backdrop-blur-md">
               <span className="text-[11px] tracking-[0.3em] uppercase text-[var(--gold)] font-medium">Visual Legacy</span>
               <h5 className="font-serif text-[28px] text-[var(--light)] italic font-light">Est. 1982</h5>
               <p className="text-[12px] text-[var(--muted)] leading-relaxed font-light">Pioneering corporate imagery in Bangalore.</p>
@@ -435,36 +411,6 @@ export default function Home() {
             </Link>
           </div>
 
-        </div>
-      </section>
-
-      {/* ─── 6. ANIMATED STATS STRIP ─── */}
-      <section ref={statsRef} className="py-[80px] px-[8%] md:px-[10%] bg-[var(--darker)] border-y border-[rgba(197,164,109,0.1)] relative">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-[40px] lg:gap-0 justify-items-center">
-          <div className="text-center">
-            <div className="font-serif text-[48px] md:text-[64px] text-[var(--light)] font-light tracking-tight mb-[8px] flex items-center justify-center">
-              <span>{projectsCount}</span><span className="text-[var(--gold)] font-medium">+</span>
-            </div>
-            <p className="text-[10px] tracking-[0.25em] uppercase text-[var(--muted)] font-medium">Projects Completed</p>
-          </div>
-          <div className="text-center">
-            <div className="font-serif text-[48px] md:text-[64px] text-white font-light tracking-tight mb-[8px] flex items-center justify-center">
-              <span>{filmsCount}</span><span className="text-[var(--gold)] font-medium">+</span>
-            </div>
-            <p className="text-[10px] tracking-[0.25em] uppercase text-[var(--muted)] font-medium">Corporate Films</p>
-          </div>
-          <div className="text-center">
-            <div className="font-serif text-[48px] md:text-[64px] text-white font-light tracking-tight mb-[8px] flex items-center justify-center">
-              <span>{clientsCount}</span><span className="text-[var(--gold)] font-medium">+</span>
-            </div>
-            <p className="text-[10px] tracking-[0.25em] uppercase text-[var(--muted)] font-medium">Happy Clients</p>
-          </div>
-          <div className="text-center">
-            <div className="font-serif text-[48px] md:text-[64px] text-white font-light tracking-tight mb-[8px] flex items-center justify-center">
-              <span>{countriesCount}</span><span className="text-[var(--gold)] font-medium">+</span>
-            </div>
-            <p className="text-[10px] tracking-[0.25em] uppercase text-[var(--muted)] font-medium">Countries Served</p>
-          </div>
         </div>
       </section>
 

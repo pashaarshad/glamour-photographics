@@ -12,7 +12,7 @@ export default function ClientGallery({ images }) {
 
   if (!images || images.length === 0) {
     return (
-      <div className="w-full h-[300px] flex items-center justify-center bg-[var(--dark-panel)] border border-[rgba(255,255,255,0.05)] rounded-sm">
+      <div className="w-full h-[300px] flex items-center justify-center bg-[var(--darker)] border border-[rgba(10,10,10,0.06)] rounded-sm">
         <span className="text-[10px] tracking-[0.2em] uppercase text-[var(--muted)]">Gallery Content Being Curated</span>
       </div>
     );
@@ -25,7 +25,7 @@ export default function ClientGallery({ images }) {
 
   return (
     <div className="w-full">
-      <div className="relative mb-[40px] cursor-none custom-swiper-wrapper border border-[rgba(255,255,255,0.05)] rounded-sm overflow-hidden">
+      <div className="relative mb-[40px] cursor-none custom-swiper-wrapper border border-[rgba(10,10,10,0.06)] rounded-sm overflow-hidden">
         <Swiper
           modules={[Navigation, Pagination, EffectFade, Autoplay]}
           effect="fade"
@@ -52,14 +52,14 @@ export default function ClientGallery({ images }) {
           {!showAll ? (
             <button 
               onClick={() => setShowAll(true)}
-              className="inline-block border border-[rgba(197,164,109,0.5)] text-white uppercase tracking-[0.2em] text-[10px] px-8 py-4 transition-all duration-300 hover:bg-[var(--gold)] hover:text-black hover:border-transparent cursor-none font-medium"
+              className="inline-block border border-[rgba(10,10,10,0.15)] text-[var(--light)] uppercase tracking-[0.2em] text-[10px] px-8 py-4 transition-all duration-300 hover:bg-[var(--light)] hover:text-[var(--dark)] hover:border-transparent cursor-none font-medium"
             >
               View Full Gallery <span className="text-[11px] ml-1">({remainingImages.length} More)</span>
             </button>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-[16px] stagger-children visible text-left">
               {remainingImages.map((src, index) => (
-                <div key={index} className="w-full aspect-square overflow-hidden group rounded-sm border border-[rgba(255,255,255,0.05)] bg-[rgba(255,255,255,0.01)] relative">
+                <div key={index} className="w-full aspect-square overflow-hidden group rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)] relative">
                   <img 
                     src={src} 
                     alt={`Gallery Image ${index + 1}`} 
@@ -68,7 +68,7 @@ export default function ClientGallery({ images }) {
                       e.target.style.display = 'none';
                     }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[rgba(0,0,0,0.5)] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  {/* No shading overlay */}
                 </div>
               ))}
             </div>

@@ -23,20 +23,20 @@ export default function About() {
   }, []);
 
   return (
-    <main className="w-full bg-[var(--dark)] text-white min-h-screen pt-0 pb-[100px] cursor-none relative">
+    <main className="w-full bg-[var(--dark)] text-[var(--light)] min-h-screen pt-0 pb-[100px] cursor-none relative">
       
       {/* ─── HERO SECTION ─── */}
-      <section className="relative min-h-[50vh] flex items-center px-[5%] md:px-[8%] overflow-hidden bg-black mb-[100px] pt-[120px] md:pt-[100px]">
+      <section className="relative min-h-[50vh] flex items-center px-[5%] md:px-[8%] overflow-hidden bg-[var(--dark)] mb-[100px] pt-[120px] md:pt-[100px]">
         <div className="absolute inset-0 z-0">
-          <img src="/images/about-hero-section.png" alt="About Us Background" className="w-full h-full object-cover opacity-25" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[var(--dark)] via-[rgba(5,5,5,0.7)] to-transparent z-10" />
+          <img src="/images/about-hero-section.png" alt="About Us Background" className="w-full h-full object-cover opacity-85" />
+          {/* No shading overlay */}
         </div>
         <div className="max-w-[1400px] w-full mx-auto z-20 relative">
           <div className="reveal">
             <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] mb-[16px] block">
               Our Legacy
             </span>
-            <h1 className="font-serif text-[clamp(44px,6vw,80px)] font-light leading-[1.1] tracking-[-0.02em]">
+            <h1 className="font-serif text-[clamp(44px,6vw,80px)] font-light leading-[1.1] tracking-[-0.02em] text-[var(--light)]">
               Defining Visual Excellence <br />
               <span className="italic text-[var(--gold)]">Since 1982.</span>
             </h1>
@@ -46,11 +46,11 @@ export default function About() {
 
       {/* ─── THE CORE LEGACY STORY ─── */}
       <section className="px-[5%] md:px-[8%] max-w-[1400px] mx-auto mb-[140px] grid grid-cols-1 lg:grid-cols-2 gap-[80px] items-center">
-        <div className="h-[550px] md:h-[650px] relative img-mask bg-cover bg-center rounded-sm overflow-hidden border border-[rgba(255,255,255,0.05)]" style={{ backgroundImage: "url('/images/Four Decades of Storytelling.png')" }}>
-          <div className="absolute inset-0 bg-black/45" />
+        <div className="h-[550px] md:h-[650px] relative img-mask bg-cover bg-center rounded-sm overflow-hidden border border-[rgba(10,10,10,0.06)]" style={{ backgroundImage: "url('/images/Four Decades of Storytelling.png')" }}>
+          {/* No shading overlay */}
         </div>
         <div className="reveal">
-          <h2 className="font-serif text-[32px] text-white mb-[24px]">
+          <h2 className="font-serif text-[32px] text-[var(--light)] mb-[24px]">
             Four Decades of Storytelling
           </h2>
           <p className="text-[14px] leading-[1.8] text-[var(--muted)] mb-[20px] font-light">
@@ -60,7 +60,7 @@ export default function About() {
             From our early foundations in traditional film development, darkrooms, and high-fidelity print solutions, we have continually adapted to lead the digital revolution. Today, our infrastructure features 8K cinema units, industrial drone fleet mapping, and advanced post-production grade rendering systems. What remains unchanged is our commitment to capturing authentic, high-impact stories.
           </p>
           
-          <div className="grid grid-cols-2 gap-[40px] pt-[36px] border-t border-[rgba(255,255,255,0.08)] stagger-children">
+          <div className="grid grid-cols-2 gap-[40px] pt-[36px] border-t border-[rgba(10,10,10,0.08)] stagger-children">
             <div>
               <div className="font-serif text-[42px] text-[var(--gold)] leading-none mb-[8px] font-light">40+</div>
               <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--muted)] font-medium">Years Experience</p>
@@ -74,11 +74,11 @@ export default function About() {
       </section>
 
       {/* ─── THE DIRECTORS & CREATIVES ─── */}
-      <section className="py-[120px] px-[5%] md:px-[8%] bg-black border-y border-[rgba(255,255,255,0.05)] mb-[140px]">
+      <section className="py-[120px] px-[5%] md:px-[8%] bg-[var(--darker)] border-y border-[rgba(10,10,10,0.06)] mb-[140px]">
         <div className="max-w-[1400px] mx-auto">
           <div className="mb-[60px] reveal">
             <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] mb-[16px] block">Minds Behind the Lenses</span>
-            <h2 className="font-serif text-[clamp(28px,4vw,48px)] font-light leading-[1.2] text-white">Our Leadership</h2>
+            <h2 className="font-serif text-[clamp(28px,4vw,48px)] font-light leading-[1.2] text-[var(--light)]">Our Leadership</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-[40px]">
@@ -102,15 +102,15 @@ export default function About() {
                 img: "/logo-clients/founder-ceo.jpg" 
               }
             ].map((member, idx) => (
-              <div key={idx} className="group relative rounded-sm overflow-hidden bg-[var(--dark-panel)] border border-[rgba(255,255,255,0.05)] hover:border-[var(--gold)] transition-all duration-500 cursor-none flex flex-col">
+              <div key={idx} className="group relative rounded-sm overflow-hidden bg-[var(--dark)] border border-[rgba(10,10,10,0.06)] hover:border-[var(--gold)] transition-all duration-500 cursor-none flex flex-col">
                 <div className="h-[360px] w-full overflow-hidden relative">
                   <img src={member.img} alt={member.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--dark-panel)] via-transparent to-transparent opacity-90" />
+                  {/* No shading overlay */}
                 </div>
                 <div className="p-[30px] flex-1 flex flex-col justify-between">
                   <div>
                     <span className="text-[9px] tracking-[0.25em] uppercase text-[var(--gold)] mb-[8px] block font-medium">{member.role}</span>
-                    <h3 className="font-serif text-[24px] text-white group-hover:text-[var(--gold)] transition-colors leading-[1.2] mb-[16px]">{member.name}</h3>
+                    <h3 className="font-serif text-[24px] text-[var(--light)] group-hover:text-[var(--gold)] transition-colors leading-[1.2] mb-[16px]">{member.name}</h3>
                     <p className="text-[13px] text-[var(--muted)] leading-relaxed font-light mb-[20px]">{member.bio}</p>
                   </div>
                 </div>
@@ -124,7 +124,7 @@ export default function About() {
       <section className="px-[5%] md:px-[8%] max-w-[1400px] mx-auto mb-[140px]">
         <div className="mb-[60px] reveal">
           <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] mb-[16px] block">Corporate Footprint</span>
-          <h2 className="font-serif text-[32px] text-white">Featured Projects We’ve Built</h2>
+          <h2 className="font-serif text-[32px] text-[var(--light)]">Featured Projects We’ve Built</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-[30px]">
           {[
@@ -145,7 +145,7 @@ export default function About() {
               detail: "Drone UAV flight documentation highlighting Orca bio-inspired flight systems and indigenously designed UAV trials."
             }
           ].map((item, idx) => (
-            <div key={idx} className="p-[30px] bg-[rgba(255,255,255,0.01)] border border-[rgba(255,255,255,0.05)] rounded-sm hover:border-[var(--gold)] transition-colors duration-450">
+            <div key={idx} className="p-[30px] bg-[rgba(10,10,10,0.01)] border border-[rgba(10,10,10,0.06)] rounded-sm hover:border-[var(--gold)] transition-colors duration-450">
               <h3 className="font-serif text-[22px] text-[var(--gold)] mb-[12px]">{item.company}</h3>
               <p className="text-[13px] text-[var(--muted)] leading-relaxed font-light">{item.detail}</p>
             </div>
@@ -154,12 +154,12 @@ export default function About() {
       </section>
 
       {/* ─── VISION STATEMENT ─── */}
-      <section className="py-[120px] px-[5%] md:px-[8%] bg-black text-center border-t border-[rgba(255,255,255,0.05)]">
+      <section className="py-[120px] px-[5%] md:px-[8%] bg-[var(--darker)] text-center border-t border-[rgba(10,10,10,0.06)]">
         <div className="max-w-[900px] mx-auto reveal">
           <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] mb-[24px] block">
             Our Promise
           </span>
-          <blockquote className="font-serif text-[clamp(24px,3.5vw,42px)] font-light leading-[1.3] text-white italic">
+          <blockquote className="font-serif text-[clamp(24px,3.5vw,42px)] font-light leading-[1.3] text-[var(--light)] italic">
             "To build digital records and visual narratives of high excellence, helping enterprise systems shape and communicate their legacies with absolute precision."
           </blockquote>
           <div className="w-[50px] h-[1px] bg-[var(--gold)] mx-auto mt-[30px]" />
