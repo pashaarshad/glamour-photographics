@@ -127,41 +127,119 @@ export default function Home() {
     <main className="w-full bg-[var(--dark)] text-[var(--light)] pb-[100px] overflow-x-hidden cursor-none relative">
       
       {/* ─── 1. HERO SECTION ─── */}
-      <section className="relative min-h-[100svh] flex flex-col justify-center md:flex-row md:justify-start md:items-center px-[5%] md:px-[8%] pt-[120px] md:pt-[80px] pb-[60px] md:pb-0 overflow-hidden bg-[#0A0A0A]">
-        <div className="absolute inset-0 z-0 select-none">
-          {/* Desktop image */}
-          <img 
-            src="/images/hero-camera.jpg" 
-            alt="Premium Camera Lens" 
-            className="hidden md:block w-full h-full object-contain object-[right_center] opacity-80" 
-          />
-          {/* Mobile image */}
-          <img 
-            src="/images/hero-camera-mobile.png" 
-            alt="Premium Camera Lens Mobile" 
-            className="block md:hidden w-full h-full object-cover object-center opacity-75" 
-            onError={(e) => {
-              // Fallback to desktop image if mobile one is not uploaded yet
-              e.target.src = "/images/hero-camera.jpg";
-              e.target.className = "block md:hidden w-full h-full object-contain object-[center_bottom] opacity-70";
-            }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[#0A0A0A] via-[rgba(10,10,10,0.85)] md:via-[rgba(10,10,10,0.65)] to-transparent z-10" />
-        </div>
-        <div className="w-full max-w-[650px] flex-none z-20 relative pt-[40px] md:pt-[60px] text-left">
-          <h1 className="font-serif text-left text-[clamp(52px,7vw,100px)] font-bold leading-[1.05] tracking-[-0.02em] mb-[32px] text-white">
-            <span className="block overflow-hidden pb-[4px]"><span className="block anim-slide-up delay-100" style={{ transform: 'translateY(100%)' }}>We Capture</span></span>
-            <span className="block overflow-hidden pb-[4px]"><span className="block anim-slide-up delay-150" style={{ transform: 'translateY(100%)' }}>Moments.</span></span>
-            <span className="block overflow-hidden pb-[4px]"><span className="block anim-slide-up delay-200" style={{ transform: 'translateY(100%)' }}>We Create</span></span>
-            <span className="block overflow-hidden pb-[4px]"><span className="block anim-slide-up delay-240 text-[var(--gold)] italic font-bold" style={{ transform: 'translateY(100%)' }}>Legacies.</span></span>
-          </h1>
-          <p className="text-[15px] md:text-[17px] text-[rgba(250,248,244,0.9)] leading-[1.7] max-w-[420px] opacity-0 anim-fade-up delay-300 mb-[48px] font-semibold">
-            40+ Years of Storytelling Through The Lens of Excellence
-          </p>
-          <div className="opacity-0 anim-fade-up delay-380">
-            <Link href="/portfolio" className="inline-flex items-center justify-center border border-[rgba(255,255,255,0.3)] text-white uppercase tracking-[0.2em] text-[11px] font-bold px-[36px] py-[18px] transition-all duration-400 hover:bg-white hover:text-black hover:border-transparent cursor-none">
-              Explore Our Work
-            </Link>
+      <section className="relative min-h-[100vh] flex items-center justify-center px-[5%] md:px-[6%] pt-[130px] pb-[80px] overflow-hidden bg-[#FAF8F4] z-10 border-b border-[rgba(10,10,10,0.06)]">
+        <div className="max-w-[1440px] w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-[40px] items-center">
+          
+          {/* Left Column - Content & Icons (span 4) */}
+          <div className="lg:col-span-4 flex flex-col z-20 text-left reveal opacity-0 anim-fade-up">
+            <h1 className="font-serif text-[clamp(42px,5vw,72px)] font-normal leading-[1.08] tracking-tight mb-[24px] text-[var(--light)]">
+              We Capture <br />
+              <span className="text-[var(--gold)] font-bold">Moments.</span> <br />
+              We Create <br />
+              <span className="text-[var(--gold)] font-bold">Legacies.</span>
+            </h1>
+            <p className="text-[14.5px] text-[var(--light)] leading-relaxed mb-[32px] font-semibold">
+              40+ Years of Storytelling <br />
+              Through The Lens of Excellence
+            </p>
+            
+            {/* Watch Showreel Button */}
+            <button 
+              suppressHydrationWarning
+              onClick={() => setShowreelOpen(true)}
+              className="flex items-center gap-[14px] text-[11px] tracking-[0.2em] uppercase font-bold text-[var(--light)] hover:text-[var(--gold)] transition-all mb-[48px] self-start cursor-none group"
+            >
+              <span className="w-[48px] h-[48px] rounded-full border-2 border-[var(--gold)] flex items-center justify-center text-[var(--gold)] bg-transparent group-hover:bg-[var(--gold)] group-hover:text-white transition-all duration-300">
+                <Play className="w-[14px] h-[14px] fill-current ml-[2px]" />
+              </span>
+              Watch Our Showreel
+            </button>
+
+            {/* 7 Capabilities Icons Grid */}
+            <div className="grid grid-cols-12 gap-y-[24px] gap-x-[12px] max-w-[420px]">
+              {/* Row 1 (4 items - 3 cols each) */}
+              <div className="col-span-3 flex flex-col items-center text-center">
+                <Building2 className="w-[20px] h-[20px] text-[var(--gold)] mb-[8px] shrink-0" />
+                <span className="text-[8px] font-extrabold tracking-wider uppercase text-[var(--light)] leading-tight max-w-[85px]">Corporate Films</span>
+              </div>
+              <div className="col-span-3 flex flex-col items-center text-center">
+                <Camera className="w-[20px] h-[20px] text-[var(--gold)] mb-[8px] shrink-0" />
+                <span className="text-[8px] font-extrabold tracking-wider uppercase text-[var(--light)] leading-tight max-w-[85px]">Wedding Photo</span>
+              </div>
+              <div className="col-span-3 flex flex-col items-center text-center">
+                <Calendar className="w-[20px] h-[20px] text-[var(--gold)] mb-[8px] shrink-0" />
+                <span className="text-[8px] font-extrabold tracking-wider uppercase text-[var(--light)] leading-tight max-w-[85px]">Event Coverage</span>
+              </div>
+              <div className="col-span-3 flex flex-col items-center text-center">
+                <Award className="w-[20px] h-[20px] text-[var(--gold)] mb-[8px] shrink-0" />
+                <span className="text-[8px] font-extrabold tracking-wider uppercase text-[var(--light)] leading-tight max-w-[85px]">Digital Ads</span>
+              </div>
+
+              {/* Row 2 (3 items - 4 cols each) */}
+              <div className="col-span-4 flex flex-col items-center text-center">
+                <Video className="w-[20px] h-[20px] text-[var(--gold)] mb-[8px] shrink-0" />
+                <span className="text-[8px] font-extrabold tracking-wider uppercase text-[var(--light)] leading-tight max-w-[90px]">Documentary Films</span>
+              </div>
+              <div className="col-span-4 flex flex-col items-center text-center">
+                <User className="w-[20px] h-[20px] text-[var(--gold)] mb-[8px] shrink-0" />
+                <span className="text-[8px] font-extrabold tracking-wider uppercase text-[var(--light)] leading-tight max-w-[90px]">Studio Portraits</span>
+              </div>
+              <div className="col-span-4 flex flex-col items-center text-center">
+                <Aperture className="w-[20px] h-[20px] text-[var(--gold)] mb-[8px] shrink-0" />
+                <span className="text-[8px] font-extrabold tracking-wider uppercase text-[var(--light)] leading-tight max-w-[90px]">Photo Restore</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Middle Column - Cinematic Camera Graphic (span 6) */}
+          <div className="lg:col-span-6 flex items-center justify-center z-10 reveal opacity-0 anim-fade-up delay-100 select-none">
+            <img 
+              src="/images/hero-camera.png" 
+              alt="Premium Cinematic Camera Setup" 
+              className="w-full h-auto max-h-[560px] object-contain mx-auto"
+            />
+          </div>
+
+          {/* Right Column - Vertical Film Strip (span 2) */}
+          <div className="lg:col-span-2 flex items-center justify-end z-20 reveal opacity-0 anim-fade-up delay-200">
+            <div className="w-[130px] h-[440px] hidden lg:flex flex-col bg-[#1A1A1A] border-2 border-[#1A1A1A] rounded-[4px] py-[16px] px-[8px] relative z-10 shrink-0 select-none shadow-[0_8px_32px_rgba(0,0,0,0.12)] overflow-hidden">
+              {/* Left sprocket track */}
+              <div className="absolute left-[3px] top-0 bottom-0 w-[4px] flex flex-col justify-around py-[8px] z-20">
+                {Array.from({ length: 14 }).map((_, i) => (
+                  <div key={i} className="w-[3px] h-[7px] bg-[#FAF8F4] opacity-90 rounded-[1px] mb-[3px]" />
+                ))}
+              </div>
+              {/* Right sprocket track */}
+              <div className="absolute right-[3px] top-0 bottom-0 w-[4px] flex flex-col justify-around py-[8px] z-20">
+                {Array.from({ length: 14 }).map((_, i) => (
+                  <div key={i} className="w-[3px] h-[7px] bg-[#FAF8F4] opacity-90 rounded-[1px] mb-[3px]" />
+                ))}
+              </div>
+
+              {/* Scrolling Film Strip Frames */}
+              <div className="h-full overflow-hidden relative select-none z-10">
+                <div className="flex flex-col gap-[12px] animate-marquee-vertical">
+                  {[
+                    "/images/our_portfolio/highlights_3C1A0761.jpg",
+                    "/images/our_portfolio/dilquar.jpg",
+                    "/images/our_portfolio/rtx-1.jpg",
+                    "/images/our_portfolio/highlights_3C1A0775.jpg",
+                    "/images/our_portfolio/highlights_3C1A0761.jpg",
+                    "/images/our_portfolio/dilquar.jpg",
+                    "/images/our_portfolio/rtx-1.jpg",
+                    "/images/our_portfolio/highlights_3C1A0775.jpg"
+                  ].map((src, idx) => (
+                    <div key={idx} className="w-full aspect-square bg-[#0A0A0A] overflow-hidden relative rounded-[2px] group border border-[rgba(255,255,255,0.08)] shrink-0">
+                      <img 
+                        src={src} 
+                        alt={`Film frame ${idx + 1}`} 
+                        className="w-full h-full object-cover grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
