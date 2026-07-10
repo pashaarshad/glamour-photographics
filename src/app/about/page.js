@@ -33,7 +33,7 @@ export default function About() {
     <main className="w-full bg-[var(--dark)] text-[var(--light)] min-h-screen pt-0 pb-[100px] cursor-none relative">
       
       {/* ─── HERO SECTION: OUR STORY ─── */}
-      <section className="px-[5%] md:px-[8%] max-w-[1400px] mx-auto pt-[160px] pb-[80px]">
+      <section className="px-[4%] md:px-[5%] max-w-[1600px] mx-auto pt-[160px] pb-[80px]">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-[60px] items-center">
           {/* Left Column: Heading and Story */}
           <div className="lg:col-span-5 reveal">
@@ -49,9 +49,11 @@ export default function About() {
             </p>
             
             <div className="pt-[24px] border-t border-[rgba(10,10,10,0.06)]">
-              <span className="font-serif italic text-[24px] text-[var(--gold)] block font-light leading-none mb-[8px]">
-                Hameed Hussain
-              </span>
+              <img 
+                src="/images/signature.png" 
+                alt="Hameed Hussain Signature" 
+                className="h-[48px] w-auto object-contain mb-[8px] select-none pointer-events-none"
+              />
               <span className="text-[10px] tracking-[0.1em] uppercase text-gray-400 block">
                 Founder, Glamour Photographics
               </span>
@@ -59,14 +61,14 @@ export default function About() {
           </div>
           
           {/* Right Column: Hero Double-Exposure Image */}
-          <div className="lg:col-span-7 relative reveal h-[550px] md:h-[650px] rounded-sm overflow-hidden border border-[rgba(10,10,10,0.06)] bg-[#0A0A0A]">
+          <div className="lg:col-span-7 relative reveal flex items-center justify-center">
             <img 
               src="/images/about-hero-double-exposure.png" 
               alt="A Legacy in Frames Double Exposure" 
-              className="w-full h-full object-cover opacity-85" 
+              className="w-full h-auto max-h-[650px] object-contain z-10" 
             />
             {/* Badge Overlay */}
-            <div className="absolute bottom-[30px] right-[30px] bg-[#FAF8F4] border border-[rgba(197,164,109,0.3)] px-[20px] py-[12px] shadow-[0_4px_12px_rgba(0,0,0,0.04)] z-20">
+            <div className="absolute bottom-[30px] right-[5%] bg-[#FAF8F4] border border-[rgba(197,164,109,0.3)] px-[20px] py-[12px] shadow-[0_4px_12px_rgba(0,0,0,0.04)] z-20">
               <span className="text-[9px] tracking-[0.2em] uppercase text-[var(--light)] font-bold block mb-[2px]">Est. 1982</span>
               <span className="text-[8px] tracking-[0.1em] uppercase text-[var(--gold)] font-medium block">Bengaluru, India</span>
             </div>
@@ -75,20 +77,26 @@ export default function About() {
       </section>
 
       {/* ─── FOUNDER'S NOTE ─── */}
-      <section className="px-[5%] md:px-[8%] max-w-[1400px] mx-auto py-[100px] border-t border-[rgba(10,10,10,0.06)] mb-[40px]">
+      <section className="px-[4%] md:px-[5%] max-w-[1600px] mx-auto py-[100px] border-t border-[rgba(10,10,10,0.06)] mb-[40px]">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-[60px] items-start">
           {/* Column 1: Founder Card */}
-          <div className="lg:col-span-4 relative rounded-sm overflow-hidden border border-[rgba(10,10,10,0.06)] bg-[#0A0A0A] h-[520px] reveal">
-            <img 
-              src="/logo-clients/founder-ceo.jpg" 
-              alt="Founder Hameed Hussain" 
-              className="w-full h-[320px] object-cover opacity-80"
-            />
-            <div className="absolute bottom-0 left-0 right-0 bg-[#0A0A0A] p-[30px] border-t border-[rgba(255,255,255,0.08)]">
+          <div className="lg:col-span-4 relative rounded-sm overflow-hidden border border-[rgba(10,10,10,0.06)] bg-[#0A0A0A] h-[580px] reveal flex flex-col justify-between">
+            <div className="flex-1 w-full relative h-[380px] overflow-hidden">
+              <img 
+                src="/logo-clients/founder-ceo.jpg" 
+                alt="Founder Hameed Hussain" 
+                className="w-full h-full object-cover opacity-80"
+              />
+            </div>
+            <div className="bg-[#0A0A0A] p-[30px] border-t border-[rgba(255,255,255,0.08)]">
               <span className="text-[9px] tracking-[0.25em] uppercase text-gray-400 block mb-[4px]">Founder</span>
               <h3 className="font-serif text-[24px] text-white leading-tight font-bold mb-[2px]">Hameed Hussain</h3>
               <span className="text-[11px] text-[var(--gold)] block mb-[20px]">Glamour Photographics, Est. 1982</span>
-              <span className="font-serif italic text-[20px] text-[var(--gold)] block font-light leading-none">Hameed Hussain</span>
+              <img 
+                src="/images/signature.png" 
+                alt="Hameed Hussain Signature" 
+                className="h-[40px] w-auto object-contain select-none pointer-events-none invert opacity-90"
+              />
             </div>
           </div>
           
@@ -118,8 +126,12 @@ export default function About() {
                 The heart of Glamour Photographics has always been its people. Your unwavering support and faith have fuelled our artistic pursuit and allowed us to thrive in an ever-evolving industry. As we pen this new chapter, I invite you to join us once again in our pursuit of beauty, authenticity, and unbounded creativity.
               </p>
               <div className="pt-[16px] border-t border-[rgba(10,10,10,0.06)]">
-                <p className="text-[11px] uppercase tracking-[0.1em] text-gray-400">With deepest appreciation,</p>
-                <p className="font-serif text-[18px] font-bold text-[var(--light)] mt-[4px]">Hameed Hussain</p>
+                <p className="text-[11px] uppercase tracking-[0.1em] text-gray-400 mb-[10px]">With deepest appreciation,</p>
+                <img 
+                  src="/images/signature.png" 
+                  alt="Hameed Hussain Signature" 
+                  className="h-[44px] w-auto object-contain select-none pointer-events-none"
+                />
               </div>
             </div>
           </div>
@@ -165,8 +177,8 @@ export default function About() {
       </section>
 
       {/* ─── WHY CHOOSE US ─── */}
-      <section className="py-[120px] px-[5%] md:px-[8%] bg-[var(--dark)] border-t border-[rgba(10,10,10,0.06)]">
-        <div className="max-w-[1400px] mx-auto reveal">
+      <section className="py-[120px] px-[4%] md:px-[5%] bg-[var(--dark)] border-t border-[rgba(10,10,10,0.06)]">
+        <div className="max-w-[1600px] mx-auto reveal">
           <div className="text-center mb-[60px]">
             <span className="text-[10px] tracking-[0.25em] uppercase text-[var(--gold)] mb-[12px] block font-medium">Why Choose Us</span>
             <h2 className="font-serif text-[clamp(32px,4vw,48px)] text-[var(--light)] mb-[16px]">What Sets Us Apart</h2>
@@ -227,9 +239,9 @@ export default function About() {
         </div>
       </section>
 
-      {/* ─── HOW WE WORK (OUR APPROACH) ─── */}
-      <section className="py-[120px] px-[5%] md:px-[8%] bg-[var(--darker)] border-t border-[rgba(10,10,10,0.06)]">
-        <div className="max-w-[1400px] mx-auto reveal">
+      {/* ─── HOW WE WORK (OUR APPROACH TIMELINE) ─── */}
+      <section className="py-[120px] px-[4%] md:px-[5%] bg-[var(--darker)] border-t border-[rgba(10,10,10,0.06)]">
+        <div className="max-w-[1600px] mx-auto reveal">
           <div className="text-center mb-[80px]">
             <span className="text-[10px] tracking-[0.25em] uppercase text-[var(--gold)] mb-[12px] block font-medium">How We Work</span>
             <h2 className="font-serif text-[clamp(32px,4vw,48px)] text-[var(--light)] mb-[16px]">Our Approach</h2>
@@ -238,12 +250,12 @@ export default function About() {
             </div>
           </div>
           
-          {/* Horizontal Timeline Row */}
-          <div className="relative">
-            {/* Timeline Connecting Line */}
-            <div className="hidden lg:block absolute top-[6px] left-[12.5%] right-[12.5%] h-[1.5px] bg-[rgba(197,164,109,0.3)] z-0" />
+          {/* Vertical Alternating Timeline */}
+          <div className="relative mt-[60px]">
+            {/* Center Vertical Axis Line */}
+            <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[1.5px] bg-[rgba(197,164,109,0.25)] z-0" />
             
-            <div className="grid grid-cols-1 lg:grid-cols-4 gap-[40px] relative z-10">
+            <div className="space-y-[80px] relative z-10">
               {[
                 {
                   num: "01",
@@ -269,29 +281,44 @@ export default function About() {
                   desc: "We maintain high production standards to deliver films that reflect the quality and professionalism of your brand — without exception or compromise.",
                   img: "/images/hero-camera.jpg"
                 }
-              ].map((step, idx) => (
-                <div key={idx} className="flex flex-col items-center lg:items-start text-center lg:text-left">
-                  {/* Timeline Point */}
-                  <div className="flex items-center gap-[12px] mb-[20px]">
-                    <div className="w-[12px] h-[12px] rounded-full bg-[var(--gold)] shrink-0 z-10" />
-                    <span className="font-serif italic text-[36px] text-[var(--gold)] leading-none font-light">{step.num}</span>
-                    <h3 className="font-serif text-[20px] text-[var(--light)] font-bold">{step.title}</h3>
+              ].map((step, idx) => {
+                const isEven = idx % 2 === 0;
+                return (
+                  <div 
+                    key={idx} 
+                    className={`flex flex-col md:flex-row items-center justify-between gap-[30px] md:gap-0 relative ${
+                      isEven ? "md:flex-row" : "md:flex-row-reverse"
+                    }`}
+                  >
+                    {/* Center Node dot */}
+                    <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-[14px] h-[14px] rounded-full bg-[var(--gold)] border-[3px] border-[var(--darker)] z-20 shadow-sm" />
+                    
+                    {/* Content Card (Half Width) */}
+                    <div className="w-full md:w-[45%] flex flex-col justify-center">
+                      <div className="bg-white border border-[rgba(10,10,10,0.06)] rounded-sm p-[30px] md:p-[40px] shadow-[0_4px_24px_rgba(0,0,0,0.01)] hover:border-[var(--gold)] transition-colors duration-450">
+                        <div className="flex items-center gap-[12px] mb-[16px]">
+                          <span className="font-serif italic text-[32px] text-[var(--gold)] leading-none font-light">{step.num}</span>
+                          <h3 className="font-serif text-[22px] text-[var(--light)] font-bold">{step.title}</h3>
+                        </div>
+                        <p className="text-[13.5px] text-[var(--muted)] leading-relaxed font-light">
+                          {step.desc}
+                        </p>
+                      </div>
+                    </div>
+                    
+                    {/* Step Card Image (Half Width on opposite side) */}
+                    <div className="w-full md:w-[45%]">
+                      <div className="w-full aspect-[16/10] rounded-sm overflow-hidden border border-[rgba(10,10,10,0.06)] shadow-sm bg-white group">
+                        <img 
+                          src={step.img} 
+                          alt={step.title} 
+                          className="w-full h-full object-cover transition-transform duration-[600ms] group-hover:scale-103" 
+                        />
+                      </div>
+                    </div>
                   </div>
-                  
-                  <p className="text-[13px] text-[var(--muted)] leading-relaxed font-light mb-[24px] lg:min-h-[72px]">
-                    {step.desc}
-                  </p>
-                  
-                  {/* Step Card Image */}
-                  <div className="w-full aspect-[4/3] rounded-sm overflow-hidden border border-[rgba(10,10,10,0.06)] shadow-sm bg-white">
-                    <img 
-                      src={step.img} 
-                      alt={step.title} 
-                      className="w-full h-full object-cover transition-transform duration-[600ms] hover:scale-105" 
-                    />
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
@@ -360,31 +387,31 @@ export default function About() {
       </section>
 
       {/* ─── CTA BANNER: LET'S CREATE SOMETHING EXTRAORDINARY ─── */}
-      <section className="px-[5%] md:px-[8%] max-w-[1400px] mx-auto mb-[100px] reveal">
-        <div className="bg-[rgba(10,10,10,0.02)] border border-[rgba(10,10,10,0.06)] rounded-sm p-[40px] md:p-[60px] flex flex-col lg:flex-row items-center justify-between gap-[40px] relative overflow-hidden">
+      <section className="px-[4%] md:px-[5%] max-w-[1600px] mx-auto mb-[100px] reveal">
+        <div className="bg-[rgba(10,10,10,0.015)] border border-[rgba(10,10,10,0.06)] rounded-[2px] py-[30px] px-[40px] md:px-[50px] flex flex-col md:flex-row items-center justify-between gap-[30px] relative overflow-hidden">
           {/* Left Side: Film Reel Icon & Text */}
-          <div className="flex items-center gap-[24px] z-10 w-full lg:w-auto">
-            <svg className="w-16 h-16 text-[var(--gold)] opacity-30 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <circle cx="12" cy="12" r="10" strokeWidth="2" strokeDasharray="4 4" />
-              <circle cx="12" cy="12" r="6" strokeWidth="2" />
-              <circle cx="12" cy="12" r="2" strokeWidth="2" />
-            </svg>
+          <div className="flex items-center gap-[30px] z-10 w-full md:w-auto">
+            <img 
+              src="/images/left-inabout-let-create-somethin.png" 
+              alt="Film Reel Videography Element" 
+              className="w-[120px] md:w-[150px] h-auto object-contain shrink-0" 
+            />
             <div>
-              <h2 className="font-serif text-[clamp(28px,3.5vw,40px)] text-[var(--light)] leading-tight">
-                Let's create something <br />
+              <h2 className="font-serif text-[clamp(24px,3vw,36px)] text-[var(--light)] leading-tight font-medium">
+                Let's create something <br className="hidden md:block" />
                 extraordinary together.
               </h2>
             </div>
           </div>
           {/* Right Side: Start a Project Button & Illustration */}
-          <div className="z-10 flex items-center justify-between lg:justify-end gap-[40px] w-full lg:w-auto shrink-0">
-            <Link href="/contact" className="inline-flex items-center justify-center bg-[var(--gold)] text-white uppercase tracking-[0.2em] text-[11px] font-bold px-[36px] py-[18px] transition-all duration-400 hover:bg-black hover:text-white cursor-none">
+          <div className="z-10 flex items-center justify-between md:justify-end gap-[30px] w-full md:w-auto shrink-0">
+            <Link href="/contact" className="inline-flex items-center justify-center bg-[var(--gold)] text-white uppercase tracking-[0.2em] text-[11px] font-bold px-[36px] py-[16px] transition-all duration-400 hover:bg-black hover:text-white cursor-none">
               Start a Project &rarr;
             </Link>
             <img 
               src="/images/about-cta-chair.png" 
               alt="Director's Chair Illustration" 
-              className="h-[130px] w-auto object-contain hidden sm:block lg:ml-[20px]"
+              className="h-[120px] w-auto object-contain hidden lg:block lg:ml-[20px]"
             />
           </div>
         </div>
