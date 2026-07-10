@@ -38,6 +38,7 @@ export default function Home() {
   const [showreelOpen, setShowreelOpen] = useState(false);
   const [statsTriggered, setStatsTriggered] = useState(false);
   const [expandedClients, setExpandedClients] = useState(false);
+  const [activeCert, setActiveCert] = useState(null);
   
   const statsRef = useRef(null);
 
@@ -415,18 +416,18 @@ export default function Home() {
       </section>
 
       {/* ─── 7. FEATURED WORK (CAROUSEL WITH VIDEOS) ─── */}
-      <section className="py-[120px] px-[8%] md:px-[10%] bg-[var(--dark)]">
+      <section className="py-[120px] px-[8%] md:px-[10%] bg-[#0A0A0A]">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-[60px] gap-[20px]">
           <div className="reveal opacity-0 anim-fade-up">
             <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] mb-[16px] block">
               Featured Work
             </span>
-            <h2 className="font-serif text-[clamp(28px,4vw,48px)] font-light leading-[1.2] text-[var(--light)]">
+            <h2 className="font-serif text-[clamp(28px,4vw,48px)] font-light leading-[1.2] text-white">
               Stories We've Brought to Life
             </h2>
           </div>
           <div className="reveal opacity-0 anim-fade-up delay-100">
-            <Link href="/corporate" className="text-[10px] tracking-[0.25em] uppercase font-semibold py-[12px] px-[24px] border border-[rgba(10,10,10,0.15)] text-[var(--light)] hover:bg-[var(--light)] hover:text-[var(--dark)] cursor-none transition-all">
+            <Link href="/corporate" className="text-[10px] tracking-[0.25em] uppercase font-semibold py-[12px] px-[24px] border border-[rgba(255,255,255,0.2)] text-white hover:bg-white hover:text-black cursor-none transition-all">
               View All Projects
             </Link>
           </div>
@@ -456,7 +457,7 @@ export default function Home() {
               { title: "PAI - Brand Documentary", slug: "pai", vidId: "C0hzCKpITSE", type: "Retail Journey" },
             ].map((project, idx) => (
               <SwiperSlide key={idx}>
-                <div className="group relative bg-[var(--darker)] border border-[rgba(10,10,10,0.06)] rounded-sm overflow-hidden flex flex-col h-[380px]">
+                <div className="group relative bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.05)] rounded-sm overflow-hidden flex flex-col h-[380px]">
                   {/* Thumbnail / Video Iframe */}
                   <div className="h-[210px] w-full relative overflow-hidden bg-black">
                     <iframe
@@ -475,11 +476,11 @@ export default function Home() {
                       <span className="text-[9px] tracking-[0.2em] uppercase text-[var(--gold)] mb-[8px] block font-medium">
                         {project.type}
                       </span>
-                      <h3 className="font-serif text-[20px] text-[var(--light)] leading-[1.3] group-hover:text-[var(--gold)] transition-colors">
+                      <h3 className="font-serif text-[20px] text-white leading-[1.3] group-hover:text-[var(--gold)] transition-colors">
                         {project.title}
                       </h3>
                     </div>
-                    <Link href={`/corporate/${project.slug}`} className="text-[10px] tracking-[0.2em] uppercase text-[var(--light)] font-medium inline-flex items-center gap-[8px] cursor-none border-b border-transparent hover:border-[var(--light)] w-fit">
+                    <Link href={`/corporate/${project.slug}`} className="text-[10px] tracking-[0.2em] uppercase text-white font-medium inline-flex items-center gap-[8px] cursor-none border-b border-transparent hover:border-white w-fit">
                       Read Project details <span>→</span>
                     </Link>
                   </div>
@@ -507,46 +508,53 @@ export default function Home() {
           ].map((srv, idx) => (
             <div key={idx} className="group relative p-[40px] rounded-sm overflow-hidden border border-[rgba(10,10,10,0.06)] hover:border-[var(--gold)] transition-all duration-[400ms] cursor-none min-h-[280px] flex flex-col justify-end">
               <div className="absolute inset-0 z-0">
-                <img src={srv.bg} alt={srv.title} className="w-full h-full object-cover opacity-70 group-hover:opacity-90 transition-opacity duration-500" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-[rgba(10,10,10,0.55)] to-transparent" />
+                <img src={srv.bg} alt={srv.title} className="w-full h-full object-cover opacity-85" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
               </div>
               <div className="relative z-10">
                 <srv.icon className="w-[32px] h-[32px] text-[var(--gold)] mb-[24px] transition-transform duration-300 group-hover:scale-110" />
                 <h3 className="text-[18px] font-serif text-white mb-[12px] group-hover:text-[var(--gold)] transition-colors">{srv.title}</h3>
-                <p className="text-[13px] text-[var(--muted)] leading-[1.6] font-light">{srv.desc}</p>
+                <p className="text-[13px] text-[rgba(255,255,255,0.8)] leading-[1.6] font-light">{srv.desc}</p>
               </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* ─── 9. OUR CLIENTS ─── */}
-      <section className="py-[120px] px-[8%] md:px-[10%] bg-[var(--darker)]">
-        <h3 className="text-[28px] font-serif text-[var(--light)] mb-[40px] reveal opacity-0 anim-fade-up">Our Clients</h3>
-        <p className="text-[12px] text-[var(--gold)] tracking-[0.2em] uppercase mb-[20px] reveal opacity-0 anim-fade-up delay-100">Our Enterprise Partnerships</p>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-0 border border-[rgba(10,10,10,0.06)]">
-          {[
-            { name: "TCS", slug: "tcs", logo: "/logo-clients/TCS_NewLogo_Final_RGB.png" },
-            { name: "CII", slug: "cii", logo: "/logo-clients/cii.jpg" },
-            { name: "CGI", slug: "cgi", logo: "/logo-clients/CGI_Inc.-Logo.wine.png" },
-            { name: "Presidency University", slug: "presidency", logo: "/logo-clients/presidency-university-yelahanka-bangalore-universities-si0nhgmmkz.jpg" },
-            { name: "TATA ELXSI", slug: "tata-elxsi", logo: "/logo-clients/tata-elxsi-moves-focus-away-from-driverless-tech.avif" },
-            { name: "RTX", slug: "rtx", logo: "/logo-clients/RTX.webp" },
-            { name: "Toyota", slug: "toyota" },
-            { name: "PAI", slug: "pai" }
-          ].map((client, i) => (
-            <Link href={`/corporate/${client.slug}`} key={i} className="group h-[160px] border border-[rgba(10,10,10,0.06)] flex items-center justify-center p-[20px] hover:border-[var(--gold)] hover:bg-[rgba(197,164,109,0.04)] transition-all cursor-none">
-              {client.logo ? (
-                <img src={client.logo} alt={client.name} className="max-h-[60px] max-w-[85%] object-contain grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300" />
-              ) : (
-                <span className="font-serif text-[18px] text-[var(--muted)] group-hover:text-[var(--light)] transition-colors text-center">{client.name}</span>
-              )}
-            </Link>
-          ))}
+      {/* ─── 9. OUR CLIENTS (CLIENTS PORTFOLIO) ─── */}
+      <section className="py-[120px] px-[8%] md:px-[10%] bg-[var(--dark)]">
+        <div className="text-center mb-[40px] reveal opacity-0 anim-fade-up">
+          <h3 className="font-serif text-[24px] tracking-[0.2em] uppercase text-[var(--light)] font-bold mb-[12px]">
+            Clients Portfolio
+          </h3>
+          <div className="w-[60px] h-[2px] bg-[var(--gold)] mx-auto"></div>
+        </div>
+
+        <div className="max-w-[1000px] mx-auto bg-white border border-[rgba(10,10,10,0.06)] rounded-sm shadow-[0_8px_30px_rgba(0,0,0,0.02)] reveal opacity-0 anim-fade-up delay-100">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-0">
+            {[
+              { name: "CII", slug: "cii", logo: "/logo-clients/cii.jpg" },
+              { name: "CGI", slug: "cgi", logo: "/logo-clients/CGI_Inc.-Logo.wine.png" },
+              { name: "Toyota", slug: "toyota" },
+              { name: "RTX", slug: "rtx", logo: "/logo-clients/RTX.webp" },
+              { name: "TCS", slug: "tcs", logo: "/logo-clients/TCS_NewLogo_Final_RGB.png" },
+              { name: "TATA ELXSI", slug: "tata-elxsi", logo: "/logo-clients/tata-elxsi-moves-focus-away-from-driverless-tech.avif" },
+              { name: "Presidency University", slug: "presidency", logo: "/logo-clients/presidency-university-yelahanka-bangalore-universities-si0nhgmmkz.jpg" },
+              { name: "PAI", slug: "pai" }
+            ].map((client, i) => (
+              <Link href={`/corporate/${client.slug}`} key={i} className="group h-[140px] border border-[rgba(10,10,10,0.06)] flex items-center justify-center p-[20px] hover:border-[var(--gold)] hover:z-10 hover:shadow-md hover:bg-[rgba(197,164,109,0.02)] transition-all cursor-none relative">
+                {client.logo ? (
+                  <img src={client.logo} alt={client.name} className="max-h-[55px] max-w-[85%] object-contain" />
+                ) : (
+                  <span className="font-serif text-[18px] font-bold text-[var(--muted)] group-hover:text-[var(--light)] transition-colors text-center">{client.name}</span>
+                )}
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* ─── 10. OUR PORTFOLIO (Masonry Tabs) ─── */}
+      {/* ─── 10. OUR PORTFOLIO (Uniform Grid) ─── */}
       <section className="py-[120px] px-[8%] md:px-[10%] bg-[var(--darker)] border-y border-[rgba(10,10,10,0.06)]">
         <h3 className="text-[28px] font-serif text-[var(--light)] mb-[40px] reveal opacity-0 anim-fade-up">Our Portfolio</h3>
         <div className="flex flex-wrap gap-[30px] border-b border-[rgba(10,10,10,0.08)] pb-[15px] mb-[40px] reveal opacity-0 anim-fade-up delay-100">
@@ -562,10 +570,10 @@ export default function Home() {
             </button>
           ))}
         </div>
-        <div className="columns-1 md:columns-2 lg:columns-3 gap-[24px] [column-fill:_balance] w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[24px] w-full">
           {activeImages.map((src, idx) => (
-            <div key={idx} className="break-inside-avoid mb-[24px] relative group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)]">
-              <img src={src} alt={`Portfolio Image ${idx + 1}`} className="w-full h-auto object-cover transition-transform duration-[800ms] group-hover:scale-105" />
+            <div key={idx} className="relative aspect-[3/2] group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)]">
+              <img src={src} alt={`Portfolio Image ${idx + 1}`} className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-105" />
               <div className="absolute inset-0 bg-gradient-to-t from-[rgba(0,0,0,0.85)] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-[30px]">
                 <span className="text-[9px] tracking-[0.2em] uppercase text-[var(--gold)] mb-[8px]">Gallery Spotlight</span>
                 <h4 className="font-serif text-[18px] text-white">Visual Artifact</h4>
@@ -630,52 +638,65 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── 13. WHAT OUR CLIENTS SAY (TESTIMONIALS SWIPER) ─── */}
-      <section className="py-[120px] px-[8%] md:px-[10%] bg-[var(--dark)]">
-        <div className="max-w-[800px] mx-auto reveal opacity-0 anim-fade-up">
-          <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] mb-[24px] block text-center">Testimonials</span>
+      {/* ─── 13. WHAT OUR CLIENTS SAY (TESTIMONIALS LOGO CAROUSEL) ─── */}
+      <section className="py-[120px] px-[8%] md:px-[10%] bg-[var(--dark)] border-t border-[rgba(10,10,10,0.06)]">
+        <div className="max-w-[1200px] mx-auto reveal opacity-0 anim-fade-up">
+          <div className="text-center mb-[40px]">
+            <span className="text-[10px] tracking-[0.25em] uppercase text-[var(--gold)] mb-[12px] block font-medium">
+              Associated Dignitaries —
+            </span>
+            <h2 className="font-serif text-[clamp(28px,4vw,40px)] font-bold uppercase tracking-wider text-[var(--light)] mb-[16px]">
+              Testimonials
+            </h2>
+            <div className="w-[80px] h-[2px] bg-[var(--gold)] mx-auto"></div>
+          </div>
           
-          <Swiper
-            modules={[Pagination, Autoplay]}
-            spaceBetween={40}
-            slidesPerView={1}
-            pagination={{ clickable: true }}
-            autoplay={{ delay: 5000, disableOnInteraction: false }}
-            className="testimonial-swiper"
-          >
-            {[
-              {
-                quote: "Glamour Photographics captured our annual conference with unmatched professionalism. Every frame told a story.",
-                author: "Corporate Client",
-                org: "Confederation of Indian Industry"
-              },
-              {
-                quote: "The wedding film they created for us is a treasure we will cherish for generations. Pure artistry.",
-                author: "Wedding Client",
-                org: "Bengaluru, 2023"
-              },
-              {
-                quote: "Their corporate film elevated our brand narrative. The strategic insight they bring is extraordinary.",
-                author: "Marketing Director",
-                org: "Tata Elxsi"
-              },
-              {
-                quote: "Over 15 years of partnership. Their consistency in quality and creativity is unparalleled in the industry.",
-                author: "Communications Head",
-                org: "Toyota India"
-              }
-            ].map((t, idx) => (
-              <SwiperSlide key={idx}>
-                <div className="text-center pb-[50px] px-[20px]">
-                  <p className="font-serif text-[18px] md:text-[24px] leading-relaxed text-[var(--light)] italic mb-[32px] font-light">
-                    "{t.quote}"
-                  </p>
-                  <h4 className="text-[12px] tracking-[0.2em] uppercase font-bold text-[var(--gold)] mb-[4px]">{t.author}</h4>
-                  <p className="text-[10px] tracking-[0.1em] uppercase text-[var(--muted)]">{t.org}</p>
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+          <div className="w-full">
+            <Swiper
+              modules={[Autoplay]}
+              spaceBetween={20}
+              slidesPerView={2}
+              loop={true}
+              speed={600}
+              autoplay={{
+                delay: 2500,
+                disableOnInteraction: false,
+                pauseOnHover: true
+              }}
+              breakpoints={{
+                600: { slidesPerView: 4, spaceBetween: 24 },
+                1024: { slidesPerView: 6, spaceBetween: 24 }
+              }}
+              className="logo-swiper py-[20px]"
+            >
+              {[
+                { name: "Prince of Wales", logo: "/testimonials/logo-prince-of-wales.png", cert: "/testimonials/cert-prince-of-wales.jpg" },
+                { name: "ITC Limited", logo: "/testimonials/logo-itc.jpg", cert: "/testimonials/cert-itc.jpg" },
+                { name: "Univ. of Exeter", logo: "/testimonials/logo-exeter.png", cert: "/testimonials/cert-exeter.jpg" },
+                { name: "Le Méridien", logo: "/testimonials/logo-le-meridian.png", cert: "/testimonials/cert-le-meridian.jpg" },
+                { name: "Essae", logo: "/testimonials/logo-essae.png", cert: "/testimonials/cert-essae.jpg" },
+                { name: "Baldwins", logo: "/testimonials/logo-baldwins.jpg", cert: "/testimonials/cert-baldwins.jpg" },
+                { name: "BIAL", logo: "/testimonials/logo-bial.png", cert: "/testimonials/cert-bial.jpg" },
+                { name: "GE", logo: "/testimonials/logo-ge.png", cert: "/testimonials/cert-ge.jpg" },
+                { name: "DNA Networks", logo: "/testimonials/logo-dna-networks.png", cert: "/testimonials/cert-dna-networks.jpg" },
+                { name: "Windsor Manor", logo: "/testimonials/logo-windsor-manor.png", cert: "/testimonials/cert-windsor-manor.jpg" }
+              ].map((logo, idx) => (
+                <SwiperSlide key={idx}>
+                  <div 
+                    onClick={() => setActiveCert(logo.cert)}
+                    className="bg-white border border-[rgba(10,10,10,0.06)] p-[12px] rounded-sm h-[90px] flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.01)] transition-all duration-300 hover:scale-105 hover:border-[var(--gold)] cursor-none"
+                  >
+                    <img 
+                      src={logo.logo} 
+                      alt={logo.name} 
+                      className="max-h-[60px] max-w-[85%] object-contain" 
+                      loading="lazy" 
+                    />
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
         </div>
       </section>
 
@@ -721,6 +742,27 @@ export default function Home() {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             ></iframe>
+          </div>
+        </div>
+      )}
+
+      {/* ─── 16. TESTIMONIAL CERTIFICATE LIGHTBOX OVERLAY ─── */}
+      {activeCert && (
+        <div className="fixed inset-0 bg-black/95 z-[9999] flex items-center justify-center p-[20px] transition-all">
+          <button 
+            suppressHydrationWarning
+            onClick={() => setActiveCert(null)} 
+            className="absolute top-[30px] right-[5%] md:right-[8%] text-white text-[12px] tracking-[0.2em] uppercase flex items-center gap-[8px] cursor-none hover:text-[var(--gold)]"
+          >
+            Close <X className="w-[16px] h-[16px]" />
+          </button>
+          <div className="w-full max-w-[640px] max-h-[85vh] overflow-y-auto rounded-sm bg-white p-[8px] shadow-2xl relative flex items-center justify-center">
+            <img 
+              src={activeCert} 
+              alt="Testimonial Certificate Form" 
+              className="max-w-full max-h-[80vh] object-contain rounded-sm" 
+              loading="lazy"
+            />
           </div>
         </div>
       )}
