@@ -5,7 +5,7 @@
   --color-darker: #F2ECE5;      /* Beige layout background */
   --color-dark-panel: #EBE5DC;  /* Slightly darker warm panel background */
   --color-light: #0A0A0A;       /* Rich black/dark text and contrasts */
-  --color-muted: #7A7168;       /* Muted gray/brown text */
+  --color-muted: #2E2A26;       /* High contrast dark gray/brown text */
   --color-gold: #C5A46D;
   --color-gold-b: #B8972E;
 
@@ -21,7 +21,7 @@
     --darker: #F2ECE5;
     --dark-panel: #EBE5DC;
     --light: #0A0A0A;
-    --muted: #7A7168;
+    --muted: #2E2A26;
     --gold: #C5A46D;
     --gold-b: #B8972E;
     --ease: cubic-bezier(.22, 1, .36, 1);

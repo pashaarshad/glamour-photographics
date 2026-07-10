@@ -137,41 +137,74 @@ export default function About() {
           </div>
           
           {/* Column 3: Vertical Film Strip Collage */}
-          <div className="lg:col-span-3 reveal">
-            <div className="flex flex-col gap-[20px] items-center relative py-[20px] px-[15px] bg-[#141414] border border-[rgba(255,255,255,0.06)] rounded-sm">
+          <div className="lg:col-span-3 reveal flex flex-col justify-between h-[580px]">
+            {/* Filmstrip Window */}
+            <div className="flex-1 w-full overflow-hidden relative bg-[#141414] border border-[rgba(255,255,255,0.06)] rounded-sm py-[20px] px-[15px]">
+              
               {/* Vertical Film Sprocket Holes */}
-              <div className="absolute left-[4px] top-0 bottom-0 flex flex-col justify-between py-[10px] select-none pointer-events-none">
-                {Array.from({ length: 18 }).map((_, i) => (
-                  <div key={i} className="w-[6px] h-[10px] bg-[var(--dark)] rounded-[1px] opacity-15" />
+              <div className="absolute left-[4px] top-0 bottom-0 flex flex-col justify-between py-[15px] select-none pointer-events-none z-20">
+                {Array.from({ length: 15 }).map((_, i) => (
+                  <div key={i} className="w-[6px] h-[10px] bg-[var(--dark)] rounded-[1px] opacity-25" />
                 ))}
               </div>
-              <div className="absolute right-[4px] top-0 bottom-0 flex flex-col justify-between py-[10px] select-none pointer-events-none">
-                {Array.from({ length: 18 }).map((_, i) => (
-                  <div key={i} className="w-[6px] h-[10px] bg-[var(--dark)] rounded-[1px] opacity-15" />
+              <div className="absolute right-[4px] top-0 bottom-0 flex flex-col justify-between py-[15px] select-none pointer-events-none z-20">
+                {Array.from({ length: 15 }).map((_, i) => (
+                  <div key={i} className="w-[6px] h-[10px] bg-[var(--dark)] rounded-[1px] opacity-25" />
                 ))}
               </div>
               
-              {/* 4 Black and White Grayscale Images */}
-              {[
-                "/images/our_portfolio/Highlights_3C1A0761.jpg",
-                "/images/our_portfolio/Highlights_3C1A0789.jpg",
-                "/images/our_portfolio/Highlights_3C1A0766.jpg",
-                "/images/our_portfolio/33.jpg"
-              ].map((imgSrc, idx) => (
-                <div key={idx} className="w-full aspect-[4/3] bg-black overflow-hidden relative border border-[rgba(255,255,255,0.1)] group">
-                  <img 
-                    src={imgSrc} 
-                    alt={`Film Strip Frame ${idx + 1}`} 
-                    className="w-full h-full object-cover grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" 
-                  />
+              {/* Infinite Scrolling Marquee list */}
+              <div className="h-full overflow-hidden relative z-10 select-none">
+                <div className="flex flex-col gap-[20px] animate-marquee-vertical">
+                  {[
+                    "/images/our_portfolio/Highlights_3C1A0761.jpg",
+                    "/images/our_portfolio/Highlights_3C1A0789.jpg",
+                    "/images/our_portfolio/Highlights_3C1A0766.jpg",
+                    "/images/our_portfolio/33.jpg",
+                    "/images/corporate-event.jpg",
+                    "/images/cii-event-coverage.jpg",
+                    "/images/outdoor-event.jpg",
+                    "/images/hero-camera.jpg"
+                  ].concat([
+                    "/images/our_portfolio/Highlights_3C1A0761.jpg",
+                    "/images/our_portfolio/Highlights_3C1A0789.jpg",
+                    "/images/our_portfolio/Highlights_3C1A0766.jpg",
+                    "/images/our_portfolio/33.jpg",
+                    "/images/corporate-event.jpg",
+                    "/images/cii-event-coverage.jpg",
+                    "/images/outdoor-event.jpg",
+                    "/images/hero-camera.jpg"
+                  ]).map((imgSrc, idx) => (
+                    <div key={idx} className="w-full aspect-[4/3] bg-black overflow-hidden relative border border-[rgba(255,255,255,0.1)] group cursor-none shrink-0">
+                      <img 
+                        src={imgSrc} 
+                        alt={`Film Strip Frame ${idx + 1}`} 
+                        className="w-full h-full object-cover grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" 
+                      />
+                    </div>
+                  ))}
                 </div>
-              ))}
-
-              {/* Gold badge at the bottom of the filmstrip */}
-              <div className="w-full bg-[#201D1A] border border-[rgba(197,164,109,0.3)] py-[12px] px-[10px] text-center mt-[10px]">
-                <span className="text-[10px] tracking-[0.2em] uppercase text-[var(--gold)] font-bold">40+ Years of Storytelling</span>
               </div>
             </div>
+
+            {/* Gold badge at the bottom of the filmstrip */}
+            <div className="w-full bg-[#201D1A] border border-[rgba(197,164,109,0.3)] py-[12px] px-[10px] text-center mt-[10px] shrink-0">
+              <span className="text-[10px] tracking-[0.2em] uppercase text-[var(--gold)] font-bold">40+ Years of Storytelling</span>
+            </div>
+
+            {/* Local CSS stylesheet for vertical marquee animation */}
+            <style suppressHydrationWarning>{`
+              @keyframes marquee-vertical {
+                0% { transform: translateY(0); }
+                100% { transform: translateY(-50%); }
+              }
+              .animate-marquee-vertical {
+                animation: marquee-vertical 36s linear infinite;
+              }
+              .animate-marquee-vertical:hover {
+                animation-play-state: paused;
+              }
+            `}</style>
           </div>
         </div>
       </section>
@@ -193,9 +226,9 @@ export default function About() {
                 title: "Experience",
                 desc: "Our team brings a wealth of experience from various industries, enabling us to tailor our approach to your unique needs with precision and depth.",
                 icon: (
-                  <svg className="w-10 h-10 text-[var(--gold)] mb-[20px]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <circle cx="12" cy="12" r="10" strokeWidth="1.5"/>
-                    <circle cx="12" cy="12" r="6" strokeWidth="1.5"/>
+                  <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <circle cx="12" cy="12" r="8" strokeWidth="1.5"/>
+                    <circle cx="12" cy="12" r="5" strokeWidth="1.5"/>
                     <circle cx="12" cy="12" r="2" strokeWidth="1.5" fill="currentColor"/>
                   </svg>
                 )
@@ -204,8 +237,8 @@ export default function About() {
                 title: "Client-Centric",
                 desc: "We put your satisfaction at the forefront of everything we do. Your success is our success — every decision serves your vision without compromise.",
                 icon: (
-                  <svg className="w-10 h-10 text-[var(--gold)] mb-[20px]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 5h12l4 6-10 8-10-8z" />
                   </svg>
                 )
               },
@@ -213,8 +246,9 @@ export default function About() {
                 title: "Innovation",
                 desc: "We stay updated with the latest trends and technologies in filmmaking, ensuring your corporate film is fresh, modern, and truly impactful.",
                 icon: (
-                  <svg className="w-10 h-10 text-[var(--gold)] mb-[20px]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <circle cx="12" cy="12" r="8" strokeWidth="1.5" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 4a8 8 0 018 8" />
                   </svg>
                 )
               },
@@ -222,17 +256,20 @@ export default function About() {
                 title: "Proven Results",
                 desc: "Our portfolio speaks for itself. Past projects have driven engagement, increased brand awareness, and delivered measurable business results.",
                 icon: (
-                  <svg className="w-10 h-10 text-[var(--gold)] mb-[20px]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <circle cx="12" cy="12" r="8" strokeWidth="1.5" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3" />
+                    <circle cx="12" cy="12" r="4" strokeWidth="1.5" />
+                    <circle cx="12" cy="12" r="1" fill="currentColor" strokeWidth={1} />
                   </svg>
                 )
               }
             ].map((card, idx) => (
               <div key={idx} className="bg-white border border-[rgba(10,10,10,0.06)] rounded-sm p-[40px] text-center shadow-[0_4px_24px_rgba(0,0,0,0.01)] hover:border-[var(--gold)] transition-colors duration-450 flex flex-col items-center">
-                {card.icon}
-                <h3 className="font-serif text-[22px] text-[var(--light)] mb-[16px]">{card.title}</h3>
-                <p className="text-[13px] text-[var(--muted)] leading-relaxed font-light">{card.desc}</p>
+                <div className="w-[64px] h-[64px] rounded-full bg-[var(--gold)] flex items-center justify-center mb-[24px] text-white shadow-sm shadow-[var(--gold)]/20 shrink-0">
+                  {card.icon}
+                </div>
+                <h3 className="font-serif text-[22px] text-[var(--light)] mb-[16px] font-bold">{card.title}</h3>
+                <p className="text-[13.5px] text-[var(--light)] leading-relaxed font-semibold">{card.desc}</p>
               </div>
             ))}
           </div>
@@ -252,8 +289,8 @@ export default function About() {
           
           {/* Vertical Alternating Timeline */}
           <div className="relative mt-[60px]">
-            {/* Center Vertical Axis Line */}
-            <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[1.5px] bg-[rgba(197,164,109,0.25)] z-0" />
+            {/* Center Vertical Axis Line with glowing gold gradient */}
+            <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-[rgba(197,164,109,0.05)] via-[var(--gold)] to-[rgba(197,164,109,0.05)] z-0" />
             
             <div className="space-y-[80px] relative z-10">
               {[
@@ -290,8 +327,16 @@ export default function About() {
                       isEven ? "md:flex-row" : "md:flex-row-reverse"
                     }`}
                   >
-                    {/* Center Node dot */}
-                    <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 w-[14px] h-[14px] rounded-full bg-[var(--gold)] border-[3px] border-[var(--darker)] z-20 shadow-sm" />
+                    {/* Center Node dot with animated pulsing glow ring */}
+                    <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 z-20">
+                      {/* Pulse ring */}
+                      <div className="w-[30px] h-[30px] rounded-full border border-[var(--gold)] opacity-40 animate-ping absolute -left-[9px] -top-[9px]" style={{ animationDuration: '3s' }} />
+                      {/* Outer border ring */}
+                      <div className="w-[24px] h-[24px] rounded-full border border-[var(--gold)] bg-[var(--darker)] flex items-center justify-center shadow-[0_0_12px_rgba(197,164,109,0.35)]">
+                        {/* Core solid dot */}
+                        <div className="w-[10px] h-[10px] rounded-full bg-[var(--gold)]" />
+                      </div>
+                    </div>
                     
                     {/* Content Card (Half Width) */}
                     <div className="w-full md:w-[45%] flex flex-col justify-center">
