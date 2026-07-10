@@ -341,7 +341,7 @@ export default function Home() {
               <div className="font-serif text-[64px] md:text-[72px] line-height-[1] text-[var(--light)] font-light flex items-baseline">
                 <span>{experienceCount}</span><span className="text-[var(--gold)] font-medium text-[40px] ml-[2px]">+</span>
               </div>
-              <div className="text-[10px] tracking-[0.25em] uppercase text-[var(--muted)] mt-[8px]">Years of Experience</div>
+              <div className="text-[10px] tracking-[0.25em] uppercase text-[var(--light)] mt-[8px] font-bold">Years of Experience</div>
             </div>
             
             <div className="p-[40px] bg-[var(--dark)] hover:bg-[rgba(10,10,10,0.02)] transition-colors duration-300 relative group">
@@ -349,23 +349,23 @@ export default function Home() {
               <div className="font-serif text-[64px] md:text-[72px] line-height-[1] text-[var(--light)] font-light flex items-baseline">
                 <span>{clientsCount}</span><span className="text-[var(--gold)] font-medium text-[40px] ml-[2px]">+</span>
               </div>
-              <div className="text-[10px] tracking-[0.25em] uppercase text-[var(--muted)] mt-[8px]">Clients Served</div>
+              <div className="text-[10px] tracking-[0.25em] uppercase text-[var(--light)] mt-[8px] font-bold">Clients Served</div>
             </div>
-
+ 
             <div className="p-[40px] bg-[var(--dark)] hover:bg-[rgba(10,10,10,0.02)] transition-colors duration-300 relative group">
               <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-[var(--gold)] transition-all duration-300 group-hover:w-full"></div>
               <div className="font-serif text-[64px] md:text-[72px] line-height-[1] text-[var(--light)] font-light flex items-baseline">
                 <span>{projectsCount}</span><span className="text-[var(--gold)] font-medium text-[40px] ml-[2px]">+</span>
               </div>
-              <div className="text-[10px] tracking-[0.25em] uppercase text-[var(--muted)] mt-[8px]">Corporate Projects</div>
+              <div className="text-[10px] tracking-[0.25em] uppercase text-[var(--light)] mt-[8px] font-bold">Corporate Projects</div>
             </div>
-
+ 
             <div className="p-[40px] bg-[var(--dark)] hover:bg-[rgba(10,10,10,0.02)] transition-colors duration-300 relative group">
               <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-[var(--gold)] transition-all duration-300 group-hover:w-full"></div>
               <div className="font-serif text-[64px] md:text-[72px] line-height-[1] text-[var(--light)] font-light flex items-baseline">
                 <span>{weddingsCount}</span><span className="text-[var(--gold)] font-medium text-[40px] ml-[2px]">+</span>
               </div>
-              <div className="text-[10px] tracking-[0.25em] uppercase text-[var(--muted)] mt-[8px]">Weddings Captured</div>
+              <div className="text-[10px] tracking-[0.25em] uppercase text-[var(--light)] mt-[8px] font-bold">Weddings Captured</div>
             </div>
           </div>
 
@@ -378,18 +378,30 @@ export default function Home() {
           
           {/* Left Column Overlapping Boxes */}
           <div className="relative h-[460px] w-full flex items-center justify-center reveal opacity-0 anim-fade-up">
-            {/* Box 1 - Dark Background Panel */}
-            <div className="absolute top-[20px] left-[20px] w-[75%] h-[320px] bg-[var(--darker)] border border-[rgba(10,10,10,0.06)] rounded-sm p-[40px] flex flex-col justify-between z-10 shadow-sm">
-              <h4 className="font-serif text-[24px] text-[var(--light)]">Hameed Hussain</h4>
-              <p className="text-[11px] tracking-[0.25em] uppercase text-[var(--gold)]">Founder & Creative Visionary</p>
-              <div className="w-[40px] h-[1px] bg-[var(--gold)]"></div>
+            {/* Box 1 - Founder Portrait & Text Overlay (Top-aligned) */}
+            <div className="absolute top-[20px] left-[20px] w-[75%] h-[320px] bg-[#0A0A0A] border border-[rgba(10,10,10,0.06)] rounded-sm overflow-hidden z-10 shadow-md relative group">
+              <img 
+                src="/logo-clients/founder-ceo.jpg" 
+                alt="Hameed Hussain Founder" 
+                className="w-full h-full object-cover opacity-70 transition-transform duration-700 group-hover:scale-105 select-none pointer-events-none" 
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/45 to-transparent p-[24px] flex flex-col justify-start gap-[6px]">
+                <h4 className="font-serif text-[22px] text-white font-bold leading-none">Hameed Hussain</h4>
+                <p className="text-[9px] tracking-[0.2em] uppercase text-[var(--gold)] font-bold mb-[4px]">Founder & Creative Visionary</p>
+                <div className="w-[40px] h-[1px] bg-[var(--gold)] mb-[8px]"></div>
+                <img 
+                  src="/images/signature.png" 
+                  alt="Founder Signature" 
+                  className="h-[32px] w-auto object-contain select-none pointer-events-none invert opacity-95 self-start" 
+                />
+              </div>
             </div>
 
-            {/* Box 2 - Overlapping Golden/Ivory Styled Panel */}
-            <div className="absolute bottom-[20px] right-[20px] w-[65%] h-[240px] bg-[rgba(197,164,109,0.04)] border border-[rgba(197,164,109,0.2)] rounded-sm p-[30px] flex flex-col justify-between z-20 backdrop-blur-md">
-              <span className="text-[11px] tracking-[0.3em] uppercase text-[var(--gold)] font-medium">Visual Legacy</span>
-              <h5 className="font-serif text-[28px] text-[var(--light)] italic font-light">Est. 1982</h5>
-              <p className="text-[12px] text-[var(--muted)] leading-relaxed font-light">Pioneering corporate imagery in Bangalore.</p>
+            {/* Box 2 - Overlapping Golden/Ivory Styled Panel (Slightly smaller to prevent collision) */}
+            <div className="absolute bottom-[20px] right-[20px] w-[60%] h-[210px] bg-white border border-[rgba(197,164,109,0.3)] rounded-sm p-[26px] flex flex-col justify-between z-20 shadow-lg backdrop-blur-md">
+              <span className="text-[10px] tracking-[0.25em] uppercase text-[var(--gold)] font-bold">Visual Legacy</span>
+              <h5 className="font-serif text-[28px] text-[var(--light)] font-bold leading-none">Est. 1982</h5>
+              <p className="text-[12.5px] text-[var(--light)] leading-relaxed font-semibold">Pioneering corporate imagery in Bangalore.</p>
             </div>
           </div>
 
@@ -404,10 +416,10 @@ export default function Home() {
             <blockquote className="border-l border-[var(--gold)] pl-[20px] text-[15px] italic text-[var(--gold)] leading-relaxed mb-[28px] font-serif">
               "Our goal is not to merely provide media services, but to serve people through the art of storytelling and media creation."
             </blockquote>
-            <p className="text-[14px] leading-[1.8] text-[var(--muted)] mb-[24px] font-light">
+            <p className="text-[14.5px] leading-[1.8] text-[var(--light)] mb-[24px] font-semibold">
               Established by Hameed Hussain in 1982, we embarked on a journey to introduce vibrant colour media solutions to businesses and consumers in Bengaluru—proudly serving the corporate and wedding industries ever since.
             </p>
-            <Link href="/about" className="inline-flex items-center gap-[12px] text-[11px] tracking-[0.2em] uppercase text-[var(--light)] font-medium hover:text-[var(--gold)] cursor-none transition-colors group">
+            <Link href="/about" className="inline-flex items-center gap-[12px] text-[11px] tracking-[0.2em] uppercase text-[var(--light)] font-semibold hover:text-[var(--gold)] cursor-none transition-colors group">
               Read Our Story <span className="transition-transform duration-300 group-hover:translate-x-[4px]">→</span>
             </Link>
           </div>
