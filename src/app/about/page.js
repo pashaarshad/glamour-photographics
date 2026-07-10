@@ -174,7 +174,7 @@ export default function About() {
                           <img 
                             src={item.src} 
                             alt={`Film Strip Frame ${idx + 1}`} 
-                            className="w-full h-full object-cover grayscale opacity-85 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" 
+                            className="w-full h-full object-cover opacity-100 transition-all duration-500" 
                           />
                         </div>
                       );

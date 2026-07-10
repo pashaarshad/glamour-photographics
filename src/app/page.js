@@ -2,13 +2,10 @@
 import { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { FreeMode, Mousewheel, Pagination, Navigation, Autoplay } from 'swiper/modules';
-import { Camera, Video, Calendar, Aperture, Building2, Film, Play, X, Award, User, MapPin } from 'lucide-react';
+import { Autoplay } from 'swiper/modules';
+import { Camera, Video, Calendar, Aperture, Building2, Film, Play, X, User, MapPin } from 'lucide-react';
 
 import 'swiper/css';
-import 'swiper/css/free-mode';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
 
 // Custom Count Up Hook for Stats Animation
 function useCountUp(endVal, duration = 1800, trigger = false) {
@@ -37,25 +34,22 @@ export default function Home() {
   const [activePortfolioTab, setActivePortfolioTab] = useState('ALL');
   const [showreelOpen, setShowreelOpen] = useState(false);
   const [statsTriggered, setStatsTriggered] = useState(false);
-  const [expandedClients, setExpandedClients] = useState(false);
   const [activeCert, setActiveCert] = useState(null);
   
   const statsRef = useRef(null);
 
   useEffect(() => {
-    // Scroll reveal animation trigger
     const checkReveals = () => {
       const vh = window.innerHeight;
-      document.querySelectorAll('.reveal, .reveal-left, .reveal-scale, .stagger-children, .img-mask, .gold-line, .gold-line-short').forEach(el => {
+      document.querySelectorAll('.reveal, .reveal-left, .reveal-scale, .stagger-children, .img-mask').forEach(el => {
         if (el.getBoundingClientRect().top < vh * 0.95) {
           el.classList.add('visible');
         }
       });
     };
     window.addEventListener('scroll', checkReveals, { passive: true });
-    setTimeout(checkReveals, 300);
+    const initialCheck = setTimeout(checkReveals, 300);
 
-    // Observer for count-up stats
     const observer = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
         setStatsTriggered(true);
@@ -69,10 +63,10 @@ export default function Home() {
     return () => {
       window.removeEventListener('scroll', checkReveals);
       observer.disconnect();
+      clearTimeout(initialCheck);
     };
   }, []);
 
-  // Stats values using the count-up hook
   const experienceCount = useCountUp(40, 1800, statsTriggered);
   const clientsCount = useCountUp(500, 1800, statsTriggered);
   const projectsCount = useCountUp(1200, 1800, statsTriggered);
@@ -80,365 +74,292 @@ export default function Home() {
 
   const portfolioImages = {
     ALL: [
-      "/images/our_portfolio/Srk.jpg",
-      "/images/our_portfolio/Bill clinton.jpeg",
       "/images/our_portfolio/highlights_3C1A0761.jpg",
       "/images/our_portfolio/highlights_3C1A0775.jpg",
+      "/images/our_portfolio/11.jpg",
       "/images/our_portfolio/highlights_3C1A0782.jpg",
+      "/images/our_portfolio/22.jpg",
       "/images/our_portfolio/highlights_3C1A0841.jpg",
-      "/images/our_portfolio/cp-7.jpg",
-      "/images/our_portfolio/cp-10.jpg",
-      "/images/our_portfolio/cp-12.jpg",
+      "/images/our_portfolio/33.jpg",
       "/images/our_portfolio/rtx-1.jpg",
       "/images/our_portfolio/te3.jpg",
       "/images/our_portfolio/dilquar.jpg",
-      "/images/our_portfolio/11.jpg",
-      "/images/our_portfolio/22.jpg",
-      "/images/our_portfolio/33.jpg",
+      "/images/our_portfolio/Srk.jpg",
+      "/images/our_portfolio/Bill clinton.jpeg",
+      "/images/our_portfolio/cp-7.jpg",
+      "/images/our_portfolio/cp-10.jpg"
     ],
     CORPORATE: [
       "/images/our_portfolio/cp-7.jpg",
       "/images/our_portfolio/cp-10.jpg",
-      "/images/our_portfolio/cp-12.jpg",
       "/images/our_portfolio/Bill clinton.jpeg",
-      "/images/our_portfolio/dilquar.jpg",
+      "/images/our_portfolio/dilquar.jpg"
     ],
     EVENTS: [
       "/images/our_portfolio/33.jpg",
       "/images/our_portfolio/Srk.jpg",
       "/images/our_portfolio/highlights_3C1A0761.jpg",
       "/images/our_portfolio/highlights_3C1A0775.jpg",
-      "/images/our_portfolio/highlights_3C1A0782.jpg",
+      "/images/our_portfolio/highlights_3C1A0782.jpg"
     ],
     INDUSTRIAL: [
       "/images/our_portfolio/rtx-1.jpg",
-      "/images/our_portfolio/te3.jpg",
+      "/images/our_portfolio/te3.jpg"
     ],
     DOCUMENTARY: [
       "/images/our_portfolio/11.jpg",
       "/images/our_portfolio/22.jpg",
-      "/images/our_portfolio/highlights_3C1A0841.jpg",
+      "/images/our_portfolio/highlights_3C1A0841.jpg"
     ]
   };
 
   const activeImages = portfolioImages[activePortfolioTab] || portfolioImages['ALL'];
 
   return (
-    <main className="w-full bg-[var(--dark)] text-[var(--light)] pb-[100px] overflow-x-hidden cursor-none relative">
+    <main className="w-full bg-[var(--dark)] text-[var(--light)] min-h-screen pt-0 pb-[100px] cursor-none relative">
       
       {/* ─── 1. HERO SECTION ─── */}
-      <section className="relative min-h-[100svh] flex flex-col justify-center md:flex-row md:justify-start md:items-center px-[5%] md:px-[8%] pt-[120px] md:pt-[80px] pb-[60px] md:pb-0 overflow-hidden bg-[#0A0A0A]">
-        <div className="absolute inset-0 z-0 select-none">
-          {/* Desktop image */}
-          <img 
-            src="/images/hero-camera.jpg" 
-            alt="Premium Camera Lens" 
-            className="hidden md:block w-full h-full object-contain object-[right_center] opacity-80" 
-          />
-          {/* Mobile image */}
-          <img 
-            src="/images/hero-camera-mobile.png" 
-            alt="Premium Camera Lens Mobile" 
-            className="block md:hidden w-full h-full object-cover object-center opacity-75" 
-            onError={(e) => {
-              // Fallback to desktop image if mobile one is not uploaded yet
-              e.target.src = "/images/hero-camera.jpg";
-              e.target.className = "block md:hidden w-full h-full object-contain object-[center_bottom] opacity-70";
-            }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[#0A0A0A] via-[rgba(10,10,10,0.85)] md:via-[rgba(10,10,10,0.65)] to-transparent z-10" />
-        </div>
-        <div className="w-full max-w-[650px] flex-none z-20 relative pt-[40px] md:pt-[60px] text-left">
-          <h1 className="font-serif text-left text-[clamp(52px,7vw,100px)] font-bold leading-[1.05] tracking-[-0.02em] mb-[32px] text-white">
-            <span className="block overflow-hidden pb-[4px]"><span className="block anim-slide-up delay-100" style={{ transform: 'translateY(100%)' }}>We Capture</span></span>
-            <span className="block overflow-hidden pb-[4px]"><span className="block anim-slide-up delay-150" style={{ transform: 'translateY(100%)' }}>Moments.</span></span>
-            <span className="block overflow-hidden pb-[4px]"><span className="block anim-slide-up delay-200" style={{ transform: 'translateY(100%)' }}>We Create</span></span>
-            <span className="block overflow-hidden pb-[4px]"><span className="block anim-slide-up delay-240 text-[var(--gold)] italic font-bold" style={{ transform: 'translateY(100%)' }}>Legacies.</span></span>
-          </h1>
-          <p className="text-[15px] md:text-[17px] text-[rgba(250,248,244,0.9)] leading-[1.7] max-w-[420px] opacity-0 anim-fade-up delay-300 mb-[48px] font-semibold">
-            40+ Years of Storytelling Through The Lens of Excellence
-          </p>
-          <div className="opacity-0 anim-fade-up delay-380">
-            <Link href="/portfolio" className="inline-flex items-center justify-center border border-[rgba(255,255,255,0.3)] text-white uppercase tracking-[0.2em] text-[11px] font-bold px-[36px] py-[18px] transition-all duration-400 hover:bg-white hover:text-black hover:border-transparent cursor-none">
-              Explore Our Work
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── 2. EDITORIAL MARQUEE ─── */}
-      <div className="marquee-wrapper py-[20px] bg-black border-y border-[rgba(255,255,255,0.05)] overflow-hidden w-full relative z-20">
-        <div className="marquee-track flex whitespace-nowrap text-[10px] tracking-[0.25em] uppercase text-[var(--gold)] font-medium">
-          {Array.from({ length: 4 }).map((_, i) => (
-            <span key={i} className="flex items-center gap-[24px] shrink-0">
-              <span className="ml-[24px]">Corporate Films</span><span className="text-[6px] text-white select-none">●</span>
-              <span>Wedding Photography</span><span className="text-[6px] text-white select-none">●</span>
-              <span>Event Coverage</span><span className="text-[6px] text-white select-none">●</span>
-              <span>Digital Advertising</span><span className="text-[6px] text-white select-none">●</span>
-              <span>Documentary Films</span><span className="text-[6px] text-white select-none">●</span>
-              <span>Studio Portraits</span><span className="text-[6px] text-white select-none">●</span>
-              <span>Photo Restoration</span><span className="text-[6px] text-white select-none">●</span>
-            </span>
-          ))}
-        </div>
-        <style jsx>{`
-          @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-25%); }
-          }
-          .marquee-track {
-            display: flex;
-            width: max-content;
-            animation: marquee 25s linear infinite;
-          }
-        `}</style>
-      </div>
-
-      {/* ─── 2.5. EDITORIAL STRIP ─── */}
-      <div className="hero-strip">
-        <div className="hero-strip-item">
-          <div className="strip-img">
-            <img src="/images/cii-event-coverage.jpg" alt="CII Event Coverage" className="w-full h-full object-cover block" />
-          </div>
-          <div className="strip-pip"></div>
-          <div className="strip-side-label">Corporate Events</div>
-          <div className="strip-overlay">
-            <span className="strip-label">Corporate Events</span>
-            <span className="strip-title">CII — India @ 75</span>
-          </div>
-        </div>
-
-        <div className="hero-strip-item">
-          <div className="strip-img">
-            <img src="/images/celebrity-portrait.jpg" alt="Celebrity Portrait" className="w-full h-full object-cover block" />
-          </div>
-          <div className="strip-pip"></div>
-          <div className="strip-side-label">Celebrity Portrait</div>
-          <div className="strip-overlay">
-            <span className="strip-label">Celebrity Coverage</span>
-            <span className="strip-title">Portrait Session</span>
-          </div>
-        </div>
-
-        <div className="hero-strip-item">
-          <div className="strip-img">
-            <img src="/images/outdoor-event.jpg" alt="Outdoor Event" className="w-full h-full object-cover block" />
-          </div>
-          <div className="strip-pip"></div>
-          <div className="strip-side-label">Outdoor Coverage</div>
-          <div className="strip-overlay">
-            <span className="strip-label">Events & Media</span>
-            <span className="strip-title">Outdoor Coverage</span>
-          </div>
-        </div>
-
-        <div className="hero-strip-item">
-          <div className="strip-img">
-            <img src="/images/corporate-event.jpg" alt="Corporate Event" className="w-full h-full object-cover block" />
-          </div>
-          <div className="strip-pip"></div>
-          <div className="strip-side-label">Speaker Series</div>
-          <div className="strip-overlay">
-            <span className="strip-label">Corporate Events</span>
-            <span className="strip-title">Speaker Series</span>
-          </div>
-        </div>
-      </div>
-
-      {/* ─── 2.7. EDITORIAL MARQUEE (BOTTOM) ─── */}
-      <div className="marquee-wrapper py-[20px] bg-black border-y border-[rgba(255,255,255,0.05)] overflow-hidden w-full relative z-20">
-        <div className="marquee-track-reverse flex whitespace-nowrap text-[10px] tracking-[0.25em] uppercase text-[var(--gold)] font-medium">
-          {Array.from({ length: 4 }).map((_, i) => (
-            <span key={i} className="flex items-center gap-[24px] shrink-0">
-              <span className="ml-[24px]">Corporate Films</span><span className="text-[6px] text-white select-none">●</span>
-              <span>Wedding Photography</span><span className="text-[6px] text-white select-none">●</span>
-              <span>Event Coverage</span><span className="text-[6px] text-white select-none">●</span>
-              <span>Digital Advertising</span><span className="text-[6px] text-white select-none">●</span>
-              <span>Documentary Films</span><span className="text-[6px] text-white select-none">●</span>
-              <span>Studio Portraits</span><span className="text-[6px] text-white select-none">●</span>
-              <span>Photo Restoration</span><span className="text-[6px] text-white select-none">●</span>
-            </span>
-          ))}
-        </div>
-        <style jsx>{`
-          @keyframes marquee-reverse {
-            0% { transform: translateX(-25%); }
-            100% { transform: translateX(0); }
-          }
-          .marquee-track-reverse {
-            display: flex;
-            width: max-content;
-            animation: marquee-reverse 25s linear infinite;
-          }
-        `}</style>
-      </div>
-
-      {/* ─── 3. WE TELL STORIES THAT STAY (YOUTUBE EMBED) ─── */}
-      <section className="py-[120px] px-[8%] md:px-[10%] bg-[var(--dark)] relative overflow-hidden">
-        <div className="max-w-[1400px] mx-auto">
-          {/* Row 1: Left and Right alignment (Left has text, Right has nothing) */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-[40px] items-start mb-[40px] md:mb-[60px]">
-            <div className="lg:col-span-6 reveal opacity-0 anim-fade-up z-20">
-              <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] mb-[16px] block">
-                We Don't Just Shoot
-              </span>
-              <h2 className="font-serif text-[clamp(36px,5vw,70px)] font-light leading-[1.1] tracking-[-0.01em] text-[var(--light)] mb-[32px]">
-                We Tell Stories <br />
-                <span className="italic text-[var(--gold)] font-medium">That Stay.</span>
-              </h2>
-              <p className="text-[14px] md:text-[15px] leading-[1.8] text-[var(--muted)] max-w-[480px] mb-[40px] font-light">
-                From corporate documentaries that build trust, to powerful commercials and premium event storytelling, we capture moments that create long-lasting brand legacies.
-              </p>
-              <div className="flex flex-wrap gap-[16px]">
-                <Link href="/portfolio" className="border border-[rgba(10,10,10,0.15)] text-[var(--light)] text-[10px] tracking-[0.2em] uppercase py-[16px] px-[32px] hover:bg-[var(--light)] hover:text-[var(--dark)] transition-all duration-300 cursor-none font-medium">
-                  Explore Our Work
-                </Link>
-              </div>
-            </div>
-            <div className="lg:col-span-6 hidden lg:block"></div>
-          </div>
-
-          {/* Row 2: Slightly down, on the right side, the YouTube video in a bigger screen */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-[40px]">
-            <div className="lg:col-span-3 hidden lg:block"></div>
-            <div className="lg:col-span-9 w-full aspect-video rounded-sm overflow-hidden border border-[rgba(10,10,10,0.06)] shadow-[0_24px_70px_rgba(10,10,10,0.05)] reveal opacity-0 anim-fade-up delay-100">
-              <iframe
-                className="w-full h-full"
-                src="https://www.youtube.com/embed/oz26LF0gvxg?rel=0"
-                title="Glamour Photographics Corporate Showreel"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── 4. STATS SECTION (Four Decades of Visual Excellence) ─── */}
-      <section ref={statsRef} className="py-[120px] px-[8%] md:px-[10%] bg-[var(--darker)] border-y border-[rgba(10,10,10,0.06)]">
-        <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-[80px] items-center">
+      <section className="px-[4%] md:px-[5%] max-w-[1600px] mx-auto pt-[150px] pb-[80px] relative">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-[40px] items-center">
           
-          {/* Left Column */}
-          <div className="reveal opacity-0 anim-fade-up">
-            <div className="w-[60px] h-[2px] bg-[var(--gold)] mb-[32px]" id="stats-gold-line"></div>
-            <h2 className="font-serif text-[clamp(40px,5vw,72px)] font-light leading-[1.1] tracking-[-0.02em] text-[var(--light)] mb-[32px]">
-              Four Decades of <br />
-              <span className="italic text-[var(--gold)] font-medium">Visual Excellence</span>
-            </h2>
-            <p className="text-[14px] leading-[1.9] text-[var(--muted)] max-w-[420px] mb-[40px] font-light">
-              Glamour Photographics, established by Hameed Hussain in 1982, has built a legacy of capturing the most meaningful moments for corporate clients and families across India.
+          {/* Left Column: Heading and Info */}
+          <div className="lg:col-span-5 reveal z-20">
+            <h1 className="font-serif text-[clamp(44px,5.5vw,76px)] font-bold leading-[1.05] tracking-[-0.02em] text-[var(--light)] mb-[24px]">
+              We Capture <br />
+              <span className="text-[var(--gold)] italic font-light">Moments.</span> <br />
+              We Create <br />
+              <span className="text-[var(--gold)] italic font-light">Legacies.</span>
+            </h1>
+            
+            <p className="text-[14.5px] text-[var(--muted)] leading-relaxed font-semibold mb-[32px] max-w-[420px]">
+              40+ Years of Storytelling <br />
+              Through The Lens of Excellence
             </p>
-            <Link href="/about" className="inline-flex items-center gap-[12px] text-[10px] tracking-[0.3em] uppercase font-semibold pb-[4px] border-b border-[var(--light)] hover:border-[var(--gold)] hover:text-[var(--gold)] hover:gap-[20px] transition-all duration-300 cursor-none">
-              Our Story <span>→</span>
-            </Link>
+            
+            {/* Watch Showreel Link */}
+            <button 
+              suppressHydrationWarning
+              onClick={() => setShowreelOpen(true)}
+              className="flex items-center gap-[12px] text-[11px] tracking-[0.2em] uppercase text-[var(--light)] font-bold mb-[48px] hover:text-[var(--gold)] cursor-none transition-colors"
+            >
+              <span className="w-[38px] h-[38px] rounded-full bg-[var(--gold)] flex items-center justify-center text-white shrink-0 shadow-sm shadow-[var(--gold)]/20">
+                <Play className="w-[12px] h-[12px] fill-current translate-x-[1.5px]" />
+              </span>
+              Watch Our Showreel
+            </button>
+            
+            {/* Categories Grid (2 rows, 4 columns) */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-[8px]">
+              {[
+                { title: "Corporate Films", icon: Video },
+                { title: "Wedding Photography", icon: Camera },
+                { title: "Event Coverage", icon: Calendar },
+                { title: "Digital Advertising", icon: Aperture },
+                { title: "Documentary Films", icon: Film },
+                { title: "Studio Portraits", icon: User },
+                { title: "Photo Restoration", icon: Camera }
+              ].map((cat, idx) => (
+                <div key={idx} className="bg-white border border-[rgba(10,10,10,0.06)] rounded-[3px] p-[12px] flex flex-col items-center text-center justify-center hover:border-[var(--gold)] transition-all duration-300 shadow-[0_2px_8px_rgba(0,0,0,0.01)] min-h-[75px]">
+                  <cat.icon className="w-[18px] h-[18px] text-[var(--gold)] mb-[6px]" />
+                  <span className="text-[9px] tracking-[0.05em] uppercase font-extrabold text-[var(--light)] leading-tight">{cat.title}</span>
+                </div>
+              ))}
+            </div>
           </div>
-
-          {/* Right Column Grid */}
-          <div className="grid grid-cols-2 gap-[2px] bg-[rgba(10,10,10,0.08)] stagger-children border border-[rgba(10,10,10,0.06)]">
-            <div className="p-[40px] bg-[var(--dark)] hover:bg-[rgba(10,10,10,0.02)] transition-colors duration-300 relative group">
-              <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-[var(--gold)] transition-all duration-300 group-hover:w-full"></div>
-              <div className="font-serif text-[64px] md:text-[72px] line-height-[1] text-[var(--light)] font-light flex items-baseline">
-                <span>{experienceCount}</span><span className="text-[var(--gold)] font-medium text-[40px] ml-[2px]">+</span>
+          
+          {/* Middle Column: Large Camera Rig */}
+          <div className="lg:col-span-5 relative reveal flex items-center justify-center z-10 px-[10px]">
+            <img 
+              src="/images/hero-camera.png" 
+              alt="Professional Cinema Camera Rig" 
+              className="w-full h-auto max-h-[600px] object-contain" 
+              onError={(e) => {
+                e.target.src = "/images/about-hero-double-exposure.png";
+              }}
+            />
+          </div>
+          
+          {/* Right Column: Narrow Film Reel Marquee */}
+          <div className="lg:col-span-2 reveal flex justify-center lg:justify-end items-center h-[520px]">
+            <div className="w-[140px] h-[520px] overflow-hidden relative bg-[#E2D8C9] border border-[rgba(10,10,10,0.08)] rounded-[4px] py-[15px] px-[16px] shadow-[0_8px_32px_rgba(0,0,0,0.03)] flex flex-col justify-between">
+              {/* White Square Sprocket Holes */}
+              <div className="absolute left-[4px] top-0 bottom-0 flex flex-col justify-between py-[12px] select-none pointer-events-none z-20">
+                {Array.from({ length: 15 }).map((_, i) => (
+                  <div key={i} className="w-[8px] h-[8px] bg-white rounded-[1px] shadow-[inset_0_1px_2px_rgba(0,0,0,0.08)]" />
+                ))}
               </div>
-              <div className="text-[10px] tracking-[0.25em] uppercase text-[var(--muted)] mt-[8px]">Years of Experience</div>
+              <div className="absolute right-[4px] top-0 bottom-0 flex flex-col justify-between py-[12px] select-none pointer-events-none z-20">
+                {Array.from({ length: 15 }).map((_, i) => (
+                  <div key={i} className="w-[8px] h-[8px] bg-white rounded-[1px] shadow-[inset_0_1px_2px_rgba(0,0,0,0.08)]" />
+                ))}
+              </div>
+              
+              {/* Vertical Loop */}
+              <div className="h-full overflow-hidden relative z-10 select-none">
+                <div className="flex flex-col gap-[15px] animate-marquee-vertical">
+                  {[
+                    { type: 'img', src: "/images/our_portfolio/highlights_3C1A0761.jpg" },
+                    { type: 'img', src: "/images/our_portfolio/highlights_3C1A0775.jpg" },
+                    { type: 'img', src: "/images/our_portfolio/11.jpg" },
+                    { type: 'img', src: "/images/our_portfolio/highlights_3C1A0782.jpg" },
+                    { type: 'badge' },
+                    { type: 'img', src: "/images/our_portfolio/22.jpg" },
+                    { type: 'img', src: "/images/our_portfolio/highlights_3C1A0841.jpg" },
+                    { type: 'img', src: "/images/our_portfolio/33.jpg" },
+                    { type: 'img', src: "/images/our_portfolio/rtx-1.jpg" },
+                    { type: 'badge' }
+                  ].map((item, idx) => {
+                    if (item.type === 'img') {
+                      return (
+                        <div key={idx} className="w-full aspect-[4/3] bg-black overflow-hidden relative border border-[rgba(10,10,10,0.12)] rounded-[3px] shrink-0">
+                          <img 
+                            src={item.src} 
+                            alt={`Film Strip Frame ${idx + 1}`} 
+                            className="w-full h-full object-cover opacity-100" 
+                          />
+                        </div>
+                      );
+                    } else {
+                      return (
+                        <div key={idx} className="w-full bg-[#D6CBBF] border border-[rgba(10,10,10,0.06)] rounded-[3px] py-[14px] px-[8px] text-center shrink-0 flex flex-col justify-center items-center">
+                          <span className="font-serif text-[24px] font-bold text-[#1A1A1A] leading-none mb-[2px]">40+</span>
+                          <span className="text-[8px] tracking-[0.1em] uppercase text-[#3A3530] font-bold leading-tight">Years Of</span>
+                          <span className="text-[8px] tracking-[0.1em] uppercase text-[#3A3530] font-bold leading-tight">Storytelling</span>
+                        </div>
+                      );
+                    }
+                  })}
+                </div>
+              </div>
             </div>
             
-            <div className="p-[40px] bg-[var(--dark)] hover:bg-[rgba(10,10,10,0.02)] transition-colors duration-300 relative group">
-              <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-[var(--gold)] transition-all duration-300 group-hover:w-full"></div>
-              <div className="font-serif text-[64px] md:text-[72px] line-height-[1] text-[var(--light)] font-light flex items-baseline">
-                <span>{clientsCount}</span><span className="text-[var(--gold)] font-medium text-[40px] ml-[2px]">+</span>
-              </div>
-              <div className="text-[10px] tracking-[0.25em] uppercase text-[var(--muted)] mt-[8px]">Clients Served</div>
-            </div>
-
-            <div className="p-[40px] bg-[var(--dark)] hover:bg-[rgba(10,10,10,0.02)] transition-colors duration-300 relative group">
-              <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-[var(--gold)] transition-all duration-300 group-hover:w-full"></div>
-              <div className="font-serif text-[64px] md:text-[72px] line-height-[1] text-[var(--light)] font-light flex items-baseline">
-                <span>{projectsCount}</span><span className="text-[var(--gold)] font-medium text-[40px] ml-[2px]">+</span>
-              </div>
-              <div className="text-[10px] tracking-[0.25em] uppercase text-[var(--muted)] mt-[8px]">Corporate Projects</div>
-            </div>
-
-            <div className="p-[40px] bg-[var(--dark)] hover:bg-[rgba(10,10,10,0.02)] transition-colors duration-300 relative group">
-              <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-[var(--gold)] transition-all duration-300 group-hover:w-full"></div>
-              <div className="font-serif text-[64px] md:text-[72px] line-height-[1] text-[var(--light)] font-light flex items-baseline">
-                <span>{weddingsCount}</span><span className="text-[var(--gold)] font-medium text-[40px] ml-[2px]">+</span>
-              </div>
-              <div className="text-[10px] tracking-[0.25em] uppercase text-[var(--muted)] mt-[8px]">Weddings Captured</div>
-            </div>
+            <style suppressHydrationWarning>{`
+              @keyframes marquee-vertical {
+                0% { transform: translateY(0); }
+                100% { transform: translateY(-50%); }
+              }
+              .animate-marquee-vertical {
+                animation: marquee-vertical 28s linear infinite;
+              }
+              .animate-marquee-vertical:hover {
+                animation-play-state: paused;
+              }
+            `}</style>
           </div>
-
         </div>
       </section>
 
-      {/* ─── 5. OUR STORY 1982 OVERLAPPING DESIGN ─── */}
-      <section className="py-[120px] px-[8%] md:px-[10%] bg-[var(--dark)] relative">
-        <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-[80px] items-center">
+      {/* ─── 2. THREE-COLUMN STATS & FOUNDER SECTION ─── */}
+      <section ref={statsRef} className="py-[100px] px-[4%] md:px-[5%] max-w-[1600px] mx-auto border-t border-[rgba(10,10,10,0.06)]">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-[40px] items-start">
           
-          {/* Left Column Overlapping Boxes */}
-          <div className="relative h-[460px] w-full flex items-center justify-center reveal opacity-0 anim-fade-up">
-            {/* Box 1 - Dark Background Panel */}
-            <div className="absolute top-[20px] left-[20px] w-[75%] h-[320px] bg-[var(--darker)] border border-[rgba(10,10,10,0.06)] rounded-sm p-[40px] flex flex-col justify-between z-10 shadow-sm">
-              <h4 className="font-serif text-[24px] text-[var(--light)]">Hameed Hussain</h4>
-              <p className="text-[11px] tracking-[0.25em] uppercase text-[var(--gold)]">Founder & Creative Visionary</p>
-              <div className="w-[40px] h-[1px] bg-[var(--gold)]"></div>
-            </div>
-
-            {/* Box 2 - Overlapping Golden/Ivory Styled Panel */}
-            <div className="absolute bottom-[20px] right-[20px] w-[65%] h-[240px] bg-[rgba(197,164,109,0.04)] border border-[rgba(197,164,109,0.2)] rounded-sm p-[30px] flex flex-col justify-between z-20 backdrop-blur-md">
-              <span className="text-[11px] tracking-[0.3em] uppercase text-[var(--gold)] font-medium">Visual Legacy</span>
-              <h5 className="font-serif text-[28px] text-[var(--light)] italic font-light">Est. 1982</h5>
-              <p className="text-[12px] text-[var(--muted)] leading-relaxed font-light">Pioneering corporate imagery in Bangalore.</p>
-            </div>
-          </div>
-
-          {/* Right Column Story Text */}
-          <div className="reveal opacity-0 anim-fade-up delay-100">
-            <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] mb-[16px] block">
-              1982 - Our Roots
+          {/* Column 1: We Don't Just Shoot */}
+          <div className="lg:col-span-4 reveal">
+            <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] mb-[16px] block font-semibold">
+              We Don't Just Shoot
             </span>
-            <h3 className="font-serif text-[clamp(32px,4vw,56px)] font-light leading-[1.2] text-[var(--light)] mb-[28px]">
-              Glamour Photographics
-            </h3>
-            <blockquote className="border-l border-[var(--gold)] pl-[20px] text-[15px] italic text-[var(--gold)] leading-relaxed mb-[28px] font-serif">
-              "Our goal is not to merely provide media services, but to serve people through the art of storytelling and media creation."
-            </blockquote>
-            <p className="text-[14px] leading-[1.8] text-[var(--muted)] mb-[24px] font-light">
-              Established by Hameed Hussain in 1982, we embarked on a journey to introduce vibrant colour media solutions to businesses and consumers in Bengaluru—proudly serving the corporate and wedding industries ever since.
+            <h2 className="font-serif text-[38px] font-bold leading-[1.1] tracking-[-0.01em] text-[var(--light)] mb-[24px]">
+              We Tell Stories <br />
+              <span className="italic text-[var(--gold)] font-light">That Stay.</span>
+            </h2>
+            <p className="text-[13.5px] leading-[1.8] text-[var(--muted)] mb-[32px] font-semibold max-w-[340px]">
+              From corporate documentaries that build trust, to powerful commercials and premium event storytelling, we capture moments that create long-lasting brand legacies.
             </p>
-            <Link href="/about" className="inline-flex items-center gap-[12px] text-[11px] tracking-[0.2em] uppercase text-[var(--light)] font-medium hover:text-[var(--gold)] cursor-none transition-colors group">
-              Read Our Story <span className="transition-transform duration-300 group-hover:translate-x-[4px]">→</span>
+            <Link href="/portfolio" className="inline-flex items-center justify-center border border-[rgba(10,10,10,0.15)] text-[var(--light)] text-[10px] tracking-[0.2em] uppercase py-[14px] px-[28px] hover:bg-[var(--light)] hover:text-[var(--dark)] transition-all duration-300 cursor-none font-bold">
+              Explore Our Work &rarr;
             </Link>
           </div>
-
+          
+          {/* Column 2: Four Decades of Visual Excellence */}
+          <div className="lg:col-span-5 reveal">
+            <h3 className="font-serif text-[30px] font-bold leading-[1.2] text-[var(--light)] mb-[24px]">
+              Four Decades of <br />
+              <span className="italic text-[var(--gold)] font-light">Visual Excellence</span>
+            </h3>
+            <p className="text-[13px] leading-[1.8] text-[var(--muted)] mb-[30px] font-semibold">
+              Glamour Photographics, established by Hameed Hussain in 1982, has built a legacy of capturing the most meaningful moments for corporate clients and families across India.
+            </p>
+            
+            {/* Stats Counters Grid (2x2) */}
+            <div className="grid grid-cols-2 gap-[16px] mb-[30px]">
+              <div className="bg-white border border-[rgba(10,10,10,0.06)] p-[20px] rounded-sm">
+                <span className="font-serif text-[32px] text-[var(--light)] font-bold block leading-none">{experienceCount}+</span>
+                <span className="text-[9px] tracking-[0.15em] uppercase text-gray-400 block mt-[4px]">Years of Experience</span>
+              </div>
+              <div className="bg-white border border-[rgba(10,10,10,0.06)] p-[20px] rounded-sm">
+                <span className="font-serif text-[32px] text-[var(--light)] font-bold block leading-none">{clientsCount}+</span>
+                <span className="text-[9px] tracking-[0.15em] uppercase text-gray-400 block mt-[4px]">Clients Served</span>
+              </div>
+              <div className="bg-white border border-[rgba(10,10,10,0.06)] p-[20px] rounded-sm">
+                <span className="font-serif text-[32px] text-[var(--light)] font-bold block leading-none">{projectsCount}+</span>
+                <span className="text-[9px] tracking-[0.15em] uppercase text-gray-400 block mt-[4px]">Corporate Projects</span>
+              </div>
+              <div className="bg-white border border-[rgba(10,10,10,0.06)] p-[20px] rounded-sm">
+                <span className="font-serif text-[32px] text-[var(--light)] font-bold block leading-none">{weddingsCount}+</span>
+                <span className="text-[9px] tracking-[0.15em] uppercase text-gray-400 block mt-[4px]">Weddings Captured</span>
+              </div>
+            </div>
+            
+            <Link href="/about" className="inline-flex items-center justify-center border border-[rgba(10,10,10,0.15)] text-[var(--light)] text-[10px] tracking-[0.2em] uppercase py-[14px] px-[28px] hover:bg-[var(--light)] hover:text-[var(--dark)] transition-all duration-300 cursor-none font-bold">
+              Our Story &rarr;
+            </Link>
+          </div>
+          
+          {/* Column 3: Founder Card with Signature & Portrait */}
+          <div className="lg:col-span-3 reveal">
+            <div className="bg-white border border-[rgba(10,10,10,0.06)] rounded-[4px] p-[24px] flex items-center justify-between shadow-[0_4px_24px_rgba(0,0,0,0.015)] hover:border-[var(--gold)] transition-all duration-300 h-[280px] relative overflow-hidden group">
+              {/* Left inner side: Info and Signature */}
+              <div className="flex flex-col justify-between h-full z-10 w-[55%]">
+                <div>
+                  <span className="text-[9px] tracking-[0.2em] uppercase text-gray-400 block mb-[4px]">Founder</span>
+                  <h4 className="font-serif text-[18px] text-[var(--light)] font-bold leading-tight mb-[2px]">Hameed Hussain</h4>
+                  <p className="text-[9px] tracking-[0.1em] uppercase text-[var(--gold)] font-bold mb-[10px]">Creative Visionary</p>
+                  <p className="text-[11px] text-[var(--muted)] leading-relaxed font-semibold">Est. 1982 Bangalore</p>
+                </div>
+                <img 
+                  src="/images/signature.png" 
+                  alt="Founder Signature" 
+                  className="h-[36px] w-auto object-contain select-none pointer-events-none mt-[10px] block" 
+                />
+              </div>
+              
+              {/* Right inner side: Floating Portrait */}
+              <div className="w-[42%] h-full relative overflow-hidden rounded-[2px] border border-[rgba(10,10,10,0.06)] bg-gray-50 shrink-0">
+                <img 
+                  src="/logo-clients/founder-ceo.jpg" 
+                  alt="Hameed Hussain CEO Portrait" 
+                  className="w-full h-full object-cover grayscale transition-transform duration-500 group-hover:scale-105" 
+                />
+              </div>
+            </div>
+          </div>
+          
         </div>
       </section>
 
-      {/* ─── 7. FEATURED WORK (CAROUSEL WITH VIDEOS) ─── */}
-      <section className="py-[120px] px-[8%] md:px-[10%] bg-[#0A0A0A]">
+      {/* ─── 3. FEATURED WORK (LIGHT THEMED ACCORDION/SLIDER) ─── */}
+      <section className="py-[100px] px-[4%] md:px-[5%] max-w-[1600px] mx-auto border-t border-[rgba(10,10,10,0.06)]">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-[60px] gap-[20px]">
-          <div className="reveal opacity-0 anim-fade-up">
-            <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] mb-[16px] block">
+          <div className="reveal">
+            <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] mb-[16px] block font-semibold">
               Featured Work
             </span>
-            <h2 className="font-serif text-[clamp(28px,4vw,48px)] font-light leading-[1.2] text-white">
+            <h2 className="font-serif text-[clamp(28px,4vw,48px)] font-bold leading-[1.2] text-[var(--light)]">
               Stories We've Brought to Life
             </h2>
           </div>
-          <div className="reveal opacity-0 anim-fade-up delay-100">
-            <Link href="/corporate" className="text-[10px] tracking-[0.25em] uppercase font-semibold py-[12px] px-[24px] border border-[rgba(255,255,255,0.2)] text-white hover:bg-white hover:text-black cursor-none transition-all">
+          <div className="reveal">
+            <Link href="/corporate" className="text-[10px] tracking-[0.25em] uppercase font-bold py-[12px] px-[24px] border border-[rgba(10,10,10,0.15)] text-[var(--light)] hover:bg-[var(--light)] hover:text-[var(--dark)] cursor-none transition-all">
               View All Projects
             </Link>
           </div>
         </div>
 
-        <div className="reveal opacity-0 anim-fade-up delay-200">
+        <div className="reveal">
           <Swiper
-            modules={[Navigation, Pagination, Autoplay, FreeMode]}
+            modules={[Autoplay]}
             spaceBetween={24}
             slidesPerView={1}
-            navigation={true}
             autoplay={{
               delay: 4500,
               disableOnInteraction: false,
@@ -457,11 +378,11 @@ export default function Home() {
               { title: "PAI - Brand Documentary", slug: "pai", vidId: "C0hzCKpITSE", type: "Retail Journey" },
             ].map((project, idx) => (
               <SwiperSlide key={idx}>
-                <div className="group relative bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.05)] rounded-sm overflow-hidden flex flex-col h-[380px]">
-                  {/* Thumbnail / Video Iframe */}
+                <div className="group relative bg-white border border-[rgba(10,10,10,0.06)] rounded-sm overflow-hidden flex flex-col h-[380px] shadow-[0_4px_24px_rgba(0,0,0,0.01)] hover:border-[var(--gold)] transition-colors duration-450">
+                  {/* Video Player */}
                   <div className="h-[210px] w-full relative overflow-hidden bg-black">
                     <iframe
-                      className="w-full h-full opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+                      className="w-full h-full opacity-90 group-hover:opacity-100 transition-opacity duration-300"
                       src={`https://www.youtube.com/embed/${project.vidId}?controls=0&modestbranding=1&rel=0`}
                       title={project.title}
                       frameBorder="0"
@@ -470,17 +391,17 @@ export default function Home() {
                     ></iframe>
                   </div>
                   
-                  {/* Description Box */}
-                  <div className="p-[28px] flex-1 flex flex-col justify-between">
+                  {/* Card Info */}
+                  <div className="p-[28px] flex-1 flex flex-col justify-between bg-white">
                     <div>
-                      <span className="text-[9px] tracking-[0.2em] uppercase text-[var(--gold)] mb-[8px] block font-medium">
+                      <span className="text-[9px] tracking-[0.2em] uppercase text-[var(--gold)] mb-[8px] block font-bold">
                         {project.type}
                       </span>
-                      <h3 className="font-serif text-[20px] text-white leading-[1.3] group-hover:text-[var(--gold)] transition-colors">
+                      <h3 className="font-serif text-[20px] text-[var(--light)] leading-[1.3] group-hover:text-[var(--gold)] transition-colors font-bold">
                         {project.title}
                       </h3>
                     </div>
-                    <Link href={`/corporate/${project.slug}`} className="text-[10px] tracking-[0.2em] uppercase text-white font-medium inline-flex items-center gap-[8px] cursor-none border-b border-transparent hover:border-white w-fit">
+                    <Link href={`/corporate/${project.slug}`} className="text-[10px] tracking-[0.2em] uppercase text-[var(--light)] font-bold inline-flex items-center gap-[8px] cursor-none border-b border-transparent hover:border-[var(--light)] w-fit">
                       Read Project details <span>→</span>
                     </Link>
                   </div>
@@ -491,161 +412,167 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── 8. WHAT WE DO (CATEGORY GRID) ─── */}
-      <section className="py-[120px] px-[8%] md:px-[10%] bg-[var(--dark)] border-t border-[rgba(10,10,10,0.06)]">
-        <div className="mb-[60px] reveal opacity-0 anim-fade-up">
-          <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] mb-[16px] block">Services Categories</span>
-          <h2 className="font-serif text-[clamp(28px,4vw,48px)] font-light leading-[1.2] text-[var(--light)]">What We Do</h2>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[24px]">
-          {[
-            { title: "Corporate Photography", icon: Camera, desc: "High-end corporate headshots, facility walkthroughs, products and branding campaigns.", bg: "/images/our_portfolio/cp-7.jpg" },
-            { title: "Cinematic Videography", icon: Video, desc: "High-impact brand videos, showreels, office tour media and documentaries.", bg: "/images/our_portfolio/22.jpg" },
-            { title: "Event Coverage", icon: Calendar, desc: "Premium documentation of corporate summits, conventions, and milestone ceremonies.", bg: "/images/our_portfolio/33.jpg" },
-            { title: "Aerial Shoots", icon: Aperture, desc: "Certified industrial drone flights mapping massive campuses and aerial geography.", bg: "/images/our_portfolio/rtx-1.jpg" },
-            { title: "Industrial Photography", icon: Building2, desc: "Raw visual documentation for factories, power plants, and technology infrastructure.", bg: "/images/our_portfolio/te3.jpg" },
-            { title: "Brand Storytelling", icon: Film, desc: "Custom scriptwriting and visual conceptualization bringing corporate identity to life.", bg: "/images/our_portfolio/cp-12.jpg" },
-          ].map((srv, idx) => (
-            <div key={idx} className="group relative p-[40px] rounded-sm overflow-hidden border border-[rgba(10,10,10,0.06)] hover:border-[var(--gold)] transition-all duration-[400ms] cursor-none min-h-[280px] flex flex-col justify-end">
-              <div className="absolute inset-0 z-0">
-                <img src={srv.bg} alt={srv.title} className="w-full h-full object-cover opacity-85" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
-              </div>
-              <div className="relative z-10">
-                <srv.icon className="w-[32px] h-[32px] text-[var(--gold)] mb-[24px] transition-transform duration-300 group-hover:scale-110" />
-                <h3 className="text-[18px] font-serif text-white mb-[12px] group-hover:text-[var(--gold)] transition-colors">{srv.title}</h3>
-                <p className="text-[13px] text-[rgba(255,255,255,0.8)] leading-[1.6] font-light">{srv.desc}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ─── 9. OUR CLIENTS (CLIENTS PORTFOLIO) ─── */}
-      <section className="py-[120px] px-[8%] md:px-[10%] bg-[var(--dark)]">
-        <div className="text-center mb-[40px] reveal opacity-0 anim-fade-up">
-          <h3 className="font-serif text-[24px] tracking-[0.2em] uppercase text-[var(--light)] font-bold mb-[12px]">
-            Clients Portfolio
-          </h3>
-          <div className="w-[60px] h-[2px] bg-[var(--gold)] mx-auto"></div>
-        </div>
-
-        <div className="max-w-[1000px] mx-auto bg-white border border-[rgba(10,10,10,0.06)] rounded-sm shadow-[0_8px_30px_rgba(0,0,0,0.02)] reveal opacity-0 anim-fade-up delay-100">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-0">
-            {[
-              { name: "CII", slug: "cii", logo: "/logo-clients/cii.jpg" },
-              { name: "CGI", slug: "cgi", logo: "/logo-clients/CGI_Inc.-Logo.wine.png" },
-              { name: "Toyota", slug: "toyota" },
-              { name: "RTX", slug: "rtx", logo: "/logo-clients/RTX.webp" },
-              { name: "TCS", slug: "tcs", logo: "/logo-clients/TCS_NewLogo_Final_RGB.png" },
-              { name: "TATA ELXSI", slug: "tata-elxsi", logo: "/logo-clients/tata-elxsi-moves-focus-away-from-driverless-tech.avif" },
-              { name: "Presidency University", slug: "presidency", logo: "/logo-clients/presidency-university-yelahanka-bangalore-universities-si0nhgmmkz.jpg" },
-              { name: "PAI", slug: "pai" }
-            ].map((client, i) => (
-              <Link href={`/corporate/${client.slug}`} key={i} className="group h-[140px] border border-[rgba(10,10,10,0.06)] flex items-center justify-center p-[20px] hover:border-[var(--gold)] hover:z-10 hover:shadow-md hover:bg-[rgba(197,164,109,0.02)] transition-all cursor-none relative">
-                {client.logo ? (
-                  <img src={client.logo} alt={client.name} className="max-h-[55px] max-w-[85%] object-contain" />
-                ) : (
-                  <span className="font-serif text-[18px] font-bold text-[var(--muted)] group-hover:text-[var(--light)] transition-colors text-center">{client.name}</span>
-                )}
-              </Link>
-            ))}
+      {/* ─── 4. SERVICES CATEGORIES (WHAT WE DO) ─── */}
+      <section className="py-[100px] px-[4%] md:px-[5%] max-w-[1600px] mx-auto border-t border-[rgba(10,10,10,0.06)]">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-[60px] items-start">
+          {/* Left Column: Heading */}
+          <div className="lg:col-span-4 reveal">
+            <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] mb-[16px] block font-semibold">Services</span>
+            <h2 className="font-serif text-[42px] font-bold leading-[1.2] text-[var(--light)] mb-[24px]">Categories</h2>
+            <h3 className="font-serif text-[22px] italic text-[var(--gold)] leading-none font-light mb-[32px]">What We Do</h3>
           </div>
-        </div>
-      </section>
-
-      {/* ─── 10. OUR PORTFOLIO (Uniform Grid) ─── */}
-      <section className="py-[120px] px-[8%] md:px-[10%] bg-[var(--darker)] border-y border-[rgba(10,10,10,0.06)]">
-        <h3 className="text-[28px] font-serif text-[var(--light)] mb-[40px] reveal opacity-0 anim-fade-up">Our Portfolio</h3>
-        <div className="flex flex-wrap gap-[30px] border-b border-[rgba(10,10,10,0.08)] pb-[15px] mb-[40px] reveal opacity-0 anim-fade-up delay-100">
-          {['ALL', 'CORPORATE', 'EVENTS', 'INDUSTRIAL', 'DOCUMENTARY'].map((tab) => (
-            <button 
-              suppressHydrationWarning
-              key={tab} 
-              onClick={() => setActivePortfolioTab(tab)} 
-              className={`text-[10px] tracking-[0.2em] uppercase pb-[15px] relative cursor-none ${activePortfolioTab === tab ? 'text-[var(--gold)]' : 'text-[var(--muted)] hover:text-[var(--light)]'}`}
-            >
-              {tab}
-              {activePortfolioTab === tab && <div className="absolute bottom-[-16px] left-0 w-full h-[2px] bg-[var(--gold)]" />}
-            </button>
-          ))}
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[24px] w-full">
-          {activeImages.map((src, idx) => (
-            <div key={idx} className="relative aspect-[3/2] group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)]">
-              <img src={src} alt={`Portfolio Image ${idx + 1}`} className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-105" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[rgba(0,0,0,0.85)] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-[30px]">
-                <span className="text-[9px] tracking-[0.2em] uppercase text-[var(--gold)] mb-[8px]">Gallery Spotlight</span>
-                <h4 className="font-serif text-[18px] text-white">Visual Artifact</h4>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ─── 11. OUR SERVICES (Details List) ─── */}
-      <section className="py-[120px] px-[8%] md:px-[10%] bg-[var(--dark)] grid grid-cols-1 lg:grid-cols-2 gap-[80px] items-start">
-        <div className="reveal opacity-0 anim-fade-up">
-          <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] mb-[16px] block">Corporate Capabilities</span>
-          <h2 className="font-serif text-[clamp(28px,4vw,48px)] font-light leading-[1.2] text-[var(--light)] mb-[40px]">Our Services</h2>
-          <div className="flex flex-col gap-[20px]">
+          
+          {/* Right Column: Services Grid Row (8 items) */}
+          <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-[30px] reveal">
             {[
-              { id: '01', title: 'Corporate Photography', desc: 'From workspace portraits to high-end infrastructure photography.' },
-              { id: '02', title: 'Cinematic Videography', desc: 'Custom walkthroughs, drone films, and leadership interviews.' },
-              { id: '03', title: 'Event Coverage', desc: 'High-impact coverage of corporate events and summits.' },
-              { id: '04', title: 'Photo Restoration', desc: 'Preserving old legacy film rolls and restoring damaged pictures.' }
-            ].map((item) => (
-              <div key={item.id} className="py-[24px] border-b border-[rgba(10,10,10,0.08)] flex gap-[30px] items-start group">
-                <span className="font-serif text-[18px] text-[var(--gold)] font-light italic mt-[2px]">{item.id}</span>
+              { title: "Corporate Photography", icon: Camera, desc: "High-end corporate headshots, facility walkthroughs, products and branding campaigns." },
+              { title: "Cinematic Videography", icon: Video, desc: "High-impact brand videos, showreels, office tour media and documentaries." },
+              { title: "Event Coverage", icon: Calendar, desc: "Premium documentation of corporate summits, conventions, and milestone ceremonies." },
+              { title: "Aerial Shoots", icon: Aperture, desc: "Certified industrial drone flights mapping massive campuses and aerial geography." },
+              { title: "Industrial Photography", icon: Building2, desc: "Raw visual documentation for factories, power plants, and technology infrastructure." },
+              { title: "Brand Storytelling", icon: Film, desc: "Custom scriptwriting and visual conceptualization bringing corporate identity to life." },
+              { title: "Photo Restoration", icon: Camera, desc: "Expert restoration of old photographs and legacy film rolls with care." },
+              { title: "Studio Portraits", icon: User, desc: "Executive portraits, fashion shoots, and professional branding sessions." }
+            ].map((srv, idx) => (
+              <div key={idx} className="flex gap-[20px] items-start group p-[20px] bg-white border border-[rgba(10,10,10,0.06)] rounded-sm hover:border-[var(--gold)] transition-colors duration-450 shadow-[0_4px_24px_rgba(0,0,0,0.01)]">
+                <div className="w-[45px] h-[45px] rounded-full bg-[rgba(197,164,109,0.1)] flex items-center justify-center text-[var(--gold)] shrink-0 transition-transform duration-300 group-hover:scale-110">
+                  <srv.icon className="w-[20px] h-[20px]" />
+                </div>
                 <div>
-                  <h3 className="text-[16px] font-semibold text-[var(--light)] mb-[8px] group-hover:text-[var(--gold)] transition-colors">{item.title}</h3>
-                  <p className="text-[12px] text-[var(--muted)] leading-relaxed font-light">{item.desc}</p>
+                  <h4 className="text-[17px] font-serif text-[var(--light)] mb-[8px] font-bold group-hover:text-[var(--gold)] transition-colors">{srv.title}</h4>
+                  <p className="text-[12.5px] text-[var(--muted)] leading-relaxed font-semibold">{srv.desc}</p>
                 </div>
               </div>
             ))}
           </div>
         </div>
-        <div className="relative hidden lg:block">
-          <div className="sticky top-[120px] h-[650px] w-full img-mask rounded-sm overflow-hidden">
-            <img src="/images/services-camera.jpg" alt="Tripod Camera" className="w-full h-full object-cover mask-bg grayscale-[20%]" />
+      </section>
+
+      {/* ─── 5. OUR TRUSTED CLIENTS (MARQUEE SLIDER) ─── */}
+      <section className="py-[80px] bg-white border-y border-[rgba(10,10,10,0.06)] relative z-25">
+        <div className="max-w-[1600px] mx-auto px-[4%] md:px-[5%] flex flex-col md:flex-row items-center gap-[40px]">
+          <span className="text-[10px] tracking-[0.25em] uppercase text-gray-400 font-bold shrink-0">Our Trusted Clients —</span>
+          <div className="flex-1 overflow-hidden relative">
+            <div className="flex gap-[60px] items-center animate-marquee-clients">
+              {[
+                { name: "CII", logo: "/logo-clients/cii.jpg" },
+                { name: "CGI", logo: "/logo-clients/CGI_Inc.-Logo.wine.png" },
+                { name: "Toyota", logo: "" },
+                { name: "RTX", logo: "/logo-clients/RTX.webp" },
+                { name: "TCS", logo: "/logo-clients/TCS_NewLogo_Final_RGB.png" },
+                { name: "TATA ELXSI", logo: "/logo-clients/tata-elxsi-moves-focus-away-from-driverless-tech.avif" },
+                { name: "Presidency University", logo: "/logo-clients/presidency-university-yelahanka-bangalore-universities-si0nhgmmkz.jpg" },
+                { name: "PAI", logo: "" },
+                // duplicate
+                { name: "CII", logo: "/logo-clients/cii.jpg" },
+                { name: "CGI", logo: "/logo-clients/CGI_Inc.-Logo.wine.png" },
+                { name: "Toyota", logo: "" },
+                { name: "RTX", logo: "/logo-clients/RTX.webp" },
+                { name: "TCS", logo: "/logo-clients/TCS_NewLogo_Final_RGB.png" },
+                { name: "TATA ELXSI", logo: "/logo-clients/tata-elxsi-moves-focus-away-from-driverless-tech.avif" },
+                { name: "Presidency University", logo: "/logo-clients/presidency-university-yelahanka-bangalore-universities-si0nhgmmkz.jpg" },
+                { name: "PAI", logo: "" }
+              ].map((client, i) => (
+                <div key={i} className="h-[75px] shrink-0 flex items-center justify-center">
+                  {client.logo ? (
+                    <img src={client.logo} alt={client.name} className="max-h-[58px] max-w-[160px] object-contain transition-all duration-300 hover:scale-105" />
+                  ) : (
+                    <span className="font-serif text-[18px] font-bold text-gray-400 uppercase tracking-widest">{client.name}</span>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
+        </div>
+        
+        <style suppressHydrationWarning>{`
+          @keyframes marquee-clients {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+          .animate-marquee-clients {
+            display: flex;
+            width: max-content;
+            animation: marquee-clients 20s linear infinite;
+          }
+          .animate-marquee-clients:hover {
+            animation-play-state: paused;
+          }
+        `}</style>
+      </section>
+
+      {/* ─── 6. OUR PORTFOLIO (UNIFORM GRID FILTER) ─── */}
+      <section className="py-[100px] px-[4%] md:px-[5%] max-w-[1600px] mx-auto border-t border-[rgba(10,10,10,0.06)]">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-[40px] gap-[20px]">
+          <h3 className="text-[28px] font-serif text-[var(--light)] font-bold reveal">Our Portfolio</h3>
+          <div className="flex flex-wrap gap-[20px] border-b border-[rgba(10,10,10,0.08)] pb-[10px] reveal">
+            {['ALL', 'CORPORATE', 'EVENTS', 'INDUSTRIAL', 'DOCUMENTARY'].map((tab) => (
+              <button 
+                suppressHydrationWarning
+                key={tab} 
+                onClick={() => setActivePortfolioTab(tab)} 
+                className={`text-[9px] tracking-[0.2em] uppercase pb-[10px] relative cursor-none font-bold ${activePortfolioTab === tab ? 'text-[var(--gold)]' : 'text-[var(--muted)] hover:text-[var(--light)]'}`}
+              >
+                {tab}
+                {activePortfolioTab === tab && <div className="absolute bottom-[-11px] left-0 w-full h-[2px] bg-[var(--gold)]" />}
+              </button>
+            ))}
+          </div>
+        </div>
+        
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-[16px] w-full">
+          {activeImages.slice(0, 14).map((src, idx) => (
+            <div key={idx} className="relative aspect-[3/4] group overflow-hidden rounded-[2px] border border-[rgba(10,10,10,0.06)] bg-white shadow-[0_2px_8px_rgba(0,0,0,0.01)]">
+              <img src={src} alt={`Portfolio Image ${idx + 1}`} className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-105" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[rgba(0,0,0,0.85)] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-[15px]">
+                <span className="text-[8px] tracking-[0.2em] uppercase text-[var(--gold)] mb-[4px] font-bold">Focus Spotlight</span>
+                <h4 className="font-serif text-[14px] text-white font-medium leading-none">Visual Capture</h4>
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        <div className="text-center mt-[48px] reveal">
+          <Link href="/portfolio" className="inline-flex items-center justify-center bg-[var(--gold)] text-white uppercase tracking-[0.2em] text-[11px] font-bold px-[36px] py-[16px] transition-all duration-400 hover:bg-black hover:text-white cursor-none">
+            Explore More Work &rarr;
+          </Link>
         </div>
       </section>
 
-      {/* ─── 12. OUR TEAM ─── */}
-      <section className="py-[120px] px-[8%] md:px-[10%] bg-[var(--darker)] border-y border-[rgba(10,10,10,0.06)]">
-        <div className="mb-[60px] reveal opacity-0 anim-fade-up">
-          <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] mb-[16px] block">Minds Behind the Lenses</span>
-          <h2 className="font-serif text-[clamp(28px,4vw,48px)] font-light leading-[1.2] text-[var(--light)]">Our Team</h2>
+      {/* ─── 7. OUR TEAM (SEPARATED SECTION) ─── */}
+      <section className="py-[100px] px-[4%] md:px-[5%] max-w-[1600px] mx-auto border-t border-[rgba(10,10,10,0.06)] bg-[var(--darker)] rounded-sm">
+        <div className="mb-[60px] reveal">
+          <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] mb-[16px] block font-semibold">Minds Behind the Lenses</span>
+          <h2 className="font-serif text-[38px] font-bold leading-[1.2] text-[var(--light)]">Our Team</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-[30px]">
           {[
             { name: "Hameed Hussain", role: "Founder & Director", img: "/logo-clients/founder-ceo.jpg" },
-            { name: "Anzar Hussain", role: "Creative Lead", img: "/logo-clients/founder-ceo.jpg" },
+            { name: "Ansar Hussain", role: "Creative Lead", img: "/logo-clients/founder-ceo.jpg" },
             { name: "Zia Hussain", role: "Head of Operations", img: "/logo-clients/founder-ceo.jpg" }
           ].map((member, idx) => (
-            <div key={idx} className="group relative rounded-sm overflow-hidden bg-[var(--dark)] border border-[rgba(10,10,10,0.06)] hover:border-[var(--gold)] transition-all duration-500 cursor-none flex flex-col">
+            <div key={idx} className="group relative rounded-sm overflow-hidden bg-white border border-[rgba(10,10,10,0.06)] hover:border-[var(--gold)] transition-all duration-500 cursor-none flex flex-col">
               <div className="h-[340px] w-full overflow-hidden relative">
-                <img src={member.img} alt={member.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[var(--dark-panel)] via-transparent to-transparent opacity-85" />
+                <img src={member.img} alt={member.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[var(--darker)] via-transparent to-transparent opacity-75" />
               </div>
               <div className="p-[24px]">
-                <span className="text-[9px] tracking-[0.25em] uppercase text-[var(--gold)] mb-[8px] block font-medium">{member.role}</span>
-                <h3 className="font-serif text-[22px] text-[var(--light)] group-hover:text-[var(--gold)] transition-colors leading-[1.2]">{member.name}</h3>
+                <span className="text-[9px] tracking-[0.25em] uppercase text-[var(--gold)] mb-[8px] block font-bold">{member.role}</span>
+                <h3 className="font-serif text-[22px] text-[var(--light)] group-hover:text-[var(--gold)] transition-colors leading-[1.2] font-bold">{member.name}</h3>
               </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* ─── 13. WHAT OUR CLIENTS SAY (TESTIMONIALS LOGO CAROUSEL) ─── */}
-      <section className="py-[120px] px-[8%] md:px-[10%] bg-[var(--dark)] border-t border-[rgba(10,10,10,0.06)]">
-        <div className="max-w-[1200px] mx-auto reveal opacity-0 anim-fade-up">
+      {/* ─── 8. TESTIMONIALS LOGO SLIDER (SEPARATED SECTION) ─── */}
+      <section className="py-[100px] px-[4%] md:px-[5%] bg-[var(--dark)] border-t border-[rgba(10,10,10,0.06)]">
+        <div className="max-w-[1600px] mx-auto reveal">
           <div className="text-center mb-[40px]">
-            <span className="text-[10px] tracking-[0.25em] uppercase text-[var(--gold)] mb-[12px] block font-medium">
+            <span className="text-[10px] tracking-[0.25em] uppercase text-[var(--gold)] mb-[12px] block font-semibold">
               Associated Dignitaries —
             </span>
-            <h2 className="font-serif text-[clamp(28px,4vw,40px)] font-bold uppercase tracking-wider text-[var(--light)] mb-[16px]">
+            <h2 className="font-serif text-[38px] font-bold uppercase tracking-wider text-[var(--light)] mb-[16px]">
               Testimonials
             </h2>
             <div className="w-[80px] h-[2px] bg-[var(--gold)] mx-auto"></div>
@@ -700,30 +627,30 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── 14. GET IN TOUCH (FOOTER FORM) ─── */}
-      <section id="contact-section" className="py-[120px] px-[8%] md:px-[10%] bg-[var(--darker)] border-t border-[rgba(10,10,10,0.06)] grid grid-cols-1 lg:grid-cols-2 gap-[80px]">
-        <div className="reveal opacity-0 anim-fade-up">
-          <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] mb-[16px] block">Start a Conversation</span>
-          <h2 className="font-serif text-[clamp(32px,4vw,56px)] font-light leading-[1.2] text-[var(--light)] mb-[32px]">Let's Create <br />Something Together</h2>
-          <div className="flex flex-col gap-[20px] text-[13px] text-[var(--muted)] font-light mt-[40px]">
+      {/* ─── 9. GET IN TOUCH (FOOTER FORM) ─── */}
+      <section id="contact-section" className="py-[120px] px-[4%] md:px-[5%] max-w-[1600px] mx-auto border-t border-[rgba(10,10,10,0.06)] grid grid-cols-1 lg:grid-cols-2 gap-[80px]">
+        <div className="reveal">
+          <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] mb-[16px] block font-semibold">Start a Conversation</span>
+          <h2 className="font-serif text-[clamp(32px,4vw,56px)] font-bold leading-[1.2] text-[var(--light)] mb-[32px]">Let's Create <br />Something Together</h2>
+          <div className="flex flex-col gap-[20px] text-[13px] text-[var(--muted)] font-semibold mt-[40px]">
             <p className="flex items-center gap-[12px]"><MapPin className="w-[16px] h-[16px] text-[var(--gold)]" /> Bangalore, India</p>
             <p className="flex items-center gap-[12px]"><Building2 className="w-[16px] h-[16px] text-[var(--gold)]" /> Glamour House, Infantry Road</p>
           </div>
         </div>
-        <div className="reveal opacity-0 anim-fade-up delay-100">
+        <div className="reveal">
           <form className="flex flex-col gap-[30px]" onSubmit={(e) => e.preventDefault()}>
-            <input suppressHydrationWarning type="text" placeholder="Your Name" className="bg-transparent border-b border-[rgba(10,10,10,0.1)] pb-[16px] text-[var(--light)] text-[14px] focus:outline-none focus:border-[var(--gold)] transition-colors w-full placeholder:text-[var(--muted)]" />
-            <input suppressHydrationWarning type="email" placeholder="Your Email" className="bg-transparent border-b border-[rgba(10,10,10,0.1)] pb-[16px] text-[var(--light)] text-[14px] focus:outline-none focus:border-[var(--gold)] transition-colors w-full placeholder:text-[var(--muted)]" />
-            <input suppressHydrationWarning type="tel" placeholder="Phone Number" className="bg-transparent border-b border-[rgba(10,10,10,0.1)] pb-[16px] text-[var(--light)] text-[14px] focus:outline-none focus:border-[var(--gold)] transition-colors w-full placeholder:text-[var(--muted)]" />
-            <textarea placeholder="Your Message" rows={4} className="bg-transparent border-b border-[rgba(10,10,10,0.1)] pb-[16px] text-[var(--light)] text-[14px] focus:outline-none focus:border-[var(--gold)] transition-colors w-full resize-none placeholder:text-[var(--muted)]" />
-            <button suppressHydrationWarning type="submit" className="bg-[var(--gold)] text-black font-semibold text-[11px] tracking-[0.2em] uppercase py-[20px] w-full mt-[20px] hover:bg-white transition-colors cursor-none">
+            <input suppressHydrationWarning type="text" placeholder="Your Name" className="bg-transparent border-b border-[rgba(10,10,10,0.1)] pb-[16px] text-[var(--light)] text-[14px] focus:outline-none focus:border-[var(--gold)] transition-colors w-full placeholder:text-[var(--muted)] font-semibold" />
+            <input suppressHydrationWarning type="email" placeholder="Your Email" className="bg-transparent border-b border-[rgba(10,10,10,0.1)] pb-[16px] text-[var(--light)] text-[14px] focus:outline-none focus:border-[var(--gold)] transition-colors w-full placeholder:text-[var(--muted)] font-semibold" />
+            <input suppressHydrationWarning type="tel" placeholder="Phone Number" className="bg-transparent border-b border-[rgba(10,10,10,0.1)] pb-[16px] text-[var(--light)] text-[14px] focus:outline-none focus:border-[var(--gold)] transition-colors w-full placeholder:text-[var(--muted)] font-semibold" />
+            <textarea placeholder="Your Message" rows={4} className="bg-transparent border-b border-[rgba(10,10,10,0.1)] pb-[16px] text-[var(--light)] text-[14px] focus:outline-none focus:border-[var(--gold)] transition-colors w-full resize-none placeholder:text-[var(--muted)] font-semibold" />
+            <button suppressHydrationWarning type="submit" className="bg-[var(--gold)] text-white font-bold text-[11px] tracking-[0.2em] uppercase py-[20px] w-full mt-[20px] hover:bg-black transition-colors cursor-none">
               Send Message
             </button>
           </form>
         </div>
       </section>
 
-      {/* ─── 15. SHOWREEL VIDEO MODAL OVERLAY ─── */}
+      {/* ─── 10. SHOWREEL VIDEO MODAL OVERLAY ─── */}
       {showreelOpen && (
         <div className="fixed inset-0 bg-black/95 z-[9999] flex items-center justify-center p-[20px] transition-all">
           <button 
@@ -746,7 +673,7 @@ export default function Home() {
         </div>
       )}
 
-      {/* ─── 16. TESTIMONIAL CERTIFICATE LIGHTBOX OVERLAY ─── */}
+      {/* ─── 11. TESTIMONIAL CERTIFICATE LIGHTBOX OVERLAY ─── */}
       {activeCert && (
         <div className="fixed inset-0 bg-black/95 z-[9999] flex items-center justify-center p-[20px] transition-all">
           <button 
