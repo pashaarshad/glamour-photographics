@@ -202,17 +202,17 @@ export default function Home() {
 
           {/* Right Column - Vertical Film Strip (span 2) */}
           <div className="lg:col-span-2 flex items-center justify-end z-20 reveal opacity-0 anim-fade-up delay-200">
-            <div className="w-[130px] h-[440px] hidden lg:flex flex-col bg-[#1A1A1A] border-2 border-[#1A1A1A] rounded-[4px] py-[16px] px-[8px] relative z-10 shrink-0 select-none shadow-[0_8px_32px_rgba(0,0,0,0.12)] overflow-hidden">
+            <div className="w-[145px] h-[440px] hidden lg:flex flex-col bg-[#E2D8C9] border border-[rgba(10,10,10,0.06)] rounded-[4px] py-[16px] px-[10px] relative z-10 shrink-0 select-none shadow-[0_8px_30px_rgba(10,10,10,0.04)] overflow-hidden">
               {/* Left sprocket track */}
-              <div className="absolute left-[3px] top-0 bottom-0 w-[4px] flex flex-col justify-around py-[8px] z-20">
+              <div className="absolute left-[4px] top-0 bottom-0 w-[5px] flex flex-col justify-around py-[8px] z-20">
                 {Array.from({ length: 14 }).map((_, i) => (
-                  <div key={i} className="w-[3px] h-[7px] bg-[#FAF8F4] opacity-90 rounded-[1px] mb-[3px]" />
+                  <div key={i} className="w-[4px] h-[8px] bg-white rounded-[1px] mb-[3px] shadow-[inset_0_1px_1px_rgba(0,0,0,0.05)]" />
                 ))}
               </div>
               {/* Right sprocket track */}
-              <div className="absolute right-[3px] top-0 bottom-0 w-[4px] flex flex-col justify-around py-[8px] z-20">
+              <div className="absolute right-[4px] top-0 bottom-0 w-[5px] flex flex-col justify-around py-[8px] z-20">
                 {Array.from({ length: 14 }).map((_, i) => (
-                  <div key={i} className="w-[3px] h-[7px] bg-[#FAF8F4] opacity-90 rounded-[1px] mb-[3px]" />
+                  <div key={i} className="w-[4px] h-[8px] bg-white rounded-[1px] mb-[3px] shadow-[inset_0_1px_1px_rgba(0,0,0,0.05)]" />
                 ))}
               </div>
 
@@ -229,7 +229,7 @@ export default function Home() {
                     "/images/our_portfolio/rtx-1.jpg",
                     "/images/our_portfolio/highlights_3C1A0775.jpg"
                   ].map((src, idx) => (
-                    <div key={idx} className="w-full aspect-square bg-[#0A0A0A] overflow-hidden relative rounded-[2px] group border border-[rgba(255,255,255,0.08)] shrink-0">
+                    <div key={idx} className="w-full aspect-square bg-[#0A0A0A] overflow-hidden relative rounded-[2px] group border border-[rgba(10,10,10,0.08)] shrink-0">
                       <img 
                         src={src} 
                         alt={`Film frame ${idx + 1}`} 
