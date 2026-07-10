@@ -127,119 +127,132 @@ export default function Home() {
     <main className="w-full bg-[var(--dark)] text-[var(--light)] pb-[100px] overflow-x-hidden cursor-none relative">
       
       {/* ─── 1. HERO SECTION ─── */}
-      <section className="relative min-h-[100vh] flex items-center justify-center px-[5%] md:px-[6%] pt-[130px] pb-[80px] overflow-hidden bg-[#FAF8F4] z-10 border-b border-[rgba(10,10,10,0.06)]">
-        <div className="max-w-[1440px] w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-[40px] items-center">
+      <section className="px-[4%] md:px-[5%] max-w-[1600px] mx-auto pt-[150px] pb-[80px] relative border-b border-[rgba(10,10,10,0.06)]">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-[40px] items-center">
           
-          {/* Left Column - Content & Icons (span 4) */}
-          <div className="lg:col-span-4 flex flex-col z-20 text-left reveal opacity-0 anim-fade-up">
-            <h1 className="font-serif text-[clamp(42px,5vw,72px)] font-normal leading-[1.08] tracking-tight mb-[24px] text-[var(--light)]">
+          {/* Left Column: Heading and Info */}
+          <div className="lg:col-span-5 reveal z-20">
+            <h1 className="font-serif text-[clamp(44px,5.5vw,76px)] font-bold leading-[1.05] tracking-[-0.02em] text-[var(--light)] mb-[24px]">
               We Capture <br />
-              <span className="text-[var(--gold)] font-bold">Moments.</span> <br />
+              <span className="text-[var(--gold)] italic font-light">Moments.</span> <br />
               We Create <br />
-              <span className="text-[var(--gold)] font-bold">Legacies.</span>
+              <span className="text-[var(--gold)] italic font-light">Legacies.</span>
             </h1>
-            <p className="text-[14.5px] text-[var(--light)] leading-relaxed mb-[32px] font-semibold">
+            
+            <p className="text-[14.5px] text-[var(--muted)] leading-relaxed font-semibold mb-[32px] max-w-[420px]">
               40+ Years of Storytelling <br />
               Through The Lens of Excellence
             </p>
             
-            {/* Watch Showreel Button */}
+            {/* Watch Showreel Link */}
             <button 
               suppressHydrationWarning
               onClick={() => setShowreelOpen(true)}
-              className="flex items-center gap-[14px] text-[11px] tracking-[0.2em] uppercase font-bold text-[var(--light)] hover:text-[var(--gold)] transition-all mb-[48px] self-start cursor-none group"
+              className="flex items-center gap-[12px] text-[11px] tracking-[0.2em] uppercase text-[var(--light)] font-bold mb-[48px] hover:text-[var(--gold)] cursor-none transition-colors"
             >
-              <span className="w-[48px] h-[48px] rounded-full border-2 border-[var(--gold)] flex items-center justify-center text-[var(--gold)] bg-transparent group-hover:bg-[var(--gold)] group-hover:text-white transition-all duration-300">
-                <Play className="w-[14px] h-[14px] fill-current ml-[2px]" />
+              <span className="w-[38px] h-[38px] rounded-full bg-[var(--gold)] flex items-center justify-center text-white shrink-0 shadow-sm shadow-[var(--gold)]/20">
+                <Play className="w-[12px] h-[12px] fill-current translate-x-[1.5px]" />
               </span>
               Watch Our Showreel
             </button>
-
-            {/* 7 Capabilities Icons Grid */}
-            <div className="grid grid-cols-12 gap-y-[24px] gap-x-[12px] max-w-[420px]">
-              {/* Row 1 (4 items - 3 cols each) */}
-              <div className="col-span-3 flex flex-col items-center text-center">
-                <Building2 className="w-[20px] h-[20px] text-[var(--gold)] mb-[8px] shrink-0" />
-                <span className="text-[8px] font-extrabold tracking-wider uppercase text-[var(--light)] leading-tight max-w-[85px]">Corporate Films</span>
-              </div>
-              <div className="col-span-3 flex flex-col items-center text-center">
-                <Camera className="w-[20px] h-[20px] text-[var(--gold)] mb-[8px] shrink-0" />
-                <span className="text-[8px] font-extrabold tracking-wider uppercase text-[var(--light)] leading-tight max-w-[85px]">Wedding Photo</span>
-              </div>
-              <div className="col-span-3 flex flex-col items-center text-center">
-                <Calendar className="w-[20px] h-[20px] text-[var(--gold)] mb-[8px] shrink-0" />
-                <span className="text-[8px] font-extrabold tracking-wider uppercase text-[var(--light)] leading-tight max-w-[85px]">Event Coverage</span>
-              </div>
-              <div className="col-span-3 flex flex-col items-center text-center">
-                <Award className="w-[20px] h-[20px] text-[var(--gold)] mb-[8px] shrink-0" />
-                <span className="text-[8px] font-extrabold tracking-wider uppercase text-[var(--light)] leading-tight max-w-[85px]">Digital Ads</span>
-              </div>
-
-              {/* Row 2 (3 items - 4 cols each) */}
-              <div className="col-span-4 flex flex-col items-center text-center">
-                <Video className="w-[20px] h-[20px] text-[var(--gold)] mb-[8px] shrink-0" />
-                <span className="text-[8px] font-extrabold tracking-wider uppercase text-[var(--light)] leading-tight max-w-[90px]">Documentary Films</span>
-              </div>
-              <div className="col-span-4 flex flex-col items-center text-center">
-                <User className="w-[20px] h-[20px] text-[var(--gold)] mb-[8px] shrink-0" />
-                <span className="text-[8px] font-extrabold tracking-wider uppercase text-[var(--light)] leading-tight max-w-[90px]">Studio Portraits</span>
-              </div>
-              <div className="col-span-4 flex flex-col items-center text-center">
-                <Aperture className="w-[20px] h-[20px] text-[var(--gold)] mb-[8px] shrink-0" />
-                <span className="text-[8px] font-extrabold tracking-wider uppercase text-[var(--light)] leading-tight max-w-[90px]">Photo Restore</span>
-              </div>
+            
+            {/* Categories Grid (2 rows, 4 columns) */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-[8px]">
+              {[
+                { title: "Corporate Films", icon: Video },
+                { title: "Wedding Photography", icon: Camera },
+                { title: "Event Coverage", icon: Calendar },
+                { title: "Digital Advertising", icon: Aperture },
+                { title: "Documentary Films", icon: Film },
+                { title: "Studio Portraits", icon: User },
+                { title: "Photo Restoration", icon: Camera }
+              ].map((cat, idx) => (
+                <div key={idx} className="bg-white border border-[rgba(10,10,10,0.06)] rounded-[3px] p-[12px] flex flex-col items-center text-center justify-center hover:border-[var(--gold)] transition-all duration-300 shadow-[0_2px_8px_rgba(0,0,0,0.01)] min-h-[75px]">
+                  <cat.icon className="w-[18px] h-[18px] text-[var(--gold)] mb-[6px]" />
+                  <span className="text-[9px] tracking-[0.05em] uppercase font-extrabold text-[var(--light)] leading-tight">{cat.title}</span>
+                </div>
+              ))}
             </div>
           </div>
-
-          {/* Middle Column - Cinematic Camera Graphic (span 6) */}
-          <div className="lg:col-span-6 flex items-center justify-center z-10 reveal opacity-0 anim-fade-up delay-100 select-none">
+          
+          {/* Middle Column: Large Camera Rig */}
+          <div className="lg:col-span-5 relative reveal flex items-center justify-center z-10 px-[10px]">
             <img 
               src="/images/hero-camera.png" 
-              alt="Premium Cinematic Camera Setup" 
-              className="w-full h-auto max-h-[560px] object-contain mx-auto"
+              alt="Professional Cinema Camera Rig" 
+              className="w-full h-auto max-h-[600px] object-contain" 
+              onError={(e) => {
+                e.target.src = "/images/about-hero-double-exposure.png";
+              }}
             />
           </div>
-
-          {/* Right Column - Vertical Film Strip (span 2) */}
-          <div className="lg:col-span-2 flex items-center justify-end z-20 reveal opacity-0 anim-fade-up delay-200">
-            <div className="w-[145px] h-[440px] hidden lg:flex flex-col bg-[#E2D8C9] border border-[rgba(10,10,10,0.06)] rounded-[4px] py-[16px] px-[10px] relative z-10 shrink-0 select-none shadow-[0_8px_30px_rgba(10,10,10,0.04)] overflow-hidden">
-              {/* Left sprocket track */}
-              <div className="absolute left-[4px] top-0 bottom-0 w-[5px] flex flex-col justify-around py-[8px] z-20">
-                {Array.from({ length: 14 }).map((_, i) => (
-                  <div key={i} className="w-[4px] h-[8px] bg-white rounded-[1px] mb-[3px] shadow-[inset_0_1px_1px_rgba(0,0,0,0.05)]" />
+          
+          {/* Right Column: Narrow Film Reel Marquee */}
+          <div className="lg:col-span-2 reveal flex justify-center lg:justify-end items-center h-[520px]">
+            <div className="w-[140px] h-[520px] overflow-hidden relative bg-[#E2D8C9] border border-[rgba(10,10,10,0.08)] rounded-[4px] py-[15px] px-[16px] shadow-[0_8px_32px_rgba(0,0,0,0.03)] flex flex-col justify-between">
+              {/* White Square Sprocket Holes */}
+              <div className="absolute left-[4px] top-0 bottom-0 flex flex-col justify-between py-[12px] select-none pointer-events-none z-20">
+                {Array.from({ length: 15 }).map((_, i) => (
+                  <div key={i} className="w-[8px] h-[8px] bg-white rounded-[1px] shadow-[inset_0_1px_2px_rgba(0,0,0,0.08)]" />
                 ))}
               </div>
-              {/* Right sprocket track */}
-              <div className="absolute right-[4px] top-0 bottom-0 w-[5px] flex flex-col justify-around py-[8px] z-20">
-                {Array.from({ length: 14 }).map((_, i) => (
-                  <div key={i} className="w-[4px] h-[8px] bg-white rounded-[1px] mb-[3px] shadow-[inset_0_1px_1px_rgba(0,0,0,0.05)]" />
+              <div className="absolute right-[4px] top-0 bottom-0 flex flex-col justify-between py-[12px] select-none pointer-events-none z-20">
+                {Array.from({ length: 15 }).map((_, i) => (
+                  <div key={i} className="w-[8px] h-[8px] bg-white rounded-[1px] shadow-[inset_0_1px_2px_rgba(0,0,0,0.08)]" />
                 ))}
               </div>
-
-              {/* Scrolling Film Strip Frames */}
-              <div className="h-full overflow-hidden relative select-none z-10">
-                <div className="flex flex-col gap-[12px] animate-marquee-vertical">
+              
+              {/* Vertical Loop */}
+              <div className="h-full overflow-hidden relative z-10 select-none">
+                <div className="flex flex-col gap-[15px] animate-marquee-vertical">
                   {[
-                    "/images/our_portfolio/highlights_3C1A0761.jpg",
-                    "/images/our_portfolio/dilquar.jpg",
-                    "/images/our_portfolio/rtx-1.jpg",
-                    "/images/our_portfolio/highlights_3C1A0775.jpg",
-                    "/images/our_portfolio/highlights_3C1A0761.jpg",
-                    "/images/our_portfolio/dilquar.jpg",
-                    "/images/our_portfolio/rtx-1.jpg",
-                    "/images/our_portfolio/highlights_3C1A0775.jpg"
-                  ].map((src, idx) => (
-                    <div key={idx} className="w-full aspect-square bg-[#0A0A0A] overflow-hidden relative rounded-[2px] group border border-[rgba(10,10,10,0.08)] shrink-0">
-                      <img 
-                        src={src} 
-                        alt={`Film frame ${idx + 1}`} 
-                        className="w-full h-full object-cover grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
-                      />
-                    </div>
-                  ))}
+                    { type: 'img', src: "/images/our_portfolio/highlights_3C1A0761.jpg" },
+                    { type: 'img', src: "/images/our_portfolio/highlights_3C1A0775.jpg" },
+                    { type: 'img', src: "/images/our_portfolio/11.jpg" },
+                    { type: 'img', src: "/images/our_portfolio/highlights_3C1A0782.jpg" },
+                    { type: 'badge' },
+                    { type: 'img', src: "/images/our_portfolio/22.jpg" },
+                    { type: 'img', src: "/images/our_portfolio/highlights_3C1A0841.jpg" },
+                    { type: 'img', src: "/images/our_portfolio/33.jpg" },
+                    { type: 'img', src: "/images/our_portfolio/rtx-1.jpg" },
+                    { type: 'badge' }
+                  ].map((item, idx) => {
+                    if (item.type === 'img') {
+                      return (
+                        <div key={idx} className="w-full aspect-[4/3] bg-black overflow-hidden relative border border-[rgba(10,10,10,0.12)] rounded-[3px] shrink-0">
+                          <img 
+                            src={item.src} 
+                            alt={`Film Strip Frame ${idx + 1}`} 
+                            className="w-full h-full object-cover opacity-100" 
+                          />
+                        </div>
+                      );
+                    } else {
+                      return (
+                        <div key={idx} className="w-full bg-[#D6CBBF] border border-[rgba(10,10,10,0.06)] rounded-[3px] py-[14px] px-[8px] text-center shrink-0 flex flex-col justify-center items-center">
+                          <span className="font-serif text-[24px] font-bold text-[#1A1A1A] leading-none mb-[2px]">40+</span>
+                          <span className="text-[8px] tracking-[0.1em] uppercase text-[#3A3530] font-bold leading-tight">Years Of</span>
+                          <span className="text-[8px] tracking-[0.1em] uppercase text-[#3A3530] font-bold leading-tight">Storytelling</span>
+                        </div>
+                      );
+                    }
+                  })}
                 </div>
               </div>
             </div>
+            
+            <style suppressHydrationWarning>{`
+              @keyframes marquee-vertical {
+                0% { transform: translateY(0); }
+                100% { transform: translateY(-50%); }
+              }
+              .animate-marquee-vertical {
+                animation: marquee-vertical 28s linear infinite;
+              }
+              .animate-marquee-vertical:hover {
+                animation-play-state: paused;
+              }
+            `}</style>
           </div>
         </div>
       </section>
