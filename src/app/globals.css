@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-dark: #050505;
-  --color-darker: #020202;
-  --color-dark-panel: #0A0A0A;
-  --color-light: #F5F5F5;
-  --color-muted: #888888;
+  --color-dark: #FAF8F4;        /* Creamy Ivory page background */
+  --color-darker: #F2ECE5;      /* Beige layout background */
+  --color-dark-panel: #EBE5DC;  /* Slightly darker warm panel background */
+  --color-light: #0A0A0A;       /* Rich black/dark text and contrasts */
+  --color-muted: #7A7168;       /* Muted gray/brown text */
   --color-gold: #C5A46D;
   --color-gold-b: #B8972E;
 
@@ -17,11 +17,11 @@
 
 @layer base {
   :root {
-    --dark: #050505;
-    --darker: #020202;
-    --dark-panel: #0A0A0A;
-    --light: #F5F5F5;
-    --muted: #888888;
+    --dark: #FAF8F4;
+    --darker: #F2ECE5;
+    --dark-panel: #EBE5DC;
+    --light: #0A0A0A;
+    --muted: #7A7168;
     --gold: #C5A46D;
     --gold-b: #B8972E;
     --ease: cubic-bezier(.22, 1, .36, 1);
@@ -45,15 +45,15 @@
     cursor: none;
   }
 
-  /* NOISE BACKGROUND FOR DARK THEME */
+  /* NOISE BACKGROUND FOR CREAMY THEME */
   body::before {
     content: '';
     position: fixed;
     inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
     pointer-events: none;
     z-index: 9000;
-    opacity: .4;
+    opacity: .35;
   }
 }
 
@@ -105,7 +105,7 @@
     letter-spacing: .3em;
     text-transform: uppercase;
     font-weight: 400;
-    border-bottom: 1px solid rgba(245, 245, 245, 0.2);
+    border-bottom: 1px solid rgba(10, 10, 10, 0.15);
     padding-bottom: 4px;
     transition: all .3s ease;
     cursor: none;
@@ -122,7 +122,7 @@
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    border: 1px solid rgba(245, 245, 245, 0.2);
+    border: 1px solid rgba(10, 10, 10, 0.15);
     color: var(--light);
     padding: 16px 36px;
     font-size: 10px;
