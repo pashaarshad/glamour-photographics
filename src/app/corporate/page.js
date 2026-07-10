@@ -1,9 +1,16 @@
 'use client';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay } from 'swiper/modules';
+import { X } from 'lucide-react';
 import imagesMap from '../../../images_map.json';
 
+import 'swiper/css';
+
 export default function CorporatePortfolio() {
+  const [activeCert, setActiveCert] = useState(null);
+
   useEffect(() => {
     const checkReveals = () => {
       const vh = window.innerHeight;
@@ -91,13 +98,12 @@ export default function CorporatePortfolio() {
                   href={`/corporate/${client.slug}`} 
                   key={idx} 
                   className="group relative bg-[var(--darker)] border border-[rgba(10,10,10,0.06)] hover:border-[var(--gold)] rounded-sm overflow-hidden h-[360px] cursor-none block transition-all duration-500"
-                >
-                  {/* Card Background Poster */}
+                >                  {/* Card Background Poster */}
                   <div 
-                    className="absolute inset-0 bg-cover bg-center opacity-15 group-hover:opacity-35 transition-all duration-[800ms] group-hover:scale-[1.03]" 
+                    className="absolute inset-0 bg-cover bg-center opacity-85 group-hover:opacity-100 transition-all duration-[800ms] group-hover:scale-[1.03]" 
                     style={{ backgroundImage: `url('${assets.bg}')` }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--darker)] via-[rgba(242,236,229,0.7)] to-transparent z-10" />
+                  <div className="absolute inset-0 bg-black/10 bg-gradient-to-t from-black/50 via-transparent to-transparent group-hover:opacity-0 transition-opacity duration-500 z-10" />
                   
                   {/* Card Content wrapper */}
                   <div className="absolute inset-0 p-[40px] flex flex-col justify-between z-20">
@@ -107,24 +113,24 @@ export default function CorporatePortfolio() {
                         <img 
                           src={assets.logo} 
                           alt={`${client.name} Logo`} 
-                          className="max-h-[36px] max-w-[130px] object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300 rounded-sm"
+                          className="max-h-[36px] max-w-[130px] object-contain transition-opacity duration-300 rounded-sm bg-white/95 p-[3px]"
                         />
                       ) : (
-                        <span className="font-serif text-[18px] text-[var(--muted)]">{client.name}</span>
+                        <span className="font-serif text-[18px] text-white font-bold">{client.name}</span>
                       )}
                       
-                      <div className="font-serif italic text-[44px] text-[rgba(10,10,10,0.06)] leading-none transition-colors duration-[400ms] group-hover:text-[var(--gold)] font-light select-none">
+                      <div className="font-serif italic text-[44px] text-[rgba(255,255,255,0.15)] leading-none transition-colors duration-[400ms] group-hover:text-[var(--gold)] font-light select-none">
                         {client.index}
                       </div>
                     </div>
-
+ 
                     {/* Bottom Row: Text & Thumbnails */}
                     <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-[24px] w-full">
                       <div className="flex-1">
-                        <h3 className="font-serif text-[28px] md:text-[32px] text-[var(--light)] leading-[1.2] mb-[8px] transition-colors duration-[400ms] group-hover:text-[var(--gold)]">
+                        <h3 className="font-serif text-[28px] md:text-[32px] text-white font-bold leading-[1.2] mb-[8px] transition-colors duration-[400ms] group-hover:text-[var(--gold)] drop-shadow-md">
                           {client.name}
                         </h3>
-                        <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--gold)]">
+                        <p className="text-[10px] tracking-[0.2em] uppercase text-[var(--gold)] font-semibold drop-shadow-sm">
                           {client.desc}
                         </p>
                       </div>
@@ -162,25 +168,25 @@ export default function CorporatePortfolio() {
                   className="group relative bg-[var(--darker)] border border-[rgba(10,10,10,0.06)] hover:border-[var(--gold)] rounded-sm overflow-hidden min-h-[240px] cursor-none block flex flex-col justify-between p-[30px] transition-all duration-400"
                 >
                   <div 
-                    className="absolute inset-0 bg-cover bg-center opacity-10 group-hover:opacity-20 transition-opacity duration-500" 
+                    className="absolute inset-0 bg-cover bg-center opacity-85 group-hover:opacity-100 transition-all duration-500" 
                     style={{ backgroundImage: `url('${assets.bg}')` }}
                   />
-                  <div className="absolute inset-0 bg-[var(--darker)]/40 z-10" />
-
+                  <div className="absolute inset-0 bg-black/10 bg-gradient-to-t from-black/50 via-transparent to-transparent group-hover:opacity-0 transition-opacity duration-500 z-10" />
+ 
                   <div className="relative z-20 w-full flex flex-col gap-[16px] h-full justify-between flex-1">
                     <div>
                       {assets.logo ? (
                         <img 
                           src={assets.logo} 
                           alt={`${client.name} Logo`} 
-                          className="max-h-[24px] max-w-[100px] object-contain opacity-50 group-hover:opacity-100 transition-opacity duration-300 rounded-sm mb-[14px]"
+                          className="max-h-[24px] max-w-[100px] object-contain transition-opacity duration-300 rounded-sm mb-[14px] bg-white/95 p-[2px]"
                         />
                       ) : (
-                        <h3 className="font-serif text-[18px] text-[var(--light)] mb-[10px]">
+                        <h3 className="font-serif text-[18px] text-white font-bold mb-[10px] drop-shadow-md">
                           {client.name}
                         </h3>
                       )}
-                      <p className="text-[12px] text-[var(--muted)] leading-relaxed font-light group-hover:text-[var(--light)] transition-colors">
+                      <p className="text-[12px] text-white/90 leading-relaxed font-semibold drop-shadow-sm">
                         {client.desc}
                       </p>
                     </div>
@@ -197,6 +203,90 @@ export default function CorporatePortfolio() {
           </div>
         </div>
       </section>
+
+      {/* ─── TESTIMONIALS LOGO CAROUSEL ─── */}
+      <section className="py-[120px] px-[8%] md:px-[10%] bg-[var(--darker)] border-t border-[rgba(10,10,10,0.06)]">
+        <div className="max-w-[1200px] mx-auto reveal opacity-0 anim-fade-up">
+          <div className="text-center mb-[40px]">
+            <span className="text-[10px] tracking-[0.25em] uppercase text-[var(--gold)] mb-[12px] block font-medium">
+              Associated Dignitaries —
+            </span>
+            <h2 className="font-serif text-[clamp(28px,4vw,40px)] font-bold uppercase tracking-wider text-[var(--light)] mb-[16px]">
+              Testimonials
+            </h2>
+            <div className="w-[80px] h-[2px] bg-[var(--gold)] mx-auto"></div>
+          </div>
+          
+          <div className="w-full">
+            <Swiper
+              modules={[Autoplay]}
+              spaceBetween={20}
+              slidesPerView={2}
+              loop={true}
+              speed={600}
+              autoplay={{
+                delay: 2500,
+                disableOnInteraction: false,
+                pauseOnHover: true
+              }}
+              breakpoints={{
+                600: { slidesPerView: 4, spaceBetween: 24 },
+                1024: { slidesPerView: 6, spaceBetween: 24 }
+              }}
+              className="logo-swiper py-[20px]"
+            >
+              {[
+                { name: "Prince of Wales", logo: "/testimonials/logo-prince-of-wales.png", cert: "/testimonials/cert-prince-of-wales.jpg" },
+                { name: "ITC Limited", logo: "/testimonials/logo-itc.jpg", cert: "/testimonials/cert-itc.jpg" },
+                { name: "Univ. of Exeter", logo: "/testimonials/logo-exeter.png", cert: "/testimonials/cert-exeter.jpg" },
+                { name: "Le Méridien", logo: "/testimonials/logo-le-meridian.png", cert: "/testimonials/cert-le-meridian.jpg" },
+                { name: "Essae", logo: "/testimonials/logo-essae.png", cert: "/testimonials/cert-essae.jpg" },
+                { name: "Baldwins", logo: "/testimonials/logo-baldwins.jpg", cert: "/testimonials/cert-baldwins.jpg" },
+                { name: "BIAL", logo: "/testimonials/logo-bial.png", cert: "/testimonials/cert-bial.jpg" },
+                { name: "GE", logo: "/testimonials/logo-ge.png", cert: "/testimonials/cert-ge.jpg" },
+                { name: "DNA Networks", logo: "/testimonials/logo-dna-networks.png", cert: "/testimonials/cert-dna-networks.jpg" },
+                { name: "Windsor Manor", logo: "/testimonials/logo-windsor-manor.png", cert: "/testimonials/cert-windsor-manor.jpg" }
+              ].map((logo, idx) => (
+                <SwiperSlide key={idx}>
+                  <div 
+                    onClick={() => setActiveCert(logo.cert)}
+                    className="bg-white border border-[rgba(10,10,10,0.06)] p-[12px] rounded-sm h-[90px] flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.01)] transition-all duration-300 hover:scale-105 hover:border-[var(--gold)] cursor-none"
+                  >
+                    <img 
+                      src={logo.logo} 
+                      alt={logo.name} 
+                      className="max-h-[60px] max-w-[85%] object-contain" 
+                      loading="lazy" 
+                    />
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── TESTIMONIAL CERTIFICATE LIGHTBOX OVERLAY ─── */}
+      {activeCert && (
+        <div className="fixed inset-0 bg-black/95 z-[9999] flex items-center justify-center p-[20px] transition-all">
+          <button 
+            suppressHydrationWarning
+            onClick={() => setActiveCert(null)} 
+            className="absolute top-[30px] right-[5%] md:right-[8%] text-white text-[12px] tracking-[0.2em] uppercase flex items-center gap-[8px] cursor-none hover:text-[var(--gold)]"
+          >
+            Close <X className="w-[16px] h-[16px]" />
+          </button>
+          <div className="w-full max-w-[640px] max-h-[85vh] overflow-y-auto rounded-sm bg-white p-[8px] shadow-2xl relative flex items-center justify-center">
+            <img 
+              src={activeCert} 
+              alt="Testimonial Certificate Form" 
+              className="max-w-full max-h-[80vh] object-contain rounded-sm" 
+              loading="lazy"
+            />
+          </div>
+        </div>
+      )}
+
     </main>
   );
 }
