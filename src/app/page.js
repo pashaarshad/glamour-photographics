@@ -377,18 +377,18 @@ export default function Home() {
         <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-[80px] items-center">
           
           {/* Left Column Overlapping Boxes */}
-          <div className="relative h-[460px] w-full flex items-center justify-center reveal opacity-0 anim-fade-up">
-            {/* Box 1 - Founder Portrait & Text Overlay (Top-aligned) */}
+          <div className="relative h-[480px] w-full flex items-center justify-center reveal opacity-0 anim-fade-up">
+            {/* Box 1 - Founder Portrait & Text Overlay */}
             <div className="absolute top-[20px] left-[20px] w-[75%] h-[320px] bg-[#0A0A0A] border border-[rgba(10,10,10,0.06)] rounded-sm overflow-hidden z-10 shadow-md relative group">
               <img 
                 src="/logo-clients/founder-ceo.jpg" 
                 alt="Hameed Hussain Founder" 
                 className="w-full h-full object-cover opacity-70 transition-transform duration-700 group-hover:scale-105 select-none pointer-events-none" 
               />
-              <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/45 to-transparent p-[24px] flex flex-col justify-start gap-[6px]">
-                <h4 className="font-serif text-[22px] text-white font-bold leading-none">Hameed Hussain</h4>
-                <p className="text-[9px] tracking-[0.2em] uppercase text-[var(--gold)] font-bold mb-[4px]">Founder & Creative Visionary</p>
-                <div className="w-[40px] h-[1px] bg-[var(--gold)] mb-[8px]"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-transparent p-[28px] flex flex-col justify-end">
+                <h4 className="font-serif text-[22px] text-white font-bold leading-none mb-[4px]">Hameed Hussain</h4>
+                <p className="text-[9px] tracking-[0.2em] uppercase text-[var(--gold)] font-bold mb-[12px]">Founder & Creative Visionary</p>
+                <div className="w-[40px] h-[1px] bg-[var(--gold)] mb-[12px]"></div>
                 <img 
                   src="/images/signature.png" 
                   alt="Founder Signature" 
@@ -397,11 +397,11 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Box 2 - Overlapping Golden/Ivory Styled Panel (Slightly smaller to prevent collision) */}
-            <div className="absolute bottom-[20px] right-[20px] w-[60%] h-[210px] bg-white border border-[rgba(197,164,109,0.3)] rounded-sm p-[26px] flex flex-col justify-between z-20 shadow-lg backdrop-blur-md">
-              <span className="text-[10px] tracking-[0.25em] uppercase text-[var(--gold)] font-bold">Visual Legacy</span>
-              <h5 className="font-serif text-[28px] text-[var(--light)] font-bold leading-none">Est. 1982</h5>
-              <p className="text-[12.5px] text-[var(--light)] leading-relaxed font-semibold">Pioneering corporate imagery in Bangalore.</p>
+            {/* Box 2 - Overlapping Golden/Ivory Styled Panel (Very small, sitting mostly below the image) */}
+            <div className="absolute bottom-[5px] right-[15px] w-[58%] h-[135px] bg-[#FAF8F4] border border-[rgba(197,164,109,0.35)] rounded-sm p-[20px] py-[16px] flex flex-col justify-between z-20 shadow-lg backdrop-blur-md">
+              <span className="text-[9px] tracking-[0.2em] uppercase text-[var(--gold)] font-bold">Visual Legacy</span>
+              <h5 className="font-serif text-[22px] text-[var(--light)] font-bold leading-none mb-[2px]">Est. 1982</h5>
+              <p className="text-[11.5px] text-[var(--light)] leading-normal font-semibold">Pioneering corporate imagery in Bangalore.</p>
             </div>
           </div>
 
