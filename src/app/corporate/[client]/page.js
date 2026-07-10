@@ -29,9 +29,9 @@ export default function ClientPage({ params }) {
 
   if (!client) {
     return (
-      <main className="w-full bg-[var(--dark)] text-white min-h-[70vh] pt-[160px] pb-[100px] flex flex-col items-center justify-center text-center cursor-none">
-        <h1 className="font-serif text-[40px] text-white mb-4">Client Not Found</h1>
-        <Link href="/corporate" className="inline-block border border-[rgba(255,255,255,0.2)] text-white px-6 py-3 uppercase tracking-wider text-[10px] hover:bg-white hover:text-black transition-all duration-300">Return to Portfolio</Link>
+      <main className="w-full bg-[var(--dark)] text-[var(--light)] min-h-[70vh] pt-[160px] pb-[100px] flex flex-col items-center justify-center text-center cursor-none">
+        <h1 className="font-serif text-[40px] text-[var(--light)] mb-4">Client Not Found</h1>
+        <Link href="/corporate" className="inline-block border border-[rgba(10,10,10,0.15)] text-[var(--light)] px-6 py-3 uppercase tracking-wider text-[10px] hover:bg-[var(--light)] hover:text-[var(--dark)] transition-all duration-300">Return to Portfolio</Link>
       </main>
     );
   }
@@ -55,10 +55,10 @@ export default function ClientPage({ params }) {
   const galleryImages = clientImages.slice(2);
 
   return (
-    <main className="w-full bg-[var(--dark)] text-white min-h-screen pt-[160px] pb-[100px] cursor-none relative">
+    <main className="w-full bg-[var(--dark)] text-[var(--light)] min-h-screen pt-[160px] pb-[100px] cursor-none relative">
       <section className="px-[5%] md:px-[8%] max-w-[1400px] mx-auto">
         
-        <Link href="/corporate" className="inline-flex items-center gap-2 text-[10px] tracking-[0.2em] uppercase text-[var(--gold)] hover:text-white transition-colors mb-[60px] reveal">
+        <Link href="/corporate" className="inline-flex items-center gap-2 text-[10px] tracking-[0.2em] uppercase text-[var(--gold)] hover:text-[var(--light)] transition-colors mb-[60px] reveal">
           ← Back to Portfolio
         </Link>
         
@@ -67,7 +67,7 @@ export default function ClientPage({ params }) {
             <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] mb-[16px] block">
               Case Study
             </span>
-            <h1 className="font-serif text-[clamp(36px,5vw,60px)] font-light leading-[1.1] tracking-[-0.02em] text-white mb-[32px]">
+            <h1 className="font-serif text-[clamp(36px,5vw,60px)] font-light leading-[1.1] tracking-[-0.02em] text-[var(--light)] mb-[32px]">
               {client.name}
             </h1>
             
@@ -80,7 +80,7 @@ export default function ClientPage({ params }) {
             )}
 
             <div className="mb-[40px]">
-              <h3 className="text-[10px] tracking-[0.3em] uppercase text-white mb-[16px] font-medium border-b border-[rgba(255,255,255,0.08)] pb-[8px]">
+              <h3 className="text-[10px] tracking-[0.3em] uppercase text-[var(--light)] mb-[16px] font-medium border-b border-[rgba(10,10,10,0.08)] pb-[8px]">
                 About the Company
               </h3>
               <p className="text-[14px] leading-[1.8] text-[var(--muted)] font-light">
@@ -89,7 +89,7 @@ export default function ClientPage({ params }) {
             </div>
             
             <div>
-              <h3 className="text-[10px] tracking-[0.3em] uppercase text-white mb-[16px] font-medium border-b border-[rgba(255,255,255,0.08)] pb-[8px]">
+              <h3 className="text-[10px] tracking-[0.3em] uppercase text-[var(--light)] mb-[16px] font-medium border-b border-[rgba(10,10,10,0.08)] pb-[8px]">
                 Our Partnership
               </h3>
               <p className="text-[14px] leading-[1.8] text-[var(--muted)] font-light">
@@ -101,22 +101,22 @@ export default function ClientPage({ params }) {
           {/* Right Column: Displays two featured images instead of the iframe */}
           <div className="reveal flex flex-col gap-[24px]">
             {featuredImages.map((src, idx) => (
-              <div key={idx} className="relative w-full aspect-video bg-[var(--dark-panel)] rounded-sm overflow-hidden border border-[rgba(255,255,255,0.05)] shadow-2xl group">
+              <div key={idx} className="relative w-full aspect-video bg-[var(--darker)] rounded-sm overflow-hidden border border-[rgba(10,10,10,0.06)] shadow-2xl group">
                 <img 
                   src={src} 
                   alt={`${client.name} Featured Work ${idx + 1}`} 
                   className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-102"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[rgba(5,5,5,0.5)] via-transparent to-transparent opacity-80" />
+                {/* No shading overlay */}
               </div>
             ))}
           </div>
         </div>
 
         {/* Bottom Section: Displays remaining gallery images */}
-        <div className="reveal border-t border-[rgba(255,255,255,0.05)] pt-[80px]">
+        <div className="reveal border-t border-[rgba(10,10,10,0.06)] pt-[80px]">
           <div className="mb-[40px] flex items-end justify-between">
-            <h2 className="font-serif text-[28px] md:text-[36px] text-white">
+            <h2 className="font-serif text-[28px] md:text-[36px] text-[var(--light)]">
               Visual Gallery
             </h2>
           </div>

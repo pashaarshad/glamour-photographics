@@ -32,7 +32,7 @@ export default function Preloader() {
   return (
     <div
       id="loader"
-      className={`fixed inset-0 bg-black z-[8000] flex flex-col items-center justify-center p-0 m-0 ${
+      className={`fixed inset-0 bg-[#0A0A0A] z-[8000] flex flex-col items-center justify-center p-0 m-0 ${
         out ? 'loader-out' : ''
       }`}
     >
@@ -40,7 +40,7 @@ export default function Preloader() {
         <img 
           src="/images/Glamour_Logo.png" 
           alt="Glamour Photographics Logo" 
-          className="w-[200px] h-auto object-contain"
+          className="w-[280px] md:w-[480px] h-auto object-contain"
         />
       </div>
       <div id="loader-line" className="h-[1px] bg-[var(--gold)] mb-[14px] loader-line-anim"></div>

@@ -18,21 +18,19 @@ export default function Navbar() {
     <>
       <nav 
         id="navbar" 
-        className={`fixed top-0 left-0 right-0 z-[1000] px-[5%] md:px-[8%] h-[80px] flex items-center justify-between transition-all duration-400 ease-in-out cursor-none ${
-          scrolled ? 'bg-[rgba(5,5,5,0.85)] backdrop-blur-[16px] border-b border-[rgba(255,255,255,0.05)]' : 'bg-transparent'
-        }`}
+        className={`fixed top-0 left-0 right-0 z-[1000] px-[5%] md:px-[8%] h-[90px] flex items-center justify-between transition-all duration-400 ease-in-out cursor-none bg-[#0A0A0A] border-b border-[rgba(255,255,255,0.08)]`}
       >
         <Link href="/" className="flex items-center gap-[10px] cursor-none">
           <img 
             src="/images/Glamour_Logo.png" 
             alt="Glamour Photographics Logo" 
-            className="h-[30px] md:h-[36px] w-auto object-contain"
+            className="h-[48px] md:h-[58px] w-auto object-contain"
           />
         </Link>
         <ul className="hidden md:flex gap-[40px] list-none">
           {['Home', 'About Us', 'Services', 'Portfolio', 'Clients', 'Contact'].map((item) => (
             <li key={item}>
-              <Link href={item === 'Home' ? '/' : `/${item.toLowerCase().replace(' ', '-')}`} className="text-[10px] tracking-[0.2em] uppercase font-medium text-[var(--muted)] relative pb-[4px] transition-colors duration-300 hover:text-white cursor-none after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-[var(--gold)] after:transition-all after:duration-350 hover:after:w-full">
+              <Link href={item === 'Home' ? '/' : `/${item.toLowerCase().replace(' ', '-')}`} className="text-[10px] tracking-[0.2em] uppercase font-medium text-[rgba(255,255,255,0.7)] relative pb-[4px] transition-colors duration-300 hover:text-white cursor-none after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-[var(--gold)] after:transition-all after:duration-350 hover:after:w-full">
                 {item}
               </Link>
             </li>
@@ -41,7 +39,7 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-[20px]">
           <Link 
             href="/contact" 
-            className="text-[10px] tracking-[0.25em] uppercase font-semibold py-[10px] px-[24px] border border-[rgba(197,164,109,0.4)] text-[var(--gold)] transition-all duration-300 hover:bg-[var(--gold)] hover:text-black cursor-none"
+            className="text-[10px] tracking-[0.25em] uppercase font-semibold py-[10px] px-[24px] border border-[rgba(255,255,255,0.2)] text-white transition-all duration-300 hover:bg-white hover:text-black cursor-none"
           >
             Let's Talk
           </Link>
@@ -55,7 +53,7 @@ export default function Navbar() {
 
       {/* MOBILE MENU */}
       <div 
-        className={`fixed inset-0 bg-[var(--dark-panel)] z-[2000] flex flex-col items-center justify-center gap-[40px] transition-transform duration-600 ease-in-out cursor-none ${mobileOpen ? 'translate-y-0' : '-translate-y-full'}`}
+        className={`fixed inset-0 bg-[#0A0A0A] z-[2000] flex flex-col items-center justify-center gap-[40px] transition-transform duration-600 ease-in-out cursor-none ${mobileOpen ? 'translate-y-0' : '-translate-y-full'}`}
       >
         <button suppressHydrationWarning onClick={() => setMobileOpen(false)} className="absolute top-[30px] right-[5%] md:right-[8%] text-white text-[12px] tracking-[0.2em] uppercase cursor-none">Close ✕</button>
         {['Home', 'About Us', 'Services', 'Portfolio', 'Clients', 'Contact'].map((item, idx) => (
