@@ -56,21 +56,22 @@ export default function Services() {
     <main className="w-full bg-[var(--dark)] text-[var(--light)] min-h-screen pt-0 pb-[100px] cursor-none relative">
       
       {/* ─── HERO SECTION ─── */}
-      <section className="relative min-h-[60vh] flex items-center px-[5%] md:px-[8%] overflow-hidden bg-[var(--dark)] mb-[100px] pt-[120px] md:pt-[100px]">
+      <section className="relative min-h-[60vh] flex items-center px-[5%] md:px-[8%] overflow-hidden bg-[#0A0A0A] mb-[100px] pt-[120px] md:pt-[100px]">
         <div className="absolute inset-0 z-0">
-          <img src="/images/servers-hero-section.png" alt="Capabilities Background" className="w-full h-full object-cover opacity-85" />
-          {/* No shading overlay */}
+          <img src="/images/servers-hero-section.png" alt="Capabilities Background" className="w-full h-full object-cover opacity-90" />
+          {/* Dark Shading Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/45 to-transparent z-10" />
         </div>
         <div className="max-w-[1400px] w-full mx-auto z-20 relative">
           <div className="reveal">
-            <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] mb-[16px] block">
+            <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] mb-[16px] block font-semibold">
               Our Capabilities
             </span>
-            <h1 className="font-serif text-[clamp(44px,6vw,80px)] font-light leading-[1.1] tracking-[-0.02em] text-[var(--light)]">
+            <h1 className="font-serif text-[clamp(44px,6vw,80px)] font-light leading-[1.1] tracking-[-0.02em] text-white">
               Comprehensive Visual <br />
               <span className="italic text-[var(--gold)]">Solutions.</span>
             </h1>
-            <p className="text-[14px] leading-[1.8] text-[var(--muted)] max-w-[600px] mt-[32px] font-light">
+            <p className="text-[14.5px] leading-[1.8] text-white/80 max-w-[600px] mt-[32px] font-medium">
               We offer end-to-end photography and videography services tailored for the corporate sector. Combining technical mastery with creative vision, we deliver assets that elevate your brand.
             </p>
           </div>
@@ -119,13 +120,13 @@ export default function Services() {
           {services.map((service, idx) => (
             <div key={idx} className="group relative flex flex-col md:flex-row justify-between items-start md:items-center p-[40px] md:p-[50px] bg-[var(--darker)] border border-[rgba(10,10,10,0.06)] rounded-sm transition-all duration-500 hover:border-[var(--gold)] reveal overflow-hidden cursor-none">
               
-              {/* Background Image - Subtle preview by default, scales and fades on hover */}
+              {/* Background Image - Less transparent, clearly visible */}
               <div 
-                className="absolute inset-0 z-0 bg-cover bg-center opacity-[0.07] transition-all duration-[800ms] group-hover:opacity-25 group-hover:scale-[1.02] grayscale group-hover:grayscale-0"
+                className="absolute inset-0 z-0 bg-cover bg-center opacity-[0.18] transition-all duration-[800ms] group-hover:opacity-[0.55] group-hover:scale-[1.02] grayscale group-hover:grayscale-0"
                 style={{ backgroundImage: `url('${service.img}')` }}
               />
-              <div className="absolute inset-0 z-0 bg-[var(--dark)] opacity-40 group-hover:opacity-60 transition-opacity duration-500" />
-
+              <div className="absolute inset-0 z-0 bg-[var(--dark)] opacity-20 group-hover:opacity-30 transition-opacity duration-500" />
+ 
               <div className="relative z-10 flex items-start gap-[40px] md:w-[70%]">
                 <span className="font-serif text-[36px] md:text-[48px] text-[var(--gold)] leading-none italic font-light">
                   {service.id}
@@ -134,12 +135,12 @@ export default function Services() {
                   <h3 className="font-serif text-[26px] md:text-[30px] text-[var(--light)] mb-[16px] group-hover:text-[var(--gold)] transition-colors duration-500">
                     {service.title}
                   </h3>
-                  <p className="text-[14px] leading-[1.8] text-[var(--muted)] group-hover:text-[var(--light)] transition-colors duration-500 font-light">
+                  <p className="text-[14.5px] leading-[1.8] text-[var(--muted)] group-hover:text-[var(--light)] transition-colors duration-500 font-medium">
                     {service.desc}
                   </p>
                 </div>
               </div>
-
+ 
               <div className="relative z-10 mt-[30px] md:mt-0 opacity-0 -translate-x-[20px] transition-all duration-500 group-hover:opacity-100 group-hover:translate-x-0">
                 <span className="w-[50px] h-[50px] rounded-full border border-[var(--gold)] flex items-center justify-center text-[var(--gold)] text-[20px]">
                   →

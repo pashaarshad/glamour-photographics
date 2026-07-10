@@ -68,9 +68,9 @@ export default function About() {
               className="w-full h-auto max-h-[650px] object-contain z-10" 
             />
             {/* Badge Overlay */}
-            <div className="absolute bottom-[30px] right-[5%] bg-[#FAF8F4] border border-[rgba(197,164,109,0.3)] px-[20px] py-[12px] shadow-[0_4px_12px_rgba(0,0,0,0.04)] z-20">
-              <span className="text-[9px] tracking-[0.2em] uppercase text-[var(--light)] font-bold block mb-[2px]">Est. 1982</span>
-              <span className="text-[8px] tracking-[0.1em] uppercase text-[var(--gold)] font-medium block">Bengaluru, India</span>
+            <div className="absolute bottom-[35px] right-[8%] bg-[#FAF8F4] border-2 border-[var(--gold)] px-[24px] py-[14px] shadow-[0_8px_32px_rgba(0,0,0,0.06)] rounded-[2px] z-20">
+              <span className="font-serif text-[17px] tracking-[0.12em] uppercase text-[var(--gold)] font-bold block mb-[6px] text-center leading-none">Est. 1982</span>
+              <span className="text-[9px] tracking-[0.18em] uppercase text-[var(--light)] font-extrabold block text-center leading-none">Bengaluru, India</span>
             </div>
           </div>
         </div>
@@ -137,19 +137,19 @@ export default function About() {
           </div>
           
           {/* Column 3: Vertical Film Strip Collage */}
-          <div className="lg:col-span-3 reveal flex flex-col justify-between h-[580px]">
-            {/* Filmstrip Window */}
-            <div className="flex-1 w-full overflow-hidden relative bg-[#141414] border border-[rgba(255,255,255,0.06)] rounded-sm py-[20px] px-[15px]">
+          <div className="lg:col-span-3 reveal flex justify-center items-center h-[580px]">
+            {/* Narrow Filmstrip Window */}
+            <div className="w-[215px] h-[580px] overflow-hidden relative bg-[#E2D8C9] border border-[rgba(10,10,10,0.08)] rounded-[4px] py-[20px] px-[22px] shadow-[0_8px_32px_rgba(0,0,0,0.03)] flex flex-col justify-between">
               
-              {/* Vertical Film Sprocket Holes */}
-              <div className="absolute left-[4px] top-0 bottom-0 flex flex-col justify-between py-[15px] select-none pointer-events-none z-20">
-                {Array.from({ length: 15 }).map((_, i) => (
-                  <div key={i} className="w-[6px] h-[10px] bg-[var(--dark)] rounded-[1px] opacity-25" />
+              {/* Vertical Film Sprocket Holes (White squares) */}
+              <div className="absolute left-[6px] top-0 bottom-0 flex flex-col justify-between py-[15px] select-none pointer-events-none z-20">
+                {Array.from({ length: 18 }).map((_, i) => (
+                  <div key={i} className="w-[10px] h-[10px] bg-white rounded-[1.5px] shadow-[inset_0_1px_2px_rgba(0,0,0,0.08)]" />
                 ))}
               </div>
-              <div className="absolute right-[4px] top-0 bottom-0 flex flex-col justify-between py-[15px] select-none pointer-events-none z-20">
-                {Array.from({ length: 15 }).map((_, i) => (
-                  <div key={i} className="w-[6px] h-[10px] bg-[var(--dark)] rounded-[1px] opacity-25" />
+              <div className="absolute right-[6px] top-0 bottom-0 flex flex-col justify-between py-[15px] select-none pointer-events-none z-20">
+                {Array.from({ length: 18 }).map((_, i) => (
+                  <div key={i} className="w-[10px] h-[10px] bg-white rounded-[1.5px] shadow-[inset_0_1px_2px_rgba(0,0,0,0.08)]" />
                 ))}
               </div>
               
@@ -157,39 +157,39 @@ export default function About() {
               <div className="h-full overflow-hidden relative z-10 select-none">
                 <div className="flex flex-col gap-[20px] animate-marquee-vertical">
                   {[
-                    "/images/our_portfolio/Highlights_3C1A0761.jpg",
-                    "/images/our_portfolio/Highlights_3C1A0789.jpg",
-                    "/images/our_portfolio/Highlights_3C1A0766.jpg",
-                    "/images/our_portfolio/33.jpg",
-                    "/images/corporate-event.jpg",
-                    "/images/cii-event-coverage.jpg",
-                    "/images/outdoor-event.jpg",
-                    "/images/hero-camera.jpg"
-                  ].concat([
-                    "/images/our_portfolio/Highlights_3C1A0761.jpg",
-                    "/images/our_portfolio/Highlights_3C1A0789.jpg",
-                    "/images/our_portfolio/Highlights_3C1A0766.jpg",
-                    "/images/our_portfolio/33.jpg",
-                    "/images/corporate-event.jpg",
-                    "/images/cii-event-coverage.jpg",
-                    "/images/outdoor-event.jpg",
-                    "/images/hero-camera.jpg"
-                  ]).map((imgSrc, idx) => (
-                    <div key={idx} className="w-full aspect-[4/3] bg-black overflow-hidden relative border border-[rgba(255,255,255,0.1)] group cursor-none shrink-0">
-                      <img 
-                        src={imgSrc} 
-                        alt={`Film Strip Frame ${idx + 1}`} 
-                        className="w-full h-full object-cover grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" 
-                      />
-                    </div>
-                  ))}
+                    { type: 'img', src: "/images/our_portfolio/highlights_3C1A0761.jpg" },
+                    { type: 'img', src: "/images/our_portfolio/highlights_3C1A0775.jpg" },
+                    { type: 'img', src: "/images/our_portfolio/11.jpg" },
+                    { type: 'img', src: "/images/our_portfolio/highlights_3C1A0782.jpg" },
+                    { type: 'badge' },
+                    { type: 'img', src: "/images/our_portfolio/22.jpg" },
+                    { type: 'img', src: "/images/our_portfolio/highlights_3C1A0841.jpg" },
+                    { type: 'img', src: "/images/our_portfolio/33.jpg" },
+                    { type: 'img', src: "/images/our_portfolio/rtx-1.jpg" },
+                    { type: 'badge' }
+                  ].map((item, idx) => {
+                    if (item.type === 'img') {
+                      return (
+                        <div key={idx} className="w-full aspect-[4/3] bg-black overflow-hidden relative border border-[rgba(10,10,10,0.12)] rounded-[3px] group cursor-none shrink-0">
+                          <img 
+                            src={item.src} 
+                            alt={`Film Strip Frame ${idx + 1}`} 
+                            className="w-full h-full object-cover grayscale opacity-85 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" 
+                          />
+                        </div>
+                      );
+                    } else {
+                      return (
+                        <div key={idx} className="w-full bg-[#D6CBBF] border border-[rgba(10,10,10,0.06)] rounded-[3px] py-[22px] px-[10px] text-center shrink-0 flex flex-col justify-center items-center shadow-[inset_0_1px_2px_rgba(255,255,255,0.4)]">
+                          <span className="font-serif text-[34px] font-bold text-[#1A1A1A] leading-none mb-[2px]">40+</span>
+                          <span className="text-[9px] tracking-[0.15em] uppercase text-[#3A3530] font-bold leading-tight">Years Of</span>
+                          <span className="text-[9px] tracking-[0.15em] uppercase text-[#3A3530] font-bold leading-tight">Storytelling</span>
+                        </div>
+                      );
+                    }
+                  })}
                 </div>
               </div>
-            </div>
-
-            {/* Gold badge at the bottom of the filmstrip */}
-            <div className="w-full bg-[#201D1A] border border-[rgba(197,164,109,0.3)] py-[12px] px-[10px] text-center mt-[10px] shrink-0">
-              <span className="text-[10px] tracking-[0.2em] uppercase text-[var(--gold)] font-bold">40+ Years of Storytelling</span>
             </div>
 
             {/* Local CSS stylesheet for vertical marquee animation */}
@@ -199,7 +199,7 @@ export default function About() {
                 100% { transform: translateY(-50%); }
               }
               .animate-marquee-vertical {
-                animation: marquee-vertical 36s linear infinite;
+                animation: marquee-vertical 28s linear infinite;
               }
               .animate-marquee-vertical:hover {
                 animation-play-state: paused;
