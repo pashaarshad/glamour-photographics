@@ -50,17 +50,7 @@ export default function Footer() {
       <div className="border-t border-[rgba(255,255,255,0.08)] pt-[24px] text-center">
         <span className="text-[11px] text-[rgba(255,255,255,0.45)] tracking-[0.05em]">© 2026 Glamour Photographics. All Rights Reserved.</span>
 
-        <span className="text-[11px] text-[rgba(255,255,255,0.45)] tracking-[0.05em]">
-          Designed & Developed by{" "}
-          <a
-            href="https://arshadpasha.netlify.app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[#C89B4B] font-medium hover:text-[#D8B26A] transition-colors duration-300"
-          >
-            Arshad Pasha
-          </a>
-        </span>
+
       </div>
 
     </footer>
