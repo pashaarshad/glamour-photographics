@@ -6,16 +6,16 @@ export default function Footer() {
     <footer className="bg-[#0A0A0A] text-white pt-[100px] pb-[40px] px-[60px] border-t border-[rgba(255,255,255,0.08)]">
       <div className="flex flex-col md:flex-row justify-between gap-[60px] md:gap-[20px] mb-[80px]">
         <div className="max-w-[300px]">
-          <img 
-            src="/images/Glamour_Logo.png" 
-            alt="Glamour Photographics Logo" 
+          <img
+            src="/images/Glamour_Logo.png"
+            alt="Glamour Photographics Logo"
             className="h-[55px] md:h-[65px] w-auto object-contain mb-[20px]"
           />
           <p className="text-[13px] text-[rgba(255,255,255,0.6)] leading-relaxed">
             Four decades of visual storytelling from the heart of Bengaluru.
           </p>
         </div>
-        
+
         <div className="flex flex-col gap-[16px]">
           <h4 className="font-serif text-[18px] text-[var(--gold)] mb-[8px]">Pages</h4>
           <ul className="flex flex-col gap-[12px] list-none">
@@ -46,10 +46,23 @@ export default function Footer() {
           </ul>
         </div>
       </div>
-      
+
       <div className="border-t border-[rgba(255,255,255,0.08)] pt-[24px] text-center">
         <span className="text-[11px] text-[rgba(255,255,255,0.45)] tracking-[0.05em]">© 2026 Glamour Photographics. All Rights Reserved.</span>
+
+        <span className="text-[11px] text-[rgba(255,255,255,0.45)] tracking-[0.05em]">
+          Designed & Developed by{" "}
+          <a
+            href="https://arshadpasha.netlify.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[#C89B4B] font-medium hover:text-[#D8B26A] transition-colors duration-300"
+          >
+            Arshad Pasha
+          </a>
+        </span>
       </div>
+
     </footer>
   );
 }
