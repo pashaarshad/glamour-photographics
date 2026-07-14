@@ -281,63 +281,100 @@ export default function PortfolioPage() {
         ) : (
           /* ─── 5-IMAGE SECTION BLOCKS ─── */
           (() => {
-            if (activeImages.length < 5) {
+            const VERTICAL_IMAGES = [
+              "/images/our_portfolio/33.jpg",
+              "/images/our_portfolio/6ba3a857-c93e-4299-8740-45da7ff9e3f2.jpg",
+              "/images/our_portfolio/Cameroon.jpeg",
+              "/images/our_portfolio/Capturing_Cultural_Icons_version_1.png",
+              "/images/our_portfolio/highlights_Ms. Amal Mohammed Ahmed, theDivisional  (1).jpg",
+              "/images/our_portfolio/highlights_Ms. Amal Mohammed Ahmed, theDivisional .jpg",
+              "/images/our_portfolio/highlights_SKV00290.jpg",
+              "/images/our_portfolio/highlights_SKV00387.jpg",
+              "/images/our_portfolio/IMG_0029.JPG",
+              "/images/our_portfolio/Srk.jpg",
+              "/images/our_portfolio/highlights_Screenshot 2024-11-30 at 1.18.19 PM.jpg",
+              "/images/our_portfolio/highlights_Screenshot 2024-11-30 at 1.18.38 PM.jpg",
+              "/images/our_portfolio/highlights_Screenshot 2024-11-30 at 1.18.49 PM.jpg",
+              "/images/our_portfolio/highlights_Screenshot 2024-11-30 at 1.18.56 PM.jpg",
+              "/images/our_portfolio/highlights_Screenshot 2024-11-30 at 1.19.31 PM.jpg",
+              "/images/our_portfolio/highlights_Screenshot 2024-11-30 at 1.19.43 PM.jpg",
+              "/images/our_portfolio/highlights_Screenshot 2024-11-30 at 1.20.10 PM.jpg",
+              "/images/our_portfolio/highlights_Screenshot 2024-11-30 at 1.20.45 PM.jpg",
+              "/images/our_portfolio/highlights_Screenshot 2024-11-30 at 1.20.51 PM.jpg",
+              "/images/our_portfolio/highlights_Screenshot 2024-11-30 at 1.21.09 PM.jpg",
+              "/images/our_portfolio/highlights_Screenshot 2024-11-30 at 1.21.32 PM.jpg",
+              "/images/our_portfolio/highlights_Screenshot 2024-11-30 at 1.21.43 PM.jpg",
+              "/images/our_portfolio/highlights_Screenshot 2024-11-30 at 1.22.01 PM.jpg"
+            ];
+
+            const verticals = activeImages.filter(src => VERTICAL_IMAGES.includes(src));
+            const horizontals = activeImages.filter(src => !VERTICAL_IMAGES.includes(src));
+
+            const blocks = [];
+            let vertIdx = 0;
+            let horizIdx = 0;
+
+            while (vertIdx < verticals.length && horizIdx + 4 <= horizontals.length) {
+              blocks.push({
+                vertical: verticals[vertIdx],
+                horizontals: [
+                  horizontals[horizIdx],
+                  horizontals[horizIdx + 1],
+                  horizontals[horizIdx + 2],
+                  horizontals[horizIdx + 3]
+                ]
+              });
+              vertIdx += 1;
+              horizIdx += 4;
+            }
+
+            const remainingVerticals = verticals.slice(vertIdx);
+            const remainingHorizontals = horizontals.slice(horizIdx);
+            const remaining = [...remainingVerticals, ...remainingHorizontals];
+
+            if (blocks.length === 0) {
               return (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[24px] w-full">
-                  {activeImages.map((src, idx) => (
-                    <div key={idx} className="relative aspect-[3/2] group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)] shadow-[0_4px_20px_rgba(0,0,0,0.02)] reveal opacity-0 anim-fade-up" style={{ animationDelay: `${idx * 50}ms` }}>
-                      <img src={src} alt="Portfolio Work" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-105" />
-                    </div>
-                  ))}
+                  {activeImages.map((src, idx) => {
+                    const isVert = VERTICAL_IMAGES.includes(src);
+                    return (
+                      <div key={idx} className={`relative group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)] shadow-[0_4px_20px_rgba(0,0,0,0.02)] reveal opacity-0 anim-fade-up ${isVert ? 'aspect-[2/3]' : 'aspect-[3/2]'}`} style={{ animationDelay: `${idx * 50}ms` }}>
+                        <img src={src} alt="Portfolio Work" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-105" />
+                      </div>
+                    );
+                  })}
                 </div>
               );
             }
 
-            const block1 = activeImages.slice(0, 5);
-            const hasBlock2 = activeImages.length >= 10;
-            const block2 = hasBlock2 ? activeImages.slice(5, 10) : [];
-            const remaining = activeImages.slice(hasBlock2 ? 10 : 5);
-
             return (
               <div className="w-full flex flex-col gap-[24px]">
-                {/* BLOCK 1 (5 Images: 1 Vertical, 4 Horizontal) */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-[24px] items-stretch w-full">
-                  {/* Left: 1 Vertical (Image 0) */}
-                  <div className="md:col-span-1 md:row-span-2 relative group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)] h-full min-h-[320px] md:min-h-0 shadow-[0_4px_20px_rgba(0,0,0,0.02)] reveal opacity-0 anim-fade-up">
-                    <img src={block1[0]} alt="Portfolio Work" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-[1.03]" />
-                  </div>
-                  {/* Right: 4 Horizontal (Images 1, 2, 3, 4) */}
-                  {block1.slice(1).map((src, idx) => (
-                    <div key={idx} className="relative aspect-[3/2] group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)] shadow-[0_4px_20px_rgba(0,0,0,0.02)] reveal opacity-0 anim-fade-up" style={{ animationDelay: `${idx * 50}ms` }}>
-                      <img src={src} alt="Portfolio Work" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-[1.03]" />
+                {blocks.map((block, bIdx) => (
+                  <div key={bIdx} className="grid grid-cols-1 md:grid-cols-3 gap-[24px] items-stretch w-full">
+                    {/* Left: 1 Vertical */}
+                    <div className="md:col-span-1 md:row-span-2 relative group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)] h-full min-h-[320px] md:min-h-0 shadow-[0_4px_20px_rgba(0,0,0,0.02)] reveal opacity-0 anim-fade-up">
+                      <img src={block.vertical} alt="Portfolio Work" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-[1.03]" />
                     </div>
-                  ))}
-                </div>
-
-                {/* BLOCK 2 (5 Images: 1 Vertical, 4 Horizontal) */}
-                {hasBlock2 && (
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-[24px] items-stretch w-full">
-                    {/* Left: 1 Vertical (Image 5) */}
-                    <div className="md:col-span-1 md:row-span-2 relative group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)] h-full min-h-[320px] md:min-h-0 shadow-[0_4px_20px_rgba(0,0,0,0.02)] reveal opacity-0 anim-fade-up" style={{ animationDelay: '50ms' }}>
-                      <img src={block2[0]} alt="Portfolio Work" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-[1.03]" />
-                    </div>
-                    {/* Right: 4 Horizontal (Images 6, 7, 8, 9) */}
-                    {block2.slice(1).map((src, idx) => (
-                      <div key={idx} className="relative aspect-[3/2] group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)] shadow-[0_4px_20px_rgba(0,0,0,0.02)] reveal opacity-0 anim-fade-up" style={{ animationDelay: `${(idx + 1) * 50}ms` }}>
-                        <img src={src} alt="Portfolio Work" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-[1.03]" />
-                      </div>
-                    ))}
-                  </div>
-                )}
-
-                {/* REMAINING IMAGES (Standard 3-Column Grid) */}
-                {remaining.length > 0 && (
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[24px] w-full">
-                    {remaining.map((src, idx) => (
+                    {/* Right: 4 Horizontal */}
+                    {block.horizontals.map((src, idx) => (
                       <div key={idx} className="relative aspect-[3/2] group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)] shadow-[0_4px_20px_rgba(0,0,0,0.02)] reveal opacity-0 anim-fade-up" style={{ animationDelay: `${idx * 50}ms` }}>
                         <img src={src} alt="Portfolio Work" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-[1.03]" />
                       </div>
                     ))}
+                  </div>
+                ))}
+
+                {/* REMAINING IMAGES (Standard Grid) */}
+                {remaining.length > 0 && (
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[24px] w-full">
+                    {remaining.map((src, idx) => {
+                      const isVert = VERTICAL_IMAGES.includes(src);
+                      return (
+                        <div key={idx} className={`relative group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)] shadow-[0_4px_20px_rgba(0,0,0,0.02)] reveal opacity-0 anim-fade-up ${isVert ? 'aspect-[2/3]' : 'aspect-[3/2]'}`} style={{ animationDelay: `${idx * 50}ms` }}>
+                          <img src={src} alt="Portfolio Work" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-[1.03]" />
+                        </div>
+                      );
+                    })}
                   </div>
                 )}
               </div>
