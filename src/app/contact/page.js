@@ -37,9 +37,9 @@ export default function Contact() {
             <div className="mb-[60px]">
               <h3 className="font-serif text-[24px] text-[var(--black)] mb-[16px]">Studio Headquarters</h3>
               <p className="text-[14px] leading-[1.8] text-[var(--muted)]">
-                #45, Visual Arts Avenue<br />
-                Indiranagar, 100 Feet Road<br />
-                Bengaluru, Karnataka 560038<br />
+                No. 33, Castle Street,<br />
+                Ashok Nagar, Near Shoolay Circle,<br />
+                Bengaluru, Karnataka 560025<br />
                 India
               </p>
             </div>
@@ -47,14 +47,14 @@ export default function Contact() {
             <div className="mb-[60px]">
               <h3 className="font-serif text-[24px] text-[var(--black)] mb-[16px]">Contact Us</h3>
               <div className="flex flex-col gap-[8px]">
-                <a href="mailto:hello@glamourphotographics.com" className="text-[14px] text-[var(--muted)] hover:text-[var(--gold)] transition-colors inline-block w-fit">
-                  hello@glamourphotographics.com
+                <a href="mailto:info@glamourphotographics.com" className="text-[14px] text-[var(--muted)] hover:text-[var(--gold)] transition-colors inline-block w-fit">
+                  info@glamourphotographics.com
                 </a>
-                <a href="tel:+919876543210" className="text-[14px] text-[var(--muted)] hover:text-[var(--gold)] transition-colors inline-block w-fit">
-                  +91 98765 43210
+                <a href="tel:+919845003786" className="text-[14px] text-[var(--muted)] hover:text-[var(--gold)] transition-colors inline-block w-fit">
+                  +91 98450 03786
                 </a>
-                <a href="tel:+918012345678" className="text-[14px] text-[var(--muted)] hover:text-[var(--gold)] transition-colors inline-block w-fit">
-                  080 1234 5678
+                <a href="https://wa.me/918971168868" target="_blank" rel="noopener noreferrer" className="text-[14px] text-[var(--muted)] hover:text-[var(--gold)] transition-colors inline-block w-fit">
+                  +91 89711 68868 (WhatsApp)
                 </a>
               </div>
             </div>
@@ -62,9 +62,14 @@ export default function Contact() {
             <div>
               <h3 className="font-serif text-[24px] text-[var(--black)] mb-[16px]">Follow Us</h3>
               <div className="flex gap-[24px]">
-                {['Instagram', 'LinkedIn', 'Vimeo'].map((social, idx) => (
-                  <a key={idx} href="#" className="text-[11px] tracking-[0.2em] uppercase text-[var(--muted)] hover:text-[var(--gold)] transition-colors pb-[4px] border-b border-transparent hover:border-[var(--gold)]">
-                    {social}
+                {[
+                  { label: 'Facebook', url: 'https://www.facebook.com/p/Glamour-Photographics-100064007321571/' },
+                  { label: 'Instagram', url: 'https://www.instagram.com/glamourphotographics.corporate?igsh=MTIzdjAzMW5tYW44cw' },
+                  { label: 'LinkedIn', url: 'https://in.linkedin.com/company/glamour-photographics%20' },
+                  { label: 'YouTube', url: 'https://www.youtube.com/@ashrafhussain136' }
+                ].map((social, idx) => (
+                  <a key={idx} href={social.url} target="_blank" rel="noopener noreferrer" className="text-[11px] tracking-[0.2em] uppercase text-[var(--muted)] hover:text-[var(--gold)] transition-colors pb-[4px] border-b border-transparent hover:border-[var(--gold)]">
+                    {social.label}
                   </a>
                 ))}
               </div>
@@ -112,6 +117,18 @@ export default function Contact() {
               </form>
             </div>
           </div>
+        </div>
+
+        {/* Google Map Section */}
+        <div className="reveal mt-[100px] w-full h-[450px] border border-[rgba(10,10,10,0.08)] rounded-sm overflow-hidden shadow-md">
+          <iframe
+            title="Glamour Photographics Google Map Location"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.0253457199147!2d77.6044363!3d12.9680995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae167ff3708a43%3A0xe5b95fbe84a5ef0b!2sGlamour%20Photographics!5e0!3m2!1sen!2sin!4v1783568868000"
+            className="w-full h-full border-0"
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
         </div>
       </section>
     </main>
