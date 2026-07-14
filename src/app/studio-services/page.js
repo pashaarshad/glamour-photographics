@@ -89,7 +89,7 @@ export default function StudioServices() {
       {/* ─── HERO SECTION ─── */}
       <section className="relative min-h-[55vh] flex items-center px-[5%] md:px-[8%] overflow-hidden bg-[#0A0A0A] mb-[80px] pt-[120px] md:pt-[100px]">
         <div className="absolute inset-0 z-0">
-          <img src="/images/passport_studio.png" alt="Capabilities Background" className="w-full h-full object-cover opacity-50 blur-[2px]" />
+          <img src="/images/passport_studio.png" alt="Capabilities Background" className="w-full h-full opacity-50 blur-[2px]" />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent z-10" />
         </div>
         <div className="max-w-[1400px] w-full mx-auto z-20 relative">
@@ -124,7 +124,7 @@ export default function StudioServices() {
                 <img 
                   src={service.img} 
                   alt={service.title} 
-                  className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-105" 
+                  className="w-full h-full transition-transform duration-[1200ms] group-hover:scale-105" 
                 />
               </div>
 

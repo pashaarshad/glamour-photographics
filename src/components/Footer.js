@@ -53,7 +53,7 @@ export default function Footer() {
             <img
               src="/images/Glamour_Logo.png"
               alt="Glamour Photographics Logo"
-              className="h-[80px] md:h-[100px] w-auto object-contain mb-[20px]"
+              className="h-[80px] md:h-[100px] w-auto mb-[20px]"
             />
             <p className="text-[13px] text-[rgba(255,255,255,0.6)] leading-relaxed">
               Four decades of visual storytelling from the heart of Bengaluru.

@@ -244,7 +244,7 @@ export default function PortfolioPage() {
                   <img 
                     src={`https://img.youtube.com/vi/${vid.id}/hqdefault.jpg`} 
                     alt={vid.title} 
-                    className="w-full h-full object-cover transition-transform duration-[600ms] group-hover:scale-[1.03] opacity-85 group-hover:opacity-100"
+                    className="w-full h-full transition-transform duration-[600ms] group-hover:scale-[1.03] opacity-85 group-hover:opacity-100"
                     loading="lazy"
                   />
                   {/* YouTube Tag Overlay */}
@@ -340,7 +340,7 @@ export default function PortfolioPage() {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-[24px] w-full">
                       {verticals.map((src, idx) => (
                         <div key={idx} className="relative aspect-[2/3] group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)] shadow-[0_4px_20px_rgba(0,0,0,0.02)] reveal opacity-0 anim-fade-up" style={{ animationDelay: `${idx * 50}ms` }}>
-                          <img src={src} alt="Portfolio Work" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-105" />
+                          <img src={src} alt="Portfolio Work" className="w-full h-full transition-transform duration-[800ms] group-hover:scale-105" />
                         </div>
                       ))}
                     </div>
@@ -349,7 +349,7 @@ export default function PortfolioPage() {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-[24px] w-full">
                       {horizontals.map((src, idx) => (
                         <div key={idx} className="relative aspect-[3/2] group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)] shadow-[0_4px_20px_rgba(0,0,0,0.02)] reveal opacity-0 anim-fade-up" style={{ animationDelay: `${idx * 50}ms` }}>
-                          <img src={src} alt="Portfolio Work" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-105" />
+                          <img src={src} alt="Portfolio Work" className="w-full h-full transition-transform duration-[800ms] group-hover:scale-105" />
                         </div>
                       ))}
                     </div>
@@ -364,13 +364,13 @@ export default function PortfolioPage() {
                   <div key={bIdx} className="flex flex-col md:flex-row gap-[24px] items-stretch w-full">
                     {/* Left: 1 Vertical */}
                     <div className="w-full md:w-1/3 relative group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)] min-h-[350px] md:min-h-0 shadow-[0_4px_20px_rgba(0,0,0,0.02)] reveal opacity-0 anim-fade-up">
-                      <img src={block.vertical} alt="Portfolio Work" className="absolute inset-0 w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-[1.03]" />
+                      <img src={block.vertical} alt="Portfolio Work" className="absolute inset-0 w-full h-full transition-transform duration-[800ms] group-hover:scale-[1.03]" />
                     </div>
                     {/* Right: 4 Horizontal */}
                     <div className="w-full md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-[24px]">
                       {block.horizontals.map((src, idx) => (
                         <div key={idx} className="relative aspect-[3/2] group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)] shadow-[0_4px_20px_rgba(0,0,0,0.02)] reveal opacity-0 anim-fade-up" style={{ animationDelay: `${idx * 50}ms` }}>
-                          <img src={src} alt="Portfolio Work" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-[1.03]" />
+                          <img src={src} alt="Portfolio Work" className="w-full h-full transition-transform duration-[800ms] group-hover:scale-[1.03]" />
                         </div>
                       ))}
                     </div>
@@ -382,7 +382,7 @@ export default function PortfolioPage() {
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-[24px] w-full">
                     {remainingVerticals.map((src, idx) => (
                       <div key={idx} className="relative aspect-[2/3] group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)] shadow-[0_4px_20px_rgba(0,0,0,0.02)] reveal opacity-0 anim-fade-up" style={{ animationDelay: `${idx * 50}ms` }}>
-                        <img src={src} alt="Portfolio Work" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-[1.03]" />
+                        <img src={src} alt="Portfolio Work" className="w-full h-full transition-transform duration-[800ms] group-hover:scale-[1.03]" />
                       </div>
                     ))}
                   </div>
@@ -393,7 +393,7 @@ export default function PortfolioPage() {
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-[24px] w-full">
                     {remainingHorizontals.map((src, idx) => (
                       <div key={idx} className="relative aspect-[3/2] group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)] shadow-[0_4px_20px_rgba(0,0,0,0.02)] reveal opacity-0 anim-fade-up" style={{ animationDelay: `${idx * 50}ms` }}>
-                        <img src={src} alt="Portfolio Work" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-[1.03]" />
+                        <img src={src} alt="Portfolio Work" className="w-full h-full transition-transform duration-[800ms] group-hover:scale-[1.03]" />
                       </div>
                     ))}
                   </div>

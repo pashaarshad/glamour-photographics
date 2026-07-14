@@ -113,7 +113,7 @@ export default function CorporatePortfolio() {
                         <img 
                           src={assets.logo} 
                           alt={`${client.name} Logo`} 
-                          className="max-h-[36px] max-w-[130px] object-contain transition-opacity duration-300 rounded-sm bg-white/95 p-[3px]"
+                          className="max-h-[36px] max-w-[130px] transition-opacity duration-300 rounded-sm bg-white/95 p-[3px]"
                         />
                       ) : (
                         <span className="font-serif text-[18px] text-white font-bold">{client.name}</span>
@@ -140,7 +140,7 @@ export default function CorporatePortfolio() {
                         <div className="flex gap-[8px] shrink-0">
                           {assets.thumbnails.map((thumbSrc, tIdx) => (
                             <div key={tIdx} className="w-[50px] h-[50px] rounded-sm overflow-hidden border border-[rgba(10,10,10,0.08)] group-hover:border-[var(--gold)] bg-[var(--dark)]/40 transition-colors duration-400">
-                              <img src={thumbSrc} alt="Preview thumbnail" className="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity" />
+                              <img src={thumbSrc} alt="Preview thumbnail" className="w-full h-full opacity-60 group-hover:opacity-100 transition-opacity" />
                             </div>
                           ))}
                         </div>
@@ -179,7 +179,7 @@ export default function CorporatePortfolio() {
                         <img 
                           src={assets.logo} 
                           alt={`${client.name} Logo`} 
-                          className="max-h-[24px] max-w-[100px] object-contain transition-opacity duration-300 rounded-sm mb-[14px] bg-white/95 p-[2px]"
+                          className="max-h-[24px] max-w-[100px] transition-opacity duration-300 rounded-sm mb-[14px] bg-white/95 p-[2px]"
                         />
                       ) : (
                         <h3 className="font-serif text-[18px] text-white font-bold mb-[10px] drop-shadow-md">
@@ -255,7 +255,7 @@ export default function CorporatePortfolio() {
                     <img 
                       src={logo.logo} 
                       alt={logo.name} 
-                      className="max-h-[60px] max-w-[85%] object-contain" 
+                      className="max-h-[60px] max-w-[85%]" 
                       loading="lazy" 
                     />
                   </div>
@@ -280,7 +280,7 @@ export default function CorporatePortfolio() {
             <img 
               src={activeCert} 
               alt="Testimonial Certificate Form" 
-              className="max-w-full max-h-[80vh] object-contain rounded-sm" 
+              className="max-w-full max-h-[80vh] rounded-sm" 
               loading="lazy"
             />
           </div>

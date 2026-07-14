@@ -58,7 +58,7 @@ export default function Services() {
       {/* ─── HERO SECTION ─── */}
       <section className="relative min-h-[60vh] flex items-center px-[5%] md:px-[8%] overflow-hidden bg-[#0A0A0A] mb-[100px] pt-[120px] md:pt-[100px]">
         <div className="absolute inset-0 z-0">
-          <img src="/images/servers-hero-section.png" alt="Capabilities Background" className="w-full h-full object-cover opacity-90" />
+          <img src="/images/servers-hero-section.png" alt="Capabilities Background" className="w-full h-full opacity-90" />
           {/* Dark Shading Overlay */}
           <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/45 to-transparent z-10" />
         </div>
@@ -107,7 +107,7 @@ export default function Services() {
             </div>
           </div>
           <div className="relative h-[400px] md:h-[500px] w-full rounded-sm overflow-hidden img-mask reveal z-10 group border border-[rgba(10,10,10,0.06)]">
-            <img src="/images/about-silhouette.jpg" alt="Photographer Silhouette" className="w-full h-full object-cover grayscale-[30%] opacity-85 transition-transform duration-[1200ms] group-hover:scale-105" />
+            <img src="/images/about-silhouette.jpg" alt="Photographer Silhouette" className="w-full h-full grayscale-[30%] opacity-85 transition-transform duration-[1200ms] group-hover:scale-105" />
             {/* No shading overlay */}
           </div>
         </div>

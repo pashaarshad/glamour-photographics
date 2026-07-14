@@ -40,7 +40,7 @@ export default function Preloader() {
         <img 
           src="/images/Glamour_Logo.png" 
           alt="Glamour Photographics Logo" 
-          className="w-[280px] md:w-[480px] h-auto object-contain"
+          className="w-[280px] md:w-[480px] h-auto"
         />
       </div>
       <div id="loader-line" className="h-[1px] bg-[var(--gold)] mb-[14px] loader-line-anim"></div>

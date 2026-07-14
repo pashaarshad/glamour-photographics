@@ -134,17 +134,17 @@ export default function Home() {
           <img 
             src="/images/hero-camera.jpg" 
             alt="Premium Camera Lens" 
-            className="hidden md:block w-full h-full object-contain object-[right_center] opacity-80" 
+            className="hidden md:block w-full h-full object-[right_center] opacity-80" 
           />
           {/* Mobile image */}
           <img 
             src="/images/hero-camera-mobile.png" 
             alt="Premium Camera Lens Mobile" 
-            className="block md:hidden w-full h-full object-cover object-center opacity-75" 
+            className="block md:hidden w-full h-full object-center opacity-75" 
             onError={(e) => {
               // Fallback to desktop image if mobile one is not uploaded yet
               e.target.src = "/images/hero-camera.jpg";
-              e.target.className = "block md:hidden w-full h-full object-contain object-[center_bottom] opacity-70";
+              e.target.className = "block md:hidden w-full h-full object-[center_bottom] opacity-70";
             }}
           />
           <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[#0A0A0A] via-[rgba(10,10,10,0.85)] md:via-[rgba(10,10,10,0.65)] to-transparent z-10" />
@@ -199,7 +199,7 @@ export default function Home() {
       <div className="hero-strip">
         <div className="hero-strip-item">
           <div className="strip-img">
-            <img src="/images/cii-event-coverage.jpg" alt="CII Event Coverage" className="w-full h-full object-contain block" />
+            <img src="/images/cii-event-coverage.jpg" alt="CII Event Coverage" className="w-full h-full block" />
           </div>
           <div className="strip-pip"></div>
           <div className="strip-side-label">Corporate Events</div>
@@ -211,7 +211,7 @@ export default function Home() {
 
         <div className="hero-strip-item">
           <div className="strip-img">
-            <img src="/images/celebrity-portrait.jpg" alt="Celebrity Portrait" className="w-full h-full object-contain block" />
+            <img src="/images/celebrity-portrait.jpg" alt="Celebrity Portrait" className="w-full h-full block" />
           </div>
           <div className="strip-pip"></div>
           <div className="strip-side-label">Celebrity Portrait</div>
@@ -223,7 +223,7 @@ export default function Home() {
 
         <div className="hero-strip-item">
           <div className="strip-img">
-            <img src="/images/outdoor-event.jpg" alt="Outdoor Event" className="w-full h-full object-contain block" />
+            <img src="/images/outdoor-event.jpg" alt="Outdoor Event" className="w-full h-full block" />
           </div>
           <div className="strip-pip"></div>
           <div className="strip-side-label">Outdoor Coverage</div>
@@ -235,7 +235,7 @@ export default function Home() {
 
         <div className="hero-strip-item">
           <div className="strip-img">
-            <img src="/images/corporate-event.jpg" alt="Corporate Event" className="w-full h-full object-contain block" />
+            <img src="/images/corporate-event.jpg" alt="Corporate Event" className="w-full h-full block" />
           </div>
           <div className="strip-pip"></div>
           <div className="strip-side-label">Speaker Series</div>
@@ -383,7 +383,7 @@ export default function Home() {
               <img 
                 src="/logo-clients/founder-ceo.jpg" 
                 alt="Hameed Hussain Founder" 
-                className="w-full h-full object-cover opacity-70 transition-transform duration-700 group-hover:scale-105 select-none pointer-events-none" 
+                className="w-full h-full opacity-70 transition-transform duration-700 group-hover:scale-105 select-none pointer-events-none" 
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-transparent p-[28px] flex flex-col justify-end">
                 <h4 className="font-serif text-[22px] text-white font-bold leading-none mb-[4px]">Hameed Hussain</h4>
@@ -392,7 +392,7 @@ export default function Home() {
                 <img 
                   src="/images/signature.png" 
                   alt="Founder Signature" 
-                  className="h-[32px] w-auto object-contain select-none pointer-events-none invert opacity-95 self-start" 
+                  className="h-[32px] w-auto select-none pointer-events-none invert opacity-95 self-start" 
                 />
               </div>
             </div>
@@ -520,7 +520,7 @@ export default function Home() {
           ].map((srv, idx) => (
             <div key={idx} className="group relative p-[40px] rounded-sm overflow-hidden border border-[rgba(10,10,10,0.06)] hover:border-[var(--gold)] transition-all duration-[400ms] cursor-none min-h-[280px] flex flex-col justify-end">
               <div className="absolute inset-0 z-0">
-                <img src={srv.bg} alt={srv.title} className="w-full h-full object-cover opacity-85" />
+                <img src={srv.bg} alt={srv.title} className="w-full h-full opacity-85" />
                 <div 
                   className="absolute inset-0" 
                   style={{ 
@@ -561,7 +561,7 @@ export default function Home() {
             ].map((client, i) => (
               <Link href={`/clients/${client.slug}`} key={i} className="group h-[140px] border border-[rgba(10,10,10,0.06)] flex items-center justify-center p-[20px] hover:border-[var(--gold)] hover:z-10 hover:shadow-md hover:bg-[rgba(197,164,109,0.02)] transition-all cursor-none relative">
                 {client.logo ? (
-                  <img src={client.logo} alt={client.name} className="max-h-[55px] max-w-[85%] object-contain" />
+                  <img src={client.logo} alt={client.name} className="max-h-[55px] max-w-[85%]" />
                 ) : (
                   <span className="font-serif text-[18px] font-bold text-[var(--muted)] group-hover:text-[var(--light)] transition-colors text-center">{client.name}</span>
                 )}
@@ -646,7 +646,7 @@ export default function Home() {
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-[24px] w-full">
                     {verticals.map((src, idx) => (
                       <div key={idx} className="relative aspect-[2/3] group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)] shadow-[0_4px_20px_rgba(0,0,0,0.02)]">
-                        <img src={src} alt="Portfolio Work" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-105" />
+                        <img src={src} alt="Portfolio Work" className="w-full h-full transition-transform duration-[800ms] group-hover:scale-105" />
                         <div className="absolute inset-0 bg-gradient-to-t from-[rgba(0,0,0,0.85)] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-[20px]">
                           <span className="text-[9px] tracking-[0.2em] uppercase text-[var(--gold)] mb-[8px]">Gallery Spotlight</span>
                           <h4 className="font-serif text-[16px] text-white">Visual Artifact</h4>
@@ -659,7 +659,7 @@ export default function Home() {
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-[24px] w-full">
                     {horizontals.map((src, idx) => (
                       <div key={idx} className="relative aspect-[3/2] group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)] shadow-[0_4px_20px_rgba(0,0,0,0.02)]">
-                        <img src={src} alt="Portfolio Work" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-105" />
+                        <img src={src} alt="Portfolio Work" className="w-full h-full transition-transform duration-[800ms] group-hover:scale-105" />
                         <div className="absolute inset-0 bg-gradient-to-t from-[rgba(0,0,0,0.85)] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-[20px]">
                           <span className="text-[9px] tracking-[0.2em] uppercase text-[var(--gold)] mb-[8px]">Gallery Spotlight</span>
                           <h4 className="font-serif text-[16px] text-white">Visual Artifact</h4>
@@ -678,7 +678,7 @@ export default function Home() {
                 <div key={bIdx} className="flex flex-col md:flex-row gap-[24px] items-stretch w-full">
                   {/* Left: 1 Vertical */}
                   <div className="w-full md:w-1/3 relative group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)] min-h-[350px] md:min-h-0 shadow-[0_4px_20px_rgba(0,0,0,0.02)]">
-                    <img src={block.vertical} alt="Portfolio Work" className="absolute inset-0 w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-[1.03]" />
+                    <img src={block.vertical} alt="Portfolio Work" className="absolute inset-0 w-full h-full transition-transform duration-[800ms] group-hover:scale-[1.03]" />
                     <div className="absolute inset-0 bg-gradient-to-t from-[rgba(0,0,0,0.85)] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-[30px]">
                       <span className="text-[9px] tracking-[0.2em] uppercase text-[var(--gold)] mb-[8px]">Gallery Spotlight</span>
                       <h4 className="font-serif text-[18px] text-white">Visual Artifact</h4>
@@ -688,7 +688,7 @@ export default function Home() {
                   <div className="w-full md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-[24px]">
                     {block.horizontals.map((src, idx) => (
                       <div key={idx} className="relative aspect-[3/2] group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)] shadow-[0_4px_20px_rgba(0,0,0,0.02)]">
-                        <img src={src} alt="Portfolio Work" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-[1.03]" />
+                        <img src={src} alt="Portfolio Work" className="w-full h-full transition-transform duration-[800ms] group-hover:scale-[1.03]" />
                         <div className="absolute inset-0 bg-gradient-to-t from-[rgba(0,0,0,0.85)] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-[20px]">
                           <span className="text-[9px] tracking-[0.2em] uppercase text-[var(--gold)] mb-[8px]">Gallery Spotlight</span>
                           <h4 className="font-serif text-[16px] text-white">Visual Artifact</h4>
@@ -704,7 +704,7 @@ export default function Home() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-[24px] w-full">
                   {remainingVerticals.map((src, idx) => (
                     <div key={idx} className="relative aspect-[2/3] group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)] shadow-[0_4px_20px_rgba(0,0,0,0.02)]">
-                      <img src={src} alt="Portfolio Work" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-[1.03]" />
+                      <img src={src} alt="Portfolio Work" className="w-full h-full transition-transform duration-[800ms] group-hover:scale-[1.03]" />
                       <div className="absolute inset-0 bg-gradient-to-t from-[rgba(0,0,0,0.85)] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-[20px]">
                         <span className="text-[9px] tracking-[0.2em] uppercase text-[var(--gold)] mb-[8px]">Gallery Spotlight</span>
                         <h4 className="font-serif text-[16px] text-white">Visual Artifact</h4>
@@ -719,7 +719,7 @@ export default function Home() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-[24px] w-full">
                   {remainingHorizontals.map((src, idx) => (
                     <div key={idx} className="relative aspect-[3/2] group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)] shadow-[0_4px_20px_rgba(0,0,0,0.02)]">
-                      <img src={src} alt="Portfolio Work" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-[1.03]" />
+                      <img src={src} alt="Portfolio Work" className="w-full h-full transition-transform duration-[800ms] group-hover:scale-[1.03]" />
                       <div className="absolute inset-0 bg-gradient-to-t from-[rgba(0,0,0,0.85)] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-[20px]">
                         <span className="text-[9px] tracking-[0.2em] uppercase text-[var(--gold)] mb-[8px]">Gallery Spotlight</span>
                         <h4 className="font-serif text-[16px] text-white">Visual Artifact</h4>
@@ -757,7 +757,7 @@ export default function Home() {
         </div>
         <div className="relative hidden lg:block">
           <div className="sticky top-[120px] h-[650px] w-full img-mask rounded-sm overflow-hidden">
-            <img src="/images/services-camera.jpg" alt="Tripod Camera" className="w-full h-full object-cover mask-bg grayscale-[20%]" />
+            <img src="/images/services-camera.jpg" alt="Tripod Camera" className="w-full h-full mask-bg grayscale-[20%]" />
           </div>
         </div>
       </section>
@@ -776,7 +776,7 @@ export default function Home() {
           ].map((member, idx) => (
             <div key={idx} className="group relative rounded-sm overflow-hidden bg-[var(--dark)] border border-[rgba(10,10,10,0.06)] hover:border-[var(--gold)] transition-all duration-500 cursor-none flex flex-col">
               <div className="h-[340px] w-full overflow-hidden relative">
-                <img src={member.img} alt={member.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+                <img src={member.img} alt={member.name} className="w-full h-full grayscale group-hover:grayscale-0 transition-all duration-500" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[var(--dark-panel)] via-transparent to-transparent opacity-85" />
               </div>
               <div className="p-[24px]">
@@ -839,7 +839,7 @@ export default function Home() {
                     <img 
                       src={logo.logo} 
                       alt={logo.name} 
-                      className="max-h-[60px] max-w-[85%] object-contain" 
+                      className="max-h-[60px] max-w-[85%]" 
                       loading="lazy" 
                     />
                   </div>
@@ -1091,7 +1091,7 @@ export default function Home() {
             <img 
               src={activeCert} 
               alt="Testimonial Certificate Form" 
-              className="max-w-full max-h-[80vh] object-contain rounded-sm" 
+              className="max-w-full max-h-[80vh] rounded-sm" 
               loading="lazy"
             />
           </div>
