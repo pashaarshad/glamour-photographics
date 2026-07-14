@@ -517,12 +517,17 @@ export default function Home() {
             <div key={idx} className="group relative p-[40px] rounded-sm overflow-hidden border border-[rgba(10,10,10,0.06)] hover:border-[var(--gold)] transition-all duration-[400ms] cursor-none min-h-[280px] flex flex-col justify-end">
               <div className="absolute inset-0 z-0">
                 <img src={srv.bg} alt={srv.title} className="w-full h-full object-cover opacity-85" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+                <div 
+                  className="absolute inset-0" 
+                  style={{ 
+                    background: 'linear-gradient(to top, rgba(0, 0, 0, 0.98) 0%, rgba(0, 0, 0, 0.85) 35%, rgba(0, 0, 0, 0) 65%)' 
+                  }} 
+                />
               </div>
               <div className="relative z-10">
                 <srv.icon className="w-[32px] h-[32px] text-[var(--gold)] mb-[24px] transition-transform duration-300 group-hover:scale-110" />
-                <h3 className="text-[18px] font-serif text-white mb-[12px] group-hover:text-[var(--gold)] transition-colors">{srv.title}</h3>
-                <p className="text-[13px] text-[rgba(255,255,255,0.8)] leading-[1.6] font-light">{srv.desc}</p>
+                <h3 className="text-[18px] font-serif text-white mb-[12px] group-hover:text-[var(--gold)] transition-colors font-bold">{srv.title}</h3>
+                <p className="text-[13.5px] text-[rgba(255,255,255,0.95)] leading-[1.6] font-semibold">{srv.desc}</p>
               </div>
             </div>
           ))}
