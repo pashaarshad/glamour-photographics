@@ -60,7 +60,9 @@ export default function Navbar() {
 
       {/* MOBILE MENU */}
       <div 
-        className={`fixed inset-0 bg-[#0A0A0A] z-[2000] flex flex-col items-center justify-center gap-[40px] transition-transform duration-600 ease-in-out cursor-none ${mobileOpen ? 'translate-y-0' : '-translate-y-full'}`}
+        className={`fixed inset-0 bg-[#0A0A0A] z-[2000] flex flex-col items-center justify-center gap-[40px] transition-transform duration-600 ease-in-out cursor-none ${
+          mobileOpen ? 'translate-y-0 pointer-events-auto visible' : '-translate-y-full pointer-events-none invisible'
+        }`}
       >
         <button suppressHydrationWarning onClick={() => setMobileOpen(false)} className="absolute top-[30px] right-[5%] md:right-[8%] text-white text-[12px] tracking-[0.2em] uppercase cursor-none">Close ✕</button>
         {[
