@@ -675,7 +675,7 @@ export default function Home() {
                 <div key={bIdx} className="flex flex-col md:flex-row gap-[24px] items-stretch w-full">
                   {/* Left: 1 Vertical */}
                   <div className="w-full md:w-1/3 relative group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)] min-h-[350px] md:min-h-0 shadow-[0_4px_20px_rgba(0,0,0,0.02)]">
-                    <img src={block.vertical} alt="Portfolio Work" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-[1.03]" />
+                    <img src={block.vertical} alt="Portfolio Work" className="absolute inset-0 w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-[1.03]" />
                     <div className="absolute inset-0 bg-gradient-to-t from-[rgba(0,0,0,0.85)] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-[30px]">
                       <span className="text-[9px] tracking-[0.2em] uppercase text-[var(--gold)] mb-[8px]">Gallery Spotlight</span>
                       <h4 className="font-serif text-[18px] text-white">Visual Artifact</h4>

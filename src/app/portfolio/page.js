@@ -364,7 +364,7 @@ export default function PortfolioPage() {
                   <div key={bIdx} className="flex flex-col md:flex-row gap-[24px] items-stretch w-full">
                     {/* Left: 1 Vertical */}
                     <div className="w-full md:w-1/3 relative group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)] min-h-[350px] md:min-h-0 shadow-[0_4px_20px_rgba(0,0,0,0.02)] reveal opacity-0 anim-fade-up">
-                      <img src={block.vertical} alt="Portfolio Work" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-[1.03]" />
+                      <img src={block.vertical} alt="Portfolio Work" className="absolute inset-0 w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-[1.03]" />
                     </div>
                     {/* Right: 4 Horizontal */}
                     <div className="w-full md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-[24px]">
