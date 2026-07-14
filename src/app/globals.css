@@ -37,12 +37,7 @@
     color: var(--light);
     font-weight: 300;
     overflow-x: hidden;
-    cursor: none;
     -webkit-font-smoothing: antialiased;
-  }
-
-  a, button {
-    cursor: none;
   }
 
   /* NOISE BACKGROUND FOR CREAMY THEME */
@@ -375,4 +370,17 @@
 
 .hero-strip-item:hover .strip-title {
   transform: translateY(-4px);
+}
+
+/* =========================================
+   DEFAULT CURSOR RESTORATION
+   ========================================= */
+* {
+  cursor: default !important;
+}
+
+a, button, select, input, textarea, [role="button"], 
+.swiper-pagination-bullet, .swiper-button-next, .swiper-button-prev, 
+.cursor-pointer, .cursor-pointer * {
+  cursor: pointer !important;
 }
