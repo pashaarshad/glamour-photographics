@@ -369,6 +369,32 @@ export default function About() {
         </div>
       </section>
 
+      {/* ─── OUR TEAM ─── */}
+      <section className="py-[120px] px-[8%] md:px-[10%] bg-[var(--dark)] border-t border-[rgba(10,10,10,0.06)]">
+        <div className="mb-[60px] reveal opacity-0 anim-fade-up">
+          <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] mb-[16px] block">Minds Behind the Lenses</span>
+          <h2 className="font-serif text-[clamp(28px,4vw,48px)] font-light leading-[1.2] text-[var(--light)]">Our Team</h2>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-[30px]">
+          {[
+            { name: "Hameed Hussain", role: "Founder & Director", img: "/logo-clients/founder-ceo.jpg" },
+            { name: "Anzar Hussain", role: "Creative Lead", img: "/logo-clients/founder-ceo.jpg" },
+            { name: "Zia Hussain", role: "Head of Operations", img: "/logo-clients/founder-ceo.jpg" }
+          ].map((member, idx) => (
+            <div key={idx} className="group relative rounded-sm overflow-hidden bg-[var(--darker)] border border-[rgba(10,10,10,0.06)] hover:border-[var(--gold)] transition-all duration-500 flex flex-col reveal opacity-0 anim-fade-up" style={{ animationDelay: `${idx * 100}ms` }}>
+              <div className="h-[340px] w-full overflow-hidden relative">
+                <img src={member.img} alt={member.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[var(--dark-panel)] via-transparent to-transparent opacity-85" />
+              </div>
+              <div className="p-[24px]">
+                <span className="text-[9px] tracking-[0.25em] uppercase text-[var(--gold)] mb-[8px] block font-medium">{member.role}</span>
+                <h3 className="font-serif text-[22px] text-[var(--light)] group-hover:text-[var(--gold)] transition-colors leading-[1.2]">{member.name}</h3>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* ─── TESTIMONIALS LOGO CAROUSEL ─── */}
       <section className="py-[120px] px-[8%] md:px-[10%] bg-[var(--dark)] border-t border-[rgba(10,10,10,0.06)] mb-[140px]">
         <div className="max-w-[1200px] mx-auto reveal opacity-0 anim-fade-up">
