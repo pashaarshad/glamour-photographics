@@ -276,38 +276,41 @@ export default function Home() {
 
       {/* ─── 3. WE TELL STORIES THAT STAY (YOUTUBE EMBED) ─── */}
       <section className="py-[120px] px-[8%] md:px-[10%] bg-[var(--dark)] relative overflow-hidden">
-        <div className="max-w-[1400px] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-[40px] lg:gap-[60px] items-center">
-            {/* Left Column: Text */}
-            <div className="lg:col-span-5 reveal opacity-0 anim-fade-up z-20">
-              <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] mb-[16px] block">
-                We Don't Just Shoot
-              </span>
-              <h2 className="font-serif text-[clamp(36px,4.5vw,60px)] font-light leading-[1.1] tracking-[-0.01em] text-[var(--light)] mb-[32px]">
-                We Tell Stories <br />
-                <span className="italic text-[var(--gold)] font-medium">That Stay.</span>
-              </h2>
-              <p className="text-[14px] md:text-[15px] leading-[1.8] text-[var(--muted)] max-w-[480px] mb-[40px] font-light">
-                From corporate documentaries that build trust, to powerful commercials and premium event storytelling, we capture moments that create long-lasting brand legacies.
-              </p>
-              <div className="flex flex-wrap gap-[16px]">
-                <Link href="/portfolio" className="border border-[rgba(10,10,10,0.15)] text-[var(--light)] text-[10px] tracking-[0.2em] uppercase py-[16px] px-[32px] hover:bg-[var(--light)] hover:text-[var(--dark)] transition-all duration-300 cursor-none font-medium">
-                  Explore Our Work
-                </Link>
-              </div>
+        {/* Subtle historical/storytelling background watermark */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center opacity-[0.035] mix-blend-luminosity pointer-events-none"
+          style={{ backgroundImage: `url('/images/about-hero-double-exposure.png')` }}
+        />
+        
+        <div className="max-w-[1400px] mx-auto relative z-10">
+          {/* Top Section: Text */}
+          <div className="max-w-[800px] mx-auto text-center mb-[60px] reveal opacity-0 anim-fade-up">
+            <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] mb-[16px] block">
+              We Don't Just Shoot
+            </span>
+            <h2 className="font-serif text-[clamp(36px,4.5vw,60px)] font-light leading-[1.1] tracking-[-0.01em] text-[var(--light)] mb-[24px]">
+              We Tell Stories <span className="italic text-[var(--gold)] font-medium">That Stay.</span>
+            </h2>
+            <p className="text-[14px] md:text-[16px] leading-[1.8] text-[var(--muted)] max-w-[650px] mx-auto mb-[32px] font-light">
+              From corporate documentaries that build trust, to powerful commercials and premium event storytelling, we capture moments that create long-lasting brand legacies.
+            </p>
+            <div className="flex justify-center">
+              <Link href="/portfolio" className="border border-[rgba(10,10,10,0.15)] text-[var(--light)] text-[10px] tracking-[0.2em] uppercase py-[14px] px-[28px] hover:bg-[var(--light)] hover:text-[var(--dark)] transition-all duration-300 cursor-pointer font-medium rounded-full">
+                Explore Our Work
+              </Link>
             </div>
+          </div>
 
-            {/* Right Column: Video */}
-            <div className="lg:col-span-7 w-full aspect-video rounded-sm overflow-hidden border border-[rgba(10,10,10,0.06)] shadow-[0_24px_70px_rgba(10,10,10,0.05)] reveal opacity-0 anim-fade-up delay-100">
-              <iframe
-                className="w-full h-full"
-                src="https://www.youtube.com/embed/oz26LF0gvxg?rel=0"
-                title="Glamour Photographics Corporate Showreel"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </div>
+          {/* Bottom Section: Video Player with large curved design */}
+          <div className="w-full max-w-[1100px] mx-auto aspect-video rounded-[24px] md:rounded-[40px] overflow-hidden border border-[rgba(10,10,10,0.08)] shadow-[0_30px_80px_rgba(10,10,10,0.12)] reveal opacity-0 anim-fade-up delay-100 isolate">
+            <iframe
+              className="w-full h-full"
+              src="https://www.youtube.com/embed/oz26LF0gvxg?rel=0"
+              title="Glamour Photographics Corporate Showreel"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
           </div>
         </div>
       </section>
