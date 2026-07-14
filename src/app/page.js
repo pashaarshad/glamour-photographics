@@ -199,7 +199,7 @@ export default function Home() {
       <div className="hero-strip">
         <div className="hero-strip-item">
           <div className="strip-img">
-            <img src="/images/cii-event-coverage.jpg" alt="CII Event Coverage" className="w-full h-full object-cover block" />
+            <img src="/images/cii-event-coverage.jpg" alt="CII Event Coverage" className="w-full h-full object-contain block" />
           </div>
           <div className="strip-pip"></div>
           <div className="strip-side-label">Corporate Events</div>
@@ -211,7 +211,7 @@ export default function Home() {
 
         <div className="hero-strip-item">
           <div className="strip-img">
-            <img src="/images/celebrity-portrait.jpg" alt="Celebrity Portrait" className="w-full h-full object-cover block" />
+            <img src="/images/celebrity-portrait.jpg" alt="Celebrity Portrait" className="w-full h-full object-contain block" />
           </div>
           <div className="strip-pip"></div>
           <div className="strip-side-label">Celebrity Portrait</div>
@@ -223,7 +223,7 @@ export default function Home() {
 
         <div className="hero-strip-item">
           <div className="strip-img">
-            <img src="/images/outdoor-event.jpg" alt="Outdoor Event" className="w-full h-full object-cover block" />
+            <img src="/images/outdoor-event.jpg" alt="Outdoor Event" className="w-full h-full object-contain block" />
           </div>
           <div className="strip-pip"></div>
           <div className="strip-side-label">Outdoor Coverage</div>
@@ -235,7 +235,7 @@ export default function Home() {
 
         <div className="hero-strip-item">
           <div className="strip-img">
-            <img src="/images/corporate-event.jpg" alt="Corporate Event" className="w-full h-full object-cover block" />
+            <img src="/images/corporate-event.jpg" alt="Corporate Event" className="w-full h-full object-contain block" />
           </div>
           <div className="strip-pip"></div>
           <div className="strip-side-label">Speaker Series</div>
