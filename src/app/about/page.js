@@ -76,6 +76,48 @@ export default function About() {
         </div>
       </section>
 
+      {/* ─── FULL-WIDTH HORIZONTAL GALLERY STRIP ─── */}
+      <section className="w-full bg-[var(--dark)] py-[60px] overflow-hidden reveal opacity-0 anim-fade-up">
+        <Swiper
+          modules={[Autoplay]}
+          spaceBetween={24}
+          slidesPerView={1.2}
+          centeredSlides={true}
+          loop={true}
+          speed={1000}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+            pauseOnHover: true
+          }}
+          breakpoints={{
+            640: { slidesPerView: 2.2, spaceBetween: 24 },
+            1024: { slidesPerView: 3, spaceBetween: 32 }
+          }}
+          className="w-full px-[4%]"
+        >
+          {[
+            "/images/our_portfolio/highlights_3C1A0775.jpg",
+            "/images/our_portfolio/11.jpg",
+            "/images/our_portfolio/33.jpg",
+            "/images/our_portfolio/highlights_3C1A0782.jpg",
+            "/images/our_portfolio/22.jpg",
+            "/images/our_portfolio/rtx-1.jpg"
+          ].map((src, idx) => (
+            <SwiperSlide key={idx}>
+              <div className="relative aspect-[16/10] rounded-sm overflow-hidden border border-[rgba(10,10,10,0.06)] bg-[var(--darker)] group shadow-md">
+                <img 
+                  src={src} 
+                  alt={`Gallery Image ${idx + 1}`} 
+                  className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-105" 
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[rgba(0,0,0,0.4)] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </section>
+
       {/* ─── FOUNDER'S NOTE ─── */}
       <section className="px-[4%] md:px-[5%] max-w-[1600px] mx-auto py-[100px] border-t border-[rgba(10,10,10,0.06)] mb-[40px]">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-[60px] items-start">
