@@ -105,9 +105,7 @@ export default function ClientPage({ params }) {
                 <img 
                   src={src} 
                   alt={`${client.name} Featured Work ${idx + 1}`} 
-                  className={`w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-102 ${
-                    src.includes('PANA9024.jpg') ? 'object-top' : 'object-center'
-                  }`}
+                  className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-102"
                 />
                 {/* No shading overlay */}
               </div>
