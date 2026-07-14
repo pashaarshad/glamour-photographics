@@ -435,7 +435,7 @@ export default function Home() {
             </h2>
           </div>
           <div className="reveal opacity-0 anim-fade-up delay-100">
-            <Link href="/corporate" className="text-[10px] tracking-[0.25em] uppercase font-semibold py-[12px] px-[24px] border border-[rgba(255,255,255,0.2)] text-white hover:bg-white hover:text-black cursor-none transition-all">
+            <Link href="/portfolio?tab=VIDEOS" className="text-[10px] tracking-[0.25em] uppercase font-semibold py-[12px] px-[24px] border border-[rgba(255,255,255,0.2)] text-white hover:bg-white hover:text-black cursor-none transition-all">
               View All Projects
             </Link>
           </div>
