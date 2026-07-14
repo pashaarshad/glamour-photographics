@@ -52,7 +52,7 @@ export default function About() {
               <img 
                 src="/images/signature.png" 
                 alt="Hameed Hussain Signature" 
-                className="h-[48px] w-auto mb-[8px] select-none pointer-events-none"
+                className="h-[48px] w-auto object-contain mb-[8px] select-none pointer-events-none"
               />
               <span className="text-[10px] tracking-[0.1em] uppercase text-gray-400 block">
                 Founder, Glamour Photographics
@@ -65,7 +65,7 @@ export default function About() {
             <img 
               src="/images/about-hero-double-exposure.png" 
               alt="A Legacy in Frames Double Exposure" 
-              className="w-full h-auto max-h-[650px] z-10" 
+              className="w-full h-auto max-h-[650px] object-contain z-10" 
             />
             {/* Badge Overlay */}
             <div className="absolute bottom-[35px] right-[8%] bg-[#FAF8F4] border-2 border-[var(--gold)] px-[24px] py-[14px] shadow-[0_8px_32px_rgba(0,0,0,0.06)] rounded-[2px] z-20">
@@ -109,7 +109,7 @@ export default function About() {
                 <img 
                   src={src} 
                   alt={`Gallery Image ${idx + 1}`} 
-                  className="w-full h-full transition-transform duration-[1200ms] group-hover:scale-105" 
+                  className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-105" 
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[rgba(0,0,0,0.4)] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
@@ -127,7 +127,7 @@ export default function About() {
               <img 
                 src="/logo-clients/founder-ceo.jpg" 
                 alt="Founder Hameed Hussain" 
-                className="w-full h-full opacity-80"
+                className="w-full h-full object-cover opacity-80"
               />
             </div>
             <div className="bg-[#0A0A0A] p-[30px] border-t border-[rgba(255,255,255,0.08)]">
@@ -137,7 +137,7 @@ export default function About() {
               <img 
                 src="/images/signature.png" 
                 alt="Hameed Hussain Signature" 
-                className="h-[40px] w-auto select-none pointer-events-none invert opacity-90"
+                className="h-[40px] w-auto object-contain select-none pointer-events-none invert opacity-90"
               />
             </div>
           </div>
@@ -172,7 +172,7 @@ export default function About() {
                 <img 
                   src="/images/signature.png" 
                   alt="Hameed Hussain Signature" 
-                  className="h-[44px] w-auto select-none pointer-events-none"
+                  className="h-[44px] w-auto object-contain select-none pointer-events-none"
                 />
               </div>
             </div>
@@ -216,7 +216,7 @@ export default function About() {
                           <img 
                             src={item.src} 
                             alt={`Film Strip Frame ${idx + 1}`} 
-                            className="w-full h-full grayscale opacity-85 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" 
+                            className="w-full h-full object-cover grayscale opacity-85 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" 
                           />
                         </div>
                       );
@@ -399,7 +399,7 @@ export default function About() {
                         <img 
                           src={step.img} 
                           alt={step.title} 
-                          className="w-full h-full transition-transform duration-[600ms] group-hover:scale-103" 
+                          className="w-full h-full object-cover transition-transform duration-[600ms] group-hover:scale-103" 
                         />
                       </div>
                     </div>
@@ -425,7 +425,7 @@ export default function About() {
           ].map((member, idx) => (
             <div key={idx} className="group relative rounded-sm overflow-hidden bg-[var(--darker)] border border-[rgba(10,10,10,0.06)] hover:border-[var(--gold)] transition-all duration-500 flex flex-col reveal opacity-0 anim-fade-up" style={{ animationDelay: `${idx * 100}ms` }}>
               <div className="h-[340px] w-full overflow-hidden relative">
-                <img src={member.img} alt={member.name} className="w-full h-full grayscale group-hover:grayscale-0 transition-all duration-500" />
+                <img src={member.img} alt={member.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[var(--dark-panel)] via-transparent to-transparent opacity-85" />
               </div>
               <div className="p-[24px]">
@@ -488,7 +488,7 @@ export default function About() {
                     <img 
                       src={logo.logo} 
                       alt={logo.name} 
-                      className="max-h-[60px] max-w-[85%]" 
+                      className="max-h-[60px] max-w-[85%] object-contain" 
                       loading="lazy" 
                     />
                   </div>
@@ -507,7 +507,7 @@ export default function About() {
             <img 
               src="/images/left-inabout-let-create-somethin.png" 
               alt="Film Reel Videography Element" 
-              className="w-[120px] md:w-[150px] h-auto shrink-0" 
+              className="w-[120px] md:w-[150px] h-auto object-contain shrink-0" 
             />
             <div>
               <h2 className="font-serif text-[clamp(24px,3vw,36px)] text-[var(--light)] leading-tight font-medium">
@@ -524,7 +524,7 @@ export default function About() {
             <img 
               src="/images/about-cta-chair.png" 
               alt="Director's Chair Illustration" 
-              className="h-[120px] w-auto hidden lg:block lg:ml-[20px]"
+              className="h-[120px] w-auto object-contain hidden lg:block lg:ml-[20px]"
             />
           </div>
         </div>
@@ -557,7 +557,7 @@ export default function About() {
             <img 
               src={activeCert} 
               alt="Testimonial Certificate Form" 
-              className="max-w-full max-h-[80vh] rounded-sm" 
+              className="max-w-full max-h-[80vh] object-contain rounded-sm" 
               loading="lazy"
             />
           </div>

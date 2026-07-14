@@ -40,7 +40,7 @@ export default function ClientGallery({ images }) {
               <img 
                 src={src} 
                 alt={`Gallery Image ${index + 1}`} 
-                className="max-w-full max-h-full mx-auto"
+                className="max-w-full max-h-full object-contain mx-auto"
               />
             </SwiperSlide>
           ))}

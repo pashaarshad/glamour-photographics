@@ -24,7 +24,7 @@ export default function Navbar() {
           <img 
             src="/images/Glamour_Logo.png" 
             alt="Glamour Photographics Logo" 
-            className="h-[48px] md:h-[58px] w-auto"
+            className="h-[48px] md:h-[58px] w-auto object-contain"
           />
         </Link>
         <ul className="hidden md:flex gap-[40px] list-none">
