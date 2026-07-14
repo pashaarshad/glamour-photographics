@@ -279,25 +279,70 @@ export default function PortfolioPage() {
             ))}
           </div>
         ) : (
-          /* ─── MASONRY IMAGE GRID ─── */
-          <div className="columns-1 sm:columns-2 lg:columns-3 gap-[24px] [column-fill:_balance] w-full">
-            {activeImages.map((src, idx) => (
-              <div 
-                key={`${activeTab}-${idx}`} 
-                className="break-inside-avoid mb-[24px] relative group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)] reveal opacity-0 anim-fade-up shadow-[0_4px_20px_rgba(0,0,0,0.02)]"
-                style={{ animationDelay: `${idx * 50}ms` }}
-              >
-                <img 
-                  src={src} 
-                  alt={`Portfolio Work ${idx + 1}`} 
-                  className="w-full h-auto block transition-transform duration-[800ms] group-hover:scale-[1.02]" 
-                  onError={(e) => {
-                    e.target.style.display = 'none';
-                  }}
-                />
+          /* ─── 5-IMAGE SECTION BLOCKS ─── */
+          (() => {
+            if (activeImages.length < 5) {
+              return (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[24px] w-full">
+                  {activeImages.map((src, idx) => (
+                    <div key={idx} className="relative aspect-[1.4] group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)] shadow-[0_4px_20px_rgba(0,0,0,0.02)] reveal opacity-0 anim-fade-up" style={{ animationDelay: `${idx * 50}ms` }}>
+                      <img src={src} alt="Portfolio Work" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-105" />
+                    </div>
+                  ))}
+                </div>
+              );
+            }
+
+            const block1 = activeImages.slice(0, 5);
+            const hasBlock2 = activeImages.length >= 10;
+            const block2 = hasBlock2 ? activeImages.slice(5, 10) : [];
+            const remaining = activeImages.slice(hasBlock2 ? 10 : 5);
+
+            return (
+              <div className="w-full flex flex-col gap-[24px]">
+                {/* BLOCK 1 (5 Images: 1 Vertical, 4 Horizontal) */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-[24px] items-stretch w-full">
+                  {/* Left: 1 Vertical (Image 0) */}
+                  <div className="md:col-span-1 md:row-span-2 relative group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)] h-full min-h-[320px] md:min-h-0 shadow-[0_4px_20px_rgba(0,0,0,0.02)] reveal opacity-0 anim-fade-up">
+                    <img src={block1[0]} alt="Portfolio Work" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-[1.03]" />
+                  </div>
+                  {/* Right: 4 Horizontal (Images 1, 2, 3, 4) */}
+                  {block1.slice(1).map((src, idx) => (
+                    <div key={idx} className="relative aspect-[1.4] group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)] shadow-[0_4px_20px_rgba(0,0,0,0.02)] reveal opacity-0 anim-fade-up" style={{ animationDelay: `${idx * 50}ms` }}>
+                      <img src={src} alt="Portfolio Work" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-[1.03]" />
+                    </div>
+                  ))}
+                </div>
+
+                {/* BLOCK 2 (5 Images: 1 Vertical, 4 Horizontal) */}
+                {hasBlock2 && (
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-[24px] items-stretch w-full">
+                    {/* Left: 1 Vertical (Image 5) */}
+                    <div className="md:col-span-1 md:row-span-2 relative group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)] h-full min-h-[320px] md:min-h-0 shadow-[0_4px_20px_rgba(0,0,0,0.02)] reveal opacity-0 anim-fade-up" style={{ animationDelay: '50ms' }}>
+                      <img src={block2[0]} alt="Portfolio Work" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-[1.03]" />
+                    </div>
+                    {/* Right: 4 Horizontal (Images 6, 7, 8, 9) */}
+                    {block2.slice(1).map((src, idx) => (
+                      <div key={idx} className="relative aspect-[1.4] group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)] shadow-[0_4px_20px_rgba(0,0,0,0.02)] reveal opacity-0 anim-fade-up" style={{ animationDelay: `${(idx + 1) * 50}ms` }}>
+                        <img src={src} alt="Portfolio Work" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-[1.03]" />
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {/* REMAINING IMAGES (Standard 3-Column Grid) */}
+                {remaining.length > 0 && (
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[24px] w-full">
+                    {remaining.map((src, idx) => (
+                      <div key={idx} className="relative aspect-[1.4] group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)] shadow-[0_4px_20px_rgba(0,0,0,0.02)] reveal opacity-0 anim-fade-up" style={{ animationDelay: `${idx * 50}ms` }}>
+                        <img src={src} alt="Portfolio Work" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-[1.03]" />
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
-            ))}
-          </div>
+            );
+          })()
         )}
       </section>
 
