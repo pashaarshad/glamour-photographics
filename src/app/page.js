@@ -115,7 +115,6 @@ export default function Home() {
       /* H */ "/images/our_portfolio/PRS02780.jpg",
       /* H */ "/images/our_portfolio/highlights_SKV00387.jpg",
       /* H */ "/images/our_portfolio/SKV00446.jpg",
-      /* V */ "/images/our_portfolio/highlights_Ms. Amal Mohammed Ahmed, theDivisional  (1).jpg",
       /* H */ "/images/our_portfolio/highlights_DSC_0038.jpg",
       /* H */ "/images/our_portfolio/rtx-4.jpg",
       /* H */ "/images/our_portfolio/rtx-9.jpg",
@@ -148,7 +147,6 @@ export default function Home() {
       "/images/our_portfolio/Srk.jpg",
       "/images/our_portfolio/kareeshma.jpg",
       "/images/our_portfolio/Cameroon.jpeg",
-      "/images/our_portfolio/highlights_Ms. Amal Mohammed Ahmed, theDivisional  (1).jpg",
       "/images/our_portfolio/highlights_Ms. Amal Mohammed Ahmed, theDivisional .jpg",
     ],
     EVENTS: [
@@ -665,7 +663,6 @@ export default function Home() {
             "/images/our_portfolio/Cameroon.jpeg",
             "/images/our_portfolio/Capturing_Cultural_Icons_version_1.png",
             "/images/our_portfolio/highlights_3C1A0775.jpg",
-            "/images/our_portfolio/highlights_Ms. Amal Mohammed Ahmed, theDivisional  (1).jpg",
             "/images/our_portfolio/highlights_Ms. Amal Mohammed Ahmed, theDivisional .jpg",
             "/images/our_portfolio/highlights_SKV00290.jpg",
             "/images/our_portfolio/IMG_0029.JPG",
