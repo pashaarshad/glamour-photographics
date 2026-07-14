@@ -27,21 +27,20 @@ export default function ClientGallery({ images }) {
     <div className="w-full">
       <div className="relative mb-[40px] cursor-none custom-swiper-wrapper border border-[rgba(10,10,10,0.06)] rounded-sm overflow-hidden">
         <Swiper
-          modules={[Navigation, Pagination, EffectFade, Autoplay]}
-          effect="fade"
+          modules={[Navigation, Pagination, Autoplay]}
           spaceBetween={0}
           slidesPerView={1}
           navigation
           pagination={{ clickable: true }}
           autoplay={{ delay: 4000, disableOnInteraction: false }}
-          className="w-full bg-black"
+          className="w-full h-[320px] sm:h-[480px] md:h-[600px] bg-black"
         >
           {sliderImages.map((src, index) => (
-            <SwiperSlide key={index} className="flex items-center justify-center bg-black p-[20px] md:p-[40px] h-[450px] sm:h-[600px] md:h-[780px]">
+            <SwiperSlide key={index} className="w-full h-full flex items-center justify-center bg-black p-[10px] sm:p-[20px]">
               <img 
                 src={src} 
                 alt={`Gallery Image ${index + 1}`} 
-                className="max-w-full max-h-full w-auto h-auto object-contain mx-auto transition-transform duration-[600ms]"
+                className="max-w-full max-h-full object-contain mx-auto"
               />
             </SwiperSlide>
           ))}
