@@ -28,13 +28,16 @@ export default function Navbar() {
           />
         </Link>
         <ul className="hidden md:flex gap-[40px] list-none">
-          {['Home', 'About Us', 'Services', 'Portfolio', 'Clients', 'Contact'].map((item) => (
-            <li key={item}>
-              <Link href={item === 'Home' ? '/' : `/${item.toLowerCase().replace(' ', '-')}`} className="text-[10px] tracking-[0.2em] uppercase font-medium text-[rgba(255,255,255,0.7)] relative pb-[4px] transition-colors duration-300 hover:text-white cursor-none after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-[var(--gold)] after:transition-all after:duration-350 hover:after:w-full">
-                {item}
-              </Link>
-            </li>
-          ))}
+          {['Home', 'About Us', 'Corporate', 'Studio Services', 'Portfolio', 'Contact'].map((item) => {
+            const href = item === 'Home' ? '/' : item === 'About Us' ? '/about' : `/${item.toLowerCase().replace(' ', '-')}`;
+            return (
+              <li key={item}>
+                <Link href={href} className="text-[10px] tracking-[0.2em] uppercase font-medium text-[rgba(255,255,255,0.7)] relative pb-[4px] transition-colors duration-300 hover:text-white cursor-none after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-[var(--gold)] after:transition-all after:duration-350 hover:after:w-full">
+                  {item}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
         <div className="hidden md:flex items-center gap-[20px]">
           <Link 
@@ -56,19 +59,22 @@ export default function Navbar() {
         className={`fixed inset-0 bg-[#0A0A0A] z-[2000] flex flex-col items-center justify-center gap-[40px] transition-transform duration-600 ease-in-out cursor-none ${mobileOpen ? 'translate-y-0' : '-translate-y-full'}`}
       >
         <button suppressHydrationWarning onClick={() => setMobileOpen(false)} className="absolute top-[30px] right-[5%] md:right-[8%] text-white text-[12px] tracking-[0.2em] uppercase cursor-none">Close ✕</button>
-        {['Home', 'About Us', 'Services', 'Portfolio', 'Clients', 'Contact'].map((item, idx) => (
-          <Link 
-            key={item}
-            href={item === 'Home' ? '/' : `/${item.toLowerCase().replace(' ', '-')}`} 
-            className={`font-serif text-[42px] font-light text-white tracking-[-0.01em] transition-all duration-500 hover:text-[var(--gold)] cursor-none ${
-              mobileOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[20px]'
-            }`} 
-            style={{ transitionDelay: `${idx * 80}ms` }}
-            onClick={() => setMobileOpen(false)}
-          >
-            {item}
-          </Link>
-        ))}
+        {['Home', 'About Us', 'Corporate', 'Studio Services', 'Portfolio', 'Contact'].map((item, idx) => {
+          const href = item === 'Home' ? '/' : item === 'About Us' ? '/about' : `/${item.toLowerCase().replace(' ', '-')}`;
+          return (
+            <Link 
+              key={item}
+              href={href} 
+              className={`font-serif text-[42px] font-light text-white tracking-[-0.01em] transition-all duration-500 hover:text-[var(--gold)] cursor-none ${
+                mobileOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[20px]'
+              }`} 
+              style={{ transitionDelay: `${idx * 80}ms` }}
+              onClick={() => setMobileOpen(false)}
+            >
+              {item}
+            </Link>
+          );
+        })}
       </div>
     </>
   );
