@@ -80,38 +80,33 @@ export default function About() {
       <section className="w-full bg-[var(--dark)] py-[60px] overflow-hidden reveal opacity-0 anim-fade-up">
         <Swiper
           modules={[Autoplay]}
-          spaceBetween={24}
-          slidesPerView={1.2}
+          spaceBetween={0}
+          slidesPerView={1}
           centeredSlides={true}
           loop={true}
           speed={1000}
           autoplay={{
-            delay: 3000,
+            delay: 4000,
             disableOnInteraction: false,
             pauseOnHover: true
           }}
-          breakpoints={{
-            640: { slidesPerView: 2.2, spaceBetween: 24 },
-            1024: { slidesPerView: 3, spaceBetween: 32 }
-          }}
-          className="w-full px-[4%]"
+          className="w-full"
         >
           {[
-            "/images/our_portfolio/highlights_3C1A0775.jpg",
             "/images/our_portfolio/11.jpg",
-            "/images/our_portfolio/33.jpg",
-            "/images/our_portfolio/highlights_3C1A0782.jpg",
             "/images/our_portfolio/22.jpg",
-            "/images/our_portfolio/rtx-1.jpg"
+            "/images/our_portfolio/33.jpg"
           ].map((src, idx) => (
             <SwiperSlide key={idx}>
-              <div className="relative aspect-[16/10] rounded-sm overflow-hidden border border-[rgba(10,10,10,0.06)] bg-[var(--darker)] group shadow-md">
-                <img 
-                  src={src} 
-                  alt={`Gallery Image ${idx + 1}`} 
-                  className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-105" 
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[rgba(0,0,0,0.4)] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="w-full px-[4%] md:px-[6%]">
+                <div className="relative aspect-[16/9] w-full rounded-[16px] md:rounded-[32px] overflow-hidden border border-[rgba(10,10,10,0.06)] bg-[var(--darker)] group shadow-lg">
+                  <img 
+                    src={src} 
+                    alt={`Gallery Image ${idx + 1}`} 
+                    className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-105" 
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[rgba(0,0,0,0.35)] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                </div>
               </div>
             </SwiperSlide>
           ))}
