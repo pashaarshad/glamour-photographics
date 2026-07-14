@@ -276,13 +276,13 @@ export default function Home() {
       {/* ─── 3. WE TELL STORIES THAT STAY (YOUTUBE EMBED) ─── */}
       <section className="py-[120px] px-[8%] md:px-[10%] bg-[var(--dark)] relative overflow-hidden">
         <div className="max-w-[1400px] mx-auto">
-          {/* Row 1: Left and Right alignment (Left has text, Right has nothing) */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-[40px] items-start mb-[40px] md:mb-[60px]">
-            <div className="lg:col-span-6 reveal opacity-0 anim-fade-up z-20">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-[40px] lg:gap-[60px] items-center">
+            {/* Left Column: Text */}
+            <div className="lg:col-span-5 reveal opacity-0 anim-fade-up z-20">
               <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] mb-[16px] block">
                 We Don't Just Shoot
               </span>
-              <h2 className="font-serif text-[clamp(36px,5vw,70px)] font-light leading-[1.1] tracking-[-0.01em] text-[var(--light)] mb-[32px]">
+              <h2 className="font-serif text-[clamp(36px,4.5vw,60px)] font-light leading-[1.1] tracking-[-0.01em] text-[var(--light)] mb-[32px]">
                 We Tell Stories <br />
                 <span className="italic text-[var(--gold)] font-medium">That Stay.</span>
               </h2>
@@ -295,13 +295,9 @@ export default function Home() {
                 </Link>
               </div>
             </div>
-            <div className="lg:col-span-6 hidden lg:block"></div>
-          </div>
 
-          {/* Row 2: Slightly down, on the right side, the YouTube video in a bigger screen */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-[40px]">
-            <div className="lg:col-span-3 hidden lg:block"></div>
-            <div className="lg:col-span-9 w-full aspect-video rounded-sm overflow-hidden border border-[rgba(10,10,10,0.06)] shadow-[0_24px_70px_rgba(10,10,10,0.05)] reveal opacity-0 anim-fade-up delay-100">
+            {/* Right Column: Video */}
+            <div className="lg:col-span-7 w-full aspect-video rounded-sm overflow-hidden border border-[rgba(10,10,10,0.06)] shadow-[0_24px_70px_rgba(10,10,10,0.05)] reveal opacity-0 anim-fade-up delay-100">
               <iframe
                 className="w-full h-full"
                 src="https://www.youtube.com/embed/oz26LF0gvxg?rel=0"
