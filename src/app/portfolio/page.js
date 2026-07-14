@@ -335,15 +335,25 @@ export default function PortfolioPage() {
 
             if (blocks.length === 0) {
               return (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[24px] w-full">
-                  {activeImages.map((src, idx) => {
-                    const isVert = VERTICAL_IMAGES.includes(src);
-                    return (
-                      <div key={idx} className={`relative group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)] shadow-[0_4px_20px_rgba(0,0,0,0.02)] reveal opacity-0 anim-fade-up ${isVert ? 'aspect-[2/3]' : 'aspect-[3/2]'}`} style={{ animationDelay: `${idx * 50}ms` }}>
-                        <img src={src} alt="Portfolio Work" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-105" />
-                      </div>
-                    );
-                  })}
+                <div className="w-full flex flex-col gap-[24px]">
+                  {verticals.length > 0 && (
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-[24px] w-full">
+                      {verticals.map((src, idx) => (
+                        <div key={idx} className="relative aspect-[2/3] group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)] shadow-[0_4px_20px_rgba(0,0,0,0.02)] reveal opacity-0 anim-fade-up" style={{ animationDelay: `${idx * 50}ms` }}>
+                          <img src={src} alt="Portfolio Work" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-105" />
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  {horizontals.length > 0 && (
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-[24px] w-full">
+                      {horizontals.map((src, idx) => (
+                        <div key={idx} className="relative aspect-[3/2] group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)] shadow-[0_4px_20px_rgba(0,0,0,0.02)] reveal opacity-0 anim-fade-up" style={{ animationDelay: `${idx * 50}ms` }}>
+                          <img src={src} alt="Portfolio Work" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-105" />
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
               );
             }
@@ -365,17 +375,25 @@ export default function PortfolioPage() {
                   </div>
                 ))}
 
-                {/* REMAINING IMAGES (Standard Grid) */}
-                {remaining.length > 0 && (
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[24px] w-full">
-                    {remaining.map((src, idx) => {
-                      const isVert = VERTICAL_IMAGES.includes(src);
-                      return (
-                        <div key={idx} className={`relative group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)] shadow-[0_4px_20px_rgba(0,0,0,0.02)] reveal opacity-0 anim-fade-up ${isVert ? 'aspect-[2/3]' : 'aspect-[3/2]'}`} style={{ animationDelay: `${idx * 50}ms` }}>
-                          <img src={src} alt="Portfolio Work" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-[1.03]" />
-                        </div>
-                      );
-                    })}
+                {/* REMAINING VERTICALS */}
+                {remainingVerticals.length > 0 && (
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-[24px] w-full">
+                    {remainingVerticals.map((src, idx) => (
+                      <div key={idx} className="relative aspect-[2/3] group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)] shadow-[0_4px_20px_rgba(0,0,0,0.02)] reveal opacity-0 anim-fade-up" style={{ animationDelay: `${idx * 50}ms` }}>
+                        <img src={src} alt="Portfolio Work" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-[1.03]" />
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {/* REMAINING HORIZONTALS */}
+                {remainingHorizontals.length > 0 && (
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-[24px] w-full">
+                    {remainingHorizontals.map((src, idx) => (
+                      <div key={idx} className="relative aspect-[3/2] group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)] shadow-[0_4px_20px_rgba(0,0,0,0.02)] reveal opacity-0 anim-fade-up" style={{ animationDelay: `${idx * 50}ms` }}>
+                        <img src={src} alt="Portfolio Work" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-[1.03]" />
+                      </div>
+                    ))}
                   </div>
                 )}
               </div>
