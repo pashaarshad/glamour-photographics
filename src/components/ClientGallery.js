@@ -34,12 +34,12 @@ export default function ClientGallery({ images }) {
           navigation
           pagination={{ clickable: true }}
           autoplay={{ delay: 4000, disableOnInteraction: false }}
-          className="w-full h-[500px] md:h-[700px] bg-black"
+          className="w-full h-[500px] md:h-[700px] bg-[var(--darker)]"
         >
           {sliderImages.map((src, index) => (
             <SwiperSlide key={index}>
               <div 
-                className="w-full h-full bg-cover bg-center bg-no-repeat grayscale-[20%] hover:grayscale-0 transition-all duration-[600ms]"
+                className="w-full h-full bg-contain bg-center bg-no-repeat transition-all duration-[600ms]"
                 style={{ backgroundImage: `url('${src}')` }}
               />
             </SwiperSlide>
@@ -57,18 +57,17 @@ export default function ClientGallery({ images }) {
               View Full Gallery <span className="text-[11px] ml-1">({remainingImages.length} More)</span>
             </button>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-[16px] stagger-children visible text-left">
+            <div className="columns-1 sm:columns-2 md:columns-3 gap-[16px] w-full text-left">
               {remainingImages.map((src, index) => (
-                <div key={index} className="w-full aspect-square overflow-hidden group rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)] relative">
+                <div key={index} className="mb-[16px] break-inside-avoid relative group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[var(--darker)] shadow-sm">
                   <img 
                     src={src} 
                     alt={`Gallery Image ${index + 1}`} 
-                    className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-103 grayscale-[25%] group-hover:grayscale-0"
+                    className="w-full h-auto block transition-transform duration-[800ms] group-hover:scale-102"
                     onError={(e) => {
                       e.target.style.display = 'none';
                     }}
                   />
-                  {/* No shading overlay */}
                 </div>
               ))}
             </div>

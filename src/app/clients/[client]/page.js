@@ -123,6 +123,35 @@ export default function ClientPage({ params }) {
           
           <ClientGallery images={galleryImages} />
         </div>
+
+        {/* Video Documentation Section */}
+        {client.videos && client.videos.length > 0 && (
+          <div className="reveal border-t border-[rgba(10,10,10,0.06)] pt-[80px] mt-[80px]">
+            <div className="mb-[40px]">
+              <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] mb-[16px] block">
+                Featured Film & Media
+              </span>
+              <h2 className="font-serif text-[28px] md:text-[36px] text-[var(--light)]">
+                Video Documentation
+              </h2>
+            </div>
+            
+            <div className={`grid grid-cols-1 ${client.videos.length === 1 ? 'max-w-[1000px] mx-auto' : 'md:grid-cols-2'} gap-[40px]`}>
+              {client.videos.map((vidId, idx) => (
+                <div key={idx} className="w-full aspect-video rounded-sm overflow-hidden border border-[rgba(10,10,10,0.06)] shadow-[0_24px_70px_rgba(10,10,10,0.03)] bg-[var(--darker)] relative group">
+                  <iframe
+                    className="w-full h-full"
+                    src={`https://www.youtube.com/embed/${vidId}?rel=0`}
+                    title={`${client.name} Video Documentation ${idx + 1}`}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </section>
     </main>
   );
