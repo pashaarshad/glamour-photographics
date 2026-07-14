@@ -126,22 +126,22 @@ export default function ClientPage({ params }) {
 
         {/* Video Documentation Section */}
         {client.videos && client.videos.length > 0 && (
-          <div className="reveal bg-[#0A0A0A] text-white p-[40px] md:p-[60px] rounded-2xl border border-[rgba(255,255,255,0.05)] mt-[100px] shadow-2xl">
+          <div className="reveal border-t border-[rgba(10,10,10,0.06)] pt-[80px] mt-[100px]">
             <div className="mb-[50px]">
               <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] mb-[16px] block font-semibold">
                 Featured Film & Media
               </span>
-              <h2 className="font-serif text-[32px] md:text-[40px] text-white mb-[16px] font-light">
+              <h2 className="font-serif text-[32px] md:text-[40px] text-[var(--light)] mb-[16px] font-light">
                 See the Stories <span className="italic text-[var(--gold)] font-medium">We've Told</span>
               </h2>
-              <p className="text-[14px] leading-[1.8] text-white/70 max-w-[680px] font-light">
+              <p className="text-[14px] leading-[1.8] text-[var(--muted)] max-w-[680px] font-light">
                 A curated selection of films produced for our partners — each one crafted to capture the spirit of the institution and connect with parents.
               </p>
             </div>
             
             <div className={`grid grid-cols-1 ${client.videos.length === 1 ? 'max-w-[800px] mx-auto' : 'md:grid-cols-2'} gap-[40px]`}>
               {client.videos.map((video, idx) => (
-                <div key={idx} className="flex flex-col group shadow-lg border border-[rgba(255,255,255,0.08)] hover:border-[var(--gold)] rounded-2xl overflow-hidden transition-all duration-300">
+                <div key={idx} className="flex flex-col group shadow-md border border-[rgba(10,10,10,0.06)] hover:border-[var(--gold)] bg-white rounded-2xl overflow-hidden transition-all duration-300 cursor-none">
                   {/* Top: Video Player Frame */}
                   <div className="w-full aspect-video overflow-hidden bg-black relative">
                     <iframe
@@ -154,21 +154,21 @@ export default function ClientPage({ params }) {
                     ></iframe>
                   </div>
                   {/* Bottom: Card Info Panel */}
-                  <div className="p-[24px] md:p-[28px] bg-[#111111] border-t border-[rgba(255,255,255,0.05)] flex flex-col gap-[12px] flex-1">
-                    <span className="text-[9px] tracking-[0.25em] uppercase text-[var(--gold)] font-bold">
+                  <div className="p-[24px] md:p-[28px] bg-white border-t border-[rgba(10,10,10,0.04)] flex flex-col gap-[12px] flex-1">
+                    <span className="text-[10px] tracking-[0.25em] uppercase text-[var(--gold)] font-bold">
                       {video.tag}
                     </span>
-                    <h3 className="font-serif text-[20px] text-white font-light group-hover:text-[var(--gold)] transition-colors leading-[1.3]">
+                    <h3 className="font-serif text-[20px] md:text-[22px] font-bold text-[var(--light)] group-hover:text-[var(--gold)] transition-colors duration-300 leading-[1.3]">
                       {video.title}
                     </h3>
-                    <p className="text-[13px] text-white/60 leading-relaxed font-light mb-[12px]">
+                    <p className="text-[13.5px] leading-relaxed text-[var(--muted)] font-light mb-[8px]">
                       {video.desc}
                     </p>
                     <a 
                       href={`https://www.youtube.com/watch?v=${video.id}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-auto inline-flex items-center gap-[6px] text-[10px] tracking-[0.2em] uppercase font-bold text-[var(--gold)] hover:text-white transition-colors cursor-none"
+                      className="mt-auto text-[10px] tracking-[0.2em] uppercase font-bold text-[var(--light)] hover:text-[var(--gold)] flex items-center gap-[6px] transition-colors cursor-none w-fit"
                     >
                       ▶ Watch on Youtube
                     </a>
