@@ -33,10 +33,10 @@ export default function ClientGallery({ images }) {
           navigation
           pagination={{ clickable: true }}
           autoplay={{ delay: 4000, disableOnInteraction: false }}
-          className="w-full h-[320px] sm:h-[480px] md:h-[600px] bg-black"
+          className="w-full h-[320px] sm:h-[480px] md:h-[600px] bg-transparent"
         >
           {sliderImages.map((src, index) => (
-            <SwiperSlide key={index} className="w-full h-full flex items-center justify-center bg-black p-[10px] sm:p-[20px]">
+            <SwiperSlide key={index} className="w-full h-full flex items-center justify-center bg-transparent p-[10px] sm:p-[20px]">
               <img 
                 src={src} 
                 alt={`Gallery Image ${index + 1}`} 
@@ -78,7 +78,7 @@ export default function ClientGallery({ images }) {
       <style jsx global>{`
         .custom-swiper-wrapper .swiper-button-next,
         .custom-swiper-wrapper .swiper-button-prev {
-          color: #ffffff;
+          color: var(--light);
           transition: color 0.3s ease;
         }
         .custom-swiper-wrapper .swiper-button-next:hover,
@@ -86,7 +86,7 @@ export default function ClientGallery({ images }) {
           color: var(--gold);
         }
         .custom-swiper-wrapper .swiper-pagination-bullet {
-          background: rgba(255, 255, 255, 0.4);
+          background: rgba(10, 10, 10, 0.2);
           opacity: 1;
         }
         .custom-swiper-wrapper .swiper-pagination-bullet-active {
