@@ -231,16 +231,16 @@ export default function PortfolioPage() {
 
         {/* ─── VIDEOS GRID ─── */}
         {activeTab === 'VIDEOS' ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-[48px] lg:gap-[60px] w-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-[40px] w-full">
             {videos.map((vid, idx) => (
               <div 
                 key={idx} 
-                className="group cursor-none flex flex-col reveal opacity-0 anim-fade-up"
+                className="flex flex-col group shadow-md border border-[rgba(10,10,10,0.06)] hover:border-[var(--gold)] bg-white rounded-2xl overflow-hidden transition-all duration-300 cursor-none reveal opacity-0 anim-fade-up"
                 style={{ animationDelay: `${idx * 75}ms` }}
                 onClick={() => setActiveVideoId(vid.id)}
               >
                 {/* Thumbnail Container */}
-                <div className="relative aspect-video rounded-sm overflow-hidden border border-[rgba(10,10,10,0.06)] bg-black shadow-[0_12px_32px_rgba(0,0,0,0.03)]">
+                <div className="relative aspect-video overflow-hidden bg-black">
                   <img 
                     src={`https://img.youtube.com/vi/${vid.id}/hqdefault.jpg`} 
                     alt={vid.title} 
@@ -260,20 +260,18 @@ export default function PortfolioPage() {
                 </div>
 
                 {/* Info block */}
-                <div className="pt-[20px] flex-1 flex flex-col justify-between">
-                  <div>
-                    <span className="text-[10px] tracking-[0.25em] uppercase text-[var(--gold)] font-semibold block">
-                      {vid.client}
-                    </span>
-                    <h3 className="font-serif text-[22px] md:text-[24px] font-bold text-[var(--light)] mt-[8px] leading-[1.3] group-hover:text-[var(--gold)] transition-colors duration-300">
-                      {vid.title}
-                    </h3>
-                    <p className="text-[13.5px] leading-[1.7] text-[var(--muted)] mt-[10px] font-light max-w-[90%]">
-                      {vid.desc}
-                    </p>
-                  </div>
-                  <button className="text-[10px] tracking-[0.2em] uppercase font-bold text-[var(--light)] hover:text-[var(--gold)] mt-[20px] flex items-center gap-[8px] transition-colors cursor-none w-fit">
-                    <Play className="w-[10px] h-[10px] fill-current" /> Watch On YouTube
+                <div className="p-[24px] md:p-[28px] bg-white border-t border-[rgba(10,10,10,0.04)] flex flex-col gap-[12px] flex-1">
+                  <span className="text-[10px] tracking-[0.25em] uppercase text-[var(--gold)] font-bold">
+                    {vid.client}
+                  </span>
+                  <h3 className="font-serif text-[20px] md:text-[22px] font-bold text-[var(--light)] group-hover:text-[var(--gold)] transition-colors duration-300 leading-[1.3]">
+                    {vid.title}
+                  </h3>
+                  <p className="text-[13.5px] leading-relaxed text-[var(--muted)] font-light mb-[8px]">
+                    {vid.desc}
+                  </p>
+                  <button className="mt-auto text-[10px] tracking-[0.2em] uppercase font-bold text-[var(--light)] hover:text-[var(--gold)] flex items-center gap-[6px] transition-colors cursor-none w-fit">
+                    ▶ Watch On YouTube
                   </button>
                 </div>
               </div>
