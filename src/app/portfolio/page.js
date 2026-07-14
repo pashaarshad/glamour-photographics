@@ -148,6 +148,7 @@ export default function PortfolioPage() {
     EVENTS: [
       "/images/our_portfolio/33.jpg",
       "/images/our_portfolio/Srk.jpg",
+      "/images/our_portfolio/highlights_SKV00290.jpg",
       "/images/our_portfolio/highlights_3C1A0761.jpg",
       "/images/our_portfolio/highlights_3C1A0775.jpg",
       "/images/our_portfolio/highlights_3C1A0782.jpg",
