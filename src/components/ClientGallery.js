@@ -34,10 +34,10 @@ export default function ClientGallery({ images }) {
           navigation
           pagination={{ clickable: true }}
           autoplay={{ delay: 4000, disableOnInteraction: false }}
-          className="w-full bg-[var(--darker)]"
+          className="w-full bg-black"
         >
           {sliderImages.map((src, index) => (
-            <SwiperSlide key={index} className="flex items-center justify-center p-[20px] md:p-[40px] h-[450px] sm:h-[600px] md:h-[780px]">
+            <SwiperSlide key={index} className="flex items-center justify-center bg-black p-[20px] md:p-[40px] h-[450px] sm:h-[600px] md:h-[780px]">
               <img 
                 src={src} 
                 alt={`Gallery Image ${index + 1}`} 
