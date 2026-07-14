@@ -135,7 +135,7 @@ export default function PortfolioPage() {
       "/images/our_portfolio/highlights_SKV00290.jpg",
       "/images/our_portfolio/highlights_SKV00387.jpg",
     ],
-    CORPORATE: [
+    CLIENTS: [
       "/images/our_portfolio/cp-7.jpg",
       "/images/our_portfolio/cp-10.jpg",
       "/images/our_portfolio/cp-12.jpg",
@@ -214,7 +214,7 @@ export default function PortfolioPage() {
       {/* ─── FILTER TABS ─── */}
       <section className="px-[5%] md:px-[8%] max-w-[1400px] mx-auto mb-[60px]">
         <div className="flex flex-wrap gap-[30px] border-b border-[rgba(10,10,10,0.08)] pb-[15px] mb-[40px] reveal opacity-0 anim-fade-up">
-          {['ALL', 'VIDEOS', 'CORPORATE', 'EVENTS', 'INDUSTRIAL', 'DOCUMENTARY'].map((tab) => (
+          {['ALL', 'VIDEOS', 'CLIENTS', 'EVENTS', 'INDUSTRIAL', 'DOCUMENTARY'].map((tab) => (
             <button 
               suppressHydrationWarning
               key={tab} 

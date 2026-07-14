@@ -31,7 +31,7 @@ export default function ClientPage({ params }) {
     return (
       <main className="w-full bg-[var(--dark)] text-[var(--light)] min-h-[70vh] pt-[160px] pb-[100px] flex flex-col items-center justify-center text-center cursor-none">
         <h1 className="font-serif text-[40px] text-[var(--light)] mb-4">Client Not Found</h1>
-        <Link href="/corporate" className="inline-block border border-[rgba(10,10,10,0.15)] text-[var(--light)] px-6 py-3 uppercase tracking-wider text-[10px] hover:bg-[var(--light)] hover:text-[var(--dark)] transition-all duration-300">Return to Portfolio</Link>
+        <Link href="/clients" className="inline-block border border-[rgba(10,10,10,0.15)] text-[var(--light)] px-6 py-3 uppercase tracking-wider text-[10px] hover:bg-[var(--light)] hover:text-[var(--dark)] transition-all duration-300">Return to Clients</Link>
       </main>
     );
   }
@@ -58,8 +58,8 @@ export default function ClientPage({ params }) {
     <main className="w-full bg-[var(--dark)] text-[var(--light)] min-h-screen pt-[160px] pb-[100px] cursor-none relative">
       <section className="px-[5%] md:px-[8%] max-w-[1400px] mx-auto">
         
-        <Link href="/corporate" className="inline-flex items-center gap-2 text-[10px] tracking-[0.2em] uppercase text-[var(--gold)] hover:text-[var(--light)] transition-colors mb-[60px] reveal">
-          ← Back to Portfolio
+        <Link href="/clients" className="inline-flex items-center gap-2 text-[10px] tracking-[0.2em] uppercase text-[var(--gold)] hover:text-[var(--light)] transition-colors mb-[60px] reveal">
+          ← Back to Clients
         </Link>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-[80px] mb-[120px] items-start">

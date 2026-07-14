@@ -96,7 +96,7 @@ export default function Home() {
       "/images/our_portfolio/22.jpg",
       "/images/our_portfolio/33.jpg",
     ],
-    CORPORATE: [
+    CLIENTS: [
       "/images/our_portfolio/cp-7.jpg",
       "/images/our_portfolio/cp-10.jpg",
       "/images/our_portfolio/cp-12.jpg",
@@ -489,7 +489,7 @@ export default function Home() {
                         {project.title}
                       </h3>
                     </div>
-                    <Link href={`/corporate/${project.slug}`} className="text-[10px] tracking-[0.2em] uppercase text-white font-medium inline-flex items-center gap-[8px] cursor-none border-b border-transparent hover:border-white w-fit">
+                    <Link href={`/clients/${project.slug}`} className="text-[10px] tracking-[0.2em] uppercase text-white font-medium inline-flex items-center gap-[8px] cursor-none border-b border-transparent hover:border-white w-fit">
                       Read Project details <span>→</span>
                     </Link>
                   </div>
@@ -556,7 +556,7 @@ export default function Home() {
               { name: "Presidency University", slug: "presidency", logo: "/logo-clients/presidency-university-yelahanka-bangalore-universities-si0nhgmmkz.jpg" },
               { name: "PAI", slug: "pai" }
             ].map((client, i) => (
-              <Link href={`/corporate/${client.slug}`} key={i} className="group h-[140px] border border-[rgba(10,10,10,0.06)] flex items-center justify-center p-[20px] hover:border-[var(--gold)] hover:z-10 hover:shadow-md hover:bg-[rgba(197,164,109,0.02)] transition-all cursor-none relative">
+              <Link href={`/clients/${client.slug}`} key={i} className="group h-[140px] border border-[rgba(10,10,10,0.06)] flex items-center justify-center p-[20px] hover:border-[var(--gold)] hover:z-10 hover:shadow-md hover:bg-[rgba(197,164,109,0.02)] transition-all cursor-none relative">
                 {client.logo ? (
                   <img src={client.logo} alt={client.name} className="max-h-[55px] max-w-[85%] object-contain" />
                 ) : (
@@ -572,7 +572,7 @@ export default function Home() {
       <section className="py-[120px] px-[8%] md:px-[10%] bg-[var(--darker)] border-y border-[rgba(10,10,10,0.06)]">
         <h3 className="text-[28px] font-serif text-[var(--light)] mb-[40px] reveal opacity-0 anim-fade-up">Our Portfolio</h3>
         <div className="flex flex-wrap gap-[30px] border-b border-[rgba(10,10,10,0.08)] pb-[15px] mb-[40px] reveal opacity-0 anim-fade-up delay-100">
-          {['ALL', 'CORPORATE', 'EVENTS', 'INDUSTRIAL', 'DOCUMENTARY'].map((tab) => (
+          {['ALL', 'CLIENTS', 'EVENTS', 'INDUSTRIAL', 'DOCUMENTARY'].map((tab) => (
             <button 
               suppressHydrationWarning
               key={tab} 
