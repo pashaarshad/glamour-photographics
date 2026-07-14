@@ -87,7 +87,7 @@ export default function StudioServices() {
     <main className="w-full bg-[var(--dark)] text-[var(--light)] min-h-screen pt-0 pb-0 cursor-none relative">
       
       {/* ─── HERO SECTION ─── */}
-      <section className="relative min-h-[55vh] flex items-center px-[5%] md:px-[8%] overflow-hidden bg-[#0A0A0A] mb-[80px] pt-[120px] md:pt-[100px]">
+      <section className="relative min-h-[55vh] md:min-h-[60vh] lg:min-h-[65vh] flex items-end px-[5%] md:px-[8%] overflow-hidden bg-[#0A0A0A] mb-[80px] md:mb-[120px] lg:mb-[160px] pt-[160px] md:pt-[180px] lg:pt-[220px] pb-[60px] md:pb-[80px] lg:pb-[120px] xl:pb-[160px]">
         <div className="absolute inset-0 z-0">
           <img src="/images/passport_studio.png" alt="Capabilities Background" className="w-full h-full object-cover opacity-50 blur-[2px]" />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent z-10" />
