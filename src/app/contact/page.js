@@ -177,6 +177,7 @@ export default function Contact() {
                   <div className="flex flex-col gap-[8px]">
                     <label className="text-[10px] tracking-[0.25em] uppercase text-[var(--black)] font-semibold">Name *</label>
                     <input 
+                      suppressHydrationWarning
                       type="text" 
                       className="bg-white border border-[rgba(10,10,10,0.08)] focus:border-[var(--gold)] focus:ring-1 focus:ring-[var(--gold)] rounded-md outline-none px-[16px] py-[12px] text-[14px] text-[var(--black)] transition-all duration-300 font-light" 
                       required 
@@ -185,6 +186,7 @@ export default function Contact() {
                   <div className="flex flex-col gap-[8px]">
                     <label className="text-[10px] tracking-[0.25em] uppercase text-[var(--black)] font-semibold">Company</label>
                     <input 
+                      suppressHydrationWarning
                       type="text" 
                       className="bg-white border border-[rgba(10,10,10,0.08)] focus:border-[var(--gold)] focus:ring-1 focus:ring-[var(--gold)] rounded-md outline-none px-[16px] py-[12px] text-[14px] text-[var(--black)] transition-all duration-300 font-light" 
                     />
@@ -195,6 +197,7 @@ export default function Contact() {
                   <div className="flex flex-col gap-[8px]">
                     <label className="text-[10px] tracking-[0.25em] uppercase text-[var(--black)] font-semibold">Email *</label>
                     <input 
+                      suppressHydrationWarning
                       type="email" 
                       className="bg-white border border-[rgba(10,10,10,0.08)] focus:border-[var(--gold)] focus:ring-1 focus:ring-[var(--gold)] rounded-md outline-none px-[16px] py-[12px] text-[14px] text-[var(--black)] transition-all duration-300 font-light" 
                       required 
@@ -203,6 +206,7 @@ export default function Contact() {
                   <div className="flex flex-col gap-[8px]">
                     <label className="text-[10px] tracking-[0.25em] uppercase text-[var(--black)] font-semibold">Phone</label>
                     <input 
+                      suppressHydrationWarning
                       type="tel" 
                       className="bg-white border border-[rgba(10,10,10,0.08)] focus:border-[var(--gold)] focus:ring-1 focus:ring-[var(--gold)] rounded-md outline-none px-[16px] py-[12px] text-[14px] text-[var(--black)] transition-all duration-300 font-light" 
                     />
@@ -212,6 +216,7 @@ export default function Contact() {
                 <div className="flex flex-col gap-[8px]">
                   <label className="text-[10px] tracking-[0.25em] uppercase text-[var(--black)] font-semibold">Project Details *</label>
                   <textarea 
+                    suppressHydrationWarning
                     rows="4" 
                     className="bg-white border border-[rgba(10,10,10,0.08)] focus:border-[var(--gold)] focus:ring-1 focus:ring-[var(--gold)] rounded-md outline-none px-[16px] py-[12px] text-[14px] text-[var(--black)] transition-all duration-300 resize-none font-light" 
                     required
@@ -220,6 +225,7 @@ export default function Contact() {
 
                 <div className="mt-[10px]">
                   <button 
+                    suppressHydrationWarning
                     type="submit" 
                     className="w-full md:w-auto text-center justify-center border-2 border-[var(--gold)] bg-transparent text-[var(--black)] hover:bg-[var(--gold)] hover:text-white transition-all duration-300 px-[40px] py-[14px] rounded-full uppercase tracking-[0.25em] text-[11px] font-semibold cursor-pointer shadow-sm hover:shadow-md"
                   >
