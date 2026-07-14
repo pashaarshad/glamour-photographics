@@ -583,10 +583,17 @@ export default function Home() {
             </button>
           ))}
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[24px] w-full">
+        <div className="columns-1 sm:columns-2 lg:columns-3 gap-[24px] [column-fill:_balance] w-full">
           {activeImages.map((src, idx) => (
-            <div key={idx} className="relative aspect-[3/2] group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)]">
-              <img src={src} alt={`Portfolio Image ${idx + 1}`} className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-105" />
+            <div key={idx} className="break-inside-avoid mb-[24px] relative group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)] shadow-[0_4px_20px_rgba(0,0,0,0.02)]">
+              <img 
+                src={src} 
+                alt={`Portfolio Image ${idx + 1}`} 
+                className="w-full h-auto block transition-transform duration-[800ms] group-hover:scale-[1.02]" 
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                }}
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-[rgba(0,0,0,0.85)] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-[30px]">
                 <span className="text-[9px] tracking-[0.2em] uppercase text-[var(--gold)] mb-[8px]">Gallery Spotlight</span>
                 <h4 className="font-serif text-[18px] text-white">Visual Artifact</h4>

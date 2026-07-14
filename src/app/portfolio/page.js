@@ -279,18 +279,18 @@ export default function PortfolioPage() {
             ))}
           </div>
         ) : (
-          /* ─── UNIFORM IMAGE GRID ─── */
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[24px] w-full">
+          /* ─── MASONRY IMAGE GRID ─── */
+          <div className="columns-1 sm:columns-2 lg:columns-3 gap-[24px] [column-fill:_balance] w-full">
             {activeImages.map((src, idx) => (
               <div 
                 key={`${activeTab}-${idx}`} 
-                className="relative aspect-[3/2] group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)] reveal opacity-0 anim-fade-up"
+                className="break-inside-avoid mb-[24px] relative group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)] reveal opacity-0 anim-fade-up shadow-[0_4px_20px_rgba(0,0,0,0.02)]"
                 style={{ animationDelay: `${idx * 50}ms` }}
               >
                 <img 
                   src={src} 
                   alt={`Portfolio Work ${idx + 1}`} 
-                  className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-105" 
+                  className="w-full h-auto block transition-transform duration-[800ms] group-hover:scale-[1.02]" 
                   onError={(e) => {
                     e.target.style.display = 'none';
                   }}
