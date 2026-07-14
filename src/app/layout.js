@@ -27,6 +27,11 @@ const bebas = Bebas_Neue({
 export const metadata = {
   title: "Glamour Photographics — Est. 1982",
   description: "Four decades of visual storytelling from the heart of Bengaluru.",
+  icons: {
+    icon: "/images/Glamour_Logo.png",
+    shortcut: "/images/Glamour_Logo.png",
+    apple: "/images/Glamour_Logo.png",
+  }
 };
 
 export default function RootLayout({ children }) {
