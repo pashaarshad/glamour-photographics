@@ -807,30 +807,38 @@ export default function Home() {
             <Link 
               href={srv.href}
               key={srv.id} 
-              className="group relative p-[40px] pt-[60px] rounded-[12px] overflow-hidden border border-[rgba(10,10,10,0.06)] hover:border-[var(--gold)] hover:shadow-xl transition-all duration-[500ms] cursor-none min-h-[300px] flex flex-col justify-between bg-black"
+              className="group relative p-[32px] md:p-[40px] rounded-[16px] overflow-hidden border border-black hover:border-[var(--gold)] hover:shadow-2xl transition-all duration-[500ms] cursor-none min-h-[340px] flex flex-col justify-between bg-black"
             >
               {/* Card Image Background */}
               <div className="absolute inset-0 z-0">
-                <img src={srv.bg} alt={srv.title} className="w-full h-full object-cover opacity-60 group-hover:opacity-75 group-hover:scale-102 transition-all duration-700 pointer-events-none select-none" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-transparent" />
+                <img src={srv.bg} alt={srv.title} className="w-full h-full object-cover opacity-50 group-hover:opacity-65 group-hover:scale-102 transition-all duration-700 pointer-events-none select-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-transparent" />
               </div>
 
-              {/* Number Tag overlay */}
-              <div className="absolute top-[30px] left-[30px] font-serif text-[48px] text-[rgba(255,255,255,0.08)] group-hover:text-[rgba(255,255,255,0.12)] transition-colors leading-none select-none pointer-events-none">
-                {srv.id}
-              </div>
-
-              <div className="relative z-10 w-full flex flex-col gap-[20px] justify-between h-full">
-                <div>
-                  <srv.icon className="w-[32px] h-[32px] text-[var(--gold)] mb-[24px] transition-transform duration-300 group-hover:scale-110" />
-                  <h3 className="text-[20px] font-serif text-white mb-[12px] group-hover:text-[var(--gold)] transition-colors font-medium">{srv.title}</h3>
-                  <p className="text-[13px] text-white/70 leading-[1.65] font-light max-w-[90%]">{srv.desc}</p>
-                </div>
+              {/* Flex Content Box (Stacked) */}
+              <div className="relative z-10 w-full flex flex-col items-start">
+                {/* Number */}
+                <span className="font-serif text-[36px] font-light text-white/20 leading-none mb-[16px] block">
+                  {srv.id}
+                </span>
                 
-                {/* Arrow Button */}
-                <div className="self-end w-[32px] h-[32px] rounded-full border border-[var(--gold)] flex items-center justify-center text-[var(--gold)] hover:bg-[var(--gold)] hover:text-white transition-all duration-300">
-                  <span className="text-[14px]">→</span>
-                </div>
+                {/* Icon */}
+                <srv.icon className="w-[28px] h-[28px] text-[var(--gold)] mb-[20px] transition-transform duration-300 group-hover:scale-110" />
+                
+                {/* Title */}
+                <h3 className="text-[22px] font-serif text-white mb-[12px] group-hover:text-[var(--gold)] transition-colors font-medium">
+                  {srv.title}
+                </h3>
+                
+                {/* Description */}
+                <p className="text-[13px] text-white/70 leading-[1.65] font-light max-w-[90%]">
+                  {srv.desc}
+                </p>
+              </div>
+              
+              {/* Bottom Right Arrow Button */}
+              <div className="relative z-10 self-end w-[36px] h-[36px] rounded-full border border-[var(--gold)] flex items-center justify-center text-[var(--gold)] hover:bg-[var(--gold)] hover:text-white transition-all duration-300">
+                <span className="text-[16px] leading-none">→</span>
               </div>
             </Link>
           ))}
