@@ -411,7 +411,7 @@ export default function Home() {
               <div className="font-serif text-[64px] md:text-[72px] line-height-[1] text-[var(--light)] font-light flex items-baseline lining-nums">
                 <span>{experienceCount}</span><span className="text-[var(--gold)] font-medium text-[40px] ml-[2px]">+</span>
               </div>
-              <div className="text-[10px] tracking-[0.25em] uppercase text-[var(--light)] mt-[8px] font-bold">Years of Experience</div>
+              <div className="text-[10px] tracking-[0.25em] uppercase text-[var(--muted)] mt-[10px] font-medium">Years of Experience</div>
             </div>
             
             <div className="p-[40px] bg-[var(--dark)] hover:bg-[rgba(10,10,10,0.02)] transition-colors duration-300 relative group">
@@ -419,7 +419,7 @@ export default function Home() {
               <div className="font-serif text-[64px] md:text-[72px] line-height-[1] text-[var(--light)] font-light flex items-baseline lining-nums">
                 <span>{clientsCount}</span><span className="text-[var(--gold)] font-medium text-[40px] ml-[2px]">+</span>
               </div>
-              <div className="text-[10px] tracking-[0.25em] uppercase text-[var(--light)] mt-[8px] font-bold">Clients Served</div>
+              <div className="text-[10px] tracking-[0.25em] uppercase text-[var(--muted)] mt-[10px] font-medium">Clients Served</div>
             </div>
  
             <div className="p-[40px] bg-[var(--dark)] hover:bg-[rgba(10,10,10,0.02)] transition-colors duration-300 relative group">
@@ -427,7 +427,7 @@ export default function Home() {
               <div className="font-serif text-[64px] md:text-[72px] line-height-[1] text-[var(--light)] font-light flex items-baseline lining-nums">
                 <span>{projectsCount}</span><span className="text-[var(--gold)] font-medium text-[40px] ml-[2px]">+</span>
               </div>
-              <div className="text-[10px] tracking-[0.25em] uppercase text-[var(--light)] mt-[8px] font-bold">Corporate Projects</div>
+              <div className="text-[10px] tracking-[0.25em] uppercase text-[var(--muted)] mt-[10px] font-medium">Corporate Projects</div>
             </div>
  
             <div className="p-[40px] bg-[var(--dark)] hover:bg-[rgba(10,10,10,0.02)] transition-colors duration-300 relative group">
@@ -435,7 +435,7 @@ export default function Home() {
               <div className="font-serif text-[64px] md:text-[72px] line-height-[1] text-[var(--light)] font-light flex items-baseline lining-nums">
                 <span>{weddingsCount}</span><span className="text-[var(--gold)] font-medium text-[40px] ml-[2px]">+</span>
               </div>
-              <div className="text-[10px] tracking-[0.25em] uppercase text-[var(--light)] mt-[8px] font-bold">Weddings Captured</div>
+              <div className="text-[10px] tracking-[0.25em] uppercase text-[var(--muted)] mt-[10px] font-medium">Weddings Captured</div>
             </div>
           </div>
 
@@ -443,53 +443,56 @@ export default function Home() {
       </section>
 
       {/* ─── 5. OUR STORY 1982 OVERLAPPING DESIGN ─── */}
-      <section className="py-[120px] px-[8%] md:px-[10%] bg-[var(--dark)] relative">
-        <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-[80px] items-center">
+      <section className="py-[160px] px-[8%] md:px-[10%] bg-[var(--dark)] relative border-b border-[rgba(10,10,10,0.06)]">
+        <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-[100px] items-center">
           
           {/* Left Column Overlapping Boxes */}
-          <div className="relative h-[480px] w-full flex items-center justify-center reveal opacity-0 anim-fade-up">
+          <div className="relative h-[560px] md:h-[620px] w-full flex items-center justify-center reveal opacity-0 anim-fade-up">
             {/* Box 1 - Founder Portrait & Text Overlay */}
-            <div className="absolute top-[20px] left-[20px] w-[75%] h-[320px] bg-[#0A0A0A] border border-[rgba(10,10,10,0.06)] rounded-sm overflow-hidden z-10 shadow-md relative group">
+            <div className="absolute top-0 left-0 w-[82%] h-[400px] md:h-[480px] bg-[#0A0A0A] border border-[rgba(10,10,10,0.06)] rounded-sm overflow-hidden z-10 shadow-lg relative group">
               <img 
                 src="/logo-clients/founder-ceo.jpg" 
                 alt="Hameed Hussain Founder" 
-                className="w-full h-full object-cover opacity-70 transition-transform duration-700 group-hover:scale-105 select-none pointer-events-none" 
+                className="w-full h-full object-cover opacity-75 transition-transform duration-700 group-hover:scale-105 select-none pointer-events-none" 
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-transparent p-[28px] flex flex-col justify-end">
-                <h4 className="font-serif text-[22px] text-white font-bold leading-none mb-[4px]">Hameed Hussain</h4>
-                <p className="text-[9px] tracking-[0.2em] uppercase text-[var(--gold)] font-bold mb-[12px]">Founder & Creative Visionary</p>
-                <div className="w-[40px] h-[1px] bg-[var(--gold)] mb-[12px]"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-black/35 to-transparent p-[32px] flex flex-col justify-end">
+                <h4 className="font-serif text-[24px] text-white font-medium leading-none mb-[6px]">Hameed Hussain</h4>
+                <p className="text-[9px] tracking-[0.2em] uppercase text-[var(--gold)] font-bold mb-[16px]">Founder & Creative Visionary</p>
+                <div className="w-[50px] h-[1px] bg-[var(--gold)] mb-[16px]"></div>
                 <img 
                   src="/images/signature.png" 
                   alt="Founder Signature" 
-                  className="h-[32px] w-auto select-none pointer-events-none invert opacity-95 self-start" 
+                  className="h-[36px] w-auto select-none pointer-events-none invert opacity-95 self-start" 
                 />
               </div>
             </div>
 
-            {/* Box 2 - Overlapping Golden/Ivory Styled Panel (Very small, sitting mostly below the image) */}
-            <div className="absolute bottom-[5px] right-[15px] w-[58%] h-[135px] bg-[#FAF8F4] border border-[rgba(197,164,109,0.35)] rounded-sm p-[20px] py-[16px] flex flex-col justify-between z-20 shadow-lg backdrop-blur-md">
-              <span className="text-[9px] tracking-[0.2em] uppercase text-[var(--gold)] font-bold">Visual Legacy</span>
-              <h5 className="font-serif text-[22px] text-[var(--light)] font-bold leading-none mb-[2px]">Est. 1982</h5>
-              <p className="text-[11.5px] text-[var(--light)] leading-normal font-semibold">Pioneering corporate imagery in Bangalore.</p>
+            {/* Box 2 - Overlapping Golden/Ivory Styled Panel */}
+            <div className="absolute bottom-[20px] right-0 w-[55%] h-[160px] bg-[#FAF8F4] border border-[rgba(197,164,109,0.3)] rounded-sm p-[24px] flex flex-col justify-between z-20 shadow-xl backdrop-blur-md">
+              <div className="w-full">
+                <span className="text-[9px] tracking-[0.2em] uppercase text-[var(--gold)] font-bold block mb-[4px]">Visual Legacy</span>
+                <h5 className="font-serif text-[24px] text-[var(--light)] font-bold leading-none">Est. 1982</h5>
+              </div>
+              <p className="text-[12px] text-[var(--muted)] leading-relaxed font-light">Pioneering premium corporate imagery in Bangalore.</p>
             </div>
           </div>
 
           {/* Right Column Story Text */}
           <div className="reveal opacity-0 anim-fade-up delay-100">
-            <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] mb-[16px] block">
-              1982 - Our Roots
-            </span>
-            <h3 className="font-serif text-[clamp(32px,4vw,56px)] font-light leading-[1.2] text-[var(--light)] mb-[28px]">
+            <div className="inline-flex items-center gap-[8px] bg-[rgba(197,164,109,0.08)] border border-[rgba(197,164,109,0.2)] rounded-full px-[14px] py-[6px] mb-[24px]">
+              <span className="w-[6px] h-[6px] rounded-full bg-[var(--gold)]"></span>
+              <span className="text-[9px] tracking-[0.3em] uppercase text-[var(--gold)] font-bold">1982 — OUR ROOTS</span>
+            </div>
+            <h3 className="font-serif text-[clamp(36px,4.5vw,56px)] font-light leading-[1.1] text-[var(--light)] mb-[32px] tracking-[-0.01em]">
               Glamour Photographics
             </h3>
-            <blockquote className="border-l border-[var(--gold)] pl-[20px] text-[15px] italic text-[var(--gold)] leading-relaxed mb-[28px] font-serif">
+            <blockquote className="border-l-2 border-[var(--gold)] bg-[rgba(197,164,109,0.03)] p-[24px] pl-[28px] text-[15px] italic text-[var(--gold)] leading-relaxed mb-[32px] font-serif rounded-r-md">
               "Our goal is not to merely provide media services, but to serve people through the art of storytelling and media creation."
             </blockquote>
-            <p className="text-[14.5px] leading-[1.8] text-[var(--light)] mb-[24px] font-semibold">
+            <p className="text-[14.5px] leading-[1.85] text-[var(--muted)] mb-[36px] font-light">
               Established by Hameed Hussain in 1982, we embarked on a journey to introduce vibrant colour media solutions to businesses and consumers in Bengaluru—proudly serving the corporate and wedding industries ever since.
             </p>
-            <Link href="/about" className="inline-flex items-center gap-[12px] text-[11px] tracking-[0.2em] uppercase text-[var(--light)] font-semibold hover:text-[var(--gold)] cursor-none transition-colors group">
+            <Link href="/about" className="inline-flex items-center gap-[12px] text-[10px] tracking-[0.25em] uppercase text-[var(--light)] font-semibold hover:text-[var(--gold)] cursor-none transition-colors group pb-[4px] border-b border-[var(--light)] hover:border-[var(--gold)]">
               Read Our Story <span className="transition-transform duration-300 group-hover:translate-x-[4px]">→</span>
             </Link>
           </div>
