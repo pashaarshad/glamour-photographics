@@ -110,76 +110,281 @@ export default function PortfolioPage() {
     }
   ];
 
-  const portfolioImages = {
-    ALL: [
-      "/images/our_portfolio/Srk.jpg",
-      "/images/our_portfolio/Bill clinton.jpeg",
-      "/images/our_portfolio/highlights_3C1A0761.jpg",
-      "/images/our_portfolio/highlights_3C1A0775.jpg",
-      "/images/our_portfolio/highlights_3C1A0782.jpg",
-      "/images/our_portfolio/highlights_3C1A0841.jpg",
-      "/images/our_portfolio/cp-7.jpg",
-      "/images/our_portfolio/cp-10.jpg",
-      "/images/our_portfolio/cp-12.jpg",
-      "/images/our_portfolio/rtx-1.jpg",
-      "/images/our_portfolio/rtx-4.jpg",
-      "/images/our_portfolio/rtx-9.jpg",
-      "/images/our_portfolio/te3.jpg",
-      "/images/our_portfolio/tcs3.jpg",
-      "/images/our_portfolio/tcs4.jpg",
-      "/images/our_portfolio/dilquar.jpg",
-      "/images/our_portfolio/kareeshma.jpg",
-      "/images/our_portfolio/11.jpg",
-      "/images/our_portfolio/22.jpg",
-      "/images/our_portfolio/33.jpg",
-      "/images/our_portfolio/highlights_DSC_0038.jpg",
-      "/images/our_portfolio/highlights_IMG_0037.jpg",
-      "/images/our_portfolio/highlights_IMG_0069.jpg",
-      "/images/our_portfolio/highlights_IMG_0098.jpg",
-      "/images/our_portfolio/highlights_NMKL0031.jpg",
-      "/images/our_portfolio/highlights_SKV00290.jpg",
-      "/images/our_portfolio/highlights_SKV00387.jpg",
+    const portfolioImages = {
+    'ALL': [
+      '/images/our_portfolio/event/NMK_0002.jpg',
+      '/images/our_portfolio/event/NMK_0018.jpg',
+      '/images/our_portfolio/event/NMK_0047.JPG',
+      '/images/our_portfolio/event/NMK_0130.JPG',
+      '/images/our_portfolio/event/NMK_0209.JPG',
+      '/images/our_portfolio/event/NMK_0315.JPG',
+      '/images/our_portfolio/event/WhatsApp Image 2026-02-09 at 8.29.33 PM (1).jpg',
+      '/images/our_portfolio/event/_NMK2325.jpg',
+      '/images/our_portfolio/event/_NMK2368.jpg',
+      '/images/our_portfolio/event/_NMK2441.jpg',
+      '/images/our_portfolio/event/_NMK2857.jpg',
+      '/images/our_portfolio/event/_NMK3555.jpg',
+      '/images/our_portfolio/event/cp-12.jpg',
+      '/images/our_portfolio/event/highlights_NMKL0031.jpg',
+      '/images/our_portfolio/event/highlights_SKV00387.jpg',
+      '/images/our_portfolio/corporate/101A0087.jpg',
+      '/images/our_portfolio/corporate/NMKL5612.jpg',
+      '/images/our_portfolio/corporate/NMKL7219.jpg',
+      '/images/our_portfolio/corporate/NMKL7605.jpg',
+      '/images/our_portfolio/corporate/NMKL7670.jpg',
+      '/images/our_portfolio/corporate/NMKL7837.jpg',
+      '/images/our_portfolio/corporate/NMKL7905.jpg',
+      '/images/our_portfolio/corporate/NMKL7925.jpg',
+      '/images/our_portfolio/corporate/NMK_0013.JPG',
+      '/images/our_portfolio/corporate/NMK_0127.JPG',
+      '/images/our_portfolio/corporate/NMK_0129.JPG',
+      '/images/our_portfolio/corporate/NMK_0219.JPG',
+      '/images/our_portfolio/corporate/NMK_0290.JPG',
+      '/images/our_portfolio/corporate/NMK_0315.JPG',
+      '/images/our_portfolio/corporate/NMK_0457.JPG',
+      '/images/our_portfolio/corporate/PRS02780.jpg',
+      '/images/our_portfolio/corporate/SKV00446.jpg',
+      '/images/our_portfolio/corporate/_01A0411.jpg',
+      '/images/our_portfolio/corporate/_01A0476.jpg',
+      '/images/our_portfolio/corporate/_01A0705.jpg',
+      '/images/our_portfolio/corporate/_01A0712.jpg',
+      '/images/our_portfolio/corporate/_01A0748.jpg',
+      '/images/our_portfolio/corporate/_01A0760.jpg',
+      '/images/our_portfolio/corporate/_01A0809.jpg',
+      '/images/our_portfolio/corporate/_01A0871.jpg',
+      '/images/our_portfolio/corporate/_01A0924.jpg',
+      '/images/our_portfolio/corporate/_01A0956.jpg',
+      '/images/our_portfolio/corporate/_01A1008.jpg',
+      '/images/our_portfolio/corporate/_01A1070.jpg',
+      '/images/our_portfolio/corporate/_01A1126.jpg',
+      '/images/our_portfolio/corporate/_AMZ0023.JPG',
+      '/images/our_portfolio/corporate/iqvia.jpg',
+      '/images/our_portfolio/corporate/rtx-1.jpg',
+      '/images/our_portfolio/celebrity/3C1A0782.jpg',
+      '/images/our_portfolio/celebrity/3C1A0823.jpg',
+      '/images/our_portfolio/celebrity/DSC_0204.JPG',
+      '/images/our_portfolio/celebrity/IMG0_0186.JPG',
+      '/images/our_portfolio/celebrity/IMG_0006.JPG',
+      '/images/our_portfolio/celebrity/IMG_00122.JPG',
+      '/images/our_portfolio/celebrity/IMG_0029.JPG',
+      '/images/our_portfolio/celebrity/IMG_0037.jpg',
+      '/images/our_portfolio/celebrity/IMG_0060.JPG',
+      '/images/our_portfolio/celebrity/IMG_0131.JPG',
+      '/images/our_portfolio/celebrity/IMG_0207.JPG',
+      '/images/our_portfolio/celebrity/IMG_0212.JPG',
+      '/images/our_portfolio/celebrity/IMG_0464.JPG',
+      '/images/our_portfolio/celebrity/NMK_0117.JPG',
+      '/images/our_portfolio/celebrity/NMK_0118.JPG',
+      '/images/our_portfolio/celebrity/NMK_0502.jpg',
+      '/images/our_portfolio/celebrity/NMK_0655.jpg',
+      '/images/our_portfolio/celebrity/NMK_0684.jpg',
+      '/images/our_portfolio/celebrity/NMK_0685.jpg',
+      '/images/our_portfolio/celebrity/NMK_0925.JPG',
+      '/images/our_portfolio/celebrity/NMK_0982.JPG',
+      '/images/our_portfolio/celebrity/NMK_0989.JPG',
+      '/images/our_portfolio/celebrity/NMK_1005.JPG',
+      '/images/our_portfolio/celebrity/Srk.jpg',
+      '/images/our_portfolio/celebrity/VED02715.jpg',
+      '/images/our_portfolio/celebrity/VED02718.jpg',
+      '/images/our_portfolio/celebrity/VED03109.jpg',
+      '/images/our_portfolio/celebrity/VED03305.jpg',
+      '/images/our_portfolio/celebrity/VED03320.jpg',
+      '/images/our_portfolio/celebrity/VED03339.jpg',
+      '/images/our_portfolio/celebrity/celeb.jpg',
+      '/images/our_portfolio/celebrity/dilquar.jpg',
+      '/images/our_portfolio/celebrity/highlights_3C1A0761.jpg',
+      '/images/our_portfolio/celebrity/highlights_3C1A0775.jpg',
+      '/images/our_portfolio/celebrity/highlights_3C1A0841.jpg',
+      '/images/our_portfolio/celebrity/highlights_DSC_0038.jpg',
+      '/images/our_portfolio/documentary/DSC_0149.JPG',
+      '/images/our_portfolio/documentary/DSC_0163.JPG',
+      '/images/our_portfolio/documentary/DSC_0204 Big.JPG',
+      '/images/our_portfolio/documentary/NMKL0128.JPG',
+      '/images/our_portfolio/documentary/highlights_SKV00290.jpg',
+      '/images/our_portfolio/documentary/highlights_SKV00387.jpg',
+      '/images/our_portfolio/political/11.jpg',
+      '/images/our_portfolio/political/22.jpg',
+      '/images/our_portfolio/political/Bill clinton.jpg',
+      '/images/our_portfolio/political/Cameroon.jpg',
+      '/images/our_portfolio/political/IMG_0008.JPG',
+      '/images/our_portfolio/political/IMG_0029.JPG',
+      '/images/our_portfolio/political/NMK_0047.JPG',
+      '/images/our_portfolio/political/NMK_0199.JPG',
+      '/images/our_portfolio/political/NMK_0203.JPG',
+      '/images/our_portfolio/political/NMK_0337.JPG',
+      '/images/our_portfolio/political/NMK_0402.JPG',
+      '/images/our_portfolio/political/NMK_0463.JPG',
+      '/images/our_portfolio/political/highlights_IMG_0069.jpg',
+      '/images/our_portfolio/political/highlights_IMG_0098.jpg',
+      '/images/our_portfolio/headshots/6ba3a857-c93e-4299-8740-45da7ff9e3f2.jpg',
+      '/images/our_portfolio/headshots/NMKL2060.jpg',
+      '/images/our_portfolio/headshots/NMKL2078.jpg',
+      '/images/our_portfolio/headshots/NMKL2079.jpg',
+      '/images/our_portfolio/headshots/NMKL5344-2.jpg',
+      '/images/our_portfolio/headshots/NMKL5462-2.jpg',
+      '/images/our_portfolio/headshots/NMKL5713.jpg',
+      '/images/our_portfolio/headshots/NMKL7605.jpg',
+      '/images/our_portfolio/headshots/NMK_0236.JPG',
+      '/images/our_portfolio/headshots/NMK_0481.JPG',
+      '/images/our_portfolio/headshots/Untitled design(1) (1).jpg',
+      '/images/our_portfolio/headshots/_01A0630.JPG',
+      '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.18.19 PM.jpg',
+      '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.18.38 PM.jpg',
+      '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.18.49 PM.jpg',
+      '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.18.56 PM.jpg',
+      '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.19.31 PM.jpg',
+      '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.19.43 PM.jpg',
+      '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.20.10 PM.jpg',
+      '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.20.45 PM.jpg',
+      '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.20.51 PM.jpg',
+      '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.21.09 PM.jpg',
+      '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.21.32 PM.jpg',
+      '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.21.43 PM.jpg',
+      '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.22.01 PM.jpg',
     ],
-    CLIENTS: [
-      "/images/our_portfolio/cp-7.jpg",
-      "/images/our_portfolio/cp-10.jpg",
-      "/images/our_portfolio/cp-12.jpg",
-      "/images/our_portfolio/Bill clinton.jpeg",
-      "/images/our_portfolio/dilquar.jpg",
-      "/images/our_portfolio/kareeshma.jpg",
-      "/images/tcs/TCS -27 - 03 - 2023 - Anzar/DSC01003.JPG",
-      "/images/tata_elxsi/_AMZ0246.JPG",
+    'EVENT': [
+      '/images/our_portfolio/event/NMK_0002.jpg',
+      '/images/our_portfolio/event/NMK_0018.jpg',
+      '/images/our_portfolio/event/NMK_0047.JPG',
+      '/images/our_portfolio/event/NMK_0130.JPG',
+      '/images/our_portfolio/event/NMK_0209.JPG',
+      '/images/our_portfolio/event/NMK_0315.JPG',
+      '/images/our_portfolio/event/WhatsApp Image 2026-02-09 at 8.29.33 PM (1).jpg',
+      '/images/our_portfolio/event/_NMK2325.jpg',
+      '/images/our_portfolio/event/_NMK2368.jpg',
+      '/images/our_portfolio/event/_NMK2441.jpg',
+      '/images/our_portfolio/event/_NMK2857.jpg',
+      '/images/our_portfolio/event/_NMK3555.jpg',
+      '/images/our_portfolio/event/cp-12.jpg',
+      '/images/our_portfolio/event/highlights_NMKL0031.jpg',
+      '/images/our_portfolio/event/highlights_SKV00387.jpg',
     ],
-    EVENTS: [
-      "/images/our_portfolio/33.jpg",
-      "/images/our_portfolio/Srk.jpg",
-      "/images/our_portfolio/highlights_SKV00290.jpg",
-      "/images/our_portfolio/highlights_3C1A0761.jpg",
-      "/images/our_portfolio/highlights_3C1A0775.jpg",
-      "/images/our_portfolio/highlights_3C1A0782.jpg",
-      "/images/our_portfolio/highlights_3C1A0841.jpg",
-      "/images/cii/CII (7th Bangalore Space Expo-2022) On-05-09-2022-Noor/NMK_0028.JPG",
-      "/images/presidency/PANA9115.jpg",
+    'CORPORATE': [
+      '/images/our_portfolio/corporate/101A0087.jpg',
+      '/images/our_portfolio/corporate/NMKL5612.jpg',
+      '/images/our_portfolio/corporate/NMKL7219.jpg',
+      '/images/our_portfolio/corporate/NMKL7605.jpg',
+      '/images/our_portfolio/corporate/NMKL7670.jpg',
+      '/images/our_portfolio/corporate/NMKL7837.jpg',
+      '/images/our_portfolio/corporate/NMKL7905.jpg',
+      '/images/our_portfolio/corporate/NMKL7925.jpg',
+      '/images/our_portfolio/corporate/NMK_0013.JPG',
+      '/images/our_portfolio/corporate/NMK_0127.JPG',
+      '/images/our_portfolio/corporate/NMK_0129.JPG',
+      '/images/our_portfolio/corporate/NMK_0219.JPG',
+      '/images/our_portfolio/corporate/NMK_0290.JPG',
+      '/images/our_portfolio/corporate/NMK_0315.JPG',
+      '/images/our_portfolio/corporate/NMK_0457.JPG',
+      '/images/our_portfolio/corporate/PRS02780.jpg',
+      '/images/our_portfolio/corporate/SKV00446.jpg',
+      '/images/our_portfolio/corporate/_01A0411.jpg',
+      '/images/our_portfolio/corporate/_01A0476.jpg',
+      '/images/our_portfolio/corporate/_01A0705.jpg',
+      '/images/our_portfolio/corporate/_01A0712.jpg',
+      '/images/our_portfolio/corporate/_01A0748.jpg',
+      '/images/our_portfolio/corporate/_01A0760.jpg',
+      '/images/our_portfolio/corporate/_01A0809.jpg',
+      '/images/our_portfolio/corporate/_01A0871.jpg',
+      '/images/our_portfolio/corporate/_01A0924.jpg',
+      '/images/our_portfolio/corporate/_01A0956.jpg',
+      '/images/our_portfolio/corporate/_01A1008.jpg',
+      '/images/our_portfolio/corporate/_01A1070.jpg',
+      '/images/our_portfolio/corporate/_01A1126.jpg',
+      '/images/our_portfolio/corporate/_AMZ0023.JPG',
+      '/images/our_portfolio/corporate/iqvia.jpg',
+      '/images/our_portfolio/corporate/rtx-1.jpg',
     ],
-    INDUSTRIAL: [
-      "/images/our_portfolio/rtx-1.jpg",
-      "/images/our_portfolio/rtx-4.jpg",
-      "/images/our_portfolio/rtx-9.jpg",
-      "/images/our_portfolio/te3.jpg",
-      "/images/our_portfolio/tcs3.jpg",
-      "/images/our_portfolio/tcs4.jpg",
+    'CELEBRITY': [
+      '/images/our_portfolio/celebrity/3C1A0782.jpg',
+      '/images/our_portfolio/celebrity/3C1A0823.jpg',
+      '/images/our_portfolio/celebrity/DSC_0204.JPG',
+      '/images/our_portfolio/celebrity/IMG0_0186.JPG',
+      '/images/our_portfolio/celebrity/IMG_0006.JPG',
+      '/images/our_portfolio/celebrity/IMG_00122.JPG',
+      '/images/our_portfolio/celebrity/IMG_0029.JPG',
+      '/images/our_portfolio/celebrity/IMG_0037.jpg',
+      '/images/our_portfolio/celebrity/IMG_0060.JPG',
+      '/images/our_portfolio/celebrity/IMG_0131.JPG',
+      '/images/our_portfolio/celebrity/IMG_0207.JPG',
+      '/images/our_portfolio/celebrity/IMG_0212.JPG',
+      '/images/our_portfolio/celebrity/IMG_0464.JPG',
+      '/images/our_portfolio/celebrity/NMK_0117.JPG',
+      '/images/our_portfolio/celebrity/NMK_0118.JPG',
+      '/images/our_portfolio/celebrity/NMK_0502.jpg',
+      '/images/our_portfolio/celebrity/NMK_0655.jpg',
+      '/images/our_portfolio/celebrity/NMK_0684.jpg',
+      '/images/our_portfolio/celebrity/NMK_0685.jpg',
+      '/images/our_portfolio/celebrity/NMK_0925.JPG',
+      '/images/our_portfolio/celebrity/NMK_0982.JPG',
+      '/images/our_portfolio/celebrity/NMK_0989.JPG',
+      '/images/our_portfolio/celebrity/NMK_1005.JPG',
+      '/images/our_portfolio/celebrity/Srk.jpg',
+      '/images/our_portfolio/celebrity/VED02715.jpg',
+      '/images/our_portfolio/celebrity/VED02718.jpg',
+      '/images/our_portfolio/celebrity/VED03109.jpg',
+      '/images/our_portfolio/celebrity/VED03305.jpg',
+      '/images/our_portfolio/celebrity/VED03320.jpg',
+      '/images/our_portfolio/celebrity/VED03339.jpg',
+      '/images/our_portfolio/celebrity/celeb.jpg',
+      '/images/our_portfolio/celebrity/dilquar.jpg',
+      '/images/our_portfolio/celebrity/highlights_3C1A0761.jpg',
+      '/images/our_portfolio/celebrity/highlights_3C1A0775.jpg',
+      '/images/our_portfolio/celebrity/highlights_3C1A0841.jpg',
+      '/images/our_portfolio/celebrity/highlights_DSC_0038.jpg',
     ],
-    DOCUMENTARY: [
-      "/images/our_portfolio/11.jpg",
-      "/images/our_portfolio/22.jpg",
-      "/images/our_portfolio/highlights_DSC_0038.jpg",
-      "/images/our_portfolio/highlights_IMG_0037.jpg",
-      "/images/our_portfolio/highlights_IMG_0069.jpg",
-      "/images/our_portfolio/highlights_IMG_0098.jpg",
-      "/images/our_portfolio/highlights_NMKL0031.jpg",
-      "/images/our_portfolio/highlights_SKV00290.jpg",
-      "/images/our_portfolio/highlights_SKV00387.jpg",
-    ]
+    'DOCUMENTARY': [
+      '/images/our_portfolio/documentary/DSC_0149.JPG',
+      '/images/our_portfolio/documentary/DSC_0163.JPG',
+      '/images/our_portfolio/documentary/DSC_0204 Big.JPG',
+      '/images/our_portfolio/documentary/NMKL0128.JPG',
+      '/images/our_portfolio/documentary/highlights_SKV00290.jpg',
+      '/images/our_portfolio/documentary/highlights_SKV00387.jpg',
+    ],
+    'POLITICAL': [
+      '/images/our_portfolio/political/11.jpg',
+      '/images/our_portfolio/political/22.jpg',
+      '/images/our_portfolio/political/Bill clinton.jpg',
+      '/images/our_portfolio/political/Cameroon.jpg',
+      '/images/our_portfolio/political/IMG_0008.JPG',
+      '/images/our_portfolio/political/IMG_0029.JPG',
+      '/images/our_portfolio/political/NMK_0047.JPG',
+      '/images/our_portfolio/political/NMK_0199.JPG',
+      '/images/our_portfolio/political/NMK_0203.JPG',
+      '/images/our_portfolio/political/NMK_0337.JPG',
+      '/images/our_portfolio/political/NMK_0402.JPG',
+      '/images/our_portfolio/political/NMK_0463.JPG',
+      '/images/our_portfolio/political/highlights_IMG_0069.jpg',
+      '/images/our_portfolio/political/highlights_IMG_0098.jpg',
+    ],
+    'HEADSHOTS': [
+      '/images/our_portfolio/headshots/6ba3a857-c93e-4299-8740-45da7ff9e3f2.jpg',
+      '/images/our_portfolio/headshots/NMKL2060.jpg',
+      '/images/our_portfolio/headshots/NMKL2078.jpg',
+      '/images/our_portfolio/headshots/NMKL2079.jpg',
+      '/images/our_portfolio/headshots/NMKL5344-2.jpg',
+      '/images/our_portfolio/headshots/NMKL5462-2.jpg',
+      '/images/our_portfolio/headshots/NMKL5713.jpg',
+      '/images/our_portfolio/headshots/NMKL7605.jpg',
+      '/images/our_portfolio/headshots/NMK_0236.JPG',
+      '/images/our_portfolio/headshots/NMK_0481.JPG',
+      '/images/our_portfolio/headshots/Untitled design(1) (1).jpg',
+      '/images/our_portfolio/headshots/_01A0630.JPG',
+    ],
+    'OUTDOOR': [
+      '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.18.19 PM.jpg',
+      '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.18.38 PM.jpg',
+      '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.18.49 PM.jpg',
+      '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.18.56 PM.jpg',
+      '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.19.31 PM.jpg',
+      '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.19.43 PM.jpg',
+      '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.20.10 PM.jpg',
+      '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.20.45 PM.jpg',
+      '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.20.51 PM.jpg',
+      '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.21.09 PM.jpg',
+      '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.21.32 PM.jpg',
+      '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.21.43 PM.jpg',
+      '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.22.01 PM.jpg',
+    ],
   };
 
   const activeImages = portfolioImages[activeTab] || portfolioImages['ALL'];
@@ -194,24 +399,11 @@ export default function PortfolioPage() {
             Visual Highlights
           </span>
           <h1 className="font-serif text-[clamp(44px,6vw,80px)] font-light leading-[1.1] tracking-[-0.02em] text-[var(--light)]">
-            {activeTab === 'VIDEOS' ? (
-              <>
-                See the Stories <br />
-                <span className="italic text-[var(--gold)]">We've Told.</span>
-              </>
-            ) : (
-              <>
-                Selected Works Portfolio <br />
-                <span className="italic text-[var(--gold)]">Across Decades.</span>
-              </>
-            )}
+            Selected Works Portfolio <br />
+            <span className="italic text-[var(--gold)]">Across Decades.</span>
           </h1>
           <p className="text-[14px] leading-[1.8] text-[var(--muted)] max-w-[600px] mt-[32px] font-light">
-            {activeTab === 'VIDEOS' ? (
-              "A curated selection of films produced for our brand partners — each one crafted to capture the spirit of the institution and connect with audiences."
-            ) : (
-              "Explore our visual archives spanning corporate walkthroughs, high-profile events, drone industrial shoots, and brand documentary films."
-            )}
+            Explore our visual archives spanning corporate walkthroughs, high-profile events, drone industrial shoots, and brand documentary films.
           </p>
         </div>
       </section>
@@ -219,95 +411,71 @@ export default function PortfolioPage() {
       {/* ─── FILTER TABS ─── */}
       <section className="px-[5%] md:px-[8%] max-w-[1400px] mx-auto mb-[60px]">
         <div className="flex flex-wrap gap-[30px] border-b border-[rgba(10,10,10,0.08)] pb-[15px] mb-[40px] reveal opacity-0 anim-fade-up">
-          {['ALL', 'VIDEOS', 'CLIENTS', 'EVENTS', 'INDUSTRIAL', 'DOCUMENTARY'].map((tab) => (
+          {          [
+            { id: 'ALL', label: 'ALL' },
+            { id: 'EVENT', label: 'EVENT' },
+            { id: 'CORPORATE', label: 'CORPORATE & OFFICES' },
+            { id: 'CELEBRITY', label: 'CELEBRITY' },
+            { id: 'DOCUMENTARY', label: 'DOCUMENTARY' },
+            { id: 'POLITICAL', label: 'POLITICAL ICON' },
+            { id: 'HEADSHOTS', label: 'HEADSHOTS' },
+            { id: 'OUTDOOR', label: 'OUTDOOR' }
+          ].map((tab) => (
             <button 
               suppressHydrationWarning
-              key={tab} 
-              onClick={() => setActiveTab(tab)} 
+              key={tab.id} 
+              onClick={() => setActiveTab(tab.id)} 
               className={`text-[10px] tracking-[0.2em] uppercase pb-[15px] relative cursor-none transition-colors ${
-                activeTab === tab ? 'text-[var(--gold)] font-medium' : 'text-[var(--muted)] hover:text-[var(--light)]'
+                activeTab === tab.id ? 'text-[var(--gold)] font-medium' : 'text-[var(--muted)] hover:text-[var(--light)]'
               }`}
             >
-              {tab}
-              {activeTab === tab && <div className="absolute bottom-[-16px] left-0 w-full h-[2px] bg-[var(--gold)]" />}
+              {tab.label}
+              {activeTab === tab.id && <div className="absolute bottom-[-16px] left-0 w-full h-[2px] bg-[var(--gold)]" />}
             </button>
           ))}
         </div>
 
         {/* ─── VIDEOS GRID ─── */}
-        {activeTab === 'VIDEOS' ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-[40px] w-full">
-            {videos.map((vid, idx) => (
-              <div 
-                key={idx} 
-                className="flex flex-col group shadow-md border border-[rgba(10,10,10,0.06)] hover:border-[var(--gold)] bg-white rounded-2xl overflow-hidden transition-all duration-300 cursor-none reveal opacity-0 anim-fade-up"
-                style={{ animationDelay: `${idx * 75}ms` }}
-                onClick={() => setActiveVideoId(vid.id)}
-              >
-                {/* Thumbnail Container */}
-                <div className="relative aspect-video overflow-hidden bg-black">
-                  <img 
-                    src={`https://img.youtube.com/vi/${vid.id}/hqdefault.jpg`} 
-                    alt={vid.title} 
-                    className="w-full h-full object-cover transition-transform duration-[600ms] group-hover:scale-[1.03] opacity-85 group-hover:opacity-100"
-                    loading="lazy"
-                  />
-                  {/* YouTube Tag Overlay */}
-                  <div className="absolute top-[16px] right-[16px] bg-black/60 backdrop-blur-sm text-[8px] tracking-[0.25em] font-bold text-white px-[12px] py-[5px] rounded-sm uppercase z-10">
-                    YOUTUBE
-                  </div>
-                  {/* Play Button Overlay */}
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/10 group-hover:bg-black/35 transition-colors duration-300">
-                    <div className="w-[54px] h-[54px] rounded-full border border-[var(--gold)] flex items-center justify-center bg-black/40 text-[var(--gold)] transition-transform duration-300 group-hover:scale-110 shadow-lg">
-                      <Play className="w-[18px] h-[18px] fill-current translate-x-[2px]" />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Info block */}
-                <div className="p-[24px] md:p-[28px] bg-white border-t border-[rgba(10,10,10,0.04)] flex flex-col gap-[12px] flex-1">
-                  <span className="text-[10px] tracking-[0.25em] uppercase text-[var(--gold)] font-bold">
-                    {vid.client}
-                  </span>
-                  <h3 className="font-serif text-[20px] md:text-[22px] font-bold text-[var(--light)] group-hover:text-[var(--gold)] transition-colors duration-300 leading-[1.3]">
-                    {vid.title}
-                  </h3>
-                  <p className="text-[13.5px] leading-relaxed text-[var(--muted)] font-light mb-[8px]">
-                    {vid.desc}
-                  </p>
-                  <button className="mt-auto text-[10px] tracking-[0.2em] uppercase font-bold text-[var(--light)] hover:text-[var(--gold)] flex items-center gap-[6px] transition-colors cursor-none w-fit">
-                    ▶ Watch On YouTube
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-        ) : (
+        {
           /* ─── 5-IMAGE SECTION BLOCKS ─── */
           (() => {
-            const VERTICAL_IMAGES = [
-              "/images/our_portfolio/6ba3a857-c93e-4299-8740-45da7ff9e3f2.jpg",
-              "/images/our_portfolio/Cameroon.jpeg",
-              "/images/our_portfolio/Capturing_Cultural_Icons_version_1.png",
-              "/images/our_portfolio/highlights_3C1A0775.jpg",
-              "/images/our_portfolio/highlights_Ms. Amal Mohammed Ahmed, theDivisional .jpg",
-              "/images/our_portfolio/highlights_SKV00290.jpg",
-              "/images/our_portfolio/IMG_0029.JPG",
-              "/images/our_portfolio/Srk.jpg",
-              "/images/our_portfolio/Untitled design(1) (1).png",
-              "/images/our_portfolio/highlights_Screenshot 2024-11-30 at 1.18.19 PM.jpg",
-              "/images/our_portfolio/highlights_Screenshot 2024-11-30 at 1.18.38 PM.jpg",
-              "/images/our_portfolio/highlights_Screenshot 2024-11-30 at 1.18.49 PM.jpg",
-              "/images/our_portfolio/highlights_Screenshot 2024-11-30 at 1.18.56 PM.jpg",
-              "/images/our_portfolio/highlights_Screenshot 2024-11-30 at 1.19.31 PM.jpg",
-              "/images/our_portfolio/highlights_Screenshot 2024-11-30 at 1.20.10 PM.jpg",
-              "/images/our_portfolio/highlights_Screenshot 2024-11-30 at 1.20.45 PM.jpg",
-              "/images/our_portfolio/highlights_Screenshot 2024-11-30 at 1.20.51 PM.jpg",
-              "/images/our_portfolio/highlights_Screenshot 2024-11-30 at 1.21.09 PM.jpg",
-              "/images/our_portfolio/highlights_Screenshot 2024-11-30 at 1.21.32 PM.jpg",
-              "/images/our_portfolio/highlights_Screenshot 2024-11-30 at 1.21.43 PM.jpg",
-              "/images/our_portfolio/highlights_Screenshot 2024-11-30 at 1.22.01 PM.jpg"
-            ];
+              const VERTICAL_IMAGES = [
+                '/images/our_portfolio/corporate/NMKL5612.jpg',
+                '/images/our_portfolio/celebrity/IMG0_0186.JPG',
+                '/images/our_portfolio/celebrity/IMG_0006.JPG',
+                '/images/our_portfolio/celebrity/IMG_0029.JPG',
+                '/images/our_portfolio/celebrity/IMG_0207.JPG',
+                '/images/our_portfolio/celebrity/IMG_0212.JPG',
+                '/images/our_portfolio/celebrity/IMG_0464.JPG',
+                '/images/our_portfolio/celebrity/NMK_0925.JPG',
+                '/images/our_portfolio/celebrity/Srk.jpg',
+                '/images/our_portfolio/celebrity/VED03109.jpg',
+                '/images/our_portfolio/celebrity/highlights_3C1A0775.jpg',
+                '/images/our_portfolio/documentary/highlights_SKV00290.jpg',
+                '/images/our_portfolio/political/Cameroon.jpg',
+                '/images/our_portfolio/political/IMG_0029.JPG',
+                '/images/our_portfolio/headshots/6ba3a857-c93e-4299-8740-45da7ff9e3f2.jpg',
+                '/images/our_portfolio/headshots/NMKL2060.jpg',
+                '/images/our_portfolio/headshots/NMKL2078.jpg',
+                '/images/our_portfolio/headshots/NMKL2079.jpg',
+                '/images/our_portfolio/headshots/NMKL5344-2.jpg',
+                '/images/our_portfolio/headshots/NMKL5462-2.jpg',
+                '/images/our_portfolio/headshots/NMKL5713.jpg',
+                '/images/our_portfolio/headshots/NMK_0236.JPG',
+                '/images/our_portfolio/headshots/Untitled design(1) (1).jpg',
+                '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.18.19 PM.jpg',
+                '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.18.38 PM.jpg',
+                '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.18.49 PM.jpg',
+                '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.18.56 PM.jpg',
+                '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.19.31 PM.jpg',
+                '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.20.10 PM.jpg',
+                '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.20.45 PM.jpg',
+                '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.20.51 PM.jpg',
+                '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.21.09 PM.jpg',
+                '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.21.32 PM.jpg',
+                '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.21.43 PM.jpg',
+                '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.22.01 PM.jpg',
+              ];
 
             const verticals = activeImages.filter(src => VERTICAL_IMAGES.includes(src));
             const horizontals = activeImages.filter(src => !VERTICAL_IMAGES.includes(src));
@@ -427,8 +595,7 @@ export default function PortfolioPage() {
                 )}
               </div>
             );
-          })()
-        )}
+          })()}
       </section>
 
       {/* ─── CONTACT SECTION ─── */}
