@@ -38,17 +38,19 @@ export default function StudioServices() {
       {/* ─── HERO SECTION WITH BACKGROUND YOUTUBE VIDEO ─── */}
       <section className="relative min-h-[60vh] md:min-h-[65vh] lg:min-h-[70vh] flex items-end px-[5%] md:px-[8%] overflow-hidden bg-[#0A0A0A] pt-[160px] md:pt-[180px] lg:pt-[220px] pb-[60px] md:pb-[80px] lg:pb-[100px]">
         {/* Background Video Iframe Container */}
-        <div className="absolute inset-0 z-0 overflow-hidden select-none pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 w-[177.77777778vh] min-w-full h-full min-h-[56.25vw] -translate-x-1/2 -translate-y-1/2 pointer-events-none scale-[1.1]">
+        <div className="absolute inset-0 z-0 overflow-hidden select-none pointer-events-none" style={{ pointerEvents: 'none' }}>
+          <div className="absolute top-1/2 left-1/2 w-[177.77777778vh] min-w-full h-full min-h-[56.25vw] -translate-x-1/2 -translate-y-1/2 pointer-events-none scale-[1.15]" style={{ pointerEvents: 'none' }}>
             <iframe
-              src="https://www.youtube.com/embed/0ownKeh2tC0?autoplay=1&mute=1&loop=1&playlist=0ownKeh2tC0&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1"
-              className="w-full h-full border-0 pointer-events-none"
-              allow="autoplay; encrypted-media"
+              src="https://www.youtube.com/embed/0ownKeh2tC0?autoplay=1&mute=1&loop=1&playlist=0ownKeh2tC0&start=6&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1&disablekb=1&iv_load_policy=3"
+              className="w-full h-full border-0 pointer-events-none select-none"
+              allow="autoplay; encrypted-media; picture-in-picture"
+              tabIndex="-1"
               title="Background Video"
+              style={{ pointerEvents: 'none' }}
             />
           </div>
-          {/* Dark Overlay for Text Readability */}
-          <div className="absolute inset-0 bg-black/60 z-10" />
+          {/* Solid Touch Shield & Dark Overlay for Text Readability */}
+          <div className="absolute inset-0 bg-black/60 z-10 pointer-events-auto" style={{ pointerEvents: 'auto' }} />
         </div>
 
         {/* Foreground Content */}
