@@ -760,7 +760,7 @@ export default function Home() {
           {/* Navigation Category Tabs */}
           <div className="reveal opacity-0 anim-fade-up delay-100 flex flex-wrap items-center justify-center gap-x-[20px] gap-y-[16px] mb-[60px] max-w-[1000px] mx-auto border-b border-[rgba(10,10,10,0.06)] pb-[12px]">
             {Object.keys(featuredVideos).map((tab, idx, arr) => (
-              <div key={tab.id} className="flex items-center gap-[20px]">
+              <div key={tab} className="flex items-center gap-[20px]">
                 <button 
                   suppressHydrationWarning
                   onClick={() => setActiveVideoTab(tab)}
