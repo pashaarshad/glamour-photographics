@@ -7,33 +7,27 @@ import { X } from 'lucide-react';
 
 import 'swiper/css';
 
-/* ─── Scroll-Driven Sticky Gallery ─── */
+/* --- Scroll-Driven Sticky Gallery: Fullscreen Fixed Overlay --- */
 function ScrollGallery({ images }) {
   const wrapperRef = useRef(null);
   const [activeIdx, setActiveIdx] = useState(0);
-  const [prevIdx, setPrevIdx] = useState(null);
-  const [animDir, setAnimDir] = useState('enter'); // 'enter' | 'exit'
+  const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {
       const el = wrapperRef.current;
       if (!el) return;
       const rect = el.getBoundingClientRect();
-      const totalScrollBudget = el.offsetHeight - window.innerHeight;
-      // How far we've scrolled into the sticky zone (clamped 0..1)
-      const progress = Math.min(Math.max(-rect.top / totalScrollBudget, 0), 1);
-      // Map progress to image index
-      const newIdx = Math.min(
-        Math.floor(progress * images.length),
-        images.length - 1
-      );
-      setActiveIdx(prev => {
-        if (newIdx !== prev) {
-          setPrevIdx(prev);
-          setAnimDir('enter');
-        }
-        return newIdx;
-      });
+      const vh = window.innerHeight;
+      const totalBudget = el.offsetHeight - vh;
+      // Active while spacer top is above viewport AND bottom is below
+      const active = rect.top <= 0 && rect.bottom >= vh;
+      setIsActive(active);
+      if (active && totalBudget > 0) {
+        const progress = Math.min(Math.max(-rect.top / totalBudget, 0), 1);
+        const newIdx = Math.min(Math.floor(progress * images.length), images.length - 1);
+        setActiveIdx(newIdx);
+      }
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
@@ -46,72 +40,71 @@ function ScrollGallery({ images }) {
       style={{ height: `${images.length * 100}vh` }}
       className="relative w-full"
     >
-      {/* Sticky viewport panel */}
-      <div className="sticky top-0 left-0 w-full h-screen overflow-hidden bg-[var(--dark)] flex items-center justify-center">
-        {/* Counter */}
-        <div className="absolute top-[32px] right-[5%] z-20 flex items-center gap-[10px]">
-          {images.map((_, i) => (
-            <div
-              key={i}
-              className="transition-all duration-500"
-              style={{
-                width: i === activeIdx ? '32px' : '8px',
-                height: '2px',
-                background: i === activeIdx ? 'var(--gold)' : 'rgba(255,255,255,0.3)',
-                borderRadius: '2px'
-              }}
-            />
-          ))}
-        </div>
+      {isActive && (
+        <div
+          suppressHydrationWarning
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100vw',
+            height: '100dvh',
+            zIndex: 9999,
+            overflow: 'hidden',
+            background: '#0A0A0A',
+            animation: 'sgFadeIn 0.2s ease forwards'
+          }}
+        >
+          <style suppressHydrationWarning>{`
+            @keyframes sgFadeIn { from { opacity:0 } to { opacity:1 } }
+          `}</style>
 
-        {/* Image stack */}
-        <div className="relative w-full h-full px-[4%] md:px-[6%] py-[48px] flex items-center">
-          {images.map((src, i) => {
-            const isActive = i === activeIdx;
-            const isPrev = i === prevIdx;
-            return (
+          {/* Horizontal slider strip */}
+          <div
+            style={{
+              display: 'flex',
+              width: `${images.length * 100}%`,
+              height: '100%',
+              transform: `translateX(${-activeIdx * (100 / images.length)}%)`,
+              transition: 'transform 0.9s cubic-bezier(0.77, 0, 0.18, 1)',
+              willChange: 'transform'
+            }}
+          >
+            {images.map((src, i) => (
               <div
                 key={i}
-                className="absolute inset-x-[4%] md:inset-x-[6%] inset-y-[48px] rounded-[20px] md:rounded-[32px] overflow-hidden border border-[rgba(255,255,255,0.07)] shadow-2xl"
-                style={{
-                  transform: isActive
-                    ? 'translateX(0%)'
-                    : isPrev
-                    ? 'translateX(-105%)'
-                    : 'translateX(105%)',
-                  opacity: isActive ? 1 : isPrev ? 0 : 0,
-                  transition: 'transform 0.75s cubic-bezier(0.77,0,0.18,1), opacity 0.5s ease',
-                  zIndex: isActive ? 10 : 5,
-                  pointerEvents: isActive ? 'auto' : 'none'
-                }}
+                style={{ width: `${100 / images.length}%`, height: '100%', flexShrink: 0, position: 'relative' }}
               >
                 <img
                   src={src}
                   alt={`Gallery ${i + 1}`}
-                  className="w-full h-full object-cover"
+                  loading="eager"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
                 />
-                {/* Subtle gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
-                {/* Image counter badge */}
-                <div className="absolute bottom-[28px] left-[32px] text-white z-10">
-                  <span className="font-serif italic text-[var(--gold)] text-[13px] tracking-widest">
-                    {String(i + 1).padStart(2, '0')} / {String(images.length).padStart(2, '0')}
-                  </span>
-                </div>
+                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.1) 40%, transparent 70%)' }} />
               </div>
-            );
-          })}
-        </div>
+            ))}
+          </div>
 
-        {/* Scroll hint — fades out after first image */}
-        <div
-          className="absolute bottom-[32px] right-[5%] flex items-center gap-[10px] transition-opacity duration-500 pointer-events-none"
-          style={{ opacity: activeIdx === 0 ? 1 : 0 }}
-        >
-          <span className="text-[10px] tracking-[0.25em] uppercase text-white/40">Scroll</span>
-          <div className="w-[32px] h-[1px] bg-white/30" />
+          {/* Progress pills */}
+          <div style={{ position: 'absolute', bottom: 36, left: '50%', transform: 'translateX(-50%)', display: 'flex', gap: 10, zIndex: 10 }}>
+            {images.map((_, i) => (
+              <div key={i} style={{ width: i === activeIdx ? 40 : 10, height: 3, borderRadius: 3, background: i === activeIdx ? '#C5A46D' : 'rgba(255,255,255,0.3)', transition: 'width 0.5s ease, background 0.5s ease' }} />
+            ))}
+          </div>
+
+          {/* Slide counter */}
+          <div style={{ position: 'absolute', top: 28, right: '5%', fontFamily: 'Georgia, serif', fontSize: 13, fontStyle: 'italic', color: '#C5A46D', letterSpacing: '0.12em', zIndex: 10 }}>
+            {String(activeIdx + 1).padStart(2, '0')} / {String(images.length).padStart(2, '0')}
+          </div>
+
+          {/* Scroll hint */}
+          <div style={{ position: 'absolute', bottom: 80, right: '5%', display: 'flex', alignItems: 'center', gap: 12, opacity: activeIdx === 0 ? 1 : 0, transition: 'opacity 0.6s ease', pointerEvents: 'none', zIndex: 10 }}>
+            <span style={{ fontSize: 10, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.45)' }}>Scroll</span>
+            <div style={{ width: 40, height: 1, background: 'rgba(255,255,255,0.25)' }} />
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
