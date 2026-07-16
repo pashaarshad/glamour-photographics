@@ -30,25 +30,29 @@ export default function Services() {
       id: '01',
       title: 'Corporate Films & Documentaries',
       desc: 'We produce high-end corporate films, brand documentaries, and CSR videos that tell your company’s story with cinematic brilliance and emotional resonance. From script to screen, we handle every aspect of production.',
-      img: '/images/our_portfolio/kareeshma.jpg'
+      img: '/images/our_portfolio/kareeshma.jpg',
+      href: '/portfolio?tab=DOCUMENTARY'
     },
     {
       id: '02',
       title: 'Industrial & Architectural Photography',
       desc: 'Showcase your infrastructure, manufacturing plants, and architectural marvels. We use specialized lighting and perspective control to capture the true scale, safety, and precision of your facilities.',
-      img: '/images/our_portfolio/te3.jpg'
+      img: '/images/our_portfolio/te3.jpg',
+      href: '/portfolio?tab=INDUSTRIAL'
     },
     {
       id: '03',
       title: 'Event Coverage & Live Streaming',
       desc: 'Comprehensive coverage of corporate summits, product launches, and annual days. We provide multi-camera setups, live broadcasting solutions, and rapid-turnaround photo and video edits for press and social media.',
-      img: '/images/outdoor-event.jpg'
+      img: '/images/outdoor-event.jpg',
+      href: '/portfolio?tab=EVENTS'
     },
     {
       id: '04',
       title: 'Executive Portraits & Headshots',
       desc: 'Professional, approachable, and commanding portraits for your leadership team. We can set up our mobile studio at your corporate office to ensure consistent, premium lighting across all your brand assets.',
-      img: '/images/our_portfolio/dilquar.jpg'
+      img: '/images/our_portfolio/dilquar.jpg',
+      href: '/corporate'
     }
   ];
 
@@ -118,7 +122,11 @@ export default function Services() {
         <h2 className="font-serif text-[24px] mb-[40px] reveal border-b border-[rgba(10,10,10,0.08)] pb-[20px] text-[var(--light)]">Capabilities Deep-Dive</h2>
         <div className="flex flex-col gap-[16px]">
           {services.map((service, idx) => (
-            <div key={idx} className="group relative flex flex-col md:flex-row justify-between items-start md:items-center p-[40px] md:p-[50px] bg-[var(--darker)] border border-[rgba(10,10,10,0.06)] rounded-sm transition-all duration-500 hover:border-[var(--gold)] reveal overflow-hidden cursor-none">
+            <Link 
+              href={service.href}
+              key={idx} 
+              className="group relative flex flex-col md:flex-row justify-between items-start md:items-center p-[40px] md:p-[50px] bg-[var(--darker)] border border-[rgba(10,10,10,0.06)] rounded-sm transition-all duration-500 hover:border-[var(--gold)] reveal overflow-hidden cursor-none"
+            >
               
               {/* Background Image - Less transparent, clearly visible */}
               <div 
@@ -146,7 +154,7 @@ export default function Services() {
                   →
                 </span>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </section>
