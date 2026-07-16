@@ -31,7 +31,6 @@ export default function Navbar() {
           {[
             { label: 'Home', href: '/' },
             { label: 'About Us', href: '/about' },
-            { label: 'Services', href: '/services' },
             { label: 'Portfolio', href: '/portfolio' },
             { label: 'Clients', href: '/clients' },
             { label: 'Studio Services', href: '/studio-services' },
@@ -69,7 +68,6 @@ export default function Navbar() {
         {[
           { label: 'Home', href: '/' },
           { label: 'About Us', href: '/about' },
-          { label: 'Services', href: '/services' },
           { label: 'Portfolio', href: '/portfolio' },
           { label: 'Clients', href: '/clients' },
           { label: 'Studio Services', href: '/studio-services' },
