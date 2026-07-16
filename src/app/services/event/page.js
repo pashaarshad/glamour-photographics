@@ -5,7 +5,6 @@ import { Play, X, Check, Globe, Film, ArrowRight } from 'lucide-react';
 
 export default function EventServices() {
   const [activeVideoId, setActiveVideoId] = useState(null);
-  const [activeTab, setActiveTab] = useState('ALL'); // ALL, FILMS, LIVESTREAMS
 
   useEffect(() => {
     const checkReveals = () => {
@@ -21,13 +20,46 @@ export default function EventServices() {
     return () => window.removeEventListener('scroll', checkReveals);
   }, []);
 
-  const videos = [
-    { id: 'jlR54SuB_Rc', title: 'CII Space Expo 2022', category: 'FILMS', desc: 'Capturing corporate excellence and industrial summits.' },
-    { id: 'Soc7p3YaTN0', title: 'Ansaan Capital Event', category: 'FILMS', desc: 'Premium financial leadership storytelling and branding.' },
-    { id: 'df1A-_FulEs', title: 'Milestone Celebrations', category: 'FILMS', desc: 'Honoring achievements in modern motion.' },
-    { id: 'doOSgmHHgD4', title: 'Academic Foundation Summit', category: 'FILMS', desc: 'Commemorating milestones of institutional growth.' },
-    { id: '2Af51PlUGSg', title: 'Live Stream Broadcast 1', category: 'LIVESTREAMS', desc: 'Broadcast-grade multi-camera live stream.', isLive: true },
-    { id: 'RoEbiML-xn0', title: 'Live Stream Broadcast 2', category: 'LIVESTREAMS', desc: 'Seamless, high-reliability live broadcast.', isLive: true }
+  const eventFilms = [
+    {
+      id: 'jlR54SuB_Rc',
+      title: 'CII Space Expo',
+      hook: 'Showcasing technological milestones and industrial summits.',
+      desc: 'Capturing the sheer scale, energy, and corporate value of the region’s premier aerospace expo. From high-level panel discussions to floor demonstrations, we document it all.'
+    },
+    {
+      id: 'Soc7p3YaTN0',
+      title: 'Ansaan Capital Event',
+      hook: 'Premium financial leadership storytelling and branding.',
+      desc: 'Highlighting executive keynotes and milestone announcements with clean, corporate visuals that translate boardroom stature to digital audiences.'
+    },
+    {
+      id: 'df1A-_FulEs',
+      title: 'National Summit Highlights',
+      hook: 'Preserving milestones in high-impact motion.',
+      desc: 'Our editing team works rapidly to piece together key moments, dynamic networking shots, and high-production value clips that command attention.'
+    },
+    {
+      id: 'doOSgmHHgD4',
+      title: 'Institutional Foundation Ceremony',
+      hook: 'Commemorating growth and visual legacy.',
+      desc: 'An inspiring capture of academic and institutional summits, celebrating foundation milestones with clean, cinematic storytelling.'
+    }
+  ];
+
+  const livestreams = [
+    {
+      id: '2Af51PlUGSg',
+      title: 'Multi-Camera Live Broadcast',
+      hook: 'Multi-camera live broadcast at professional standards.',
+      desc: 'Broadcast-grade multi-camera livestream. We feed multiple angles into our production mixer to deliver a dynamic, high-engagement viewing experience.'
+    },
+    {
+      id: 'RoEbiML-xn0',
+      title: 'High-Reliability Stream',
+      hook: 'High-reliability, lag-free live streaming.',
+      desc: 'Powered by seven-dongle network bonding and Blackmagic hardware, ensuring that your stream remains uninterrupted no matter the location.'
+    }
   ];
 
   const photos = [
@@ -40,8 +72,6 @@ export default function EventServices() {
     '/images/our_portfolio/event/cp-12.jpg',
     '/images/our_portfolio/event/highlights_NMKL0031.jpg'
   ];
-
-  const filteredVideos = activeTab === 'ALL' ? videos : videos.filter(v => v.category === activeTab);
 
   return (
     <main className="w-full bg-[var(--dark)] text-[var(--light)] pb-[100px] cursor-none relative overflow-x-hidden">
@@ -96,92 +126,119 @@ export default function EventServices() {
         </div>
       </section>
 
-      {/* ─── FILMS & LIVESTREAMING SUBSECTIONS ─── */}
-      <section className="py-[80px] bg-[var(--darker)] border-y border-[rgba(10,10,10,0.06)]">
-        <div className="max-w-[1400px] mx-auto px-[5%] md:px-[8%]">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-[80px] items-start">
-            {/* Films Feature */}
-            <div className="reveal">
-              <span className="text-[9px] tracking-[0.2em] uppercase text-[var(--gold)] font-bold mb-[12px] flex items-center gap-[8px]">
-                <Film className="w-[12px] h-[12px]" /> EVENT FILMING
-              </span>
-              <h3 className="font-serif text-[26px] text-[var(--light)] mb-[16px] font-light">
-                From "Lights, Camera" to "It's Live" — <span className="italic text-[var(--gold)]">in under 2 hours.</span>
-              </h3>
-              <p className="text-[14px] leading-[1.8] text-[var(--muted)] font-light">
-                Your event deserves more than a highlight reel days later — it deserves buzz while it's still happening. Our on-spot editing team turns raw footage into a polished teaser or promo film in just two hours, without cutting corners. The secret? We script and design the graphics before the event even starts, so when the moment happens, we're ready to ship it.
-              </p>
-            </div>
-            {/* Livestreaming Feature */}
-            <div className="reveal">
-              <span className="text-[9px] tracking-[0.2em] uppercase text-[var(--gold)] font-bold mb-[12px] flex items-center gap-[8px]">
-                <Globe className="w-[12px] h-[12px]" /> LIVESTREAMING
-              </span>
-              <h3 className="font-serif text-[26px] text-[var(--light)] mb-[16px] font-light">
-                Zero buffering. Zero excuses. <span className="italic text-[var(--gold)]">Seamless broadcast.</span>
-              </h3>
-              <p className="text-[14px] leading-[1.8] text-[var(--muted)] font-light">
-                Our livestreaming setup isn't off-the-shelf; it's engineered for reliability. We run a custom bonding router that fuses the internet speeds of seven dongles into one rock-solid connection. Pair that with our ATEM Blackmagic 4K production mixer and wireless transmitters, and you get broadcast-grade streaming that never drops the ball even when the Wi-Fi does.
-              </p>
-            </div>
+      {/* ─── OUR SPECIALITY / EVENT FILMS ─── */}
+      <section className="py-[100px] bg-[var(--darker)] border-t border-[rgba(10,10,10,0.06)] px-[5%] md:px-[8%]">
+        <div className="max-w-[1400px] mx-auto">
+          <div className="mb-[60px] reveal">
+            <span className="text-[9px] tracking-[0.2em] uppercase text-[var(--gold)] font-bold mb-[12px] flex items-center gap-[8px]">
+              <Film className="w-[12px] h-[12px]" /> OUR SPECIALITY
+            </span>
+            <h2 className="font-serif text-[clamp(28px,3.5vw,44px)] font-light text-[var(--light)] mb-[16px]">
+              Event Film
+            </h2>
+            <p className="text-[14.5px] leading-[1.8] text-[var(--muted)] font-light max-w-[700px] mb-[20px]">
+              <strong className="text-[var(--light)] font-semibold">Hook:</strong> From "Lights, Camera" to "It's Live" — in under 2 hours.<br />
+              Your event deserves more than a highlight reel days later — it deserves buzz while it's still happening. Our on-spot editing team turns raw footage into a polished teaser or promo film in just two hours, without cutting corners. The secret? We script and design the graphics before the event even starts, so when the moment happens, we're ready to ship it.
+            </p>
+            <Link href="/portfolio" className="text-[10px] tracking-[0.2em] uppercase font-bold text-[var(--gold)] hover:text-[var(--light)] transition-colors duration-300 flex items-center gap-[8px] cursor-none">
+              Explore Our Collection <ArrowRight className="w-[12px] h-[12px]" />
+            </Link>
+          </div>
+
+          <div className="flex flex-col gap-[60px] mt-[40px]">
+            {eventFilms.map((film, idx) => (
+              <div 
+                key={film.id}
+                className={`flex flex-col lg:flex-row gap-[40px] lg:gap-[60px] items-center reveal ${idx % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}
+              >
+                {/* Video Card Player */}
+                <div 
+                  onClick={() => setActiveVideoId(film.id)}
+                  className="w-full lg:w-1/2 aspect-video rounded-[16px] overflow-hidden border border-[rgba(10,10,10,0.06)] bg-black shadow-md cursor-none relative group"
+                >
+                  <img 
+                    src={`https://img.youtube.com/vi/${film.id}/hqdefault.jpg`}
+                    alt={film.title}
+                    className="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-102 transition-transform duration-[800ms]"
+                  />
+                  <div className="absolute inset-0 bg-black/20 z-10" />
+                  
+                  {/* Play circle */}
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60px] h-[60px] rounded-full border border-white/50 bg-black/40 flex items-center justify-center text-white transition-all duration-300 group-hover:scale-110 group-hover:bg-[var(--gold)] group-hover:border-transparent z-20">
+                    <Play className="w-[18px] h-[18px] fill-current ml-[2px]" />
+                  </div>
+                </div>
+
+                {/* Details */}
+                <div className="w-full lg:w-1/2 flex flex-col justify-center">
+                  <span className="text-[10px] tracking-[0.2em] uppercase text-[var(--gold)] font-bold mb-[8px]">EVENT FILM SPOTLIGHT</span>
+                  <h3 className="font-serif text-[24px] text-[var(--light)] font-bold mb-[12px] leading-tight">{film.title}</h3>
+                  <div className="w-[40px] h-[1px] bg-[var(--gold)] mb-[16px]"></div>
+                  <h4 className="font-sans text-[14px] text-[var(--gold)] italic font-semibold mb-[12px]">"{film.hook}"</h4>
+                  <p className="text-[14px] leading-[1.8] text-[var(--muted)] font-light">{film.desc}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ─── VIDEO COLLECTION ─── */}
-      <section className="py-[100px] px-[5%] md:px-[8%] max-w-[1400px] mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-[24px] mb-[50px] reveal">
-          <div>
-            <span className="text-[10px] tracking-[0.3em] uppercase text-[var(--gold)] mb-[12px] block font-bold">Videos</span>
-            <h2 className="font-serif text-[clamp(28px,3vw,40px)] font-light text-[var(--light)]">Cinematic Showcase</h2>
+      {/* ─── LIVESTREAMING SUB-SECTION ─── */}
+      <section className="py-[100px] border-t border-[rgba(10,10,10,0.06)] px-[5%] md:px-[8%]">
+        <div className="max-w-[1400px] mx-auto">
+          <div className="mb-[60px] reveal">
+            <span className="text-[9px] tracking-[0.2em] uppercase text-[var(--gold)] font-bold mb-[12px] flex items-center gap-[8px]">
+              <Globe className="w-[12px] h-[12px]" /> OUR SPECIALITY
+            </span>
+            <h2 className="font-serif text-[clamp(28px,3.5vw,44px)] font-light text-[var(--light)] mb-[16px]">
+              Livestreaming
+            </h2>
+            <p className="text-[14.5px] leading-[1.8] text-[var(--muted)] font-light max-w-[700px] mb-[20px]">
+              <strong className="text-[var(--light)] font-semibold">Hook:</strong> Zero buffering. Zero excuses. Just seamless, uninterrupted broadcast — anywhere.<br />
+              Our livestreaming setup isn't off-the-shelf; it's engineered for reliability. We run a custom bonding router, imported from China, that fuses the internet speeds of seven dongles into one rock-solid connection. Pair that with our ATEM Blackmagic 4K production mixer and wireless transmitters, and you get broadcast-grade streaming that never drops the ball even when the Wi-Fi does.
+            </p>
           </div>
-          {/* Tab Filters */}
-          <div className="flex gap-[20px] border-b border-[rgba(10,10,10,0.06)] pb-[8px]">
-            {['ALL', 'FILMS', 'LIVESTREAMS'].map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`text-[10px] tracking-[0.2em] uppercase pb-[8px] relative ${activeTab === tab ? 'text-[var(--gold)] font-bold' : 'text-[var(--muted)]'}`}
+
+          <div className="flex flex-col gap-[60px] mt-[40px]">
+            {livestreams.map((stream, idx) => (
+              <div 
+                key={stream.id}
+                className={`flex flex-col lg:flex-row gap-[40px] lg:gap-[60px] items-center reveal ${idx % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}
               >
-                {tab}
-                {activeTab === tab && <div className="absolute bottom-[-10px] left-0 w-full h-[1.5px] bg-[var(--gold)]" />}
-              </button>
+                {/* Video Card Player */}
+                <div 
+                  onClick={() => setActiveVideoId(stream.id)}
+                  className="w-full lg:w-1/2 aspect-video rounded-[16px] overflow-hidden border border-[rgba(10,10,10,0.06)] bg-black shadow-md cursor-none relative group"
+                >
+                  <img 
+                    src={`https://img.youtube.com/vi/${stream.id}/hqdefault.jpg`}
+                    alt={stream.title}
+                    className="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-102 transition-transform duration-[800ms]"
+                  />
+                  <div className="absolute inset-0 bg-black/20 z-10" />
+                  
+                  {/* Play circle */}
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60px] h-[60px] rounded-full border border-white/50 bg-black/40 flex items-center justify-center text-white transition-all duration-300 group-hover:scale-110 group-hover:bg-[var(--gold)] group-hover:border-transparent z-20">
+                    <Play className="w-[18px] h-[18px] fill-current ml-[2px]" />
+                  </div>
+                </div>
+
+                {/* Details */}
+                <div className="w-full lg:w-1/2 flex flex-col justify-center">
+                  <span className="text-[10px] tracking-[0.2em] uppercase text-[var(--gold)] font-bold mb-[8px]">LIVE STREAMING BROADCAST</span>
+                  <h3 className="font-serif text-[24px] text-[var(--light)] font-bold mb-[12px] leading-tight">{stream.title}</h3>
+                  <div className="w-[40px] h-[1px] bg-[var(--gold)] mb-[16px]"></div>
+                  <h4 className="font-sans text-[14px] text-[var(--gold)] italic font-semibold mb-[12px]">"{stream.hook}"</h4>
+                  <p className="text-[14px] leading-[1.8] text-[var(--muted)] font-light">{stream.desc}</p>
+                </div>
+              </div>
             ))}
           </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-[32px] reveal">
-          {filteredVideos.map((video) => (
-            <div 
-              key={video.id}
-              onClick={() => setActiveVideoId(video.id)}
-              className="group relative aspect-video rounded-[16px] overflow-hidden border border-[rgba(10,10,10,0.05)] shadow-md bg-black cursor-none transition-all duration-500 hover:shadow-xl"
-            >
-              <img 
-                src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`}
-                alt={video.title}
-                className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:scale-102 transition-transform duration-[800ms]"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent z-10" />
-              
-              {/* Play Button */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[54px] h-[54px] rounded-full border border-white/50 bg-black/35 flex items-center justify-center text-white transition-all duration-300 group-hover:scale-110 group-hover:bg-[var(--gold)] group-hover:border-transparent z-20">
-                <Play className="w-[16px] h-[16px] fill-current ml-[2px]" />
-              </div>
-
-              {/* Title & Tag */}
-              <div className="absolute bottom-[24px] left-[24px] right-[24px] z-20 pointer-events-none">
-                <span className="text-[9px] tracking-[0.2em] font-bold text-[var(--gold)] uppercase block mb-[6px]">{video.isLive ? 'Live Stream' : 'Highlight Film'}</span>
-                <h3 className="font-serif text-[20px] text-white font-medium mb-[4px]">{video.title}</h3>
-                <p className="text-[11.5px] text-white/60 font-light">{video.desc}</p>
-              </div>
-            </div>
-          ))}
         </div>
       </section>
 
       {/* ─── PHOTOS GALLERY ─── */}
-      <section className="py-[80px] bg-[var(--darker)] border-y border-[rgba(10,10,10,0.06)] px-[5%] md:px-[8%]">
+      <section className="py-[100px] bg-[var(--darker)] border-t border-[rgba(10,10,10,0.06)] px-[5%] md:px-[8%]">
         <div className="max-w-[1400px] mx-auto">
           <div className="mb-[50px] text-center reveal">
             <span className="text-[10px] tracking-[0.3em] uppercase text-[var(--gold)] mb-[12px] block font-bold">Gallery</span>

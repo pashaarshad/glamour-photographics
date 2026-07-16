@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { Play, X, Check, ArrowRight } from 'lucide-react';
+import { Play, X, Check, Film, ArrowRight } from 'lucide-react';
 
 export default function CorporateServices() {
   const [activeVideoId, setActiveVideoId] = useState(null);
@@ -20,11 +20,31 @@ export default function CorporateServices() {
     return () => window.removeEventListener('scroll', checkReveals);
   }, []);
 
-  const videos = [
-    { id: 't07kSRBHPfg', title: 'CGI Corporate Film', desc: 'Narrative storytelling of corporate capability and brand values.' },
-    { id: 'SpD8AeoLTXw', title: 'Tata Elxsi UAV Showcase', desc: 'Capturing technological innovation and aerospace engineering.' },
-    { id: 'yVtKMpRffws', title: 'GE BEL Summit Highlights', desc: 'Commemorating global industrial collaboration.' },
-    { id: 'CZ6tMXytyM4', title: 'SMK Prakash Corporate Overview', desc: 'Visually detailing state-of-the-art infrastructure.' }
+  const corporateFilms = [
+    {
+      id: 't07kSRBHPfg',
+      title: 'CGI Corporate Overview',
+      hook: 'Translating corporate capability into compelling narratives.',
+      desc: 'An in-depth look at state-of-the-art office infrastructure and company capabilities, designed to connect with clients, employees and stakeholders globally.'
+    },
+    {
+      id: 'SpD8AeoLTXw',
+      title: 'Tata Elxsi UAV Showcase',
+      hook: 'Capturing technological innovation and precision engineering.',
+      desc: 'Cinematic UAV flight mapping and visual documentation showcasing advanced robotics, product design, and facility highlights.'
+    },
+    {
+      id: 'yVtKMpRffws',
+      title: 'GE BEL Summit Highlights',
+      hook: 'Commemorating global industrial collaboration.',
+      desc: 'Capturing the premium moments, high-level dialogues, and technical exhibits of leading corporate partnerships at the summit.'
+    },
+    {
+      id: 'CZ6tMXytyM4',
+      title: 'SMK Prakash Corporate Film',
+      hook: 'Visually detailing state-of-the-art infrastructure.',
+      desc: 'Highlighting facility design, manufacturing capabilities, and industrial operations with clean, commanding corporate video production.'
+    }
   ];
 
   const photos = [
@@ -54,7 +74,7 @@ export default function CorporateServices() {
               Corporate Media <span className="italic text-[var(--gold)]">Services.</span>
             </h1>
             <p className="text-[14px] md:text-[15.5px] leading-[1.8] text-white/80 max-w-[620px] mt-[24px] font-light">
-              Great corporate films don't sell, they connect. Translate boardroom vision into visual storytelling that actually resonates.
+              Films That Turn Employees and Clients into Believers.
             </p>
           </div>
         </div>
@@ -64,13 +84,13 @@ export default function CorporateServices() {
       <section className="py-[100px] px-[5%] md:px-[8%] max-w-[1400px] mx-auto reveal">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-[60px] lg:gap-[100px] items-center">
           <div>
-            <span className="text-[10px] tracking-[0.3em] uppercase text-[var(--gold)] mb-[12px] block font-bold">Corporate Capabilities</span>
+            <span className="text-[10px] tracking-[0.3em] uppercase text-[var(--gold)] mb-[12px] block font-bold">Corporate Media Services</span>
             <h2 className="font-serif text-[clamp(28px,3.5vw,44px)] font-light text-[var(--light)] mb-[24px] leading-tight">
               Films That Turn Employees <br />
               and Clients into <span className="italic text-[var(--gold)]">Believers.</span>
             </h2>
             <p className="text-[14.5px] leading-[1.85] text-[var(--muted)] font-light mb-[32px]">
-              With years of experience running large-scale conferences and corporate shoots nationally and internationally, our crew knows how to translate boardroom vision into visual storytelling that actually resonates. We stay ahead of the trends, sharpen our craft every year, and deliver results that are as cost-smart as they are camera-ready.
+              Great corporate films don't sell, they connect. With years of experience running large-scale conferences and corporate shoots nationally and internationally, our crew knows how to translate boardroom vision into visual storytelling that actually resonates. We stay ahead of the trends, sharpen our craft every year, and deliver results that are as cost-smart as they are camera-ready.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-[16px] gap-x-[32px] border-t border-[rgba(10,10,10,0.06)] pt-[24px]">
               {['Company Culture Narratives', 'Boardroom Profile Videos', 'Industrial Campus Media', 'Marketing Video Campaigns'].map((item, idx) => (
@@ -89,62 +109,65 @@ export default function CorporateServices() {
         </div>
       </section>
 
-      {/* ─── CORPORATE FILM SUB-SECTION ─── */}
-      <section className="py-[80px] bg-[var(--darker)] border-y border-[rgba(10,10,10,0.06)]">
-        <div className="max-w-[1000px] mx-auto px-[5%] text-center reveal">
-          <span className="text-[9px] tracking-[0.25em] uppercase text-[var(--gold)] font-bold mb-[16px] block">OUR SPECIALITY</span>
-          <h3 className="font-serif text-[clamp(24px,3vw,38px)] text-[var(--light)] mb-[24px] font-light leading-tight">
-            Culture. Values. Mission. <br />
-            <span className="italic text-[var(--gold)]">In 3 minutes, they'll feel all of it.</span>
-          </h3>
-          <p className="text-[14.5px] leading-[1.8] text-[var(--muted)] font-light max-w-[700px] mx-auto mb-[32px]">
-            We don't make corporate videos — we make visual narratives. Every film we craft is built to humanize your organization, spotlight what makes your culture different, and build a genuine emotional bridge with the people who matter most: your employees, your investors, your customers.
-          </p>
-          <Link href="/portfolio" className="text-[10px] tracking-[0.2em] uppercase font-bold text-[var(--gold)] hover:text-[var(--light)] transition-colors duration-300 flex items-center justify-center gap-[8px] cursor-none">
-            Explore Our Collection <ArrowRight className="w-[12px] h-[12px]" />
-          </Link>
-        </div>
-      </section>
+      {/* ─── OUR SPECIALITY / CORPORATE FILMS ─── */}
+      <section className="py-[100px] bg-[var(--darker)] border-t border-[rgba(10,10,10,0.06)] px-[5%] md:px-[8%]">
+        <div className="max-w-[1400px] mx-auto">
+          <div className="mb-[60px] reveal">
+            <span className="text-[9px] tracking-[0.2em] uppercase text-[var(--gold)] font-bold mb-[12px] flex items-center gap-[8px]">
+              <Film className="w-[12px] h-[12px]" /> OUR SPECIALITY
+            </span>
+            <h2 className="font-serif text-[clamp(28px,3.5vw,44px)] font-light text-[var(--light)] mb-[16px]">
+              Corporate Film
+            </h2>
+            <p className="text-[14.5px] leading-[1.8] text-[var(--muted)] font-light max-w-[700px] mb-[20px]">
+              <strong className="text-[var(--light)] font-semibold">Hook:</strong> Culture. Values. Mission. In 3 minutes, they'll feel all of it.<br />
+              We don't make corporate videos — we make visual narratives. Every film we craft is built to humanize your organization, spotlight what makes your culture different, and build a genuine emotional bridge with the people who matter most: your employees, your investors, your customers.
+            </p>
+            <Link href="/portfolio" className="text-[10px] tracking-[0.2em] uppercase font-bold text-[var(--gold)] hover:text-[var(--light)] transition-colors duration-300 flex items-center gap-[8px] cursor-none">
+              Explore Our Collection <ArrowRight className="w-[12px] h-[12px]" />
+            </Link>
+          </div>
 
-      {/* ─── VIDEO GRID ─── */}
-      <section className="py-[100px] px-[5%] md:px-[8%] max-w-[1400px] mx-auto">
-        <div className="mb-[50px] reveal">
-          <span className="text-[10px] tracking-[0.3em] uppercase text-[var(--gold)] mb-[12px] block font-bold">Videos</span>
-          <h2 className="font-serif text-[clamp(28px,3vw,40px)] font-light text-[var(--light)]">Featured Brand Films</h2>
-        </div>
+          <div className="flex flex-col gap-[60px] mt-[40px]">
+            {corporateFilms.map((film, idx) => (
+              <div 
+                key={film.id}
+                className={`flex flex-col lg:flex-row gap-[40px] lg:gap-[60px] items-center reveal ${idx % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}
+              >
+                {/* Video Card Player */}
+                <div 
+                  onClick={() => setActiveVideoId(film.id)}
+                  className="w-full lg:w-1/2 aspect-video rounded-[16px] overflow-hidden border border-[rgba(10,10,10,0.06)] bg-black shadow-md cursor-none relative group"
+                >
+                  <img 
+                    src={`https://img.youtube.com/vi/${film.id}/hqdefault.jpg`}
+                    alt={film.title}
+                    className="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-102 transition-transform duration-[800ms]"
+                  />
+                  <div className="absolute inset-0 bg-black/20 z-10" />
+                  
+                  {/* Play circle */}
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60px] h-[60px] rounded-full border border-white/50 bg-black/40 flex items-center justify-center text-white transition-all duration-300 group-hover:scale-110 group-hover:bg-[var(--gold)] group-hover:border-transparent z-20">
+                    <Play className="w-[18px] h-[18px] fill-current ml-[2px]" />
+                  </div>
+                </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-[32px] reveal">
-          {videos.map((video) => (
-            <div 
-              key={video.id}
-              onClick={() => setActiveVideoId(video.id)}
-              className="group relative aspect-video rounded-[16px] overflow-hidden border border-[rgba(10,10,10,0.05)] shadow-md bg-black cursor-none transition-all duration-500 hover:shadow-xl"
-            >
-              <img 
-                src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`}
-                alt={video.title}
-                className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:scale-102 transition-transform duration-[800ms]"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent z-10" />
-              
-              {/* Play Button */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[54px] h-[54px] rounded-full border border-white/50 bg-black/35 flex items-center justify-center text-white transition-all duration-300 group-hover:scale-110 group-hover:bg-[var(--gold)] group-hover:border-transparent z-20">
-                <Play className="w-[16px] h-[16px] fill-current ml-[2px]" />
+                {/* Details */}
+                <div className="w-full lg:w-1/2 flex flex-col justify-center">
+                  <span className="text-[10px] tracking-[0.2em] uppercase text-[var(--gold)] font-bold mb-[8px]">CORPORATE FILM SPOTLIGHT</span>
+                  <h3 className="font-serif text-[24px] text-[var(--light)] font-bold mb-[12px] leading-tight">{film.title}</h3>
+                  <div className="w-[40px] h-[1px] bg-[var(--gold)] mb-[16px]"></div>
+                  <h4 className="font-sans text-[14px] text-[var(--gold)] italic font-semibold mb-[12px]">"{film.hook}"</h4>
+                  <p className="text-[14px] leading-[1.8] text-[var(--muted)] font-light">{film.desc}</p>
+                </div>
               </div>
-
-              {/* Title & Tag */}
-              <div className="absolute bottom-[24px] left-[24px] right-[24px] z-20 pointer-events-none">
-                <span className="text-[9px] tracking-[0.2em] font-bold text-[var(--gold)] uppercase block mb-[6px]">Corporate Film</span>
-                <h3 className="font-serif text-[20px] text-white font-medium mb-[4px]">{video.title}</h3>
-                <p className="text-[11.5px] text-white/60 font-light">{video.desc}</p>
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
       {/* ─── PHOTOS GALLERY ─── */}
-      <section className="py-[80px] bg-[var(--darker)] border-y border-[rgba(10,10,10,0.06)] px-[5%] md:px-[8%]">
+      <section className="py-[100px] border-t border-[rgba(10,10,10,0.06)] px-[5%] md:px-[8%]">
         <div className="max-w-[1400px] mx-auto">
           <div className="mb-[50px] text-center reveal">
             <span className="text-[10px] tracking-[0.3em] uppercase text-[var(--gold)] mb-[12px] block font-bold">Gallery</span>
@@ -167,7 +190,7 @@ export default function CorporateServices() {
       </section>
 
       {/* ─── BOTTOM CTA ─── */}
-      <section className="py-[120px] text-center px-[5%] reveal">
+      <section className="py-[120px] text-center px-[5%] reveal bg-[var(--darker)] border-t border-[rgba(10,10,10,0.06)]">
         <h2 className="font-serif text-[clamp(32px,4.5vw,52px)] font-light text-[var(--light)] mb-[40px]">
           Ready to tell your brand's true story?
         </h2>

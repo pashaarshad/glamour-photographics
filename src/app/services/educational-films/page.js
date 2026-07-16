@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { Play, X, ArrowRight } from 'lucide-react';
+import { Play, X, Film, ArrowRight } from 'lucide-react';
 
 export default function EducationalFilmsServices() {
   const [activeVideoId, setActiveVideoId] = useState(null);
@@ -21,10 +21,30 @@ export default function EducationalFilmsServices() {
   }, []);
 
   const videos = [
-    { id: 'doOSgmHHgD4', title: 'Campus Showcase Film 1', desc: 'Promoting school academic values and campus life.' },
-    { id: 'df1A-_FulEs', title: 'Campus Showcase Film 2', desc: 'Capturing state-of-the-art laboratory and sports facilities.' },
-    { id: 'XulH5TjS50k', title: 'Campus Showcase Film 3', desc: 'Walking through classrooms and learning environments.' },
-    { id: 'cImmLgZo9-Y', title: 'Campus Showcase Film 4', desc: 'Conforming student perspectives and teacher collaborations.' }
+    {
+      id: 'doOSgmHHgD4',
+      title: 'Campus Showcase Film 1',
+      hook: 'Promoting school academic values and campus life.',
+      desc: 'Guiding prospective parents and students through campus culture, academic environments, and everyday achievements.'
+    },
+    {
+      id: 'df1A-_FulEs',
+      title: 'Campus Showcase Film 2',
+      hook: 'Capturing state-of-the-art laboratory and sports facilities.',
+      desc: 'Spotlighting modern laboratories, athletic spaces, libraries, and creative classrooms that showcase institutional excellence.'
+    },
+    {
+      id: 'XulH5TjS50k',
+      title: 'Campus Showcase Film 3',
+      hook: 'Walking through classrooms and learning environments.',
+      desc: 'Highlighting collaborative student-teacher interactions, teaching innovations, and technology-enabled learning systems.'
+    },
+    {
+      id: 'cImmLgZo9-Y',
+      title: 'Campus Showcase Film 4',
+      hook: 'Conforming student perspectives and teacher collaborations.',
+      desc: 'Illustrating the true spirit of discovery, creative growth, mentorship, and collective discovery on campus.'
+    }
   ];
 
   return (
@@ -75,44 +95,60 @@ export default function EducationalFilmsServices() {
       </section>
 
       {/* ─── VIDEO GRID ─── */}
-      <section className="py-[100px] px-[5%] md:px-[8%] max-w-[1400px] mx-auto border-t border-[rgba(10,10,10,0.06)]">
-        <div className="mb-[50px] reveal">
-          <span className="text-[10px] tracking-[0.3em] uppercase text-[var(--gold)] mb-[12px] block font-bold">Videos</span>
-          <h2 className="font-serif text-[clamp(28px,3vw,40px)] font-light text-[var(--light)]">Campus Showreels & Features</h2>
-        </div>
+      <section className="py-[100px] bg-[var(--darker)] border-t border-[rgba(10,10,10,0.06)] px-[5%] md:px-[8%]">
+        <div className="max-w-[1400px] mx-auto">
+          <div className="mb-[60px] reveal">
+            <span className="text-[9px] tracking-[0.2em] uppercase text-[var(--gold)] font-bold mb-[12px] flex items-center gap-[8px]">
+              <Film className="w-[12px] h-[12px]" /> CAMPUS FILMING
+            </span>
+            <h2 className="font-serif text-[clamp(28px,3.5vw,44px)] font-light text-[var(--light)] mb-[16px]">
+              Featured School Films
+            </h2>
+            <p className="text-[14.5px] leading-[1.8] text-[var(--muted)] font-light max-w-[700px]">
+              School showcase videos that bring campus culture, state-of-the-art labs, and interactive classrooms to life.
+            </p>
+          </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-[32px] reveal">
-          {videos.map((video) => (
-            <div 
-              key={video.id}
-              onClick={() => setActiveVideoId(video.id)}
-              className="group relative aspect-video rounded-[16px] overflow-hidden border border-[rgba(10,10,10,0.05)] shadow-md bg-black cursor-none transition-all duration-500 hover:shadow-xl"
-            >
-              <img 
-                src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`}
-                alt={video.title}
-                className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:scale-102 transition-transform duration-[800ms]"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent z-10" />
-              
-              {/* Play Button */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[54px] h-[54px] rounded-full border border-white/50 bg-black/35 flex items-center justify-center text-white transition-all duration-300 group-hover:scale-110 group-hover:bg-[var(--gold)] group-hover:border-transparent z-20">
-                <Play className="w-[16px] h-[16px] fill-current ml-[2px]" />
-              </div>
+          <div className="flex flex-col gap-[60px] mt-[40px]">
+            {videos.map((video, idx) => (
+              <div 
+                key={video.id}
+                className={`flex flex-col lg:flex-row gap-[40px] lg:gap-[60px] items-center reveal ${idx % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}
+              >
+                {/* Video Card Player */}
+                <div 
+                  onClick={() => setActiveVideoId(video.id)}
+                  className="w-full lg:w-1/2 aspect-video rounded-[16px] overflow-hidden border border-[rgba(10,10,10,0.06)] bg-black shadow-md cursor-none relative group"
+                >
+                  <img 
+                    src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`}
+                    alt={video.title}
+                    className="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-102 transition-transform duration-[800ms]"
+                  />
+                  <div className="absolute inset-0 bg-black/20 z-10" />
+                  
+                  {/* Play circle */}
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60px] h-[60px] rounded-full border border-white/50 bg-black/40 flex items-center justify-center text-white transition-all duration-300 group-hover:scale-110 group-hover:bg-[var(--gold)] group-hover:border-transparent z-20">
+                    <Play className="w-[18px] h-[18px] fill-current ml-[2px]" />
+                  </div>
+                </div>
 
-              {/* Title & Tag */}
-              <div className="absolute bottom-[24px] left-[24px] right-[24px] z-20 pointer-events-none">
-                <span className="text-[9px] tracking-[0.2em] font-bold text-[var(--gold)] uppercase block mb-[6px]">Educational Film</span>
-                <h3 className="font-serif text-[20px] text-white font-medium mb-[4px]">{video.title}</h3>
-                <p className="text-[11.5px] text-white/60 font-light">{video.desc}</p>
+                {/* Details */}
+                <div className="w-full lg:w-1/2 flex flex-col justify-center">
+                  <span className="text-[10px] tracking-[0.2em] uppercase text-[var(--gold)] font-bold mb-[8px]">SCHOOL FILM</span>
+                  <h3 className="font-serif text-[24px] text-[var(--light)] font-bold mb-[12px] leading-tight">{video.title}</h3>
+                  <div className="w-[40px] h-[1px] bg-[var(--gold)] mb-[16px]"></div>
+                  <h4 className="font-sans text-[14px] text-[var(--gold)] italic font-semibold mb-[12px]">"{video.hook}"</h4>
+                  <p className="text-[14px] leading-[1.8] text-[var(--muted)] font-light">{video.desc}</p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
       {/* ─── BOTTOM CTA ─── */}
-      <section className="py-[120px] text-center px-[5%] reveal bg-[var(--darker)] border-t border-[rgba(10,10,10,0.06)]">
+      <section className="py-[120px] text-center px-[5%] reveal border-t border-[rgba(10,10,10,0.06)]">
         <h2 className="font-serif text-[clamp(32px,4.5vw,52px)] font-light text-[var(--light)] mb-[40px]">
           Ready to showcase your institution's excellence?
         </h2>

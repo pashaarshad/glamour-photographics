@@ -1,7 +1,7 @@
 'use client';
 import { useEffect } from 'react';
 import Link from 'next/link';
-import { Check, ArrowRight } from 'lucide-react';
+import { Check, ArrowRight, User } from 'lucide-react';
 
 export default function HeadshotsServices() {
   useEffect(() => {
@@ -86,8 +86,24 @@ export default function HeadshotsServices() {
         </div>
       </section>
 
+      {/* ─── OUR SPECIALITY / MOBILE STUDIO ─── */}
+      <section className="py-[100px] bg-[var(--darker)] border-t border-[rgba(10,10,10,0.06)] px-[5%] md:px-[8%]">
+        <div className="max-w-[1000px] mx-auto text-center reveal">
+          <span className="text-[9px] tracking-[0.2em] uppercase text-[var(--gold)] font-bold mb-[12px] flex items-center justify-center gap-[8px]">
+            <User className="w-[12px] h-[12px]" /> OUR SPECIALITY
+          </span>
+          <h2 className="font-serif text-[clamp(28px,3.5vw,44px)] font-light text-[var(--light)] mb-[24px]">
+            Mobile Studio Setup & Posing Guidance
+          </h2>
+          <p className="text-[14.5px] leading-[1.8] text-[var(--muted)] font-light max-w-[750px] mx-auto mb-[20px]">
+            <strong className="text-[var(--light)] font-semibold">Hook:</strong> First impressions aren't made in person anymore — they're made in pixels. Make yours count.<br />
+            We offer custom studio setup at your corporate office, ensuring a seamless, consistent lighting look across all your team members without disrupting your workday. We guide each individual through posing and expression to deliver headshots that look commanding yet approachable.
+          </p>
+        </div>
+      </section>
+
       {/* ─── PHOTOS GALLERY ─── */}
-      <section className="py-[100px] bg-[var(--darker)] border-y border-[rgba(10,10,10,0.06)] px-[5%] md:px-[8%]">
+      <section className="py-[100px] border-t border-[rgba(10,10,10,0.06)] px-[5%] md:px-[8%]">
         <div className="max-w-[1400px] mx-auto">
           <div className="mb-[50px] text-center reveal">
             <span className="text-[10px] tracking-[0.3em] uppercase text-[var(--gold)] mb-[12px] block font-bold">Gallery</span>
@@ -110,7 +126,7 @@ export default function HeadshotsServices() {
       </section>
 
       {/* ─── BOTTOM CTA ─── */}
-      <section className="py-[120px] text-center px-[5%] reveal">
+      <section className="py-[120px] text-center px-[5%] reveal bg-[var(--darker)] border-t border-[rgba(10,10,10,0.06)]">
         <h2 className="font-serif text-[clamp(32px,4.5vw,52px)] font-light text-[var(--light)] mb-[40px]">
           Need professional headshots for your leadership?
         </h2>

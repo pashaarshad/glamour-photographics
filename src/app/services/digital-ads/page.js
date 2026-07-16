@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { Play, X, ArrowRight } from 'lucide-react';
+import { Play, X, Film, ArrowRight } from 'lucide-react';
 
 export default function DigitalAdsServices() {
   const [activeVideoId, setActiveVideoId] = useState(null);
@@ -21,11 +21,36 @@ export default function DigitalAdsServices() {
   }, []);
 
   const videos = [
-    { id: 'PX5EzmcDqBI', title: 'Creative Brand Spot 1', desc: 'Shattering conventions with bold, scroll-stopping photography.' },
-    { id: 'zjxFg4uskmU', title: 'Creative Brand Spot 2', desc: 'Cinematic brand commercial designed for digital engagement.' },
-    { id: 'xALGQ-5sr6Y', title: 'Creative Brand Spot 3', desc: 'Narrating product benefits with premium visuals and pacing.' },
-    { id: 'C0hzCKpITSE', title: 'Creative Brand Spot 4', desc: 'Visual campaigns built to capture attention immediately.' },
-    { id: 'xzKI4XmfFus', title: 'Creative Brand Spot 5', desc: 'Premium commercial styling and message delivery.' }
+    {
+      id: 'PX5EzmcDqBI',
+      title: 'Creative Brand Spot 1',
+      hook: 'Shattering conventions with bold, scroll-stopping photography.',
+      desc: 'Designed to capture visual interest in under 3 seconds and challenge standard feed aesthetics with sharp contrast and dynamic motion.'
+    },
+    {
+      id: 'zjxFg4uskmU',
+      title: 'Creative Brand Spot 2',
+      hook: 'Cinematic brand commercial designed for digital engagement.',
+      desc: 'Blending rich, curated color palettes and smooth transitions to create an emotional connection and elevate brand perception.'
+    },
+    {
+      id: 'xALGQ-5sr6Y',
+      title: 'Creative Brand Spot 3',
+      hook: 'Narrating product benefits with premium visuals and pacing.',
+      desc: 'Focusing on the tactile and functional beauty of products with sharp macro photography, smooth camera tracks, and clear scripting.'
+    },
+    {
+      id: 'C0hzCKpITSE',
+      title: 'Creative Brand Spot 4',
+      hook: 'Visual campaigns built to capture attention immediately.',
+      desc: 'Breaking stereotypes and building authentic connection with digital audiences through premium, scroll-stopping creative choices.'
+    },
+    {
+      id: 'xzKI4XmfFus',
+      title: 'Creative Brand Spot 5',
+      hook: 'Premium commercial styling and message delivery.',
+      desc: 'Delivering message clarity through high-production graphics, precise editorial timing, and modern cinematic styling.'
+    }
   ];
 
   return (
@@ -75,44 +100,60 @@ export default function DigitalAdsServices() {
       </section>
 
       {/* ─── VIDEO GRID ─── */}
-      <section className="py-[100px] px-[5%] md:px-[8%] max-w-[1400px] mx-auto border-t border-[rgba(10,10,10,0.06)]">
-        <div className="mb-[50px] reveal">
-          <span className="text-[10px] tracking-[0.3em] uppercase text-[var(--gold)] mb-[12px] block font-bold">Campaigns</span>
-          <h2 className="font-serif text-[clamp(28px,3vw,40px)] font-light text-[var(--light)]">Ad Spots & Commercials</h2>
-        </div>
+      <section className="py-[100px] bg-[var(--darker)] border-t border-[rgba(10,10,10,0.06)] px-[5%] md:px-[8%]">
+        <div className="max-w-[1400px] mx-auto">
+          <div className="mb-[60px] reveal">
+            <span className="text-[9px] tracking-[0.2em] uppercase text-[var(--gold)] font-bold mb-[12px] flex items-center gap-[8px]">
+              <Film className="w-[12px] h-[12px]" /> AD CAMPAIGNS
+            </span>
+            <h2 className="font-serif text-[clamp(28px,3.5vw,44px)] font-light text-[var(--light)] mb-[16px]">
+              Featured Campaigns
+            </h2>
+            <p className="text-[14.5px] leading-[1.8] text-[var(--muted)] font-light max-w-[700px]">
+              Ad spots engineered for maximum digital impact, keeping users locked onto your message instead of passing by.
+            </p>
+          </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[30px] reveal">
-          {videos.map((video) => (
-            <div 
-              key={video.id}
-              onClick={() => setActiveVideoId(video.id)}
-              className="group relative aspect-video rounded-[16px] overflow-hidden border border-[rgba(10,10,10,0.05)] shadow-md bg-black cursor-none transition-all duration-500 hover:shadow-xl"
-            >
-              <img 
-                src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`}
-                alt={video.title}
-                className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:scale-102 transition-transform duration-[800ms]"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent z-10" />
-              
-              {/* Play Button */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[54px] h-[54px] rounded-full border border-white/50 bg-black/35 flex items-center justify-center text-white transition-all duration-300 group-hover:scale-110 group-hover:bg-[var(--gold)] group-hover:border-transparent z-20">
-                <Play className="w-[16px] h-[16px] fill-current ml-[2px]" />
-              </div>
+          <div className="flex flex-col gap-[60px] mt-[40px]">
+            {videos.map((video, idx) => (
+              <div 
+                key={video.id}
+                className={`flex flex-col lg:flex-row gap-[40px] lg:gap-[60px] items-center reveal ${idx % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}
+              >
+                {/* Video Card Player */}
+                <div 
+                  onClick={() => setActiveVideoId(video.id)}
+                  className="w-full lg:w-1/2 aspect-video rounded-[16px] overflow-hidden border border-[rgba(10,10,10,0.06)] bg-black shadow-md cursor-none relative group"
+                >
+                  <img 
+                    src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`}
+                    alt={video.title}
+                    className="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-102 transition-transform duration-[800ms]"
+                  />
+                  <div className="absolute inset-0 bg-black/20 z-10" />
+                  
+                  {/* Play circle */}
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60px] h-[60px] rounded-full border border-white/50 bg-black/40 flex items-center justify-center text-white transition-all duration-300 group-hover:scale-110 group-hover:bg-[var(--gold)] group-hover:border-transparent z-20">
+                    <Play className="w-[18px] h-[18px] fill-current ml-[2px]" />
+                  </div>
+                </div>
 
-              {/* Title & Tag */}
-              <div className="absolute bottom-[20px] left-[20px] right-[20px] z-20 pointer-events-none">
-                <span className="text-[9px] tracking-[0.2em] font-bold text-[var(--gold)] uppercase block mb-[4px]">Visual Ad</span>
-                <h3 className="font-serif text-[18px] text-white font-medium mb-[4px] leading-tight">{video.title}</h3>
-                <p className="text-[11px] text-white/60 font-light">{video.desc}</p>
+                {/* Details */}
+                <div className="w-full lg:w-1/2 flex flex-col justify-center">
+                  <span className="text-[10px] tracking-[0.2em] uppercase text-[var(--gold)] font-bold mb-[8px]">AD CAMPAIGN</span>
+                  <h3 className="font-serif text-[24px] text-[var(--light)] font-bold mb-[12px] leading-tight">{video.title}</h3>
+                  <div className="w-[40px] h-[1px] bg-[var(--gold)] mb-[16px]"></div>
+                  <h4 className="font-sans text-[14px] text-[var(--gold)] italic font-semibold mb-[12px]">"{video.hook}"</h4>
+                  <p className="text-[14px] leading-[1.8] text-[var(--muted)] font-light">{video.desc}</p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
       {/* ─── BOTTOM CTA ─── */}
-      <section className="py-[120px] text-center px-[5%] reveal bg-[var(--darker)] border-t border-[rgba(10,10,10,0.06)]">
+      <section className="py-[120px] text-center px-[5%] reveal border-t border-[rgba(10,10,10,0.06)]">
         <h2 className="font-serif text-[clamp(32px,4.5vw,52px)] font-light text-[var(--light)] mb-[40px]">
           Ready to launch a high-impact ad campaign?
         </h2>
