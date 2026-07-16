@@ -56,11 +56,11 @@ export default function Contact() {
     if (accessKey === "YOUR_ACCESS_KEY_HERE") {
       setTimeout(() => {
         const waLink = getWhatsAppLink(formData);
-        window.location.href = waLink;
+        window.open(waLink, '_blank');
         setStatus({
           submitted: true,
           submitting: false,
-          info: { error: false, msg: "Demo Mode: Form submission simulated successfully! Redirecting to WhatsApp..." }
+          info: { error: false, msg: "Demo Mode: Form submission simulated successfully! Opening WhatsApp in a new tab..." }
         });
       }, 1000);
       return;
@@ -89,11 +89,11 @@ export default function Contact() {
 
       if (response.status === 200 && result.success) {
         const waLink = getWhatsAppLink(formData);
-        window.location.href = waLink;
+        window.open(waLink, '_blank');
         setStatus({
           submitted: true,
           submitting: false,
-          info: { error: false, msg: "Redirecting to WhatsApp for instant chat..." }
+          info: { error: false, msg: "Opening WhatsApp in a new tab for instant chat..." }
         });
       } else {
         setStatus({

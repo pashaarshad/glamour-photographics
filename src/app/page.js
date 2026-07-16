@@ -86,11 +86,11 @@ export default function Home() {
     if (accessKey === "YOUR_ACCESS_KEY_HERE") {
       setTimeout(() => {
         const waLink = getHomeWhatsAppLink(homeFormData);
-        window.location.href = waLink;
+        window.open(waLink, '_blank');
         setHomeStatus({
           submitted: true,
           submitting: false,
-          info: { error: false, msg: "Demo Mode: Redirecting to WhatsApp..." }
+          info: { error: false, msg: "Demo Mode: Opening WhatsApp in a new tab..." }
         });
       }, 1000);
       return;
@@ -118,11 +118,11 @@ export default function Home() {
 
       if (response.status === 200 && result.success) {
         const waLink = getHomeWhatsAppLink(homeFormData);
-        window.location.href = waLink;
+        window.open(waLink, '_blank');
         setHomeStatus({
           submitted: true,
           submitting: false,
-          info: { error: false, msg: "Redirecting to WhatsApp..." }
+          info: { error: false, msg: "Opening WhatsApp in a new tab..." }
         });
       } else {
         setHomeStatus({
