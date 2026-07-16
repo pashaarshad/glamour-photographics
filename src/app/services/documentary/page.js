@@ -51,7 +51,6 @@ export default function DocumentaryServices() {
     '/images/our_portfolio/documentary/DSC_0149.JPG',
     '/images/our_portfolio/documentary/DSC_0163.JPG',
     '/images/our_portfolio/documentary/DSC_0204 Big.JPG',
-    '/images/our_portfolio/documentary/highlights_SKV00290.jpg',
     '/images/our_portfolio/documentary/highlights_SKV00387.jpg',
     '/images/our_portfolio/documentary/NMKL0128.JPG'
   ];
@@ -62,7 +61,7 @@ export default function DocumentaryServices() {
       {/* ─── HERO HEADER ─── */}
       <section className="relative min-h-[50vh] flex items-center px-[5%] md:px-[8%] bg-[#0A0A0A] pt-[120px] md:pt-[100px]">
         <div className="absolute inset-0 z-0">
-          <img src="/images/our_portfolio/te3.jpg" alt="Documentary Header" className="w-full h-full object-cover opacity-35" />
+          <img src="/images/our_portfolio/te3.jpg" alt="Documentary Header" className="w-full h-full object-cover object-[center_20%] opacity-40 select-none pointer-events-none" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent z-10" />
         </div>
         <div className="max-w-[1400px] w-full mx-auto z-20 relative">
@@ -96,9 +95,8 @@ export default function DocumentaryServices() {
               See the Portfolio in Action <ArrowRight className="w-[12px] h-[12px]" />
             </Link>
           </div>
-          <div className="relative h-[380px] md:h-[480px] w-full rounded-sm overflow-hidden border border-[rgba(10,10,10,0.06)] group shadow-md bg-black">
-            <img src="/images/our_portfolio/documentary/DSC_0163.JPG" alt="Documentary Crew" className="w-full h-full object-cover opacity-85 transition-transform duration-[1200ms] group-hover:scale-103" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent z-10" />
+          <div className="relative aspect-video w-full rounded-[16px] overflow-hidden border border-[rgba(10,10,10,0.06)] group shadow-md bg-black">
+            <img src="/images/our_portfolio/documentary/DSC_0163.JPG" alt="Documentary Crew" className="w-full h-full object-cover opacity-100 transition-transform duration-[1200ms] group-hover:scale-103" />
           </div>
         </div>
       </section>
@@ -123,10 +121,9 @@ export default function DocumentaryServices() {
                   className="w-full lg:w-1/2 aspect-video rounded-[16px] overflow-hidden border border-[rgba(10,10,10,0.06)] bg-black shadow-md cursor-none relative group"
                 >
                   <img 
-                    src={`https://img.youtube.com/vi/${doc.id}/maxresdefault.jpg`}
+                    src={`https://img.youtube.com/vi/${doc.id}/hqdefault.jpg`}
                     alt={doc.title}
                     className="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-102 transition-transform duration-[800ms]"
-                    onError={(e) => { e.target.src = `https://img.youtube.com/vi/${doc.id}/hqdefault.jpg`; }}
                   />
                   <div className="absolute inset-0 bg-black/20 z-10" />
                   

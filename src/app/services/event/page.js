@@ -49,7 +49,7 @@ export default function EventServices() {
       {/* ─── HERO HEADER ─── */}
       <section className="relative min-h-[50vh] flex items-center px-[5%] md:px-[8%] bg-[#0A0A0A] pt-[120px] md:pt-[100px]">
         <div className="absolute inset-0 z-0">
-          <img src="/images/our_portfolio/event/NMK_0047.JPG" alt="Event Header" className="w-full h-full object-cover opacity-35" />
+          <img src="/images/our_portfolio/event/NMK_0047.JPG" alt="Event Header" className="w-full h-full object-cover object-[center_18%] opacity-40 select-none pointer-events-none" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent z-10" />
         </div>
         <div className="max-w-[1400px] w-full mx-auto z-20 relative">
@@ -90,9 +90,8 @@ export default function EventServices() {
               ))}
             </div>
           </div>
-          <div className="relative h-[380px] md:h-[480px] w-full rounded-sm overflow-hidden border border-[rgba(10,10,10,0.06)] group shadow-md">
-            <img src="/images/our_portfolio/event/NMK_0130.JPG" alt="Camera Operator" className="w-full h-full object-cover opacity-85 transition-transform duration-[1200ms] group-hover:scale-103" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent z-10" />
+          <div className="relative aspect-video w-full rounded-[16px] overflow-hidden border border-[rgba(10,10,10,0.06)] group shadow-md bg-black">
+            <img src="/images/our_portfolio/event/NMK_0130.JPG" alt="Camera Operator" className="w-full h-full object-cover opacity-100 transition-transform duration-[1200ms] group-hover:scale-103" />
           </div>
         </div>
       </section>
@@ -159,10 +158,9 @@ export default function EventServices() {
               className="group relative aspect-video rounded-[16px] overflow-hidden border border-[rgba(10,10,10,0.05)] shadow-md bg-black cursor-none transition-all duration-500 hover:shadow-xl"
             >
               <img 
-                src={`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`}
+                src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`}
                 alt={video.title}
                 className="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:scale-102 transition-transform duration-[800ms]"
-                onError={(e) => { e.target.src = `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`; }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent z-10" />
               
