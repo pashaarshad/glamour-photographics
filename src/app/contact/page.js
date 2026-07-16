@@ -1,5 +1,5 @@
 'use client';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function Contact() {
   useEffect(() => {
@@ -18,6 +18,117 @@ export default function Contact() {
       clearTimeout(initialCheck);
     };
   }, []);
+
+  const [formData, setFormData] = useState({
+    name: '',
+    company: '',
+    email: '',
+    phone: '',
+    message: ''
+  });
+
+  const [status, setStatus] = useState({
+    submitted: false,
+    submitting: false,
+    info: { error: false, msg: null }
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    
+    setStatus({
+      submitted: false,
+      submitting: true,
+      info: { error: false, msg: null }
+    });
+
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "YOUR_ACCESS_KEY_HERE";
+
+    // If key is not configured yet, simulate the submission to allow previewing the flow
+    if (accessKey === "YOUR_ACCESS_KEY_HERE") {
+      setTimeout(() => {
+        setStatus({
+          submitted: true,
+          submitting: false,
+          info: { error: false, msg: "Demo Mode: Form submission simulated successfully!" }
+        });
+      }, 1000);
+      return;
+    }
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          name: formData.name,
+          email: formData.email,
+          company: formData.company,
+          phone: formData.phone,
+          message: formData.message,
+          from_name: "Glamour Photographics Website",
+          subject: `New Lead - ${formData.name}`
+        })
+      });
+
+      const result = await response.json();
+
+      if (response.status === 200 && result.success) {
+        setStatus({
+          submitted: true,
+          submitting: false,
+          info: { error: false, msg: "Thank you! Your message has been sent successfully." }
+        });
+      } else {
+        setStatus({
+          submitted: false,
+          submitting: false,
+          info: { error: true, msg: result.message || "Something went wrong. Please try again." }
+        });
+      }
+    } catch (error) {
+      setStatus({
+        submitted: false,
+        submitting: false,
+        info: { error: true, msg: "Failed to send message. Please check your internet connection and try again." }
+      });
+    }
+  };
+
+  const resetForm = () => {
+    setFormData({
+      name: '',
+      company: '',
+      email: '',
+      phone: '',
+      message: ''
+    });
+    setStatus({
+      submitted: false,
+      submitting: false,
+      info: { error: false, msg: null }
+    });
+  };
+
+  // Pre-filled WhatsApp link with form details
+  const getWhatsAppLink = () => {
+    const encodedMsg = encodeURIComponent(
+      `Hello Glamour Photographics,\n\nI just submitted a contact form on your website with the following details:\n\n*Name:* ${formData.name}\n*Email:* ${formData.email}\n*Phone:* ${formData.phone || 'N/A'}\n*Company:* ${formData.company || 'N/A'}\n*Details:* ${formData.message}`
+    );
+    return `https://wa.me/918971168868?text=${encodedMsg}`;
+  };
 
   return (
     <main className="w-full bg-[var(--ivory)] min-h-screen pt-[160px] pb-[100px]">
@@ -172,67 +283,124 @@ export default function Contact() {
             <div className="bg-[rgba(10,10,10,0.02)] border border-[rgba(10,10,10,0.05)] rounded-lg p-[40px] md:p-[50px] shadow-sm">
               <h3 className="font-serif text-[28px] text-[var(--black)] mb-[30px] font-light">Send us a message</h3>
               
-              <form className="flex flex-col gap-[24px]">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-[24px]">
-                  <div className="flex flex-col gap-[8px]">
-                    <label className="text-[10px] tracking-[0.25em] uppercase text-[var(--black)] font-semibold">Name *</label>
-                    <input 
-                      suppressHydrationWarning
-                      type="text" 
-                      className="bg-white border border-[rgba(10,10,10,0.08)] focus:border-[var(--gold)] focus:ring-1 focus:ring-[var(--gold)] rounded-md outline-none px-[16px] py-[12px] text-[14px] text-[var(--black)] transition-all duration-300 font-light" 
-                      required 
-                    />
+              {status.submitted ? (
+                <div className="flex flex-col items-center text-center py-[20px] reveal">
+                  <div className="w-[64px] h-[64px] rounded-full bg-[rgba(212,175,55,0.1)] flex items-center justify-center text-[var(--gold)] mb-[24px]">
+                    <svg className="w-[32px] h-[32px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                    </svg>
                   </div>
-                  <div className="flex flex-col gap-[8px]">
-                    <label className="text-[10px] tracking-[0.25em] uppercase text-[var(--black)] font-semibold">Company</label>
-                    <input 
-                      suppressHydrationWarning
-                      type="text" 
-                      className="bg-white border border-[rgba(10,10,10,0.08)] focus:border-[var(--gold)] focus:ring-1 focus:ring-[var(--gold)] rounded-md outline-none px-[16px] py-[12px] text-[14px] text-[var(--black)] transition-all duration-300 font-light" 
-                    />
+                  <h4 className="font-serif text-[24px] text-[var(--black)] mb-[12px]">Inquiry Received!</h4>
+                  <p className="text-[14px] text-[var(--muted)] leading-relaxed max-w-[340px] mb-[32px]">
+                    {status.info.msg || "Thank you! Your request has been sent to our team."}
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-[16px] w-full justify-center">
+                    <a 
+                      href={getWhatsAppLink()} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-[10px] bg-[#25D366] text-white text-[11px] uppercase tracking-[0.2em] font-bold py-[16px] px-[28px] hover:bg-[#20ba59] transition-all duration-300 rounded-full shadow-sm"
+                    >
+                      <svg className="w-[16px] h-[16px] fill-current" viewBox="0 0 24 24">
+                        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.003 5.324 5.328 0 11.94 0c3.202.001 6.212 1.249 8.477 3.518 2.266 2.27 3.51 5.276 3.508 8.479-.004 6.615-5.329 11.94-11.94 11.94-1.996-.001-3.957-.5-5.733-1.45L0 24zm6.59-4.846c1.666.988 3.311 1.485 5.343 1.486 5.532 0 10.034-4.502 10.037-10.037.002-2.683-1.043-5.205-2.943-7.105C17.135 1.6 14.61 0.555 11.943 0.555c-5.53 0-10.033 4.502-10.035 10.037-.001 1.897.487 3.502 1.461 5.105L2.3 20.8l5.228-1.373c.026.015.05.029.076.044z"/>
+                      </svg>
+                      WhatsApp Follow-up
+                    </a>
+                    <button 
+                      onClick={resetForm}
+                      className="inline-flex items-center justify-center border-2 border-[var(--gold)] bg-transparent text-[var(--black)] hover:bg-[var(--gold)] hover:text-white transition-all duration-300 text-[11px] uppercase tracking-[0.2em] font-bold py-[14px] px-[28px] rounded-full"
+                    >
+                      Send Another
+                    </button>
                   </div>
                 </div>
+              ) : (
+                <form onSubmit={handleFormSubmit} className="flex flex-col gap-[24px]">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-[24px]">
+                    <div className="flex flex-col gap-[8px]">
+                      <label className="text-[10px] tracking-[0.25em] uppercase text-[var(--black)] font-semibold">Name *</label>
+                      <input 
+                        suppressHydrationWarning
+                        type="text" 
+                        name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        className="bg-white border border-[rgba(10,10,10,0.08)] focus:border-[var(--gold)] focus:ring-1 focus:ring-[var(--gold)] rounded-md outline-none px-[16px] py-[12px] text-[14px] text-[var(--black)] transition-all duration-300 font-light" 
+                        required 
+                      />
+                    </div>
+                    <div className="flex flex-col gap-[8px]">
+                      <label className="text-[10px] tracking-[0.25em] uppercase text-[var(--black)] font-semibold">Company</label>
+                      <input 
+                        suppressHydrationWarning
+                        type="text" 
+                        name="company"
+                        value={formData.company}
+                        onChange={handleInputChange}
+                        className="bg-white border border-[rgba(10,10,10,0.08)] focus:border-[var(--gold)] focus:ring-1 focus:ring-[var(--gold)] rounded-md outline-none px-[16px] py-[12px] text-[14px] text-[var(--black)] transition-all duration-300 font-light" 
+                      />
+                    </div>
+                  </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-[24px]">
-                  <div className="flex flex-col gap-[8px]">
-                    <label className="text-[10px] tracking-[0.25em] uppercase text-[var(--black)] font-semibold">Email *</label>
-                    <input 
-                      suppressHydrationWarning
-                      type="email" 
-                      className="bg-white border border-[rgba(10,10,10,0.08)] focus:border-[var(--gold)] focus:ring-1 focus:ring-[var(--gold)] rounded-md outline-none px-[16px] py-[12px] text-[14px] text-[var(--black)] transition-all duration-300 font-light" 
-                      required 
-                    />
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-[24px]">
+                    <div className="flex flex-col gap-[8px]">
+                      <label className="text-[10px] tracking-[0.25em] uppercase text-[var(--black)] font-semibold">Email *</label>
+                      <input 
+                        suppressHydrationWarning
+                        type="email" 
+                        name="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        className="bg-white border border-[rgba(10,10,10,0.08)] focus:border-[var(--gold)] focus:ring-1 focus:ring-[var(--gold)] rounded-md outline-none px-[16px] py-[12px] text-[14px] text-[var(--black)] transition-all duration-300 font-light" 
+                        required 
+                      />
+                    </div>
+                    <div className="flex flex-col gap-[8px]">
+                      <label className="text-[10px] tracking-[0.25em] uppercase text-[var(--black)] font-semibold">Phone</label>
+                      <input 
+                        suppressHydrationWarning
+                        type="tel" 
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleInputChange}
+                        className="bg-white border border-[rgba(10,10,10,0.08)] focus:border-[var(--gold)] focus:ring-1 focus:ring-[var(--gold)] rounded-md outline-none px-[16px] py-[12px] text-[14px] text-[var(--black)] transition-all duration-300 font-light" 
+                      />
+                    </div>
                   </div>
+
                   <div className="flex flex-col gap-[8px]">
-                    <label className="text-[10px] tracking-[0.25em] uppercase text-[var(--black)] font-semibold">Phone</label>
-                    <input 
+                    <label className="text-[10px] tracking-[0.25em] uppercase text-[var(--black)] font-semibold">Project Details *</label>
+                    <textarea 
                       suppressHydrationWarning
-                      type="tel" 
-                      className="bg-white border border-[rgba(10,10,10,0.08)] focus:border-[var(--gold)] focus:ring-1 focus:ring-[var(--gold)] rounded-md outline-none px-[16px] py-[12px] text-[14px] text-[var(--black)] transition-all duration-300 font-light" 
-                    />
+                      rows="4" 
+                      name="message"
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      className="bg-white border border-[rgba(10,10,10,0.08)] focus:border-[var(--gold)] focus:ring-1 focus:ring-[var(--gold)] rounded-md outline-none px-[16px] py-[12px] text-[14px] text-[var(--black)] transition-all duration-300 resize-none font-light" 
+                      required
+                    ></textarea>
                   </div>
-                </div>
 
-                <div className="flex flex-col gap-[8px]">
-                  <label className="text-[10px] tracking-[0.25em] uppercase text-[var(--black)] font-semibold">Project Details *</label>
-                  <textarea 
-                    suppressHydrationWarning
-                    rows="4" 
-                    className="bg-white border border-[rgba(10,10,10,0.08)] focus:border-[var(--gold)] focus:ring-1 focus:ring-[var(--gold)] rounded-md outline-none px-[16px] py-[12px] text-[14px] text-[var(--black)] transition-all duration-300 resize-none font-light" 
-                    required
-                  ></textarea>
-                </div>
+                  {status.info.msg && status.info.error && (
+                    <div className="text-red-500 text-[13px] font-medium transition-all">
+                      {status.info.msg}
+                    </div>
+                  )}
 
-                <div className="mt-[10px]">
-                  <button 
-                    suppressHydrationWarning
-                    type="submit" 
-                    className="w-full md:w-auto text-center justify-center border-2 border-[var(--gold)] bg-transparent text-[var(--black)] hover:bg-[var(--gold)] hover:text-white transition-all duration-300 px-[40px] py-[14px] rounded-full uppercase tracking-[0.25em] text-[11px] font-semibold cursor-pointer shadow-sm hover:shadow-md"
-                  >
-                    Submit Inquiry
-                  </button>
-                </div>
-              </form>
+                  <div className="mt-[10px]">
+                    <button 
+                      suppressHydrationWarning
+                      type="submit" 
+                      disabled={status.submitting}
+                      className={`w-full md:w-auto text-center justify-center border-2 border-[var(--gold)] bg-transparent text-[var(--black)] hover:bg-[var(--gold)] hover:text-white transition-all duration-300 px-[40px] py-[14px] rounded-full uppercase tracking-[0.25em] text-[11px] font-semibold cursor-pointer shadow-sm hover:shadow-md ${
+                        status.submitting ? 'opacity-50 cursor-not-allowed' : ''
+                      }`}
+                    >
+                      {status.submitting ? 'Sending...' : 'Submit Inquiry'}
+                    </button>
+                  </div>
+                </form>
+              )}
             </div>
           </div>
         </div>
