@@ -97,14 +97,14 @@ export default function EducationalFilmsServices() {
       {/* ─── VIDEO GRID ─── */}
       <section className="py-[100px] bg-[var(--darker)] border-t border-[rgba(10,10,10,0.06)] px-[5%] md:px-[8%]">
         <div className="max-w-[1400px] mx-auto">
-          <div className="mb-[60px] reveal">
+          <div className="max-w-[800px] mx-auto text-center mb-[60px] reveal flex flex-col items-center">
             <span className="text-[9px] tracking-[0.2em] uppercase text-[var(--gold)] font-bold mb-[12px] flex items-center gap-[8px]">
               <Film className="w-[12px] h-[12px]" /> CAMPUS FILMING
             </span>
             <h2 className="font-serif text-[clamp(28px,3.5vw,44px)] font-light text-[var(--light)] mb-[16px]">
               Featured School Films
             </h2>
-            <p className="text-[14.5px] leading-[1.8] text-[var(--muted)] font-light max-w-[700px]">
+            <p className="text-[14.5px] leading-[1.8] text-[var(--muted)] font-light">
               School showcase videos that bring campus culture, state-of-the-art labs, and interactive classrooms to life.
             </p>
           </div>

@@ -96,7 +96,7 @@ export default function HeadshotsServices() {
             Mobile Studio Setup & Posing Guidance
           </h2>
           <p className="text-[14.5px] leading-[1.8] text-[var(--muted)] font-light max-w-[750px] mx-auto mb-[20px]">
-            <strong className="text-[var(--light)] font-semibold">Hook:</strong> First impressions aren't made in person anymore — they're made in pixels. Make yours count.<br />
+            <span className="block text-[16px] text-[var(--gold)] italic font-medium mb-[12px]">First impressions aren't made in person anymore — they're made in pixels. Make yours count.</span>
             We offer custom studio setup at your corporate office, ensuring a seamless, consistent lighting look across all your team members without disrupting your workday. We guide each individual through posing and expression to deliver headshots that look commanding yet approachable.
           </p>
         </div>

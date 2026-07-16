@@ -129,15 +129,15 @@ export default function EventServices() {
       {/* ─── OUR SPECIALITY / EVENT FILMS ─── */}
       <section className="py-[100px] bg-[var(--darker)] border-t border-[rgba(10,10,10,0.06)] px-[5%] md:px-[8%]">
         <div className="max-w-[1400px] mx-auto">
-          <div className="mb-[60px] reveal">
+          <div className="max-w-[800px] mx-auto text-center mb-[60px] reveal flex flex-col items-center">
             <span className="text-[9px] tracking-[0.2em] uppercase text-[var(--gold)] font-bold mb-[12px] flex items-center gap-[8px]">
               <Film className="w-[12px] h-[12px]" /> OUR SPECIALITY
             </span>
             <h2 className="font-serif text-[clamp(28px,3.5vw,44px)] font-light text-[var(--light)] mb-[16px]">
               Event Film
             </h2>
-            <p className="text-[14.5px] leading-[1.8] text-[var(--muted)] font-light max-w-[700px] mb-[20px]">
-              <strong className="text-[var(--light)] font-semibold">Hook:</strong> From "Lights, Camera" to "It's Live" — in under 2 hours.<br />
+            <p className="text-[14.5px] leading-[1.8] text-[var(--muted)] font-light mb-[20px]">
+              <span className="block text-[16px] text-[var(--gold)] italic font-medium mb-[12px]">From "Lights, Camera" to "It's Live" — in under 2 hours.</span>
               Your event deserves more than a highlight reel days later — it deserves buzz while it's still happening. Our on-spot editing team turns raw footage into a polished teaser or promo film in just two hours, without cutting corners. The secret? We script and design the graphics before the event even starts, so when the moment happens, we're ready to ship it.
             </p>
             <Link href="/portfolio" className="text-[10px] tracking-[0.2em] uppercase font-bold text-[var(--gold)] hover:text-[var(--light)] transition-colors duration-300 flex items-center gap-[8px] cursor-none">
@@ -186,15 +186,15 @@ export default function EventServices() {
       {/* ─── LIVESTREAMING SUB-SECTION ─── */}
       <section className="py-[100px] border-t border-[rgba(10,10,10,0.06)] px-[5%] md:px-[8%]">
         <div className="max-w-[1400px] mx-auto">
-          <div className="mb-[60px] reveal">
+          <div className="max-w-[800px] mx-auto text-center mb-[60px] reveal flex flex-col items-center">
             <span className="text-[9px] tracking-[0.2em] uppercase text-[var(--gold)] font-bold mb-[12px] flex items-center gap-[8px]">
               <Globe className="w-[12px] h-[12px]" /> OUR SPECIALITY
             </span>
             <h2 className="font-serif text-[clamp(28px,3.5vw,44px)] font-light text-[var(--light)] mb-[16px]">
               Livestreaming
             </h2>
-            <p className="text-[14.5px] leading-[1.8] text-[var(--muted)] font-light max-w-[700px] mb-[20px]">
-              <strong className="text-[var(--light)] font-semibold">Hook:</strong> Zero buffering. Zero excuses. Just seamless, uninterrupted broadcast — anywhere.<br />
+            <p className="text-[14.5px] leading-[1.8] text-[var(--muted)] font-light">
+              <span className="block text-[16px] text-[var(--gold)] italic font-medium mb-[12px]">Zero buffering. Zero excuses. Just seamless, uninterrupted broadcast — anywhere.</span>
               Our livestreaming setup isn't off-the-shelf; it's engineered for reliability. We run a custom bonding router, imported from China, that fuses the internet speeds of seven dongles into one rock-solid connection. Pair that with our ATEM Blackmagic 4K production mixer and wireless transmitters, and you get broadcast-grade streaming that never drops the ball even when the Wi-Fi does.
             </p>
           </div>

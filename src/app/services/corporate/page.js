@@ -112,15 +112,15 @@ export default function CorporateServices() {
       {/* ─── OUR SPECIALITY / CORPORATE FILMS ─── */}
       <section className="py-[100px] bg-[var(--darker)] border-t border-[rgba(10,10,10,0.06)] px-[5%] md:px-[8%]">
         <div className="max-w-[1400px] mx-auto">
-          <div className="mb-[60px] reveal">
+          <div className="max-w-[800px] mx-auto text-center mb-[60px] reveal flex flex-col items-center">
             <span className="text-[9px] tracking-[0.2em] uppercase text-[var(--gold)] font-bold mb-[12px] flex items-center gap-[8px]">
               <Film className="w-[12px] h-[12px]" /> OUR SPECIALITY
             </span>
             <h2 className="font-serif text-[clamp(28px,3.5vw,44px)] font-light text-[var(--light)] mb-[16px]">
               Corporate Film
             </h2>
-            <p className="text-[14.5px] leading-[1.8] text-[var(--muted)] font-light max-w-[700px] mb-[20px]">
-              <strong className="text-[var(--light)] font-semibold">Hook:</strong> Culture. Values. Mission. In 3 minutes, they'll feel all of it.<br />
+            <p className="text-[14.5px] leading-[1.8] text-[var(--muted)] font-light mb-[20px]">
+              <span className="block text-[16px] text-[var(--gold)] italic font-medium mb-[12px]">Culture. Values. Mission. In 3 minutes, they'll feel all of it.</span>
               We don't make corporate videos — we make visual narratives. Every film we craft is built to humanize your organization, spotlight what makes your culture different, and build a genuine emotional bridge with the people who matter most: your employees, your investors, your customers.
             </p>
             <Link href="/portfolio" className="text-[10px] tracking-[0.2em] uppercase font-bold text-[var(--gold)] hover:text-[var(--light)] transition-colors duration-300 flex items-center gap-[8px] cursor-none">
