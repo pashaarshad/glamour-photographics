@@ -90,7 +90,7 @@ export default function StudioServices() {
         {/* Big Centered Graphic */}
         <div className="max-w-[1000px] mx-auto rounded-sm overflow-hidden border border-[rgba(10,10,10,0.06)] shadow-md bg-white/40 backdrop-blur-[1px] p-[16px] group">
           <img 
-            src="/images/passport_studio.png" 
+            src="/images/passport.jpg" 
             alt="Types of Passport and Visa Photos" 
             className="w-full h-auto object-contain transition-transform duration-[1200ms] group-hover:scale-[1.01]" 
           />
@@ -138,7 +138,7 @@ export default function StudioServices() {
           {/* Image Column */}
           <div className="w-full lg:w-1/2 rounded-sm overflow-hidden border border-[rgba(10,10,10,0.06)] shadow-md bg-white/40 backdrop-blur-[1px] p-[12px] group">
             <img 
-              src="/images/headshot_studio.png" 
+              src="/images/studio-shoot.jpg" 
               alt="Studio Headshots Portfolio" 
               className="w-full h-auto object-cover transition-transform duration-[1200ms] group-hover:scale-102" 
             />
@@ -185,13 +185,22 @@ export default function StudioServices() {
             </div>
           </div>
 
-          {/* Image Column */}
-          <div className="w-full lg:w-1/2 rounded-sm overflow-hidden border border-[rgba(10,10,10,0.06)] shadow-md bg-white/40 backdrop-blur-[1px] p-[12px] group">
-            <img 
-              src="/images/photo_restoration.png" 
-              alt="Photo Restoration Before After" 
-              className="w-full h-auto object-cover transition-transform duration-[1200ms] group-hover:scale-102" 
-            />
+          {/* Image Column (Stacked Restoration Examples) */}
+          <div className="w-full lg:w-1/2 flex flex-col gap-[24px]">
+            <div className="rounded-sm overflow-hidden border border-[rgba(10,10,10,0.06)] shadow-md bg-white/40 backdrop-blur-[1px] p-[12px] group">
+              <img 
+                src="/images/Damaged-Photo-Restoration-and-smudge-painting-in-photoshop-1.jpg" 
+                alt="Photo Restoration Example 1" 
+                className="w-full h-auto object-cover transition-transform duration-[1200ms] group-hover:scale-102" 
+              />
+            </div>
+            <div className="rounded-sm overflow-hidden border border-[rgba(10,10,10,0.06)] shadow-md bg-white/40 backdrop-blur-[1px] p-[12px] group">
+              <img 
+                src="/images/Damaged-Photo-Restoration-and-smudge-painting-in-photoshop.jpg" 
+                alt="Photo Restoration Example 2" 
+                className="w-full h-auto object-cover transition-transform duration-[1200ms] group-hover:scale-102" 
+              />
+            </div>
           </div>
 
         </div>
@@ -214,7 +223,7 @@ export default function StudioServices() {
         {/* Centered Image */}
         <div className="max-w-[1000px] mx-auto rounded-sm overflow-hidden border border-[rgba(10,10,10,0.06)] shadow-md bg-white/40 backdrop-blur-[1px] p-[16px] mb-[40px] group">
           <img 
-            src="/images/album_design.png" 
+            src="/images/album-services.jpg" 
             alt="Custom Premium Album Design Spread" 
             className="w-full h-auto object-contain transition-transform duration-[1200ms] group-hover:scale-[1.01]" 
           />
