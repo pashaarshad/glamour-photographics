@@ -44,6 +44,116 @@ export default function Home() {
   const [expandedClients, setExpandedClients] = useState(false);
   const [activeCert, setActiveCert] = useState(null);
 
+  const [homeFormData, setHomeFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: ''
+  });
+
+  const [homeStatus, setHomeStatus] = useState({
+    submitted: false,
+    submitting: false,
+    info: { error: false, msg: null }
+  });
+
+  const handleHomeInputChange = (e) => {
+    const { name, value } = e.target;
+    setHomeFormData((prev) => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleHomeFormSubmit = async (e) => {
+    e.preventDefault();
+    
+    setHomeStatus({
+      submitted: false,
+      submitting: true,
+      info: { error: false, msg: null }
+    });
+
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "YOUR_ACCESS_KEY_HERE";
+
+    const getHomeWhatsAppLink = (data) => {
+      const encodedMsg = encodeURIComponent(
+        `Hello Glamour Photographics,\n\nI just submitted a contact inquiry from your Home page with the following details:\n\n*Name:* ${data.name}\n*Email:* ${data.email}\n*Phone:* ${data.phone || 'N/A'}\n*Message:* ${data.message}`
+      );
+      return `https://wa.me/918971168868?text=${encodedMsg}`;
+    };
+
+    if (accessKey === "YOUR_ACCESS_KEY_HERE") {
+      setTimeout(() => {
+        const waLink = getHomeWhatsAppLink(homeFormData);
+        window.location.href = waLink;
+        setHomeStatus({
+          submitted: true,
+          submitting: false,
+          info: { error: false, msg: "Demo Mode: Redirecting to WhatsApp..." }
+        });
+      }, 1000);
+      return;
+    }
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          name: homeFormData.name,
+          email: homeFormData.email,
+          phone: homeFormData.phone,
+          message: homeFormData.message,
+          from_name: "Glamour Photographics Website (Home Form)",
+          subject: `New Lead from Home Page - ${homeFormData.name}`
+        })
+      });
+
+      const result = await response.json();
+
+      if (response.status === 200 && result.success) {
+        const waLink = getHomeWhatsAppLink(homeFormData);
+        window.location.href = waLink;
+        setHomeStatus({
+          submitted: true,
+          submitting: false,
+          info: { error: false, msg: "Redirecting to WhatsApp..." }
+        });
+      } else {
+        setHomeStatus({
+          submitted: false,
+          submitting: false,
+          info: { error: true, msg: result.message || "Something went wrong. Please try again." }
+        });
+      }
+    } catch (error) {
+      setHomeStatus({
+        submitted: false,
+        submitting: false,
+        info: { error: true, msg: "Failed to send message. Please check your internet connection." }
+      });
+    }
+  };
+
+  const resetHomeForm = () => {
+    setHomeFormData({
+      name: '',
+      email: '',
+      phone: '',
+      message: ''
+    });
+    setHomeStatus({
+      submitted: false,
+      submitting: false,
+      info: { error: false, msg: null }
+    });
+  };
+
   useEffect(() => {
     setShowAllHomeVideos(false);
   }, [activeVideoTab]);
@@ -1439,60 +1549,113 @@ export default function Home() {
 
         {/* Right Column: Form */}
         <div className="lg:col-span-7 reveal opacity-0 anim-fade-up delay-100">
-          <div className="bg-[rgba(10,10,10,0.02)] border border-[rgba(10,10,10,0.05)] rounded-lg p-[40px] md:p-[50px] shadow-sm">
+          <div className="bg-[rgba(10,10,10,0.02)] border border-[rgba(10,10,10,0.05)] rounded-lg p-[24px] sm:p-[40px] md:p-[50px] shadow-sm">
             <h3 className="font-serif text-[28px] text-[var(--light)] mb-[30px] font-light">Send us a message</h3>
             
-            <form className="flex flex-col gap-[24px]" onSubmit={(e) => e.preventDefault()}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-[24px]">
+            {homeStatus.submitted ? (
+              <div className="flex flex-col items-center text-center py-[20px] reveal">
+                <div className="w-[64px] h-[64px] rounded-full bg-[rgba(212,175,55,0.1)] flex items-center justify-center text-[var(--gold)] mb-[24px]">
+                  <svg className="w-[32px] h-[32px]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                  </svg>
+                </div>
+                <h4 className="font-serif text-[24px] text-[var(--light)] mb-[12px]">Inquiry Received!</h4>
+                <p className="text-[14px] text-[var(--muted)] leading-relaxed max-w-[340px] mb-[32px]">
+                  {homeStatus.info.msg || "Your message has been sent. Redirecting to WhatsApp to start a conversation..."}
+                </p>
+                <div className="flex flex-col sm:flex-row gap-[16px] w-full justify-center">
+                  <a 
+                    href={`https://wa.me/918971168868?text=${encodeURIComponent(
+                      `Hello Glamour Photographics,\n\nI just submitted a contact inquiry from your Home page with the following details:\n\n*Name:* ${homeFormData.name}\n*Email:* ${homeFormData.email}\n*Phone:* ${homeFormData.phone || 'N/A'}\n*Message:* ${homeFormData.message}`
+                    )}`}
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-[10px] bg-[#25D366] text-white text-[11px] uppercase tracking-[0.2em] font-bold py-[16px] px-[28px] hover:bg-[#20ba59] transition-all duration-300 rounded-full shadow-sm"
+                  >
+                    Open WhatsApp Manually
+                  </a>
+                  <button 
+                    onClick={resetHomeForm}
+                    className="inline-flex items-center justify-center border-2 border-[var(--gold)] bg-transparent text-[var(--light)] hover:bg-[var(--gold)] hover:text-white transition-all duration-300 text-[11px] uppercase tracking-[0.2em] font-bold py-[14px] px-[28px] rounded-full"
+                  >
+                    Send Another
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <form onSubmit={handleHomeFormSubmit} className="flex flex-col gap-[24px]">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-[24px]">
+                  <div className="flex flex-col gap-[8px]">
+                    <label className="text-[10px] tracking-[0.25em] uppercase text-[var(--light)] font-semibold">Your Name *</label>
+                    <input 
+                      suppressHydrationWarning
+                      type="text" 
+                      name="name"
+                      value={homeFormData.name}
+                      onChange={handleHomeInputChange}
+                      className="bg-white border border-[rgba(10,10,10,0.08)] focus:border-[var(--gold)] focus:ring-1 focus:ring-[var(--gold)] rounded-md outline-none px-[16px] py-[12px] text-[14px] text-[var(--light)] transition-all duration-300 font-light" 
+                      required 
+                    />
+                  </div>
+                  <div className="flex flex-col gap-[8px]">
+                    <label className="text-[10px] tracking-[0.25em] uppercase text-[var(--light)] font-semibold">Your Email *</label>
+                    <input 
+                      suppressHydrationWarning
+                      type="email" 
+                      name="email"
+                      value={homeFormData.email}
+                      onChange={handleHomeInputChange}
+                      className="bg-white border border-[rgba(10,10,10,0.08)] focus:border-[var(--gold)] focus:ring-1 focus:ring-[var(--gold)] rounded-md outline-none px-[16px] py-[12px] text-[14px] text-[var(--light)] transition-all duration-300 font-light" 
+                      required
+                    />
+                  </div>
+                </div>
+
                 <div className="flex flex-col gap-[8px]">
-                  <label className="text-[10px] tracking-[0.25em] uppercase text-[var(--light)] font-semibold">Your Name *</label>
+                  <label className="text-[10px] tracking-[0.25em] uppercase text-[var(--light)] font-semibold">Phone Number</label>
                   <input 
                     suppressHydrationWarning
-                    type="text" 
+                    type="tel" 
+                    name="phone"
+                    value={homeFormData.phone}
+                    onChange={handleHomeInputChange}
                     className="bg-white border border-[rgba(10,10,10,0.08)] focus:border-[var(--gold)] focus:ring-1 focus:ring-[var(--gold)] rounded-md outline-none px-[16px] py-[12px] text-[14px] text-[var(--light)] transition-all duration-300 font-light" 
-                    required 
                   />
                 </div>
+
                 <div className="flex flex-col gap-[8px]">
-                  <label className="text-[10px] tracking-[0.25em] uppercase text-[var(--light)] font-semibold">Your Email *</label>
-                  <input 
+                  <label className="text-[10px] tracking-[0.25em] uppercase text-[var(--light)] font-semibold">Your Message *</label>
+                  <textarea 
                     suppressHydrationWarning
-                    type="email" 
-                    className="bg-white border border-[rgba(10,10,10,0.08)] focus:border-[var(--gold)] focus:ring-1 focus:ring-[var(--gold)] rounded-md outline-none px-[16px] py-[12px] text-[14px] text-[var(--light)] transition-all duration-300 font-light" 
+                    rows="4" 
+                    name="message"
+                    value={homeFormData.message}
+                    onChange={handleHomeInputChange}
+                    className="bg-white border border-[rgba(10,10,10,0.08)] focus:border-[var(--gold)] focus:ring-1 focus:ring-[var(--gold)] rounded-md outline-none px-[16px] py-[12px] text-[14px] text-[var(--light)] transition-all duration-300 resize-none font-light" 
                     required
-                  />
+                  ></textarea>
                 </div>
-              </div>
 
-              <div className="flex flex-col gap-[8px]">
-                <label className="text-[10px] tracking-[0.25em] uppercase text-[var(--light)] font-semibold">Phone Number</label>
-                <input 
-                  suppressHydrationWarning
-                  type="tel" 
-                  className="bg-white border border-[rgba(10,10,10,0.08)] focus:border-[var(--gold)] focus:ring-1 focus:ring-[var(--gold)] rounded-md outline-none px-[16px] py-[12px] text-[14px] text-[var(--light)] transition-all duration-300 font-light" 
-                />
-              </div>
+                {homeStatus.info.msg && homeStatus.info.error && (
+                  <div className="text-red-500 text-[13px] font-medium transition-all">
+                    {homeStatus.info.msg}
+                  </div>
+                )}
 
-              <div className="flex flex-col gap-[8px]">
-                <label className="text-[10px] tracking-[0.25em] uppercase text-[var(--light)] font-semibold">Your Message *</label>
-                <textarea 
-                  suppressHydrationWarning
-                  rows="4" 
-                  className="bg-white border border-[rgba(10,10,10,0.08)] focus:border-[var(--gold)] focus:ring-1 focus:ring-[var(--gold)] rounded-md outline-none px-[16px] py-[12px] text-[14px] text-[var(--light)] transition-all duration-300 resize-none font-light" 
-                  required
-                ></textarea>
-              </div>
-
-              <div className="mt-[10px]">
-                <button 
-                  suppressHydrationWarning
-                  type="submit" 
-                  className="w-full md:w-auto text-center justify-center border-2 border-[var(--gold)] bg-transparent text-[var(--light)] hover:bg-[var(--gold)] hover:text-white transition-all duration-300 px-[40px] py-[14px] rounded-full uppercase tracking-[0.25em] text-[11px] font-semibold cursor-pointer shadow-sm hover:shadow-md"
-                >
-                  Send Message
-                </button>
-              </div>
-            </form>
+                <div className="mt-[10px]">
+                  <button 
+                    suppressHydrationWarning
+                    type="submit" 
+                    disabled={homeStatus.submitting}
+                    className={`w-full md:w-auto text-center justify-center border-2 border-[var(--gold)] bg-transparent text-[var(--light)] hover:bg-[var(--gold)] hover:text-white transition-all duration-300 px-[40px] py-[14px] rounded-full uppercase tracking-[0.25em] text-[11px] font-semibold cursor-pointer shadow-sm hover:shadow-md ${
+                      homeStatus.submitting ? 'opacity-50 cursor-not-allowed' : ''
+                    }`}
+                  >
+                    {homeStatus.submitting ? 'Sending...' : 'Send Message'}
+                  </button>
+                </div>
+              </form>
+            )}
           </div>
         </div>
       </section>
