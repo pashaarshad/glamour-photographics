@@ -1,9 +1,13 @@
 'use client';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
 import { Play, X, Camera, Video, Calendar, Aperture, Building2, Film } from 'lucide-react';
 
 export default function Services() {
+  // Disabled as per request. Redirecting to /portfolio
+  redirect('/portfolio');
+
   const [showreelOpen, setShowreelOpen] = useState(false);
 
   useEffect(() => {
