@@ -1,11 +1,120 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
 import { X } from 'lucide-react';
 
 import 'swiper/css';
+
+/* ─── Scroll-Driven Sticky Gallery ─── */
+function ScrollGallery({ images }) {
+  const wrapperRef = useRef(null);
+  const [activeIdx, setActiveIdx] = useState(0);
+  const [prevIdx, setPrevIdx] = useState(null);
+  const [animDir, setAnimDir] = useState('enter'); // 'enter' | 'exit'
+
+  useEffect(() => {
+    const onScroll = () => {
+      const el = wrapperRef.current;
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      const totalScrollBudget = el.offsetHeight - window.innerHeight;
+      // How far we've scrolled into the sticky zone (clamped 0..1)
+      const progress = Math.min(Math.max(-rect.top / totalScrollBudget, 0), 1);
+      // Map progress to image index
+      const newIdx = Math.min(
+        Math.floor(progress * images.length),
+        images.length - 1
+      );
+      setActiveIdx(prev => {
+        if (newIdx !== prev) {
+          setPrevIdx(prev);
+          setAnimDir('enter');
+        }
+        return newIdx;
+      });
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [images.length]);
+
+  return (
+    <div
+      ref={wrapperRef}
+      style={{ height: `${images.length * 100}vh` }}
+      className="relative w-full"
+    >
+      {/* Sticky viewport panel */}
+      <div className="sticky top-0 left-0 w-full h-screen overflow-hidden bg-[var(--dark)] flex items-center justify-center">
+        {/* Counter */}
+        <div className="absolute top-[32px] right-[5%] z-20 flex items-center gap-[10px]">
+          {images.map((_, i) => (
+            <div
+              key={i}
+              className="transition-all duration-500"
+              style={{
+                width: i === activeIdx ? '32px' : '8px',
+                height: '2px',
+                background: i === activeIdx ? 'var(--gold)' : 'rgba(255,255,255,0.3)',
+                borderRadius: '2px'
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Image stack */}
+        <div className="relative w-full h-full px-[4%] md:px-[6%] py-[48px] flex items-center">
+          {images.map((src, i) => {
+            const isActive = i === activeIdx;
+            const isPrev = i === prevIdx;
+            return (
+              <div
+                key={i}
+                className="absolute inset-x-[4%] md:inset-x-[6%] inset-y-[48px] rounded-[20px] md:rounded-[32px] overflow-hidden border border-[rgba(255,255,255,0.07)] shadow-2xl"
+                style={{
+                  transform: isActive
+                    ? 'translateX(0%)'
+                    : isPrev
+                    ? 'translateX(-105%)'
+                    : 'translateX(105%)',
+                  opacity: isActive ? 1 : isPrev ? 0 : 0,
+                  transition: 'transform 0.75s cubic-bezier(0.77,0,0.18,1), opacity 0.5s ease',
+                  zIndex: isActive ? 10 : 5,
+                  pointerEvents: isActive ? 'auto' : 'none'
+                }}
+              >
+                <img
+                  src={src}
+                  alt={`Gallery ${i + 1}`}
+                  className="w-full h-full object-cover"
+                />
+                {/* Subtle gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+                {/* Image counter badge */}
+                <div className="absolute bottom-[28px] left-[32px] text-white z-10">
+                  <span className="font-serif italic text-[var(--gold)] text-[13px] tracking-widest">
+                    {String(i + 1).padStart(2, '0')} / {String(images.length).padStart(2, '0')}
+                  </span>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Scroll hint — fades out after first image */}
+        <div
+          className="absolute bottom-[32px] right-[5%] flex items-center gap-[10px] transition-opacity duration-500 pointer-events-none"
+          style={{ opacity: activeIdx === 0 ? 1 : 0 }}
+        >
+          <span className="text-[10px] tracking-[0.25em] uppercase text-white/40">Scroll</span>
+          <div className="w-[32px] h-[1px] bg-white/30" />
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function About() {
   const [activeCert, setActiveCert] = useState(null);
@@ -76,42 +185,14 @@ export default function About() {
         </div>
       </section>
 
-      {/* ─── FULL-WIDTH HORIZONTAL GALLERY STRIP ─── */}
-      <section className="w-full bg-[var(--dark)] py-[60px] overflow-hidden reveal opacity-0 anim-fade-up">
-        <Swiper
-          modules={[Autoplay]}
-          spaceBetween={0}
-          slidesPerView={1}
-          centeredSlides={true}
-          loop={true}
-          speed={1000}
-          autoplay={{
-            delay: 4000,
-            disableOnInteraction: false,
-            pauseOnHover: true
-          }}
-          className="w-full"
-        >
-          {[
-            "/images/our_portfolio/11.jpg",
-            "/images/our_portfolio/22.jpg",
-            "/images/our_portfolio/33.jpg"
-          ].map((src, idx) => (
-            <SwiperSlide key={idx}>
-              <div className="w-full px-[4%] md:px-[6%]">
-                <div className="relative aspect-[16/9] w-full rounded-[16px] md:rounded-[32px] overflow-hidden border border-[rgba(10,10,10,0.06)] bg-[var(--darker)] group shadow-lg">
-                  <img 
-                    src={src} 
-                    alt={`Gallery Image ${idx + 1}`} 
-                    className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-105" 
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[rgba(0,0,0,0.35)] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                </div>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </section>
+      {/* ─── FULL-WIDTH HORIZONTAL GALLERY STRIP (Scroll-Driven Sticky) ─── */}
+      <ScrollGallery
+        images={[
+          "/images/our_portfolio/11.jpg",
+          "/images/our_portfolio/22.jpg",
+          "/images/our_portfolio/33.jpg"
+        ]}
+      />
 
       {/* ─── FOUNDER'S NOTE ─── */}
       <section className="px-[4%] md:px-[5%] max-w-[1600px] mx-auto py-[100px] border-t border-[rgba(10,10,10,0.06)] mb-[40px]">
