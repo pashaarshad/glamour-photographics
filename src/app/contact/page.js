@@ -135,18 +135,18 @@ export default function Contact() {
   };
 
   return (
-    <main className="w-full bg-[var(--ivory)] min-h-screen pt-[160px] pb-[100px]">
-      <section className="px-[60px] max-w-[1400px] mx-auto">
-        <div className="reveal mb-[80px]">
+    <main className="w-full bg-[var(--ivory)] min-h-screen pt-[120px] md:pt-[160px] pb-[100px]">
+      <section className="px-[20px] md:px-[60px] max-w-[1400px] mx-auto">
+        <div className="reveal mb-[40px] md:mb-[80px]">
           <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] mb-[16px] block">
             Let's Talk
           </span>
-          <h1 className="font-serif text-[clamp(48px,6vw,84px)] font-light leading-[1] tracking-[-0.02em] text-[var(--black)]">
+          <h1 className="font-serif text-[clamp(36px,6vw,84px)] font-light leading-[1] tracking-[-0.02em] text-[var(--black)]">
             Start Your <span className="italic text-[var(--gold)]">Project.</span>
           </h1>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-[100px]">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-[50px] lg:gap-[100px]">
           {/* Contact Info */}
           <div className="stagger-children flex flex-col gap-[40px]">
             {/* Headquarters */}
@@ -284,7 +284,7 @@ export default function Contact() {
 
           {/* Contact Form */}
           <div className="reveal">
-            <div className="bg-[rgba(10,10,10,0.02)] border border-[rgba(10,10,10,0.05)] rounded-lg p-[40px] md:p-[50px] shadow-sm">
+            <div className="bg-[rgba(10,10,10,0.02)] border border-[rgba(10,10,10,0.05)] rounded-lg p-[24px] sm:p-[40px] md:p-[50px] shadow-sm">
               <h3 className="font-serif text-[28px] text-[var(--black)] mb-[30px] font-light">Send us a message</h3>
               
               {status.submitted ? (
