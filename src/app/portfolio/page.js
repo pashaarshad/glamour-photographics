@@ -755,7 +755,7 @@ export default function PortfolioPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-[32px] max-w-[1400px] mx-auto reveal opacity-0 anim-fade-up">
             {filteredVideos.map((video, idx) => (
               <div 
-                key={video.id} 
+                key={`${video.id}-${idx}`} 
                 onClick={() => setActiveVideoId(video.id)}
                 className="group relative aspect-video rounded-[16px] overflow-hidden border border-[rgba(10,10,10,0.06)] shadow-lg bg-[var(--darker)] cursor-none"
               >
