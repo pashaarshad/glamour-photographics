@@ -242,7 +242,7 @@ export default function StudioServices() {
 
       {/* ─── LOCATION & CALL TO ACTION (GLASSY FOOTER SECTION) ─── */}
       <section className="py-[120px] px-[5%] md:px-[8%] border-t border-[rgba(10,10,10,0.06)] text-center relative overflow-hidden bg-[rgba(250,248,244,0.75)] backdrop-blur-[2px]">
-        <div className="max-w-[700px] mx-auto reveal relative z-10">
+        <div className="max-w-[700px] mx-auto reveal relative z-10 mb-[60px]">
           <span className="flex items-center justify-center gap-[8px] text-[10px] tracking-[0.3em] uppercase text-[var(--gold)] mb-[24px] font-bold">
             <MapPin className="w-[14px] h-[14px] text-[var(--gold)]" /> Ashok Nagar, Bengaluru
           </span>
@@ -261,6 +261,18 @@ export default function StudioServices() {
           >
             Find Us <ChevronRight className="w-[12px] h-[12px]" />
           </a>
+        </div>
+
+        {/* Google Map Embed */}
+        <div className="max-w-[1000px] mx-auto reveal h-[350px] md:h-[450px] border border-[rgba(10,10,10,0.08)] rounded-sm overflow-hidden shadow-md relative z-10">
+          <iframe
+            title="Glamour Photographics Google Map Location"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.0253457199147!2d77.6044363!3d12.9680995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae167ff3708a43%3A0xe5b95fbe84a5ef0b!2sGlamour%20Photographics!5e0!3m2!1sen!2sin!4v1783568868000"
+            className="w-full h-full border-0"
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
         </div>
       </section>
 
