@@ -31,9 +31,9 @@ export default function Navbar() {
           {[
             { label: 'Home', href: '/' },
             { label: 'About Us', href: '/about' },
-            { label: 'Studio Services', href: '/studio-services' },
             { label: 'Portfolio', href: '/portfolio' },
             { label: 'Clients', href: '/clients' },
+            { label: 'Studio Services', href: '/studio-services' },
             { label: 'Contact', href: '/contact' }
           ].map((item) => (
             <li key={item.label}>
@@ -68,9 +68,9 @@ export default function Navbar() {
         {[
           { label: 'Home', href: '/' },
           { label: 'About Us', href: '/about' },
-          { label: 'Studio Services', href: '/studio-services' },
           { label: 'Portfolio', href: '/portfolio' },
           { label: 'Clients', href: '/clients' },
+          { label: 'Studio Services', href: '/studio-services' },
           { label: 'Contact', href: '/contact' }
         ].map((item, idx) => (
           <Link 
