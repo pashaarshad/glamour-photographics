@@ -785,24 +785,28 @@ export default function Home() {
           <div className="w-[60px] h-[2px] bg-[var(--gold)] mx-auto"></div>
         </div>
 
-        <div className="max-w-[1000px] mx-auto bg-white border border-[rgba(10,10,10,0.06)] rounded-sm shadow-[0_8px_30px_rgba(0,0,0,0.02)] reveal opacity-0 anim-fade-up delay-100">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-0">
+        <div className="max-w-[1100px] mx-auto bg-white border border-[var(--gold)] border-opacity-70 rounded-[24px] p-[40px] md:p-[60px] py-[30px] md:py-[50px] shadow-[0_12px_40px_rgba(0,0,0,0.03)] reveal opacity-0 anim-fade-up delay-100">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-x-[40px] gap-y-[40px] md:gap-y-[60px] items-center justify-items-center">
             {[
-              { name: "CII", slug: "cii", logo: "/logo-clients/cii.jpg" },
-              { name: "CGI", slug: "cgi", logo: "/logo-clients/CGI_Inc.-Logo.wine.png" },
-              { name: "Toyota", slug: "toyota" },
-              { name: "RTX", slug: "rtx", logo: "/logo-clients/RTX.webp" },
-              { name: "TCS", slug: "tcs", logo: "/logo-clients/TCS_NewLogo_Final_RGB.png" },
-              { name: "TATA ELXSI", slug: "tata-elxsi", logo: "/logo-clients/tata-elxsi-moves-focus-away-from-driverless-tech.avif" },
-              { name: "Presidency University", slug: "presidency", logo: "/logo-clients/presidency-university-yelahanka-bangalore-universities-si0nhgmmkz.jpg" },
-              { name: "PAI", slug: "pai" }
+              { name: "CII", slug: "cii", logo: "/logo-clients/cii.png" },
+              { name: "CGI", slug: "cgi", logo: "/logo-clients/cgi.png" },
+              { name: "Toyota", slug: "toyota", logo: "/logo-clients/toyota.png" },
+              { name: "RTX", slug: "rtx", logo: "/logo-clients/rtx.png" },
+              { name: "TCS", slug: "tcs", logo: "/logo-clients/tcs.png" },
+              { name: "TATA ELXSI", slug: "tata-elxsi", logo: "/logo-clients/tata-elxsi.png" },
+              { name: "Presidency University", slug: "presidency", logo: "/logo-clients/presidency.png" },
+              { name: "PAI", slug: "pai", logo: "/logo-clients/pai.png" }
             ].map((client, i) => (
-              <Link href={`/clients/${client.slug}`} key={i} className="group h-[140px] border border-[rgba(10,10,10,0.06)] flex items-center justify-center p-[20px] hover:border-[var(--gold)] hover:z-10 hover:shadow-md hover:bg-[rgba(197,164,109,0.02)] transition-all cursor-none relative">
-                {client.logo ? (
-                  <img src={client.logo} alt={client.name} className="max-h-[55px] max-w-[85%] object-contain" />
-                ) : (
-                  <span className="font-serif text-[18px] font-bold text-[var(--muted)] group-hover:text-[var(--light)] transition-colors text-center">{client.name}</span>
-                )}
+              <Link 
+                href={`/clients/${client.slug}`} 
+                key={i} 
+                className="w-full flex items-center justify-center p-[10px] md:p-[20px] transition-transform duration-300 hover:scale-105 cursor-none relative"
+              >
+                <img 
+                  src={client.logo} 
+                  alt={client.name} 
+                  className="max-h-[55px] md:max-h-[70px] max-w-full object-contain filter hover:brightness-95 transition-all duration-300 pointer-events-none select-none" 
+                />
               </Link>
             ))}
           </div>
