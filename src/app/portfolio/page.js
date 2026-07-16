@@ -8,10 +8,15 @@ export default function PortfolioPage() {
   const [activeVideoTab, setActiveVideoTab] = useState('ALL VIDEOS');
   const [activeVideoId, setActiveVideoId] = useState(null);
   const [showAllImages, setShowAllImages] = useState(false);
+  const [showAllVideos, setShowAllVideos] = useState(false);
 
   useEffect(() => {
     setShowAllImages(false);
   }, [activeTab]);
+
+  useEffect(() => {
+    setShowAllVideos(false);
+  }, [activeVideoTab]);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -753,7 +758,7 @@ export default function PortfolioPage() {
 
           {/* Videos Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-[32px] max-w-[1400px] mx-auto reveal opacity-0 anim-fade-up">
-            {filteredVideos.map((video, idx) => (
+            {(showAllVideos ? filteredVideos : filteredVideos.slice(0, 4)).map((video, idx) => (
               <div 
                 key={`${video.id}-${idx}`} 
                 onClick={() => setActiveVideoId(video.id)}
@@ -795,6 +800,24 @@ export default function PortfolioPage() {
               </div>
             ))}
           </div>
+
+          {/* Show More Videos Button */}
+          {!showAllVideos && filteredVideos.length > 4 && (
+            <div className="flex justify-center mt-[48px] reveal opacity-0 anim-fade-up">
+              <button
+                suppressHydrationWarning
+                onClick={() => {
+                  setShowAllVideos(true);
+                  setTimeout(() => {
+                    window.dispatchEvent(new Event('scroll'));
+                  }, 100);
+                }}
+                className="border border-[rgba(10,10,10,0.15)] text-[var(--light)] text-[10px] tracking-[0.2em] uppercase py-[14px] px-[36px] hover:bg-[var(--light)] hover:text-[var(--dark)] transition-all duration-300 cursor-none font-bold rounded-full"
+              >
+                Show More
+              </button>
+            </div>
+          )}
         </div>
       </section>
 
