@@ -1077,23 +1077,47 @@ export default function Home() {
           <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] mb-[16px] block">Minds Behind the Lenses</span>
           <h2 className="font-serif text-[clamp(28px,4vw,48px)] font-light leading-[1.2] text-[var(--light)]">Our Team</h2>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-[30px]">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-[30px] reveal opacity-0 anim-fade-up delay-100">
           {[
-            { name: "Hameed Hussain", role: "Founder & Director", img: "/logo-clients/founder-ceo.jpg" },
-            { name: "Anzar Hussain", role: "Creative Lead", img: "/logo-clients/founder-ceo.jpg" },
-            { name: "Zia Hussain", role: "Head of Operations", img: "/logo-clients/founder-ceo.jpg" }
-          ].map((member, idx) => (
-            <div key={idx} className="group relative rounded-sm overflow-hidden bg-[var(--dark)] border border-[rgba(10,10,10,0.06)] hover:border-[var(--gold)] transition-all duration-500 cursor-none flex flex-col">
-              <div className="h-[340px] w-full overflow-hidden relative">
-                <img src={member.img} alt={member.name} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[var(--dark-panel)] via-transparent to-transparent opacity-85" />
+            { name: "Hameed Hussain", role: "Founder & Director", img: "/images/Hameed Hussain.png" },
+            { name: "Anzar Hussain", role: "Creative Lead", img: "/images/anzar_hussain.png" },
+            { name: "Zia Hussain", role: "Head of Operations", img: "/images/zia_hussain.png" }
+          ].map((member, idx) => {
+            const isPng = member.img.toLowerCase().endsWith('.png');
+            return (
+              <div 
+                key={idx} 
+                className="group relative rounded-[20px] overflow-hidden bg-[#1A1A1A] border border-[rgba(10,10,10,0.08)] transition-all duration-500 cursor-none flex flex-col h-[540px] shadow-lg"
+              >
+                {/* Image Box */}
+                <div className={`absolute inset-0 z-0 transition-colors duration-500 ${isPng ? 'group-hover:bg-[#E50914]' : ''}`}>
+                  <img 
+                    src={member.img} 
+                    alt={member.name} 
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 scale-100 group-hover:scale-105 transition-all duration-[700ms] pointer-events-none select-none" 
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-transparent z-10" />
+                </div>
+
+                {/* Top Left Quote Icon (Visible on Hover for PNG cards) */}
+                {isPng && (
+                  <div className="absolute top-[28px] left-[28px] z-20 font-serif text-[64px] text-[#FAF8F4] opacity-0 group-hover:opacity-20 leading-none select-none pointer-events-none transition-all duration-300">
+                    “
+                  </div>
+                )}
+
+                {/* Text Content at bottom */}
+                <div className="absolute bottom-0 left-0 right-0 p-[28px] pt-[60px] z-20 flex flex-col justify-end pointer-events-none">
+                  <h3 className="font-serif text-[20px] text-white font-bold leading-tight mb-[4px] tracking-wide uppercase">
+                    {member.name}
+                  </h3>
+                  <span className="text-[10px] tracking-[0.15em] text-white/70 font-semibold block uppercase">
+                    ( {member.role} )
+                  </span>
+                </div>
               </div>
-              <div className="p-[24px]">
-                <span className="text-[9px] tracking-[0.25em] uppercase text-[var(--gold)] mb-[8px] block font-medium">{member.role}</span>
-                <h3 className="font-serif text-[22px] text-[var(--light)] group-hover:text-[var(--gold)] transition-colors leading-[1.2]">{member.name}</h3>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
 
