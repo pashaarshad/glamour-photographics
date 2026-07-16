@@ -71,7 +71,7 @@ export default function StudioServices() {
       </section>
 
       {/* ─── SECTION 1: PASSPORT & VISA PHOTOS (STACKED) ─── */}
-      <section className="px-[5%] md:px-[8%] py-[80px] max-w-[1400px] mx-auto reveal mt-[40px]">
+      <section id="passport-photos" className="px-[5%] md:px-[8%] py-[80px] max-w-[1400px] mx-auto reveal mt-[40px]">
         <div className="text-center max-w-[900px] mx-auto mb-[40px]">
           <h2 className="font-serif text-[clamp(24px,3.5vw,36px)] text-[#0A0A0A] uppercase tracking-wide font-normal">
             Passport & Visa Photos for different countries
@@ -98,7 +98,7 @@ export default function StudioServices() {
       </section>
 
       {/* ─── SECTION 2: STUDIO HEAD SHOTS (SIDE-BY-SIDE) ─── */}
-      <section className="px-[5%] md:px-[8%] py-[80px] max-w-[1400px] mx-auto reveal">
+      <section id="headshots" className="px-[5%] md:px-[8%] py-[80px] max-w-[1400px] mx-auto reveal">
         <div className="flex flex-col lg:flex-row items-center gap-[60px] lg:gap-[100px]">
           
           {/* Content Column */}
@@ -148,7 +148,7 @@ export default function StudioServices() {
       </section>
 
       {/* ─── SECTION 3: PHOTO RESTORATION (SIDE-BY-SIDE ALTERNATING) ─── */}
-      <section className="px-[5%] md:px-[8%] py-[80px] max-w-[1400px] mx-auto reveal">
+      <section id="restoration" className="px-[5%] md:px-[8%] py-[80px] max-w-[1400px] mx-auto reveal">
         <div className="flex flex-col lg:flex-row-reverse items-center gap-[60px] lg:gap-[100px]">
           
           {/* Content Column */}
@@ -207,7 +207,7 @@ export default function StudioServices() {
       </section>
 
       {/* ─── SECTION 4: ALBUM DESIGN (STACKED) ─── */}
-      <section className="px-[5%] md:px-[8%] py-[80px] max-w-[1400px] mx-auto text-center reveal">
+      <section id="album-design" className="px-[5%] md:px-[8%] py-[80px] max-w-[1400px] mx-auto text-center reveal">
         <div className="max-w-[900px] mx-auto mb-[40px]">
           <h2 className="font-serif text-[clamp(24px,3.5vw,36px)] text-[#0A0A0A] uppercase tracking-wide font-normal">
             album design
@@ -232,10 +232,10 @@ export default function StudioServices() {
         {/* Large Premium Call-To-Action Button */}
         <div>
           <Link 
-            href="/portfolio" 
+            href="/contact" 
             className="inline-flex items-center justify-center gap-[10px] bg-[var(--gold)] text-white text-[11px] tracking-[0.2em] uppercase font-bold py-[18px] px-[44px] hover:bg-[var(--light)] hover:text-[var(--dark)] transition-all duration-300 cursor-none rounded-full shadow-md"
           >
-            click here for our album services
+            click here to design your first album
           </Link>
         </div>
       </section>

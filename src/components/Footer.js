@@ -95,10 +95,10 @@ export default function Footer() {
         <div className="flex flex-col gap-[16px]">
           <h4 className="font-serif text-[18px] text-[var(--gold)] mb-[8px]">Services</h4>
           <ul className="flex flex-col gap-[12px] list-none">
-            <li><Link href="#" className="text-[12px] uppercase tracking-[0.1em] text-[rgba(255,255,255,0.75)] hover:text-[var(--gold)] transition-colors">Passport Photos</Link></li>
-            <li><Link href="#" className="text-[12px] uppercase tracking-[0.1em] text-[rgba(255,255,255,0.75)] hover:text-[var(--gold)] transition-colors">Studio Headshots</Link></li>
-            <li><Link href="#" className="text-[12px] uppercase tracking-[0.1em] text-[rgba(255,255,255,0.75)] hover:text-[var(--gold)] transition-colors">Photo Restoration</Link></li>
-            <li><Link href="#" className="text-[12px] uppercase tracking-[0.1em] text-[rgba(255,255,255,0.75)] hover:text-[var(--gold)] transition-colors">Album Design</Link></li>
+            <li><Link href="/studio-services#passport-photos" className="text-[12px] uppercase tracking-[0.1em] text-[rgba(255,255,255,0.75)] hover:text-[var(--gold)] transition-colors">Passport Photos</Link></li>
+            <li><Link href="/studio-services#headshots" className="text-[12px] uppercase tracking-[0.1em] text-[rgba(255,255,255,0.75)] hover:text-[var(--gold)] transition-colors">Studio Headshots</Link></li>
+            <li><Link href="/studio-services#restoration" className="text-[12px] uppercase tracking-[0.1em] text-[rgba(255,255,255,0.75)] hover:text-[var(--gold)] transition-colors">Photo Restoration</Link></li>
+            <li><Link href="/studio-services#album-design" className="text-[12px] uppercase tracking-[0.1em] text-[rgba(255,255,255,0.75)] hover:text-[var(--gold)] transition-colors">Album Design</Link></li>
           </ul>
         </div>
 
