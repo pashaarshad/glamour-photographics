@@ -5,6 +5,7 @@ import { Play, X } from 'lucide-react';
 
 export default function PortfolioPage() {
   const [activeTab, setActiveTab] = useState('ALL');
+  const [activeVideoTab, setActiveVideoTab] = useState('ALL VIDEOS');
   const [activeVideoId, setActiveVideoId] = useState(null);
   const [showAllImages, setShowAllImages] = useState(false);
 
@@ -39,76 +40,179 @@ export default function PortfolioPage() {
       window.removeEventListener('scroll', checkReveals);
       clearTimeout(initialCheck);
     };
-  }, [activeTab]);
+  }, [activeTab, activeVideoTab]);
 
-  const videos = [
+  const videoTabs = [
+    'ALL VIDEOS',
+    'EVENT FILMS',
+    'CORPORATE FILMS',
+    'DOCUMENTARIES',
+    'SCHOOL FILMS',
+    'DIGITAL ADS'
+  ];
+
+  const portfolioVideos = [
+    // Event Films
     {
-      id: "doOSgmHHgD4",
-      client: "PRESIDENCY PU COLLEGE, YELAHANKA",
-      title: "Creating Versatile & Capable Individuals",
-      desc: "A cinematic admission teaser that captures the spirit of PSPU — built to inspire the next generation of students to walk through these doors."
+      id: "jlR54SuB_Rc",
+      category: "EVENT FILMS",
+      client: "CONFEDERATION OF INDIAN INDUSTRY",
+      title: "Event cii",
+      desc: "Capturing the scale, leadership, and innovations at the 7th Bangalore Space Expo hosted by CII."
+    },
+    {
+      id: "Soc7p3YaTN0",
+      category: "EVENT FILMS",
+      client: "ANSAAN CAPITAL",
+      title: "Ansaan Capital",
+      desc: "High-impact event coverage capturing corporate insights and networking at the Ansaan Capital Summit."
     },
     {
       id: "df1A-_FulEs",
-      client: "PRESIDENCY SCHOOL BANGALORE",
-      title: "Indian Dance — Campus Ad Shoot",
-      desc: "A vibrant showcase of culture and movement — shot on campus to highlight the school's commitment to holistic, arts-driven education."
+      category: "EVENT FILMS",
+      client: "PRESIDENCY SCHOOL",
+      title: "Campus Cultural Showcase",
+      desc: "Vibrant and colorful event highlights celebrating culture and artistic expressions."
     },
+    {
+      id: "doOSgmHHgD4",
+      category: "EVENT FILMS",
+      client: "PRESIDENCY PU COLLEGE",
+      title: "PSPU Admission Teaser",
+      desc: "Cinematic highlights and campus coverage of Presidency PU College Yelahanka."
+    },
+
+    // Corporate Films
     {
       id: "t07kSRBHPfg",
+      category: "CORPORATE FILMS",
       client: "CGI BANGALORE",
-      title: "CGI - Office Walkthrough",
-      desc: "A cinematic walkthrough showcasing CGI's state-of-the-art office infrastructure, collaborative workspace, and vibrant team environment in Bangalore."
-    },
-    {
-      id: "e5J2v1UtFW4",
-      client: "TOYOTA KIRLOSKAR MOTOR",
-      title: "Toyota Kirloskar - CSR",
-      desc: "A heartwarming documentary showing the school transformation at GHBS Hejala under Toyota Kirloskar's CSR initiative."
+      title: "CGI Office Walkthrough",
+      desc: "A cinematic walkthrough showcasing CGI's state-of-the-art office infrastructure and team environment."
     },
     {
       id: "SpD8AeoLTXw",
+      category: "CORPORATE FILMS",
       client: "TATA ELXSI",
-      title: "Tata Elxsi - UAV Journey",
-      desc: "An in-depth look at Tata Elxsi's pioneering work in AI-driven autonomous UAV design, engineering excellence, and future mobility."
+      title: "Tata Elxsi UAV Journey",
+      desc: "An in-depth look at Tata Elxsi's pioneering work in autonomous UAV engineering."
     },
     {
-      id: "jlR54SuB_Rc",
-      client: "CONFEDERATION OF INDIAN INDUSTRY",
-      title: "CII - Space Expo 2022",
-      desc: "Capturing the scale, leadership, and innovations at the 7th Bangalore Space Expo 2022 hosted by CII."
+      id: "yVtKMpRffws",
+      category: "CORPORATE FILMS",
+      client: "GE BEL",
+      title: "GE BEL Corporate Overview",
+      desc: "A showcase of engineering excellence and industrial capability at the GE BEL facility."
     },
     {
-      id: "C0hzCKpITSE",
-      client: "PAI INTERNATIONAL ELECTRONICS",
-      title: "PAI - Brand Documentary",
-      desc: "A compelling brand documentary outlining the 20-year retail journey, growth, and customer-first focus of PAI International Electronics."
+      id: "CZ6tMXytyM4",
+      category: "CORPORATE FILMS",
+      client: "SMK PRAKASH",
+      title: "SMK Prakash Infrastructure",
+      desc: "A corporate film highlighting the scale, quality controls, and advanced machinery of SMK Prakash."
+    },
+
+    // School Films
+    {
+      id: "doOSgmHHgD4",
+      category: "SCHOOL FILMS",
+      client: "PRESIDENCY PU COLLEGE",
+      title: "PSPU Versatility Showcase",
+      desc: "A closer look at student capabilities and academic atmosphere at Presidency PU College Yelahanka."
+    },
+    {
+      id: "df1A-_FulEs",
+      category: "SCHOOL FILMS",
+      client: "PRESIDENCY SCHOOL BANGALORE",
+      title: "Indian Dance Campus Ad",
+      desc: "A vibrant showcase of dance and student expression filmed at Presidency School."
     },
     {
       id: "XulH5TjS50k",
+      category: "SCHOOL FILMS",
       client: "PRESIDENCY UNIVERSITY",
       title: "Presidency University Event Highlight",
-      desc: "Visual highlights of major student festivals, academic ceremonies, and campus life at Presidency University."
+      desc: "A cinematic capture of university events, student life, and gatherings."
     },
     {
       id: "cImmLgZo9-Y",
+      category: "SCHOOL FILMS",
       client: "PRESIDENCY GROUP OF SCHOOLS",
-      title: "Presidency Schools Annual Day",
-      desc: "Visual highlights capturing the creativity, talent, and celebratory performances of the Presidency annual gathering."
+      title: "Presidency Schools Annual Gathering",
+      desc: "Highlights and celebrations of the annual day at the Presidency Group of Schools."
+    },
+
+    // Digital Ads
+    {
+      id: "PX5EzmcDqBI",
+      category: "DIGITAL ADS",
+      client: "PAI INTERNATIONAL",
+      title: "Pai Mobiles & Electronics",
+      desc: "Commercial highlight showcasing Pai's extensive range of mobile phones and electronics."
+    },
+    {
+      id: "zjxFg4uskmU",
+      category: "DIGITAL ADS",
+      client: "PAI INTERNATIONAL",
+      title: "Pai Carnival Commercial",
+      desc: "A high-energy digital ad capturing customer excitement and promotional offers."
+    },
+    {
+      id: "xALGQ-5sr6Y",
+      category: "DIGITAL ADS",
+      client: "PAI INTERNATIONAL",
+      title: "Pai Store Promo",
+      desc: "Digital promotional campaign highlighting the Pai shopping experience and premium product ranges."
+    },
+    {
+      id: "C0hzCKpITSE",
+      category: "DIGITAL ADS",
+      client: "PAI INTERNATIONAL",
+      title: "PAI Brand Journey",
+      desc: "A short commercial outlining the retail journey, growth, and trust of Pai International."
     },
     {
       id: "xzKI4XmfFus",
+      category: "DIGITAL ADS",
       client: "PAI INTERNATIONAL MOBILE CARNIVAL",
-      title: "PAI International Mobile Festival",
-      desc: "A high-energy commercial showcasing PAI's mobile carnival offers, customer rush, and massive electronics giveaways."
+      title: "Mobile Carnival Lucky Draw",
+      desc: "Energetic advertisement detailing mobile deals, customer interactions, and lucky draw offers."
+    },
+
+    // Documentaries
+    {
+      id: "Ygyh433FRjQ",
+      category: "DOCUMENTARIES",
+      client: "GLAMOUR FILMS",
+      title: "Life Stories & Legacies",
+      desc: "A compelling documentary capturing real stories, personal journeys, and historic milestones."
+    },
+    {
+      id: "YduPlyKr-10",
+      category: "DOCUMENTARIES",
+      client: "GLAMOUR FILMS",
+      title: "Community Transformation",
+      desc: "An inspiring documentary highlighting collaborative progress and social impact projects."
+    },
+    {
+      id: "e5J2v1UtFW4",
+      category: "DOCUMENTARIES",
+      client: "TOYOTA KIRLOSKAR MOTOR",
+      title: "Toyota CSR School Transformation",
+      desc: "A heartwarming documentary showing the school transformation at GHBS Hejala under Toyota's CSR."
     },
     {
       id: "av9FhaYzDuA",
+      category: "DOCUMENTARIES",
       client: "PAI INTERNATIONAL CELEBRATIONS",
-      title: "PAI International Lucky Draw Celebration",
-      desc: "Capturing the excitement and transparency of PAI's quarterly genuine lucky coupon draw event with live customer interactions."
+      title: "Pai Lucky Draw Celebration",
+      desc: "A transparency-focused documentary capturing customer lucky draw events and live declarations."
     }
   ];
+
+  const filteredVideos = activeVideoTab === 'ALL VIDEOS'
+    ? portfolioVideos
+    : portfolioVideos.filter(v => v.category === activeVideoTab);
 
     const portfolioImages = {
     'ALL': [
@@ -596,6 +700,102 @@ export default function PortfolioPage() {
               </div>
             );
           })()}
+      </section>
+
+      {/* ─── FEATURED VIDEOS SHOWCASE SECTION ─── */}
+      <section 
+        className="py-[120px] px-[5%] md:px-[8%] relative overflow-hidden border-t border-[rgba(10,10,10,0.06)]"
+        style={{
+          backgroundImage: "url('/images/bg-Featured Work.png')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          backgroundColor: '#FAF8F4'
+        }}
+      >
+        <div className="max-w-[1600px] mx-auto reveal relative z-10">
+          {/* Section Header */}
+          <div className="text-center mb-[60px]">
+            <span className="text-[11px] tracking-[0.3em] uppercase text-[var(--gold)] mb-[16px] block font-semibold">FEATURED WORK</span>
+            <h2 className="font-serif text-[clamp(36px,4.5vw,56px)] text-[#0A0A0A] font-light mb-[20px]">
+              Stories We've Brought to <span className="italic text-[var(--gold)]">Life</span>
+            </h2>
+            <div className="w-[80px] h-[1px] bg-[var(--gold)] mx-auto relative mb-[24px]">
+              <div className="w-[4px] h-[4px] bg-[var(--gold)] rotate-45 absolute left-[38px] -top-[1.5px]"></div>
+            </div>
+            <p className="text-[14px] text-[var(--muted)] max-w-[600px] mx-auto leading-relaxed font-light">
+              From corporate milestones to groundbreaking innovations, explore how we turn moments into powerful visual stories.
+            </p>
+          </div>
+
+          {/* Video Filter Tabs */}
+          <div className="flex flex-wrap items-center justify-center gap-[12px] md:gap-[24px] mb-[56px] reveal opacity-0 anim-fade-up">
+            {videoTabs.map((tab, idx) => (
+              <div key={tab} className="flex items-center">
+                <button 
+                  suppressHydrationWarning
+                  onClick={() => setActiveVideoTab(tab)}
+                  className={`text-[11px] tracking-[0.2em] uppercase pb-[8px] relative cursor-none font-bold transition-all ${
+                    activeVideoTab === tab ? 'text-[var(--gold)]' : 'text-[var(--muted)] hover:text-[#0A0A0A]'
+                  }`}
+                >
+                  {tab}
+                  {activeVideoTab === tab && (
+                    <div className="absolute bottom-0 left-0 w-full h-[2px] bg-[var(--gold)]" />
+                  )}
+                </button>
+                {idx < videoTabs.length - 1 && (
+                  <span className="text-[rgba(10,10,10,0.15)] text-[12px] ml-[12px] md:ml-[24px] pointer-events-none select-none font-light">|</span>
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* Videos Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-[32px] max-w-[1400px] mx-auto reveal opacity-0 anim-fade-up">
+            {filteredVideos.map((video, idx) => (
+              <div 
+                key={video.id} 
+                onClick={() => setActiveVideoId(video.id)}
+                className="group relative aspect-video rounded-[16px] overflow-hidden border border-[rgba(10,10,10,0.06)] shadow-lg bg-[var(--darker)] cursor-none"
+              >
+                {/* YouTube Thumbnail */}
+                <img 
+                  src={`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`} 
+                  alt={video.title} 
+                  className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-103"
+                  onError={(e) => {
+                    // Fallback to high quality if maxres isn't available
+                    e.target.src = `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`;
+                  }}
+                />
+                
+                {/* Overlay Play Button */}
+                <div className="absolute inset-0 bg-black/45 flex items-center justify-center group-hover:bg-black/55 transition-colors duration-300">
+                  <div className="w-[64px] h-[64px] rounded-full border border-white/35 flex items-center justify-center bg-white/10 backdrop-blur-sm transition-transform duration-500 group-hover:scale-110">
+                    <Play className="w-[20px] h-[20px] text-white fill-white translate-x-[1px]" />
+                  </div>
+                </div>
+
+                {/* Bottom Left Card Info overlay */}
+                <div className="absolute bottom-[28px] left-[28px] right-[28px] z-10 text-left pointer-events-none">
+                  <div className="flex items-center gap-[12px] mb-[10px]">
+                    <span className="font-serif italic text-[14px] text-[var(--gold)] font-medium leading-none">
+                      {String(idx + 1).padStart(2, '0')}
+                    </span>
+                    <div className="w-[24px] h-[1px] bg-[var(--gold)]/70"></div>
+                  </div>
+                  <h3 className="font-serif text-[24px] text-white font-medium mb-[6px] tracking-wide">
+                    {video.title}
+                  </h3>
+                  <p className="text-[12.5px] text-white/70 leading-relaxed font-light line-clamp-2">
+                    {video.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* ─── CONTACT SECTION ─── */}
