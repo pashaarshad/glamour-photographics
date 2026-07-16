@@ -339,66 +339,91 @@ export default function About() {
       </section>
 
       {/* ─── WHY CHOOSE US ─── */}
-      <section className="py-[120px] px-[4%] md:px-[5%] bg-[var(--dark)] border-t border-[rgba(10,10,10,0.06)]">
-        <div className="max-w-[1600px] mx-auto reveal">
+      <section 
+        className="py-[120px] px-[4%] md:px-[5%] relative overflow-hidden"
+        style={{
+          backgroundImage: "url('/images/bg-Featured Work.png')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          backgroundColor: '#FAF8F4'
+        }}
+      >
+        <div className="max-w-[1600px] mx-auto reveal relative z-10">
           <div className="text-center mb-[60px]">
-            <span className="text-[10px] tracking-[0.25em] uppercase text-[var(--gold)] mb-[12px] block font-medium">Why Choose Us</span>
-            <h2 className="font-serif text-[clamp(32px,4vw,48px)] text-[var(--light)] mb-[16px]">What Sets Us Apart</h2>
-            <div className="w-[80px] h-[2px] bg-[var(--gold)] mx-auto relative">
-              <div className="w-[6px] h-[6px] bg-[var(--gold)] rotate-45 absolute left-[37px] -top-[2px]"></div>
+            <span className="text-[11px] tracking-[0.3em] uppercase text-[var(--gold)] mb-[16px] block font-semibold">WHY CHOOSE US</span>
+            <h2 className="font-serif text-[clamp(36px,4.5vw,56px)] text-[#0A0A0A] font-light mb-[20px]">
+              What Sets <span className="italic text-[var(--gold)]">Us</span> Apart
+            </h2>
+            <div className="w-[80px] h-[1px] bg-[var(--gold)] mx-auto relative mb-[24px]">
+              <div className="w-[4px] h-[4px] bg-[var(--gold)] rotate-45 absolute left-[38px] -top-[1.5px]"></div>
             </div>
+            <p className="text-[14px] text-[var(--muted)] max-w-[600px] mx-auto leading-relaxed font-light">
+              We go beyond capturing moments – we craft visual stories that drive impact and leave a lasting impression.
+            </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[30px]">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[0px] divide-y lg:divide-y-0 lg:divide-x divide-[rgba(10,10,10,0.08)]">
             {[
               {
+                num: "01.",
                 title: "Experience",
                 desc: "Our team brings a wealth of experience from various industries, enabling us to tailor our approach to your unique needs with precision and depth.",
                 icon: (
-                  <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <circle cx="12" cy="12" r="8" strokeWidth="1.5"/>
-                    <circle cx="12" cy="12" r="5" strokeWidth="1.5"/>
-                    <circle cx="12" cy="12" r="2" strokeWidth="1.5" fill="currentColor"/>
+                  <svg className="w-[28px] h-[28px] text-[var(--gold)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6.827 6.175A2.31 2.31 0 0110 5h4a2.31 2.31 0 013.173 1.175l.91 1.705A1 1 0 0019 8.5h2a2 2 0 012 2v9a2 2 0 01-2 2H3a2 2 0 01-2-2v-9a2 2 0 012-2h2a1 1 0 00.917-.62l.91-1.705z" />
+                    <circle cx="12" cy="13" r="3.5" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 )
               },
               {
+                num: "02.",
                 title: "Client-Centric",
                 desc: "We put your satisfaction at the forefront of everything we do. Your success is our success — every decision serves your vision without compromise.",
                 icon: (
-                  <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 5h12l4 6-10 8-10-8z" />
+                  <svg className="w-[28px] h-[28px] text-[var(--gold)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.2">
+                    <circle cx="10" cy="8" r="3.5" />
+                    <path d="M3 18c0-3 3-5 7-5m3.5 1.5c.7.8 1.5 1.7 1.5 3.5" strokeLinecap="round" />
+                    <path d="M17.5 9.5l.4 1.1 1.1.2-.8.8.2 1.1-.9-.5-.9.5.2-1.1-.8-.8 1.1-.2z" fill="currentColor" />
                   </svg>
                 )
               },
               {
+                num: "03.",
                 title: "Innovation",
                 desc: "We stay updated with the latest trends and technologies in filmmaking, ensuring your corporate film is fresh, modern, and truly impactful.",
                 icon: (
-                  <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <circle cx="12" cy="12" r="8" strokeWidth="1.5" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 4a8 8 0 018 8" />
+                  <svg className="w-[28px] h-[28px] text-[var(--gold)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.2">
+                    <path d="M9 18h6m-6 3h6m-3-15v2m-5.657-.657l1.414 1.414m8.486-1.414l-1.414 1.414M4 12h2m12 0h2m-8 6c-2.761 0-5-2.239-5-5 0-1.8 1-3.3 2.5-4.2V8a1 1 0 011-1h3a1 1 0 011 1v.8c1.5.9 2.5 2.4 2.5 4.2 0 2.761-2.239 5-5 5z" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 )
               },
               {
+                num: "04.",
                 title: "Proven Results",
                 desc: "Our portfolio speaks for itself. Past projects have driven engagement, increased brand awareness, and delivered measurable business results.",
                 icon: (
-                  <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <circle cx="12" cy="12" r="8" strokeWidth="1.5" />
-                    <circle cx="12" cy="12" r="4" strokeWidth="1.5" />
-                    <circle cx="12" cy="12" r="1" fill="currentColor" strokeWidth={1} />
+                  <svg className="w-[28px] h-[28px] text-[var(--gold)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.2">
+                    <path d="M4 20h16M7 20v-5m4 5V9m4 11v-7" strokeLinecap="round" />
+                    <path d="M6 16l4-5 4 3 5-7m0 0h-3.5m3.5 0V10" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 )
               }
             ].map((card, idx) => (
-              <div key={idx} className="bg-white border border-[rgba(10,10,10,0.06)] rounded-sm p-[40px] text-center shadow-[0_4px_24px_rgba(0,0,0,0.01)] hover:border-[var(--gold)] transition-colors duration-450 flex flex-col items-center">
-                <div className="w-[64px] h-[64px] rounded-full bg-[var(--gold)] flex items-center justify-center mb-[24px] text-white shadow-sm shadow-[var(--gold)]/20 shrink-0">
+              <div key={idx} className="relative px-[32px] py-[30px] flex flex-col items-center text-center group">
+                <span className="absolute top-[16px] left-[24px] font-serif text-[12px] text-[var(--gold)] font-medium">
+                  {card.num}
+                </span>
+                <div className="w-[64px] h-[64px] rounded-full border border-[var(--gold)]/35 flex items-center justify-center mb-[28px] bg-transparent transition-all duration-300 group-hover:bg-[var(--gold)]/5 group-hover:border-[var(--gold)] shrink-0">
                   {card.icon}
                 </div>
-                <h3 className="font-serif text-[22px] text-[var(--light)] mb-[16px] font-bold">{card.title}</h3>
-                <p className="text-[13.5px] text-[var(--light)] leading-relaxed font-semibold">{card.desc}</p>
+                <h3 className="font-serif text-[22px] text-[#0A0A0A] mb-[12px] font-medium">
+                  {card.title}
+                </h3>
+                <div className="w-[30px] h-[1px] bg-[var(--gold)]/40 mx-auto mb-[18px]"></div>
+                <p className="text-[13.5px] text-[var(--muted)] leading-relaxed font-light">
+                  {card.desc}
+                </p>
               </div>
             ))}
           </div>
