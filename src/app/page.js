@@ -818,7 +818,7 @@ export default function Home() {
               {/* Flex Content Box (Stacked) */}
               <div className="relative z-10 w-full flex flex-col items-start">
                 {/* Number */}
-                <span className="font-serif text-[36px] font-light text-white/20 leading-none mb-[16px] block">
+                <span className="font-serif text-[48px] font-light text-white/35 leading-none mb-[16px] block">
                   {srv.id}
                 </span>
                 
