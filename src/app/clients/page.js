@@ -10,6 +10,7 @@ import 'swiper/css';
 
 export default function CorporatePortfolio() {
   const [activeCert, setActiveCert] = useState(null);
+  const [showOthers, setShowOthers] = useState(false);
 
   useEffect(() => {
     const checkReveals = () => {
@@ -32,13 +33,13 @@ export default function CorporatePortfolio() {
 
   const featuredClients = [
     { name: 'CII', slug: 'cii', desc: 'Four Decades of Industry Leadership', index: '01' },
-    { name: 'TCS', slug: 'tcs', desc: 'Framing the Future of Technology', index: '02' },
+    { name: 'CGI', slug: 'cgi', desc: 'Global-Local Digital Engine', index: '02' },
     { name: 'Presidency University', slug: 'presidency', desc: 'Framing Learning, Celebrating Legacy', index: '03' },
     { name: 'Tata Elxsi', slug: 'tata-elxsi', desc: 'Design Led Innovation', index: '04' }
   ];
 
   const otherClients = [
-    { name: 'CGI', slug: 'cgi', desc: 'Global-Local Digital Engine' },
+    { name: 'TCS', slug: 'tcs', desc: 'Framing the Future of Technology' },
     { name: 'RTX', slug: 'rtx', desc: 'Spotlighting Aerospace Leadership' },
     { name: 'Toyota Kirloskar', slug: 'toyota', desc: 'Driving Change' },
     { name: 'PAI International', slug: 'pai', desc: 'Showcasing Retail Innovation' }
@@ -51,20 +52,17 @@ export default function CorporatePortfolio() {
     
     // Logos
     let logo = null;
-    if (slug === 'cii') logo = '/logo-clients/cii.jpg';
-    else if (slug === 'cgi') logo = '/logo-clients/CGI_Inc.-Logo.wine.png';
-    else if (slug === 'presidency') logo = '/logo-clients/presidency-university-yelahanka-bangalore-universities-si0nhgmmkz.jpg';
-    else if (slug === 'tata-elxsi') logo = '/logo-clients/tata-elxsi-moves-focus-away-from-driverless-tech.avif';
-    else if (slug === 'tcs') logo = '/logo-clients/TCS_NewLogo_Final_RGB.png';
-    else if (slug === 'rtx') logo = '/logo-clients/RTX.webp';
+    if (slug === 'cii') logo = '/logo-clients/cii.png';
+    else if (slug === 'cgi') logo = '/logo-clients/cgi.png';
+    else if (slug === 'presidency') logo = '/logo-clients/presidency.png';
+    else if (slug === 'tata-elxsi') logo = '/logo-clients/tata-elxsi.png';
+    else if (slug === 'tcs') logo = '/logo-clients/tcs.png';
+    else if (slug === 'rtx') logo = '/logo-clients/rtx.png';
+    else if (slug === 'toyota') logo = '/logo-clients/toyota.png';
+    else if (slug === 'pai') logo = '/logo-clients/pai.png';
     
-    const fallbackBgs = {
-      toyota: "/images/our_portfolio/33.jpg",
-      pai: "/images/our_portfolio/Highlights_3C1A0761.jpg"
-    };
-
     return {
-      bg: images[0] || fallbackBgs[slug] || '/images/our_portfolio/cp-7.jpg',
+      bg: images[0] || '/images/our_portfolio/cp-7.jpg',
       thumbnails: images.slice(1, 4), // 3 preview images
       logo
     };
@@ -152,55 +150,85 @@ export default function CorporatePortfolio() {
             })}
           </div>
         </div>
-
         {/* Other Clients */}
-        <div>
-          <h2 className="font-serif text-[26px] text-[var(--light)] mb-[40px] reveal border-b border-[rgba(10,10,10,0.08)] pb-[20px]">
-            More Industry Leaders
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[20px] stagger-children">
-            {otherClients.map((client, idx) => {
-              const assets = getClientAssets(client.slug);
-              return (
-                <Link 
-                  href={`/clients/${client.slug}`} 
-                  key={idx} 
-                  className="group relative bg-[var(--darker)] border border-[rgba(10,10,10,0.06)] hover:border-[var(--gold)] rounded-sm overflow-hidden min-h-[240px] cursor-none block flex flex-col justify-between p-[30px] transition-all duration-400"
+        <div className="reveal mt-[80px]">
+          {!showOthers ? (
+            <div className="flex flex-col items-center justify-center py-[40px] border-t border-[rgba(10,10,10,0.06)]">
+              <p className="text-[14px] text-[var(--muted)] mb-[24px] font-light text-center">
+                We partner with industry leaders across automotive, retail, technology, and aerospace.
+              </p>
+              <button
+                suppressHydrationWarning
+                onClick={() => {
+                  setShowOthers(true);
+                  setTimeout(() => {
+                    window.dispatchEvent(new Event('scroll'));
+                  }, 100);
+                }}
+                className="border border-[rgba(10,10,10,0.15)] text-[var(--light)] text-[10px] tracking-[0.2em] uppercase py-[16px] px-[40px] hover:bg-[var(--light)] hover:text-[var(--dark)] transition-all duration-300 cursor-none font-bold rounded-full"
+              >
+                Explore More Partners
+              </button>
+            </div>
+          ) : (
+            <div className="transition-all duration-700 ease-out opacity-100 border-t border-[rgba(10,10,10,0.06)] pt-[60px]">
+              <div className="flex justify-between items-center mb-[40px]">
+                <h2 className="font-serif text-[26px] text-[var(--light)]">
+                  More Industry Leaders
+                </h2>
+                <button
+                  suppressHydrationWarning
+                  onClick={() => setShowOthers(false)}
+                  className="text-[10px] tracking-[0.15em] uppercase text-[var(--gold)] hover:text-[var(--light)] cursor-none transition-colors font-bold"
                 >
-                  <div 
-                    className="absolute inset-0 bg-cover bg-center opacity-85 group-hover:opacity-100 transition-all duration-500" 
-                    style={{ backgroundImage: `url('${assets.bg}')` }}
-                  />
-                  <div className="absolute inset-0 bg-black/10 bg-gradient-to-t from-black/50 via-transparent to-transparent group-hover:opacity-0 transition-opacity duration-500 z-10" />
- 
-                  <div className="relative z-20 w-full flex flex-col gap-[16px] h-full justify-between flex-1">
-                    <div>
-                      {assets.logo ? (
-                        <img 
-                          src={assets.logo} 
-                          alt={`${client.name} Logo`} 
-                          className="max-h-[24px] max-w-[100px] object-contain transition-opacity duration-300 rounded-sm mb-[14px] bg-white/95 p-[2px]"
-                        />
-                      ) : (
-                        <h3 className="font-serif text-[18px] text-white font-bold mb-[10px] drop-shadow-md">
-                          {client.name}
-                        </h3>
-                      )}
-                      <p className="text-[12px] text-white/90 leading-relaxed font-semibold drop-shadow-sm">
-                        {client.desc}
-                      </p>
-                    </div>
-
-                    <div className="mt-[20px]">
-                      <span className="inline-block text-[9px] tracking-[0.2em] uppercase text-[var(--gold)] border border-[rgba(197,164,109,0.3)] py-[8px] px-[18px] transition-all duration-[400ms] group-hover:bg-[var(--gold)] group-hover:text-[var(--dark)] group-hover:border-transparent">
-                        View Project
-                      </span>
-                    </div>
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
+                  Close Section &uarr;
+                </button>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[20px] stagger-children">
+                {otherClients.map((client, idx) => {
+                  const assets = getClientAssets(client.slug);
+                  return (
+                    <Link 
+                      href={`/clients/${client.slug}`} 
+                      key={idx} 
+                      className="group relative bg-[var(--darker)] border border-[rgba(10,10,10,0.06)] hover:border-[var(--gold)] rounded-sm overflow-hidden min-h-[240px] cursor-none block flex flex-col justify-between p-[30px] transition-all duration-400"
+                    >
+                      <div 
+                        className="absolute inset-0 bg-cover bg-center opacity-85 group-hover:opacity-100 transition-all duration-500" 
+                        style={{ backgroundImage: `url('${assets.bg}')` }}
+                      />
+                      <div className="absolute inset-0 bg-black/15 bg-gradient-to-t from-black/60 via-transparent to-transparent group-hover:opacity-0 transition-opacity duration-500 z-10" />
+     
+                      <div className="relative z-20 w-full flex flex-col gap-[16px] h-full justify-between flex-1">
+                        <div>
+                          {assets.logo ? (
+                            <img 
+                              src={assets.logo} 
+                              alt={`${client.name} Logo`} 
+                              className="max-h-[24px] max-w-[100px] object-contain transition-opacity duration-300 rounded-sm mb-[14px] bg-white/95 p-[2.5px]"
+                            />
+                          ) : (
+                            <h3 className="font-serif text-[18px] text-white font-bold mb-[10px] drop-shadow-md">
+                              {client.name}
+                            </h3>
+                          )}
+                          <p className="text-[12px] text-white/95 leading-relaxed font-semibold drop-shadow-sm">
+                            {client.desc}
+                          </p>
+                        </div>
+     
+                        <div className="mt-[20px]">
+                          <span className="inline-block text-[9px] tracking-[0.2em] uppercase text-[var(--gold)] border border-[rgba(197,164,109,0.3)] py-[8px] px-[18px] transition-all duration-[400ms] group-hover:bg-[var(--gold)] group-hover:text-[var(--dark)] group-hover:border-transparent">
+                            View Project
+                          </span>
+                        </div>
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+          )}
         </div>
       </section>
 
