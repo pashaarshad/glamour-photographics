@@ -23,81 +23,41 @@ export default function StudioServices() {
     };
   }, []);
 
-  const studioServices = [
-    {
-      id: '01',
-      tag: 'Passport Photo Studio | Walk-in Available',
-      title: 'Passport & Visa Photos',
-      subtitle: 'Accurate. Instant. Globally Accepted.',
-      desc: 'Need a passport or visa photo that meets international standards? We deliver high-resolution, professionally lit photos compliant with all major embassy and government requirements. Walk in and walk out in minutes — digital and printed formats available, with a 100% acceptance guarantee.',
-      highlights: [
-        'High-resolution digital files',
-        'Printed in multiple sizes',
-        'Embassy-compliant backgrounds',
-        '100% acceptance guarantee'
-      ],
-      img: '/images/passport_studio.png'
-    },
-    {
-      id: '02',
-      tag: 'Studio Headshot Setup | Individual & Corporate',
-      title: 'Studio Head Shots',
-      subtitle: 'First Impressions that Last.',
-      desc: 'Whether it\'s for LinkedIn, corporate websites, resumes, or press kits, our studio headshots are crafted to highlight your best, most confident self. With flattering lighting, clean backdrops, and expert guidance, we create portraits that elevate your personal or professional brand.',
-      highlights: [
-        'Flattering studio lighting',
-        'Multiple backdrop options',
-        'Expert posing guidance',
-        'Available for corporate team shoots'
-      ],
-      img: '/images/headshot_studio.png'
-    },
-    {
-      id: '03',
-      tag: 'Photo Restoration | Digital & Print',
-      title: 'Photo Restoration',
-      subtitle: 'Give Your Memories New Life.',
-      desc: 'We expertly restore damaged, faded, or torn photographs as well as video cassettes and DVD conversion with editing — fixing creases, removing stains, and enhancing clarity. Whether it\'s a cherished family portrait or a vintage memory, we bring back the original charm with modern digital techniques.',
-      highlights: [
-        'Damaged photo restoration',
-        'Video cassette digitisation',
-        'DVD conversion & editing',
-        'High-quality reprinting available'
-      ],
-      img: '/images/photo_restoration.png'
-    },
-    {
-      id: '04',
-      tag: 'Album Design Studio | Custom Design',
-      title: 'Album Design',
-      subtitle: 'Stories Bound in Beautiful Albums.',
-      desc: 'We design and produce premium photo albums that serve as lasting keepsakes of your most important moments. Every layout is carefully crafted to complement your photos, tell a cohesive story, and reflect your personal aesthetic — printed on archival-quality materials.',
-      highlights: [
-        'Custom layout design',
-        'Premium archival printing',
-        'Wedding & corporate albums',
-        'Multiple cover options'
-      ],
-      img: '/images/album_design.png',
-      hasCTA: true
-    }
-  ];
-
   return (
-    <main className="w-full bg-[var(--dark)] text-[var(--light)] min-h-screen pt-0 pb-0 cursor-none relative">
+    <main 
+      className="w-full min-h-screen pt-0 pb-0 cursor-none relative text-[var(--light)]"
+      style={{
+        backgroundImage: "url('/images/bg-Featured Work.png')",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundColor: '#FAF8F4'
+      }}
+    >
       
-      {/* ─── HERO SECTION ─── */}
-      <section className="relative min-h-[55vh] md:min-h-[60vh] lg:min-h-[65vh] flex items-end px-[5%] md:px-[8%] overflow-hidden bg-[#0A0A0A] mb-[80px] md:mb-[120px] lg:mb-[160px] pt-[160px] md:pt-[180px] lg:pt-[220px] pb-[60px] md:pb-[80px] lg:pb-[120px] xl:pb-[160px]">
-        <div className="absolute inset-0 z-0">
-          <img src="/images/passport_studio.png" alt="Capabilities Background" className="w-full h-full object-cover opacity-50 blur-[2px]" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent z-10" />
+      {/* ─── HERO SECTION WITH BACKGROUND YOUTUBE VIDEO ─── */}
+      <section className="relative min-h-[60vh] md:min-h-[65vh] lg:min-h-[70vh] flex items-end px-[5%] md:px-[8%] overflow-hidden bg-[#0A0A0A] pt-[160px] md:pt-[180px] lg:pt-[220px] pb-[60px] md:pb-[80px] lg:pb-[100px]">
+        {/* Background Video Iframe Container */}
+        <div className="absolute inset-0 z-0 overflow-hidden select-none pointer-events-none">
+          <div className="absolute top-1/2 left-1/2 w-[177.77777778vh] min-w-full h-full min-h-[56.25vw] -translate-x-1/2 -translate-y-1/2 pointer-events-none scale-[1.1]">
+            <iframe
+              src="https://www.youtube.com/embed/0ownKeh2tC0?autoplay=1&mute=1&loop=1&playlist=0ownKeh2tC0&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1"
+              className="w-full h-full border-0 pointer-events-none"
+              allow="autoplay; encrypted-media"
+              title="Background Video"
+            />
+          </div>
+          {/* Dark Overlay for Text Readability */}
+          <div className="absolute inset-0 bg-black/60 z-10" />
         </div>
+
+        {/* Foreground Content */}
         <div className="max-w-[1400px] w-full mx-auto z-20 relative">
           <div className="reveal">
-            <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] mb-[16px] block font-semibold">
+            <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] mb-[16px] block font-bold">
               Studio Services
             </span>
-            <h1 className="font-serif text-[clamp(44px,6vw,80px)] font-light leading-[1.1] tracking-[-0.02em] text-white">
+            <h1 className="font-serif text-[clamp(44px,6vw,80px)] font-light leading-[1.1] tracking-[-0.02em] text-white uppercase">
               Crafted for <br />
               <span className="italic text-[var(--gold)] font-medium">Every Need.</span>
             </h1>
@@ -108,79 +68,170 @@ export default function StudioServices() {
         </div>
       </section>
 
-      {/* ─── SERVICES STORY SECTION ─── */}
-      <section className="px-[5%] md:px-[8%] py-[80px] max-w-[1400px] mx-auto flex flex-col gap-[140px]">
-        {studioServices.map((service, idx) => {
-          const isEven = idx % 2 === 1;
-          return (
-            <div 
-              key={service.id} 
-              className={`flex flex-col lg:flex-row items-center gap-[60px] lg:gap-[100px] ${
-                isEven ? 'lg:flex-row-reverse' : ''
-              }`}
-            >
-              {/* IMAGE COLUMN */}
-              <div className="w-full lg:w-1/2 relative h-[350px] md:h-[480px] rounded-sm overflow-hidden img-mask reveal z-10 group border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)] shadow-[0_4px_30px_rgba(0,0,0,0.02)]">
-                <img 
-                  src={service.img} 
-                  alt={service.title} 
-                  className="w-full h-full object-cover transition-transform duration-[1200ms] group-hover:scale-105" 
-                />
-              </div>
+      {/* ─── SECTION 1: PASSPORT & VISA PHOTOS (STACKED) ─── */}
+      <section className="px-[5%] md:px-[8%] py-[80px] max-w-[1400px] mx-auto reveal mt-[40px]">
+        <div className="text-center max-w-[900px] mx-auto mb-[40px]">
+          <h2 className="font-serif text-[clamp(24px,3.5vw,36px)] text-[#0A0A0A] uppercase tracking-wide font-normal">
+            Passport & Visa Photos for different countries
+          </h2>
+          <div className="w-[80px] h-[1px] bg-[var(--gold)] mx-auto relative my-[18px]">
+            <div className="w-[4px] h-[4px] bg-[var(--gold)] rotate-45 absolute left-[38px] -top-[1.5px]"></div>
+          </div>
+          <h5 className="text-[14px] uppercase tracking-[0.1em] text-[var(--gold)] font-bold mb-[12px]">
+            Accurate. Instant. Globally Accepted.
+          </h5>
+          <p className="text-[14px] md:text-[14.5px] leading-[1.8] text-[var(--muted)] font-light">
+            Need a passport or visa photo that meets international standards? We deliver high-resolution, professionally lit photos that are compliant with all major embassy and government requirements. Walk in and walk out in minutes — digital and printed formats available, with a 100% acceptance guarantee.
+          </p>
+        </div>
 
-              {/* CONTENT COLUMN */}
-              <div className="w-full lg:w-1/2 reveal opacity-0 anim-fade-up z-20">
-                <div className="flex items-center gap-[16px] mb-[20px]">
-                  <span className="font-serif text-[42px] md:text-[54px] text-[var(--gold)] leading-none italic font-light">
-                    {service.id}
-                  </span>
-                  <span className="text-[10px] tracking-[0.25em] uppercase text-[var(--muted)] font-semibold border-l border-[rgba(10,10,10,0.15)] pl-[16px]">
-                    {service.tag}
-                  </span>
-                </div>
-                
-                <h2 className="font-serif text-[clamp(28px,3.5vw,42px)] font-light leading-[1.2] text-[var(--light)] mb-[10px]">
-                  {service.title}
-                </h2>
-                
-                <p className="text-[14px] md:text-[15px] italic text-[var(--gold)] mb-[24px] font-medium">
-                  {service.subtitle}
-                </p>
-
-                <p className="text-[14px] md:text-[14.5px] leading-[1.8] text-[var(--muted)] mb-[32px] font-light">
-                  {service.desc}
-                </p>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[30px] gap-y-[16px] mb-[40px]">
-                  {service.highlights.map((highlight, hIdx) => (
-                    <div key={hIdx} className="flex items-center gap-[10px]">
-                      <span className="flex-none w-[16px] h-[16px] rounded-full bg-[rgba(212,175,55,0.1)] flex items-center justify-center text-[var(--gold)]">
-                        <Check className="w-[10px] h-[10px]" />
-                      </span>
-                      <span className="text-[13.5px] text-[var(--light)] font-medium">
-                        {highlight}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-
-                {service.hasCTA && (
-                  <Link 
-                    href="/portfolio" 
-                    className="inline-flex items-center gap-[12px] bg-[var(--light)] text-[var(--dark)] text-[10px] tracking-[0.2em] uppercase font-bold py-[16px] px-[32px] hover:bg-[var(--gold)] hover:text-white transition-all duration-350 cursor-none rounded-sm shadow-md"
-                  >
-                    View Album Services <ChevronRight className="w-[12px] h-[12px]" />
-                  </Link>
-                )}
-              </div>
-            </div>
-          );
-        })}
+        {/* Big Centered Graphic */}
+        <div className="max-w-[1000px] mx-auto rounded-sm overflow-hidden border border-[rgba(10,10,10,0.06)] shadow-md bg-white/40 backdrop-blur-[1px] p-[16px] group">
+          <img 
+            src="/images/passport_studio.png" 
+            alt="Types of Passport and Visa Photos" 
+            className="w-full h-auto object-contain transition-transform duration-[1200ms] group-hover:scale-[1.01]" 
+          />
+        </div>
       </section>
 
-      {/* ─── LOCATION & CALL TO ACTION ─── */}
-      <section className="py-[120px] px-[5%] md:px-[8%] bg-[var(--darker)] border-t border-[rgba(10,10,10,0.06)] text-center relative overflow-hidden">
-        <div className="max-w-[700px] mx-auto reveal">
+      {/* ─── SECTION 2: STUDIO HEAD SHOTS (SIDE-BY-SIDE) ─── */}
+      <section className="px-[5%] md:px-[8%] py-[80px] max-w-[1400px] mx-auto reveal">
+        <div className="flex flex-col lg:flex-row items-center gap-[60px] lg:gap-[100px]">
+          
+          {/* Content Column */}
+          <div className="w-full lg:w-1/2">
+            <h2 className="font-serif text-[clamp(24px,3.5vw,36px)] text-[#0A0A0A] uppercase tracking-wide font-normal">
+              Studio Head Shots
+            </h2>
+            <div className="w-[80px] h-[1px] bg-[var(--gold)] relative my-[18px]">
+              <div className="w-[4px] h-[4px] bg-[var(--gold)] rotate-45 absolute left-[38px] -top-[1.5px]"></div>
+            </div>
+            <h5 className="text-[14px] uppercase tracking-[0.1em] text-[var(--gold)] font-bold mb-[16px]">
+              First impressions matter — let’s make yours unforgettable.
+            </h5>
+            <p className="text-[14px] md:text-[14.5px] leading-[1.8] text-[var(--muted)] font-light mb-[28px]">
+              Whether it’s for LinkedIn, corporate websites, resumes, or press kits, our studio headshots are crafted to highlight your best, most confident self. With flattering lighting, clean backdrops, and expert guidance, we create portraits that elevate your personal or professional brand. Available for individuals and corporate team shoots.
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[30px] gap-y-[16px] border-t border-[rgba(10,10,10,0.06)] pt-[24px]">
+              {[
+                'Flattering studio lighting',
+                'Multiple backdrop options',
+                'Expert posing guidance',
+                'Available for corporate team shoots'
+              ].map((highlight, hIdx) => (
+                <div key={hIdx} className="flex items-center gap-[10px]">
+                  <span className="flex-none w-[14px] h-[14px] rounded-full bg-[rgba(212,175,55,0.1)] flex items-center justify-center text-[var(--gold)]">
+                    <Check className="w-[9px] h-[9px]" />
+                  </span>
+                  <span className="text-[13px] text-[var(--light)] font-medium">
+                    {highlight}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Image Column */}
+          <div className="w-full lg:w-1/2 rounded-sm overflow-hidden border border-[rgba(10,10,10,0.06)] shadow-md bg-white/40 backdrop-blur-[1px] p-[12px] group">
+            <img 
+              src="/images/headshot_studio.png" 
+              alt="Studio Headshots Portfolio" 
+              className="w-full h-auto object-cover transition-transform duration-[1200ms] group-hover:scale-102" 
+            />
+          </div>
+
+        </div>
+      </section>
+
+      {/* ─── SECTION 3: PHOTO RESTORATION (SIDE-BY-SIDE ALTERNATING) ─── */}
+      <section className="px-[5%] md:px-[8%] py-[80px] max-w-[1400px] mx-auto reveal">
+        <div className="flex flex-col lg:flex-row-reverse items-center gap-[60px] lg:gap-[100px]">
+          
+          {/* Content Column */}
+          <div className="w-full lg:w-1/2">
+            <h2 className="font-serif text-[clamp(24px,3.5vw,36px)] text-[#0A0A0A] uppercase tracking-wide font-normal">
+              Photorestoration
+            </h2>
+            <div className="w-[80px] h-[1px] bg-[var(--gold)] relative my-[18px]">
+              <div className="w-[4px] h-[4px] bg-[var(--gold)] rotate-45 absolute left-[38px] -top-[1.5px]"></div>
+            </div>
+            <h5 className="text-[14px] uppercase tracking-[0.1em] text-[var(--gold)] font-bold mb-[16px]">
+              Give your old memories a new life.
+            </h5>
+            <p className="text-[14px] md:text-[14.5px] leading-[1.8] text-[var(--muted)] font-light mb-[28px]">
+              We expertly restore damaged, faded, or torn photographs as well as video cassettes restoration and DVD conversion with editing — fixing creases, removing stains, and enhancing clarity. Whether it’s a cherished family portrait or a vintage memory, we bring back the original charm with modern digital techniques. Get your restored images and videos in digital format or reprinted on high-quality photo paper.
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[30px] gap-y-[16px] border-t border-[rgba(10,10,10,0.06)] pt-[24px]">
+              {[
+                'Damaged photo restoration',
+                'Video cassette digitisation',
+                'DVD conversion & editing',
+                'High-quality reprinting available'
+              ].map((highlight, hIdx) => (
+                <div key={hIdx} className="flex items-center gap-[10px]">
+                  <span className="flex-none w-[14px] h-[14px] rounded-full bg-[rgba(212,175,55,0.1)] flex items-center justify-center text-[var(--gold)]">
+                    <Check className="w-[9px] h-[9px]" />
+                  </span>
+                  <span className="text-[13px] text-[var(--light)] font-medium">
+                    {highlight}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Image Column */}
+          <div className="w-full lg:w-1/2 rounded-sm overflow-hidden border border-[rgba(10,10,10,0.06)] shadow-md bg-white/40 backdrop-blur-[1px] p-[12px] group">
+            <img 
+              src="/images/photo_restoration.png" 
+              alt="Photo Restoration Before After" 
+              className="w-full h-auto object-cover transition-transform duration-[1200ms] group-hover:scale-102" 
+            />
+          </div>
+
+        </div>
+      </section>
+
+      {/* ─── SECTION 4: ALBUM DESIGN (STACKED) ─── */}
+      <section className="px-[5%] md:px-[8%] py-[80px] max-w-[1400px] mx-auto text-center reveal">
+        <div className="max-w-[900px] mx-auto mb-[40px]">
+          <h2 className="font-serif text-[clamp(24px,3.5vw,36px)] text-[#0A0A0A] uppercase tracking-wide font-normal">
+            album design
+          </h2>
+          <div className="w-[80px] h-[1px] bg-[var(--gold)] mx-auto relative my-[18px]">
+            <div className="w-[4px] h-[4px] bg-[var(--gold)] rotate-45 absolute left-[38px] -top-[1.5px]"></div>
+          </div>
+          <p className="text-[14px] md:text-[14.5px] leading-[1.8] text-[var(--muted)] font-light max-w-[700px] mx-auto">
+            We design and produce premium photo albums that serve as lasting keepsakes of your most important moments. Every layout is carefully crafted to complement your photos, tell a cohesive story, and reflect your personal aesthetic — printed on archival-quality materials.
+          </p>
+        </div>
+
+        {/* Centered Image */}
+        <div className="max-w-[1000px] mx-auto rounded-sm overflow-hidden border border-[rgba(10,10,10,0.06)] shadow-md bg-white/40 backdrop-blur-[1px] p-[16px] mb-[40px] group">
+          <img 
+            src="/images/album_design.png" 
+            alt="Custom Premium Album Design Spread" 
+            className="w-full h-auto object-contain transition-transform duration-[1200ms] group-hover:scale-[1.01]" 
+          />
+        </div>
+
+        {/* Large Premium Call-To-Action Button */}
+        <div>
+          <Link 
+            href="/portfolio" 
+            className="inline-flex items-center justify-center gap-[10px] bg-[var(--gold)] text-white text-[11px] tracking-[0.2em] uppercase font-bold py-[18px] px-[44px] hover:bg-[var(--light)] hover:text-[var(--dark)] transition-all duration-300 cursor-none rounded-full shadow-md"
+          >
+            click here for our album services
+          </Link>
+        </div>
+      </section>
+
+      {/* ─── LOCATION & CALL TO ACTION (GLASSY FOOTER SECTION) ─── */}
+      <section className="py-[120px] px-[5%] md:px-[8%] border-t border-[rgba(10,10,10,0.06)] text-center relative overflow-hidden bg-[rgba(250,248,244,0.75)] backdrop-blur-[2px]">
+        <div className="max-w-[700px] mx-auto reveal relative z-10">
           <span className="flex items-center justify-center gap-[8px] text-[10px] tracking-[0.3em] uppercase text-[var(--gold)] mb-[24px] font-bold">
             <MapPin className="w-[14px] h-[14px] text-[var(--gold)]" /> Ashok Nagar, Bengaluru
           </span>
