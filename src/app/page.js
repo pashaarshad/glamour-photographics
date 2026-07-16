@@ -1180,34 +1180,6 @@ export default function Home() {
         })()}
       </section>
 
-      {/* ─── 11. OUR SERVICES (Details List) ─── */}
-      <section className="py-[120px] px-[8%] md:px-[10%] bg-[var(--dark)] grid grid-cols-1 lg:grid-cols-2 gap-[80px] items-start">
-        <div className="reveal opacity-0 anim-fade-up">
-          <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] mb-[16px] block">Corporate Capabilities</span>
-          <h2 className="font-serif text-[clamp(28px,4vw,48px)] font-light leading-[1.2] text-[var(--light)] mb-[40px]">Our Services</h2>
-          <div className="flex flex-col gap-[20px]">
-            {[
-              { id: '01', title: 'Corporate Photography', desc: 'From workspace portraits to high-end infrastructure photography.' },
-              { id: '02', title: 'Cinematic Videography', desc: 'Custom walkthroughs, drone films, and leadership interviews.' },
-              { id: '03', title: 'Event Coverage', desc: 'High-impact coverage of corporate events and summits.' },
-              { id: '04', title: 'Photo Restoration', desc: 'Preserving old legacy film rolls and restoring damaged pictures.' }
-            ].map((item) => (
-              <div key={item.id} className="py-[24px] border-b border-[rgba(10,10,10,0.08)] flex gap-[30px] items-start group">
-                <span className="font-serif text-[18px] text-[var(--gold)] font-light italic mt-[2px]">{item.id}</span>
-                <div>
-                  <h3 className="text-[16px] font-semibold text-[var(--light)] mb-[8px] group-hover:text-[var(--gold)] transition-colors">{item.title}</h3>
-                  <p className="text-[12px] text-[var(--muted)] leading-relaxed font-light">{item.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="relative hidden lg:block">
-          <div className="sticky top-[120px] h-[650px] w-full img-mask rounded-sm overflow-hidden">
-            <img src="/images/services-camera.jpg" alt="Tripod Camera" className="w-full h-full object-cover mask-bg grayscale-[20%]" />
-          </div>
-        </div>
-      </section>
 
       {/* ─── 12. OUR TEAM ─── */}
       <section className="py-[120px] px-[8%] md:px-[10%] bg-[var(--darker)] border-y border-[rgba(10,10,10,0.06)]">
