@@ -7,162 +7,122 @@ import { X } from 'lucide-react';
 
 import 'swiper/css';
 
-/* --- Scroll Gallery: Scroll-intercept, no spacer --- */
+/* --- Scroll-Driven Sticky Gallery --- */
 function ScrollGallery({ images }) {
-  const sectionRef = useRef(null);
+  const wrapperRef = useRef(null);
   const [activeIdx, setActiveIdx] = useState(0);
-  const [inView, setInView] = useState(false);
-  // Use refs for event handlers to avoid stale closures
-  const stateRef = useRef({ idx: 0, sliding: false });
-  const touchStartRef = useRef(null);
-  const inViewRef = useRef(false);
+  const [visible, setVisible] = useState(false);
 
-  // Check if the section is filling the viewport
-  const isFilling = () => {
-    const el = sectionRef.current;
-    if (!el) return false;
-    const r = el.getBoundingClientRect();
-    return r.top <= 5 && r.bottom >= window.innerHeight - 5;
-  };
-
-  // Track when section enters/leaves fill state
   useEffect(() => {
-    let prevScrollY = window.scrollY;
-    const onScroll = () => {
-      const nowFilling = isFilling();
-      const curScrollY = window.scrollY;
-
-      // On entry: reset idx based on scroll direction
-      if (!inViewRef.current && nowFilling) {
-        const goingDown = curScrollY >= prevScrollY;
-        const resetIdx = goingDown ? 0 : images.length - 1;
-        stateRef.current = { idx: resetIdx, sliding: false };
-        setActiveIdx(resetIdx);
+    const update = () => {
+      const el = wrapperRef.current;
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const budget = el.offsetHeight - vh;
+      // Show overlay while spacer is pinned in scroll zone
+      const isIn = rect.top <= 0 && rect.bottom >= vh;
+      setVisible(isIn);
+      if (isIn && budget > 0) {
+        const p = Math.min(Math.max(-rect.top / budget, 0), 1);
+        setActiveIdx(Math.min(Math.floor(p * images.length), images.length - 1));
       }
-
-      inViewRef.current = nowFilling;
-      setInView(nowFilling);
-      prevScrollY = curScrollY;
     };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener('scroll', onScroll);
-  }, [images.length]);
-
-  // Intercept wheel + touch while gallery fills viewport
-  useEffect(() => {
-    const advance = (dir) => {
-      if (!inViewRef.current) return false;
-      const { idx: cur, sliding } = stateRef.current;
-      if (sliding) return true; // absorb during animation
-      if (dir > 0 && cur < images.length - 1) {
-        const next = cur + 1;
-        stateRef.current = { idx: next, sliding: true };
-        setActiveIdx(next);
-        setTimeout(() => { stateRef.current.sliding = false; }, 1000);
-        return true;
-      }
-      if (dir < 0 && cur > 0) {
-        const prev = cur - 1;
-        stateRef.current = { idx: prev, sliding: true };
-        setActiveIdx(prev);
-        setTimeout(() => { stateRef.current.sliding = false; }, 1000);
-        return true;
-      }
-      return false; // boundary reached, let scroll pass through
-    };
-
-    const onWheel = (e) => {
-      if (advance(e.deltaY > 0 ? 1 : -1)) e.preventDefault();
-    };
-    const onTouchStart = (e) => { touchStartRef.current = e.touches[0].clientY; };
-    const onTouchEnd = (e) => {
-      if (touchStartRef.current == null) return;
-      const dy = touchStartRef.current - e.changedTouches[0].clientY;
-      if (Math.abs(dy) > 50) advance(dy > 0 ? 1 : -1);
-      touchStartRef.current = null;
-    };
-
-    window.addEventListener('wheel', onWheel, { passive: false });
-    window.addEventListener('touchstart', onTouchStart, { passive: true });
-    window.addEventListener('touchend', onTouchEnd, { passive: true });
-    return () => {
-      window.removeEventListener('wheel', onWheel);
-      window.removeEventListener('touchstart', onTouchStart);
-      window.removeEventListener('touchend', onTouchEnd);
-    };
+    window.addEventListener('scroll', update, { passive: true });
+    // Run after paint so refs are bound
+    const t = setTimeout(update, 50);
+    return () => { window.removeEventListener('scroll', update); clearTimeout(t); };
   }, [images.length]);
 
   return (
-    /* One screenful — no blank spacer needed. Scroll interception handles the sticky feel. */
-    <div ref={sectionRef} style={{ width: '100%', height: '100dvh', position: 'relative', background: '#0A0A0A' }}>
-
-      {/* Fixed fullscreen overlay — covers nav — only mounts when filling viewport */}
-      {inView && (
+    /* Spacer: N screens of scroll budget, matching page bg so it's invisible */
+    <div
+      ref={wrapperRef}
+      style={{ height: `${images.length * 100}vh`, background: 'var(--dark)' }}
+    >
+      {/* Always rendered — toggled via opacity so no mount-delay flash */}
+      <div
+        suppressHydrationWarning
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100vw',
+          height: '100vh',        /* 100vh: universal support */
+          zIndex: 99999,          /* covers navigation */
+          overflow: 'hidden',
+          background: '#0A0A0A',
+          opacity: visible ? 1 : 0,
+          pointerEvents: visible ? 'auto' : 'none',
+          transition: 'opacity 0.35s ease'
+        }}
+      >
+        {/* Horizontal slider strip — translateX to slide between images */}
         <div
-          suppressHydrationWarning
           style={{
-            position: 'fixed', top: 0, left: 0,
-            width: '100vw', height: '100dvh',
-            zIndex: 9999, overflow: 'hidden',
-            background: '#0A0A0A',
-            animation: 'sgIn 0.15s ease forwards'
+            display: 'flex',
+            width: `${images.length * 100}%`,
+            height: '100%',
+            transform: `translateX(${-activeIdx * (100 / images.length)}%)`,
+            transition: 'transform 0.9s cubic-bezier(0.77,0,0.18,1)',
+            willChange: 'transform'
           }}
         >
-          <style suppressHydrationWarning>{`
-            @keyframes sgIn { from { opacity: 0 } to { opacity: 1 } }
-          `}</style>
-
-          {/* Horizontal slider strip */}
-          <div
-            style={{
-              display: 'flex',
-              width: `${images.length * 100}%`,
-              height: '100%',
-              transform: `translateX(${-activeIdx * (100 / images.length)}%)`,
-              transition: 'transform 0.9s cubic-bezier(0.77, 0, 0.18, 1)',
-              willChange: 'transform'
-            }}
-          >
-            {images.map((src, i) => (
-              <div key={i} style={{ width: `${100 / images.length}%`, height: '100%', flexShrink: 0, position: 'relative' }}>
-                <img src={src} alt={`Gallery ${i + 1}`} loading="eager"
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
-                <div style={{ position: 'absolute', inset: 0,
-                  background: 'linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.1) 40%, transparent 70%)' }} />
-              </div>
-            ))}
-          </div>
-
-          {/* Progress pills */}
-          <div style={{ position: 'absolute', bottom: 36, left: '50%', transform: 'translateX(-50%)',
-            display: 'flex', gap: 10, zIndex: 10 }}>
-            {images.map((_, i) => (
-              <div key={i} style={{
-                width: i === activeIdx ? 40 : 10, height: 3, borderRadius: 3,
-                background: i === activeIdx ? '#C5A46D' : 'rgba(255,255,255,0.3)',
-                transition: 'width 0.5s ease, background 0.5s ease'
+          {images.map((src, i) => (
+            <div
+              key={i}
+              style={{ width: `${100 / images.length}%`, height: '100%', flexShrink: 0, position: 'relative' }}
+            >
+              <img
+                src={src}
+                alt={`Gallery ${i + 1}`}
+                loading="eager"
+                style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
+              />
+              <div style={{
+                position: 'absolute', inset: 0,
+                background: 'linear-gradient(to top, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.05) 45%, transparent 70%)'
               }} />
-            ))}
-          </div>
-
-          {/* Slide counter */}
-          <div style={{ position: 'absolute', top: 28, right: '5%', fontFamily: 'Georgia, serif',
-            fontSize: 13, fontStyle: 'italic', color: '#C5A46D', letterSpacing: '0.12em', zIndex: 10 }}>
-            {String(activeIdx + 1).padStart(2, '0')} / {String(images.length).padStart(2, '0')}
-          </div>
-
-          {/* Scroll hint */}
-          <div style={{ position: 'absolute', bottom: 80, right: '5%',
-            display: 'flex', alignItems: 'center', gap: 12,
-            opacity: activeIdx === 0 ? 1 : 0, transition: 'opacity 0.6s ease',
-            pointerEvents: 'none', zIndex: 10 }}>
-            <span style={{ fontSize: 10, letterSpacing: '0.3em', textTransform: 'uppercase',
-              color: 'rgba(255,255,255,0.45)' }}>Scroll</span>
-            <div style={{ width: 40, height: 1, background: 'rgba(255,255,255,0.25)' }} />
-          </div>
+            </div>
+          ))}
         </div>
-      )}
+
+        {/* Progress pills — bottom centre */}
+        <div style={{
+          position: 'absolute', bottom: 40, left: '50%',
+          transform: 'translateX(-50%)', display: 'flex', gap: 12, zIndex: 10
+        }}>
+          {images.map((_, i) => (
+            <div key={i} style={{
+              width: i === activeIdx ? 44 : 10, height: 3, borderRadius: 99,
+              background: i === activeIdx ? '#C5A46D' : 'rgba(255,255,255,0.35)',
+              transition: 'width 0.45s ease, background 0.45s ease'
+            }} />
+          ))}
+        </div>
+
+        {/* Slide counter — top right */}
+        <div style={{
+          position: 'absolute', top: 32, right: '5%',
+          color: '#C5A46D', fontFamily: 'Georgia, serif',
+          fontSize: 13, fontStyle: 'italic', letterSpacing: '0.12em', zIndex: 10
+        }}>
+          {String(activeIdx + 1).padStart(2, '0')} / {String(images.length).padStart(2, '0')}
+        </div>
+
+        {/* Scroll hint — fades after first slide */}
+        <div style={{
+          position: 'absolute', bottom: 90, right: '5%',
+          display: 'flex', alignItems: 'center', gap: 12,
+          opacity: activeIdx === 0 ? 1 : 0, transition: 'opacity 0.5s',
+          pointerEvents: 'none', zIndex: 10
+        }}>
+          <span style={{ fontSize: 10, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)' }}>
+            Scroll
+          </span>
+          <div style={{ width: 40, height: 1, background: 'rgba(255,255,255,0.3)' }} />
+        </div>
+      </div>
     </div>
   );
 }
