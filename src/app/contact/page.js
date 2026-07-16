@@ -55,10 +55,12 @@ export default function Contact() {
     // If key is not configured yet, simulate the submission to allow previewing the flow
     if (accessKey === "YOUR_ACCESS_KEY_HERE") {
       setTimeout(() => {
+        const waLink = getWhatsAppLink(formData);
+        window.location.href = waLink;
         setStatus({
           submitted: true,
           submitting: false,
-          info: { error: false, msg: "Demo Mode: Form submission simulated successfully!" }
+          info: { error: false, msg: "Demo Mode: Form submission simulated successfully! Redirecting to WhatsApp..." }
         });
       }, 1000);
       return;
@@ -86,10 +88,12 @@ export default function Contact() {
       const result = await response.json();
 
       if (response.status === 200 && result.success) {
+        const waLink = getWhatsAppLink(formData);
+        window.location.href = waLink;
         setStatus({
           submitted: true,
           submitting: false,
-          info: { error: false, msg: "Thank you! Your message has been sent successfully." }
+          info: { error: false, msg: "Redirecting to WhatsApp for instant chat..." }
         });
       } else {
         setStatus({
@@ -123,9 +127,9 @@ export default function Contact() {
   };
 
   // Pre-filled WhatsApp link with form details
-  const getWhatsAppLink = () => {
+  const getWhatsAppLink = (data = formData) => {
     const encodedMsg = encodeURIComponent(
-      `Hello Glamour Photographics,\n\nI just submitted a contact form on your website with the following details:\n\n*Name:* ${formData.name}\n*Email:* ${formData.email}\n*Phone:* ${formData.phone || 'N/A'}\n*Company:* ${formData.company || 'N/A'}\n*Details:* ${formData.message}`
+      `Hello Glamour Photographics,\n\nI just submitted a contact form on your website with the following details:\n\n*Name:* ${data.name}\n*Email:* ${data.email}\n*Phone:* ${data.phone || 'N/A'}\n*Company:* ${data.company || 'N/A'}\n*Details:* ${data.message}`
     );
     return `https://wa.me/918971168868?text=${encodedMsg}`;
   };
