@@ -1290,6 +1290,113 @@ export default function Home() {
         })()}
       </section>
 
+      {/* ─── 8. OUR SERVICES (GRID) ─── */}
+      <section className="py-[140px] px-[8%] md:px-[10%] bg-[var(--dark)] border-t border-[rgba(10,10,10,0.06)] relative overflow-hidden">
+        {/* Header Title */}
+        <div className="text-center mb-[60px] reveal opacity-0 anim-fade-up">
+          <div className="flex items-center justify-center gap-[12px] mb-[18px]">
+            <div className="w-[12px] h-[1px] bg-[var(--gold)]"></div>
+            <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] font-bold">Corporate Capabilities</span>
+            <div className="w-[12px] h-[1px] bg-[var(--gold)]"></div>
+          </div>
+          
+          <h2 className="font-serif text-[clamp(36px,5vw,64px)] font-light leading-[1.1] text-[var(--light)] mb-[20px] tracking-[-0.01em]">
+            Our Services
+          </h2>
+
+          {/* Decorative Divider */}
+          <div className="flex items-center justify-center gap-[6px] mb-[20px]">
+            <div className="w-[20px] h-[1px] bg-[var(--gold)] opacity-50"></div>
+            <span className="text-[8px] text-[var(--gold)]">◆</span>
+            <div className="w-[20px] h-[1px] bg-[var(--gold)] opacity-50"></div>
+          </div>
+
+          <p className="text-[14px] leading-[1.8] text-[var(--muted)] max-w-[600px] mx-auto font-light">
+            End-to-end visual solutions for businesses and brands. <br />
+            Crafted with creativity. Delivered with precision.
+          </p>
+        </div>
+
+        {/* 4 Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-[30px] max-w-[1200px] mx-auto reveal opacity-0 anim-fade-up delay-100">
+          {[
+            {
+              id: '01',
+              title: 'Event Photography',
+              desc: 'Capturing energy, emotion and every unforgettable moment.',
+              bg: '/images/our_portfolio/33.jpg',
+              tab: 'EVENT FILMS'
+            },
+            {
+              id: '02',
+              title: 'Corporate Photography',
+              desc: "Professional imagery that reflects your brand's identity and values.",
+              bg: '/images/our_portfolio/cp-7.jpg',
+              tab: 'CORPORATE FILMS'
+            },
+            {
+              id: '03',
+              title: 'Digital Ads',
+              desc: 'Scroll-stopping visuals that captivate and convert.',
+              bg: '/images/our_portfolio/22.jpg',
+              tab: 'DIGITAL ADS'
+            },
+            {
+              id: '04',
+              title: 'Documentary',
+              desc: 'Real stories told with authenticity, depth and cinematic vision.',
+              bg: '/images/our_portfolio/te3.jpg',
+              tab: 'DOCUMENTARIES'
+            }
+          ].map((service) => (
+            <div 
+              key={service.id}
+              onClick={() => handleServiceClick(service.tab)}
+              className="group relative aspect-video rounded-[16px] overflow-hidden bg-black shadow-lg cursor-none border border-[rgba(10,10,10,0.06)] hover:shadow-2xl transition-all duration-500"
+            >
+              {/* Background Photo */}
+              <img 
+                src={service.bg} 
+                alt={service.title} 
+                className="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:opacity-90 group-hover:scale-102 transition-all duration-700 select-none pointer-events-none"
+              />
+              
+              {/* Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-transparent z-10" />
+
+              {/* Bottom Left Info Panel */}
+              <div className="absolute bottom-[28px] left-[28px] right-[28px] z-20 flex flex-col pointer-events-none">
+                <div className="flex items-center gap-[8px] mb-[6px]">
+                  <span className="text-[9px] tracking-[0.2em] font-bold text-[var(--gold)]">{service.id}</span>
+                  <div className="w-[16px] h-[1px] bg-[var(--gold)]"></div>
+                </div>
+                <h3 className="font-serif text-[24px] text-white leading-tight font-medium mb-[6px]">
+                  {service.title}
+                </h3>
+                <p className="text-[12px] leading-relaxed text-white/70 max-w-[85%] font-light">
+                  {service.desc}
+                </p>
+              </div>
+
+              {/* Play Button Icon */}
+              <div className="absolute bottom-[28px] right-[28px] z-20 w-[44px] h-[44px] rounded-full border border-white/50 bg-black/25 flex items-center justify-center text-white transition-all duration-300 group-hover:scale-110 group-hover:bg-[var(--gold)] group-hover:border-transparent">
+                <Play className="w-[14px] h-[14px] fill-current ml-[2px]" />
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Footer View All Link */}
+        <div className="relative flex items-center justify-end mt-[80px] max-w-[1200px] mx-auto reveal opacity-0 anim-fade-up">
+          <div className="absolute left-0 right-[260px] h-[1px] bg-[var(--gold)] opacity-30"></div>
+          <Link 
+            href="/services" 
+            className="text-[10px] tracking-[0.25em] uppercase font-bold text-[var(--gold)] hover:text-[var(--light)] cursor-none transition-colors duration-300 flex items-center gap-[12px] group relative pl-[24px]"
+          >
+            View All Services <span className="transition-transform duration-300 group-hover:translate-x-[4px]">→</span>
+          </Link>
+        </div>
+      </section>
 
       {/* ─── 12. OUR TEAM ─── */}
       <section className="py-[120px] px-[8%] md:px-[10%] bg-[var(--darker)] border-y border-[rgba(10,10,10,0.06)]">
