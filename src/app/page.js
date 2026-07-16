@@ -834,14 +834,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── 7. FEATURED WORK (TABBED VIDEO PORTFOLIO) ─── */}
       <section ref={featuredWorkRef} className="py-[140px] px-[8%] md:px-[10%] bg-[var(--dark)] relative overflow-hidden">
-        {/* Leaf Background Image Overlay */}
-        <div 
-          className="absolute inset-0 bg-cover bg-no-repeat bg-center pointer-events-none opacity-[0.95] z-0 select-none mix-blend-multiply"
-          style={{ backgroundImage: `url('/images/bg-Featured Work.png')` }}
-        />
-
         <div className="relative z-10 max-w-[1400px] mx-auto">
           {/* Header Title */}
           <div className="text-center mb-[50px] reveal opacity-0 anim-fade-up">

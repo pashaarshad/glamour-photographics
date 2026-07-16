@@ -707,17 +707,7 @@ export default function PortfolioPage() {
           })()}
       </section>
 
-      {/* ─── FEATURED VIDEOS SHOWCASE SECTION ─── */}
-      <section 
-        className="py-[120px] px-[5%] md:px-[8%] relative overflow-hidden border-t border-[rgba(10,10,10,0.06)]"
-        style={{
-          backgroundImage: "url('/images/bg-Featured Work.png')",
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-          backgroundColor: '#FAF8F4'
-        }}
-      >
+      <section className="py-[120px] px-[5%] md:px-[8%] relative overflow-hidden border-t border-[rgba(10,10,10,0.06)] bg-[var(--dark)]">
         <div className="max-w-[1600px] mx-auto reveal relative z-10">
           {/* Section Header */}
           <div className="text-center mb-[60px]">

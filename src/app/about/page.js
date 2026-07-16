@@ -338,17 +338,7 @@ export default function About() {
         </div>
       </section>
 
-      {/* ─── WHY CHOOSE US ─── */}
-      <section 
-        className="py-[120px] px-[4%] md:px-[5%] relative overflow-hidden"
-        style={{
-          backgroundImage: "url('/images/bg-Featured Work.png')",
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-          backgroundColor: '#FAF8F4'
-        }}
-      >
+      <section className="py-[120px] px-[4%] md:px-[5%] relative overflow-hidden bg-[var(--dark)] border-t border-[rgba(10,10,10,0.06)]">
         <div className="max-w-[1600px] mx-auto reveal relative z-10">
           <div className="text-center mb-[60px]">
             <span className="text-[11px] tracking-[0.3em] uppercase text-[var(--gold)] mb-[16px] block font-semibold">WHY CHOOSE US</span>

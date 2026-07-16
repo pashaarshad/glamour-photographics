@@ -24,16 +24,7 @@ export default function StudioServices() {
   }, []);
 
   return (
-    <main 
-      className="w-full min-h-screen pt-0 pb-0 cursor-none relative text-[var(--light)]"
-      style={{
-        backgroundImage: "url('/images/bg-Featured Work.png')",
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        backgroundColor: '#FAF8F4'
-      }}
-    >
+    <main className="w-full min-h-screen pt-0 pb-0 cursor-none relative text-[var(--light)] bg-[var(--dark)]">
       
       {/* ─── HERO SECTION WITH BACKGROUND YOUTUBE VIDEO ─── */}
       <section className="relative min-h-[60vh] md:min-h-[65vh] lg:min-h-[70vh] flex items-end px-[5%] md:px-[8%] overflow-hidden bg-[#0A0A0A] pt-[160px] md:pt-[180px] lg:pt-[220px] pb-[60px] md:pb-[80px] lg:pb-[100px]">
