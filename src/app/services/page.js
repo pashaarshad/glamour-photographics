@@ -5,9 +5,6 @@ import { redirect } from 'next/navigation';
 import { Play, X, Camera, Video, Calendar, Aperture, Building2, Film } from 'lucide-react';
 
 export default function Services() {
-  // Disabled as per request. Redirecting to /portfolio
-  redirect('/portfolio');
-
   const [showreelOpen, setShowreelOpen] = useState(false);
 
   useEffect(() => {
@@ -32,31 +29,45 @@ export default function Services() {
   const services = [
     {
       id: '01',
-      title: 'Corporate Films & Documentaries',
-      desc: 'We produce high-end corporate films, brand documentaries, and CSR videos that tell your company’s story with cinematic brilliance and emotional resonance. From script to screen, we handle every aspect of production.',
-      img: '/images/our_portfolio/kareeshma.jpg',
-      href: '/portfolio?tab=DOCUMENTARY'
+      title: 'Event Photography & Videography',
+      desc: 'From big stages to bigger stakes. We cover international summits and conferences, commanding raw event documentation and providing instant on-spot edited teasers in under 2 hours.',
+      img: '/images/our_portfolio/33.jpg',
+      href: '/services/event'
     },
     {
       id: '02',
-      title: 'Industrial & Architectural Photography',
-      desc: 'Showcase your infrastructure, manufacturing plants, and architectural marvels. We use specialized lighting and perspective control to capture the true scale, safety, and precision of your facilities.',
-      img: '/images/our_portfolio/te3.jpg',
-      href: '/portfolio?tab=INDUSTRIAL'
+      title: 'Corporate Media Services',
+      desc: 'High-end boardroom visual narratives, employee spotlight films, and facilities media campaigns. We translate your culture, values, and vision into premium corporate storytelling.',
+      img: '/images/our_portfolio/cp-7.jpg',
+      href: '/services/corporate'
     },
     {
       id: '03',
-      title: 'Event Coverage & Live Streaming',
-      desc: 'Comprehensive coverage of corporate summits, product launches, and annual days. We provide multi-camera setups, live broadcasting solutions, and rapid-turnaround photo and video edits for press and social media.',
-      img: '/images/outdoor-event.jpg',
-      href: '/portfolio?tab=EVENTS'
+      title: 'Digital Ads & Visual Campaigns',
+      desc: 'Scroll-stopping campaigns engineered to capture attention, build brand awareness, and break conventions in modern feeds.',
+      img: '/images/our_portfolio/22.jpg',
+      href: '/services/digital-ads'
     },
     {
       id: '04',
+      title: 'Documentary Filmmaking',
+      desc: 'Narrative stories of hope, health, and empowerment captured directly from communities across India, bridging brand CSR initiatives with real, lasting impact.',
+      img: '/images/our_portfolio/te3.jpg',
+      href: '/services/documentary'
+    },
+    {
+      id: '05',
+      title: 'School & Educational Films',
+      desc: 'Showcasing campus learning, active classrooms, and school values to help parents and students feel what makes your institution stand out.',
+      img: '/images/our_portfolio/highlights_SKV00387.jpg',
+      href: '/services/educational-films'
+    },
+    {
+      id: '06',
       title: 'Executive Portraits & Headshots',
-      desc: 'Professional, approachable, and commanding portraits for your leadership team. We can set up our mobile studio at your corporate office to ensure consistent, premium lighting across all your brand assets.',
-      img: '/images/our_portfolio/dilquar.jpg',
-      href: '/corporate'
+      desc: 'First impressions are made in pixels. Flattering professional studio lighting, custom poses, and a clean polish for your corporate leadership profiles.',
+      img: '/images/studio-shoot.jpg',
+      href: '/services/headshots'
     }
   ];
 

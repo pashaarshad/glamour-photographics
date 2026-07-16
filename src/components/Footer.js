@@ -85,6 +85,7 @@ export default function Footer() {
           <ul className="flex flex-col gap-[12px] list-none">
             <li><Link href="/" className="text-[12px] uppercase tracking-[0.1em] text-[rgba(255,255,255,0.75)] hover:text-[var(--gold)] transition-colors">Home</Link></li>
             <li><Link href="/about" className="text-[12px] uppercase tracking-[0.1em] text-[rgba(255,255,255,0.75)] hover:text-[var(--gold)] transition-colors">About Us</Link></li>
+            <li><Link href="/services" className="text-[12px] uppercase tracking-[0.1em] text-[rgba(255,255,255,0.75)] hover:text-[var(--gold)] transition-colors">Services</Link></li>
             <li><Link href="/studio-services" className="text-[12px] uppercase tracking-[0.1em] text-[rgba(255,255,255,0.75)] hover:text-[var(--gold)] transition-colors">Studio Services</Link></li>
             <li><Link href="/portfolio" className="text-[12px] uppercase tracking-[0.1em] text-[rgba(255,255,255,0.75)] hover:text-[var(--gold)] transition-colors">Portfolio</Link></li>
             <li><Link href="/clients" className="text-[12px] uppercase tracking-[0.1em] text-[rgba(255,255,255,0.75)] hover:text-[var(--gold)] transition-colors">Clients</Link></li>
@@ -95,10 +96,12 @@ export default function Footer() {
         <div className="flex flex-col gap-[16px]">
           <h4 className="font-serif text-[18px] text-[var(--gold)] mb-[8px]">Services</h4>
           <ul className="flex flex-col gap-[12px] list-none">
-            <li><Link href="/studio-services#passport-photos" className="text-[12px] uppercase tracking-[0.1em] text-[rgba(255,255,255,0.75)] hover:text-[var(--gold)] transition-colors">Passport Photos</Link></li>
-            <li><Link href="/studio-services#headshots" className="text-[12px] uppercase tracking-[0.1em] text-[rgba(255,255,255,0.75)] hover:text-[var(--gold)] transition-colors">Studio Headshots</Link></li>
-            <li><Link href="/studio-services#restoration" className="text-[12px] uppercase tracking-[0.1em] text-[rgba(255,255,255,0.75)] hover:text-[var(--gold)] transition-colors">Photo Restoration</Link></li>
-            <li><Link href="/studio-services#album-design" className="text-[12px] uppercase tracking-[0.1em] text-[rgba(255,255,255,0.75)] hover:text-[var(--gold)] transition-colors">Album Design</Link></li>
+            <li><Link href="/services/event" className="text-[12px] uppercase tracking-[0.1em] text-[rgba(255,255,255,0.75)] hover:text-[var(--gold)] transition-colors">Event Media</Link></li>
+            <li><Link href="/services/corporate" className="text-[12px] uppercase tracking-[0.1em] text-[rgba(255,255,255,0.75)] hover:text-[var(--gold)] transition-colors">Corporate Media</Link></li>
+            <li><Link href="/services/digital-ads" className="text-[12px] uppercase tracking-[0.1em] text-[rgba(255,255,255,0.75)] hover:text-[var(--gold)] transition-colors">Digital Ads</Link></li>
+            <li><Link href="/services/documentary" className="text-[12px] uppercase tracking-[0.1em] text-[rgba(255,255,255,0.75)] hover:text-[var(--gold)] transition-colors">Documentaries</Link></li>
+            <li><Link href="/services/educational-films" className="text-[12px] uppercase tracking-[0.1em] text-[rgba(255,255,255,0.75)] hover:text-[var(--gold)] transition-colors">Educational Films</Link></li>
+            <li><Link href="/services/headshots" className="text-[12px] uppercase tracking-[0.1em] text-[rgba(255,255,255,0.75)] hover:text-[var(--gold)] transition-colors">Executive Headshots</Link></li>
           </ul>
         </div>
 

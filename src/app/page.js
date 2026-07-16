@@ -1325,33 +1325,33 @@ export default function Home() {
               title: 'Event Photography',
               desc: 'Capturing energy, emotion and every unforgettable moment.',
               bg: '/images/our_portfolio/33.jpg',
-              tab: 'EVENT FILMS'
+              href: '/services/event'
             },
             {
               id: '02',
               title: 'Corporate Photography',
               desc: "Professional imagery that reflects your brand's identity and values.",
               bg: '/images/our_portfolio/cp-7.jpg',
-              tab: 'CORPORATE FILMS'
+              href: '/services/corporate'
             },
             {
               id: '03',
               title: 'Digital Ads',
               desc: 'Scroll-stopping visuals that captivate and convert.',
               bg: '/images/our_portfolio/22.jpg',
-              tab: 'DIGITAL ADS'
+              href: '/services/digital-ads'
             },
             {
               id: '04',
               title: 'Documentary',
               desc: 'Real stories told with authenticity, depth and cinematic vision.',
               bg: '/images/our_portfolio/te3.jpg',
-              tab: 'DOCUMENTARIES'
+              href: '/services/documentary'
             }
           ].map((service) => (
-            <div 
+            <Link 
+              href={service.href}
               key={service.id}
-              onClick={() => handleServiceClick(service.tab)}
               className="group relative aspect-video rounded-[16px] overflow-hidden bg-black shadow-lg cursor-none border border-[rgba(10,10,10,0.06)] hover:shadow-2xl transition-all duration-500"
             >
               {/* Background Photo */}
@@ -1378,11 +1378,11 @@ export default function Home() {
                 </p>
               </div>
 
-              {/* Play Button Icon */}
-              <div className="absolute bottom-[28px] right-[28px] z-20 w-[44px] h-[44px] rounded-full border border-white/50 bg-black/25 flex items-center justify-center text-white transition-all duration-300 group-hover:scale-110 group-hover:bg-[var(--gold)] group-hover:border-transparent">
-                <Play className="w-[14px] h-[14px] fill-current ml-[2px]" />
+              {/* Arrow Indicator on Hover */}
+              <div className="absolute bottom-[28px] right-[28px] z-20 w-[44px] h-[44px] rounded-full border border-white/30 bg-black/20 flex items-center justify-center text-white opacity-0 scale-90 transition-all duration-300 group-hover:opacity-100 group-hover:scale-100 group-hover:bg-[var(--gold)] group-hover:border-transparent">
+                <span className="text-[18px] leading-none">→</span>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 

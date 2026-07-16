@@ -27,17 +27,18 @@ export default function Navbar() {
             className="h-[48px] md:h-[58px] w-auto object-contain"
           />
         </Link>
-        <ul className="hidden md:flex gap-[40px] list-none">
+        <ul className="hidden md:flex gap-[32px] lg:gap-[40px] list-none">
           {[
             { label: 'Home', href: '/' },
             { label: 'About Us', href: '/about' },
+            { label: 'Services', href: '/services' },
             { label: 'Portfolio', href: '/portfolio' },
             { label: 'Clients', href: '/clients' },
             { label: 'Studio Services', href: '/studio-services' },
             { label: 'Contact', href: '/contact' }
           ].map((item) => (
             <li key={item.label}>
-              <Link href={item.href} className="text-[10px] tracking-[0.2em] uppercase font-medium text-[rgba(255,255,255,0.7)] relative pb-[4px] transition-colors duration-300 hover:text-white cursor-none after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-[var(--gold)] after:transition-all after:duration-350 hover:after:w-full">
+              <Link href={item.href} className="text-[10px] tracking-[0.25em] uppercase font-medium text-[rgba(255,255,255,0.7)] relative pb-[4px] transition-colors duration-300 hover:text-white cursor-none after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-[var(--gold)] after:transition-all after:duration-350 hover:after:w-full">
                 {item.label}
               </Link>
             </li>
@@ -57,10 +58,10 @@ export default function Navbar() {
           <span className="block w-[24px] h-[1px] bg-white transition-all duration-300"></span>
         </div>
       </nav>
-
+ 
       {/* MOBILE MENU */}
       <div 
-        className={`fixed inset-0 bg-[#0A0A0A] z-[2000] flex flex-col items-center justify-center gap-[40px] transition-transform duration-600 ease-in-out cursor-none ${
+        className={`fixed inset-0 bg-[#0A0A0A] z-[2000] flex flex-col items-center justify-center gap-[30px] md:gap-[40px] transition-transform duration-600 ease-in-out cursor-none ${
           mobileOpen ? 'translate-y-0 pointer-events-auto visible' : '-translate-y-full pointer-events-none invisible'
         }`}
       >
@@ -68,6 +69,7 @@ export default function Navbar() {
         {[
           { label: 'Home', href: '/' },
           { label: 'About Us', href: '/about' },
+          { label: 'Services', href: '/services' },
           { label: 'Portfolio', href: '/portfolio' },
           { label: 'Clients', href: '/clients' },
           { label: 'Studio Services', href: '/studio-services' },
@@ -76,7 +78,7 @@ export default function Navbar() {
           <Link 
             key={item.label}
             href={item.href} 
-            className={`font-serif text-[42px] font-light text-white tracking-[-0.01em] transition-all duration-500 hover:text-[var(--gold)] cursor-none ${
+            className={`font-serif text-[36px] sm:text-[42px] font-light text-white tracking-[-0.01em] transition-all duration-500 hover:text-[var(--gold)] cursor-none ${
               mobileOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[20px]'
             }`} 
             style={{ transitionDelay: `${idx * 80}ms` }}
