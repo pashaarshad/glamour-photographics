@@ -38,9 +38,14 @@ export default function Home() {
   const [showreelOpen, setShowreelOpen] = useState(false);
   const [activeVideoId, setActiveVideoId] = useState('oz26LF0gvxg');
   const [activeVideoTab, setActiveVideoTab] = useState('ALL VIDEOS');
+  const [showAllHomeVideos, setShowAllHomeVideos] = useState(false);
   const [statsTriggered, setStatsTriggered] = useState(false);
   const [expandedClients, setExpandedClients] = useState(false);
   const [activeCert, setActiveCert] = useState(null);
+
+  useEffect(() => {
+    setShowAllHomeVideos(false);
+  }, [activeVideoTab]);
 
   const featuredVideos = {
     'ALL VIDEOS': [
@@ -607,7 +612,7 @@ export default function Home() {
 
           {/* Video Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-[40px] max-w-[1200px] mx-auto reveal opacity-0 anim-fade-up delay-200">
-            {(featuredVideos[activeVideoTab] || []).map((video, idx) => (
+            {((featuredVideos[activeVideoTab] || []).slice(0, showAllHomeVideos ? undefined : 2)).map((video, idx) => (
               <div 
                 key={video.id}
                 onClick={() => {
@@ -659,6 +664,24 @@ export default function Home() {
               </div>
             ))}
           </div>
+
+          {/* Show More Button */}
+          {!showAllHomeVideos && (featuredVideos[activeVideoTab] || []).length > 2 && (
+            <div className="flex justify-center mt-[40px] reveal opacity-0 anim-fade-up">
+              <button
+                suppressHydrationWarning
+                onClick={() => {
+                  setShowAllHomeVideos(true);
+                  setTimeout(() => {
+                    window.dispatchEvent(new Event('scroll'));
+                  }, 100);
+                }}
+                className="border border-[rgba(10,10,10,0.15)] text-[var(--light)] text-[10px] tracking-[0.2em] uppercase py-[14px] px-[36px] hover:bg-[var(--light)] hover:text-[var(--dark)] transition-all duration-300 cursor-none font-bold rounded-full"
+              >
+                Show More
+              </button>
+            </div>
+          )}
 
           {/* Footer View All Link */}
           <div className="relative flex items-center justify-end mt-[80px] max-w-[1200px] mx-auto reveal opacity-0 anim-fade-up">
