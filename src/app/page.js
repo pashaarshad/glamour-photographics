@@ -36,10 +36,53 @@ function useCountUp(endVal, duration = 1800, trigger = false) {
 export default function Home() {
   const [activePortfolioTab, setActivePortfolioTab] = useState('ALL');
   const [showreelOpen, setShowreelOpen] = useState(false);
+  const [activeVideoId, setActiveVideoId] = useState('oz26LF0gvxg');
+  const [activeVideoTab, setActiveVideoTab] = useState('ALL VIDEOS');
   const [statsTriggered, setStatsTriggered] = useState(false);
   const [expandedClients, setExpandedClients] = useState(false);
   const [activeCert, setActiveCert] = useState(null);
-  
+
+  const featuredVideos = {
+    'ALL VIDEOS': [
+      { id: 'jlR54SuB_Rc', title: 'CII Space Expo 2022', desc: 'Capturing corporate excellence and industrial summits.', tag: 'Event Film' },
+      { id: 't07kSRBHPfg', title: 'CGI Office Tour', desc: 'Presenting corporate workspace, layout, and values.', tag: 'Corporate Film' },
+      { id: 'doOSgmHHgD4', title: 'Presidency Education', desc: 'Institutional values, campus life, and academic success.', tag: 'School Film' },
+      { id: 'PX5EzmcDqBI', title: 'Brand Commercial', desc: 'Dynamic digital campaigns establishing visual identity.', tag: 'Digital Ad' },
+      { id: 'Ygyh433FRjQ', title: 'Industrial Documentary', desc: 'Narrative storytelling mapping large-scale progress.', tag: 'Documentary' },
+    ],
+    'EVENT FILMS': [
+      { id: 'jlR54SuB_Rc', title: 'CII Space Expo 2022', desc: 'Capturing corporate excellence and industrial summits.', tag: 'Event Film' },
+      { id: 'Soc7p3YaTN0', title: 'Ansaan Capital', desc: 'Premium financial leadership storytelling and branding.', tag: 'Event Film' },
+      { id: 'df1A-_FulEs', title: 'Milestone Celebrations', desc: 'Honoring achievements in modern motion.', tag: 'Event Film' },
+      { id: 'doOSgmHHgD4', title: 'Academic Foundations', desc: 'Commemorating milestones of institutional growth.', tag: 'Event Film' },
+    ],
+    'CORPORATE FILMS': [
+      { id: 't07kSRBHPfg', title: 'CGI Office Tour', desc: 'Presenting corporate workspace, layout, and values.', tag: 'Corporate Film' },
+      { id: 'SpD8AeoLTXw', title: 'Tata Elxsi UAV', desc: 'Showcasing high-tech aerospace innovation and hardware.', tag: 'Corporate Film' },
+      { id: 'yVtKMpRffws', title: 'GE Bel Summit', desc: 'Highlighting industrial progress and corporate collaboration.', tag: 'Corporate Film' },
+      { id: 'CZ6tMXytyM4', title: 'SMK Prakash', desc: 'Documenting state-of-the-art logistics facilities.', tag: 'Corporate Film' },
+    ],
+    'DOCUMENTARIES': [
+      { id: 'Ygyh433FRjQ', title: 'Industrial Documentary', desc: 'Narrative storytelling mapping large-scale progress.', tag: 'Documentary' },
+      { id: 'YduPlyKr-10', title: 'Social Impact Film', desc: 'Inspiring narratives focused on community development.', tag: 'Documentary' },
+      { id: 'e5J2v1UtFW4', title: 'Toyota CSR Journey', desc: 'Documenting community outreach, education, and care.', tag: 'Documentary' },
+      { id: 'av9FhaYzDuA', title: 'Historical Legacy Film', desc: 'Preserving traditions and heritage through cinematic lenses.', tag: 'Documentary' },
+    ],
+    'SCHOOL FILMS': [
+      { id: 'doOSgmHHgD4', title: 'Presidency Education', desc: 'Institutional values, campus life, and academic success.', tag: 'School Film' },
+      { id: 'df1A-_FulEs', title: 'Academic Summit', desc: 'Celebrating excellence in higher learning and student growth.', tag: 'School Film' },
+      { id: 'XulH5TjS50k', title: 'Student Journey', desc: 'Shaping future leaders through creativity and guidance.', tag: 'School Film' },
+      { id: 'cImmLgZo9-Y', title: 'Campus Walkthrough', desc: 'Premium facilities and the modern learning environment.', tag: 'School Film' },
+    ],
+    'DIGITAL ADS': [
+      { id: 'PX5EzmcDqBI', title: 'Brand Commercial', desc: 'Dynamic digital campaigns establishing visual identity.', tag: 'Digital Ad' },
+      { id: 'zjxFg4uskmU', title: 'Product Feature', desc: 'Creative showcase of technology and product design.', tag: 'Digital Ad' },
+      { id: 'xALGQ-5sr6Y', title: 'Social Media Ad', desc: 'High-energy visual assets engaging modern audiences.', tag: 'Digital Ad' },
+      { id: 'C0hzCKpITSE', title: 'Retail Digital Ad', desc: 'Transforming custom digital experiences for retail.', tag: 'Digital Ad' },
+      { id: 'xzKI4XmfFus', title: 'Corporate Commercial', desc: 'Narrative commercials driving brand loyalty.', tag: 'Digital Ad' },
+    ]
+  };
+
   const statsRef = useRef(null);
 
   useEffect(() => {
@@ -500,79 +543,125 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── 7. FEATURED WORK (CAROUSEL WITH VIDEOS) ─── */}
-      <section className="py-[120px] px-[8%] md:px-[10%] bg-[#0A0A0A]">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-[60px] gap-[20px]">
-          <div className="reveal opacity-0 anim-fade-up">
-            <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] mb-[16px] block">
-              Featured Work
-            </span>
-            <h2 className="font-serif text-[clamp(28px,4vw,48px)] font-light leading-[1.2] text-white">
-              Stories We've Brought to Life
-            </h2>
-          </div>
-          <div className="reveal opacity-0 anim-fade-up delay-100">
-            <Link href="/portfolio?tab=VIDEOS" className="text-[10px] tracking-[0.25em] uppercase font-semibold py-[12px] px-[24px] border border-[rgba(255,255,255,0.2)] text-white hover:bg-white hover:text-black cursor-none transition-all">
-              View All Projects
-            </Link>
-          </div>
-        </div>
+      {/* ─── 7. FEATURED WORK (TABBED VIDEO PORTFOLIO) ─── */}
+      <section className="py-[140px] px-[8%] md:px-[10%] bg-[var(--dark)] relative overflow-hidden">
+        {/* Leaf Background Image Overlay */}
+        <div 
+          className="absolute inset-0 bg-cover bg-no-repeat bg-center pointer-events-none opacity-[0.95] z-0 select-none mix-blend-multiply"
+          style={{ backgroundImage: `url('/images/bg-Featured Work.png')` }}
+        />
 
-        <div className="reveal opacity-0 anim-fade-up delay-200">
-          <Swiper
-            modules={[Navigation, Pagination, Autoplay, FreeMode]}
-            spaceBetween={24}
-            slidesPerView={1}
-            navigation={true}
-            autoplay={{
-              delay: 4500,
-              disableOnInteraction: false,
-            }}
-            breakpoints={{
-              640: { slidesPerView: 2 },
-              1024: { slidesPerView: 3 },
-            }}
-            className="featured-swiper"
-          >
-            {[
-              { title: "CII - Space Expo 2022", slug: "cii", vidId: "jlR54SuB_Rc", type: "Event Coverage" },
-              { title: "CGI - Office Walkthrough", slug: "cgi", vidId: "t07kSRBHPfg", type: "Corporate Tour" },
-              { title: "Toyota Kirloskar - CSR", slug: "toyota", vidId: "e5J2v1UtFW4", type: "Documentary Film" },
-              { title: "Tata Elxsi - UAV Journey", slug: "tata-elxsi", vidId: "SpD8AeoLTXw", type: "UAV Innovation" },
-              { title: "PAI - Brand Documentary", slug: "pai", vidId: "C0hzCKpITSE", type: "Retail Journey" },
-            ].map((project, idx) => (
-              <SwiperSlide key={idx}>
-                <div className="group relative bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.05)] rounded-sm overflow-hidden flex flex-col h-[380px]">
-                  {/* Thumbnail / Video Iframe */}
-                  <div className="h-[210px] w-full relative overflow-hidden bg-black">
-                    <iframe
-                      className="w-full h-full opacity-80 group-hover:opacity-100 transition-opacity duration-300"
-                      src={`https://www.youtube.com/embed/${project.vidId}?controls=0&modestbranding=1&rel=0`}
-                      title={project.title}
-                      frameBorder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    ></iframe>
-                  </div>
-                  
-                  {/* Description Box */}
-                  <div className="p-[28px] flex-1 flex flex-col justify-between">
-                    <div>
-                      <span className="text-[9px] tracking-[0.2em] uppercase text-[var(--gold)] mb-[8px] block font-medium">
-                        {project.type}
-                      </span>
-                      <h3 className="font-serif text-[20px] text-white leading-[1.3] group-hover:text-[var(--gold)] transition-colors">
-                        {project.title}
-                      </h3>
-                    </div>
-                    <Link href={`/clients/${project.slug}`} className="text-[10px] tracking-[0.2em] uppercase text-white font-medium inline-flex items-center gap-[8px] cursor-none border-b border-transparent hover:border-white w-fit">
-                      Read Project details <span>→</span>
-                    </Link>
+        <div className="relative z-10 max-w-[1400px] mx-auto">
+          {/* Header Title */}
+          <div className="text-center mb-[50px] reveal opacity-0 anim-fade-up">
+            <div className="flex items-center justify-center gap-[12px] mb-[18px]">
+              <div className="w-[12px] h-[1px] bg-[var(--gold)]"></div>
+              <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] font-bold">Featured Work</span>
+              <div className="w-[12px] h-[1px] bg-[var(--gold)]"></div>
+            </div>
+            
+            <h2 className="font-serif text-[clamp(36px,5vw,64px)] font-light leading-[1.1] text-[var(--light)] mb-[20px] tracking-[-0.01em]">
+              Stories We've <br className="sm:hidden" /> Brought to <span className="italic text-[var(--gold)] font-medium">Life</span>
+            </h2>
+
+            {/* Decorative Divider */}
+            <div className="flex items-center justify-center gap-[6px] mb-[20px]">
+              <div className="w-[20px] h-[1px] bg-[var(--gold)] opacity-50"></div>
+              <span className="text-[8px] text-[var(--gold)]">◆</span>
+              <div className="w-[20px] h-[1px] bg-[var(--gold)] opacity-50"></div>
+            </div>
+
+            <p className="text-[14px] leading-[1.8] text-[var(--muted)] max-w-[600px] mx-auto font-light">
+              From corporate milestones to groundbreaking innovations, explore how we turn moments into powerful visual stories.
+            </p>
+          </div>
+
+          {/* Navigation Category Tabs */}
+          <div className="reveal opacity-0 anim-fade-up delay-100 flex flex-wrap items-center justify-center gap-x-[20px] gap-y-[16px] mb-[60px] max-w-[1000px] mx-auto border-b border-[rgba(10,10,10,0.06)] pb-[12px]">
+            {Object.keys(featuredVideos).map((tab, idx, arr) => (
+              <div key={tab} className="flex items-center gap-[20px]">
+                <button 
+                  onClick={() => setActiveVideoTab(tab)}
+                  className={`text-[10px] tracking-[0.25em] uppercase font-bold pb-[6px] relative cursor-none transition-colors duration-300 ${
+                    activeVideoTab === tab ? 'text-[var(--gold)] font-bold' : 'text-[var(--muted)] font-medium hover:text-[var(--light)]'
+                  }`}
+                >
+                  {tab}
+                  {activeVideoTab === tab && <div className="absolute bottom-[-14px] left-0 w-full h-[2px] bg-[var(--gold)]" />}
+                </button>
+                {idx < arr.length - 1 && (
+                  <span className="w-[1px] h-[12px] bg-[rgba(10,10,10,0.12)] hidden md:inline-block"></span>
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* Video Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-[40px] max-w-[1200px] mx-auto reveal opacity-0 anim-fade-up delay-200">
+            {(featuredVideos[activeVideoTab] || []).map((video, idx) => (
+              <div 
+                key={video.id}
+                onClick={() => {
+                  setActiveVideoId(video.id);
+                  setShowreelOpen(true);
+                }}
+                className="group relative aspect-video rounded-[16px] overflow-hidden bg-black shadow-md cursor-none border border-[rgba(10,10,10,0.06)] hover:shadow-2xl transition-all duration-500"
+              >
+                {/* Thumbnail */}
+                <img 
+                  src={`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`} 
+                  alt={video.title} 
+                  className="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:opacity-90 group-hover:scale-102 transition-all duration-700 select-none pointer-events-none"
+                  onError={(e) => {
+                    e.target.src = `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`;
+                  }}
+                />
+                
+                {/* Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-transparent z-10" />
+
+                {/* Top Category Badge */}
+                <div className="absolute top-[28px] left-[28px] z-20">
+                  <span className="text-[9px] tracking-[0.25em] uppercase text-[var(--gold)] font-bold bg-black/35 backdrop-blur-md px-[12px] py-[6px] rounded-[4px] border border-[rgba(255,255,255,0.08)]">
+                    {video.tag}
+                  </span>
+                </div>
+
+                {/* Center Play Icon Button */}
+                <div className="absolute inset-0 flex items-center justify-center z-20">
+                  <div className="w-[60px] h-[60px] rounded-full border border-white/90 flex items-center justify-center bg-white/10 backdrop-blur-md group-hover:scale-110 group-hover:bg-[var(--gold)] group-hover:border-transparent transition-all duration-300 shadow-md">
+                    <Play className="w-[18px] h-[18px] fill-white text-white ml-[3px]" />
                   </div>
                 </div>
-              </SwiperSlide>
+
+                {/* Bottom Left Info Panel */}
+                <div className="absolute bottom-[28px] left-[28px] right-[28px] z-20 flex flex-col pointer-events-none">
+                  <div className="flex items-center gap-[8px] mb-[6px]">
+                    <span className="text-[9px] tracking-[0.2em] font-bold text-[var(--gold)]">0{idx + 1}</span>
+                    <div className="w-[16px] h-[1px] bg-[var(--gold)]"></div>
+                  </div>
+                  <h3 className="font-serif text-[24px] text-white leading-tight font-medium mb-[6px]">
+                    {video.title}
+                  </h3>
+                  <p className="text-[12px] leading-relaxed text-white/70 max-w-[85%] font-light">
+                    {video.desc}
+                  </p>
+                </div>
+              </div>
             ))}
-          </Swiper>
+          </div>
+
+          {/* Footer View All Link */}
+          <div className="relative flex items-center justify-end mt-[80px] max-w-[1200px] mx-auto reveal opacity-0 anim-fade-up">
+            <div className="absolute left-0 right-[260px] h-[1px] bg-[var(--gold)] opacity-30"></div>
+            <Link 
+              href="/portfolio?tab=VIDEOS" 
+              className="text-[10px] tracking-[0.25em] uppercase font-bold text-[var(--gold)] hover:text-[var(--light)] cursor-none transition-colors duration-300 flex items-center gap-[12px] group relative pl-[24px]"
+            >
+              View All Portfolio <span className="transition-transform duration-300 group-hover:translate-x-[4px]">→</span>
+            </Link>
+          </div>
+
         </div>
       </section>
 
@@ -1138,8 +1227,8 @@ export default function Home() {
           <div className="w-full max-w-[1000px] aspect-video rounded-sm overflow-hidden border border-[rgba(255,255,255,0.1)] shadow-2xl relative">
             <iframe
               className="w-full h-full"
-              src="https://www.youtube.com/embed/oz26LF0gvxg?autoplay=1"
-              title="Glamour Photographics Corporate Showreel"
+              src={`https://www.youtube.com/embed/${activeVideoId}?autoplay=1`}
+              title="Video Player"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
