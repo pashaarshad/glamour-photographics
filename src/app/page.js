@@ -589,6 +589,7 @@ export default function Home() {
             {Object.keys(featuredVideos).map((tab, idx, arr) => (
               <div key={tab} className="flex items-center gap-[20px]">
                 <button 
+                  suppressHydrationWarning
                   onClick={() => setActiveVideoTab(tab)}
                   className={`text-[10px] tracking-[0.25em] uppercase font-bold pb-[6px] relative cursor-none transition-colors duration-300 ${
                     activeVideoTab === tab ? 'text-[var(--gold)] font-bold' : 'text-[var(--muted)] font-medium hover:text-[var(--light)]'
