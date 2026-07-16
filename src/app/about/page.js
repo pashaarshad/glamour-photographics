@@ -37,7 +37,7 @@ function ScrollGallery({ images }) {
   return (
     <div
       ref={wrapperRef}
-      style={{ height: `${images.length * 100}vh` }}
+      style={{ height: `${images.length * 100}vh`, background: 'var(--dark)' }}
       className="relative w-full"
     >
       {isActive && (
