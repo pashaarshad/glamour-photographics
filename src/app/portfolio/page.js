@@ -5,25 +5,23 @@ import { Play, X } from 'lucide-react';
 
 export default function PortfolioPage() {
   const [activeTab, setActiveTab] = useState('ALL');
-  const [activeVideoTab, setActiveVideoTab] = useState('ALL VIDEOS');
   const [activeVideoId, setActiveVideoId] = useState(null);
-  const [showAllImages, setShowAllImages] = useState(false);
-  const [showAllVideos, setShowAllVideos] = useState(false);
-
-  useEffect(() => {
-    setShowAllImages(false);
-  }, [activeTab]);
-
-  useEffect(() => {
-    setShowAllVideos(false);
-  }, [activeVideoTab]);
+  const [activePhotoUrl, setActivePhotoUrl] = useState(null);
+  const [visibleLimit, setVisibleLimit] = useState(12);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const params = new URLSearchParams(window.location.search);
       const tabParam = params.get('tab');
       if (tabParam) {
-        setActiveTab(tabParam.toUpperCase());
+        const uppercaseTab = tabParam.toUpperCase();
+        setTimeout(() => {
+          if (uppercaseTab === 'VIDEOS') {
+            setActiveTab('EVENT FILMS');
+          } else {
+            setActiveTab(uppercaseTab);
+          }
+        }, 0);
       }
     }
   }, []);
@@ -45,16 +43,7 @@ export default function PortfolioPage() {
       window.removeEventListener('scroll', checkReveals);
       clearTimeout(initialCheck);
     };
-  }, [activeTab, activeVideoTab]);
-
-  const videoTabs = [
-    'ALL VIDEOS',
-    'EVENT FILMS',
-    'CORPORATE FILMS',
-    'DOCUMENTARIES',
-    'SCHOOL FILMS',
-    'DIGITAL ADS'
-  ];
+  }, [activeTab]);
 
   const portfolioVideos = [
     // Event Films
@@ -214,10 +203,6 @@ export default function PortfolioPage() {
       desc: "A transparency-focused documentary capturing customer lucky draw events and live declarations."
     }
   ];
-
-  const filteredVideos = activeVideoTab === 'ALL VIDEOS'
-    ? portfolioVideos
-    : portfolioVideos.filter(v => v.category === activeVideoTab);
 
     const portfolioImages = {
     'ALL': [
@@ -496,7 +481,135 @@ export default function PortfolioPage() {
     ],
   };
 
-  const activeImages = portfolioImages[activeTab] || portfolioImages['ALL'];
+  const VERTICAL_IMAGES = [
+    '/images/our_portfolio/corporate/NMKL5612.jpg',
+    '/images/our_portfolio/celebrity/IMG0_0186.JPG',
+    '/images/our_portfolio/celebrity/IMG_0006.JPG',
+    '/images/our_portfolio/celebrity/IMG_0029.JPG',
+    '/images/our_portfolio/celebrity/IMG_0207.JPG',
+    '/images/our_portfolio/celebrity/IMG_0212.JPG',
+    '/images/our_portfolio/celebrity/IMG_0464.JPG',
+    '/images/our_portfolio/celebrity/NMK_0925.JPG',
+    '/images/our_portfolio/celebrity/Srk.jpg',
+    '/images/our_portfolio/celebrity/VED03109.jpg',
+    '/images/our_portfolio/celebrity/highlights_3C1A0775.jpg',
+    '/images/our_portfolio/documentary/highlights_SKV00290.jpg',
+    '/images/our_portfolio/political/Cameroon.jpg',
+    '/images/our_portfolio/political/IMG_0029.JPG',
+    '/images/our_portfolio/headshots/6ba3a857-c93e-4299-8740-45da7ff9e3f2.jpg',
+    '/images/our_portfolio/headshots/NMKL2060.jpg',
+    '/images/our_portfolio/headshots/NMKL2078.jpg',
+    '/images/our_portfolio/headshots/NMKL2079.jpg',
+    '/images/our_portfolio/headshots/NMKL5344-2.jpg',
+    '/images/our_portfolio/headshots/NMKL5462-2.jpg',
+    '/images/our_portfolio/headshots/NMKL5713.jpg',
+    '/images/our_portfolio/headshots/NMK_0236.JPG',
+    '/images/our_portfolio/headshots/Untitled design(1) (1).jpg',
+    '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.18.19 PM.jpg',
+    '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.18.38 PM.jpg',
+    '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.18.49 PM.jpg',
+    '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.18.56 PM.jpg',
+    '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.19.31 PM.jpg',
+    '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.20.10 PM.jpg',
+    '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.20.45 PM.jpg',
+    '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.20.51 PM.jpg',
+    '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.21.09 PM.jpg',
+    '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.21.32 PM.jpg',
+    '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.21.43 PM.jpg',
+    '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.22.01 PM.jpg',
+  ];
+
+  // Helper to build a balanced mix of photos and videos for the "ALL" view
+  const getMergedItems = () => {
+    const items = [];
+    const videos = [...portfolioVideos];
+    const photos = [...portfolioImages['ALL']];
+    
+    let videoIdx = 0;
+    let photoIdx = 0;
+    
+    while (videoIdx < videos.length || photoIdx < photos.length) {
+      if (videoIdx < videos.length) {
+        items.push({
+          type: 'video',
+          id: videos[videoIdx].id,
+          category: videos[videoIdx].category,
+          client: videos[videoIdx].client,
+          title: videos[videoIdx].title,
+          desc: videos[videoIdx].desc
+        });
+        videoIdx++;
+      }
+      for (let i = 0; i < 3; i++) {
+        if (photoIdx < photos.length) {
+          const src = photos[photoIdx];
+          let cat = 'PHOTO';
+          if (src.includes('/event/')) cat = 'EVENT';
+          else if (src.includes('/corporate/')) cat = 'CORPORATE';
+          else if (src.includes('/celebrity/')) cat = 'CELEBRITY';
+          else if (src.includes('/headshots/')) cat = 'HEADSHOTS';
+          else if (src.includes('/documentary/')) cat = 'DOCUMENTARY';
+          else if (src.includes('/political/')) cat = 'POLITICAL';
+          else if (src.includes('/outdoor/')) cat = 'OUTDOOR';
+
+          items.push({
+            type: 'photo',
+            src: src,
+            category: cat
+          });
+          photoIdx++;
+        }
+      }
+    }
+    return items;
+  };
+
+  const getFilteredItems = () => {
+    if (activeTab === 'ALL') {
+      return getMergedItems();
+    }
+    if (activeTab === 'EVENT') {
+      return (portfolioImages['EVENT'] || []).map(src => ({ type: 'photo', src, category: 'EVENT' }));
+    }
+    if (activeTab === 'CORPORATE') {
+      return (portfolioImages['CORPORATE'] || []).map(src => ({ type: 'photo', src, category: 'CORPORATE & OFFICES' }));
+    }
+    if (activeTab === 'CELEBRITY') {
+      return (portfolioImages['CELEBRITY'] || []).map(src => ({ type: 'photo', src, category: 'CELEBRITY' }));
+    }
+    if (activeTab === 'HEADSHOTS') {
+      return (portfolioImages['HEADSHOTS'] || []).map(src => ({ type: 'photo', src, category: 'HEADSHOTS' }));
+    }
+    
+    // Video tabs
+    return portfolioVideos
+      .filter(v => v.category === activeTab)
+      .map(v => ({
+        type: 'video',
+        id: v.id,
+        category: v.category,
+        client: v.client,
+        title: v.title,
+        desc: v.desc
+      }));
+  };
+
+  const filteredItems = getFilteredItems();
+  const visibleItems = filteredItems.slice(0, visibleLimit);
+  const hasMore = filteredItems.length > visibleLimit;
+
+  const tabs = [
+    { id: 'ALL', label: 'All' },
+    { id: 'EVENT', label: 'Event' },
+    { id: 'CORPORATE', label: 'Corporate & Offices' },
+    { id: 'CELEBRITY', label: 'Celebrity' },
+    { id: 'HEADSHOTS', label: 'Head Shots' },
+    { id: 'EVENT FILMS', label: 'Event Films' },
+    { id: 'CORPORATE FILMS', label: 'Corporate Films' },
+    { id: 'DOCUMENTARIES', label: 'Documentaries' },
+    { id: 'SCHOOL FILMS', label: 'School Films' },
+    { id: 'DIGITAL ADS', label: 'Digital Ads' }
+  ];
 
   return (
     <main className="w-full bg-[var(--dark)] text-[var(--light)] min-h-screen pt-[160px] pb-[100px] cursor-none relative">
@@ -520,22 +633,16 @@ export default function PortfolioPage() {
       {/* ─── FILTER TABS ─── */}
       <section className="px-[5%] md:px-[8%] max-w-[1400px] mx-auto mb-[60px]">
         <div className="flex flex-wrap gap-[30px] border-b border-[rgba(10,10,10,0.08)] pb-[15px] mb-[40px] reveal opacity-0 anim-fade-up">
-          {          [
-            { id: 'ALL', label: 'ALL' },
-            { id: 'EVENT', label: 'EVENT' },
-            { id: 'CORPORATE', label: 'CORPORATE & OFFICES' },
-            { id: 'CELEBRITY', label: 'CELEBRITY' },
-            { id: 'DOCUMENTARY', label: 'DOCUMENTARY' },
-            { id: 'POLITICAL', label: 'POLITICAL ICON' },
-            { id: 'HEADSHOTS', label: 'HEADSHOTS' },
-            { id: 'OUTDOOR', label: 'OUTDOOR' }
-          ].map((tab) => (
+          {tabs.map((tab) => (
             <button 
               suppressHydrationWarning
               key={tab.id} 
-              onClick={() => setActiveTab(tab.id)} 
+              onClick={() => {
+                setActiveTab(tab.id);
+                setVisibleLimit(12);
+              }} 
               className={`text-[10px] tracking-[0.2em] uppercase pb-[15px] relative cursor-none transition-colors ${
-                activeTab === tab.id ? 'text-[var(--gold)] font-medium' : 'text-[var(--muted)] hover:text-[var(--light)]'
+                activeTab === tab.id ? 'text-[var(--gold)] font-semibold' : 'text-[var(--muted)] hover:text-[var(--light)]'
               }`}
             >
               {tab.label}
@@ -544,271 +651,103 @@ export default function PortfolioPage() {
           ))}
         </div>
 
-        {/* ─── VIDEOS GRID ─── */}
-        {
-          /* ─── 5-IMAGE SECTION BLOCKS ─── */
-          (() => {
-              const VERTICAL_IMAGES = [
-                '/images/our_portfolio/corporate/NMKL5612.jpg',
-                '/images/our_portfolio/celebrity/IMG0_0186.JPG',
-                '/images/our_portfolio/celebrity/IMG_0006.JPG',
-                '/images/our_portfolio/celebrity/IMG_0029.JPG',
-                '/images/our_portfolio/celebrity/IMG_0207.JPG',
-                '/images/our_portfolio/celebrity/IMG_0212.JPG',
-                '/images/our_portfolio/celebrity/IMG_0464.JPG',
-                '/images/our_portfolio/celebrity/NMK_0925.JPG',
-                '/images/our_portfolio/celebrity/Srk.jpg',
-                '/images/our_portfolio/celebrity/VED03109.jpg',
-                '/images/our_portfolio/celebrity/highlights_3C1A0775.jpg',
-                '/images/our_portfolio/documentary/highlights_SKV00290.jpg',
-                '/images/our_portfolio/political/Cameroon.jpg',
-                '/images/our_portfolio/political/IMG_0029.JPG',
-                '/images/our_portfolio/headshots/6ba3a857-c93e-4299-8740-45da7ff9e3f2.jpg',
-                '/images/our_portfolio/headshots/NMKL2060.jpg',
-                '/images/our_portfolio/headshots/NMKL2078.jpg',
-                '/images/our_portfolio/headshots/NMKL2079.jpg',
-                '/images/our_portfolio/headshots/NMKL5344-2.jpg',
-                '/images/our_portfolio/headshots/NMKL5462-2.jpg',
-                '/images/our_portfolio/headshots/NMKL5713.jpg',
-                '/images/our_portfolio/headshots/NMK_0236.JPG',
-                '/images/our_portfolio/headshots/Untitled design(1) (1).jpg',
-                '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.18.19 PM.jpg',
-                '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.18.38 PM.jpg',
-                '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.18.49 PM.jpg',
-                '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.18.56 PM.jpg',
-                '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.19.31 PM.jpg',
-                '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.20.10 PM.jpg',
-                '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.20.45 PM.jpg',
-                '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.20.51 PM.jpg',
-                '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.21.09 PM.jpg',
-                '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.21.32 PM.jpg',
-                '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.21.43 PM.jpg',
-                '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.22.01 PM.jpg',
-              ];
-
-            const verticals = activeImages.filter(src => VERTICAL_IMAGES.includes(src));
-            const horizontals = activeImages.filter(src => !VERTICAL_IMAGES.includes(src));
-
-            const blocks = [];
-            let vertIdx = 0;
-            let horizIdx = 0;
-
-            while (vertIdx < verticals.length && horizIdx + 4 <= horizontals.length) {
-              blocks.push({
-                vertical: verticals[vertIdx],
-                horizontals: [
-                  horizontals[horizIdx],
-                  horizontals[horizIdx + 1],
-                  horizontals[horizIdx + 2],
-                  horizontals[horizIdx + 3]
-                ]
-              });
-              vertIdx += 1;
-              horizIdx += 4;
-            }
-
-            const remainingVerticals = verticals.slice(vertIdx);
-            const remainingHorizontals = horizontals.slice(horizIdx);
-            const remaining = [...remainingVerticals, ...remainingHorizontals];
-
-            if (blocks.length === 0) {
-              return (
-                <div className="w-full flex flex-col gap-[24px]">
-                  {verticals.length > 0 && (
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-[24px] w-full">
-                      {verticals.map((src, idx) => (
-                        <div key={idx} className="relative aspect-[2/3] group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)] shadow-[0_4px_20px_rgba(0,0,0,0.02)] reveal opacity-0 anim-fade-up" style={{ animationDelay: `${idx * 50}ms` }}>
-                          <img src={src} alt="Portfolio Work" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-105" />
+        {/* ─── UNIFIED MASONRY GRID ─── */}
+        {visibleItems.length === 0 ? (
+          <div className="text-center py-[80px] text-[var(--muted)] reveal">
+            No portfolio items found in this category.
+          </div>
+        ) : (
+          <div className="columns-1 sm:columns-2 lg:columns-3 gap-[24px] [column-fill:_balance] w-full reveal">
+            {visibleItems.map((item, idx) => {
+              if (item.type === 'photo') {
+                const isVertical = VERTICAL_IMAGES.includes(item.src);
+                return (
+                  <div 
+                    key={`${item.src}-${idx}`}
+                    onClick={() => setActivePhotoUrl(item.src)}
+                    className="break-inside-avoid mb-[24px] group relative overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] shadow-lg bg-[var(--darker)] cursor-none hover:shadow-2xl transition-all duration-500"
+                  >
+                    <div className={`w-full ${isVertical ? 'aspect-[2/3]' : 'aspect-[3/2]'} overflow-hidden relative`}>
+                      <img 
+                        src={item.src} 
+                        alt="Portfolio Gallery" 
+                        className={`w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-103 ${
+                          item.category === 'HEADSHOTS' || item.src.includes('/headshots/') ? 'object-top' : 'object-center'
+                        }`} 
+                      />
+                      {/* Hover Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-[20px]">
+                        <div className="text-left">
+                          <span className="text-[9px] tracking-[0.2em] font-bold text-[var(--gold)] uppercase">{item.category}</span>
+                          <div className="w-[16px] h-[1px] bg-[var(--gold)] mt-[4px]"></div>
                         </div>
-                      ))}
-                    </div>
-                  )}
-                  {horizontals.length > 0 && (
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-[24px] w-full">
-                      {horizontals.map((src, idx) => (
-                        <div key={idx} className="relative aspect-[3/2] group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)] shadow-[0_4px_20px_rgba(0,0,0,0.02)] reveal opacity-0 anim-fade-up" style={{ animationDelay: `${idx * 50}ms` }}>
-                          <img src={src} alt="Portfolio Work" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-105" />
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              );
-            }
-
-            const visibleBlocks = showAllImages ? blocks : blocks.slice(0, 4);
-            const hasMore = blocks.length > 4 || remainingVerticals.length > 0 || remainingHorizontals.length > 0;
-
-            return (
-              <div className="w-full flex flex-col gap-[24px]">
-                {visibleBlocks.map((block, bIdx) => (
-                  <div key={bIdx} className="flex flex-col md:flex-row gap-[24px] items-stretch w-full">
-                    {/* Left: 1 Vertical */}
-                    <div className="w-full md:w-1/3 relative group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)] min-h-[350px] md:min-h-0 shadow-[0_4px_20px_rgba(0,0,0,0.02)] reveal opacity-0 anim-fade-up">
-                      <img src={block.vertical} alt="Portfolio Work" className="absolute inset-0 w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-[1.03]" />
-                    </div>
-                    {/* Right: 4 Horizontal */}
-                    <div className="w-full md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-[24px]">
-                      {block.horizontals.map((src, idx) => (
-                        <div key={idx} className="relative aspect-[3/2] group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)] shadow-[0_4px_20px_rgba(0,0,0,0.02)] reveal opacity-0 anim-fade-up" style={{ animationDelay: `${idx * 50}ms` }}>
-                          <img src={src} alt="Portfolio Work" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-[1.03]" />
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-
-                {/* Show remaining items only if showAllImages is true */}
-                {showAllImages && (
-                  <>
-                    {/* REMAINING VERTICALS */}
-                    {remainingVerticals.length > 0 && (
-                      <div className="grid grid-cols-1 md:grid-cols-3 gap-[24px] w-full">
-                        {remainingVerticals.map((src, idx) => (
-                          <div key={idx} className="relative aspect-[2/3] group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)] shadow-[0_4px_20px_rgba(0,0,0,0.02)] reveal opacity-0 anim-fade-up" style={{ animationDelay: `${idx * 50}ms` }}>
-                            <img src={src} alt="Portfolio Work" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-[1.03]" />
-                          </div>
-                        ))}
                       </div>
-                    )}
-
-                    {/* REMAINING HORIZONTALS */}
-                    {remainingHorizontals.length > 0 && (
-                      <div className="grid grid-cols-1 md:grid-cols-3 gap-[24px] w-full">
-                        {remainingHorizontals.map((src, idx) => (
-                          <div key={idx} className="relative aspect-[3/2] group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)] shadow-[0_4px_20px_rgba(0,0,0,0.02)] reveal opacity-0 anim-fade-up" style={{ animationDelay: `${idx * 50}ms` }}>
-                            <img src={src} alt="Portfolio Work" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-[1.03]" />
-                          </div>
-                        ))}
+                    </div>
+                  </div>
+                );
+              } else {
+                // Video item
+                return (
+                  <div 
+                    key={`${item.id}-${idx}`}
+                    onClick={() => setActiveVideoId(item.id)}
+                    className="break-inside-avoid mb-[24px] group relative overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] shadow-lg bg-[var(--darker)] cursor-none hover:shadow-2xl transition-all duration-500"
+                  >
+                    <div className="w-full aspect-video overflow-hidden relative">
+                      <img 
+                        src={`https://img.youtube.com/vi/${item.id}/maxresdefault.jpg`} 
+                        alt={item.title} 
+                        className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-103"
+                        onError={(e) => {
+                          e.target.src = `https://img.youtube.com/vi/${item.id}/hqdefault.jpg`;
+                        }}
+                      />
+                      
+                      {/* Play Button Overlay */}
+                      <div className="absolute inset-0 bg-black/40 flex items-center justify-center transition-colors duration-300 group-hover:bg-black/55">
+                        <div className="w-[54px] h-[54px] rounded-full border border-white/35 flex items-center justify-center bg-white/10 backdrop-blur-sm transition-transform duration-500 group-hover:scale-110">
+                          <Play className="w-[16px] h-[16px] text-white fill-white translate-x-[1px]" />
+                        </div>
                       </div>
-                    )}
-                  </>
-                )}
-
-                {/* Show More Button */}
-                {!showAllImages && hasMore && (
-                  <div className="flex justify-center mt-[40px] reveal opacity-0 anim-fade-up">
-                    <button
-                      suppressHydrationWarning
-                      onClick={() => {
-                        setShowAllImages(true);
-                        setTimeout(() => {
-                          window.dispatchEvent(new Event('scroll'));
-                        }, 100);
-                      }}
-                      className="border border-[rgba(10,10,10,0.15)] text-[var(--light)] text-[10px] tracking-[0.2em] uppercase py-[14px] px-[36px] hover:bg-[var(--light)] hover:text-[var(--dark)] transition-all duration-300 cursor-none font-bold rounded-full"
-                    >
-                      Show More
-                    </button>
+                      
+                      {/* Video Info Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent flex flex-col justify-end p-[20px] text-left">
+                        <div className="flex items-center gap-[8px] mb-[6px]">
+                          <span className="text-[9px] tracking-[0.2em] font-bold text-[var(--gold)] uppercase">{item.category}</span>
+                          <div className="w-[12px] h-[1px] bg-[var(--gold)]"></div>
+                        </div>
+                        <h3 className="font-serif text-[18px] text-white leading-tight font-medium mb-[4px]">
+                          {item.title}
+                        </h3>
+                        <p className="text-[12px] text-white/70 leading-relaxed font-light line-clamp-2 max-w-[90%]">
+                          {item.desc}
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                )}
-              </div>
-            );
-          })()}
-      </section>
-
-      <section className="py-[120px] px-[5%] md:px-[8%] relative overflow-hidden border-t border-[rgba(10,10,10,0.06)] bg-[var(--dark)]">
-        <div className="max-w-[1600px] mx-auto reveal relative z-10">
-          {/* Section Header */}
-          <div className="text-center mb-[60px]">
-            <span className="text-[11px] tracking-[0.3em] uppercase text-[var(--gold)] mb-[16px] block font-semibold">FEATURED WORK</span>
-            <h2 className="font-serif text-[clamp(36px,4.5vw,56px)] text-[#0A0A0A] font-light mb-[20px]">
-              Stories We've Brought to <span className="italic text-[var(--gold)]">Life</span>
-            </h2>
-            <div className="w-[80px] h-[1px] bg-[var(--gold)] mx-auto relative mb-[24px]">
-              <div className="w-[4px] h-[4px] bg-[var(--gold)] rotate-45 absolute left-[38px] -top-[1.5px]"></div>
-            </div>
-            <p className="text-[14px] text-[var(--muted)] max-w-[600px] mx-auto leading-relaxed font-light">
-              From corporate milestones to groundbreaking innovations, explore how we turn moments into powerful visual stories.
-            </p>
+                );
+              }
+            })}
           </div>
+        )}
 
-          {/* Video Filter Tabs */}
-          <div className="flex flex-wrap items-center justify-center gap-[12px] md:gap-[24px] mb-[56px] reveal opacity-0 anim-fade-up">
-            {videoTabs.map((tab, idx) => (
-              <div key={tab} className="flex items-center">
-                <button 
-                  suppressHydrationWarning
-                  onClick={() => setActiveVideoTab(tab)}
-                  className={`text-[11px] tracking-[0.2em] uppercase pb-[8px] relative cursor-none font-bold transition-all ${
-                    activeVideoTab === tab ? 'text-[var(--gold)]' : 'text-[var(--muted)] hover:text-[#0A0A0A]'
-                  }`}
-                >
-                  {tab}
-                  {activeVideoTab === tab && (
-                    <div className="absolute bottom-0 left-0 w-full h-[2px] bg-[var(--gold)]" />
-                  )}
-                </button>
-                {idx < videoTabs.length - 1 && (
-                  <span className="text-[rgba(10,10,10,0.15)] text-[12px] ml-[12px] md:ml-[24px] pointer-events-none select-none font-light">|</span>
-                )}
-              </div>
-            ))}
+        {/* Load More Button */}
+        {hasMore && (
+          <div className="flex justify-center mt-[48px] reveal opacity-0 anim-fade-up">
+            <button
+              suppressHydrationWarning
+              onClick={() => {
+                setVisibleLimit(prev => prev + 12);
+                setTimeout(() => {
+                  window.dispatchEvent(new Event('scroll'));
+                }, 100);
+              }}
+              className="border border-[rgba(10,10,10,0.15)] text-[var(--light)] text-[10px] tracking-[0.2em] uppercase py-[14px] px-[36px] hover:bg-[var(--light)] hover:text-[var(--dark)] transition-all duration-300 cursor-none font-bold rounded-full"
+            >
+              Show More
+            </button>
           </div>
-
-          {/* Videos Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-[32px] max-w-[1400px] mx-auto reveal opacity-0 anim-fade-up">
-            {(showAllVideos ? filteredVideos : filteredVideos.slice(0, 4)).map((video, idx) => (
-              <div 
-                key={`${video.id}-${idx}`} 
-                onClick={() => setActiveVideoId(video.id)}
-                className="group relative aspect-video rounded-[16px] overflow-hidden border border-[rgba(10,10,10,0.06)] shadow-lg bg-[var(--darker)] cursor-none"
-              >
-                {/* YouTube Thumbnail */}
-                <img 
-                  src={`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`} 
-                  alt={video.title} 
-                  className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-103"
-                  onError={(e) => {
-                    // Fallback to high quality if maxres isn't available
-                    e.target.src = `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`;
-                  }}
-                />
-                
-                {/* Overlay Play Button */}
-                <div className="absolute inset-0 bg-black/45 flex items-center justify-center group-hover:bg-black/55 transition-colors duration-300">
-                  <div className="w-[64px] h-[64px] rounded-full border border-white/35 flex items-center justify-center bg-white/10 backdrop-blur-sm transition-transform duration-500 group-hover:scale-110">
-                    <Play className="w-[20px] h-[20px] text-white fill-white translate-x-[1px]" />
-                  </div>
-                </div>
-
-                {/* Bottom Left Card Info overlay */}
-                <div className="absolute bottom-[28px] left-[28px] right-[28px] z-10 text-left pointer-events-none">
-                  <div className="flex items-center gap-[12px] mb-[10px]">
-                    <span className="font-serif italic text-[14px] text-[var(--gold)] font-medium leading-none">
-                      {String(idx + 1).padStart(2, '0')}
-                    </span>
-                    <div className="w-[24px] h-[1px] bg-[var(--gold)]/70"></div>
-                  </div>
-                  <h3 className="font-serif text-[24px] text-white font-medium mb-[6px] tracking-wide">
-                    {video.title}
-                  </h3>
-                  <p className="text-[12.5px] text-white/70 leading-relaxed font-light line-clamp-2">
-                    {video.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Show More Videos Button */}
-          {!showAllVideos && filteredVideos.length > 4 && (
-            <div className="flex justify-center mt-[48px] reveal opacity-0 anim-fade-up">
-              <button
-                suppressHydrationWarning
-                onClick={() => {
-                  setShowAllVideos(true);
-                  setTimeout(() => {
-                    window.dispatchEvent(new Event('scroll'));
-                  }, 100);
-                }}
-                className="border border-[rgba(10,10,10,0.15)] text-[var(--light)] text-[10px] tracking-[0.2em] uppercase py-[14px] px-[36px] hover:bg-[var(--light)] hover:text-[var(--dark)] transition-all duration-300 cursor-none font-bold rounded-full"
-              >
-                Show More
-              </button>
-            </div>
-          )}
-        </div>
+        )}
       </section>
 
       {/* ─── CONTACT SECTION ─── */}
@@ -823,15 +762,15 @@ export default function PortfolioPage() {
 
       {/* ─── YOUTUBE LIGHTBOX OVERLAY ─── */}
       {activeVideoId && (
-        <div className="fixed inset-0 bg-black/95 z-[9999] flex items-center justify-center p-[20px] transition-all">
+        <div className="fixed inset-0 bg-black/95 z-[9999] flex items-center justify-center p-[20px] transition-all" onClick={() => setActiveVideoId(null)}>
           <button 
             suppressHydrationWarning
             onClick={() => setActiveVideoId(null)} 
-            className="absolute top-[30px] right-[5%] md:right-[8%] text-white text-[12px] tracking-[0.2em] uppercase flex items-center gap-[8px] cursor-none hover:text-[var(--gold)]"
+            className="absolute top-[30px] right-[5%] md:right-[8%] text-white text-[12px] tracking-[0.2em] uppercase flex items-center gap-[8px] cursor-none hover:text-[var(--gold)] font-medium"
           >
             Close <X className="w-[16px] h-[16px]" />
           </button>
-          <div className="w-full max-w-[960px] aspect-video rounded-sm overflow-hidden border border-[rgba(255,255,255,0.1)] shadow-2xl relative">
+          <div className="w-full max-w-[960px] aspect-video rounded-sm overflow-hidden border border-[rgba(255,255,255,0.1)] shadow-2xl relative" onClick={(e) => e.stopPropagation()}>
             <iframe
               className="w-full h-full"
               src={`https://www.youtube.com/embed/${activeVideoId}?autoplay=1&rel=0`}
@@ -840,6 +779,22 @@ export default function PortfolioPage() {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             ></iframe>
+          </div>
+        </div>
+      )}
+
+      {/* ─── PHOTO LIGHTBOX OVERLAY ─── */}
+      {activePhotoUrl && (
+        <div className="fixed inset-0 bg-black/95 z-[9999] flex items-center justify-center p-[20px] transition-all" onClick={() => setActivePhotoUrl(null)}>
+          <button 
+            suppressHydrationWarning
+            onClick={() => setActivePhotoUrl(null)} 
+            className="absolute top-[30px] right-[5%] md:right-[8%] text-white text-[12px] tracking-[0.2em] uppercase flex items-center gap-[8px] cursor-none hover:text-[var(--gold)] font-medium"
+          >
+            Close <X className="w-[16px] h-[16px]" />
+          </button>
+          <div className="max-w-full max-h-[85vh] rounded-sm overflow-hidden border border-[rgba(255,255,255,0.1)] shadow-2xl relative" onClick={(e) => e.stopPropagation()}>
+            <img src={activePhotoUrl} alt="Portfolio Fullscreen" className="max-w-full max-h-[85vh] object-contain" />
           </div>
         </div>
       )}
