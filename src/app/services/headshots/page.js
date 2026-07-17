@@ -36,7 +36,7 @@ export default function HeadshotsServices() {
       {/* ─── HERO HEADER ─── */}
       <section className="relative min-h-[50vh] flex items-center px-[5%] md:px-[8%] bg-[#0A0A0A] pt-[120px] md:pt-[100px]">
         <div className="absolute inset-0 z-0">
-          <img src="/images/headshot_studio.png" alt="Headshot Studio Header" className="w-full h-full object-cover object-[center_20%] opacity-40 select-none pointer-events-none" />
+          <img src="/images/headshot_studio.png" alt="Headshot Studio Header" className="w-full h-full object-cover object-top opacity-40 select-none pointer-events-none" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent z-10" />
         </div>
         <div className="max-w-[1400px] w-full mx-auto z-20 relative">
@@ -81,7 +81,7 @@ export default function HeadshotsServices() {
             </Link>
           </div>
           <div className="relative aspect-video w-full rounded-[16px] overflow-hidden border border-[rgba(10,10,10,0.06)] group shadow-md bg-black">
-            <img src="/images/our_portfolio/headshots/_01A0630.JPG" alt="Executive Headshot Setup" className="w-full h-full object-cover opacity-100 transition-transform duration-[1200ms] group-hover:scale-103" />
+            <img src="/images/our_portfolio/headshots/_01A0630.JPG" alt="Executive Headshot Setup" className="w-full h-full object-cover object-top opacity-100 transition-transform duration-[1200ms] group-hover:scale-103" />
           </div>
         </div>
       </section>

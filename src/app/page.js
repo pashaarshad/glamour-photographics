@@ -1298,7 +1298,9 @@ export default function Home() {
               <img 
                 src={service.bg} 
                 alt={service.title} 
-                className="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:opacity-90 group-hover:scale-102 transition-all duration-700 select-none pointer-events-none"
+                className={`absolute inset-0 w-full h-full object-cover opacity-75 group-hover:opacity-90 group-hover:scale-102 transition-all duration-700 select-none pointer-events-none ${
+                  service.id === '06' ? 'object-top' : ''
+                }`}
               />
               
               {/* Gradient Overlay */}

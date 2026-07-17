@@ -145,7 +145,9 @@ export default function Services() {
               
               {/* Background Image - Less transparent, clearly visible */}
               <div 
-                className="absolute inset-0 z-0 bg-cover bg-center opacity-[0.18] transition-all duration-[800ms] group-hover:opacity-[0.55] group-hover:scale-[1.02] grayscale group-hover:grayscale-0"
+                className={`absolute inset-0 z-0 bg-cover opacity-[0.18] transition-all duration-[800ms] group-hover:opacity-[0.55] group-hover:scale-[1.02] grayscale group-hover:grayscale-0 ${
+                  service.id === '06' ? 'bg-top' : 'bg-center'
+                }`}
                 style={{ backgroundImage: `url('${service.img}')` }}
               />
               <div className="absolute inset-0 z-0 bg-[var(--dark)] opacity-20 group-hover:opacity-30 transition-opacity duration-500" />
