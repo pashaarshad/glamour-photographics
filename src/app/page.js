@@ -968,74 +968,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── 8b. WHAT WE DO (SERVICES CATEGORIES) ─── */}
-      <section className="py-[140px] px-[8%] md:px-[10%] bg-[var(--darker)] border-t border-[rgba(10,10,10,0.06)] relative">
-        {/* Header Title with Subtext */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-[80px] gap-[30px] max-w-[1200px] mx-auto reveal opacity-0 anim-fade-up">
-          <div>
-            <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] mb-[16px] block font-bold">Services Categories</span>
-            <h2 className="font-serif text-[clamp(36px,4.5vw,54px)] font-light leading-[1.1] text-[var(--light)] tracking-[-0.01em]">
-              What <span className="italic text-[var(--gold)] font-medium">We</span> Do
-            </h2>
-          </div>
-          <div className="flex gap-[28px] max-w-[500px]">
-            <div className="w-[1px] h-[60px] bg-[var(--gold)] opacity-35 hidden md:block"></div>
-            <p className="text-[14px] leading-[1.8] text-[var(--muted)] font-light">
-              From powerful corporate stories to once-in-a-lifetime celebrations, we create visuals that connect, engage and leave a lasting impact.
-            </p>
-          </div>
-        </div>
 
-        {/* 6 Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[24px] max-w-[1200px] mx-auto reveal opacity-0 anim-fade-up delay-100">
-          {[
-            { id: "01", title: "Corporate Photography", icon: Camera, desc: "High-end corporate headshots, facility walkthroughs, products and branding campaigns.", bg: "/images/our_portfolio/cp-7.jpg", href: "/portfolio?tab=CLIENTS" },
-            { id: "02", title: "Cinematic Videography", icon: Video, desc: "High-impact brand videos, showreels, office tour media and documentaries.", bg: "/images/our_portfolio/22.jpg", href: "/portfolio?tab=VIDEOS" },
-            { id: "03", title: "Event Coverage", icon: Calendar, desc: "Premium documentation of corporate summits, conventions, and milestone ceremonies.", bg: "/images/our_portfolio/33.jpg", href: "/portfolio?tab=EVENTS" },
-            { id: "04", title: "Aerial Shoots", icon: Aperture, desc: "Certified industrial drone flights mapping massive campuses and aerial geography.", bg: "/images/our_portfolio/rtx-1.jpg", href: "/portfolio?tab=INDUSTRIAL" },
-            { id: "05", title: "Industrial Photography", icon: Building2, desc: "Raw visual documentation for factories, power plants, and technology infrastructure.", bg: "/images/our_portfolio/te3.jpg", href: "/portfolio?tab=INDUSTRIAL" },
-            { id: "06", title: "Brand Storytelling", icon: Film, desc: "Custom scripting and visual conceptualization bringing corporate identity to life.", bg: "/images/our_portfolio/cp-12.jpg", href: "/portfolio?tab=DOCUMENTARY" },
-          ].map((srv) => (
-            <Link 
-              href={srv.href}
-              key={srv.id} 
-              className="group relative p-[32px] md:p-[40px] rounded-[16px] overflow-hidden border border-black hover:border-[var(--gold)] hover:shadow-2xl transition-all duration-[500ms] cursor-none min-h-[340px] flex flex-col justify-between bg-black"
-            >
-              {/* Card Image Background */}
-              <div className="absolute inset-0 z-0">
-                <img src={srv.bg} alt={srv.title} className="w-full h-full object-cover opacity-50 group-hover:opacity-65 group-hover:scale-102 transition-all duration-700 pointer-events-none select-none" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-transparent" />
-              </div>
-
-              {/* Flex Content Box (Stacked) */}
-              <div className="relative z-10 w-full flex flex-col items-start">
-                {/* Number */}
-                <span className="font-serif text-[48px] font-light text-white/35 leading-none mb-[16px] block">
-                  {srv.id}
-                </span>
-                
-                {/* Icon */}
-                <srv.icon className="w-[28px] h-[28px] text-[var(--gold)] mb-[20px] transition-transform duration-300 group-hover:scale-110" />
-                
-                {/* Title */}
-                <h3 className="text-[22px] font-serif text-white mb-[12px] group-hover:text-[var(--gold)] transition-colors font-medium">
-                  {srv.title}
-                </h3>
-                
-                {/* Description */}
-                <p className="text-[13px] text-white/70 leading-[1.65] font-light max-w-[90%]">
-                  {srv.desc}
-                </p>
-              </div>
-              
-              {/* Bottom Right Arrow Button */}
-              <div className="relative z-10 self-end w-[36px] h-[36px] rounded-full border border-[var(--gold)] flex items-center justify-center text-[var(--gold)] hover:bg-[var(--gold)] hover:text-white transition-all duration-300">
-                <span className="text-[16px] leading-none">→</span>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </section>
 
       {/* ─── 9. OUR CLIENTS (CLIENTS PORTFOLIO) ─── */}
       <section className="py-[120px] px-[8%] md:px-[10%] bg-[var(--dark)]">
