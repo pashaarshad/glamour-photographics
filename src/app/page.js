@@ -1273,6 +1273,20 @@ export default function Home() {
               desc: 'Real stories told with authenticity, depth and cinematic vision.',
               bg: '/images/our_portfolio/te3.jpg',
               href: '/services/documentary'
+            },
+            {
+              id: '05',
+              title: 'Educational Films',
+              desc: 'Where learning looks as good as it feels. Capturing campus life and classroom moments.',
+              bg: '/images/our_portfolio/highlights_SKV00387.jpg',
+              href: '/services/educational-films'
+            },
+            {
+              id: '06',
+              title: 'Headshots',
+              desc: 'Professional studio portraits and executive profiles that speak before you do.',
+              bg: '/images/studio-shoot.jpg',
+              href: '/services/headshots'
             }
           ].map((service) => (
             <Link 

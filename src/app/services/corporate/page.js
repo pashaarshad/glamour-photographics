@@ -119,7 +119,7 @@ export default function CorporateServices() {
             <h2 className="font-serif text-[clamp(28px,3.5vw,44px)] font-light text-[var(--light)] mb-[16px]">
               Corporate Film
             </h2>
-            <p className="text-[14.5px] leading-[1.8] text-[var(--muted)] font-light mb-[20px]">
+            <p className="text-[14.5px] leading-[1.8] text-[var(--muted)] font-light mb-[20px] text-center">
               <span className="block text-[16px] text-[var(--gold)] italic font-medium mb-[12px]">Culture. Values. Mission. In 3 minutes, they'll feel all of it.</span>
               We don't make corporate videos — we make visual narratives. Every film we craft is built to humanize your organization, spotlight what makes your culture different, and build a genuine emotional bridge with the people who matter most: your employees, your investors, your customers.
             </p>

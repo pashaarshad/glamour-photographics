@@ -136,7 +136,7 @@ export default function EventServices() {
             <h2 className="font-serif text-[clamp(28px,3.5vw,44px)] font-light text-[var(--light)] mb-[16px]">
               Event Film
             </h2>
-            <p className="text-[14.5px] leading-[1.8] text-[var(--muted)] font-light mb-[20px]">
+            <p className="text-[14.5px] leading-[1.8] text-[var(--muted)] font-light mb-[20px] text-center">
               <span className="block text-[16px] text-[var(--gold)] italic font-medium mb-[12px]">From "Lights, Camera" to "It's Live" — in under 2 hours.</span>
               Your event deserves more than a highlight reel days later — it deserves buzz while it's still happening. Our on-spot editing team turns raw footage into a polished teaser or promo film in just two hours, without cutting corners. The secret? We script and design the graphics before the event even starts, so when the moment happens, we're ready to ship it.
             </p>
@@ -193,7 +193,7 @@ export default function EventServices() {
             <h2 className="font-serif text-[clamp(28px,3.5vw,44px)] font-light text-[var(--light)] mb-[16px]">
               Livestreaming
             </h2>
-            <p className="text-[14.5px] leading-[1.8] text-[var(--muted)] font-light">
+            <p className="text-[14.5px] leading-[1.8] text-[var(--muted)] font-light text-center">
               <span className="block text-[16px] text-[var(--gold)] italic font-medium mb-[12px]">Zero buffering. Zero excuses. Just seamless, uninterrupted broadcast — anywhere.</span>
               Our livestreaming setup isn't off-the-shelf; it's engineered for reliability. We run a custom bonding router, imported from China, that fuses the internet speeds of seven dongles into one rock-solid connection. Pair that with our ATEM Blackmagic 4K production mixer and wireless transmitters, and you get broadcast-grade streaming that never drops the ball even when the Wi-Fi does.
             </p>
