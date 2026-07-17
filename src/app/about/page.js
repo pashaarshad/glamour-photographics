@@ -482,17 +482,29 @@ export default function About() {
                       </div>
                     </div>
                     
-                    {/* Content Card (Half Width) */}
-                    <div className="w-full md:w-[45%] flex flex-col justify-center">
-                      <div className="bg-white border border-[rgba(10,10,10,0.06)] rounded-sm p-[30px] md:p-[40px] shadow-[0_4px_24px_rgba(0,0,0,0.01)] hover:border-[var(--gold)] transition-colors duration-450">
-                        <div className="flex items-center gap-[12px] mb-[16px]">
-                          <span className="font-serif italic text-[32px] text-[var(--gold)] leading-none font-light">{step.num}</span>
-                          <h3 className="font-serif text-[22px] text-[var(--light)] font-bold">{step.title}</h3>
-                        </div>
-                        <p className="text-[13.5px] text-[var(--muted)] leading-relaxed font-light">
-                          {step.desc}
-                        </p>
+                    {/* Content (Half Width) */}
+                    <div className={`w-full md:w-[45%] flex flex-col justify-center text-left items-start ${
+                      isEven ? "md:text-right md:items-end" : "md:text-left md:items-start"
+                    }`}>
+                      <div className="flex items-center gap-[14px] mb-[16px]">
+                        {isEven ? (
+                          <>
+                            <h3 className="hidden md:block font-serif text-[26px] md:text-[30px] text-[var(--light)] font-medium">{step.title}</h3>
+                            <span className="font-serif italic text-[36px] md:text-[40px] text-[var(--gold)] leading-none font-light">{step.num}</span>
+                            <h3 className="md:hidden font-serif text-[26px] md:text-[30px] text-[var(--light)] font-medium">{step.title}</h3>
+                          </>
+                        ) : (
+                          <>
+                            <span className="font-serif italic text-[36px] md:text-[40px] text-[var(--gold)] leading-none font-light">{step.num}</span>
+                            <h3 className="font-serif text-[26px] md:text-[30px] text-[var(--light)] font-medium">{step.title}</h3>
+                          </>
+                        )}
                       </div>
+                      <p className={`text-[15px] md:text-[16px] text-[var(--light)]/90 leading-relaxed font-normal max-w-[480px] text-left ${
+                        isEven ? "md:text-right" : "md:text-left"
+                      }`}>
+                        {step.desc}
+                      </p>
                     </div>
                     
                     {/* Step Card Image (Half Width on opposite side) */}
