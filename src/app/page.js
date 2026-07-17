@@ -526,7 +526,19 @@ export default function Home() {
     ],
   };
 
-  const activeImages = portfolioImages[activePortfolioTab] || portfolioImages['ALL'];
+  const getHomeActiveImages = () => {
+    let images = portfolioImages[activePortfolioTab] || portfolioImages['ALL'] || [];
+    if (activePortfolioTab === 'ALL') {
+      images = images.filter(src => 
+        !src.includes('/documentary/') && 
+        !src.includes('/political/') && 
+        !src.includes('/outdoor/')
+      );
+    }
+    return images;
+  };
+
+  const activeImages = getHomeActiveImages();
 
   return (
     <main className="w-full bg-[var(--dark)] text-[var(--light)] pb-[100px] overflow-x-hidden cursor-none relative">
@@ -1011,15 +1023,12 @@ export default function Home() {
       <section className="py-[120px] px-[8%] md:px-[10%] bg-[var(--darker)] border-y border-[rgba(10,10,10,0.06)]">
         <h3 className="text-[28px] font-serif text-[var(--light)] mb-[40px] reveal opacity-0 anim-fade-up">Our Portfolio</h3>
         <div className="flex flex-wrap gap-[30px] border-b border-[rgba(10,10,10,0.08)] pb-[15px] mb-[40px] reveal opacity-0 anim-fade-up delay-100">
-          {          [
+          {[
             { id: 'ALL', label: 'ALL' },
             { id: 'EVENT', label: 'EVENT' },
             { id: 'CORPORATE', label: 'CORPORATE & OFFICES' },
             { id: 'CELEBRITY', label: 'CELEBRITY' },
-            { id: 'DOCUMENTARY', label: 'DOCUMENTARY' },
-            { id: 'POLITICAL', label: 'POLITICAL ICON' },
-            { id: 'HEADSHOTS', label: 'HEADSHOTS' },
-            { id: 'OUTDOOR', label: 'OUTDOOR' }
+            { id: 'HEADSHOTS', label: 'HEADSHOTS' }
           ].map((tab) => (
             <button 
               suppressHydrationWarning

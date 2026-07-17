@@ -384,3 +384,12 @@ a, button, select, input, textarea, [role="button"],
 .cursor-pointer, .cursor-pointer * {
   cursor: pointer !important;
 }
+
+/* Hide scrollbar utility */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
