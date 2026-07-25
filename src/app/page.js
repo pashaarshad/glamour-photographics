@@ -41,8 +41,44 @@ export default function Home() {
   const [showAllHomeVideos, setShowAllHomeVideos] = useState(false);
   const [showAllHomeImages, setShowAllHomeImages] = useState(false);
   const [statsTriggered, setStatsTriggered] = useState(false);
-  const [expandedClients, setExpandedClients] = useState(false);
   const [activeCert, setActiveCert] = useState(null);
+
+  const [isHeroHovered, setIsHeroHovered] = useState(false);
+  const [activePhotoUrl, setActivePhotoUrl] = useState(null);
+
+  // 6 exact hero images chosen by client
+  const HERO_PHOTOS = [
+    { src: '/images/our_portfolio/political/11.jpg',      title: 'State Delegation' },
+    { src: '/images/our_portfolio/political/IMG_0008.JPG',title: 'Official Event' },
+    { src: '/images/our_portfolio/political/NMK_0047.JPG',title: 'VVIP Ceremony' },
+    { src: '/images/our_portfolio/political/NMK_0337.JPG',title: 'Delegation Meet' },
+    { src: '/images/our_portfolio/political/NMK_0203.JPG',title: 'Conference' },
+    { src: '/images/our_portfolio/33.jpg',                title: 'Portfolio Highlight' },
+  ];
+
+
+  // LINKED-LIST conveyor belt: 4 slots always show 4 unique images, one slot
+  // refreshes at a time in clockwise order with the NEXT image in the sequence.
+  // e.g. [0,1,2,3] → slot0 gets 4 → [4,1,2,3] → slot1 gets 5 → [4,5,2,3] ...
+  const [slotImages, setSlotImages] = useState([0, 1, 2, 3]); // indices into HERO_PHOTOS
+  const turnRef  = useRef(0); // which slot updates next (0→1→2→3→0...)
+  const queueRef = useRef(4); // next image index to assign (starts after initial 0-3)
+
+  useEffect(() => {
+    if (isHeroHovered) return;
+    const interval = setInterval(() => {
+      const turn    = turnRef.current;
+      const nextImg = queueRef.current % HERO_PHOTOS.length;
+      setSlotImages(prev => {
+        const next = [...prev];
+        next[turn] = nextImg;
+        return next;
+      });
+      turnRef.current  = (turn + 1) % 4;
+      queueRef.current = (queueRef.current + 1) % (HERO_PHOTOS.length * 100); // prevent overflow
+    }, 1600);
+    return () => clearInterval(interval);
+  }, [isHeroHovered]);
 
   const [homeFormData, setHomeFormData] = useState({
     name: '',
@@ -544,44 +580,195 @@ export default function Home() {
     <main className="w-full bg-[var(--dark)] text-[var(--light)] pb-[100px] overflow-x-hidden cursor-none relative">
       
       {/* ─── 1. HERO SECTION ─── */}
-      <section className="relative min-h-[100svh] flex flex-col justify-center md:flex-row md:justify-start md:items-center px-[5%] md:px-[8%] pt-[120px] md:pt-[80px] pb-[60px] md:pb-0 overflow-hidden bg-[#0A0A0A]">
-        <div className="absolute inset-0 z-0 select-none">
-          {/* Desktop image */}
-          <img 
-            src="/images/hero-camera.jpg" 
-            alt="Premium Camera Lens" 
-            className="hidden md:block w-full h-full object-contain object-[right_center] opacity-80" 
-          />
-          {/* Mobile image */}
-          <img 
-            src="/images/hero-camera-mobile.png" 
-            alt="Premium Camera Lens Mobile" 
-            className="block md:hidden w-full h-full object-cover object-center opacity-75" 
-            onError={(e) => {
-              // Fallback to desktop image if mobile one is not uploaded yet
-              e.target.src = "/images/hero-camera.jpg";
-              e.target.className = "block md:hidden w-full h-full object-contain object-[center_bottom] opacity-70";
-            }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[#0A0A0A] via-[rgba(10,10,10,0.85)] md:via-[rgba(10,10,10,0.65)] to-transparent z-10" />
+      <section className="relative flex flex-col justify-center px-[5%] md:px-[8%] pt-[130px] md:pt-[150px] pb-[100px] overflow-hidden bg-[#FAF8F4] text-[#0A0A0A]">
+
+        {/* Subtle dot grid accent — top right corner */}
+        <div className="absolute top-[90px] right-[36px] hidden lg:grid grid-cols-5 gap-[7px] opacity-25 pointer-events-none z-0">
+          {Array.from({ length: 20 }).map((_, i) => (
+            <div key={i} className="w-[5px] h-[5px] rounded-full bg-[#C5A46D]" />
+          ))}
         </div>
-        <div className="w-full max-w-[650px] flex-none z-20 relative pt-[40px] md:pt-[60px] text-left">
-          <h1 className="font-serif text-left text-[clamp(52px,7vw,100px)] font-bold leading-[1.05] tracking-[-0.02em] mb-[32px] text-white">
-            <span className="block overflow-hidden pb-[4px]"><span className="block anim-slide-up delay-100" style={{ transform: 'translateY(100%)' }}>We Capture</span></span>
-            <span className="block overflow-hidden pb-[4px]"><span className="block anim-slide-up delay-150" style={{ transform: 'translateY(100%)' }}>Moments.</span></span>
-            <span className="block overflow-hidden pb-[4px]"><span className="block anim-slide-up delay-200" style={{ transform: 'translateY(100%)' }}>We Create</span></span>
-            <span className="block overflow-hidden pb-[4px]"><span className="block anim-slide-up delay-240 text-[var(--gold)] italic font-bold" style={{ transform: 'translateY(100%)' }}>Legacies.</span></span>
-          </h1>
-          <p className="text-[15px] md:text-[17px] text-[rgba(250,248,244,0.9)] leading-[1.7] max-w-[420px] opacity-0 anim-fade-up delay-300 mb-[48px] font-semibold">
-            40+ Years of Storytelling Through The Lens of Excellence
-          </p>
-          <div className="opacity-0 anim-fade-up delay-380">
-            <Link href="/portfolio" className="inline-flex items-center justify-center border border-[rgba(255,255,255,0.3)] text-white uppercase tracking-[0.2em] text-[11px] font-bold px-[36px] py-[18px] transition-all duration-400 hover:bg-white hover:text-black hover:border-transparent cursor-none">
-              Explore Our Work
-            </Link>
+
+        {/* Subtle dot grid accent — bottom left corner */}
+        <div className="absolute bottom-[60px] left-[36px] hidden lg:grid grid-cols-4 gap-[7px] opacity-20 pointer-events-none z-0">
+          {Array.from({ length: 12 }).map((_, i) => (
+            <div key={i} className="w-[5px] h-[5px] rounded-full bg-[#C5A46D]" />
+          ))}
+        </div>
+
+        <div className="max-w-[1400px] mx-auto w-full flex flex-col lg:flex-row items-center gap-[60px] lg:gap-[50px] z-10 relative">
+
+          {/* ── LEFT COLUMN: Text & CTAs & Badges ── */}
+          <div className="w-full lg:w-[42%] flex flex-col items-start text-left">
+            
+            {/* Tag line */}
+            <div className="flex items-center gap-[10px] mb-[22px]">
+              <span className="text-[10px] tracking-[0.35em] uppercase text-[#B8972E] font-bold">
+                STORYTELLING THAT INSPIRES
+              </span>
+              <div className="w-[28px] h-[1px] bg-[#B8972E]" />
+            </div>
+
+            {/* Headline */}
+            <h1 className="font-serif text-[clamp(40px,5vw,70px)] font-normal leading-[1.07] tracking-[-0.02em] mb-[20px] text-[#0A0A0A]">
+              We Capture <br />
+              Moments. <br />
+              We Create <br />
+              <span className="relative inline-block text-[#C5A46D] italic">
+                Legacies.
+                <span className="absolute left-0 -bottom-[5px] w-[110%] h-[2.5px] bg-gradient-to-r from-[#C5A46D] to-transparent rounded-full" />
+              </span>
+            </h1>
+
+            {/* Subtitle */}
+            <p className="text-[13.5px] md:text-[14.5px] text-[#4A3F32] leading-[1.8] max-w-[380px] font-normal mb-[34px]">
+              40+ Years of Storytelling Through The Lens of Excellence
+            </p>
+
+            {/* CTA */}
+            <div className="mb-[48px]">
+              <Link 
+                href="/portfolio" 
+                className="inline-flex items-center gap-[10px] bg-[#C5A46D] hover:bg-[#a8863a] text-white text-[10.5px] font-bold uppercase tracking-[0.25em] px-[28px] py-[14px] rounded-[6px] shadow-[0_4px_20px_rgba(197,164,109,0.35)] hover:shadow-[0_6px_28px_rgba(197,164,109,0.5)] transition-all duration-300 group cursor-pointer"
+              >
+                <span>VIEW OUR FILMS</span>
+                <span className="transition-transform duration-300 group-hover:translate-x-1 text-[13px]">→</span>
+              </Link>
+            </div>
+
+            {/* 3 Badges */}
+            <div className="pt-[22px] border-t border-[#E8E0D4] w-full grid grid-cols-3 gap-[12px]">
+              
+              <div className="flex flex-col items-center text-center gap-[8px]">
+                <div className="w-[38px] h-[38px] rounded-full bg-[#F0E8D8] flex items-center justify-center text-[#C5A46D]">
+                  <Award className="w-[17px] h-[17px]" />
+                </div>
+                <span className="text-[10.5px] font-semibold text-[#2A1F14] leading-[1.4]">
+                  40+ Years <br /> Experience
+                </span>
+              </div>
+
+              <div className="flex flex-col items-center text-center gap-[8px] border-x border-[#E8E0D4] px-[6px]">
+                <div className="w-[38px] h-[38px] rounded-full bg-[#F0E8D8] flex items-center justify-center text-[#C5A46D]">
+                  <User className="w-[17px] h-[17px]" />
+                </div>
+                <span className="text-[10.5px] font-semibold text-[#2A1F14] leading-[1.4]">
+                  Trusted by <br /> Leading Brands
+                </span>
+              </div>
+
+              <div className="flex flex-col items-center text-center gap-[8px]">
+                <div className="w-[38px] h-[38px] rounded-full bg-[#F0E8D8] flex items-center justify-center text-[#C5A46D]">
+                  <Video className="w-[17px] h-[17px]" />
+                </div>
+                <span className="text-[10.5px] font-semibold text-[#2A1F14] leading-[1.4]">
+                  End-to-End <br /> Production
+                </span>
+              </div>
+
+            </div>
           </div>
-        </div>
+
+          {/* ── RIGHT COLUMN: Fixed Video + 4 Rotating Image Slots ── */}
+          <div
+            className="w-full lg:w-[58%] flex flex-col gap-[14px] md:gap-[16px]"
+            onMouseEnter={() => setIsHeroHovered(true)}
+            onMouseLeave={() => setIsHeroHovered(false)}
+          >
+
+            {/* ── TOP ROW: Large Video + 2 Stacked Horizontal Images ── */}
+            <div className="flex items-stretch gap-[14px] md:gap-[16px]">
+
+              {/* FIXED CENTER VIDEO */}
+              <div
+                className="relative flex-1 min-w-0 aspect-[16/11] rounded-[18px] overflow-hidden shadow-[0_16px_56px_rgba(0,0,0,0.20)] border-[4px] border-white bg-black group cursor-pointer"
+                onClick={() => { setActiveVideoId('oz26LF0gvxg'); setShowreelOpen(true); }}
+              >
+                <iframe
+                  src="https://www.youtube.com/embed/oz26LF0gvxg?autoplay=1&mute=1&loop=1&playlist=oz26LF0gvxg&controls=0&start=0&end=15&playsinline=1"
+                  title="Glamour Photographics Showreel"
+                  className="absolute inset-0 w-full h-full pointer-events-none scale-[1.12]"
+                  allow="autoplay; encrypted-media"
+                />
+                <div className="absolute inset-0 bg-black/15 group-hover:bg-black/30 transition-colors duration-300 z-10" />
+                <div className="absolute inset-0 flex items-center justify-center z-20">
+                  <div className="w-[58px] h-[58px] md:w-[70px] md:h-[70px] rounded-full border-[2.5px] border-white/90 bg-white/15 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 group-hover:bg-[#C5A46D] group-hover:border-transparent transition-all duration-300 shadow-xl">
+                    <Play className="w-[20px] h-[20px] fill-white text-white translate-x-[2px]" />
+                  </div>
+                </div>
+              </div>
+
+              {/* RIGHT STACK: 2 taller images stacked (slots 0 & 1) */}
+              <div className="flex flex-col gap-[14px] md:gap-[16px] flex-shrink-0 w-[37%] max-w-[230px]">
+
+                {/* SLOT 0 */}
+                <div
+                  onClick={() => setActivePhotoUrl(HERO_PHOTOS[slotImages[0]].src)}
+                  className="w-full aspect-[3/2] rounded-[14px] overflow-hidden shadow-[0_8px_28px_rgba(0,0,0,0.13)] border-[3.5px] border-white bg-white cursor-pointer hover:scale-[1.025] hover:shadow-[0_12px_36px_rgba(0,0,0,0.2)] transition-all duration-300"
+                >
+                  <img
+                    key={`s0-${slotImages[0]}`}
+                    src={HERO_PHOTOS[slotImages[0]].src}
+                    alt={HERO_PHOTOS[slotImages[0]].title}
+                    className="w-full h-full object-cover hero-rotate-card"
+                  />
+                </div>
+
+                {/* SLOT 1 */}
+                <div
+                  onClick={() => setActivePhotoUrl(HERO_PHOTOS[slotImages[1]].src)}
+                  className="w-full aspect-[3/2] rounded-[14px] overflow-hidden shadow-[0_8px_28px_rgba(0,0,0,0.13)] border-[3.5px] border-white bg-white cursor-pointer hover:scale-[1.025] hover:shadow-[0_12px_36px_rgba(0,0,0,0.2)] transition-all duration-300"
+                >
+                  <img
+                    key={`s1-${slotImages[1]}`}
+                    src={HERO_PHOTOS[slotImages[1]].src}
+                    alt={HERO_PHOTOS[slotImages[1]].title}
+                    className="w-full h-full object-cover hero-rotate-card"
+                  />
+                </div>
+
+              </div>
+            </div>{/* end top row */}
+
+            {/* ── BOTTOM ROW: 2 wider images side by side (slots 2 & 3) ── */}
+            <div className="flex gap-[14px] md:gap-[16px]">
+
+              {/* SLOT 2 */}
+              <div
+                onClick={() => setActivePhotoUrl(HERO_PHOTOS[slotImages[2]].src)}
+                className="flex-1 aspect-[16/8] rounded-[14px] overflow-hidden shadow-[0_8px_28px_rgba(0,0,0,0.12)] border-[3.5px] border-white bg-white cursor-pointer hover:scale-[1.02] hover:shadow-[0_12px_36px_rgba(0,0,0,0.18)] transition-all duration-300"
+              >
+                <img
+                  key={`s2-${slotImages[2]}`}
+                  src={HERO_PHOTOS[slotImages[2]].src}
+                  alt={HERO_PHOTOS[slotImages[2]].title}
+                  className="w-full h-full object-cover hero-rotate-card"
+                />
+              </div>
+
+              {/* SLOT 3 */}
+              <div
+                onClick={() => setActivePhotoUrl(HERO_PHOTOS[slotImages[3]].src)}
+                className="flex-1 aspect-[16/8] rounded-[14px] overflow-hidden shadow-[0_8px_28px_rgba(0,0,0,0.12)] border-[3.5px] border-white bg-white cursor-pointer hover:scale-[1.02] hover:shadow-[0_12px_36px_rgba(0,0,0,0.18)] transition-all duration-300"
+              >
+                <img
+                  key={`s3-${slotImages[3]}`}
+                  src={HERO_PHOTOS[slotImages[3]].src}
+                  alt={HERO_PHOTOS[slotImages[3]].title}
+                  className="w-full h-full object-cover hero-rotate-card"
+                />
+              </div>
+
+            </div>{/* end bottom row */}
+
+          </div>{/* end right column */}
+
+        </div>{/* end main flex */}
       </section>
+
+
+
+
 
       {/* ─── 2. EDITORIAL MARQUEE ─── */}
       <div className="marquee-wrapper py-[20px] bg-black border-y border-[rgba(255,255,255,0.05)] overflow-hidden w-full relative z-20">
@@ -836,7 +1023,7 @@ export default function Home() {
               "Our goal is not to merely provide media services, but to serve people through the art of storytelling and media creation."
             </blockquote>
             <p className="text-[14.5px] leading-[1.85] text-[var(--muted)] mb-[36px] font-light">
-              Established by Hameed Hussain in 1982, we embarked on a journey to introduce vibrant colour media solutions to businesses and consumers in Bengaluru—proudly serving the corporate and wedding industries ever since.
+              In 1982, Glamour Photographics was founded on a simple belief held by Hameed Hussain: every moment deserves to be captured with craft and care. That belief still shapes our work today.
             </p>
             <Link href="/about" className="inline-flex items-center gap-[12px] text-[10px] tracking-[0.25em] uppercase text-[var(--light)] font-semibold hover:text-[var(--gold)] cursor-none transition-colors group pb-[4px] border-b border-[var(--light)] hover:border-[var(--gold)]">
               Read Our Story <span className="transition-transform duration-300 group-hover:translate-x-[4px]">→</span>
@@ -1757,6 +1944,32 @@ export default function Home() {
               alt="Testimonial Certificate Form" 
               className="max-w-full max-h-[80vh] object-contain rounded-sm" 
               loading="lazy"
+            />
+          </div>
+        </div>
+      )}
+
+      {/* ─── HERO PHOTO LIGHTBOX MODAL ─── */}
+      {activePhotoUrl && (
+        <div
+          className="fixed inset-0 bg-black/95 z-[9999] flex items-center justify-center p-[20px]"
+          onClick={() => setActivePhotoUrl(null)}
+        >
+          <button
+            suppressHydrationWarning
+            onClick={() => setActivePhotoUrl(null)}
+            className="absolute top-[30px] right-[5%] md:right-[8%] text-white text-[12px] tracking-[0.2em] uppercase flex items-center gap-[8px] cursor-pointer hover:text-[var(--gold)] z-10"
+          >
+            Close <X className="w-[16px] h-[16px]" />
+          </button>
+          <div
+            className="max-w-[90vw] max-h-[88vh] overflow-hidden rounded-[12px] shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={activePhotoUrl}
+              alt="Portfolio Preview"
+              className="max-w-full max-h-[88vh] object-contain rounded-[12px]"
             />
           </div>
         </div>

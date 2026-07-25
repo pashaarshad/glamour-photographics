@@ -393,3 +393,26 @@ a, button, select, input, textarea, [role="button"],
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* HERO ROTATING IMAGE ANIMATION — premium smooth fade-in with gentle lift */
+@keyframes heroRotateFade {
+  0% {
+    opacity: 0;
+    transform: scale(1.04) translateY(6px);
+    filter: blur(2px);
+  }
+  40% {
+    opacity: 0.85;
+    filter: blur(0.5px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0);
+  }
+}
+
+.hero-rotate-card {
+  animation: heroRotateFade 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
