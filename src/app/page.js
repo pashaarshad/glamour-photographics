@@ -1171,11 +1171,22 @@ export default function Home() {
 
       {/* ─── 9. OUR CLIENTS (CLIENTS PORTFOLIO) ─── */}
       <section className="py-[120px] px-[8%] md:px-[10%] bg-[var(--dark)]">
-        <div className="text-center mb-[40px] reveal opacity-0 anim-fade-up">
-          <h3 className="font-serif text-[24px] tracking-[0.2em] uppercase text-[var(--light)] font-bold mb-[12px]">
-            Clients Portfolio
-          </h3>
-          <div className="w-[60px] h-[2px] bg-[var(--gold)] mx-auto"></div>
+        <div className="text-center mb-[56px] reveal opacity-0 anim-fade-up">
+          {/* Eyebrow */}
+          <span className="inline-block text-[10px] tracking-[0.4em] uppercase text-[var(--gold)] font-bold mb-[16px]">
+            OUR CLIENTS
+          </span>
+          {/* Heading */}
+          <h2 className="font-serif text-[clamp(30px,4vw,52px)] font-normal leading-[1.1] tracking-[-0.01em] text-[var(--light)] mb-[14px]">
+            A Legacy of{' '}
+            <span className="text-[var(--gold)] italic">Corporate Trust</span>
+          </h2>
+          {/* Gold rule */}
+          <div className="w-[50px] h-[2px] bg-[var(--gold)] mx-auto mb-[16px]" />
+          {/* Subtext */}
+          <p className="text-[14px] text-[var(--muted)] tracking-[0.05em] font-light">
+            Trusted by industry leaders worldwide.
+          </p>
         </div>
 
         <div className="max-w-[1100px] mx-auto bg-white border border-[var(--gold)] border-opacity-70 rounded-[24px] p-[40px] md:p-[60px] py-[30px] md:py-[50px] shadow-[0_12px_40px_rgba(0,0,0,0.03)] reveal opacity-0 anim-fade-up delay-100">
