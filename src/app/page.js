@@ -1430,7 +1430,7 @@ export default function Home() {
               id: '01',
               title: 'Event Photography',
               desc: 'Capturing energy, emotion and every unforgettable moment.',
-              bg: '/images/our_portfolio/33.jpg',
+              bg: '/images/services/image.png',
               href: '/services/event'
             },
             {
@@ -1444,14 +1444,14 @@ export default function Home() {
               id: '03',
               title: 'Digital Ads',
               desc: 'Scroll-stopping visuals that captivate and convert.',
-              bg: '/images/our_portfolio/22.jpg',
+              bg: '/images/services/Digital ads .png',
               href: '/services/digital-ads'
             },
             {
               id: '04',
               title: 'Documentary',
               desc: 'Real stories told with authenticity, depth and cinematic vision.',
-              bg: '/images/our_portfolio/te3.jpg',
+              bg: '/images/services/Documentaries.png',
               href: '/services/documentary'
             },
             {
@@ -1469,6 +1469,7 @@ export default function Home() {
               href: '/services/headshots'
             }
           ].map((service) => (
+
             <Link 
               href={service.href}
               key={service.id}

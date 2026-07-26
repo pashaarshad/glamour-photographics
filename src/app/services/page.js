@@ -38,7 +38,7 @@ export default function Services() {
       id: '02',
       title: 'Corporate Media Services',
       desc: 'High-end boardroom visual narratives, employee spotlight films, and facilities media campaigns. We translate your culture, values, and vision into premium corporate storytelling.',
-      img: '/images/our_portfolio/corporate/iqvia.jpg',
+      img: '/images/our_portfolio/cp-7.jpg',
       href: '/services/corporate'
     },
     {
@@ -59,17 +59,18 @@ export default function Services() {
       id: '05',
       title: 'School & Educational Films',
       desc: 'Showcasing campus learning, active classrooms, and school values to help parents and students feel what makes your institution stand out.',
-      img: '/images/services/educational Films Untitled design(1) (1).jpg',
+      img: '/images/our_portfolio/highlights_SKV00387.jpg',
       href: '/services/educational-films'
     },
     {
       id: '06',
       title: 'Executive Portraits & Headshots',
       desc: 'First impressions are made in pixels. Flattering professional studio lighting, custom poses, and a clean polish for your corporate leadership profiles.',
-      img: '/images/our_portfolio/corporate/iqvia.jpg',
+      img: '/images/studio-shoot.jpg',
       href: '/services/headshots'
     }
   ];
+
 
 
 
