@@ -38,9 +38,10 @@ export default function Services() {
       id: '02',
       title: 'Corporate Media Services',
       desc: 'High-end boardroom visual narratives, employee spotlight films, and facilities media campaigns. We translate your culture, values, and vision into premium corporate storytelling.',
-      img: '/images/our_portfolio/cp-7.jpg',
+      img: '/images/our_portfolio/corporate/iqvia.jpg',
       href: '/services/corporate'
     },
+
     {
       id: '03',
       title: 'Digital Ads & Visual Campaigns',

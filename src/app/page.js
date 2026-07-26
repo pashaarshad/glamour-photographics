@@ -1437,9 +1437,10 @@ export default function Home() {
               id: '02',
               title: 'Corporate Photography',
               desc: "Professional imagery that reflects your brand's identity and values.",
-              bg: '/images/our_portfolio/cp-7.jpg',
+              bg: '/images/our_portfolio/corporate/iqvia.jpg',
               href: '/services/corporate'
             },
+
             {
               id: '03',
               title: 'Digital Ads',
