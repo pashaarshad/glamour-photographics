@@ -7,125 +7,7 @@ import { X } from 'lucide-react';
 
 import 'swiper/css';
 
-/* --- Scroll-Driven Sticky Gallery --- */
-function ScrollGallery({ images }) {
-  const wrapperRef = useRef(null);
-  const [activeIdx, setActiveIdx] = useState(0);
-  const [visible, setVisible] = useState(false);
 
-  useEffect(() => {
-    const update = () => {
-      const el = wrapperRef.current;
-      if (!el) return;
-      const rect = el.getBoundingClientRect();
-      const vh = window.innerHeight;
-      const budget = el.offsetHeight - vh;
-      // Show overlay while spacer is pinned in scroll zone
-      const isIn = rect.top <= 0 && rect.bottom >= vh;
-      setVisible(isIn);
-      if (isIn && budget > 0) {
-        const p = Math.min(Math.max(-rect.top / budget, 0), 1);
-        setActiveIdx(Math.min(Math.floor(p * images.length), images.length - 1));
-      }
-    };
-    window.addEventListener('scroll', update, { passive: true });
-    // Run after paint so refs are bound
-    const t = setTimeout(update, 50);
-    return () => { window.removeEventListener('scroll', update); clearTimeout(t); };
-  }, [images.length]);
-
-  return (
-    /* Spacer: N screens of scroll budget, matching page bg so it's invisible */
-    <div
-      ref={wrapperRef}
-      style={{ height: `${images.length * 100}vh`, background: 'var(--dark)' }}
-    >
-      {/* Always rendered — toggled via opacity so no mount-delay flash */}
-      <div
-        suppressHydrationWarning
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100vw',
-          height: '100vh',        /* 100vh: universal support */
-          zIndex: 99999,          /* covers navigation */
-          overflow: 'hidden',
-          background: '#0A0A0A',
-          opacity: visible ? 1 : 0,
-          pointerEvents: visible ? 'auto' : 'none',
-          transition: 'opacity 0.35s ease'
-        }}
-      >
-        {/* Horizontal slider strip — translateX to slide between images */}
-        <div
-          style={{
-            display: 'flex',
-            width: `${images.length * 100}%`,
-            height: '100%',
-            transform: `translateX(${-activeIdx * (100 / images.length)}%)`,
-            transition: 'transform 0.9s cubic-bezier(0.77,0,0.18,1)',
-            willChange: 'transform'
-          }}
-        >
-          {images.map((src, i) => (
-            <div
-              key={i}
-              style={{ width: `${100 / images.length}%`, height: '100%', flexShrink: 0, position: 'relative' }}
-            >
-              <img
-                src={src}
-                alt={`Gallery ${i + 1}`}
-                loading="eager"
-                style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
-              />
-              <div style={{
-                position: 'absolute', inset: 0,
-                background: 'linear-gradient(to top, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.05) 45%, transparent 70%)'
-              }} />
-            </div>
-          ))}
-        </div>
-
-        {/* Progress pills — bottom centre */}
-        <div style={{
-          position: 'absolute', bottom: 40, left: '50%',
-          transform: 'translateX(-50%)', display: 'flex', gap: 12, zIndex: 10
-        }}>
-          {images.map((_, i) => (
-            <div key={i} style={{
-              width: i === activeIdx ? 44 : 10, height: 3, borderRadius: 99,
-              background: i === activeIdx ? '#C5A46D' : 'rgba(255,255,255,0.35)',
-              transition: 'width 0.45s ease, background 0.45s ease'
-            }} />
-          ))}
-        </div>
-
-        {/* Slide counter — top right */}
-        <div style={{
-          position: 'absolute', top: 32, right: '5%',
-          color: '#C5A46D', fontFamily: 'Georgia, serif',
-          fontSize: 13, fontStyle: 'italic', letterSpacing: '0.12em', zIndex: 10
-        }}>
-          {String(activeIdx + 1).padStart(2, '0')} / {String(images.length).padStart(2, '0')}
-        </div>
-
-        {/* Scroll hint — fades after first slide */}
-        <div style={{
-          position: 'absolute', bottom: 90, right: '5%',
-          display: 'flex', alignItems: 'center', gap: 12,
-          opacity: activeIdx === 0 ? 1 : 0, transition: 'opacity 0.5s',
-          pointerEvents: 'none', zIndex: 10
-        }}>
-          <span style={{ fontSize: 10, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)' }}>
-            Scroll
-          </span>
-          <div style={{ width: 40, height: 1, background: 'rgba(255,255,255,0.3)' }} />
-        </div>
-      </div>
-    </div>
-  );
-}
 
 export default function About() {
   const [activeCert, setActiveCert] = useState(null);
@@ -196,14 +78,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* ─── FULL-WIDTH HORIZONTAL GALLERY STRIP (Scroll-Driven Sticky) ─── */}
-      <ScrollGallery
-        images={[
-          "/images/our_portfolio/11.jpg",
-          "/images/our_portfolio/22.jpg",
-          "/images/our_portfolio/33.jpg"
-        ]}
-      />
 
       {/* ─── FOUNDER'S NOTE ─── */}
       <section className="px-[4%] md:px-[5%] max-w-[1600px] mx-auto py-[100px] border-t border-[rgba(10,10,10,0.06)] mb-[40px]">
