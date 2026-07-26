@@ -23,33 +23,33 @@ export default function DigitalAdsServices() {
   const videos = [
     {
       id: 'PX5EzmcDqBI',
-      title: 'Creative Brand Spot 1',
-      hook: 'Shattering conventions with bold, scroll-stopping photography.',
-      desc: 'Designed to capture visual interest in under 3 seconds and challenge standard feed aesthetics with sharp contrast and dynamic motion.'
+      title: 'Zapyle Digital Campaign',
+      hook: 'Fashion-forward style and brand identity.',
+      desc: 'A fashion-forward digital campaign crafted to showcase premium style, elevate brand identity, and engage modern audiences through bold visuals and dynamic storytelling.'
     },
     {
       id: 'zjxFg4uskmU',
-      title: 'Creative Brand Spot 2',
-      hook: 'Cinematic brand commercial designed for digital engagement.',
-      desc: 'Blending rich, curated color palettes and smooth transitions to create an emotional connection and elevate brand perception.'
+      title: 'C Vitamins Digital Campaign',
+      hook: 'Vibrant visuals and everyday wellness stories.',
+      desc: 'A vibrant digital campaign crafted to communicate everyday wellness through clean visuals, engaging storytelling, and a fresh, energetic brand identity that connects with modern audiences.'
     },
     {
       id: 'xALGQ-5sr6Y',
-      title: 'Creative Brand Spot 3',
-      hook: 'Narrating product benefits with premium visuals and pacing.',
-      desc: 'Focusing on the tactile and functional beauty of products with sharp macro photography, smooth camera tracks, and clear scripting.'
+      title: 'Priveda Niacinamide Serum',
+      hook: 'Refined skincare aesthetics and cinematic framing.',
+      desc: 'A premium skincare campaign that combines clean visuals, refined aesthetics, and cinematic storytelling to showcase the brand\'s commitment to modern skincare and everyday confidence.'
     },
     {
       id: 'C0hzCKpITSE',
-      title: 'Creative Brand Spot 4',
-      hook: 'Visual campaigns built to capture attention immediately.',
-      desc: 'Breaking stereotypes and building authentic connection with digital audiences through premium, scroll-stopping creative choices.'
+      title: 'Pai International Digital Campaign',
+      hook: 'Vibrant product storytelling for modern electronics.',
+      desc: 'A dynamic retail campaign showcasing the latest consumer electronics through vibrant visuals, cinematic storytelling, and engaging product-focused content that reflects the trusted Pai International brand.'
     },
     {
       id: 'xzKI4XmfFus',
-      title: 'Creative Brand Spot 5',
-      hook: 'Premium commercial styling and message delivery.',
-      desc: 'Delivering message clarity through high-production graphics, precise editorial timing, and modern cinematic styling.'
+      title: 'Pai International – Electronics City',
+      hook: 'Premium flagship shopping experience showcase.',
+      desc: 'A dynamic retail campaign showcasing the Electronics City flagship store through cinematic visuals that highlight the latest technology, premium shopping experience, and an extensive range of consumer electronics.'
     }
   ];
 
@@ -59,7 +59,7 @@ export default function DigitalAdsServices() {
       {/* ─── HERO HEADER ─── */}
       <section className="relative min-h-[50vh] flex items-center px-[5%] md:px-[8%] bg-[#0A0A0A] pt-[120px] md:pt-[100px]">
         <div className="absolute inset-0 z-0">
-          <img src="/images/our_portfolio/22.jpg" alt="Digital Ads Header" className="w-full h-full object-cover object-[center_20%] opacity-40 select-none pointer-events-none" />
+          <img src="/images/services/Digital ads .png" alt="Digital Ads Header" className="w-full h-full object-cover object-center opacity-40 select-none pointer-events-none" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent z-10" />
         </div>
         <div className="max-w-[1400px] w-full mx-auto z-20 relative">
@@ -82,22 +82,24 @@ export default function DigitalAdsServices() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-[60px] lg:gap-[100px] items-center">
           <div>
             <span className="text-[10px] tracking-[0.3em] uppercase text-[var(--gold)] mb-[12px] block font-bold">Digital Ads</span>
-            <h2 className="font-serif text-[clamp(28px,3.5vw,44px)] font-light text-[var(--light)] mb-[24px] leading-tight">
-              Visual Campaigns Built <br />
-              <span className="italic text-[var(--gold)]">to Break the Scroll.</span>
+            <h2 className="font-serif text-[clamp(28px,3.5vw,44px)] font-light text-[var(--light)] mb-[16px] leading-tight">
+              Creative Films That Capture <br />
+              <span className="italic text-[var(--gold)]">Attention and Drive Impact.</span>
             </h2>
             <p className="text-[14.5px] leading-[1.85] text-[var(--muted)] font-light mb-[32px]">
-              If you're done playing it safe, you're in the right place. We build digital ad content that challenges convention, shatters the usual stereotypes, and holds attention in a feed built to ignore everything. Bold visuals. Sharp storytelling. Campaigns people actually remember.
+              In a world of endless scrolling, great visuals make the difference. We produce cinematic digital ads that combine compelling storytelling, striking visuals, and purposeful creativity, helping brands capture attention, communicate their message, and leave a lasting impression.
             </p>
             <Link href="/portfolio" className="inline-flex items-center gap-[8px] border border-[rgba(10,10,10,0.15)] text-[var(--light)] text-[10px] tracking-[0.2em] uppercase py-[16px] px-[32px] hover:bg-[var(--light)] hover:text-[var(--dark)] transition-all duration-300 cursor-none font-medium">
               See the Portfolio in Action <ArrowRight className="w-[12px] h-[12px]" />
             </Link>
           </div>
           <div className="relative aspect-video w-full rounded-[16px] overflow-hidden border border-[rgba(10,10,10,0.06)] group shadow-md bg-black">
-            <img src="/images/our_portfolio/22.jpg" alt="Scroll Stopping Concept" className="w-full h-full object-cover opacity-100 transition-transform duration-[1200ms] group-hover:scale-103" />
+            <img src="/images/services/Digital ads herp11.png" alt="Scroll Stopping Concept" className="w-full h-full object-cover opacity-100 transition-transform duration-[1200ms] group-hover:scale-103" />
           </div>
         </div>
       </section>
+
+
 
       {/* ─── VIDEO GRID ─── */}
       <section className="py-[100px] bg-[var(--darker)] border-t border-[rgba(10,10,10,0.06)] px-[5%] md:px-[8%]">

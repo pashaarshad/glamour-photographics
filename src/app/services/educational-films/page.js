@@ -22,30 +22,31 @@ export default function EducationalFilmsServices() {
 
   const videos = [
     {
-      id: 'doOSgmHHgD4',
-      title: 'Campus Showcase Film 1',
-      hook: 'Promoting school academic values and campus life.',
-      desc: 'Guiding prospective parents and students through campus culture, academic environments, and everyday achievements.'
-    },
-    {
-      id: 'df1A-_FulEs',
-      title: 'Campus Showcase Film 2',
-      hook: 'Capturing state-of-the-art laboratory and sports facilities.',
-      desc: 'Spotlighting modern laboratories, athletic spaces, libraries, and creative classrooms that showcase institutional excellence.'
-    },
-    {
       id: 'XulH5TjS50k',
-      title: 'Campus Showcase Film 3',
-      hook: 'Walking through classrooms and learning environments.',
-      desc: 'Highlighting collaborative student-teacher interactions, teaching innovations, and technology-enabled learning systems.'
+      title: 'Presidency School Brand Film',
+      hook: 'Nurturing confident learners and future leaders.',
+      desc: "A heartwarming brand campaign that captures the spirit of learning, curiosity, and holistic development, showcasing Presidency School's commitment to nurturing confident learners and future leaders."
     },
     {
       id: 'cImmLgZo9-Y',
-      title: 'Campus Showcase Film 4',
-      hook: 'Conforming student perspectives and teacher collaborations.',
-      desc: 'Illustrating the true spirit of discovery, creative growth, mentorship, and collective discovery on campus.'
+      title: 'Presidency School Yelahanka – Admissions Campaign',
+      hook: 'Modern learning environments and inspiring experiences.',
+      desc: 'A cinematic admissions campaign showcasing inspiring student experiences, modern learning environments, and the holistic education that defines Presidency School Yelahanka.'
+    },
+    {
+      id: 'doOSgmHHgD4',
+      title: 'Invincia 2026',
+      hook: "Presidency University's flagship cultural festival.",
+      desc: "Capturing the scale and excitement of Presidency University's flagship cultural festival, featuring electrifying live performances by Rebel and Javed Ali, along with a special appearance by actress Sreeleela as the guest of honor."
+    },
+    {
+      id: 'df1A-_FulEs',
+      title: 'Invincia– Divini × Ananya Concert',
+      hook: 'Live campus concert energy and cinematic highlights.',
+      desc: 'Capturing the energy, excitement, and unforgettable performances of a live campus concert through cinematic storytelling and dynamic event films.'
     }
   ];
+
 
   return (
     <main className="w-full bg-[var(--dark)] text-[var(--light)] pb-[100px] cursor-none relative overflow-x-hidden">
@@ -53,7 +54,7 @@ export default function EducationalFilmsServices() {
       {/* ─── HERO HEADER ─── */}
       <section className="relative min-h-[50vh] flex items-center px-[5%] md:px-[8%] bg-[#0A0A0A] pt-[120px] md:pt-[100px]">
         <div className="absolute inset-0 z-0">
-          <img src="/images/our_portfolio/highlights_SKV00387.jpg" alt="Educational Header" className="w-full h-full object-cover object-[center_20%] opacity-40 select-none pointer-events-none" />
+          <img src="/images/services/educational Films Untitled design(1) (1).jpg" alt="Educational Header" className="w-full h-full object-cover object-center opacity-40 select-none pointer-events-none" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent z-10" />
         </div>
         <div className="max-w-[1400px] w-full mx-auto z-20 relative">
@@ -89,10 +90,11 @@ export default function EducationalFilmsServices() {
             </Link>
           </div>
           <div className="relative aspect-video w-full rounded-[16px] overflow-hidden border border-[rgba(10,10,10,0.06)] group shadow-md bg-black">
-            <img src="/images/our_portfolio/highlights_SKV00387.jpg" alt="Student Active Learning" className="w-full h-full object-cover opacity-100 transition-transform duration-[1200ms] group-hover:scale-103" />
+            <img src="/images/services/educational Films _01A0630.JPG" alt="Student Active Learning" className="w-full h-full object-cover opacity-100 transition-transform duration-[1200ms] group-hover:scale-103" />
           </div>
         </div>
       </section>
+
 
       {/* ─── VIDEO GRID ─── */}
       <section className="py-[100px] bg-[var(--darker)] border-t border-[rgba(10,10,10,0.06)] px-[5%] md:px-[8%]">

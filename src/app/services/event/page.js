@@ -23,43 +23,33 @@ export default function EventServices() {
   const eventFilms = [
     {
       id: 'jlR54SuB_Rc',
-      title: 'CII Space Expo',
-      hook: 'Showcasing technological milestones and industrial summits.',
-      desc: 'Capturing the sheer scale, energy, and corporate value of the region’s premier aerospace expo. From high-level panel discussions to floor demonstrations, we document it all.'
+      title: 'CII EXCON 2022 – Visit of Shri Nitin Gadkari',
+      hook: 'Keynote moments and industry interactions.',
+      desc: "We had the privilege of documenting the visit of Union Minister Shri Nitin Gadkari at CII EXCON, capturing keynote moments, industry interactions, and the spirit of one of India's leading construction and infrastructure exhibitions."
     },
     {
       id: 'Soc7p3YaTN0',
       title: 'Ansaan Capital Event',
-      hook: 'Premium financial leadership storytelling and branding.',
-      desc: 'Highlighting executive keynotes and milestone announcements with clean, corporate visuals that translate boardroom stature to digital audiences.'
+      hook: "Leadership, collaboration, and brand vision.",
+      desc: "Professional event coverage that highlights leadership, collaboration, and the brand's vision with polished visual storytelling."
     },
     {
       id: 'df1A-_FulEs',
-      title: 'National Summit Highlights',
-      hook: 'Preserving milestones in high-impact motion.',
-      desc: 'Our editing team works rapidly to piece together key moments, dynamic networking shots, and high-production value clips that command attention.'
+      title: 'Invincia– Divini × Ananya Concert',
+      hook: 'Live campus concert storytelling.',
+      desc: 'Capturing the energy, excitement, and unforgettable performances of a live campus concert through cinematic storytelling and dynamic event films.'
     },
     {
       id: 'doOSgmHHgD4',
-      title: 'Institutional Foundation Ceremony',
-      hook: 'Commemorating growth and visual legacy.',
-      desc: 'An inspiring capture of academic and institutional summits, celebrating foundation milestones with clean, cinematic storytelling.'
+      title: 'Invincia 2026',
+      hook: "Presidency University's flagship cultural festival.",
+      desc: "Capturing the scale and excitement of Presidency University's flagship cultural festival, featuring electrifying live performances by Rebel and Javed Ali, along with a special appearance by actress Sreeleela as the guest of honor."
     }
   ];
 
   const livestreams = [
-    {
-      id: '2Af51PlUGSg',
-      title: 'Multi-Camera Live Broadcast',
-      hook: 'Multi-camera live broadcast at professional standards.',
-      desc: 'Broadcast-grade multi-camera livestream. We feed multiple angles into our production mixer to deliver a dynamic, high-engagement viewing experience.'
-    },
-    {
-      id: 'RoEbiML-xn0',
-      title: 'High-Reliability Stream',
-      hook: 'High-reliability, lag-free live streaming.',
-      desc: 'Powered by seven-dongle network bonding and Blackmagic hardware, ensuring that your stream remains uninterrupted no matter the location.'
-    }
+    { id: '2Af51PlUGSg', title: 'Live Broadcast Stream 1' },
+    { id: 'RoEbiML-xn0', title: 'Live Broadcast Stream 2' }
   ];
 
   const photos = [
@@ -79,7 +69,7 @@ export default function EventServices() {
       {/* ─── HERO HEADER ─── */}
       <section className="relative min-h-[50vh] flex items-center px-[5%] md:px-[8%] bg-[#0A0A0A] pt-[120px] md:pt-[100px]">
         <div className="absolute inset-0 z-0">
-          <img src="/images/our_portfolio/event/NMK_0047.JPG" alt="Event Header" className="w-full h-full object-cover object-[center_18%] opacity-40 select-none pointer-events-none" />
+          <img src="/images/services/image.png" alt="Event Header" className="w-full h-full object-cover object-[center_18%] opacity-40 select-none pointer-events-none" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent z-10" />
         </div>
         <div className="max-w-[1400px] w-full mx-auto z-20 relative">
@@ -102,12 +92,12 @@ export default function EventServices() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-[60px] lg:gap-[100px] items-center">
           <div>
             <span className="text-[10px] tracking-[0.3em] uppercase text-[var(--gold)] mb-[12px] block font-bold">Event Media Services</span>
-            <h2 className="font-serif text-[clamp(28px,3.5vw,44px)] font-light text-[var(--light)] mb-[24px] leading-tight">
-              Precision Meets Passion <br />
-              <span className="italic text-[var(--gold)]">At Any Scale.</span>
+            <h2 className="font-serif text-[clamp(28px,3.5vw,44px)] font-light text-[var(--light)] mb-[16px] leading-tight">
+              Professional Photography, Cinematic Films & <br />
+              <span className="italic text-[var(--gold)]">Seamless Livestreaming.</span>
             </h2>
             <p className="text-[14.5px] leading-[1.85] text-[var(--muted)] font-light mb-[32px]">
-              We don't just cover events, we command them. From international summits to national conferences, our crew is trained to move fast, think faster, and stay three steps ahead of the crowd. While others react, we've already planned for it. That's the edge that keeps our clients coming back, year after year, upgrade after upgrade.
+              Whether it's an international summit, corporate conference, product launch, or leadership event, our team is built to perform in high-pressure environments. We combine careful planning, creative storytelling, and technical expertise to deliver media that reflects the scale and significance of your event.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-[16px] gap-x-[32px] border-t border-[rgba(10,10,10,0.06)] pt-[24px]">
               {['Summit & Convention Media', 'On-Spot Teaser Film Edits', 'Live Broadcast Streaming', 'Multi-camera Setup Coverage'].map((item, idx) => (
@@ -137,8 +127,8 @@ export default function EventServices() {
               Event Film
             </h2>
             <p className="text-[14.5px] leading-[1.8] text-[var(--muted)] font-light mb-[20px] text-center">
-              <span className="block text-[16px] text-[var(--gold)] italic font-medium mb-[12px]">From "Lights, Camera" to "It's Live" — in under 2 hours.</span>
-              Your event deserves more than a highlight reel days later — it deserves buzz while it's still happening. Our on-spot editing team turns raw footage into a polished teaser or promo film in just two hours, without cutting corners. The secret? We script and design the graphics before the event even starts, so when the moment happens, we're ready to ship it.
+              <span className="block text-[16px] text-[var(--gold)] italic font-medium mb-[12px]">Great Events Deserve Great Stories.</span>
+              Your event is more than a series of moments—it's a story worth telling. We create cinematic event films that capture the energy, purpose, and key highlights of every occasion, transforming them into compelling visual stories that reflect your brand and leave a lasting impression.
             </p>
             <Link href="/portfolio" className="text-[10px] tracking-[0.2em] uppercase font-bold text-[var(--gold)] hover:text-[var(--light)] transition-colors duration-300 flex items-center gap-[8px] cursor-none">
               Explore Our Collection <ArrowRight className="w-[12px] h-[12px]" />
@@ -194,48 +184,36 @@ export default function EventServices() {
               Livestreaming
             </h2>
             <p className="text-[14.5px] leading-[1.8] text-[var(--muted)] font-light text-center">
-              <span className="block text-[16px] text-[var(--gold)] italic font-medium mb-[12px]">Zero buffering. Zero excuses. Just seamless, uninterrupted broadcast — anywhere.</span>
-              Our livestreaming setup isn't off-the-shelf; it's engineered for reliability. We run a custom bonding router, imported from China, that fuses the internet speeds of seven dongles into one rock-solid connection. Pair that with our ATEM Blackmagic 4K production mixer and wireless transmitters, and you get broadcast-grade streaming that never drops the ball even when the Wi-Fi does.
+              <span className="block text-[16px] text-[var(--gold)] italic font-medium mb-[12px]">Reliable Livestreaming. Broadcast Quality. Every Time.</span>
+              Reach audiences anywhere with confidence. Our professional livestreaming setup combines enterprise-grade connectivity, Blackmagic ATEM production systems, and wireless transmission technology to deliver stable, high-quality broadcasts, even in demanding network environments.
             </p>
           </div>
 
-          <div className="flex flex-col gap-[60px] mt-[40px]">
-            {livestreams.map((stream, idx) => (
+          {/* Videos Grid without text/description as requested */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-[30px] mt-[40px]">
+            {livestreams.map((stream) => (
               <div 
                 key={stream.id}
-                className={`flex flex-col lg:flex-row gap-[40px] lg:gap-[60px] items-center reveal ${idx % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}
+                onClick={() => setActiveVideoId(stream.id)}
+                className="w-full aspect-video rounded-[16px] overflow-hidden border border-[rgba(10,10,10,0.06)] bg-black shadow-md cursor-none relative group"
               >
-                {/* Video Card Player */}
-                <div 
-                  onClick={() => setActiveVideoId(stream.id)}
-                  className="w-full lg:w-1/2 aspect-video rounded-[16px] overflow-hidden border border-[rgba(10,10,10,0.06)] bg-black shadow-md cursor-none relative group"
-                >
-                  <img 
-                    src={`https://img.youtube.com/vi/${stream.id}/hqdefault.jpg`}
-                    alt={stream.title}
-                    className="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-102 transition-transform duration-[800ms]"
-                  />
-                  <div className="absolute inset-0 bg-black/20 z-10" />
-                  
-                  {/* Play circle */}
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60px] h-[60px] rounded-full border border-white/50 bg-black/40 flex items-center justify-center text-white transition-all duration-300 group-hover:scale-110 group-hover:bg-[var(--gold)] group-hover:border-transparent z-20">
-                    <Play className="w-[18px] h-[18px] fill-current ml-[2px]" />
-                  </div>
-                </div>
-
-                {/* Details */}
-                <div className="w-full lg:w-1/2 flex flex-col justify-center">
-                  <span className="text-[10px] tracking-[0.2em] uppercase text-[var(--gold)] font-bold mb-[8px]">LIVE STREAMING BROADCAST</span>
-                  <h3 className="font-serif text-[24px] text-[var(--light)] font-bold mb-[12px] leading-tight">{stream.title}</h3>
-                  <div className="w-[40px] h-[1px] bg-[var(--gold)] mb-[16px]"></div>
-                  <h4 className="font-sans text-[14px] text-[var(--gold)] italic font-semibold mb-[12px]">"{stream.hook}"</h4>
-                  <p className="text-[14px] leading-[1.8] text-[var(--muted)] font-light">{stream.desc}</p>
+                <img 
+                  src={`https://img.youtube.com/vi/${stream.id}/hqdefault.jpg`}
+                  alt="Livestream Video"
+                  className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-102 transition-transform duration-[800ms]"
+                />
+                <div className="absolute inset-0 bg-black/20 z-10" />
+                
+                {/* Play circle */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[64px] h-[64px] rounded-full border border-white/50 bg-black/40 flex items-center justify-center text-white transition-all duration-300 group-hover:scale-110 group-hover:bg-[var(--gold)] group-hover:border-transparent z-20">
+                  <Play className="w-[20px] h-[20px] fill-current ml-[2px]" />
                 </div>
               </div>
             ))}
           </div>
         </div>
       </section>
+
 
       {/* ─── PHOTOS GALLERY ─── */}
       <section className="py-[100px] bg-[var(--darker)] border-t border-[rgba(10,10,10,0.06)] px-[5%] md:px-[8%]">

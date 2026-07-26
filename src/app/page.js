@@ -286,20 +286,22 @@ export default function Home() {
   const weddingsCount = useCountUp(300, 1800, statsTriggered);
 
     const portfolioImages = {
+    // ── CURATED ALL TAB: 12 hand-picked images matching the screenshot ──
     'ALL': [
+      // Event / Political
+      '/images/our_portfolio/event/NMK_0047.JPG',
+      '/images/our_portfolio/event/cp-12.jpg',
+      '/images/our_portfolio/event/NMK_0130.JPG',
+      '/images/our_portfolio/event/_NMK2857.jpg',
+      '/images/our_portfolio/event/_NMK3555.jpg',
+      '/images/our_portfolio/event/_NMK2441.jpg',
       '/images/our_portfolio/event/NMK_0002.jpg',
       '/images/our_portfolio/event/NMK_0018.jpg',
-      '/images/our_portfolio/event/NMK_0047.JPG',
-      '/images/our_portfolio/event/NMK_0130.JPG',
       '/images/our_portfolio/event/NMK_0209.JPG',
       '/images/our_portfolio/event/NMK_0315.JPG',
       '/images/our_portfolio/event/WhatsApp Image 2026-02-09 at 8.29.33 PM (1).jpg',
       '/images/our_portfolio/event/_NMK2325.jpg',
       '/images/our_portfolio/event/_NMK2368.jpg',
-      '/images/our_portfolio/event/_NMK2441.jpg',
-      '/images/our_portfolio/event/_NMK2857.jpg',
-      '/images/our_portfolio/event/_NMK3555.jpg',
-      '/images/our_portfolio/event/cp-12.jpg',
       '/images/our_portfolio/event/highlights_NMKL0031.jpg',
       '/images/our_portfolio/event/highlights_SKV00387.jpg',
       '/images/our_portfolio/corporate/101A0087.jpg',
@@ -403,19 +405,6 @@ export default function Home() {
       '/images/our_portfolio/headshots/NMK_0481.JPG',
       '/images/our_portfolio/headshots/Untitled design(1) (1).jpg',
       '/images/our_portfolio/headshots/_01A0630.JPG',
-      '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.18.19 PM.jpg',
-      '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.18.38 PM.jpg',
-      '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.18.49 PM.jpg',
-      '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.18.56 PM.jpg',
-      '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.19.31 PM.jpg',
-      '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.19.43 PM.jpg',
-      '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.20.10 PM.jpg',
-      '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.20.45 PM.jpg',
-      '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.20.51 PM.jpg',
-      '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.21.09 PM.jpg',
-      '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.21.32 PM.jpg',
-      '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.21.43 PM.jpg',
-      '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.22.01 PM.jpg',
     ],
     'EVENT': [
       '/images/our_portfolio/event/NMK_0002.jpg',
@@ -545,34 +534,14 @@ export default function Home() {
       '/images/our_portfolio/headshots/Untitled design(1) (1).jpg',
       '/images/our_portfolio/headshots/_01A0630.JPG',
     ],
-    'OUTDOOR': [
-      '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.18.19 PM.jpg',
-      '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.18.38 PM.jpg',
-      '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.18.49 PM.jpg',
-      '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.18.56 PM.jpg',
-      '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.19.31 PM.jpg',
-      '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.19.43 PM.jpg',
-      '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.20.10 PM.jpg',
-      '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.20.45 PM.jpg',
-      '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.20.51 PM.jpg',
-      '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.21.09 PM.jpg',
-      '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.21.32 PM.jpg',
-      '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.21.43 PM.jpg',
-      '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.22.01 PM.jpg',
-    ],
   };
 
   const getHomeActiveImages = () => {
-    let images = portfolioImages[activePortfolioTab] || portfolioImages['ALL'] || [];
-    if (activePortfolioTab === 'ALL') {
-      images = images.filter(src => 
-        !src.includes('/documentary/') && 
-        !src.includes('/political/') && 
-        !src.includes('/outdoor/')
-      );
-    }
-    return images;
+    const images = portfolioImages[activePortfolioTab] || portfolioImages['ALL'] || [];
+    // Never show outdoor images anywhere
+    return images.filter(src => !src.includes('/outdoor/'));
   };
+
 
   const activeImages = getHomeActiveImages();
 
@@ -1219,7 +1188,23 @@ export default function Home() {
 
       {/* ─── 10. OUR PORTFOLIO (Uniform Grid) ─── */}
       <section className="py-[120px] px-[8%] md:px-[10%] bg-[var(--darker)] border-y border-[rgba(10,10,10,0.06)]">
-        <h3 className="text-[28px] font-serif text-[var(--light)] mb-[40px] reveal opacity-0 anim-fade-up">Our Portfolio</h3>
+
+        {/* Section Header */}
+        <div className="text-center mb-[56px] reveal opacity-0 anim-fade-up">
+          <span className="inline-block text-[10px] tracking-[0.4em] uppercase text-[var(--gold)] font-bold mb-[14px]">
+            Our Work
+          </span>
+          <h2 className="font-serif text-[clamp(28px,4vw,52px)] font-normal leading-[1.1] tracking-[-0.01em] text-[var(--light)] mb-[16px]">
+            Interactive Portfolio{' '}
+            <span className="text-[var(--gold)] italic">Showcase</span>
+          </h2>
+          <div className="w-[50px] h-[2px] bg-[var(--gold)] mx-auto mb-[18px]" />
+          <p className="text-[14px] text-[var(--muted)] font-light max-w-[560px] mx-auto leading-[1.8]">
+            Explore a curated collection of visual stories crafted across corporate events, executive portraits, documentaries, and cinematic productions.
+          </p>
+        </div>
+
+        {/* Filter Tabs */}
         <div className="flex flex-wrap gap-[30px] border-b border-[rgba(10,10,10,0.08)] pb-[15px] mb-[40px] reveal opacity-0 anim-fade-up delay-100">
           {[
             { id: 'ALL', label: 'ALL' },
@@ -1264,18 +1249,6 @@ export default function Home() {
               '/images/our_portfolio/headshots/NMKL5713.jpg',
               '/images/our_portfolio/headshots/NMK_0236.JPG',
               '/images/our_portfolio/headshots/Untitled design(1) (1).jpg',
-              '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.18.19 PM.jpg',
-              '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.18.38 PM.jpg',
-              '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.18.49 PM.jpg',
-              '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.18.56 PM.jpg',
-              '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.19.31 PM.jpg',
-              '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.20.10 PM.jpg',
-              '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.20.45 PM.jpg',
-              '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.20.51 PM.jpg',
-              '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.21.09 PM.jpg',
-              '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.21.32 PM.jpg',
-              '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.21.43 PM.jpg',
-              '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.22.01 PM.jpg',
             ];
 
           const verticals = activeImages.filter(src => VERTICAL_IMAGES.includes(src));

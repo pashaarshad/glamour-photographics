@@ -24,26 +24,26 @@ export default function CorporateServices() {
     {
       id: 't07kSRBHPfg',
       title: 'CGI Corporate Overview',
-      hook: 'Translating corporate capability into compelling narratives.',
-      desc: 'An in-depth look at state-of-the-art office infrastructure and company capabilities, designed to connect with clients, employees and stakeholders globally.'
+      hook: 'Vision, modern workplace, and corporate capability.',
+      desc: 'A cinematic corporate overview showcasing the company\'s vision, modern workplace, infrastructure, and capabilities through engaging visual storytelling designed for clients, employees, and stakeholders.'
     },
     {
       id: 'SpD8AeoLTXw',
-      title: 'Tata Elxsi UAV Showcase',
-      hook: 'Capturing technological innovation and precision engineering.',
-      desc: 'Cinematic UAV flight mapping and visual documentation showcasing advanced robotics, product design, and facility highlights.'
+      title: 'Tata Elxsi – UAV Showcase',
+      hook: 'Advanced engineering and precision visuals.',
+      desc: 'A cinematic showcase of Tata Elxsi\'s UAV innovations, highlighting advanced engineering, live demonstrations, product capabilities, and cutting-edge technology with precision-driven visual storytelling.'
     },
     {
       id: 'yVtKMpRffws',
       title: 'GE BEL Summit Highlights',
-      hook: 'Commemorating global industrial collaboration.',
-      desc: 'Capturing the premium moments, high-level dialogues, and technical exhibits of leading corporate partnerships at the summit.'
+      hook: 'Leadership keynotes and collaborative innovation.',
+      desc: 'Capturing the defining moments of the GE BEL Summit, from leadership interactions and keynote sessions to technology showcases and industry collaboration, through premium event filmmaking.'
     },
     {
       id: 'CZ6tMXytyM4',
-      title: 'SMK Prakash Corporate Film',
-      hook: 'Visually detailing state-of-the-art infrastructure.',
-      desc: 'Highlighting facility design, manufacturing capabilities, and industrial operations with clean, commanding corporate video production.'
+      title: 'SMK Prakash – Corporate Film',
+      hook: 'Manufacturing excellence and modern infrastructure.',
+      desc: 'A corporate film showcasing SMK Prakash\'s manufacturing excellence, modern infrastructure, and operational capabilities through clean visuals and purposeful storytelling.'
     }
   ];
 
@@ -62,7 +62,7 @@ export default function CorporateServices() {
       {/* ─── HERO HEADER ─── */}
       <section className="relative min-h-[50vh] flex items-center px-[5%] md:px-[8%] bg-[#0A0A0A] pt-[120px] md:pt-[100px]">
         <div className="absolute inset-0 z-0">
-          <img src="/images/our_portfolio/corporate/NMKL7605.jpg" alt="Corporate Header" className="w-full h-full object-cover opacity-35 select-none pointer-events-none" />
+          <img src="/images/our_portfolio/corporate/iqvia.jpg" alt="Corporate Header" className="w-full h-full object-cover opacity-35 select-none pointer-events-none" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent z-10" />
         </div>
         <div className="max-w-[1400px] w-full mx-auto z-20 relative">
@@ -74,7 +74,7 @@ export default function CorporateServices() {
               Corporate Media <span className="italic text-[var(--gold)]">Services.</span>
             </h1>
             <p className="text-[14px] md:text-[15.5px] leading-[1.8] text-white/80 max-w-[620px] mt-[24px] font-light">
-              Films That Turn Employees and Clients into Believers.
+              Purposeful Storytelling. Professional Production. Lasting Impact.
             </p>
           </div>
         </div>
@@ -85,15 +85,15 @@ export default function CorporateServices() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-[60px] lg:gap-[100px] items-center">
           <div>
             <span className="text-[10px] tracking-[0.3em] uppercase text-[var(--gold)] mb-[12px] block font-bold">Corporate Media Services</span>
-            <h2 className="font-serif text-[clamp(28px,3.5vw,44px)] font-light text-[var(--light)] mb-[24px] leading-tight">
-              Films That Turn Employees <br />
-              and Clients into <span className="italic text-[var(--gold)]">Believers.</span>
+            <h2 className="font-serif text-[clamp(28px,3.5vw,44px)] font-light text-[var(--light)] mb-[16px] leading-tight">
+              Films That Bring Your <br />
+              <span className="italic text-[var(--gold)]">Brand Story to Life.</span>
             </h2>
             <p className="text-[14.5px] leading-[1.85] text-[var(--muted)] font-light mb-[32px]">
-              Great corporate films don't sell, they connect. With years of experience running large-scale conferences and corporate shoots nationally and internationally, our crew knows how to translate boardroom vision into visual storytelling that actually resonates. We stay ahead of the trends, sharpen our craft every year, and deliver results that are as cost-smart as they are camera-ready.
+              Every organization has a story worth telling. From company profiles and leadership messages to culture films and brand campaigns, we create cinematic content that communicates your vision, builds trust, and strengthens connections with employees, clients, investors, and partners.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-[16px] gap-x-[32px] border-t border-[rgba(10,10,10,0.06)] pt-[24px]">
-              {['Company Culture Narratives', 'Boardroom Profile Videos', 'Industrial Campus Media', 'Marketing Video Campaigns'].map((item, idx) => (
+              {['Company Culture Films', 'Leadership & Keynote Messages', 'UAV / Facility Showcases', 'Product & Technical Media'].map((item, idx) => (
                 <div key={idx} className="flex items-center gap-[10px]">
                   <span className="w-[14px] h-[14px] rounded-full bg-[rgba(212,175,55,0.1)] flex items-center justify-center text-[var(--gold)]">
                     <Check className="w-[9px] h-[9px]" />
@@ -120,13 +120,14 @@ export default function CorporateServices() {
               Corporate Film
             </h2>
             <p className="text-[14.5px] leading-[1.8] text-[var(--muted)] font-light mb-[20px] text-center">
-              <span className="block text-[16px] text-[var(--gold)] italic font-medium mb-[12px]">Culture. Values. Mission. In 3 minutes, they'll feel all of it.</span>
-              We don't make corporate videos — we make visual narratives. Every film we craft is built to humanize your organization, spotlight what makes your culture different, and build a genuine emotional bridge with the people who matter most: your employees, your investors, your customers.
+              <span className="block text-[16px] text-[var(--gold)] italic font-medium mb-[12px]">Every Company Has a Story Worth Telling.</span>
+              From your people and culture to your products and purpose, we create cinematic corporate films that communicate what makes your business unique. Every film is crafted to build trust, strengthen your brand, and leave a lasting impression on clients, employees, and stakeholders.
             </p>
-            <Link href="/portfolio" className="text-[10px] tracking-[0.2em] uppercase font-bold text-[var(--gold)] hover:text-[var(--light)] transition-colors duration-300 flex items-center gap-[8px] cursor-none">
+            <Link href="/portfolio" className="text-[10px] tracking-[0.2em] uppercase font-bold text-[var(--gold)] hover:text-[var(--light)] transition-colors duration-300 flex items-center gap-[8px] cursor-none font-bold">
               Explore Our Collection <ArrowRight className="w-[12px] h-[12px]" />
             </Link>
           </div>
+
 
           <div className="flex flex-col gap-[60px] mt-[40px]">
             {corporateFilms.map((film, idx) => (

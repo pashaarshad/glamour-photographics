@@ -36,7 +36,7 @@ export default function HeadshotsServices() {
       {/* ─── HERO HEADER ─── */}
       <section className="relative min-h-[50vh] flex items-center px-[5%] md:px-[8%] bg-[#0A0A0A] pt-[120px] md:pt-[100px]">
         <div className="absolute inset-0 z-0">
-          <img src="/images/headshot_studio.png" alt="Headshot Studio Header" className="w-full h-full object-cover object-top opacity-40 select-none pointer-events-none" />
+          <img src="/images/our_portfolio/corporate/iqvia.jpg" alt="Headshot Studio Header" className="w-full h-full object-cover object-center opacity-40 select-none pointer-events-none" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent z-10" />
         </div>
         <div className="max-w-[1400px] w-full mx-auto z-20 relative">
@@ -45,10 +45,10 @@ export default function HeadshotsServices() {
               Capabilities
             </span>
             <h1 className="font-serif text-[clamp(36px,5vw,72px)] font-light leading-[1.1] tracking-[-0.02em] text-white">
-              Executive <span className="italic text-[var(--gold)]">Headshots.</span>
+              Professional <span className="italic text-[var(--gold)]">Headshots.</span>
             </h1>
             <p className="text-[14px] md:text-[15.5px] leading-[1.8] text-white/80 max-w-[620px] mt-[24px] font-light">
-              First impressions aren't made in person anymore — they're made in pixels. Make yours count.
+              Your Professional Image Starts Here.
             </p>
           </div>
         </div>
@@ -59,12 +59,12 @@ export default function HeadshotsServices() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-[60px] lg:gap-[100px] items-center">
           <div>
             <span className="text-[10px] tracking-[0.3em] uppercase text-[var(--gold)] mb-[12px] block font-bold">Headshots Portfolio</span>
-            <h2 className="font-serif text-[clamp(28px,3.5vw,44px)] font-light text-[var(--light)] mb-[24px] leading-tight">
-              The Photo That Speaks <br />
-              <span className="italic text-[var(--gold)]">Before You Do.</span>
+            <h2 className="font-serif text-[clamp(28px,3.5vw,44px)] font-light text-[var(--light)] mb-[16px] leading-tight">
+              The Portrait That Makes <br />
+              a Lasting <span className="italic text-[var(--gold)]">First Impression.</span>
             </h2>
             <p className="text-[14.5px] leading-[1.85] text-[var(--muted)] font-light mb-[32px]">
-              Your headshot is the handshake nobody sees you give. Whether it's for a LinkedIn profile, a company website, a press kit, or your team page, we make sure the first thing people notice about you is exactly what you want them to notice. Sharp lighting, natural posing, and a finish that feels professional — not staged.
+              A professional headshot is often the first introduction to your personal brand. Whether it's for LinkedIn, your company website, a press kit, or executive profiles, we create portraits that are confident, approachable, and authentically you.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-[16px] gap-x-[32px] border-t border-[rgba(10,10,10,0.06)] pt-[24px] mb-[32px]">
               {['LinkedIn Profiles', 'Press & PR Kits', 'Company Websites', 'Leadership Team Portals'].map((item, idx) => (
@@ -81,10 +81,11 @@ export default function HeadshotsServices() {
             </Link>
           </div>
           <div className="relative aspect-video w-full rounded-[16px] overflow-hidden border border-[rgba(10,10,10,0.06)] group shadow-md bg-black">
-            <img src="/images/our_portfolio/headshots/_01A0630.JPG" alt="Executive Headshot Setup" className="w-full h-full object-cover object-top opacity-100 transition-transform duration-[1200ms] group-hover:scale-103" />
+            <img src="/images/services/ashok_reddy_headshot.jpg" alt="Executive Headshot Setup" className="w-full h-full object-cover object-top opacity-100 transition-transform duration-[1200ms] group-hover:scale-103" />
           </div>
         </div>
       </section>
+
 
       {/* ─── OUR SPECIALITY / MOBILE STUDIO ─── */}
       <section className="py-[100px] bg-[var(--darker)] border-t border-[rgba(10,10,10,0.06)] px-[5%] md:px-[8%]">

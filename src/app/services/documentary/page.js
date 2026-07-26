@@ -25,25 +25,25 @@ export default function DocumentaryServices() {
       id: 'Ygyh433FRjQ',
       title: 'KHPT: A Family-Focused Fight Against HIV',
       hook: "Healing isn't individual. In these families, it's collective.",
-      desc: 'This documentary explores how a family-centered approach is transforming HIV care in India. By addressing stigma, closing data gaps, and empowering households with support, it highlights how supporting entire families creates lasting impact in prevention, treatment, and acceptance.'
+      desc: 'This documentary explores how a family-centered approach is transforming HIV care in India. By addressing stigma, closing data gaps, and empowering households with social and economic support, it highlights how supporting entire families, not just individuals, creates lasting impact in prevention, treatment, and acceptance.'
     },
     {
       id: 'YduPlyKr-10',
-      title: 'Bihar Women Empowerment: Nutrition & Independence',
+      title: 'Bihar Women Empowerment: Nutrition, Health & Independence',
       hook: 'Give a woman the tools, and watch an entire village rise.',
-      desc: 'This documentary sheds light on the struggles of rural women in Bihar marked by poor health, malnutrition, and dependence, and showcases how collaborative initiatives in fortified food production are transforming their lives, creating a ripple of empowerment.'
+      desc: 'This documentary sheds light on the struggles of rural women in Bihar marked by poor health, malnutrition, and dependence on men and showcases how collaborative initiatives are transforming their lives. Through training in fortified food production, women gain better nutrition, financial independence, and collective strength, creating a ripple of empowerment across families and communities.'
     },
     {
       id: 'e5J2v1UtFW4',
       title: 'Toyota Hejjala: Reviving Rural Education',
       hook: 'One partnership. One school. A whole community reimagined.',
-      desc: "Captures the transformation of GHBS Hejjala, a rural government school, through Toyota Kirloskar Motors' partnership with Sparsha Trust. Modern digital learning, infrastructure upgrades, and holistic education show public-private power."
+      desc: "This documentary captures the transformation of GHBS Hejjala, a rural government school, through Toyota Kirloskar Motors' partnership with Sparsha Trust. From poor infrastructure and limited opportunities, the school has evolved into a model institution with digital learning, modern facilities, and holistic education proving that public-private partnerships can reshape rural education and empower entire communities."
     },
     {
       id: 'av9FhaYzDuA',
       title: 'Pai Book Distribution',
       hook: 'Behind this effort is a powerful story of hope, kindness, and education.',
-      desc: 'An inspiring story of an initiative collecting and distributing notebooks to children in need. Helping children continue their studies gives them hope, confidence, and the motivation to dream bigger, reducing families expenses.'
+      desc: 'This video tells the inspiring story of an initiative that collects and distributes notebooks to children who need them most. It shows how even a small act of support can make a big difference in a child’s education and a family’s expenses. The effort, time, and dedication behind reaching thousands of students across different schools is truly remarkable. By helping children continue their studies, this initiative also gives them hope, confidence, and motivation to dream bigger. It is a powerful reminder that small kindness can create a lasting impact on many futures.'
     }
   ];
 
@@ -61,7 +61,7 @@ export default function DocumentaryServices() {
       {/* ─── HERO HEADER ─── */}
       <section className="relative min-h-[50vh] flex items-center px-[5%] md:px-[8%] bg-[#0A0A0A] pt-[120px] md:pt-[100px]">
         <div className="absolute inset-0 z-0">
-          <img src="/images/our_portfolio/te3.jpg" alt="Documentary Header" className="w-full h-full object-cover object-[center_20%] opacity-40 select-none pointer-events-none" />
+          <img src="/images/services/Documentaries11.png" alt="Documentary Header" className="w-full h-full object-cover object-center opacity-40 select-none pointer-events-none" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent z-10" />
         </div>
         <div className="max-w-[1400px] w-full mx-auto z-20 relative">
@@ -73,7 +73,7 @@ export default function DocumentaryServices() {
               Documentaries.
             </h1>
             <p className="text-[14px] md:text-[15.5px] leading-[1.8] text-white/80 max-w-[620px] mt-[24px] font-light">
-              Some stories don't need a script. They just need someone willing to listen — and show up.
+              Some stories don't need a script. They just need someone willing to listen and show up.
             </p>
           </div>
         </div>
@@ -84,22 +84,24 @@ export default function DocumentaryServices() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-[60px] lg:gap-[100px] items-center">
           <div>
             <span className="text-[10px] tracking-[0.3em] uppercase text-[var(--gold)] mb-[12px] block font-bold">Documentaries</span>
-            <h2 className="font-serif text-[clamp(28px,3.5vw,44px)] font-light text-[var(--light)] mb-[24px] leading-tight">
-              Passion. Emotion. <br />
-              Inspiration. <span className="italic text-[var(--gold)]">Upliftment.</span>
+            <h2 className="font-serif text-[clamp(28px,3.5vw,44px)] font-light text-[var(--light)] mb-[16px] leading-tight">
+              Real Stories. <br />
+              <span className="italic text-[var(--gold)]">Told with Authenticity.</span>
             </h2>
             <p className="text-[14.5px] leading-[1.85] text-[var(--muted)] font-light mb-[32px]">
-              We've traveled to the far corners of rural India — not to film stories, but to live inside them long enough to tell them right. Our collaboration with Toyota has taken us on an emotional journey through communities rarely seen on camera, capturing truths that don't fade after the credits roll.
+              Every documentary begins with people, purpose, and perspective. We create compelling documentary films that capture real experiences, meaningful voices, and impactful stories, crafted with authenticity, sensitivity, and cinematic excellence.
             </p>
             <Link href="/portfolio" className="inline-flex items-center gap-[8px] border border-[rgba(10,10,10,0.15)] text-[var(--light)] text-[10px] tracking-[0.2em] uppercase py-[16px] px-[32px] hover:bg-[var(--light)] hover:text-[var(--dark)] transition-all duration-300 cursor-none font-medium">
               See the Portfolio in Action <ArrowRight className="w-[12px] h-[12px]" />
             </Link>
           </div>
           <div className="relative aspect-video w-full rounded-[16px] overflow-hidden border border-[rgba(10,10,10,0.06)] group shadow-md bg-black">
-            <img src="/images/our_portfolio/documentary/DSC_0163.JPG" alt="Documentary Crew" className="w-full h-full object-cover opacity-100 transition-transform duration-[1200ms] group-hover:scale-103" />
+            <img src="/images/services/Documentaries2-2.png" alt="Documentary Crew" className="w-full h-full object-cover opacity-100 transition-transform duration-[1200ms] group-hover:scale-103" />
           </div>
         </div>
       </section>
+
+
 
       {/* ─── NARRATIVE DOCUMENTARIES LIST ─── */}
       <section className="py-[100px] bg-[var(--darker)] border-y border-[rgba(10,10,10,0.06)] px-[5%] md:px-[8%]">
