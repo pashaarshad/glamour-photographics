@@ -316,13 +316,13 @@ export default function About() {
                   num: "01",
                   title: "Collaboration",
                   desc: "We believe in working closely with our clients to understand their vision, objectives, and target audience. Your input is invaluable in shaping the final product.",
-                  img: "/images/collaberitie/Collaboration .png"
+                  img: "/images/collaberitie/Collaboration.png"
                 },
                 {
                   num: "02",
                   title: "Creativity",
                   desc: "Our team combines creative storytelling with the latest cinematic techniques to create visually stunning films that leave a lasting impression on every audience.",
-                  img: "/images/collaberitie/Creativity .png"
+                  img: "/images/collaberitie/Creativity.png"
                 },
                 {
                   num: "03",
@@ -337,6 +337,7 @@ export default function About() {
                   img: "/images/collaberitie/Quality.jpg"
                 }
               ].map((step, idx) => {
+
 
                 const isEven = idx % 2 === 0;
                 return (
