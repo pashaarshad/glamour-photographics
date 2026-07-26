@@ -134,5 +134,13 @@ export const clientsData = {
       }
     ],
     slug: "pai"
+  },
+  jlr: {
+    name: "Jaguar Land Rover",
+    about: "Jaguar Land Rover is one of the world's leading luxury automotive manufacturers, renowned for combining British craftsmanship, advanced engineering, and cutting-edge technology. With iconic brands including Range Rover, Defender, Discovery, and Jaguar, the company continues to set global benchmarks in performance, design, and innovation.",
+    ourWork: "Glamour Photographics partnered with Jaguar Land Rover to deliver premium corporate photography that reflects the brand's commitment to excellence. From capturing sophisticated automotive experiences to creating polished visual content, our work was crafted to uphold the precision, elegance, and premium identity synonymous with the Jaguar Land Rover brand.",
+    tagline: "Driven by Innovation. Captured with Precision.",
+    videos: [],
+    slug: "jlr"
   }
 };

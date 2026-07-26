@@ -47,12 +47,48 @@ export default function ClientPage({ params }) {
     "/images/our_portfolio/rtx-1.jpg",
     "/images/our_portfolio/te3.jpg"
   ];
-  
-  const clientImages = imagesMap[mapSlug] || fallbackImages;
 
-  // Split images: First 2 go to the right-hand column, remaining go to the bottom gallery
-  const featuredImages = clientImages.slice(0, 2);
-  const galleryImages = clientImages.slice(2);
+  const jlrGalleryImages = [
+    '/images/JLR/NMK_0013.JPG',
+    '/images/JLR/NMK_0022.JPG',
+    '/images/JLR/NMK_0033.JPG',
+    '/images/JLR/NMK_0127.JPG',
+    '/images/JLR/NMK_0129.JPG',
+    '/images/JLR/NMK_0188.JPG',
+    '/images/JLR/NMK_0219.JPG',
+    '/images/JLR/NMK_0225.JPG',
+    '/images/JLR/NMK_0236.JPG',
+    '/images/JLR/NMK_0246.JPG',
+    '/images/JLR/NMK_0290.JPG',
+    '/images/JLR/NMK_0315.JPG',
+    '/images/JLR/NMK_0373.JPG',
+    '/images/JLR/NMK_0389.JPG',
+    '/images/JLR/NMK_0457.JPG',
+    '/images/JLR/NMK_0481.JPG',
+    '/images/JLR/NMK_0533.JPG',
+    '/images/JLR/NMK_0535.JPG'
+  ];
+
+  let featuredImages = [];
+  let galleryImages = [];
+
+  if (clientSlug === 'cii') {
+    featuredImages = ['/images/Clients/cii-inside-1.JPG', '/images/Clients/cii-inside-2.jpg'];
+    galleryImages = imagesMap['cii'] || [];
+  } else if (clientSlug === 'jlr') {
+    featuredImages = ['/images/Clients/JLR-inside-1.JPG', '/images/Clients/JLR-inside-2.JPG'];
+    galleryImages = jlrGalleryImages;
+  } else if (clientSlug === 'toyota') {
+    featuredImages = ['/images/Clients/Toyata-inside-1.png', '/images/Clients/Toyata-inside-2.png'];
+    galleryImages = [];
+  } else if (clientSlug === 'pai') {
+    featuredImages = ['/images/Clients/pai-inside-1.png', '/images/Clients/pai-inside-2.png'];
+    galleryImages = imagesMap['pai'] || [];
+  } else {
+    const clientImages = imagesMap[mapSlug] || fallbackImages;
+    featuredImages = clientImages.slice(0, 2);
+    galleryImages = clientImages.slice(2);
+  }
 
   return (
     <main className="w-full bg-[var(--dark)] text-[var(--light)] min-h-screen pt-[160px] pb-[100px] cursor-none relative">
@@ -64,8 +100,8 @@ export default function ClientPage({ params }) {
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-[80px] mb-[120px] items-start">
           <div className="reveal">
-            <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] mb-[16px] block">
-              Case Study
+            <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] mb-[16px] block font-semibold">
+              Client Overview
             </span>
             <h1 className="font-serif text-[clamp(36px,5vw,60px)] font-light leading-[1.1] tracking-[-0.02em] text-[var(--light)] mb-[32px]">
               {client.name}
@@ -114,15 +150,17 @@ export default function ClientPage({ params }) {
         </div>
 
         {/* Bottom Section: Displays remaining gallery images */}
-        <div className="reveal border-t border-[rgba(10,10,10,0.06)] pt-[80px]">
-          <div className="mb-[40px] flex items-end justify-between">
-            <h2 className="font-serif text-[28px] md:text-[36px] text-[var(--light)]">
-              Visual Gallery
-            </h2>
+        {galleryImages.length > 0 && (
+          <div className="reveal border-t border-[rgba(10,10,10,0.06)] pt-[80px]">
+            <div className="mb-[40px] flex items-end justify-between">
+              <h2 className="font-serif text-[28px] md:text-[36px] text-[var(--light)]">
+                Visual Gallery
+              </h2>
+            </div>
+            
+            <ClientGallery images={galleryImages} />
           </div>
-          
-          <ClientGallery images={galleryImages} />
-        </div>
+        )}
 
         {/* Video Documentation Section */}
         {client.videos && client.videos.length > 0 && (

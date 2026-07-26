@@ -35,14 +35,15 @@ export default function CorporatePortfolio() {
     { name: 'CII', slug: 'cii', desc: 'Four Decades of Industry Leadership', index: '01' },
     { name: 'CGI', slug: 'cgi', desc: 'Global-Local Digital Engine', index: '02' },
     { name: 'Presidency University', slug: 'presidency', desc: 'Framing Learning, Celebrating Legacy', index: '03' },
-    { name: 'Tata Elxsi', slug: 'tata-elxsi', desc: 'Design Led Innovation', index: '04' }
+    { name: 'Tata Elxsi', slug: 'tata-elxsi', desc: 'Design Led Innovation', index: '04' },
+    { name: 'Jaguar Land Rover', slug: 'jlr', desc: 'Driven by Innovation. Captured with Precision.', index: '05' },
+    { name: 'RTX', slug: 'rtx', desc: 'Spotlighting Aerospace Leadership', index: '06' }
   ];
 
   const otherClients = [
     { name: 'TCS', slug: 'tcs', desc: 'Framing the Future of Technology' },
-    { name: 'RTX', slug: 'rtx', desc: 'Spotlighting Aerospace Leadership' },
-    { name: 'Toyota Kirloskar', slug: 'toyota', desc: 'Driving Change' },
-    { name: 'PAI International', slug: 'pai', desc: 'Showcasing Retail Innovation' }
+    { name: 'PAI International', slug: 'pai', desc: 'Showcasing Retail Innovation' },
+    { name: 'Toyota Kirloskar', slug: 'toyota', desc: 'Driving Change' }
   ];
 
   // Helper to extract background poster, thumbnails, and logo for each client card
@@ -61,9 +62,25 @@ export default function CorporatePortfolio() {
     else if (slug === 'toyota') logo = '/logo-clients/toyota.png';
     else if (slug === 'pai') logo = '/logo-clients/pai.png';
     
+    // Custom bg overrides from public/images/Clients
+    let bg = images[0] || '/images/our_portfolio/cp-7.jpg';
+    if (slug === 'cii') bg = '/images/Clients/cii-outside-for-card.JPG';
+    else if (slug === 'cgi') bg = '/images/Clients/cgi-outside-for-card.jpg';
+    else if (slug === 'jlr') bg = '/images/Clients/JLR-outside-for-card.JPG';
+    else if (slug === 'tcs') bg = '/images/Clients/tcs-outside-for-card.JPG';
+    else if (slug === 'pai') bg = '/images/Clients/pai-outside-for-card.png';
+    else if (slug === 'toyota') bg = '/images/Clients/Toyata-outside-for-card.png';
+
+    // Thumbnails
+    let thumbnails = images.slice(1, 4);
+    if (slug === 'jlr') thumbnails = ['/images/Clients/JLR-inside-1.JPG', '/images/Clients/JLR-inside-2.JPG'];
+    else if (slug === 'cii') thumbnails = ['/images/Clients/cii-inside-1.JPG', '/images/Clients/cii-inside-2.jpg'];
+    else if (slug === 'pai') thumbnails = ['/images/Clients/pai-inside-1.png', '/images/Clients/pai-inside-2.png'];
+    else if (slug === 'toyota') thumbnails = ['/images/Clients/Toyata-inside-1.png', '/images/Clients/Toyata-inside-2.png'];
+    
     return {
-      bg: images[0] || '/images/our_portfolio/cp-7.jpg',
-      thumbnails: images.slice(1, 4), // 3 preview images
+      bg,
+      thumbnails,
       logo
     };
   };
@@ -76,17 +93,17 @@ export default function CorporatePortfolio() {
             Clients Portfolio
           </span>
           <h1 className="font-serif text-[clamp(44px,6vw,80px)] font-light leading-[1.1] tracking-[-0.02em] text-[var(--light)]">
-            Enterprise Partnerships
+            A Legacy of Corporate Trust
           </h1>
           <p className="text-[14px] md:text-[15px] leading-[1.8] text-[var(--muted)] max-w-[620px] mt-[32px] font-light">
-            From highlighting cutting-edge infrastructure and global defense leadership, to capturing the human side of digital transformation—explore our collaborative work with industry titans.
+            For over four decades, we've partnered with organizations across technology, manufacturing, healthcare, education, hospitality, and enterprise, creating visual stories that strengthen brands and capture moments that matter.
           </p>
         </div>
 
         {/* Featured Clients */}
         <div className="mb-[120px]">
           <h2 className="font-serif text-[26px] text-[var(--light)] mb-[40px] reveal border-b border-[rgba(10,10,10,0.08)] pb-[20px]">
-            Featured Collaborations
+            Client Success Stories
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-[32px] stagger-children">
             {featuredClients.map((client, idx) => {
