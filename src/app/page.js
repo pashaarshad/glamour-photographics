@@ -537,10 +537,27 @@ export default function Home() {
   };
 
   const getHomeActiveImages = () => {
-    const images = portfolioImages[activePortfolioTab] || portfolioImages['ALL'] || [];
+    let images = [];
+    if (activePortfolioTab === 'ALL') {
+      images = showAllHomeImages ? (portfolioImages['ALL'] || []) : [
+        '/images/our_portfolio/headshots/NMKL2060.jpg',
+        '/images/our_portfolio/celebrity/highlights_3C1A0775.jpg',
+        '/images/our_portfolio/political/11.jpg',
+        '/images/our_portfolio/event/NMK_0002.jpg',
+        '/images/our_portfolio/corporate/iqvia.jpg',
+        '/images/our_portfolio/celebrity/highlights_3C1A0761.jpg',
+        '/images/our_portfolio/political/IMG_0008.JPG',
+        '/images/our_portfolio/event/NMK_0018.jpg',
+        '/images/our_portfolio/corporate/rtx-1.jpg',
+        '/images/our_portfolio/33.jpg'
+      ];
+    } else {
+      images = portfolioImages[activePortfolioTab] || [];
+    }
     // Never show outdoor images anywhere
     return images.filter(src => !src.includes('/outdoor/'));
   };
+
 
 
   const activeImages = getHomeActiveImages();
@@ -1216,7 +1233,10 @@ export default function Home() {
             <button 
               suppressHydrationWarning
               key={tab.id} 
-              onClick={() => setActivePortfolioTab(tab.id)} 
+              onClick={() => {
+                setActivePortfolioTab(tab.id);
+                setShowAllHomeImages(false);
+              }} 
               className={`text-[10px] tracking-[0.2em] uppercase pb-[15px] relative cursor-none ${activePortfolioTab === tab.id ? 'text-[var(--gold)]' : 'text-[var(--muted)] hover:text-[var(--light)]'}`}
             >
               {tab.label}
@@ -1305,9 +1325,27 @@ export default function Home() {
                     ))}
                   </div>
                 )}
+                {/* Show More Button if not expanded and it's the ALL tab */}
+                {activePortfolioTab === 'ALL' && !showAllHomeImages && (
+                  <div className="flex justify-center mt-[40px] reveal opacity-0 anim-fade-up">
+                    <button
+                      suppressHydrationWarning
+                      onClick={() => {
+                        setShowAllHomeImages(true);
+                        setTimeout(() => {
+                          window.dispatchEvent(new Event('scroll'));
+                        }, 100);
+                      }}
+                      className="border border-[rgba(10,10,10,0.15)] text-[var(--light)] text-[10px] tracking-[0.2em] uppercase py-[14px] px-[36px] hover:bg-[var(--light)] hover:text-[var(--dark)] transition-all duration-300 cursor-none font-bold rounded-full"
+                    >
+                      Show More
+                    </button>
+                  </div>
+                )}
               </div>
             );
           }
+
 
           const visibleBlocks = showAllHomeImages ? blocks : blocks.slice(0, 2);
           const hasMore = blocks.length > 2 || remainingVerticals.length > 0 || remainingHorizontals.length > 0;

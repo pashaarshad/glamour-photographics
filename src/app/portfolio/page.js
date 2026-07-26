@@ -8,6 +8,24 @@ export default function PortfolioPage() {
   const [activeVideoId, setActiveVideoId] = useState(null);
   const [activePhotoUrl, setActivePhotoUrl] = useState(null);
   const [visibleLimit, setVisibleLimit] = useState(12);
+  const [allSectionExpanded, setAllSectionExpanded] = useState(false);
+
+  const INITIAL_MIXED_IMAGES = [
+    // Verticals
+    '/images/our_portfolio/headshots/NMKL2060.jpg',
+    '/images/our_portfolio/celebrity/highlights_3C1A0775.jpg',
+    // Horizontals
+    '/images/our_portfolio/political/11.jpg',
+    '/images/our_portfolio/event/NMK_0002.jpg',
+    '/images/our_portfolio/corporate/iqvia.jpg',
+    '/images/our_portfolio/celebrity/highlights_3C1A0761.jpg',
+    '/images/our_portfolio/political/IMG_0008.JPG',
+    '/images/our_portfolio/event/NMK_0018.jpg',
+    '/images/our_portfolio/corporate/rtx-1.jpg',
+    '/images/our_portfolio/33.jpg'
+  ];
+
+
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -521,12 +539,15 @@ export default function PortfolioPage() {
 
   // Get active images based on tab
   const getActivePhotos = () => {
-    if (activeTab === 'ALL') return portfolioImages['ALL'] || [];
-    if (activeTab === 'EVENT') return portfolioImages['EVENT'] || [];
-    if (activeTab === 'CORPORATE') return portfolioImages['CORPORATE'] || [];
-    if (activeTab === 'CELEBRITY') return portfolioImages['CELEBRITY'] || [];
-    if (activeTab === 'HEADSHOTS') return portfolioImages['HEADSHOTS'] || [];
-    return [];
+    let images = [];
+    if (activeTab === 'ALL') {
+      images = allSectionExpanded ? (portfolioImages['ALL'] || []) : INITIAL_MIXED_IMAGES;
+    }
+    else if (activeTab === 'EVENT') images = portfolioImages['EVENT'] || [];
+    else if (activeTab === 'CORPORATE') images = portfolioImages['CORPORATE'] || [];
+    else if (activeTab === 'CELEBRITY') images = portfolioImages['CELEBRITY'] || [];
+    else if (activeTab === 'HEADSHOTS') images = portfolioImages['HEADSHOTS'] || [];
+    return images.filter(src => !src.includes('/outdoor/'));
   };
 
   const getActiveVideos = () => {
@@ -570,9 +591,14 @@ export default function PortfolioPage() {
   const maxVisibleRemaining = visibleLimit;
   const maxVisibleVideos = Math.max(4, Math.ceil(visibleLimit / 2) * 2);
 
-  const hasMorePhotos = isPhotoTab && (blocks.length > maxVisibleBlocks || remainingPhotos.length > maxVisibleRemaining);
+  const hasMorePhotos = isPhotoTab && (
+    (activeTab === 'ALL' && !allSectionExpanded) ||
+    blocks.length > maxVisibleBlocks ||
+    remainingPhotos.length > maxVisibleRemaining
+  );
   const hasMoreVideos = isVideoTab && activeVideos.length > maxVisibleVideos;
   const hasMore = hasMorePhotos || hasMoreVideos;
+
 
   const tabs = [
     { id: 'ALL', label: 'All' },
@@ -593,22 +619,23 @@ export default function PortfolioPage() {
       {/* ─── HERO SECTION ─── */}
       <section className="px-[5%] md:px-[8%] max-w-[1400px] mx-auto mb-[100px]">
         <div className="reveal">
-          <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] mb-[16px] block">
-            Visual Highlights
+          <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] mb-[16px] block font-bold">
+            Our Work
           </span>
           <h1 className="font-serif text-[clamp(44px,6vw,80px)] font-light leading-[1.1] tracking-[-0.02em] text-[var(--light)]">
-            Selected Works Portfolio <br />
-            <span className="italic text-[var(--gold)]">Across Decades.</span>
+            Interactive Portfolio <br />
+            <span className="italic text-[var(--gold)]">Showcase.</span>
           </h1>
           <p className="text-[14px] leading-[1.8] text-[var(--muted)] max-w-[600px] mt-[32px] font-light">
-            Explore our visual archives spanning corporate walkthroughs, high-profile events, drone industrial shoots, and brand documentary films.
+            Explore a curated collection of visual stories crafted across corporate events, executive portraits, documentaries, and cinematic productions.
           </p>
         </div>
       </section>
 
+
       {/* ─── FILTER TABS ─── */}
       <section className="px-[5%] md:px-[8%] max-w-[1400px] mx-auto mb-[60px]">
-        <div className="flex overflow-x-auto gap-[15px] md:gap-[20px] lg:gap-[25px] xl:gap-[30px] border-b border-[rgba(10,10,10,0.08)] pb-[15px] mb-[40px] reveal opacity-0 anim-fade-up scrollbar-none whitespace-nowrap flex-nowrap">
+        <div className="flex overflow-x-auto gap-[12px] sm:gap-[18px] md:gap-[20px] lg:gap-[24px] border-b border-[rgba(10,10,10,0.08)] pb-[15px] mb-[40px] reveal opacity-0 anim-fade-up scrollbar-none whitespace-nowrap flex-nowrap">
           {tabs.map((tab) => (
             <button 
               suppressHydrationWarning
@@ -616,8 +643,9 @@ export default function PortfolioPage() {
               onClick={() => {
                 setActiveTab(tab.id);
                 setVisibleLimit(12);
+                setAllSectionExpanded(false);
               }} 
-              className={`text-[9px] md:text-[10px] tracking-[0.12em] md:tracking-[0.18em] uppercase pb-[15px] relative cursor-none transition-colors flex-shrink-0 whitespace-nowrap ${
+              className={`text-[9px] md:text-[9.5px] lg:text-[10px] tracking-[0.12em] md:tracking-[0.18em] uppercase pb-[15px] relative cursor-none transition-colors flex-shrink-0 whitespace-nowrap ${
                 activeTab === tab.id ? 'text-[var(--gold)] font-semibold' : 'text-[var(--muted)] hover:text-[var(--light)]'
               }`}
             >
@@ -792,7 +820,11 @@ export default function PortfolioPage() {
             <button
               suppressHydrationWarning
               onClick={() => {
-                setVisibleLimit(prev => prev + 12);
+                if (activeTab === 'ALL' && !allSectionExpanded) {
+                  setAllSectionExpanded(true);
+                } else {
+                  setVisibleLimit(prev => prev + 12);
+                }
                 setTimeout(() => {
                   window.dispatchEvent(new Event('scroll'));
                 }, 100);
