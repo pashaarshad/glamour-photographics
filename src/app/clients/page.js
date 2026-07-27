@@ -89,14 +89,14 @@ export default function CorporatePortfolio() {
     <main className="w-full bg-[var(--dark)] text-[var(--light)] min-h-screen pt-[160px] pb-[100px] cursor-none">
       <section className="px-[5%] md:px-[8%] max-w-[1400px] mx-auto">
         <div className="reveal mb-[80px]">
-          <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] mb-[16px] block">
-            Clients Portfolio
+          <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] mb-[16px] block font-bold">
+            OUR CLIENTS
           </span>
           <h1 className="font-serif text-[clamp(44px,6vw,80px)] font-light leading-[1.1] tracking-[-0.02em] text-[var(--light)]">
-            A Legacy of Corporate Trust
+            A Legacy of <span className="italic text-[var(--gold)] font-medium">Corporate Trust</span>
           </h1>
-          <p className="text-[14px] md:text-[15px] leading-[1.8] text-[var(--muted)] max-w-[620px] mt-[32px] font-light">
-            For over four decades, we've partnered with organizations across technology, manufacturing, healthcare, education, hospitality, and enterprise, creating visual stories that strengthen brands and capture moments that matter.
+          <p className="text-[14px] md:text-[15px] leading-[1.8] text-[var(--muted)] max-w-[620px] mt-[24px] font-light">
+            Trusted by industry leaders worldwide.
           </p>
         </div>
 

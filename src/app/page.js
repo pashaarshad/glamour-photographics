@@ -33,6 +33,51 @@ function useCountUp(endVal, duration = 1800, trigger = false) {
   return count;
 }
 
+function HeroSlotCard({ photoSrc, photoTitle, className, onClick }) {
+  const [currentSrc, setCurrentSrc] = useState(photoSrc);
+  const [prevSrc, setPrevSrc] = useState(null);
+  const [isFading, setIsFading] = useState(false);
+
+  useEffect(() => {
+    if (photoSrc !== currentSrc) {
+      setPrevSrc(currentSrc);
+      setCurrentSrc(photoSrc);
+      setIsFading(true);
+      const timer = setTimeout(() => {
+        setIsFading(false);
+        setPrevSrc(null);
+      }, 950);
+      return () => clearTimeout(timer);
+    }
+  }, [photoSrc, currentSrc]);
+
+  return (
+    <div
+      onClick={onClick}
+      className={`relative overflow-hidden cursor-pointer hover:scale-[1.025] transition-transform duration-500 bg-white ${className}`}
+    >
+      {/* Underlying Previous Image Layer */}
+      {prevSrc && (
+        <img
+          src={prevSrc}
+          alt={photoTitle}
+          className="absolute inset-0 w-full h-full object-cover select-none pointer-events-none"
+        />
+      )}
+      {/* Top Incoming Image Layer (Fades + Slides In) */}
+      <img
+        src={currentSrc}
+        alt={photoTitle}
+        className={`w-full h-full object-cover transition-all duration-[950ms] cubic-bezier(0.22, 1, 0.36, 1) select-none pointer-events-none ${
+          isFading
+            ? 'opacity-0 scale-[1.07] translate-y-[5px] blur-[1px]'
+            : 'opacity-100 scale-100 translate-y-0 blur-0'
+        }`}
+      />
+    </div>
+  );
+}
+
 export default function Home() {
   const [activePortfolioTab, setActivePortfolioTab] = useState('ALL');
   const [showreelOpen, setShowreelOpen] = useState(false);
@@ -46,37 +91,39 @@ export default function Home() {
   const [isHeroHovered, setIsHeroHovered] = useState(false);
   const [activePhotoUrl, setActivePhotoUrl] = useState(null);
 
-  // 6 exact hero images chosen by client
   const HERO_PHOTOS = [
-    { src: '/images/our_portfolio/political/11.jpg',      title: 'State Delegation' },
-    { src: '/images/our_portfolio/political/IMG_0008.JPG',title: 'Official Event' },
-    { src: '/images/our_portfolio/political/NMK_0047.JPG',title: 'VVIP Ceremony' },
-    { src: '/images/our_portfolio/political/NMK_0337.JPG',title: 'Delegation Meet' },
-    { src: '/images/our_portfolio/political/NMK_0203.JPG',title: 'Conference' },
-    { src: '/images/our_portfolio/33.jpg',                title: 'Portfolio Highlight' },
+    { src: '/images/our_portfolio/political/11.jpg',       title: 'State Delegation' },
+    { src: '/images/our_portfolio/headshots/NMKL2060.jpg',  title: 'Executive Portrait' },
+    { src: '/images/our_portfolio/event/NMK_0002.jpg',      title: 'Grand Convention' },
+    { src: '/images/our_portfolio/corporate/iqvia.jpg',     title: 'Corporate Headquarters' },
+    { src: '/images/our_portfolio/celebrity/highlights_3C1A0775.jpg', title: 'Celebrity Gala' },
+    { src: '/images/our_portfolio/political/IMG_0008.JPG', title: 'Official Event' },
+    { src: '/images/our_portfolio/corporate/rtx-1.jpg',     title: 'Aerospace Leadership' },
+    { src: '/images/our_portfolio/33.jpg',                 title: 'Portfolio Highlight' },
   ];
 
-
-  // LINKED-LIST conveyor belt: 4 slots always show 4 unique images, one slot
-  // refreshes at a time in clockwise order with the NEXT image in the sequence.
-  // e.g. [0,1,2,3] → slot0 gets 4 → [4,1,2,3] → slot1 gets 5 → [4,5,2,3] ...
-  const [slotImages, setSlotImages] = useState([0, 1, 2, 3]); // indices into HERO_PHOTOS
-  const turnRef  = useRef(0); // which slot updates next (0→1→2→3→0...)
-  const queueRef = useRef(4); // next image index to assign (starts after initial 0-3)
+  // 4 slots rotation in physical clockwise order: [0 (Top-Right), 1 (Middle-Right-Top), 3 (Middle-Right-Bottom), 2 (Bottom-Overlapping)]
+  const [slotImages, setSlotImages] = useState([0, 1, 2, 3]);
+  const turnIndexRef = useRef(0);
+  const queueRef = useRef(4);
 
   useEffect(() => {
     if (isHeroHovered) return;
+    const clockwiseOrder = [0, 1, 3, 2];
     const interval = setInterval(() => {
-      const turn    = turnRef.current;
-      const nextImg = queueRef.current % HERO_PHOTOS.length;
+      const slotToUpdate = clockwiseOrder[turnIndexRef.current % 4];
+      const nextImgIndex = queueRef.current % HERO_PHOTOS.length;
+
       setSlotImages(prev => {
         const next = [...prev];
-        next[turn] = nextImg;
+        next[slotToUpdate] = nextImgIndex;
         return next;
       });
-      turnRef.current  = (turn + 1) % 4;
-      queueRef.current = (queueRef.current + 1) % (HERO_PHOTOS.length * 100); // prevent overflow
-    }, 1600);
+
+      turnIndexRef.current = (turnIndexRef.current + 1) % 4;
+      queueRef.current = (queueRef.current + 1) % (HERO_PHOTOS.length * 100);
+    }, 2400); // Rotates clockwise smoothly every 2.4s
+
     return () => clearInterval(interval);
   }, [isHeroHovered]);
 
@@ -687,31 +734,21 @@ export default function Home() {
               {/* RIGHT STACK: 2 taller images stacked (slots 0 & 1) */}
               <div className="flex flex-col gap-[14px] md:gap-[16px] flex-shrink-0 w-[37%] max-w-[230px]">
 
-                {/* SLOT 0 */}
-                <div
+                {/* SLOT 0 (Clockwise 1st) */}
+                <HeroSlotCard
+                  photoSrc={HERO_PHOTOS[slotImages[0]].src}
+                  photoTitle={HERO_PHOTOS[slotImages[0]].title}
                   onClick={() => setActivePhotoUrl(HERO_PHOTOS[slotImages[0]].src)}
-                  className="w-full aspect-[3/2] rounded-[14px] overflow-hidden shadow-[0_8px_28px_rgba(0,0,0,0.13)] border-[3.5px] border-white bg-white cursor-pointer hover:scale-[1.025] hover:shadow-[0_12px_36px_rgba(0,0,0,0.2)] transition-all duration-300"
-                >
-                  <img
-                    key={`s0-${slotImages[0]}`}
-                    src={HERO_PHOTOS[slotImages[0]].src}
-                    alt={HERO_PHOTOS[slotImages[0]].title}
-                    className="w-full h-full object-cover hero-rotate-card"
-                  />
-                </div>
+                  className="w-full aspect-[3/2] rounded-[14px] shadow-[0_8px_28px_rgba(0,0,0,0.13)] border-[3.5px] border-white z-10"
+                />
 
-                {/* SLOT 1 */}
-                <div
+                {/* SLOT 1 (Clockwise 2nd) */}
+                <HeroSlotCard
+                  photoSrc={HERO_PHOTOS[slotImages[1]].src}
+                  photoTitle={HERO_PHOTOS[slotImages[1]].title}
                   onClick={() => setActivePhotoUrl(HERO_PHOTOS[slotImages[1]].src)}
-                  className="w-full aspect-[3/2] rounded-[14px] overflow-hidden shadow-[0_8px_28px_rgba(0,0,0,0.13)] border-[3.5px] border-white bg-white cursor-pointer hover:scale-[1.025] hover:shadow-[0_12px_36px_rgba(0,0,0,0.2)] transition-all duration-300"
-                >
-                  <img
-                    key={`s1-${slotImages[1]}`}
-                    src={HERO_PHOTOS[slotImages[1]].src}
-                    alt={HERO_PHOTOS[slotImages[1]].title}
-                    className="w-full h-full object-cover hero-rotate-card"
-                  />
-                </div>
+                  className="w-full aspect-[3/2] rounded-[14px] shadow-[0_8px_28px_rgba(0,0,0,0.13)] border-[3.5px] border-white z-10"
+                />
 
               </div>
             </div>{/* end top row */}
@@ -719,31 +756,21 @@ export default function Home() {
             {/* ── BOTTOM ROW: 2 wider images side by side (slots 2 & 3) ── */}
             <div className="flex gap-[14px] md:gap-[16px]">
 
-              {/* SLOT 2 */}
-              <div
+              {/* SLOT 2 (Clockwise 4th) */}
+              <HeroSlotCard
+                photoSrc={HERO_PHOTOS[slotImages[2]].src}
+                photoTitle={HERO_PHOTOS[slotImages[2]].title}
                 onClick={() => setActivePhotoUrl(HERO_PHOTOS[slotImages[2]].src)}
-                className="flex-1 aspect-[16/8] rounded-[14px] overflow-hidden shadow-[0_8px_28px_rgba(0,0,0,0.12)] border-[3.5px] border-white bg-white cursor-pointer hover:scale-[1.02] hover:shadow-[0_12px_36px_rgba(0,0,0,0.18)] transition-all duration-300"
-              >
-                <img
-                  key={`s2-${slotImages[2]}`}
-                  src={HERO_PHOTOS[slotImages[2]].src}
-                  alt={HERO_PHOTOS[slotImages[2]].title}
-                  className="w-full h-full object-cover hero-rotate-card"
-                />
-              </div>
+                className="flex-1 aspect-[16/8] rounded-[14px] shadow-[0_8px_28px_rgba(0,0,0,0.12)] border-[3.5px] border-white z-10"
+              />
 
-              {/* SLOT 3 */}
-              <div
+              {/* SLOT 3 (Clockwise 3rd) */}
+              <HeroSlotCard
+                photoSrc={HERO_PHOTOS[slotImages[3]].src}
+                photoTitle={HERO_PHOTOS[slotImages[3]].title}
                 onClick={() => setActivePhotoUrl(HERO_PHOTOS[slotImages[3]].src)}
-                className="flex-1 aspect-[16/8] rounded-[14px] overflow-hidden shadow-[0_8px_28px_rgba(0,0,0,0.12)] border-[3.5px] border-white bg-white cursor-pointer hover:scale-[1.02] hover:shadow-[0_12px_36px_rgba(0,0,0,0.18)] transition-all duration-300"
-              >
-                <img
-                  key={`s3-${slotImages[3]}`}
-                  src={HERO_PHOTOS[slotImages[3]].src}
-                  alt={HERO_PHOTOS[slotImages[3]].title}
-                  className="w-full h-full object-cover hero-rotate-card"
-                />
-              </div>
+                className="flex-1 aspect-[16/8] rounded-[14px] shadow-[0_8px_28px_rgba(0,0,0,0.12)] border-[3.5px] border-white z-10"
+              />
 
             </div>{/* end bottom row */}
 
@@ -757,17 +784,17 @@ export default function Home() {
 
 
       {/* ─── 2. EDITORIAL MARQUEE ─── */}
-      <div className="marquee-wrapper py-[20px] bg-black border-y border-[rgba(255,255,255,0.05)] overflow-hidden w-full relative z-20">
+      <div className="marquee-wrapper py-[20px] bg-white border-y border-[rgba(10,10,10,0.08)] overflow-hidden w-full relative z-20">
         <div className="marquee-track flex whitespace-nowrap text-[10px] tracking-[0.25em] uppercase text-[var(--gold)] font-medium">
           {Array.from({ length: 4 }).map((_, i) => (
             <span key={i} className="flex items-center gap-[24px] shrink-0">
-              <span className="ml-[24px]">Corporate Films</span><span className="text-[6px] text-white select-none">●</span>
-              <span>Wedding Photography</span><span className="text-[6px] text-white select-none">●</span>
-              <span>Event Coverage</span><span className="text-[6px] text-white select-none">●</span>
-              <span>Digital Advertising</span><span className="text-[6px] text-white select-none">●</span>
-              <span>Documentary Films</span><span className="text-[6px] text-white select-none">●</span>
-              <span>Studio Portraits</span><span className="text-[6px] text-white select-none">●</span>
-              <span>Photo Restoration</span><span className="text-[6px] text-white select-none">●</span>
+              <span className="ml-[24px]">Corporate Films</span><span className="text-[6px] text-[#0A0A0A] select-none">●</span>
+              <span>Wedding Photography</span><span className="text-[6px] text-[#0A0A0A] select-none">●</span>
+              <span>Event Coverage</span><span className="text-[6px] text-[#0A0A0A] select-none">●</span>
+              <span>Digital Advertising</span><span className="text-[6px] text-[#0A0A0A] select-none">●</span>
+              <span>Documentary Films</span><span className="text-[6px] text-[#0A0A0A] select-none">●</span>
+              <span>Studio Portraits</span><span className="text-[6px] text-[#0A0A0A] select-none">●</span>
+              <span>Photo Restoration</span><span className="text-[6px] text-[#0A0A0A] select-none">●</span>
             </span>
           ))}
         </div>
@@ -812,13 +839,13 @@ export default function Home() {
 
         <div className="hero-strip-item">
           <div className="strip-img">
-            <img src="/images/outdoor-event.jpg" alt="Outdoor Event" className="w-full h-full object-cover block" />
+            <img src="/images/our_portfolio/33.jpg" alt="Portfolio Highlight" className="w-full h-full object-cover block" />
           </div>
           <div className="strip-pip"></div>
-          <div className="strip-side-label">Outdoor Coverage</div>
+          <div className="strip-side-label">Portfolio Highlight</div>
           <div className="strip-overlay">
             <span className="strip-label">Events & Media</span>
-            <span className="strip-title">Outdoor Coverage</span>
+            <span className="strip-title">Portfolio Showcase</span>
           </div>
         </div>
 
@@ -836,17 +863,17 @@ export default function Home() {
       </div>
 
       {/* ─── 2.7. EDITORIAL MARQUEE (BOTTOM) ─── */}
-      <div className="marquee-wrapper py-[20px] bg-black border-y border-[rgba(255,255,255,0.05)] overflow-hidden w-full relative z-20">
+      <div className="marquee-wrapper py-[20px] bg-white border-y border-[rgba(10,10,10,0.08)] overflow-hidden w-full relative z-20">
         <div className="marquee-track-reverse flex whitespace-nowrap text-[10px] tracking-[0.25em] uppercase text-[var(--gold)] font-medium">
           {Array.from({ length: 4 }).map((_, i) => (
             <span key={i} className="flex items-center gap-[24px] shrink-0">
-              <span className="ml-[24px]">Corporate Films</span><span className="text-[6px] text-white select-none">●</span>
-              <span>Wedding Photography</span><span className="text-[6px] text-white select-none">●</span>
-              <span>Event Coverage</span><span className="text-[6px] text-white select-none">●</span>
-              <span>Digital Advertising</span><span className="text-[6px] text-white select-none">●</span>
-              <span>Documentary Films</span><span className="text-[6px] text-white select-none">●</span>
-              <span>Studio Portraits</span><span className="text-[6px] text-white select-none">●</span>
-              <span>Photo Restoration</span><span className="text-[6px] text-white select-none">●</span>
+              <span className="ml-[24px]">Corporate Films</span><span className="text-[6px] text-[#0A0A0A] select-none">●</span>
+              <span>Wedding Photography</span><span className="text-[6px] text-[#0A0A0A] select-none">●</span>
+              <span>Event Coverage</span><span className="text-[6px] text-[#0A0A0A] select-none">●</span>
+              <span>Digital Advertising</span><span className="text-[6px] text-[#0A0A0A] select-none">●</span>
+              <span>Documentary Films</span><span className="text-[6px] text-[#0A0A0A] select-none">●</span>
+              <span>Studio Portraits</span><span className="text-[6px] text-[#0A0A0A] select-none">●</span>
+              <span>Photo Restoration</span><span className="text-[6px] text-[#0A0A0A] select-none">●</span>
             </span>
           ))}
         </div>
