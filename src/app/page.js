@@ -785,7 +785,7 @@ export default function Home() {
 
       {/* ─── 2. EDITORIAL MARQUEE ─── */}
       <div className="marquee-wrapper py-[20px] bg-white border-y border-[rgba(10,10,10,0.08)] overflow-hidden w-full relative z-20">
-        <div className="marquee-track flex whitespace-nowrap text-[10px] tracking-[0.25em] uppercase text-[var(--gold)] font-medium">
+        <div className="marquee-track flex whitespace-nowrap text-[10px] tracking-[0.25em] uppercase text-black font-semibold">
           {Array.from({ length: 4 }).map((_, i) => (
             <span key={i} className="flex items-center gap-[24px] shrink-0">
               <span className="ml-[24px]">Corporate Films</span><span className="text-[6px] text-[#0A0A0A] select-none">●</span>
@@ -864,7 +864,7 @@ export default function Home() {
 
       {/* ─── 2.7. EDITORIAL MARQUEE (BOTTOM) ─── */}
       <div className="marquee-wrapper py-[20px] bg-white border-y border-[rgba(10,10,10,0.08)] overflow-hidden w-full relative z-20">
-        <div className="marquee-track-reverse flex whitespace-nowrap text-[10px] tracking-[0.25em] uppercase text-[var(--gold)] font-medium">
+        <div className="marquee-track-reverse flex whitespace-nowrap text-[10px] tracking-[0.25em] uppercase text-black font-semibold">
           {Array.from({ length: 4 }).map((_, i) => (
             <span key={i} className="flex items-center gap-[24px] shrink-0">
               <span className="ml-[24px]">Corporate Films</span><span className="text-[6px] text-[#0A0A0A] select-none">●</span>
@@ -997,9 +997,9 @@ export default function Home() {
             {/* Box 1 - Founder Portrait & Text Overlay */}
             <div className="absolute top-0 left-0 w-[82%] h-[400px] md:h-[480px] bg-[#0A0A0A] border border-[rgba(10,10,10,0.06)] rounded-sm overflow-hidden z-10 shadow-lg relative group">
               <img 
-                src="/logo-clients/founder-ceo.jpg" 
+                src="/images/IMG_8065.JPG" 
                 alt="Hameed Hussain Founder" 
-                className="w-full h-full object-cover opacity-75 transition-transform duration-700 group-hover:scale-105 select-none pointer-events-none" 
+                className="w-full h-full object-cover object-top opacity-85 transition-transform duration-700 group-hover:scale-105 select-none pointer-events-none" 
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-black/35 to-transparent p-[32px] flex flex-col justify-end">
                 <h4 className="font-serif text-[24px] text-white font-medium leading-none mb-[6px]">Hameed Hussain</h4>
@@ -1710,11 +1710,10 @@ export default function Home() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[30px] reveal opacity-0 anim-fade-up delay-100">
           {[
-            { name: "Hameed Hussain", role: "Founder & Director", img: "/images/Hameed Hussain.png" },
+            { name: "Hameed Hussain", role: "Founder & Director", img: "/images/IMG_8065.JPG" },
             { name: "Anzar Hussain", role: "Creative Lead", img: "/images/anzar_hussain.png" },
             { name: "Zia Hussain", role: "Head of Operations", img: "/images/zia_hussain.png" },
-            { name: "IMG_8070", role: "Executive Lead", img: "/images/IMG_8070.JPG" },
-            { name: "IMG_8065", role: "Senior Consultant", img: "/images/IMG_8065.JPG" }
+            { name: "IMG_8070", role: "Executive Lead", img: "/images/IMG_8070.JPG" }
           ].map((member, idx) => {
             const isPng = member.img.toLowerCase().endsWith('.png');
             return (

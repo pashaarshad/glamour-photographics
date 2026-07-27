@@ -86,9 +86,9 @@ export default function About() {
           <div className="lg:col-span-4 relative rounded-sm overflow-hidden border border-[rgba(10,10,10,0.06)] bg-[#0A0A0A] h-[580px] reveal flex flex-col justify-between">
             <div className="flex-1 w-full relative h-[380px] overflow-hidden">
               <img 
-                src="/logo-clients/founder-ceo.jpg" 
+                src="/images/IMG_8065.JPG" 
                 alt="Founder Hameed Hussain" 
-                className="w-full h-full object-cover opacity-80"
+                className="w-full h-full object-cover object-top opacity-85"
               />
             </div>
             <div className="bg-[#0A0A0A] p-[30px] border-t border-[rgba(255,255,255,0.08)]">
@@ -409,11 +409,10 @@ export default function About() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[30px] reveal opacity-0 anim-fade-up delay-100">
           {[
-            { name: "Hameed Hussain", role: "Founder & Director", img: "/images/Hameed Hussain.png" },
+            { name: "Hameed Hussain", role: "Founder & Director", img: "/images/IMG_8065.JPG" },
             { name: "Anzar Hussain", role: "Creative Lead", img: "/images/anzar_hussain.png" },
             { name: "Zia Hussain", role: "Head of Operations", img: "/images/zia_hussain.png" },
-            { name: "IMG_8070", role: "Executive Lead", img: "/images/IMG_8070.JPG" },
-            { name: "IMG_8065", role: "Senior Consultant", img: "/images/IMG_8065.JPG" }
+            { name: "IMG_8070", role: "Executive Lead", img: "/images/IMG_8070.JPG" }
           ].map((member, idx) => {
             const isPng = member.img.toLowerCase().endsWith('.png');
             return (
