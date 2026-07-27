@@ -10,19 +10,22 @@ export default function PortfolioPage() {
   const [visibleLimit, setVisibleLimit] = useState(12);
   const [allSectionExpanded, setAllSectionExpanded] = useState(false);
 
-  const INITIAL_MIXED_IMAGES = [
-    // Verticals
-    '/images/our_portfolio/headshots/NMKL2060.jpg',
-    '/images/our_portfolio/celebrity/highlights_3C1A0775.jpg',
-    // Horizontals
+  const SCREENSHOT_FIRST_15_IMAGES = [
+    '/images/our_portfolio/political/NMK_0047.JPG',
+    '/images/our_portfolio/political/IMG_0008.JPG',
     '/images/our_portfolio/political/11.jpg',
     '/images/our_portfolio/event/NMK_0002.jpg',
-    '/images/our_portfolio/corporate/iqvia.jpg',
-    '/images/our_portfolio/celebrity/highlights_3C1A0761.jpg',
-    '/images/our_portfolio/political/IMG_0008.JPG',
-    '/images/our_portfolio/event/NMK_0018.jpg',
+    '/images/our_portfolio/political/NMK_0337.JPG',
+    '/images/our_portfolio/corporate/NMK_0219.JPG',
+    '/images/our_portfolio/corporate/_01A0411.jpg',
+    '/images/our_portfolio/corporate/_01A0760.jpg',
     '/images/our_portfolio/corporate/rtx-1.jpg',
-    '/images/our_portfolio/33.jpg'
+    '/images/our_portfolio/political/NMK_0203.JPG',
+    '/images/our_portfolio/corporate/_01A0956.jpg',
+    '/images/our_portfolio/corporate/iqvia.jpg',
+    '/images/our_portfolio/corporate/_AMZ0023.JPG',
+    '/images/our_portfolio/celebrity/dilquar.jpg',
+    '/images/our_portfolio/corporate/SKV00446.jpg'
   ];
 
 
@@ -541,7 +544,7 @@ export default function PortfolioPage() {
   const getActivePhotos = () => {
     let images = [];
     if (activeTab === 'ALL') {
-      images = allSectionExpanded ? (portfolioImages['ALL'] || []) : INITIAL_MIXED_IMAGES;
+      images = allSectionExpanded ? (portfolioImages['ALL'] || []) : SCREENSHOT_FIRST_15_IMAGES;
     }
     else if (activeTab === 'EVENT') images = portfolioImages['EVENT'] || [];
     else if (activeTab === 'CORPORATE') images = portfolioImages['CORPORATE'] || [];
@@ -665,52 +668,25 @@ export default function PortfolioPage() {
         {/* ─── PHOTOS PORTFOLIO SECTION ─── */}
         {isPhotoTab && activePhotos.length > 0 && (
           <div className="w-full flex flex-col gap-[24px]">
-            {/* Render 5-Image Blocks */}
-            {blocks.slice(0, maxVisibleBlocks).map((block, bIdx) => (
-              <div key={bIdx} className="flex flex-col lg:flex-row gap-[24px] items-stretch w-full mb-[24px] reveal">
-                {/* Left: 1 Vertical */}
-                <div 
-                  onClick={() => setActivePhotoUrl(block.vertical)}
-                  className="w-full lg:w-1/3 relative group overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] bg-[var(--darker)] min-h-[450px] lg:min-h-0 shadow-lg cursor-none hover:shadow-2xl transition-all duration-500"
-                >
-                  <img 
-                    src={block.vertical} 
-                    alt="Portfolio Work" 
-                    className={`absolute inset-0 w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-[1.03] ${
-                      block.vertical.includes('/headshots/') ? 'object-top' : 'object-center'
-                    }`} 
-                  />
-                  {/* Hover Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-[20px]">
-                    <div className="text-left">
-                      <span className="text-[9px] tracking-[0.2em] font-bold text-[var(--gold)] uppercase font-semibold">
-                        {block.vertical.includes('/event/') ? 'EVENT' : block.vertical.includes('/corporate/') ? 'CORPORATE' : block.vertical.includes('/celebrity/') ? 'CELEBRITY' : block.vertical.includes('/headshots/') ? 'HEADSHOTS' : 'PHOTO'}
-                      </span>
-                      <div className="w-[16px] h-[1px] bg-[var(--gold)] mt-[4px]"></div>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Right: 4 Horizontals (arranged in a perfect 2x2 grid) */}
-                <div className="w-full lg:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-[24px]">
-                  {block.horizontals.map((src, idx) => (
+            {activeTab === 'ALL' ? (
+              <>
+                {/* INITIAL 15 HORIZONTAL PHOTOS (5 ROWS x 3 COLUMNS) */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[24px] w-full reveal">
+                  {SCREENSHOT_FIRST_15_IMAGES.map((src, idx) => (
                     <div 
-                      key={idx} 
+                      key={`init-${src}-${idx}`}
                       onClick={() => setActivePhotoUrl(src)}
-                      className="relative aspect-[3/2] group overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] bg-[var(--darker)] shadow-lg cursor-none hover:shadow-2xl transition-all duration-500"
+                      className="group relative overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] shadow-lg bg-[var(--darker)] cursor-none hover:shadow-2xl transition-all duration-500 w-full aspect-[3/2]"
                     >
                       <img 
                         src={src} 
-                        alt="Portfolio Work" 
-                        className={`w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-[1.03] ${
-                          src.includes('/headshots/') ? 'object-top' : 'object-center'
-                        }`} 
+                        alt="Portfolio Gallery" 
+                        className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-105" 
                       />
-                      {/* Hover Overlay */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-[20px]">
                         <div className="text-left">
                           <span className="text-[9px] tracking-[0.2em] font-bold text-[var(--gold)] uppercase font-semibold">
-                            {src.includes('/event/') ? 'EVENT' : src.includes('/corporate/') ? 'CORPORATE' : src.includes('/celebrity/') ? 'CELEBRITY' : src.includes('/headshots/') ? 'HEADSHOTS' : 'PHOTO'}
+                            {src.includes('/event/') ? 'EVENT' : src.includes('/corporate/') ? 'CORPORATE' : src.includes('/celebrity/') ? 'CELEBRITY' : src.includes('/political/') ? 'POLITICAL & DIGNITARIES' : 'PHOTO'}
                           </span>
                           <div className="w-[16px] h-[1px] bg-[var(--gold)] mt-[4px]"></div>
                         </div>
@@ -718,41 +694,235 @@ export default function PortfolioPage() {
                     </div>
                   ))}
                 </div>
-              </div>
-            ))}
 
-            {/* Remaining photos grid */}
-            {remainingPhotos.length > 0 && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[24px] w-full reveal">
-                {remainingPhotos.slice(0, maxVisibleRemaining).map((src, idx) => {
-                  const isVertical = VERTICAL_IMAGES.includes(src);
-                  return (
-                    <div 
-                      key={`${src}-${idx}`}
-                      onClick={() => setActivePhotoUrl(src)}
-                      className="group relative overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] shadow-lg bg-[var(--darker)] cursor-none hover:shadow-2xl transition-all duration-500 w-full"
+                {/* SHOW MORE BUTTON */}
+                {!allSectionExpanded && (
+                  <div className="flex justify-center mt-[40px] reveal opacity-0 anim-fade-up">
+                    <button
+                      suppressHydrationWarning
+                      onClick={() => {
+                        setAllSectionExpanded(true);
+                        setTimeout(() => {
+                          window.dispatchEvent(new Event('scroll'));
+                        }, 100);
+                      }}
+                      className="border border-[rgba(10,10,10,0.15)] text-[var(--light)] text-[10px] tracking-[0.2em] uppercase py-[14px] px-[36px] hover:bg-[var(--gold)] hover:text-black hover:border-[var(--gold)] transition-all duration-300 cursor-none font-bold rounded-full shadow-lg"
                     >
-                      <div className={`w-full ${isVertical ? 'aspect-[2/3]' : 'aspect-[3/2]'} overflow-hidden relative`}>
-                        <img 
-                          src={src} 
-                          alt="Portfolio Gallery" 
-                          className={`w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-103 ${
-                            src.includes('/headshots/') ? 'object-top' : 'object-center'
-                          }`} 
-                        />
-                        {/* Hover Overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-[20px]">
-                          <div className="text-left">
-                            <span className="text-[9px] tracking-[0.2em] font-bold text-[var(--gold)] uppercase font-semibold">
-                              {src.includes('/event/') ? 'EVENT' : src.includes('/corporate/') ? 'CORPORATE' : src.includes('/celebrity/') ? 'CELEBRITY' : src.includes('/headshots/') ? 'HEADSHOTS' : 'PHOTO'}
-                            </span>
-                            <div className="w-[16px] h-[1px] bg-[var(--gold)] mt-[4px]"></div>
+                      Show More
+                    </button>
+                  </div>
+                )}
+
+                {/* EXPANDED SECTION AFTER 15TH PHOTO: RATIO-AWARE GRID */}
+                {allSectionExpanded && (
+                  <div className="mt-[24px] w-full">
+                    {(() => {
+                      const remaining = (portfolioImages['ALL'] || []).filter(src => !SCREENSHOT_FIRST_15_IMAGES.includes(src) && !src.includes('/outdoor/'));
+                      const verts = remaining.filter(src => VERTICAL_IMAGES.includes(src));
+                      const horizs = remaining.filter(src => !VERTICAL_IMAGES.includes(src));
+
+                      const smartBlocks = [];
+                      let vIdx = 0;
+                      let hIdx = 0;
+                      while (vIdx < verts.length && hIdx + 4 <= horizs.length) {
+                        smartBlocks.push({
+                          vertical: verts[vIdx],
+                          horizontals: [horizs[hIdx], horizs[hIdx + 1], horizs[hIdx + 2], horizs[hIdx + 3]]
+                        });
+                        vIdx += 1;
+                        hIdx += 4;
+                      }
+
+                      const remVerts = verts.slice(vIdx);
+                      const remHorizs = horizs.slice(hIdx);
+
+                      return (
+                        <div className="w-full flex flex-col gap-[32px]">
+                          {/* 5-Image Blocks */}
+                          {smartBlocks.map((block, bIdx) => (
+                            <div key={`exp-block-${bIdx}`} className="flex flex-col lg:flex-row gap-[24px] items-stretch w-full reveal">
+                              <div 
+                                onClick={() => setActivePhotoUrl(block.vertical)}
+                                className="w-full lg:w-1/3 relative group overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] bg-[var(--darker)] min-h-[450px] lg:min-h-0 shadow-lg cursor-none hover:shadow-2xl transition-all duration-500"
+                              >
+                                <img 
+                                  src={block.vertical} 
+                                  alt="Portfolio Work" 
+                                  className={`absolute inset-0 w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-[1.03] ${
+                                    block.vertical.includes('/headshots/') ? 'object-top' : 'object-center'
+                                  }`} 
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-[20px]">
+                                  <span className="text-[9px] tracking-[0.2em] font-bold text-[var(--gold)] uppercase font-semibold">PORTRAIT</span>
+                                </div>
+                              </div>
+                              <div className="w-full lg:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-[24px]">
+                                {block.horizontals.map((src, idx) => (
+                                  <div 
+                                    key={idx} 
+                                    onClick={() => setActivePhotoUrl(src)}
+                                    className="relative aspect-[3/2] group overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] bg-[var(--darker)] shadow-lg cursor-none hover:shadow-2xl transition-all duration-500"
+                                  >
+                                    <img src={src} alt="Portfolio Work" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-[1.03]" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-[20px]">
+                                      <span className="text-[9px] tracking-[0.2em] font-bold text-[var(--gold)] uppercase font-semibold">PHOTO</span>
+                                    </div>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          ))}
+
+                          {/* Vertical Grid */}
+                          {remVerts.length > 0 && (
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[24px] w-full reveal">
+                              {remVerts.map((src, idx) => (
+                                <div 
+                                  key={`exp-v-${idx}`}
+                                  onClick={() => setActivePhotoUrl(src)}
+                                  className="group relative overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] shadow-lg bg-[var(--darker)] cursor-none hover:shadow-2xl transition-all duration-500 w-full aspect-[2/3]"
+                                >
+                                  <img 
+                                    src={src} 
+                                    alt="Portfolio Gallery" 
+                                    className={`w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-105 ${
+                                      src.includes('/headshots/') ? 'object-top' : 'object-center'
+                                    }`} 
+                                  />
+                                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-[20px]">
+                                    <span className="text-[9px] tracking-[0.2em] font-bold text-[var(--gold)] uppercase font-semibold">PORTRAIT</span>
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+
+                          {/* Horizontal Grid */}
+                          {remHorizs.length > 0 && (
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[24px] w-full reveal">
+                              {remHorizs.map((src, idx) => (
+                                <div 
+                                  key={`exp-h-${idx}`}
+                                  onClick={() => setActivePhotoUrl(src)}
+                                  className="group relative overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] shadow-lg bg-[var(--darker)] cursor-none hover:shadow-2xl transition-all duration-500 w-full aspect-[3/2]"
+                                >
+                                  <img src={src} alt="Portfolio Gallery" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-105" />
+                                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-[20px]">
+                                    <span className="text-[9px] tracking-[0.2em] font-bold text-[var(--gold)] uppercase font-semibold">PHOTO</span>
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })()}
+                  </div>
+                )}
+              </>
+            ) : (
+              /* CATEGORY TABS (EVENT, CORPORATE, CELEBRITY, HEADSHOTS): RATIO-AWARE GRID */
+              <div className="w-full">
+                {(() => {
+                  const verts = activePhotos.filter(src => VERTICAL_IMAGES.includes(src));
+                  const horizs = activePhotos.filter(src => !VERTICAL_IMAGES.includes(src));
+
+                  const smartBlocks = [];
+                  let vIdx = 0;
+                  let hIdx = 0;
+                  while (vIdx < verts.length && hIdx + 4 <= horizs.length) {
+                    smartBlocks.push({
+                      vertical: verts[vIdx],
+                      horizontals: [horizs[hIdx], horizs[hIdx + 1], horizs[hIdx + 2], horizs[hIdx + 3]]
+                    });
+                    vIdx += 1;
+                    hIdx += 4;
+                  }
+
+                  const remVerts = verts.slice(vIdx);
+                  const remHorizs = horizs.slice(hIdx);
+
+                  return (
+                    <div className="w-full flex flex-col gap-[32px]">
+                      {/* 5-Image Blocks */}
+                      {smartBlocks.map((block, bIdx) => (
+                        <div key={`cat-block-${bIdx}`} className="flex flex-col lg:flex-row gap-[24px] items-stretch w-full mb-[24px] reveal">
+                          <div 
+                            onClick={() => setActivePhotoUrl(block.vertical)}
+                            className="w-full lg:w-1/3 relative group overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] bg-[var(--darker)] min-h-[450px] lg:min-h-0 shadow-lg cursor-none hover:shadow-2xl transition-all duration-500"
+                          >
+                            <img 
+                              src={block.vertical} 
+                              alt="Portfolio Work" 
+                              className={`absolute inset-0 w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-[1.03] ${
+                                block.vertical.includes('/headshots/') ? 'object-top' : 'object-center'
+                              }`} 
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-[20px]">
+                              <span className="text-[9px] tracking-[0.2em] font-bold text-[var(--gold)] uppercase font-semibold">PORTRAIT</span>
+                            </div>
+                          </div>
+                          <div className="w-full lg:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-[24px]">
+                            {block.horizontals.map((src, idx) => (
+                              <div 
+                                key={idx} 
+                                onClick={() => setActivePhotoUrl(src)}
+                                className="relative aspect-[3/2] group overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] bg-[var(--darker)] shadow-lg cursor-none hover:shadow-2xl transition-all duration-500"
+                              >
+                                <img src={src} alt="Portfolio Work" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-[1.03]" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-[20px]">
+                                  <span className="text-[9px] tracking-[0.2em] font-bold text-[var(--gold)] uppercase font-semibold">PHOTO</span>
+                                </div>
+                              </div>
+                            ))}
                           </div>
                         </div>
-                      </div>
+                      ))}
+
+                      {/* Remaining Verticals */}
+                      {remVerts.length > 0 && (
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[24px] w-full reveal">
+                          {remVerts.map((src, idx) => (
+                            <div 
+                              key={`cat-v-${idx}`}
+                              onClick={() => setActivePhotoUrl(src)}
+                              className="group relative overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] shadow-lg bg-[var(--darker)] cursor-none hover:shadow-2xl transition-all duration-500 w-full aspect-[2/3]"
+                            >
+                              <img 
+                                src={src} 
+                                alt="Portfolio Gallery" 
+                                className={`w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-105 ${
+                                  src.includes('/headshots/') ? 'object-top' : 'object-center'
+                                }`} 
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-[20px]">
+                                <span className="text-[9px] tracking-[0.2em] font-bold text-[var(--gold)] uppercase font-semibold">PORTRAIT</span>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+
+                      {/* Remaining Horizontals */}
+                      {remHorizs.length > 0 && (
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[24px] w-full reveal">
+                          {remHorizs.map((src, idx) => (
+                            <div 
+                              key={`cat-h-${idx}`}
+                              onClick={() => setActivePhotoUrl(src)}
+                              className="group relative overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] shadow-lg bg-[var(--darker)] cursor-none hover:shadow-2xl transition-all duration-500 w-full aspect-[3/2]"
+                            >
+                              <img src={src} alt="Portfolio Gallery" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-105" />
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-[20px]">
+                                <span className="text-[9px] tracking-[0.2em] font-bold text-[var(--gold)] uppercase font-semibold">PHOTO</span>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      )}
                     </div>
                   );
-                })}
+                })()}
               </div>
             )}
           </div>

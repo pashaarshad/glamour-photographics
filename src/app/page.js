@@ -1272,88 +1272,82 @@ export default function Home() {
           ))}
         </div>
         {(() => {
-            const VERTICAL_IMAGES = [
-              '/images/our_portfolio/corporate/NMKL5612.jpg',
-              '/images/our_portfolio/celebrity/IMG0_0186.JPG',
-              '/images/our_portfolio/celebrity/IMG_0006.JPG',
-              '/images/our_portfolio/celebrity/IMG_0029.JPG',
-              '/images/our_portfolio/celebrity/IMG_0207.JPG',
-              '/images/our_portfolio/celebrity/IMG_0212.JPG',
-              '/images/our_portfolio/celebrity/IMG_0464.JPG',
-              '/images/our_portfolio/celebrity/NMK_0925.JPG',
-              '/images/our_portfolio/celebrity/Srk.jpg',
-              '/images/our_portfolio/celebrity/VED03109.jpg',
-              '/images/our_portfolio/celebrity/highlights_3C1A0775.jpg',
-              '/images/our_portfolio/documentary/highlights_SKV00290.jpg',
-              '/images/our_portfolio/political/Cameroon.jpg',
-              '/images/our_portfolio/political/IMG_0029.JPG',
-              '/images/our_portfolio/headshots/6ba3a857-c93e-4299-8740-45da7ff9e3f2.jpg',
-              '/images/our_portfolio/headshots/NMKL2060.jpg',
-              '/images/our_portfolio/headshots/NMKL2078.jpg',
-              '/images/our_portfolio/headshots/NMKL2079.jpg',
-              '/images/our_portfolio/headshots/NMKL5344-2.jpg',
-              '/images/our_portfolio/headshots/NMKL5462-2.jpg',
-              '/images/our_portfolio/headshots/NMKL5713.jpg',
-              '/images/our_portfolio/headshots/NMK_0236.JPG',
-              '/images/our_portfolio/headshots/Untitled design(1) (1).jpg',
-            ];
+          const SCREENSHOT_FIRST_15_IMAGES = [
+            '/images/our_portfolio/political/NMK_0047.JPG',
+            '/images/our_portfolio/political/IMG_0008.JPG',
+            '/images/our_portfolio/political/11.jpg',
+            '/images/our_portfolio/event/NMK_0002.jpg',
+            '/images/our_portfolio/political/NMK_0337.JPG',
+            '/images/our_portfolio/corporate/NMK_0219.JPG',
+            '/images/our_portfolio/corporate/_01A0411.jpg',
+            '/images/our_portfolio/corporate/_01A0760.jpg',
+            '/images/our_portfolio/corporate/rtx-1.jpg',
+            '/images/our_portfolio/political/NMK_0203.JPG',
+            '/images/our_portfolio/corporate/_01A0956.jpg',
+            '/images/our_portfolio/corporate/iqvia.jpg',
+            '/images/our_portfolio/corporate/_AMZ0023.JPG',
+            '/images/our_portfolio/celebrity/dilquar.jpg',
+            '/images/our_portfolio/corporate/SKV00446.jpg'
+          ];
 
-          const verticals = activeImages.filter(src => VERTICAL_IMAGES.includes(src));
-          const horizontals = activeImages.filter(src => !VERTICAL_IMAGES.includes(src));
+          const VERTICAL_IMAGES = [
+            '/images/our_portfolio/corporate/NMKL5612.jpg',
+            '/images/our_portfolio/celebrity/IMG0_0186.JPG',
+            '/images/our_portfolio/celebrity/IMG_0006.JPG',
+            '/images/our_portfolio/celebrity/IMG_0029.JPG',
+            '/images/our_portfolio/celebrity/IMG_0207.JPG',
+            '/images/our_portfolio/celebrity/IMG_0212.JPG',
+            '/images/our_portfolio/celebrity/IMG_0464.JPG',
+            '/images/our_portfolio/celebrity/NMK_0925.JPG',
+            '/images/our_portfolio/celebrity/Srk.jpg',
+            '/images/our_portfolio/celebrity/VED03109.jpg',
+            '/images/our_portfolio/celebrity/highlights_3C1A0775.jpg',
+            '/images/our_portfolio/documentary/highlights_SKV00290.jpg',
+            '/images/our_portfolio/political/Cameroon.jpg',
+            '/images/our_portfolio/political/IMG_0029.JPG',
+            '/images/our_portfolio/headshots/6ba3a857-c93e-4299-8740-45da7ff9e3f2.jpg',
+            '/images/our_portfolio/headshots/NMKL2060.jpg',
+            '/images/our_portfolio/headshots/NMKL2078.jpg',
+            '/images/our_portfolio/headshots/NMKL2079.jpg',
+            '/images/our_portfolio/headshots/NMKL5344-2.jpg',
+            '/images/our_portfolio/headshots/NMKL5462-2.jpg',
+            '/images/our_portfolio/headshots/NMKL5713.jpg',
+            '/images/our_portfolio/headshots/NMK_0236.JPG',
+            '/images/our_portfolio/headshots/Untitled design(1) (1).jpg',
+          ];
 
-          const blocks = [];
-          let vertIdx = 0;
-          let horizIdx = 0;
+          const activeImages = getHomeActiveImages();
 
-          while (vertIdx < verticals.length && horizIdx + 4 <= horizontals.length) {
-            blocks.push({
-              vertical: verticals[vertIdx],
-              horizontals: [
-                horizontals[horizIdx],
-                horizontals[horizIdx + 1],
-                horizontals[horizIdx + 2],
-                horizontals[horizIdx + 3]
-              ]
-            });
-            vertIdx += 1;
-            horizIdx += 4;
-          }
-
-          const remainingVerticals = verticals.slice(vertIdx);
-          const remainingHorizontals = horizontals.slice(horizIdx);
-          const remaining = [...remainingVerticals, ...remainingHorizontals];
-
-          if (blocks.length === 0) {
+          if (activePortfolioTab === 'ALL') {
             return (
               <div className="w-full flex flex-col gap-[24px]">
-                {verticals.length > 0 && (
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-[24px] w-full">
-                    {verticals.map((src, idx) => (
-                      <div key={idx} className="relative aspect-[2/3] group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)] shadow-[0_4px_20px_rgba(0,0,0,0.02)]">
-                        <img src={src} alt="Portfolio Work" className="w-full h-full transition-transform duration-[800ms] group-hover:scale-105" />
-                        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(0,0,0,0.85)] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-[20px]">
-                          <span className="text-[9px] tracking-[0.2em] uppercase text-[var(--gold)] mb-[8px]">Gallery Spotlight</span>
-                          <h4 className="font-serif text-[16px] text-white">Visual Artifact</h4>
+                {/* 1. INITIAL 15 HORIZONTAL PHOTOS (5 ROWS x 3 COLUMNS) */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-[24px] w-full reveal opacity-0 anim-fade-up">
+                  {SCREENSHOT_FIRST_15_IMAGES.map((src, idx) => (
+                    <div 
+                      key={`home-init-${src}-${idx}`}
+                      onClick={() => setActivePhotoUrl(src)}
+                      className="group relative overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] shadow-lg bg-[var(--darker)] cursor-none hover:shadow-2xl transition-all duration-500 w-full aspect-[3/2]"
+                    >
+                      <img 
+                        src={src} 
+                        alt="Portfolio Work" 
+                        className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-105" 
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-[20px]">
+                        <div className="text-left">
+                          <span className="text-[9px] tracking-[0.2em] font-bold text-[var(--gold)] uppercase font-semibold">
+                            {src.includes('/event/') ? 'EVENT' : src.includes('/corporate/') ? 'CORPORATE' : src.includes('/celebrity/') ? 'CELEBRITY' : src.includes('/political/') ? 'POLITICAL & DIGNITARIES' : 'PHOTO'}
+                          </span>
+                          <div className="w-[16px] h-[1px] bg-[var(--gold)] mt-[4px]"></div>
                         </div>
                       </div>
-                    ))}
-                  </div>
-                )}
-                {horizontals.length > 0 && (
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-[24px] w-full">
-                    {horizontals.map((src, idx) => (
-                      <div key={idx} className="relative aspect-[3/2] group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)] shadow-[0_4px_20px_rgba(0,0,0,0.02)]">
-                        <img src={src} alt="Portfolio Work" className="w-full h-full transition-transform duration-[800ms] group-hover:scale-105" />
-                        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(0,0,0,0.85)] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-[20px]">
-                          <span className="text-[9px] tracking-[0.2em] uppercase text-[var(--gold)] mb-[8px]">Gallery Spotlight</span>
-                          <h4 className="font-serif text-[16px] text-white">Visual Artifact</h4>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                )}
-                {/* Show More Button if not expanded and it's the ALL tab */}
-                {activePortfolioTab === 'ALL' && !showAllHomeImages && (
+                    </div>
+                  ))}
+                </div>
+
+                {/* 2. SHOW MORE BUTTON */}
+                {!showAllHomeImages && (
                   <div className="flex justify-center mt-[40px] reveal opacity-0 anim-fade-up">
                     <button
                       suppressHydrationWarning
@@ -1363,99 +1357,220 @@ export default function Home() {
                           window.dispatchEvent(new Event('scroll'));
                         }, 100);
                       }}
-                      className="border border-[rgba(10,10,10,0.15)] text-[var(--light)] text-[10px] tracking-[0.2em] uppercase py-[14px] px-[36px] hover:bg-[var(--light)] hover:text-[var(--dark)] transition-all duration-300 cursor-none font-bold rounded-full"
+                      className="border border-[rgba(10,10,10,0.15)] text-[var(--light)] text-[10px] tracking-[0.2em] uppercase py-[14px] px-[36px] hover:bg-[var(--gold)] hover:text-black hover:border-[var(--gold)] transition-all duration-300 cursor-none font-bold rounded-full shadow-lg"
                     >
                       Show More
                     </button>
+                  </div>
+                )}
+
+                {/* 3. EXPANDED RATIO-AWARE GRID (WHEN SHOW MORE IS CLICKED) */}
+                {showAllHomeImages && (
+                  <div className="mt-[24px] w-full">
+                    {(() => {
+                      const remaining = activeImages.filter(src => !SCREENSHOT_FIRST_15_IMAGES.includes(src) && !src.includes('/outdoor/'));
+                      const verts = remaining.filter(src => VERTICAL_IMAGES.includes(src));
+                      const horizs = remaining.filter(src => !VERTICAL_IMAGES.includes(src));
+
+                      const smartBlocks = [];
+                      let vIdx = 0;
+                      let hIdx = 0;
+                      while (vIdx < verts.length && hIdx + 4 <= horizs.length) {
+                        smartBlocks.push({
+                          vertical: verts[vIdx],
+                          horizontals: [horizs[hIdx], horizs[hIdx + 1], horizs[hIdx + 2], horizs[hIdx + 3]]
+                        });
+                        vIdx += 1;
+                        hIdx += 4;
+                      }
+
+                      const remVerts = verts.slice(vIdx);
+                      const remHorizs = horizs.slice(hIdx);
+
+                      return (
+                        <div className="w-full flex flex-col gap-[32px]">
+                          {smartBlocks.map((block, bIdx) => (
+                            <div key={`home-exp-block-${bIdx}`} className="flex flex-col md:flex-row gap-[24px] items-stretch w-full reveal opacity-0 anim-fade-up">
+                              <div 
+                                onClick={() => setActivePhotoUrl(block.vertical)}
+                                className="w-full md:w-1/3 relative group overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] bg-[var(--darker)] min-h-[350px] md:min-h-0 shadow-lg cursor-none hover:shadow-2xl transition-all duration-500"
+                              >
+                                <img 
+                                  src={block.vertical} 
+                                  alt="Portfolio Work" 
+                                  className={`absolute inset-0 w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-[1.03] ${
+                                    block.vertical.includes('/headshots/') ? 'object-top' : 'object-center'
+                                  }`} 
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-[20px]">
+                                  <span className="text-[9px] tracking-[0.2em] font-bold text-[var(--gold)] uppercase font-semibold">PORTRAIT</span>
+                                </div>
+                              </div>
+                              <div className="w-full md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-[24px]">
+                                {block.horizontals.map((src, idx) => (
+                                  <div 
+                                    key={idx} 
+                                    onClick={() => setActivePhotoUrl(src)}
+                                    className="relative aspect-[3/2] group overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] bg-[var(--darker)] shadow-lg cursor-none hover:shadow-2xl transition-all duration-500"
+                                  >
+                                    <img src={src} alt="Portfolio Work" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-[1.03]" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-[20px]">
+                                      <span className="text-[9px] tracking-[0.2em] font-bold text-[var(--gold)] uppercase font-semibold">PHOTO</span>
+                                    </div>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          ))}
+
+                          {remVerts.length > 0 && (
+                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-[24px] w-full reveal opacity-0 anim-fade-up">
+                              {remVerts.map((src, idx) => (
+                                <div 
+                                  key={`home-rem-v-${idx}`}
+                                  onClick={() => setActivePhotoUrl(src)}
+                                  className="group relative overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] shadow-lg bg-[var(--darker)] cursor-none hover:shadow-2xl transition-all duration-500 w-full aspect-[2/3]"
+                                >
+                                  <img 
+                                    src={src} 
+                                    alt="Portfolio Work" 
+                                    className={`w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-105 ${
+                                      src.includes('/headshots/') ? 'object-top' : 'object-center'
+                                    }`} 
+                                  />
+                                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-[20px]">
+                                    <span className="text-[9px] tracking-[0.2em] font-bold text-[var(--gold)] uppercase font-semibold">PORTRAIT</span>
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+
+                          {remHorizs.length > 0 && (
+                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-[24px] w-full reveal opacity-0 anim-fade-up">
+                              {remHorizs.map((src, idx) => (
+                                <div 
+                                  key={`home-rem-h-${idx}`}
+                                  onClick={() => setActivePhotoUrl(src)}
+                                  className="group relative overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] shadow-lg bg-[var(--darker)] cursor-none hover:shadow-2xl transition-all duration-500 w-full aspect-[3/2]"
+                                >
+                                  <img src={src} alt="Portfolio Work" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-105" />
+                                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-[20px]">
+                                    <span className="text-[9px] tracking-[0.2em] font-bold text-[var(--gold)] uppercase font-semibold">PHOTO</span>
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })()}
                   </div>
                 )}
               </div>
             );
           }
 
-
-          const visibleBlocks = showAllHomeImages ? blocks : blocks.slice(0, 2);
-          const hasMore = blocks.length > 2 || remainingVerticals.length > 0 || remainingHorizontals.length > 0;
-
+          /* CATEGORY TABS (EVENT, CORPORATE, CELEBRITY, HEADSHOTS): RATIO-AWARE GRID */
           return (
-            <div className="w-full flex flex-col gap-[24px]">
-              {visibleBlocks.map((block, bIdx) => (
-                <div key={bIdx} className="flex flex-col md:flex-row gap-[24px] items-stretch w-full">
-                  {/* Left: 1 Vertical */}
-                  <div className="w-full md:w-1/3 relative group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)] min-h-[350px] md:min-h-0 shadow-[0_4px_20px_rgba(0,0,0,0.02)]">
-                    <img src={block.vertical} alt="Portfolio Work" className="absolute inset-0 w-full h-full transition-transform duration-[800ms] group-hover:scale-[1.03]" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[rgba(0,0,0,0.85)] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-[30px]">
-                      <span className="text-[9px] tracking-[0.2em] uppercase text-[var(--gold)] mb-[8px]">Gallery Spotlight</span>
-                      <h4 className="font-serif text-[18px] text-white">Visual Artifact</h4>
-                    </div>
-                  </div>
-                  {/* Right: 4 Horizontal */}
-                  <div className="w-full md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-[24px]">
-                    {block.horizontals.map((src, idx) => (
-                      <div key={idx} className="relative aspect-[3/2] group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)] shadow-[0_4px_20px_rgba(0,0,0,0.02)]">
-                        <img src={src} alt="Portfolio Work" className="w-full h-full transition-transform duration-[800ms] group-hover:scale-[1.03]" />
-                        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(0,0,0,0.85)] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-[20px]">
-                          <span className="text-[9px] tracking-[0.2em] uppercase text-[var(--gold)] mb-[8px]">Gallery Spotlight</span>
-                          <h4 className="font-serif text-[16px] text-white">Visual Artifact</h4>
+            <div className="w-full">
+              {(() => {
+                const verts = activeImages.filter(src => VERTICAL_IMAGES.includes(src));
+                const horizs = activeImages.filter(src => !VERTICAL_IMAGES.includes(src));
+
+                const smartBlocks = [];
+                let vIdx = 0;
+                let hIdx = 0;
+                while (vIdx < verts.length && hIdx + 4 <= horizs.length) {
+                  smartBlocks.push({
+                    vertical: verts[vIdx],
+                    horizontals: [horizs[hIdx], horizs[hIdx + 1], horizs[hIdx + 2], horizs[hIdx + 3]]
+                  });
+                  vIdx += 1;
+                  hIdx += 4;
+                }
+
+                const remVerts = verts.slice(vIdx);
+                const remHorizs = horizs.slice(hIdx);
+
+                return (
+                  <div className="w-full flex flex-col gap-[32px]">
+                    {smartBlocks.map((block, bIdx) => (
+                      <div key={`home-cat-block-${bIdx}`} className="flex flex-col md:flex-row gap-[24px] items-stretch w-full reveal opacity-0 anim-fade-up">
+                        <div 
+                          onClick={() => setActivePhotoUrl(block.vertical)}
+                          className="w-full md:w-1/3 relative group overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] bg-[var(--darker)] min-h-[350px] md:min-h-0 shadow-lg cursor-none hover:shadow-2xl transition-all duration-500"
+                        >
+                          <img 
+                            src={block.vertical} 
+                            alt="Portfolio Work" 
+                            className={`absolute inset-0 w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-[1.03] ${
+                              block.vertical.includes('/headshots/') ? 'object-top' : 'object-center'
+                            }`} 
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-[20px]">
+                            <span className="text-[9px] tracking-[0.2em] font-bold text-[var(--gold)] uppercase font-semibold">PORTRAIT</span>
+                          </div>
+                        </div>
+                        <div className="w-full md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-[24px]">
+                          {block.horizontals.map((src, idx) => (
+                            <div 
+                              key={idx} 
+                              onClick={() => setActivePhotoUrl(src)}
+                              className="relative aspect-[3/2] group overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] bg-[var(--darker)] shadow-lg cursor-none hover:shadow-2xl transition-all duration-500"
+                            >
+                              <img src={src} alt="Portfolio Work" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-[1.03]" />
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-[20px]">
+                                <span className="text-[9px] tracking-[0.2em] font-bold text-[var(--gold)] uppercase font-semibold">PHOTO</span>
+                              </div>
+                            </div>
+                          ))}
                         </div>
                       </div>
                     ))}
+
+                    {remVerts.length > 0 && (
+                      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-[24px] w-full reveal opacity-0 anim-fade-up">
+                        {remVerts.map((src, idx) => (
+                          <div 
+                            key={`home-cat-v-${idx}`}
+                            onClick={() => setActivePhotoUrl(src)}
+                            className="group relative overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] shadow-lg bg-[var(--darker)] cursor-none hover:shadow-2xl transition-all duration-500 w-full aspect-[2/3]"
+                          >
+                            <img 
+                              src={src} 
+                              alt="Portfolio Work" 
+                              className={`w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-105 ${
+                                src.includes('/headshots/') ? 'object-top' : 'object-center'
+                              }`} 
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-[20px]">
+                              <span className="text-[9px] tracking-[0.2em] font-bold text-[var(--gold)] uppercase font-semibold">PORTRAIT</span>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
+                    {remHorizs.length > 0 && (
+                      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-[24px] w-full reveal opacity-0 anim-fade-up">
+                        {remHorizs.map((src, idx) => (
+                          <div 
+                            key={`home-cat-h-${idx}`}
+                            onClick={() => setActivePhotoUrl(src)}
+                            className="group relative overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] shadow-lg bg-[var(--darker)] cursor-none hover:shadow-2xl transition-all duration-500 w-full aspect-[3/2]"
+                          >
+                            <img src={src} alt="Portfolio Work" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-105" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-[20px]">
+                              <span className="text-[9px] tracking-[0.2em] font-bold text-[var(--gold)] uppercase font-semibold">PHOTO</span>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
-                </div>
-              ))}
-
-              {/* Show remaining items only if showAllHomeImages is true */}
-              {showAllHomeImages && (
-                <>
-                  {/* REMAINING VERTICALS */}
-                  {remainingVerticals.length > 0 && (
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-[24px] w-full">
-                      {remainingVerticals.map((src, idx) => (
-                        <div key={idx} className="relative aspect-[2/3] group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)] shadow-[0_4px_20px_rgba(0,0,0,0.02)]">
-                          <img src={src} alt="Portfolio Work" className="w-full h-full transition-transform duration-[800ms] group-hover:scale-[1.03]" />
-                          <div className="absolute inset-0 bg-gradient-to-t from-[rgba(0,0,0,0.85)] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-[20px]">
-                            <span className="text-[9px] tracking-[0.2em] uppercase text-[var(--gold)] mb-[8px]">Gallery Spotlight</span>
-                            <h4 className="font-serif text-[16px] text-white">Visual Artifact</h4>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-
-                  {/* REMAINING HORIZONTALS */}
-                  {remainingHorizontals.length > 0 && (
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-[24px] w-full">
-                      {remainingHorizontals.map((src, idx) => (
-                        <div key={idx} className="relative aspect-[3/2] group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[rgba(10,10,10,0.01)] shadow-[0_4px_20px_rgba(0,0,0,0.02)]">
-                          <img src={src} alt="Portfolio Work" className="w-full h-full transition-transform duration-[800ms] group-hover:scale-[1.03]" />
-                          <div className="absolute inset-0 bg-gradient-to-t from-[rgba(0,0,0,0.85)] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-[20px]">
-                            <span className="text-[9px] tracking-[0.2em] uppercase text-[var(--gold)] mb-[8px]">Gallery Spotlight</span>
-                            <h4 className="font-serif text-[16px] text-white">Visual Artifact</h4>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </>
-              )}
-
-              {/* Show More Button */}
-              {!showAllHomeImages && hasMore && (
-                <div className="flex justify-center mt-[40px] reveal opacity-0 anim-fade-up">
-                  <button
-                    suppressHydrationWarning
-                    onClick={() => {
-                      setShowAllHomeImages(true);
-                      setTimeout(() => {
-                        window.dispatchEvent(new Event('scroll'));
-                      }, 100);
-                    }}
-                    className="border border-[rgba(10,10,10,0.15)] text-[var(--light)] text-[10px] tracking-[0.2em] uppercase py-[14px] px-[36px] hover:bg-[var(--light)] hover:text-[var(--dark)] transition-all duration-300 cursor-none font-bold rounded-full"
-                  >
-                    Show More
-                  </button>
-                </div>
-              )}
+                );
+              })()}
             </div>
           );
         })()}
