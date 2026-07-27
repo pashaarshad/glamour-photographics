@@ -407,24 +407,28 @@ export default function About() {
           <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] mb-[16px] block">Minds Behind the Lenses</span>
           <h2 className="font-serif text-[clamp(28px,4vw,48px)] font-light leading-[1.2] text-[var(--light)]">Our Team</h2>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-[30px] reveal opacity-0 anim-fade-up delay-100">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[30px] reveal opacity-0 anim-fade-up delay-100">
           {[
             { name: "Hameed Hussain", role: "Founder & Director", img: "/images/Hameed Hussain.png" },
             { name: "Anzar Hussain", role: "Creative Lead", img: "/images/anzar_hussain.png" },
-            { name: "Zia Hussain", role: "Head of Operations", img: "/images/zia_hussain.png" }
+            { name: "Zia Hussain", role: "Head of Operations", img: "/images/zia_hussain.png" },
+            { name: "IMG_8070", role: "Executive Lead", img: "/images/IMG_8070.JPG" },
+            { name: "IMG_8065", role: "Senior Consultant", img: "/images/IMG_8065.JPG" }
           ].map((member, idx) => {
             const isPng = member.img.toLowerCase().endsWith('.png');
             return (
               <div 
                 key={idx} 
-                className="group relative rounded-[20px] overflow-hidden bg-[#1A1A1A] border border-[rgba(10,10,10,0.08)] transition-all duration-500 cursor-none flex flex-col h-[540px] shadow-lg"
+                className="group relative rounded-[20px] overflow-hidden bg-[#1A1A1A] border border-[rgba(10,10,10,0.08)] transition-all duration-500 cursor-none flex flex-col h-[480px] sm:h-[520px] shadow-lg"
               >
                 {/* Image Box */}
                 <div className={`absolute inset-0 z-0 transition-colors duration-500 ${isPng ? 'group-hover:bg-[#E50914]' : ''}`}>
                   <img 
                     src={member.img} 
                     alt={member.name} 
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 scale-100 group-hover:scale-105 transition-all duration-[700ms] pointer-events-none select-none" 
+                    className={`w-full h-full object-cover grayscale group-hover:grayscale-0 scale-100 group-hover:scale-105 transition-all duration-[700ms] pointer-events-none select-none ${
+                      member.img.includes('IMG_8070') || member.img.includes('IMG_8065') ? 'object-top' : 'object-center'
+                    }`} 
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-transparent z-10" />
                 </div>
