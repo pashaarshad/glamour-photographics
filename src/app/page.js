@@ -100,27 +100,17 @@ export default function Home() {
     { src: '/images/our_portfolio/political/11.jpg',       title: 'Leadership Summit' },
   ];
 
-  // 5 slots: [0 (Top-Right-1), 1 (Top-Right-2), 2 (Bottom-Right), 3 (Bottom-Center), 4 (Bottom-Left)]
-  const [slotImages, setSlotImages] = useState([0, 1, 2, 3, 4]);
-  const turnIndexRef = useRef(0);
-  const queueRef = useRef(5);
+  // 6 card positions mapping: cardPositions[i] represents the layout coordinate index (0-5) of Card i
+  const [cardPositions, setCardPositions] = useState([0, 1, 2, 3, 4, 5]);
 
   useEffect(() => {
     if (isHeroHovered) return;
-    const clockwiseOrder = [0, 1, 2, 3, 4];
     const interval = setInterval(() => {
-      const slotToUpdate = clockwiseOrder[turnIndexRef.current % 5];
-      const nextImgIndex = queueRef.current % HERO_PHOTOS.length;
-
-      setSlotImages(prev => {
-        const next = [...prev];
-        next[slotToUpdate] = nextImgIndex;
-        return next;
+      setCardPositions(prev => {
+        // Increment each card's position index by 1 (modulo 6) to shift them clockwise around the layout
+        return prev.map(pos => (pos + 1) % 6);
       });
-
-      turnIndexRef.current = (turnIndexRef.current + 1) % 5;
-      queueRef.current = (queueRef.current + 1) % (HERO_PHOTOS.length * 100);
-    }, 2200);
+    }, 1500); // Shifting every 1.5 seconds
 
     return () => clearInterval(interval);
   }, [isHeroHovered]);
@@ -710,24 +700,22 @@ export default function Home() {
                 </span>
               </div>
             </div>
-
           </div>
-
-          {/* ── RIGHT COLUMN: Wider Fixed Video Card + 5 Surrounding Uniform Cards ── */}
+                  {/* ── RIGHT COLUMN: Extra Wide Fixed Video Card + 6 Surrounding Rotating Cards ── */}
           <div
-            className="w-full lg:w-[62%] xl:w-[64%] flex flex-col gap-[14px] relative"
+            className="w-full lg:w-[62%] xl:w-[64%] relative"
             onMouseEnter={() => setIsHeroHovered(true)}
             onMouseLeave={() => setIsHeroHovered(false)}
           >
-            {/* Subtle golden radial glow behind video card */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(200,154,61,0.18)_0%,transparent_70%)] pointer-events-none z-0" />
+            {/* Desktop Layout: Absolute positioning with fluid transitions */}
+            <div className="hidden lg:block relative w-full h-[580px]">
+              
+              {/* Subtle golden radial glow behind video card */}
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(200,154,61,0.18)_0%,transparent_70%)] pointer-events-none z-0" />
 
-            {/* TOP ROW: Extra Wide Center Video + 2 Stacked Right Cards */}
-            <div className="flex items-stretch gap-[14px] z-10">
-
-              {/* FIXED WIDER CENTER VIDEO CARD */}
+              {/* FIXED CENTER VIDEO CARD */}
               <div
-                className="relative flex-1 min-w-0 aspect-[16/9] rounded-[22px] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.14)] border-[4px] border-white bg-black group cursor-pointer"
+                className="absolute top-[15%] left-[-3%] w-[76%] h-[70%] rounded-[22px] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.14)] border-[4px] border-white bg-black z-10 group cursor-pointer"
                 onClick={() => { setActiveVideoId('oz26LF0gvxg'); setShowreelOpen(true); }}
               >
                 <iframe
@@ -744,59 +732,94 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* RIGHT STACK: 2 Surrounding Image Cards (Slots 0 & 1) */}
-              <div className="flex flex-col gap-[14px] flex-shrink-0 w-[30%] max-w-[210px] animate-float">
+              {/* 6 SURROUNDING PHOTO CARDS (Spatially rotating clockwise!) */}
+              {[
+                { top: '-3%',  left: '-3%',  width: '23%', height: '24%' },
+                { top: '-3%',  left: '26%',  width: '23%', height: '24%' },
+                { top: '-3%',  left: '77%',  width: '23%', height: '24%' },
+                { top: '38%',  left: '77%',  width: '23%', height: '24%' },
+                { top: '79%',  left: '77%',  width: '23%', height: '24%' },
+                { top: '79%',  left: '42%',  width: '23%', height: '24%' },
+              ].map((_, idx) => {
+                const currentPosIndex = cardPositions[idx];
+                const activeCoords = [
+                  { top: '-3%',  left: '-3%',  width: '23%', height: '24%' }, // Pos 0: Top-Left (aligned with left of video)
+                  { top: '-3%',  left: '26%',  width: '23%', height: '24%' }, // Pos 1: Top-Center (centered over video)
+                  { top: '-3%',  left: '77%',  width: '23%', height: '24%' }, // Pos 2: Top-Right (aligned to the right of video)
+                  { top: '38%',  left: '77%',  width: '23%', height: '24%' }, // Pos 3: Middle-Right (aligned to the right of video)
+                  { top: '79%',  left: '77%',  width: '23%', height: '24%' }, // Pos 4: Bottom-Right (aligned to the right of video)
+                  { top: '79%',  left: '42%',  width: '23%', height: '24%' }, // Pos 5: Bottom-Center (centered under video)
+                ][currentPosIndex];
 
-                {/* SLOT 0 (Top Right Card 1) */}
-                <HeroSlotCard
-                  photoSrc={HERO_PHOTOS[slotImages[0]].src}
-                  photoTitle={HERO_PHOTOS[slotImages[0]].title}
-                  onClick={() => setActivePhotoUrl(HERO_PHOTOS[slotImages[0]].src)}
-                  className="w-full aspect-[3/2] rounded-[18px] shadow-[0_12px_36px_rgba(0,0,0,0.12)] border-[3.5px] border-white z-10"
-                />
+                const isEven = idx % 2 === 0;
 
-                {/* SLOT 1 (Top Right Card 2) */}
-                <HeroSlotCard
-                  photoSrc={HERO_PHOTOS[slotImages[1]].src}
-                  photoTitle={HERO_PHOTOS[slotImages[1]].title}
-                  onClick={() => setActivePhotoUrl(HERO_PHOTOS[slotImages[1]].src)}
-                  className="w-full aspect-[3/2] rounded-[18px] shadow-[0_12px_36px_rgba(0,0,0,0.12)] border-[3.5px] border-white z-10"
-                />
+                return (
+                  <div
+                    key={idx}
+                    onClick={() => setActivePhotoUrl(HERO_PHOTOS[idx].src)}
+                    style={{
+                      top: activeCoords.top,
+                      left: activeCoords.left,
+                      width: activeCoords.width,
+                      height: activeCoords.height,
+                    }}
+                    className={`absolute rounded-[18px] overflow-hidden bg-white border-[3.5px] border-white shadow-[0_12px_36px_rgba(0,0,0,0.12)] cursor-pointer z-20 transition-all duration-[1200ms] cubic-bezier(0.22, 1, 0.36, 1) hover:scale-105 hover:shadow-2xl ${
+                      isEven ? 'animate-float' : 'animate-float-delayed'
+                    }`}
+                  >
+                    <img
+                      src={HERO_PHOTOS[idx].src}
+                      alt={HERO_PHOTOS[idx].title}
+                      className="w-full h-full object-cover select-none pointer-events-none transition-transform duration-700 hover:scale-105"
+                    />
+                  </div>
+                );
+              })}
 
-              </div>
             </div>
 
-            {/* BOTTOM ROW: 3 Surrounding Uniform Cards (Slots 2, 3 & 4 - Same aspect ratio!) */}
-            <div className="grid grid-cols-3 gap-[14px] z-10 animate-float-delayed">
+            {/* Mobile & Tablet Layout: Responsive fallback grid */}
+            <div className="lg:hidden w-full flex flex-col gap-[24px]">
+              
+              {/* Video Player Box */}
+              <div
+                className="relative w-full aspect-video rounded-[18px] overflow-hidden shadow-lg border-2 border-white bg-black group cursor-pointer"
+                onClick={() => { setActiveVideoId('oz26LF0gvxg'); setShowreelOpen(true); }}
+              >
+                <iframe
+                  src="https://www.youtube.com/embed/oz26LF0gvxg?autoplay=1&mute=1&loop=1&playlist=oz26LF0gvxg&controls=0&start=0&end=15&playsinline=1"
+                  title="Glamour Photographics Showreel"
+                  className="absolute inset-0 w-full h-full pointer-events-none"
+                  allow="autoplay; encrypted-media"
+                />
+                <div className="absolute inset-0 bg-black/15 group-hover:bg-black/30 transition-colors duration-300 z-10" />
+                <div className="absolute inset-0 flex items-center justify-center z-20">
+                  <div className="w-[54px] h-[54px] rounded-full border-2 border-white bg-[#C89A3D] text-white flex items-center justify-center shadow-lg">
+                    <Play className="w-[18px] h-[18px] fill-white text-white translate-x-[2px]" />
+                  </div>
+                </div>
+              </div>
 
-              {/* SLOT 2 (Bottom Right Card) */}
-              <HeroSlotCard
-                photoSrc={HERO_PHOTOS[slotImages[2]].src}
-                photoTitle={HERO_PHOTOS[slotImages[2]].title}
-                onClick={() => setActivePhotoUrl(HERO_PHOTOS[slotImages[2]].src)}
-                className="w-full aspect-[3/2] rounded-[18px] shadow-[0_12px_36px_rgba(0,0,0,0.12)] border-[3.5px] border-white z-10"
-              />
-
-              {/* SLOT 3 (Bottom Center Card) */}
-              <HeroSlotCard
-                photoSrc={HERO_PHOTOS[slotImages[3]].src}
-                photoTitle={HERO_PHOTOS[slotImages[3]].title}
-                onClick={() => setActivePhotoUrl(HERO_PHOTOS[slotImages[3]].src)}
-                className="w-full aspect-[3/2] rounded-[18px] shadow-[0_12px_36px_rgba(0,0,0,0.12)] border-[3.5px] border-white z-10"
-              />
-
-              {/* SLOT 4 (Bottom Left Card) */}
-              <HeroSlotCard
-                photoSrc={HERO_PHOTOS[slotImages[4]].src}
-                photoTitle={HERO_PHOTOS[slotImages[4]].title}
-                onClick={() => setActivePhotoUrl(HERO_PHOTOS[slotImages[4]].src)}
-                className="w-full aspect-[3/2] rounded-[18px] shadow-[0_12px_36px_rgba(0,0,0,0.12)] border-[3.5px] border-white z-10"
-              />
+              {/* Grid of the 6 portfolio images */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-[12px]">
+                {HERO_PHOTOS.map((photo, idx) => (
+                  <div
+                    key={idx}
+                    onClick={() => setActivePhotoUrl(photo.src)}
+                    className="relative aspect-[3/2] rounded-[14px] overflow-hidden bg-white border border-white shadow-sm cursor-pointer"
+                  >
+                    <img
+                      src={photo.src}
+                      alt={photo.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                ))}
+              </div>
 
             </div>
 
           </div>
-
         </div>
       </section>
 
