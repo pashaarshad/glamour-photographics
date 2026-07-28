@@ -46,7 +46,7 @@ function HeroSlotCard({ photoSrc, photoTitle, className, onClick }) {
       const timer = setTimeout(() => {
         setIsFading(false);
         setPrevSrc(null);
-      }, 950);
+      }, 900);
       return () => clearTimeout(timer);
     }
   }, [photoSrc, currentSrc]);
@@ -54,7 +54,7 @@ function HeroSlotCard({ photoSrc, photoTitle, className, onClick }) {
   return (
     <div
       onClick={onClick}
-      className={`relative overflow-hidden cursor-pointer hover:scale-[1.025] transition-transform duration-500 bg-white ${className}`}
+      className={`relative overflow-hidden cursor-pointer hover:scale-[1.03] transition-transform duration-500 bg-white ${className}`}
     >
       {/* Underlying Previous Image Layer */}
       {prevSrc && (
@@ -64,13 +64,13 @@ function HeroSlotCard({ photoSrc, photoTitle, className, onClick }) {
           className="absolute inset-0 w-full h-full object-cover select-none pointer-events-none"
         />
       )}
-      {/* Top Incoming Image Layer (Fades + Slides In) */}
+      {/* Top Incoming Image Layer (Slides down & crossfades smoothly) */}
       <img
         src={currentSrc}
         alt={photoTitle}
-        className={`w-full h-full object-cover transition-all duration-[950ms] cubic-bezier(0.22, 1, 0.36, 1) select-none pointer-events-none ${
+        className={`w-full h-full object-cover transition-all duration-[900ms] cubic-bezier(0.22, 1, 0.36, 1) select-none pointer-events-none ${
           isFading
-            ? 'opacity-0 scale-[1.07] translate-y-[5px] blur-[1px]'
+            ? 'opacity-0 scale-[1.08] translate-y-[12px] blur-[1px]'
             : 'opacity-100 scale-100 translate-y-0 blur-0'
         }`}
       />
@@ -100,16 +100,16 @@ export default function Home() {
     { src: '/images/our_portfolio/political/11.jpg',       title: 'Leadership Summit' },
   ];
 
-  // 4 slots rotation in physical clockwise order: [0 (Top-Right), 1 (Middle-Right-Top), 3 (Middle-Right-Bottom), 2 (Bottom-Overlapping)]
-  const [slotImages, setSlotImages] = useState([0, 1, 2, 3]);
+  // 5 slots: [0 (Top-Right-1), 1 (Top-Right-2), 2 (Bottom-Right), 3 (Bottom-Center), 4 (Bottom-Left)]
+  const [slotImages, setSlotImages] = useState([0, 1, 2, 3, 4]);
   const turnIndexRef = useRef(0);
-  const queueRef = useRef(4);
+  const queueRef = useRef(5);
 
   useEffect(() => {
     if (isHeroHovered) return;
-    const clockwiseOrder = [0, 1, 3, 2];
+    const clockwiseOrder = [0, 1, 2, 3, 4];
     const interval = setInterval(() => {
-      const slotToUpdate = clockwiseOrder[turnIndexRef.current % 4];
+      const slotToUpdate = clockwiseOrder[turnIndexRef.current % 5];
       const nextImgIndex = queueRef.current % HERO_PHOTOS.length;
 
       setSlotImages(prev => {
@@ -118,9 +118,9 @@ export default function Home() {
         return next;
       });
 
-      turnIndexRef.current = (turnIndexRef.current + 1) % 4;
+      turnIndexRef.current = (turnIndexRef.current + 1) % 5;
       queueRef.current = (queueRef.current + 1) % (HERO_PHOTOS.length * 100);
-    }, 2400); // Rotates clockwise smoothly every 2.4s
+    }, 2200);
 
     return () => clearInterval(interval);
   }, [isHeroHovered]);
@@ -632,10 +632,10 @@ export default function Home() {
           ))}
         </div>
 
-        <div className="max-w-[1400px] mx-auto w-full flex flex-col lg:flex-row items-center gap-[60px] lg:gap-[50px] z-10 relative">
+        <div className="max-w-[1440px] mx-auto w-full flex flex-col lg:flex-row items-center gap-[40px] lg:gap-[36px] z-10 relative">
 
           {/* ── LEFT COLUMN: Text & CTAs & 4 Statistics ── */}
-          <div className="w-full lg:w-[44%] flex flex-col items-start text-left">
+          <div className="w-full lg:w-[38%] xl:w-[36%] flex flex-col items-start text-left">
             
             {/* Tag line */}
             <div className="flex items-center gap-[10px] mb-[22px]">
@@ -646,7 +646,7 @@ export default function Home() {
             </div>
 
             {/* Headline */}
-            <h1 className="font-serif text-[clamp(42px,5.2vw,72px)] font-normal leading-[1.08] tracking-[-0.02em] mb-[20px] text-[#0A0A0A]">
+            <h1 className="font-serif text-[clamp(38px,4.5vw,66px)] font-normal leading-[1.08] tracking-[-0.02em] mb-[20px] text-[#0A0A0A]">
               We Capture <br />
               Moments. <br />
               We Create <br />
@@ -657,12 +657,12 @@ export default function Home() {
             </h1>
 
             {/* Subtitle */}
-            <p className="text-[13.5px] md:text-[14.5px] text-[#4A3F32] leading-[1.8] max-w-[420px] font-normal mb-[34px]">
+            <p className="text-[13.5px] md:text-[14.5px] text-[#4A3F32] leading-[1.8] max-w-[380px] font-normal mb-[30px]">
               40+ Years of Storytelling Through the Lens of Excellence
             </p>
 
             {/* CTA */}
-            <div className="mb-[48px]">
+            <div className="mb-[40px]">
               <Link 
                 href="/portfolio" 
                 className="inline-flex items-center gap-[10px] bg-[#C89A3D] hover:bg-[#b0842a] text-white text-[11px] font-bold uppercase tracking-[0.25em] px-[32px] py-[16px] rounded-[8px] shadow-[0_4px_24px_rgba(200,154,61,0.35)] hover:shadow-[0_6px_30px_rgba(200,154,61,0.5)] transition-all duration-300 group cursor-pointer"
@@ -673,39 +673,39 @@ export default function Home() {
             </div>
 
             {/* 4 Statistics Grid */}
-            <div className="pt-[28px] border-t border-[#EAE3D9] w-full grid grid-cols-2 sm:grid-cols-4 gap-[20px]">
+            <div className="pt-[24px] border-t border-[#EAE3D9] w-full grid grid-cols-2 sm:grid-cols-4 gap-[16px]">
               <div className="flex flex-col items-start">
-                <span className="font-serif text-[clamp(26px,2.8vw,36px)] font-bold text-[#0A0A0A] leading-tight tracking-tight">
+                <span className="font-serif text-[clamp(24px,2.4vw,32px)] font-bold text-[#0A0A0A] leading-tight tracking-tight">
                   {useCountUp(40, 1800, statsTriggered)}+
                 </span>
-                <span className="text-[10px] sm:text-[11px] tracking-[0.1em] uppercase text-[#666666] font-medium mt-[4px]">
+                <span className="text-[9.5px] sm:text-[10px] tracking-[0.1em] uppercase text-[#666666] font-medium mt-[4px]">
                   Years Experience
                 </span>
               </div>
 
               <div className="flex flex-col items-start">
-                <span className="font-serif text-[clamp(26px,2.8vw,36px)] font-bold text-[#0A0A0A] leading-tight tracking-tight">
+                <span className="font-serif text-[clamp(24px,2.4vw,32px)] font-bold text-[#0A0A0A] leading-tight tracking-tight">
                   {useCountUp(500, 1800, statsTriggered)}+
                 </span>
-                <span className="text-[10px] sm:text-[11px] tracking-[0.1em] uppercase text-[#666666] font-medium mt-[4px]">
+                <span className="text-[9.5px] sm:text-[10px] tracking-[0.1em] uppercase text-[#666666] font-medium mt-[4px]">
                   Corporate Events
                 </span>
               </div>
 
               <div className="flex flex-col items-start">
-                <span className="font-serif text-[clamp(26px,2.8vw,36px)] font-bold text-[#0A0A0A] leading-tight tracking-tight">
+                <span className="font-serif text-[clamp(24px,2.4vw,32px)] font-bold text-[#0A0A0A] leading-tight tracking-tight">
                   {useCountUp(1000, 1800, statsTriggered)}+
                 </span>
-                <span className="text-[10px] sm:text-[11px] tracking-[0.1em] uppercase text-[#666666] font-medium mt-[4px]">
+                <span className="text-[9.5px] sm:text-[10px] tracking-[0.1em] uppercase text-[#666666] font-medium mt-[4px]">
                   Projects
                 </span>
               </div>
 
               <div className="flex flex-col items-start">
-                <span className="font-serif text-[clamp(26px,2.8vw,36px)] font-bold text-[#0A0A0A] leading-tight tracking-tight">
+                <span className="font-serif text-[clamp(24px,2.4vw,32px)] font-bold text-[#0A0A0A] leading-tight tracking-tight">
                   {useCountUp(50, 1800, statsTriggered)}+
                 </span>
-                <span className="text-[10px] sm:text-[11px] tracking-[0.1em] uppercase text-[#666666] font-medium mt-[4px]">
+                <span className="text-[9.5px] sm:text-[10px] tracking-[0.1em] uppercase text-[#666666] font-medium mt-[4px]">
                   Awards
                 </span>
               </div>
@@ -713,21 +713,21 @@ export default function Home() {
 
           </div>
 
-          {/* ── RIGHT COLUMN: Fixed Video Card + Surrounding Floating Cards ── */}
+          {/* ── RIGHT COLUMN: Wider Fixed Video Card + 5 Surrounding Uniform Cards ── */}
           <div
-            className="w-full lg:w-[56%] flex flex-col gap-[16px] relative"
+            className="w-full lg:w-[62%] xl:w-[64%] flex flex-col gap-[14px] relative"
             onMouseEnter={() => setIsHeroHovered(true)}
             onMouseLeave={() => setIsHeroHovered(false)}
           >
             {/* Subtle golden radial glow behind video card */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(200,154,61,0.18)_0%,transparent_70%)] pointer-events-none z-0" />
 
-            {/* TOP ROW: Fixed Center Video + Stacked Surrounding Cards */}
-            <div className="flex items-stretch gap-[16px] z-10">
+            {/* TOP ROW: Extra Wide Center Video + 2 Stacked Right Cards */}
+            <div className="flex items-stretch gap-[14px] z-10">
 
-              {/* FIXED CENTER VIDEO CARD */}
+              {/* FIXED WIDER CENTER VIDEO CARD */}
               <div
-                className="relative flex-1 min-w-0 aspect-[16/10] max-w-[700px] rounded-[22px] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.14)] border-[4px] border-white bg-black group cursor-pointer"
+                className="relative flex-1 min-w-0 aspect-[16/9] rounded-[22px] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.14)] border-[4px] border-white bg-black group cursor-pointer"
                 onClick={() => { setActiveVideoId('oz26LF0gvxg'); setShowreelOpen(true); }}
               >
                 <iframe
@@ -745,9 +745,9 @@ export default function Home() {
               </div>
 
               {/* RIGHT STACK: 2 Surrounding Image Cards (Slots 0 & 1) */}
-              <div className="flex flex-col gap-[16px] flex-shrink-0 w-[36%] max-w-[220px] animate-float">
+              <div className="flex flex-col gap-[14px] flex-shrink-0 w-[30%] max-w-[210px] animate-float">
 
-                {/* SLOT 0 (Top Right Medium Card) */}
+                {/* SLOT 0 (Top Right Card 1) */}
                 <HeroSlotCard
                   photoSrc={HERO_PHOTOS[slotImages[0]].src}
                   photoTitle={HERO_PHOTOS[slotImages[0]].title}
@@ -755,7 +755,7 @@ export default function Home() {
                   className="w-full aspect-[3/2] rounded-[18px] shadow-[0_12px_36px_rgba(0,0,0,0.12)] border-[3.5px] border-white z-10"
                 />
 
-                {/* SLOT 1 (Middle Right Top Card) */}
+                {/* SLOT 1 (Top Right Card 2) */}
                 <HeroSlotCard
                   photoSrc={HERO_PHOTOS[slotImages[1]].src}
                   photoTitle={HERO_PHOTOS[slotImages[1]].title}
@@ -766,23 +766,31 @@ export default function Home() {
               </div>
             </div>
 
-            {/* BOTTOM ROW: 2 Surrounding Image Cards (Slots 2 & 3) */}
-            <div className="flex gap-[16px] z-10 animate-float-delayed">
+            {/* BOTTOM ROW: 3 Surrounding Uniform Cards (Slots 2, 3 & 4 - Same aspect ratio!) */}
+            <div className="grid grid-cols-3 gap-[14px] z-10 animate-float-delayed">
 
-              {/* SLOT 2 (Bottom Overlapping Card) */}
+              {/* SLOT 2 (Bottom Right Card) */}
               <HeroSlotCard
                 photoSrc={HERO_PHOTOS[slotImages[2]].src}
                 photoTitle={HERO_PHOTOS[slotImages[2]].title}
                 onClick={() => setActivePhotoUrl(HERO_PHOTOS[slotImages[2]].src)}
-                className="flex-1 aspect-[16/8] rounded-[18px] shadow-[0_12px_36px_rgba(0,0,0,0.12)] border-[3.5px] border-white z-10"
+                className="w-full aspect-[3/2] rounded-[18px] shadow-[0_12px_36px_rgba(0,0,0,0.12)] border-[3.5px] border-white z-10"
               />
 
-              {/* SLOT 3 (Middle Right Bottom Card) */}
+              {/* SLOT 3 (Bottom Center Card) */}
               <HeroSlotCard
                 photoSrc={HERO_PHOTOS[slotImages[3]].src}
                 photoTitle={HERO_PHOTOS[slotImages[3]].title}
                 onClick={() => setActivePhotoUrl(HERO_PHOTOS[slotImages[3]].src)}
-                className="flex-1 aspect-[16/8] rounded-[18px] shadow-[0_12px_36px_rgba(0,0,0,0.12)] border-[3.5px] border-white z-10"
+                className="w-full aspect-[3/2] rounded-[18px] shadow-[0_12px_36px_rgba(0,0,0,0.12)] border-[3.5px] border-white z-10"
+              />
+
+              {/* SLOT 4 (Bottom Left Card) */}
+              <HeroSlotCard
+                photoSrc={HERO_PHOTOS[slotImages[4]].src}
+                photoTitle={HERO_PHOTOS[slotImages[4]].title}
+                onClick={() => setActivePhotoUrl(HERO_PHOTOS[slotImages[4]].src)}
+                className="w-full aspect-[3/2] rounded-[18px] shadow-[0_12px_36px_rgba(0,0,0,0.12)] border-[3.5px] border-white z-10"
               />
 
             </div>
