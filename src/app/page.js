@@ -92,14 +92,12 @@ export default function Home() {
   const [activePhotoUrl, setActivePhotoUrl] = useState(null);
 
   const HERO_PHOTOS = [
-    { src: '/images/our_portfolio/political/11.jpg',       title: 'State Delegation' },
-    { src: '/images/our_portfolio/headshots/NMKL2060.jpg',  title: 'Executive Portrait' },
-    { src: '/images/our_portfolio/event/NMK_0002.jpg',      title: 'Grand Convention' },
-    { src: '/images/our_portfolio/corporate/iqvia.jpg',     title: 'Corporate Headquarters' },
-    { src: '/images/our_portfolio/celebrity/highlights_3C1A0775.jpg', title: 'Celebrity Gala' },
-    { src: '/images/our_portfolio/political/IMG_0008.JPG', title: 'Official Event' },
-    { src: '/images/our_portfolio/corporate/rtx-1.jpg',     title: 'Aerospace Leadership' },
-    { src: '/images/our_portfolio/33.jpg',                 title: 'Portfolio Highlight' },
+    { src: '/images/our_portfolio/corporate/rtx-1.jpg',     title: 'Samsung AI TV Launch' },
+    { src: '/images/our_portfolio/political/NMK_0047.JPG', title: 'CII EXCON Keynote' },
+    { src: '/images/our_portfolio/political/NMK_0337.JPG', title: 'State MoU Signing' },
+    { src: '/images/our_portfolio/political/IMG_0008.JPG', title: 'VIP Helicopter Arrival' },
+    { src: '/images/our_portfolio/political/IMG_0029.JPG', title: 'Gala Evening Session' },
+    { src: '/images/our_portfolio/political/11.jpg',       title: 'Leadership Summit' },
   ];
 
   // 4 slots rotation in physical clockwise order: [0 (Top-Right), 1 (Middle-Right-Top), 3 (Middle-Right-Bottom), 2 (Bottom-Overlapping)]
@@ -126,6 +124,11 @@ export default function Home() {
 
     return () => clearInterval(interval);
   }, [isHeroHovered]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setStatsTriggered(true), 200);
+    return () => clearTimeout(timer);
+  }, []);
 
   const [homeFormData, setHomeFormData] = useState({
     name: '',
@@ -613,108 +616,118 @@ export default function Home() {
     <main className="w-full bg-[var(--dark)] text-[var(--light)] pb-[100px] overflow-x-hidden cursor-none relative">
       
       {/* ─── 1. HERO SECTION ─── */}
-      <section className="relative flex flex-col justify-center px-[5%] md:px-[8%] pt-[130px] md:pt-[150px] pb-[100px] overflow-hidden bg-[#FAF8F4] text-[#0A0A0A]">
+      <section className="relative flex flex-col justify-center px-[5%] md:px-[8%] pt-[130px] md:pt-[150px] pb-[100px] overflow-hidden bg-[#FCFCFC] text-[#0A0A0A]">
 
         {/* Subtle dot grid accent — top right corner */}
         <div className="absolute top-[90px] right-[36px] hidden lg:grid grid-cols-5 gap-[7px] opacity-25 pointer-events-none z-0">
           {Array.from({ length: 20 }).map((_, i) => (
-            <div key={i} className="w-[5px] h-[5px] rounded-full bg-[#C5A46D]" />
+            <div key={i} className="w-[5px] h-[5px] rounded-full bg-[#C89A3D]" />
           ))}
         </div>
 
         {/* Subtle dot grid accent — bottom left corner */}
         <div className="absolute bottom-[60px] left-[36px] hidden lg:grid grid-cols-4 gap-[7px] opacity-20 pointer-events-none z-0">
           {Array.from({ length: 12 }).map((_, i) => (
-            <div key={i} className="w-[5px] h-[5px] rounded-full bg-[#C5A46D]" />
+            <div key={i} className="w-[5px] h-[5px] rounded-full bg-[#C89A3D]" />
           ))}
         </div>
 
         <div className="max-w-[1400px] mx-auto w-full flex flex-col lg:flex-row items-center gap-[60px] lg:gap-[50px] z-10 relative">
 
-          {/* ── LEFT COLUMN: Text & CTAs & Badges ── */}
-          <div className="w-full lg:w-[42%] flex flex-col items-start text-left">
+          {/* ── LEFT COLUMN: Text & CTAs & 4 Statistics ── */}
+          <div className="w-full lg:w-[44%] flex flex-col items-start text-left">
             
             {/* Tag line */}
             <div className="flex items-center gap-[10px] mb-[22px]">
-              <span className="text-[10px] tracking-[0.35em] uppercase text-[#B8972E] font-bold">
+              <span className="text-[10px] tracking-[0.35em] uppercase text-[#C89A3D] font-bold">
                 STORYTELLING THAT INSPIRES
               </span>
-              <div className="w-[28px] h-[1px] bg-[#B8972E]" />
+              <div className="w-[28px] h-[1px] bg-[#C89A3D]" />
             </div>
 
             {/* Headline */}
-            <h1 className="font-serif text-[clamp(40px,5vw,70px)] font-normal leading-[1.07] tracking-[-0.02em] mb-[20px] text-[#0A0A0A]">
+            <h1 className="font-serif text-[clamp(42px,5.2vw,72px)] font-normal leading-[1.08] tracking-[-0.02em] mb-[20px] text-[#0A0A0A]">
               We Capture <br />
               Moments. <br />
               We Create <br />
-              <span className="relative inline-block text-[#C5A46D] italic">
+              <span className="relative inline-block text-[#C89A3D] italic">
                 Legacies.
-                <span className="absolute left-0 -bottom-[5px] w-[110%] h-[2.5px] bg-gradient-to-r from-[#C5A46D] to-transparent rounded-full" />
+                <span className="absolute left-0 -bottom-[5px] w-[110%] h-[2.5px] bg-gradient-to-r from-[#C89A3D] to-transparent rounded-full" />
               </span>
             </h1>
 
             {/* Subtitle */}
-            <p className="text-[13.5px] md:text-[14.5px] text-[#4A3F32] leading-[1.8] max-w-[380px] font-normal mb-[34px]">
-              40+ Years of Storytelling Through The Lens of Excellence
+            <p className="text-[13.5px] md:text-[14.5px] text-[#4A3F32] leading-[1.8] max-w-[420px] font-normal mb-[34px]">
+              40+ Years of Storytelling Through the Lens of Excellence
             </p>
 
             {/* CTA */}
             <div className="mb-[48px]">
               <Link 
                 href="/portfolio" 
-                className="inline-flex items-center gap-[10px] bg-[#C5A46D] hover:bg-[#a8863a] text-white text-[10.5px] font-bold uppercase tracking-[0.25em] px-[28px] py-[14px] rounded-[6px] shadow-[0_4px_20px_rgba(197,164,109,0.35)] hover:shadow-[0_6px_28px_rgba(197,164,109,0.5)] transition-all duration-300 group cursor-pointer"
+                className="inline-flex items-center gap-[10px] bg-[#C89A3D] hover:bg-[#b0842a] text-white text-[11px] font-bold uppercase tracking-[0.25em] px-[32px] py-[16px] rounded-[8px] shadow-[0_4px_24px_rgba(200,154,61,0.35)] hover:shadow-[0_6px_30px_rgba(200,154,61,0.5)] transition-all duration-300 group cursor-pointer"
               >
                 <span>VIEW OUR FILMS</span>
                 <span className="transition-transform duration-300 group-hover:translate-x-1 text-[13px]">→</span>
               </Link>
             </div>
 
-            {/* 3 Badges */}
-            <div className="pt-[22px] border-t border-[#E8E0D4] w-full grid grid-cols-3 gap-[12px]">
-              
-              <div className="flex flex-col items-center text-center gap-[8px]">
-                <div className="w-[38px] h-[38px] rounded-full bg-[#F0E8D8] flex items-center justify-center text-[#C5A46D]">
-                  <Award className="w-[17px] h-[17px]" />
-                </div>
-                <span className="text-[10.5px] font-semibold text-[#2A1F14] leading-[1.4]">
-                  40+ Years <br /> Experience
+            {/* 4 Statistics Grid */}
+            <div className="pt-[28px] border-t border-[#EAE3D9] w-full grid grid-cols-2 sm:grid-cols-4 gap-[20px]">
+              <div className="flex flex-col items-start">
+                <span className="font-serif text-[clamp(26px,2.8vw,36px)] font-bold text-[#0A0A0A] leading-tight tracking-tight">
+                  {useCountUp(40, 1800, statsTriggered)}+
+                </span>
+                <span className="text-[10px] sm:text-[11px] tracking-[0.1em] uppercase text-[#666666] font-medium mt-[4px]">
+                  Years Experience
                 </span>
               </div>
 
-              <div className="flex flex-col items-center text-center gap-[8px] border-x border-[#E8E0D4] px-[6px]">
-                <div className="w-[38px] h-[38px] rounded-full bg-[#F0E8D8] flex items-center justify-center text-[#C5A46D]">
-                  <User className="w-[17px] h-[17px]" />
-                </div>
-                <span className="text-[10.5px] font-semibold text-[#2A1F14] leading-[1.4]">
-                  Trusted by <br /> Leading Brands
+              <div className="flex flex-col items-start">
+                <span className="font-serif text-[clamp(26px,2.8vw,36px)] font-bold text-[#0A0A0A] leading-tight tracking-tight">
+                  {useCountUp(500, 1800, statsTriggered)}+
+                </span>
+                <span className="text-[10px] sm:text-[11px] tracking-[0.1em] uppercase text-[#666666] font-medium mt-[4px]">
+                  Corporate Events
                 </span>
               </div>
 
-              <div className="flex flex-col items-center text-center gap-[8px]">
-                <div className="w-[38px] h-[38px] rounded-full bg-[#F0E8D8] flex items-center justify-center text-[#C5A46D]">
-                  <Video className="w-[17px] h-[17px]" />
-                </div>
-                <span className="text-[10.5px] font-semibold text-[#2A1F14] leading-[1.4]">
-                  End-to-End <br /> Production
+              <div className="flex flex-col items-start">
+                <span className="font-serif text-[clamp(26px,2.8vw,36px)] font-bold text-[#0A0A0A] leading-tight tracking-tight">
+                  {useCountUp(1000, 1800, statsTriggered)}+
+                </span>
+                <span className="text-[10px] sm:text-[11px] tracking-[0.1em] uppercase text-[#666666] font-medium mt-[4px]">
+                  Projects
                 </span>
               </div>
 
+              <div className="flex flex-col items-start">
+                <span className="font-serif text-[clamp(26px,2.8vw,36px)] font-bold text-[#0A0A0A] leading-tight tracking-tight">
+                  {useCountUp(50, 1800, statsTriggered)}+
+                </span>
+                <span className="text-[10px] sm:text-[11px] tracking-[0.1em] uppercase text-[#666666] font-medium mt-[4px]">
+                  Awards
+                </span>
+              </div>
             </div>
+
           </div>
 
-          {/* ── RIGHT COLUMN: Fixed Video + 4 Rotating Image Slots ── */}
+          {/* ── RIGHT COLUMN: Fixed Video Card + Surrounding Floating Cards ── */}
           <div
-            className="w-full lg:w-[58%] flex flex-col gap-[14px] md:gap-[16px]"
+            className="w-full lg:w-[56%] flex flex-col gap-[16px] relative"
             onMouseEnter={() => setIsHeroHovered(true)}
             onMouseLeave={() => setIsHeroHovered(false)}
           >
+            {/* Subtle golden radial glow behind video card */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(200,154,61,0.18)_0%,transparent_70%)] pointer-events-none z-0" />
 
-            {/* ── TOP ROW: Large Video + 2 Stacked Horizontal Images ── */}
-            <div className="flex items-stretch gap-[14px] md:gap-[16px]">
+            {/* TOP ROW: Fixed Center Video + Stacked Surrounding Cards */}
+            <div className="flex items-stretch gap-[16px] z-10">
 
-              {/* FIXED CENTER VIDEO */}
+              {/* FIXED CENTER VIDEO CARD */}
               <div
-                className="relative flex-1 min-w-0 aspect-[16/11] rounded-[18px] overflow-hidden shadow-[0_16px_56px_rgba(0,0,0,0.20)] border-[4px] border-white bg-black group cursor-pointer"
+                className="relative flex-1 min-w-0 aspect-[16/10] max-w-[700px] rounded-[22px] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.14)] border-[4px] border-white bg-black group cursor-pointer"
                 onClick={() => { setActiveVideoId('oz26LF0gvxg'); setShowreelOpen(true); }}
               >
                 <iframe
@@ -725,58 +738,58 @@ export default function Home() {
                 />
                 <div className="absolute inset-0 bg-black/15 group-hover:bg-black/30 transition-colors duration-300 z-10" />
                 <div className="absolute inset-0 flex items-center justify-center z-20">
-                  <div className="w-[58px] h-[58px] md:w-[70px] md:h-[70px] rounded-full border-[2.5px] border-white/90 bg-white/15 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 group-hover:bg-[#C5A46D] group-hover:border-transparent transition-all duration-300 shadow-xl">
-                    <Play className="w-[20px] h-[20px] fill-white text-white translate-x-[2px]" />
+                  <div className="w-[64px] h-[64px] rounded-full border-[2.5px] border-white/90 bg-[#C89A3D] text-white flex items-center justify-center group-hover:scale-110 group-hover:bg-[#b0842a] transition-all duration-300 shadow-2xl">
+                    <Play className="w-[22px] h-[22px] fill-white text-white translate-x-[2px]" />
                   </div>
                 </div>
               </div>
 
-              {/* RIGHT STACK: 2 taller images stacked (slots 0 & 1) */}
-              <div className="flex flex-col gap-[14px] md:gap-[16px] flex-shrink-0 w-[37%] max-w-[230px]">
+              {/* RIGHT STACK: 2 Surrounding Image Cards (Slots 0 & 1) */}
+              <div className="flex flex-col gap-[16px] flex-shrink-0 w-[36%] max-w-[220px] animate-float">
 
-                {/* SLOT 0 (Clockwise 1st - Top Right) */}
+                {/* SLOT 0 (Top Right Medium Card) */}
                 <HeroSlotCard
                   photoSrc={HERO_PHOTOS[slotImages[0]].src}
                   photoTitle={HERO_PHOTOS[slotImages[0]].title}
                   onClick={() => setActivePhotoUrl(HERO_PHOTOS[slotImages[0]].src)}
-                  className="w-full aspect-[3/2] rounded-[14px] shadow-[0_8px_28px_rgba(0,0,0,0.13)] border-[3.5px] border-white z-10"
+                  className="w-full aspect-[3/2] rounded-[18px] shadow-[0_12px_36px_rgba(0,0,0,0.12)] border-[3.5px] border-white z-10"
                 />
 
-                {/* SLOT 1 (Clockwise 2nd - Middle Right Top) */}
+                {/* SLOT 1 (Middle Right Top Card) */}
                 <HeroSlotCard
                   photoSrc={HERO_PHOTOS[slotImages[1]].src}
                   photoTitle={HERO_PHOTOS[slotImages[1]].title}
                   onClick={() => setActivePhotoUrl(HERO_PHOTOS[slotImages[1]].src)}
-                  className="w-full aspect-[3/2] rounded-[14px] shadow-[0_8px_28px_rgba(0,0,0,0.13)] border-[3.5px] border-white z-10"
+                  className="w-full aspect-[3/2] rounded-[18px] shadow-[0_12px_36px_rgba(0,0,0,0.12)] border-[3.5px] border-white z-10"
                 />
 
               </div>
-            </div>{/* end top row */}
+            </div>
 
-            {/* ── BOTTOM ROW: 2 wider images side by side (slots 2 & 3) ── */}
-            <div className="flex gap-[14px] md:gap-[16px]">
+            {/* BOTTOM ROW: 2 Surrounding Image Cards (Slots 2 & 3) */}
+            <div className="flex gap-[16px] z-10 animate-float-delayed">
 
-              {/* SLOT 2 (Clockwise 4th - Bottom Overlapping) */}
+              {/* SLOT 2 (Bottom Overlapping Card) */}
               <HeroSlotCard
                 photoSrc={HERO_PHOTOS[slotImages[2]].src}
                 photoTitle={HERO_PHOTOS[slotImages[2]].title}
                 onClick={() => setActivePhotoUrl(HERO_PHOTOS[slotImages[2]].src)}
-                className="flex-1 aspect-[16/8] rounded-[14px] shadow-[0_8px_28px_rgba(0,0,0,0.12)] border-[3.5px] border-white z-10"
+                className="flex-1 aspect-[16/8] rounded-[18px] shadow-[0_12px_36px_rgba(0,0,0,0.12)] border-[3.5px] border-white z-10"
               />
 
-              {/* SLOT 3 (Clockwise 3rd - Middle Right Bottom) */}
+              {/* SLOT 3 (Middle Right Bottom Card) */}
               <HeroSlotCard
                 photoSrc={HERO_PHOTOS[slotImages[3]].src}
                 photoTitle={HERO_PHOTOS[slotImages[3]].title}
                 onClick={() => setActivePhotoUrl(HERO_PHOTOS[slotImages[3]].src)}
-                className="flex-1 aspect-[16/8] rounded-[14px] shadow-[0_8px_28px_rgba(0,0,0,0.12)] border-[3.5px] border-white z-10"
+                className="flex-1 aspect-[16/8] rounded-[18px] shadow-[0_12px_36px_rgba(0,0,0,0.12)] border-[3.5px] border-white z-10"
               />
 
-            </div>{/* end bottom row */}
+            </div>
 
-          </div>{/* end right column */}
+          </div>
 
-        </div>{/* end main flex */}
+        </div>
       </section>
 
 
@@ -1610,14 +1623,14 @@ export default function Home() {
               id: '01',
               title: 'Event Photography',
               desc: 'Capturing energy, emotion and every unforgettable moment.',
-              bg: '/images/services/image.png',
+              bg: '/images/our-services-img-for-outter/event-photography.jpg',
               href: '/services/event'
             },
             {
               id: '02',
               title: 'Corporate Photography',
               desc: "Professional imagery that reflects your brand's identity and values.",
-              bg: '/images/our_portfolio/corporate/iqvia.jpg',
+              bg: '/images/our-services-img-for-outter/corporate-photography.jpg',
               href: '/services/corporate'
             },
 
@@ -1625,14 +1638,14 @@ export default function Home() {
               id: '03',
               title: 'Digital Ads',
               desc: 'Scroll-stopping visuals that captivate and convert.',
-              bg: '/images/services/Digital ads .png',
+              bg: '/images/our-services-img-for-outter/digital-ads.png',
               href: '/services/digital-ads'
             },
             {
               id: '04',
               title: 'Documentary',
               desc: 'Real stories told with authenticity, depth and cinematic vision.',
-              bg: '/images/services/Documentaries.png',
+              bg: '/images/our-services-img-for-outter/documentary.png',
               href: '/services/documentary'
             },
             {

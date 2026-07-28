@@ -31,14 +31,14 @@ export default function Services() {
       id: '01',
       title: 'Event Photography & Videography',
       desc: 'From big stages to bigger stakes. We cover international summits and conferences, commanding raw event documentation and providing instant on-spot edited teasers in under 2 hours.',
-      img: '/images/services/image.png',
+      img: '/images/our-services-img-for-outter/event-photography.jpg',
       href: '/services/event'
     },
     {
       id: '02',
       title: 'Corporate Media Services',
       desc: 'High-end boardroom visual narratives, employee spotlight films, and facilities media campaigns. We translate your culture, values, and vision into premium corporate storytelling.',
-      img: '/images/our_portfolio/corporate/iqvia.jpg',
+      img: '/images/our-services-img-for-outter/corporate-photography.jpg',
       href: '/services/corporate'
     },
 
@@ -46,14 +46,14 @@ export default function Services() {
       id: '03',
       title: 'Digital Ads & Visual Campaigns',
       desc: 'Scroll-stopping campaigns engineered to capture attention, build brand awareness, and break conventions in modern feeds.',
-      img: '/images/services/Digital ads .png',
+      img: '/images/our-services-img-for-outter/digital-ads.png',
       href: '/services/digital-ads'
     },
     {
       id: '04',
       title: 'Documentary Filmmaking',
       desc: 'Narrative stories of hope, health, and empowerment captured directly from communities across India, bridging brand CSR initiatives with real, lasting impact.',
-      img: '/images/services/Documentaries.png',
+      img: '/images/our-services-img-for-outter/documentary.png',
       href: '/services/documentary'
     },
     {

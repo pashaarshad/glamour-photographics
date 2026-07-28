@@ -69,7 +69,7 @@ export default function EventServices() {
       {/* ─── HERO HEADER ─── */}
       <section className="relative min-h-[50vh] flex items-center px-[5%] md:px-[8%] bg-[#0A0A0A] pt-[120px] md:pt-[100px]">
         <div className="absolute inset-0 z-0">
-          <img src="/images/services/image.png" alt="Event Header" className="w-full h-full object-cover object-[center_18%] opacity-40 select-none pointer-events-none" />
+          <img src="/images/our-services-img-for-outter/event-photography.jpg" alt="Event Header" className="w-full h-full object-cover object-[center_18%] opacity-40 select-none pointer-events-none" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent z-10" />
         </div>
         <div className="max-w-[1400px] w-full mx-auto z-20 relative">
