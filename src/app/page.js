@@ -328,24 +328,24 @@ export default function Home() {
     const portfolioImages = {
     // ── CURATED ALL TAB: 12 hand-picked images matching the screenshot ──
     'ALL': [
-      '/images/interactive_showcase/NMK_0203.JPG',
-      '/images/interactive_showcase/WhatsApp Image 2026-02-09 at 8.29.33 PM (1).jpeg',
-      '/images/interactive_showcase/IMG_0008.JPG',
-      '/images/interactive_showcase/dilquar.jpg',
-      '/images/interactive_showcase/kareeshma.jpg',
-      '/images/interactive_showcase/11.jpg',
-      '/images/interactive_showcase/NMK_0047.JPG',
-      '/images/interactive_showcase/DSC_0204.JPG',
-      '/images/interactive_showcase/NMK_0337.JPG',
-      '/images/interactive_showcase/33.jpg',
-      '/images/interactive_showcase/Bill clinton.jpeg',
-      '/images/interactive_showcase/NMK_0457.JPG',
-      '/images/interactive_showcase/SKV00446.jpg',
-      '/images/interactive_showcase/highlights_NMKL0031.jpg',
-      '/images/interactive_showcase/cp-12.jpg',
-      '/images/interactive_showcase/_01A0748.jpg',
-      '/images/interactive_showcase/_01A0411.jpg',
-      '/images/interactive_showcase/PRS02780.jpg',
+      '/images/interactive_showcase/1.jpeg',
+      '/images/interactive_showcase/2.JPG',
+      '/images/interactive_showcase/3.JPG',
+      '/images/interactive_showcase/4.jpg',
+      '/images/interactive_showcase/5.jpg',
+      '/images/interactive_showcase/6.JPG',
+      '/images/interactive_showcase/7.JPG',
+      '/images/interactive_showcase/8.jpg',
+      '/images/interactive_showcase/9.JPG',
+      '/images/interactive_showcase/10.jpg',
+      '/images/interactive_showcase/11.jpeg',
+      '/images/interactive_showcase/12.jpg',
+      '/images/interactive_showcase/13.jpg',
+      '/images/interactive_showcase/14.JPG',
+      '/images/interactive_showcase/15.jpg',
+      '/images/interactive_showcase/16.jpg',
+      '/images/interactive_showcase/17.jpg',
+      '/images/interactive_showcase/18.jpg',
       '/images/our_portfolio/event/NMK_0130.JPG',
       '/images/our_portfolio/event/_NMK2857.jpg',
       '/images/our_portfolio/event/_NMK3555.jpg',
@@ -354,7 +354,6 @@ export default function Home() {
       '/images/our_portfolio/event/NMK_0018.jpg',
       '/images/our_portfolio/event/NMK_0209.JPG',
       '/images/our_portfolio/event/NMK_0315.JPG',
-      '/images/our_portfolio/event/WhatsApp Image 2026-02-09 at 8.29.33 PM (1).jpg',
       '/images/our_portfolio/event/_NMK2325.jpg',
       '/images/our_portfolio/event/_NMK2368.jpg',
       '/images/our_portfolio/event/highlights_SKV00387.jpg',
@@ -427,7 +426,6 @@ export default function Home() {
       '/images/our_portfolio/documentary/highlights_SKV00290.jpg',
       '/images/our_portfolio/documentary/highlights_SKV00387.jpg',
       '/images/our_portfolio/political/22.jpg',
-      '/images/our_portfolio/political/Bill clinton.jpg',
       '/images/our_portfolio/political/Cameroon.jpg',
       '/images/our_portfolio/political/IMG_0029.JPG',
       '/images/our_portfolio/political/NMK_0199.JPG',
@@ -1318,23 +1316,26 @@ export default function Home() {
           ))}
         </div>
         {(() => {
-          const SCREENSHOT_FIRST_15_IMAGES = [
-            '/images/our_portfolio/political/NMK_0047.JPG',
-            '/images/our_portfolio/political/IMG_0008.JPG',
-            '/images/our_portfolio/political/11.jpg',
-            '/images/our_portfolio/event/NMK_0002.jpg',
-            '/images/our_portfolio/political/NMK_0337.JPG',
-            '/images/our_portfolio/corporate/NMK_0219.JPG',
-            '/images/our_portfolio/corporate/_01A0411.jpg',
-            '/images/our_portfolio/corporate/_01A0760.jpg',
-            '/images/our_portfolio/corporate/rtx-1.jpg',
-            '/images/our_portfolio/political/NMK_0203.JPG',
-            '/images/our_portfolio/corporate/_01A0956.jpg',
-            '/images/our_portfolio/corporate/iqvia.jpg',
-            '/images/our_portfolio/corporate/_AMZ0023.JPG',
-            '/images/our_portfolio/celebrity/dilquar.jpg',
-            '/images/our_portfolio/corporate/SKV00446.jpg'
-          ];
+          const SCREENSHOT_FIRST_18_IMAGES = [
+    '/images/interactive_showcase/1.jpeg',
+    '/images/interactive_showcase/2.JPG',
+    '/images/interactive_showcase/3.JPG',
+    '/images/interactive_showcase/4.jpg',
+    '/images/interactive_showcase/5.jpg',
+    '/images/interactive_showcase/6.JPG',
+    '/images/interactive_showcase/7.JPG',
+    '/images/interactive_showcase/8.jpg',
+    '/images/interactive_showcase/9.JPG',
+    '/images/interactive_showcase/10.jpg',
+    '/images/interactive_showcase/11.jpeg',
+    '/images/interactive_showcase/12.jpg',
+    '/images/interactive_showcase/13.jpg',
+    '/images/interactive_showcase/14.JPG',
+    '/images/interactive_showcase/15.jpg',
+    '/images/interactive_showcase/16.jpg',
+    '/images/interactive_showcase/17.jpg',
+    '/images/interactive_showcase/18.jpg'
+  ];
 
           const VERTICAL_IMAGES = [
             '/images/our_portfolio/corporate/NMKL5612.jpg',
@@ -1367,9 +1368,9 @@ export default function Home() {
           if (activePortfolioTab === 'ALL') {
             return (
               <div className="w-full flex flex-col gap-[24px]">
-                {/* 1. INITIAL 15 HORIZONTAL PHOTOS (5 ROWS x 3 COLUMNS) */}
+                {/* 1. INITIAL 18 HORIZONTAL PHOTOS (6 ROWS x 3 COLUMNS) */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-[24px] w-full reveal opacity-0 anim-fade-up">
-                  {SCREENSHOT_FIRST_15_IMAGES.map((src, idx) => (
+                  {SCREENSHOT_FIRST_18_IMAGES.map((src, idx) => (
                     <div 
                       key={`home-init-${src}-${idx}`}
                       onClick={() => setActivePhotoUrl(src)}
@@ -1414,7 +1415,7 @@ export default function Home() {
                 {showAllHomeImages && (
                   <div className="mt-[24px] w-full">
                     {(() => {
-                      const remaining = activeImages.filter(src => !SCREENSHOT_FIRST_15_IMAGES.includes(src) && !src.includes('/outdoor/'));
+                      const remaining = activeImages.filter(src => !SCREENSHOT_FIRST_18_IMAGES.includes(src) && !src.includes('/outdoor/'));
                       const verts = remaining.filter(src => VERTICAL_IMAGES.includes(src));
                       const horizs = remaining.filter(src => !VERTICAL_IMAGES.includes(src));
 
