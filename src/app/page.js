@@ -1757,10 +1757,9 @@ export default function Home() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[30px] reveal opacity-0 anim-fade-up delay-100">
           {[
-            { name: "Hameed Hussain", role: "Founder & Director", img: "/images/IMG_8065.JPG" },
-            { name: "Anzar Hussain", role: "Creative Lead", img: "/images/anzar_hussain.png" },
-            { name: "Zia Hussain", role: "Head of Operations", img: "/images/zia_hussain.png" },
-            { name: "IMG_8070", role: "Executive Lead", img: "/images/IMG_8070.JPG" }
+            { name: "Hameed Hussain", role: "Owner & Founder", img: "/images/our-team/Hameed Hussain _ Owner and Founder .jpg" },
+            { name: "Ashraf Hussain", role: "Creative Director", img: "/images/our-team/Ashraf Hussain _ Creative Director.png" },
+            { name: "Farah Hammed", role: "Co-Creative Director", img: "/images/our-team/Farah Hammed _ Co- creative Director .jpg" }
           ].map((member, idx) => {
             const isPng = member.img.toLowerCase().endsWith('.png');
             return (
@@ -1769,13 +1768,11 @@ export default function Home() {
                 className="group relative rounded-[20px] overflow-hidden bg-[#1A1A1A] border border-[rgba(10,10,10,0.08)] transition-all duration-500 cursor-none flex flex-col h-[480px] sm:h-[520px] shadow-lg"
               >
                 {/* Image Box */}
-                <div className={`absolute inset-0 z-0 transition-colors duration-500 ${isPng ? 'group-hover:bg-[#E50914]' : ''}`}>
+                <div className="absolute inset-0 z-0">
                   <img 
                     src={member.img} 
                     alt={member.name} 
-                    className={`w-full h-full object-cover grayscale group-hover:grayscale-0 scale-100 group-hover:scale-105 transition-all duration-[700ms] pointer-events-none select-none ${
-                      member.img.includes('IMG_8070') || member.img.includes('IMG_8065') ? 'object-top' : 'object-center'
-                    }`} 
+                    className="w-full h-full object-cover scale-100 group-hover:scale-105 transition-all duration-[700ms] pointer-events-none select-none object-top" 
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-transparent z-10" />
                 </div>
