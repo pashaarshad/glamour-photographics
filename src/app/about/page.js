@@ -159,38 +159,51 @@ export default function About() {
               {/* Infinite Scrolling Marquee list */}
               <div className="h-full overflow-hidden relative z-10 select-none">
                 <div className="flex flex-col gap-[20px] animate-marquee-vertical">
-                  {[
-                    { type: 'img', src: "/images/our_portfolio/highlights_3C1A0761.jpg" },
-                    { type: 'img', src: "/images/our_portfolio/highlights_3C1A0775.jpg" },
-                    { type: 'img', src: "/images/our_portfolio/11.jpg" },
-                    { type: 'img', src: "/images/our_portfolio/highlights_3C1A0782.jpg" },
-                    { type: 'badge' },
-                    { type: 'img', src: "/images/our_portfolio/22.jpg" },
-                    { type: 'img', src: "/images/our_portfolio/highlights_3C1A0841.jpg" },
-                    { type: 'img', src: "/images/our_portfolio/33.jpg" },
-                    { type: 'img', src: "/images/our_portfolio/rtx-1.jpg" },
-                    { type: 'badge' }
-                  ].map((item, idx) => {
-                    if (item.type === 'img') {
-                      return (
-                        <div key={idx} className="w-full aspect-[4/3] bg-black overflow-hidden relative border border-[rgba(10,10,10,0.12)] rounded-[3px] group cursor-none shrink-0">
-                          <img 
-                            src={item.src} 
-                            alt={`Film Strip Frame ${idx + 1}`} 
-                            className="w-full h-full object-cover grayscale opacity-85 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" 
-                          />
-                        </div>
-                      );
-                    } else {
-                      return (
-                        <div key={idx} className="w-full bg-[#D6CBBF] border border-[rgba(10,10,10,0.06)] rounded-[3px] py-[22px] px-[10px] text-center shrink-0 flex flex-col justify-center items-center shadow-[inset_0_1px_2px_rgba(255,255,255,0.4)]">
-                          <span className="font-serif text-[34px] font-bold text-[#1A1A1A] leading-none mb-[2px]">40+</span>
-                          <span className="text-[9px] tracking-[0.15em] uppercase text-[#3A3530] font-bold leading-tight">Years Of</span>
-                          <span className="text-[9px] tracking-[0.15em] uppercase text-[#3A3530] font-bold leading-tight">Storytelling</span>
-                        </div>
-                      );
-                    }
-                  })}
+                  {(() => {
+                    const baseItems = [
+                      { type: 'img', src: "/images/interactive_showcase/1.jpeg" },
+                      { type: 'img', src: "/images/interactive_showcase/2.JPG" },
+                      { type: 'img', src: "/images/interactive_showcase/3.JPG" },
+                      { type: 'img', src: "/images/interactive_showcase/4.jpg" },
+                      { type: 'img', src: "/images/interactive_showcase/5.jpg" },
+                      { type: 'img', src: "/images/interactive_showcase/6.JPG" },
+                      { type: 'badge' },
+                      { type: 'img', src: "/images/interactive_showcase/7.JPG" },
+                      { type: 'img', src: "/images/interactive_showcase/8.jpg" },
+                      { type: 'img', src: "/images/interactive_showcase/9.JPG" },
+                      { type: 'img', src: "/images/interactive_showcase/10.jpg" },
+                      { type: 'img', src: "/images/interactive_showcase/11.jpeg" },
+                      { type: 'img', src: "/images/interactive_showcase/12.jpg" },
+                      { type: 'badge' },
+                      { type: 'img', src: "/images/interactive_showcase/13.jpg" },
+                      { type: 'img', src: "/images/interactive_showcase/14.JPG" },
+                      { type: 'img', src: "/images/interactive_showcase/15.jpg" },
+                      { type: 'img', src: "/images/interactive_showcase/16.jpg" },
+                      { type: 'img', src: "/images/interactive_showcase/17.jpg" },
+                      { type: 'img', src: "/images/interactive_showcase/18.jpg" }
+                    ];
+                    return [...baseItems, ...baseItems].map((item, idx) => {
+                      if (item.type === 'img') {
+                        return (
+                          <div key={idx} className="w-full aspect-[4/3] bg-black overflow-hidden relative border border-[rgba(10,10,10,0.12)] rounded-[3px] group cursor-none shrink-0">
+                            <img 
+                              src={item.src} 
+                              alt={`Film Strip Frame ${idx + 1}`} 
+                              className="w-full h-full object-cover grayscale opacity-85 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" 
+                            />
+                          </div>
+                        );
+                      } else {
+                        return (
+                          <div key={idx} className="w-full bg-[#D6CBBF] border border-[rgba(10,10,10,0.06)] rounded-[3px] py-[22px] px-[10px] text-center shrink-0 flex flex-col justify-center items-center shadow-[inset_0_1px_2px_rgba(255,255,255,0.4)]">
+                            <span className="font-serif text-[34px] font-bold text-[#1A1A1A] leading-none mb-[2px]">40+</span>
+                            <span className="text-[9px] tracking-[0.15em] uppercase text-[#3A3530] font-bold leading-tight">Years Of</span>
+                            <span className="text-[9px] tracking-[0.15em] uppercase text-[#3A3530] font-bold leading-tight">Storytelling</span>
+                          </div>
+                        );
+                      }
+                    });
+                  })()}
                 </div>
               </div>
             </div>
@@ -316,25 +329,25 @@ export default function About() {
                   num: "01",
                   title: "Collaboration",
                   desc: "We believe in working closely with our clients to understand their vision, objectives, and target audience. Your input is invaluable in shaping the final product.",
-                  img: "/images/collaberitie/Collaboration.png"
+                  img: "/images/interactive_showcase/13.jpg"
                 },
                 {
                   num: "02",
                   title: "Creativity",
                   desc: "Our team combines creative storytelling with the latest cinematic techniques to create visually stunning films that leave a lasting impression on every audience.",
-                  img: "/images/collaberitie/Creativity.png"
+                  img: "/images/interactive_showcase/14.JPG"
                 },
                 {
                   num: "03",
                   title: "Strategic Impact",
                   desc: "Every frame is designed to convey a specific message and evoke emotion. We ensure your film aligns with your broader business goals and drives real results.",
-                  img: "/images/outdoor-event.jpg"
+                  img: "/images/interactive_showcase/15.jpg"
                 },
                 {
                   num: "04",
                   title: "Quality",
                   desc: "We maintain high production standards to deliver films that reflect the quality and professionalism of your brand — without exception or compromise.",
-                  img: "/images/collaberitie/Quality.jpg"
+                  img: "/images/interactive_showcase/16.jpg"
                 }
               ].map((step, idx) => {
 
