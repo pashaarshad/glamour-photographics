@@ -88,32 +88,28 @@ export default function Home() {
   const [statsTriggered, setStatsTriggered] = useState(false);
   const [activeCert, setActiveCert] = useState(null);
 
-  const [isHeroHovered, setIsHeroHovered] = useState(false);
+  const [heroVideoState, setHeroVideoState] = useState('hidden'); // Initialize to 'hidden' to prevent SSR hydration mismatch
   const [activePhotoUrl, setActivePhotoUrl] = useState(null);
 
-  const HERO_PHOTOS = [
-    { src: '/images/our_portfolio/corporate/rtx-1.jpg',     title: 'Samsung AI TV Launch' },
-    { src: '/images/our_portfolio/political/NMK_0047.JPG', title: 'CII EXCON Keynote' },
-    { src: '/images/our_portfolio/political/NMK_0337.JPG', title: 'State MoU Signing' },
-    { src: '/images/our_portfolio/political/IMG_0008.JPG', title: 'VIP Helicopter Arrival' },
-    { src: '/images/our_portfolio/political/IMG_0029.JPG', title: 'Gala Evening Session' },
-    { src: '/images/our_portfolio/political/11.jpg',       title: 'Leadership Summit' },
-  ];
-
-  // 6 card positions mapping: cardPositions[i] represents the layout coordinate index (0-5) of Card i
-  const [cardPositions, setCardPositions] = useState([0, 1, 2, 3, 4, 5]);
-
   useEffect(() => {
-    if (isHeroHovered) return;
-    const interval = setInterval(() => {
-      setCardPositions(prev => {
-        // Increment each card's position index by 1 (modulo 6) to shift them clockwise around the layout
-        return prev.map(pos => (pos + 1) % 6);
-      });
-    }, 1500); // Shifting every 1.5 seconds
+    // Render the video only on client mount
+    setHeroVideoState('visible');
 
-    return () => clearInterval(interval);
-  }, [isHeroHovered]);
+    // Start exit transition after 15 seconds
+    const exitTimer = setTimeout(() => {
+      setHeroVideoState('exiting');
+    }, 15000);
+
+    // Completely remove/hide after transition completes (1200ms duration)
+    const hideTimer = setTimeout(() => {
+      setHeroVideoState('hidden');
+    }, 16200);
+
+    return () => {
+      clearTimeout(exitTimer);
+      clearTimeout(hideTimer);
+    };
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => setStatsTriggered(true), 200);
@@ -643,6 +639,44 @@ export default function Home() {
             </Link>
           </div>
         </div>
+
+        {heroVideoState !== 'hidden' && (
+          <div 
+            className={`absolute z-30 aspect-video w-[90%] md:w-[60%] lg:w-[46%] xl:w-[40%] rounded-[16px] md:rounded-[24px] overflow-hidden border-[3px] border-white/10 shadow-[0_30px_70px_rgba(0,0,0,0.8)] bg-black transition-all duration-[1200ms] ease-[cubic-bezier(0.25,1,0.5,1)] left-[5%] md:left-auto right-[5%] md:right-[6%] ${
+              heroVideoState === 'exiting' 
+                ? 'opacity-0 scale-[0.8] -translate-x-[150vw] rotate-[-8deg] pointer-events-none' 
+                : 'opacity-100 scale-100 translate-x-0'
+            }`}
+            style={{
+              top: '50%',
+              transform: heroVideoState === 'exiting' ? 'translate3d(-150vw, -50%, 0) rotate(-8deg) scale(0.8)' : 'translate3d(0, -50%, 0)',
+              transformOrigin: 'center center'
+            }}
+          >
+            <iframe
+              className="w-full h-full scale-[1.01] pointer-events-none"
+              src="https://www.youtube.com/embed/oz26LF0gvxg?autoplay=1&mute=1&controls=0&loop=1&playlist=oz26LF0gvxg&playsinline=1&enablejsapi=1"
+              title="Hero Cinematic Intro"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+            
+            {/* Subtle overlay indicator */}
+            <div className="absolute top-[16px] left-[16px] bg-black/60 backdrop-blur-md px-[12px] py-[6px] rounded-full border border-white/10 flex items-center gap-[6px] pointer-events-none">
+              <span className="w-[6px] h-[6px] rounded-full bg-red-600 animate-pulse"></span>
+              <span className="text-[9px] font-bold tracking-widest text-white uppercase">Cinematic Intro</span>
+            </div>
+
+            {/* Quick Skip Intro Button */}
+            <button 
+              onClick={() => setHeroVideoState('exiting')}
+              className="absolute bottom-[16px] right-[16px] bg-white/10 hover:bg-white/20 active:bg-white/30 backdrop-blur-md border border-white/20 text-white font-serif italic text-[11px] tracking-wider py-[8px] px-[16px] rounded-full transition-all duration-300 pointer-events-auto"
+            >
+              Skip Intro →
+            </button>
+          </div>
+        )}
       </section>
 
       {/* ─── 2. EDITORIAL MARQUEE ─── */}
