@@ -624,13 +624,13 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[#0A0A0A] via-[rgba(10,10,10,0.85)] md:via-[rgba(10,10,10,0.65)] to-transparent z-10" />
         </div>
         <div className="w-full max-w-[650px] flex-none z-20 relative pt-[40px] md:pt-[60px] text-left">
-          <h1 className="font-serif text-left text-[clamp(52px,7vw,100px)] font-bold leading-[1.05] tracking-[-0.02em] mb-[32px] text-white">
+          <h1 className="font-serif text-left text-[clamp(44px,5.8vw,80px)] font-bold leading-[1.05] tracking-[-0.02em] mb-[24px] text-white">
             <span className="block overflow-hidden pb-[4px]"><span className="block anim-slide-up delay-100" style={{ transform: 'translateY(100%)' }}>We Capture</span></span>
             <span className="block overflow-hidden pb-[4px]"><span className="block anim-slide-up delay-150" style={{ transform: 'translateY(100%)' }}>Moments.</span></span>
             <span className="block overflow-hidden pb-[4px]"><span className="block anim-slide-up delay-200" style={{ transform: 'translateY(100%)' }}>We Create</span></span>
             <span className="block overflow-hidden pb-[4px]"><span className="block anim-slide-up delay-240 text-[var(--gold)] italic font-bold" style={{ transform: 'translateY(100%)' }}>Legacies.</span></span>
           </h1>
-          <p className="text-[15px] md:text-[17px] text-[rgba(250,248,244,0.9)] leading-[1.7] max-w-[420px] opacity-0 anim-fade-up delay-300 mb-[48px] font-semibold">
+          <p className="text-[13.5px] md:text-[15px] text-[rgba(250,248,244,0.9)] leading-[1.7] max-w-[390px] opacity-0 anim-fade-up delay-300 mb-[36px] font-semibold">
             40+ Years of Storytelling Through The Lens of Excellence
           </p>
           <div className="opacity-0 anim-fade-up delay-380">
@@ -642,14 +642,16 @@ export default function Home() {
 
         {heroVideoState !== 'hidden' && (
           <div 
-            className={`absolute z-30 aspect-video w-[90%] md:w-[60%] lg:w-[46%] xl:w-[40%] rounded-[16px] md:rounded-[24px] overflow-hidden border-[3px] border-white/10 shadow-[0_30px_70px_rgba(0,0,0,0.8)] bg-black transition-all duration-[1200ms] ease-[cubic-bezier(0.25,1,0.5,1)] left-[5%] md:left-auto right-[5%] md:right-[6%] ${
+            className={`absolute z-30 aspect-video w-[90%] md:w-[70%] lg:w-[54%] xl:w-[48%] max-w-[800px] rounded-[16px] md:rounded-[28px] overflow-hidden border-[3px] border-white/10 shadow-[0_40px_90px_rgba(0,0,0,0.85)] bg-black transition-all duration-[1800ms] ease-[cubic-bezier(0.16,1,0.3,1)] left-1/2 ${
               heroVideoState === 'exiting' 
-                ? 'opacity-0 scale-[0.8] -translate-x-[150vw] rotate-[-8deg] pointer-events-none' 
+                ? 'opacity-0 scale-[0.8] -translate-x-[150vw] rotate-[-10deg] pointer-events-none' 
                 : 'opacity-100 scale-100 translate-x-0'
             }`}
             style={{
               top: '50%',
-              transform: heroVideoState === 'exiting' ? 'translate3d(-150vw, -50%, 0) rotate(-8deg) scale(0.8)' : 'translate3d(0, -50%, 0)',
+              transform: heroVideoState === 'exiting' 
+                ? 'translate3d(-180vw, -50%, 0) rotate(-10deg) scale(0.8)' 
+                : 'translate3d(-50%, -50%, 0)',
               transformOrigin: 'center center'
             }}
           >
