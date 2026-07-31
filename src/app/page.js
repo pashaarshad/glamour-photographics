@@ -642,7 +642,7 @@ export default function Home() {
 
         {heroVideoState !== 'hidden' && (
           <div 
-            className={`absolute z-30 aspect-video w-[90%] md:w-[70%] lg:w-[54%] xl:w-[48%] max-w-[800px] rounded-[16px] md:rounded-[28px] overflow-hidden border-[3px] border-white/10 shadow-[0_40px_90px_rgba(0,0,0,0.85)] bg-black transition-all duration-[1800ms] ease-[cubic-bezier(0.16,1,0.3,1)] left-1/2 ${
+            className={`absolute z-30 aspect-video w-[80%] md:w-[50%] lg:w-[38%] xl:w-[32%] max-w-[520px] rounded-[16px] md:rounded-[28px] overflow-hidden border-[3px] border-white/10 shadow-[0_40px_90px_rgba(0,0,0,0.85)] bg-black transition-all duration-[1800ms] ease-[cubic-bezier(0.16,1,0.3,1)] left-1/2 ${
               heroVideoState === 'exiting' 
                 ? 'opacity-0 scale-[0.8] -translate-x-[150vw] rotate-[-10deg] pointer-events-none' 
                 : 'opacity-100 scale-100 translate-x-0'
