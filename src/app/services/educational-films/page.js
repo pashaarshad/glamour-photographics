@@ -54,7 +54,7 @@ export default function EducationalFilmsServices() {
       {/* ─── HERO HEADER ─── */}
       <section className="relative min-h-[50vh] flex items-center px-[5%] md:px-[8%] bg-[#0A0A0A] pt-[120px] md:pt-[100px]">
         <div className="absolute inset-0 z-0">
-          <img src="/images/services/educational Films Untitled design(1) (1).jpg" alt="Educational Header" className="w-full h-full object-cover object-center opacity-40 select-none pointer-events-none" />
+          <img src="/images/Clients/presidency-outside-for-card.jpg" alt="Educational Header" className="w-full h-full object-cover object-center opacity-40 select-none pointer-events-none" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent z-10" />
         </div>
         <div className="max-w-[1400px] w-full mx-auto z-20 relative">
@@ -90,7 +90,7 @@ export default function EducationalFilmsServices() {
             </Link>
           </div>
           <div className="relative aspect-video w-full rounded-[16px] overflow-hidden border border-[rgba(10,10,10,0.06)] group shadow-md bg-black">
-            <img src="/images/services/educational Films _01A0630.JPG" alt="Student Active Learning" className="w-full h-full object-cover opacity-100 transition-transform duration-[1200ms] group-hover:scale-103" />
+            <img src="/images/presidency/highlights_SKV00290.jpg" alt="Student Active Learning" className="w-full h-full object-cover opacity-100 transition-transform duration-[1200ms] group-hover:scale-103" />
           </div>
         </div>
       </section>
