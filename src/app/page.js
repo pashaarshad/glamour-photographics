@@ -90,6 +90,21 @@ export default function Home() {
 
   const [heroVideoState, setHeroVideoState] = useState('hidden'); // Initialize to 'hidden' to prevent SSR hydration mismatch
   const [activePhotoUrl, setActivePhotoUrl] = useState(null);
+  const [activeHeroImgIndex, setActiveHeroImgIndex] = useState(0);
+
+  const HERO_SLIDES = [
+    { src: '/images/heroo-imgs/dilquar.jpg', isHorizontal: true },
+    { src: '/images/heroo-imgs/DSC_0204.JPG', isHorizontal: true },
+    { src: '/images/heroo-imgs/IMG_0029.JPG', isHorizontal: false },
+    { src: '/images/heroo-imgs/Untitled design(1) (1).png', isHorizontal: false }
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveHeroImgIndex(prev => (prev + 1) % 4);
+    }, 2000); // Swipe every 2 seconds
+    return () => clearInterval(timer);
+  }, []);
 
   useEffect(() => {
     // Render the video only on client mount
@@ -602,44 +617,76 @@ export default function Home() {
     <main className="w-full bg-[var(--dark)] text-[var(--light)] pb-[100px] overflow-x-hidden cursor-none relative">
       
       {/* ─── 1. HERO SECTION ─── */}
-      <section className="relative min-h-[100svh] flex flex-col justify-center md:flex-row md:justify-start md:items-center px-[5%] md:px-[8%] pt-[120px] md:pt-[80px] pb-[60px] md:pb-0 overflow-hidden bg-[#0A0A0A]">
-        <div className="absolute inset-0 z-0 select-none">
-          {/* Desktop image */}
-          <img 
-            src="/images/hero-camera.jpg" 
-            alt="Premium Camera Lens" 
-            className="hidden md:block w-full h-full object-contain object-[right_center] opacity-80" 
-          />
-          {/* Mobile image */}
-          <img 
-            src="/images/hero-camera-mobile.png" 
-            alt="Premium Camera Lens Mobile" 
-            className="block md:hidden w-full h-full object-cover object-center opacity-75" 
-            onError={(e) => {
-              // Fallback to desktop image if mobile one is not uploaded yet
-              e.target.src = "/images/hero-camera.jpg";
-              e.target.className = "block md:hidden w-full h-full object-contain object-[center_bottom] opacity-70";
-            }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[#0A0A0A] via-[rgba(10,10,10,0.85)] md:via-[rgba(10,10,10,0.65)] to-transparent z-10" />
-        </div>
-        <div className="w-full max-w-[650px] flex-none z-20 relative pt-[40px] md:pt-[60px] text-left">
-          <h1 className="font-serif text-left text-[clamp(44px,5.8vw,80px)] font-bold leading-[1.05] tracking-[-0.02em] mb-[24px] text-white">
-            <span className="block overflow-hidden pb-[4px]"><span className="block anim-slide-up delay-100" style={{ transform: 'translateY(100%)' }}>We Capture</span></span>
-            <span className="block overflow-hidden pb-[4px]"><span className="block anim-slide-up delay-150" style={{ transform: 'translateY(100%)' }}>Moments.</span></span>
-            <span className="block overflow-hidden pb-[4px]"><span className="block anim-slide-up delay-200" style={{ transform: 'translateY(100%)' }}>We Create</span></span>
-            <span className="block overflow-hidden pb-[4px]"><span className="block anim-slide-up delay-240 text-[var(--gold)] italic font-bold" style={{ transform: 'translateY(100%)' }}>Legacies.</span></span>
-          </h1>
-          <p className="text-[13.5px] md:text-[15px] text-[rgba(250,248,244,0.9)] leading-[1.7] max-w-[390px] opacity-0 anim-fade-up delay-300 mb-[36px] font-semibold">
-            40+ Years of Storytelling Through The Lens of Excellence
-          </p>
-          <div className="opacity-0 anim-fade-up delay-380">
-            <Link href="/portfolio" className="inline-flex items-center justify-center border border-[rgba(255,255,255,0.3)] text-white uppercase tracking-[0.2em] text-[11px] font-bold px-[36px] py-[18px] transition-all duration-400 hover:bg-white hover:text-black hover:border-transparent cursor-none">
-              Explore Our Work
-            </Link>
+      <section className="relative min-h-[100svh] flex flex-col lg:flex-row overflow-hidden bg-[#0A0A0A]">
+        
+        {/* Left Column: Foreground layout with background card-sliding depth */}
+        <div className="w-full lg:w-[45%] flex flex-col justify-center px-[6%] md:px-[8%] pt-[140px] pb-[80px] lg:py-[100px] z-20 relative bg-[#0A0A0A] shadow-[20px_0_40px_rgba(10,10,10,0.9)]">
+          <div className="w-full max-w-[650px] text-left">
+            <h1 className="font-serif text-left text-[clamp(44px,5.8vw,80px)] font-bold leading-[1.05] tracking-[-0.02em] mb-[24px] text-white">
+              <span className="block overflow-hidden pb-[4px]"><span className="block anim-slide-up delay-100" style={{ transform: 'translateY(100%)' }}>We Capture</span></span>
+              <span className="block overflow-hidden pb-[4px]"><span className="block anim-slide-up delay-150" style={{ transform: 'translateY(100%)' }}>Moments.</span></span>
+              <span className="block overflow-hidden pb-[4px]"><span className="block anim-slide-up delay-200" style={{ transform: 'translateY(100%)' }}>We Create</span></span>
+              <span className="block overflow-hidden pb-[4px]"><span className="block anim-slide-up delay-240 text-[var(--gold)] italic font-bold" style={{ transform: 'translateY(100%)' }}>Legacies.</span></span>
+            </h1>
+            <p className="text-[13.5px] md:text-[15px] text-[rgba(250,248,244,0.9)] leading-[1.7] max-w-[390px] opacity-0 anim-fade-up delay-300 mb-[36px] font-semibold">
+              40+ Years of Storytelling Through The Lens of Excellence
+            </p>
+            <div className="opacity-0 anim-fade-up delay-380">
+              <Link href="/portfolio" className="inline-flex items-center justify-center border border-[rgba(255,255,255,0.3)] text-white uppercase tracking-[0.2em] text-[11px] font-bold px-[36px] py-[18px] transition-all duration-400 hover:bg-white hover:text-black hover:border-transparent cursor-none">
+                Explore Our Work
+              </Link>
+            </div>
           </div>
         </div>
 
+        {/* Right Column: Slide carousel with black fade gradient */}
+        <div className="w-full lg:w-[55%] flex items-center justify-center min-h-[450px] sm:min-h-[500px] lg:min-h-screen relative overflow-hidden bg-black z-10">
+          
+          {/* Left shadow fade gradient */}
+          <div className="absolute inset-y-0 left-0 w-[120px] bg-gradient-to-r from-[#0A0A0A] to-transparent z-15 pointer-events-none hidden lg:block" />
+
+          {/* Swipeable images cards */}
+          {HERO_SLIDES.map((slide, idx) => {
+            let positionClass = 'opacity-0 pointer-events-none';
+            let transformStyle = {
+              top: '50%',
+              left: '50%',
+              transform: 'translate3d(120%, -50%, 0) scale(0.9)',
+              transformOrigin: 'center center'
+            };
+
+            if (idx === activeHeroImgIndex) {
+              positionClass = 'opacity-100 scale-100 z-12';
+              transformStyle.transform = 'translate3d(-50%, -50%, 0)';
+            } else if (idx === (activeHeroImgIndex - 1 + 4) % 4) {
+              positionClass = 'opacity-0 scale-95 z-10 pointer-events-none';
+              transformStyle.transform = 'translate3d(-180%, -50%, 0) rotate(-8deg)';
+            } else if (idx === (activeHeroImgIndex + 1) % 4) {
+              positionClass = 'opacity-0 scale-95 z-11 pointer-events-none';
+              transformStyle.transform = 'translate3d(80%, -50%, 0)';
+            }
+
+            return (
+              <div 
+                key={idx}
+                className={`absolute rounded-[12px] md:rounded-[20px] overflow-hidden border-[3px] border-white/10 shadow-[0_30px_70px_rgba(0,0,0,0.85)] bg-black transition-all duration-[1200ms] ease-[cubic-bezier(0.25,1,0.5,1)] ${
+                  slide.isHorizontal 
+                    ? 'w-[80%] sm:w-[70%] md:w-[65%] lg:w-[60%] max-w-[500px] aspect-[3/2]' 
+                    : 'w-[60%] sm:w-[50%] md:w-[45%] lg:w-[40%] max-w-[340px] aspect-[2/3]'
+                } ${positionClass}`}
+                style={transformStyle}
+              >
+                <img 
+                  src={slide.src} 
+                  alt={`Slide ${idx + 1}`}
+                  className="w-full h-full object-cover select-none pointer-events-none"
+                />
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Cinematic video intro card overlay */}
         {heroVideoState !== 'hidden' && (
           <div 
             className={`absolute z-30 aspect-video w-[80%] md:w-[50%] lg:w-[38%] xl:w-[32%] max-w-[520px] rounded-[16px] md:rounded-[28px] overflow-hidden border-[3px] border-white/10 shadow-[0_40px_90px_rgba(0,0,0,0.85)] bg-black transition-all duration-[1800ms] ease-[cubic-bezier(0.16,1,0.3,1)] left-1/2 ${
@@ -682,17 +729,17 @@ export default function Home() {
       </section>
 
       {/* ─── 2. EDITORIAL MARQUEE ─── */}
-      <div className="marquee-wrapper py-[20px] bg-black border-y border-[rgba(255,255,255,0.05)] overflow-hidden w-full relative z-20">
-        <div className="marquee-track flex whitespace-nowrap text-[10px] tracking-[0.25em] uppercase text-[var(--gold)] font-medium">
+      <div className="marquee-wrapper py-[20px] bg-white border-y border-[rgba(10,10,10,0.08)] overflow-hidden w-full relative z-20">
+        <div className="marquee-track flex whitespace-nowrap text-[10px] tracking-[0.25em] uppercase text-black font-semibold">
           {Array.from({ length: 4 }).map((_, i) => (
             <span key={i} className="flex items-center gap-[24px] shrink-0">
-              <span className="ml-[24px]">Corporate Films</span><span className="text-[6px] text-white select-none">●</span>
-              <span>Wedding Photography</span><span className="text-[6px] text-white select-none">●</span>
-              <span>Event Coverage</span><span className="text-[6px] text-white select-none">●</span>
-              <span>Digital Advertising</span><span className="text-[6px] text-white select-none">●</span>
-              <span>Documentary Films</span><span className="text-[6px] text-white select-none">●</span>
-              <span>Studio Portraits</span><span className="text-[6px] text-white select-none">●</span>
-              <span>Photo Restoration</span><span className="text-[6px] text-white select-none">●</span>
+              <span className="ml-[24px]">Corporate Films</span><span className="text-[6px] text-black select-none">●</span>
+              <span>Wedding Photography</span><span className="text-[6px] text-black select-none">●</span>
+              <span>Event Coverage</span><span className="text-[6px] text-black select-none">●</span>
+              <span>Digital Advertising</span><span className="text-[6px] text-black select-none">●</span>
+              <span>Documentary Films</span><span className="text-[6px] text-black select-none">●</span>
+              <span>Studio Portraits</span><span className="text-[6px] text-black select-none">●</span>
+              <span>Photo Restoration</span><span className="text-[6px] text-black select-none">●</span>
             </span>
           ))}
         </div>
@@ -761,17 +808,17 @@ export default function Home() {
       </div>
 
       {/* ─── 2.7. EDITORIAL MARQUEE (BOTTOM) ─── */}
-      <div className="marquee-wrapper py-[20px] bg-black border-y border-[rgba(255,255,255,0.05)] overflow-hidden w-full relative z-20">
-        <div className="marquee-track-reverse flex whitespace-nowrap text-[10px] tracking-[0.25em] uppercase text-[var(--gold)] font-medium">
+      <div className="marquee-wrapper py-[20px] bg-white border-y border-[rgba(10,10,10,0.08)] overflow-hidden w-full relative z-20">
+        <div className="marquee-track-reverse flex whitespace-nowrap text-[10px] tracking-[0.25em] uppercase text-black font-semibold">
           {Array.from({ length: 4 }).map((_, i) => (
             <span key={i} className="flex items-center gap-[24px] shrink-0">
-              <span className="ml-[24px]">Corporate Films</span><span className="text-[6px] text-white select-none">●</span>
-              <span>Wedding Photography</span><span className="text-[6px] text-white select-none">●</span>
-              <span>Event Coverage</span><span className="text-[6px] text-white select-none">●</span>
-              <span>Digital Advertising</span><span className="text-[6px] text-white select-none">●</span>
-              <span>Documentary Films</span><span className="text-[6px] text-white select-none">●</span>
-              <span>Studio Portraits</span><span className="text-[6px] text-white select-none">●</span>
-              <span>Photo Restoration</span><span className="text-[6px] text-white select-none">●</span>
+              <span className="ml-[24px]">Corporate Films</span><span className="text-[6px] text-black select-none">●</span>
+              <span>Wedding Photography</span><span className="text-[6px] text-black select-none">●</span>
+              <span>Event Coverage</span><span className="text-[6px] text-black select-none">●</span>
+              <span>Digital Advertising</span><span className="text-[6px] text-black select-none">●</span>
+              <span>Documentary Films</span><span className="text-[6px] text-black select-none">●</span>
+              <span>Studio Portraits</span><span className="text-[6px] text-black select-none">●</span>
+              <span>Photo Restoration</span><span className="text-[6px] text-black select-none">●</span>
             </span>
           ))}
         </div>
