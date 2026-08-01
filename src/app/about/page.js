@@ -324,7 +324,7 @@ export default function About() {
                   num: "01",
                   title: "Collaboration",
                   desc: "We believe in working closely with our clients to understand their vision, objectives, and target audience. Your input is invaluable in shaping the final product.",
-                  img: "/images/collaberitie/Collaboration.png"
+                  img: "/images/Collaboration.jpg"
                 },
                 {
                   num: "02",
