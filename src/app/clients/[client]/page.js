@@ -87,7 +87,7 @@ export default function ClientPage({ params }) {
   let galleryImages = [];
 
   if (clientSlug === 'cii') {
-    featuredImages = ['/images/Clients/cii-inside-1.JPG', '/images/Clients/cii-inside-2.jpg'];
+    featuredImages = ['/images/Clients/cii-inside-2.jpg', '/images/Clients/cii-inside-1.JPG'];
     galleryImages = imagesMap['cii'] || [];
   } else if (clientSlug === 'jlr') {
     featuredImages = ['/images/Clients/JLR-inside-1.JPG', '/images/Clients/JLR-inside-2.JPG'];
