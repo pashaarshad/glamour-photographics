@@ -69,11 +69,6 @@ export default function About() {
               alt="A Legacy in Frames" 
               className="absolute inset-0 w-full h-full object-cover z-10" 
             />
-            {/* Badge Overlay */}
-            <div className="absolute bottom-[35px] right-[8%] bg-black/60 backdrop-blur-md border border-[var(--gold)] px-[24px] py-[14px] shadow-[0_8px_32px_rgba(0,0,0,0.3)] rounded-[8px] z-20">
-              <span className="font-serif text-[17px] tracking-[0.12em] uppercase text-[var(--gold)] font-bold block mb-[6px] text-center leading-none">Est. 1982</span>
-              <span className="text-[9px] tracking-[0.18em] uppercase text-white font-extrabold block text-center leading-none">Bengaluru, India</span>
-            </div>
           </div>
         </div>
       </section>
