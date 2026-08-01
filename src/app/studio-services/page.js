@@ -25,7 +25,7 @@ export default function StudioServices() {
 
   return (
     <main className="w-full min-h-screen pt-0 pb-0 cursor-none relative text-[var(--light)] bg-[var(--dark)]">
-      
+
       {/* ─── HERO SECTION WITH BACKGROUND YOUTUBE VIDEO ─── */}
       <section className="relative min-h-[60vh] md:min-h-[65vh] lg:min-h-[70vh] flex items-end px-[5%] md:px-[8%] overflow-hidden bg-[#0A0A0A] pt-[160px] md:pt-[180px] lg:pt-[220px] pb-[60px] md:pb-[80px] lg:pb-[100px]">
         {/* Background Video Iframe Container */}
@@ -80,10 +80,10 @@ export default function StudioServices() {
 
         {/* Big Centered Graphic */}
         <div className="max-w-[1000px] mx-auto rounded-sm overflow-hidden border border-[rgba(10,10,10,0.06)] shadow-md bg-white/40 backdrop-blur-[1px] p-[16px] group">
-          <img 
-            src="/images/passport.jpg" 
-            alt="Types of Passport and Visa Photos" 
-            className="w-full h-auto object-contain transition-transform duration-[1200ms] group-hover:scale-[1.01]" 
+          <img
+            src="/images/passport.png"
+            alt="Types of Passport and Visa Photos"
+            className="w-full h-auto object-contain transition-transform duration-[1200ms] group-hover:scale-[1.01]"
           />
         </div>
       </section>
@@ -91,7 +91,7 @@ export default function StudioServices() {
       {/* ─── SECTION 2: STUDIO HEAD SHOTS (SIDE-BY-SIDE) ─── */}
       <section id="headshots" className="px-[5%] md:px-[8%] py-[80px] max-w-[1400px] mx-auto reveal">
         <div className="flex flex-col lg:flex-row items-center gap-[60px] lg:gap-[100px]">
-          
+
           {/* Content Column */}
           <div className="w-full lg:w-1/2">
             <h2 className="font-serif text-[clamp(24px,3.5vw,36px)] text-[#0A0A0A] uppercase tracking-wide font-normal">
@@ -128,10 +128,10 @@ export default function StudioServices() {
 
           {/* Image Column */}
           <div className="w-full lg:w-1/2 rounded-sm overflow-hidden border border-[rgba(10,10,10,0.06)] shadow-md bg-white/40 backdrop-blur-[1px] p-[12px] group">
-            <img 
-              src="/images/studio-shoot.jpg" 
-              alt="Studio Headshots Portfolio" 
-              className="w-full h-auto object-cover transition-transform duration-[1200ms] group-hover:scale-102" 
+            <img
+              src="/images/studio-shoot.jpg"
+              alt="Studio Headshots Portfolio"
+              className="w-full h-auto object-cover transition-transform duration-[1200ms] group-hover:scale-102"
             />
           </div>
 
@@ -141,7 +141,7 @@ export default function StudioServices() {
       {/* ─── SECTION 3: PHOTO RESTORATION (SIDE-BY-SIDE ALTERNATING) ─── */}
       <section id="restoration" className="px-[5%] md:px-[8%] py-[80px] max-w-[1400px] mx-auto reveal">
         <div className="flex flex-col lg:flex-row-reverse items-center gap-[60px] lg:gap-[100px]">
-          
+
           {/* Content Column */}
           <div className="w-full lg:w-1/2">
             <h2 className="font-serif text-[clamp(24px,3.5vw,36px)] text-[#0A0A0A] uppercase tracking-wide font-normal">
@@ -179,17 +179,17 @@ export default function StudioServices() {
           {/* Image Column (Stacked Restoration Examples) */}
           <div className="w-full lg:w-1/2 flex flex-col gap-[24px]">
             <div className="rounded-sm overflow-hidden border border-[rgba(10,10,10,0.06)] shadow-md bg-white/40 backdrop-blur-[1px] p-[12px] group">
-              <img 
-                src="/images/Damaged-Photo-Restoration-and-smudge-painting-in-photoshop-1.jpg" 
-                alt="Photo Restoration Example 1" 
-                className="w-full h-auto object-cover transition-transform duration-[1200ms] group-hover:scale-102" 
+              <img
+                src="/images/Damaged-Photo-Restoration-and-smudge-painting-in-photoshop-1.jpg"
+                alt="Photo Restoration Example 1"
+                className="w-full h-auto object-cover transition-transform duration-[1200ms] group-hover:scale-102"
               />
             </div>
             <div className="rounded-sm overflow-hidden border border-[rgba(10,10,10,0.06)] shadow-md bg-white/40 backdrop-blur-[1px] p-[12px] group">
-              <img 
-                src="/images/Damaged-Photo-Restoration-and-smudge-painting-in-photoshop.jpg" 
-                alt="Photo Restoration Example 2" 
-                className="w-full h-auto object-cover transition-transform duration-[1200ms] group-hover:scale-102" 
+              <img
+                src="/images/Damaged-Photo-Restoration-and-smudge-painting-in-photoshop.jpg"
+                alt="Photo Restoration Example 2"
+                className="w-full h-auto object-cover transition-transform duration-[1200ms] group-hover:scale-102"
               />
             </div>
           </div>
@@ -213,17 +213,17 @@ export default function StudioServices() {
 
         {/* Centered Image */}
         <div className="max-w-[1000px] mx-auto rounded-sm overflow-hidden border border-[rgba(10,10,10,0.06)] shadow-md bg-white/40 backdrop-blur-[1px] p-[16px] mb-[40px] group">
-          <img 
-            src="/images/album-services.jpg" 
-            alt="Custom Premium Album Design Spread" 
-            className="w-full h-auto object-contain transition-transform duration-[1200ms] group-hover:scale-[1.01]" 
+          <img
+            src="/images/album-services.jpg"
+            alt="Custom Premium Album Design Spread"
+            className="w-full h-auto object-contain transition-transform duration-[1200ms] group-hover:scale-[1.01]"
           />
         </div>
 
         {/* Large Premium Call-To-Action Button */}
         <div>
-          <Link 
-            href="/contact" 
+          <Link
+            href="/contact"
             className="inline-flex items-center justify-center gap-[10px] bg-[var(--gold)] text-white text-[11px] tracking-[0.2em] uppercase font-bold py-[18px] px-[44px] hover:bg-[var(--light)] hover:text-[var(--dark)] transition-all duration-300 cursor-none rounded-full shadow-md"
           >
             click here to design your first album
@@ -244,9 +244,9 @@ export default function StudioServices() {
           <p className="text-[14px] md:text-[15px] leading-[1.8] text-[var(--muted)] mb-[48px] font-medium max-w-[500px] mx-auto">
             Experience four decades of visual storytelling and photography expertise in person. Walk-ins are always welcome for passport photos.
           </p>
-          <a 
-            href="https://maps.google.com/?q=Glamour+Photographics+Ashok+Nagar+Bengaluru" 
-            target="_blank" 
+          <a
+            href="https://maps.google.com/?q=Glamour+Photographics+Ashok+Nagar+Bengaluru"
+            target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-[10px] border border-[rgba(10,10,10,0.2)] text-[var(--light)] uppercase tracking-[0.2em] text-[11px] font-bold px-[40px] py-[20px] transition-all duration-400 hover:bg-[var(--light)] hover:text-[var(--dark)] hover:border-transparent cursor-none rounded-sm"
           >
