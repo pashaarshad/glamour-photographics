@@ -67,7 +67,7 @@ export default function CorporatePortfolio() {
 
     // Custom bg overrides from public/images/Clients
     let bg = images[0] || '/images/our_portfolio/cp-7.jpg';
-    if (slug === 'cii') bg = '/images/Clients/cii-outside-for-card.JPEG';
+    if (slug === 'cii') bg = '/images/Clients/cii-outside-for-card.jpeg';
     else if (slug === 'cgi') bg = '/images/Clients/cgi-outside-for-card.jpg';
     else if (slug === 'jlr') bg = '/images/Clients/JLR-outside-for-card.JPG';
     else if (slug === 'tcs') bg = '/images/Clients/tcs-outside-for-card.JPG';
