@@ -329,25 +329,25 @@ export default function About() {
                   num: "01",
                   title: "Collaboration",
                   desc: "We believe in working closely with our clients to understand their vision, objectives, and target audience. Your input is invaluable in shaping the final product.",
-                  img: "/images/interactive_showcase/13.jpg"
+                  img: "/images/collaberitie/Collaboration.png"
                 },
                 {
                   num: "02",
                   title: "Creativity",
                   desc: "Our team combines creative storytelling with the latest cinematic techniques to create visually stunning films that leave a lasting impression on every audience.",
-                  img: "/images/interactive_showcase/14.JPG"
+                  img: "/images/collaberitie/Creativity.png"
                 },
                 {
                   num: "03",
                   title: "Strategic Impact",
                   desc: "Every frame is designed to convey a specific message and evoke emotion. We ensure your film aligns with your broader business goals and drives real results.",
-                  img: "/images/interactive_showcase/15.jpg"
+                  img: "/images/outdoor-event.jpg"
                 },
                 {
                   num: "04",
                   title: "Quality",
                   desc: "We maintain high production standards to deliver films that reflect the quality and professionalism of your brand — without exception or compromise.",
-                  img: "/images/interactive_showcase/16.jpg"
+                  img: "/images/collaberitie/Quality.jpg"
                 }
               ].map((step, idx) => {
 
