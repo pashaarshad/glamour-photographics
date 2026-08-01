@@ -96,7 +96,7 @@ export default function DocumentaryServices() {
             </Link>
           </div>
           <div className="relative aspect-video w-full rounded-[16px] overflow-hidden border border-[rgba(10,10,10,0.06)] group shadow-md bg-black">
-            <img src="/images/services/Documentaries2-2.png" alt="Documentary Crew" className="w-full h-full object-cover opacity-100 transition-transform duration-[1200ms] group-hover:scale-103" />
+            <img src="/images/our-services-img-for-outter/DOCUMENTRY-heder.png" alt="Documentary Crew" className="w-full h-full object-cover opacity-100 transition-transform duration-[1200ms] group-hover:scale-103" />
           </div>
         </div>
       </section>
