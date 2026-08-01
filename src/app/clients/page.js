@@ -32,7 +32,7 @@ export default function CorporatePortfolio() {
   }, []);
 
   const featuredClients = [
-    { name: 'Confederation of Indian Industry CII', slug: 'cii', desc: 'Four Decades of Industry Leadership', index: '01' },
+    { name: 'Confederation of Indian Industry CII', slug: 'cii', desc: 'Four Decades of Capturing Industry Leadership', index: '01' },
     { name: 'Jaguar and Land Rover', slug: 'jlr', desc: 'Driven by Innovation. Captured with Precision.', index: '02' },
     { name: 'TCS', slug: 'tcs', desc: 'Framing the Future of Technology', index: '03' },
     { name: 'TeamLease', slug: 'teamlease', desc: 'Empowering Talent, Driving Workplace Innovation', index: '04' },
@@ -51,7 +51,7 @@ export default function CorporatePortfolio() {
   const getClientAssets = (slug) => {
     const mapSlug = slug === 'tata-elxsi' ? 'tata_elxsi' : slug;
     const images = imagesMap[mapSlug] || [];
-    
+
     // Logos
     let logo = null;
     if (slug === 'cii') logo = '/logo-clients/cii.png';
@@ -64,10 +64,10 @@ export default function CorporatePortfolio() {
     else if (slug === 'pai') logo = '/logo-clients/pai.png';
     else if (slug === 'jlr') logo = '/logo-clients/JLR_Primary_logo_BLK.jpg';
     else if (slug === 'teamlease') logo = '/logo-clients/TEAMLEASE LOGO.png';
-    
+
     // Custom bg overrides from public/images/Clients
     let bg = images[0] || '/images/our_portfolio/cp-7.jpg';
-    if (slug === 'cii') bg = '/images/Clients/cii-outside-for-card.JPG';
+    if (slug === 'cii') bg = '/images/Clients/cii-inside-2.jpg';
     else if (slug === 'cgi') bg = '/images/Clients/cgi-outside-for-card.jpg';
     else if (slug === 'jlr') bg = '/images/Clients/JLR-outside-for-card.JPG';
     else if (slug === 'tcs') bg = '/images/Clients/tcs-outside-for-card.JPG';
@@ -77,10 +77,10 @@ export default function CorporatePortfolio() {
     // Thumbnails
     let thumbnails = images.slice(1, 4);
     if (slug === 'jlr') thumbnails = ['/images/Clients/JLR-inside-1.JPG', '/images/Clients/JLR-inside-2.JPG'];
-    else if (slug === 'cii') thumbnails = ['/images/Clients/cii-inside-1.JPG', '/images/Clients/cii-inside-2.jpg'];
+    else if (slug === 'cii') thumbnails = ['/images/Clients/cii-inside-2.jpg', '/images/Clients/cii-inside-1.JPG'];
     else if (slug === 'pai') thumbnails = ['/images/Clients/pai-inside-1.png', '/images/Clients/pai-inside-2.png'];
     else if (slug === 'toyota') thumbnails = ['/images/Clients/Toyata-inside-1.png', '/images/Clients/Toyata-inside-2.png'];
-    
+
     return {
       bg,
       thumbnails,
@@ -112,36 +112,36 @@ export default function CorporatePortfolio() {
             {featuredClients.map((client, idx) => {
               const assets = getClientAssets(client.slug);
               return (
-                <Link 
-                  href={`/clients/${client.slug}`} 
-                  key={idx} 
+                <Link
+                  href={`/clients/${client.slug}`}
+                  key={idx}
                   className="group relative bg-[var(--darker)] border border-[rgba(10,10,10,0.06)] hover:border-[var(--gold)] rounded-sm overflow-hidden h-[360px] cursor-none block transition-all duration-500"
                 >                  {/* Card Background Poster */}
-                  <div 
-                    className="absolute inset-0 bg-cover bg-center opacity-85 group-hover:opacity-100 transition-all duration-[800ms] group-hover:scale-[1.03]" 
+                  <div
+                    className="absolute inset-0 bg-cover bg-center opacity-85 group-hover:opacity-100 transition-all duration-[800ms] group-hover:scale-[1.03]"
                     style={{ backgroundImage: `url('${assets.bg}')` }}
                   />
                   <div className="absolute inset-0 bg-black/10 bg-gradient-to-t from-black/50 via-transparent to-transparent group-hover:opacity-0 transition-opacity duration-500 z-10" />
-                  
+
                   {/* Card Content wrapper */}
                   <div className="absolute inset-0 p-[40px] flex flex-col justify-between z-20">
                     {/* Top Row: Logo & Index */}
                     <div className="flex justify-between items-start w-full">
                       {assets.logo ? (
-                        <img 
-                          src={assets.logo} 
-                          alt={`${client.name} Logo`} 
+                        <img
+                          src={assets.logo}
+                          alt={`${client.name} Logo`}
                           className="max-h-[36px] max-w-[130px] object-contain transition-opacity duration-300 rounded-sm bg-white/95 p-[3px]"
                         />
                       ) : (
                         <span className="font-serif text-[18px] text-white font-bold">{client.name}</span>
                       )}
-                      
+
                       <div className="font-serif italic text-[44px] text-[rgba(255,255,255,0.15)] leading-none transition-colors duration-[400ms] group-hover:text-[var(--gold)] font-light select-none">
                         {client.index}
                       </div>
                     </div>
- 
+
                     {/* Bottom Row: Text & Thumbnails */}
                     <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-[24px] w-full">
                       <div className="flex-1">
@@ -208,23 +208,23 @@ export default function CorporatePortfolio() {
                 {otherClients.map((client, idx) => {
                   const assets = getClientAssets(client.slug);
                   return (
-                    <Link 
-                      href={`/clients/${client.slug}`} 
-                      key={idx} 
+                    <Link
+                      href={`/clients/${client.slug}`}
+                      key={idx}
                       className="group relative bg-[var(--darker)] border border-[rgba(10,10,10,0.06)] hover:border-[var(--gold)] rounded-sm overflow-hidden min-h-[240px] cursor-none block flex flex-col justify-between p-[30px] transition-all duration-400"
                     >
-                      <div 
-                        className="absolute inset-0 bg-cover bg-center opacity-85 group-hover:opacity-100 transition-all duration-500" 
+                      <div
+                        className="absolute inset-0 bg-cover bg-center opacity-85 group-hover:opacity-100 transition-all duration-500"
                         style={{ backgroundImage: `url('${assets.bg}')` }}
                       />
                       <div className="absolute inset-0 bg-black/15 bg-gradient-to-t from-black/60 via-transparent to-transparent group-hover:opacity-0 transition-opacity duration-500 z-10" />
-     
+
                       <div className="relative z-20 w-full flex flex-col gap-[16px] h-full justify-between flex-1">
                         <div>
                           {assets.logo ? (
-                            <img 
-                              src={assets.logo} 
-                              alt={`${client.name} Logo`} 
+                            <img
+                              src={assets.logo}
+                              alt={`${client.name} Logo`}
                               className="max-h-[24px] max-w-[100px] object-contain transition-opacity duration-300 rounded-sm mb-[14px] bg-white/95 p-[2.5px]"
                             />
                           ) : (
@@ -236,7 +236,7 @@ export default function CorporatePortfolio() {
                             {client.desc}
                           </p>
                         </div>
-     
+
                         <div className="mt-[20px]">
                           <span className="inline-block text-[9px] tracking-[0.2em] uppercase text-[var(--gold)] border border-[rgba(197,164,109,0.3)] py-[8px] px-[18px] transition-all duration-[400ms] group-hover:bg-[var(--gold)] group-hover:text-[var(--dark)] group-hover:border-transparent">
                             View Project
@@ -264,7 +264,7 @@ export default function CorporatePortfolio() {
             </h2>
             <div className="w-[80px] h-[2px] bg-[var(--gold)] mx-auto"></div>
           </div>
-          
+
           <div className="w-full">
             <Swiper
               modules={[Autoplay]}
@@ -296,15 +296,15 @@ export default function CorporatePortfolio() {
                 { name: "Windsor Manor", logo: "/testimonials/logo-windsor-manor.png", cert: "/testimonials/cert-windsor-manor.jpg" }
               ].map((logo, idx) => (
                 <SwiperSlide key={idx}>
-                  <div 
+                  <div
                     onClick={() => setActiveCert(logo.cert)}
                     className="bg-white border border-[rgba(10,10,10,0.06)] p-[12px] rounded-sm h-[90px] flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.01)] transition-all duration-300 hover:scale-105 hover:border-[var(--gold)] cursor-none"
                   >
-                    <img 
-                      src={logo.logo} 
-                      alt={logo.name} 
-                      className="max-h-[60px] max-w-[85%] object-contain" 
-                      loading="lazy" 
+                    <img
+                      src={logo.logo}
+                      alt={logo.name}
+                      className="max-h-[60px] max-w-[85%] object-contain"
+                      loading="lazy"
                     />
                   </div>
                 </SwiperSlide>
@@ -317,18 +317,18 @@ export default function CorporatePortfolio() {
       {/* ─── TESTIMONIAL CERTIFICATE LIGHTBOX OVERLAY ─── */}
       {activeCert && (
         <div className="fixed inset-0 bg-black/95 z-[9999] flex items-center justify-center p-[20px] transition-all">
-          <button 
+          <button
             suppressHydrationWarning
-            onClick={() => setActiveCert(null)} 
+            onClick={() => setActiveCert(null)}
             className="absolute top-[30px] right-[5%] md:right-[8%] text-white text-[12px] tracking-[0.2em] uppercase flex items-center gap-[8px] cursor-none hover:text-[var(--gold)]"
           >
             Close <X className="w-[16px] h-[16px]" />
           </button>
           <div className="w-full max-w-[640px] max-h-[85vh] overflow-y-auto rounded-sm bg-white p-[8px] shadow-2xl relative flex items-center justify-center">
-            <img 
-              src={activeCert} 
-              alt="Testimonial Certificate Form" 
-              className="max-w-full max-h-[80vh] object-contain rounded-sm" 
+            <img
+              src={activeCert}
+              alt="Testimonial Certificate Form"
+              className="max-w-full max-h-[80vh] object-contain rounded-sm"
               loading="lazy"
             />
           </div>
