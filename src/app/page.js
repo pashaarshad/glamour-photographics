@@ -88,43 +88,24 @@ export default function Home() {
   const [statsTriggered, setStatsTriggered] = useState(false);
   const [activeCert, setActiveCert] = useState(null);
 
-  const [heroVideoState, setHeroVideoState] = useState('hidden'); // Initialize to 'hidden' to prevent SSR hydration mismatch
   const [activePhotoUrl, setActivePhotoUrl] = useState(null);
   const [activeHeroImgIndex, setActiveHeroImgIndex] = useState(0);
 
   const HERO_SLIDES = [
-    { src: '/images/heroo-imgs/dilquar.jpg', isHorizontal: true },
-    { src: '/images/heroo-imgs/DSC_0204.JPG', isHorizontal: true },
-    { src: '/images/heroo-imgs/IMG_0029.JPG', isHorizontal: false },
-    { src: '/images/heroo-imgs/Untitled design(1) (1).png', isHorizontal: false }
+    { type: 'video', src: 'oz26LF0gvxg', isHorizontal: true, duration: 10000 },
+    { type: 'image', src: '/images/heroo-imgs/dilquar.jpg', isHorizontal: true, duration: 2000 },
+    { type: 'image', src: '/images/heroo-imgs/DSC_0204.JPG', isHorizontal: true, duration: 2000 },
+    { type: 'image', src: '/images/heroo-imgs/IMG_0029.JPG', isHorizontal: false, duration: 2000 },
+    { type: 'image', src: '/images/heroo-imgs/Untitled design(1) (1).png', isHorizontal: false, duration: 2000 }
   ];
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setActiveHeroImgIndex(prev => (prev + 1) % 4);
-    }, 2000); // Swipe every 2 seconds
-    return () => clearInterval(timer);
-  }, []);
-
-  useEffect(() => {
-    // Render the video only on client mount
-    setHeroVideoState('visible');
-
-    // Start exit transition after 15 seconds
-    const exitTimer = setTimeout(() => {
-      setHeroVideoState('exiting');
-    }, 15000);
-
-    // Completely remove/hide after transition completes (1200ms duration)
-    const hideTimer = setTimeout(() => {
-      setHeroVideoState('hidden');
-    }, 16200);
-
-    return () => {
-      clearTimeout(exitTimer);
-      clearTimeout(hideTimer);
-    };
-  }, []);
+    const currentSlide = HERO_SLIDES[activeHeroImgIndex];
+    const timer = setTimeout(() => {
+      setActiveHeroImgIndex(prev => (prev + 1) % HERO_SLIDES.length);
+    }, currentSlide.duration);
+    return () => clearTimeout(timer);
+  }, [activeHeroImgIndex]);
 
   useEffect(() => {
     const timer = setTimeout(() => setStatsTriggered(true), 200);
@@ -646,6 +627,7 @@ export default function Home() {
           <div className="absolute inset-y-0 left-0 w-[120px] bg-gradient-to-r from-[#0A0A0A] to-transparent z-15 pointer-events-none hidden lg:block" />
 
           {/* Swipeable images cards */}
+          {/* Swipeable images cards */}
           {HERO_SLIDES.map((slide, idx) => {
             let positionClass = 'opacity-0 pointer-events-none';
             let transformStyle = {
@@ -658,10 +640,10 @@ export default function Home() {
             if (idx === activeHeroImgIndex) {
               positionClass = 'opacity-100 scale-100 z-12';
               transformStyle.transform = 'translate3d(-50%, -50%, 0)';
-            } else if (idx === (activeHeroImgIndex - 1 + 4) % 4) {
+            } else if (idx === (activeHeroImgIndex - 1 + HERO_SLIDES.length) % HERO_SLIDES.length) {
               positionClass = 'opacity-0 scale-95 z-10 pointer-events-none';
               transformStyle.transform = 'translate3d(-180%, -50%, 0) rotate(-8deg)';
-            } else if (idx === (activeHeroImgIndex + 1) % 4) {
+            } else if (idx === (activeHeroImgIndex + 1) % HERO_SLIDES.length) {
               positionClass = 'opacity-0 scale-95 z-11 pointer-events-none';
               transformStyle.transform = 'translate3d(80%, -50%, 0)';
             }
@@ -676,56 +658,28 @@ export default function Home() {
                 } ${positionClass}`}
                 style={transformStyle}
               >
-                <img 
-                  src={slide.src} 
-                  alt={`Slide ${idx + 1}`}
-                  className="w-full h-full object-cover select-none pointer-events-none"
-                />
+                {slide.type === 'video' ? (
+                  <div className="w-full h-full relative pointer-events-none select-none">
+                    <iframe
+                      className="w-full h-full scale-[1.05]"
+                      src={`https://www.youtube.com/embed/${slide.src}?autoplay=1&mute=1&controls=0&loop=1&playlist=${slide.src}&playsinline=1&enablejsapi=1`}
+                      title="Hero Cinematic Intro"
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    ></iframe>
+                  </div>
+                ) : (
+                  <img 
+                    src={slide.src} 
+                    alt={`Slide ${idx + 1}`}
+                    className="w-full h-full object-cover select-none pointer-events-none"
+                  />
+                )}
               </div>
             );
           })}
         </div>
-
-        {/* Cinematic video intro card overlay */}
-        {heroVideoState !== 'hidden' && (
-          <div 
-            className={`absolute z-30 aspect-video w-[80%] md:w-[50%] lg:w-[38%] xl:w-[32%] max-w-[520px] rounded-[16px] md:rounded-[28px] overflow-hidden border-[3px] border-white/10 shadow-[0_40px_90px_rgba(0,0,0,0.85)] bg-black transition-all duration-[1800ms] ease-[cubic-bezier(0.16,1,0.3,1)] left-1/2 ${
-              heroVideoState === 'exiting' 
-                ? 'opacity-0 scale-[0.8] -translate-x-[150vw] rotate-[-10deg] pointer-events-none' 
-                : 'opacity-100 scale-100 translate-x-0'
-            }`}
-            style={{
-              top: '50%',
-              transform: heroVideoState === 'exiting' 
-                ? 'translate3d(-180vw, -50%, 0) rotate(-10deg) scale(0.8)' 
-                : 'translate3d(-50%, -50%, 0)',
-              transformOrigin: 'center center'
-            }}
-          >
-            <iframe
-              className="w-full h-full scale-[1.01] pointer-events-none"
-              src="https://www.youtube.com/embed/oz26LF0gvxg?autoplay=1&mute=1&controls=0&loop=1&playlist=oz26LF0gvxg&playsinline=1&enablejsapi=1"
-              title="Hero Cinematic Intro"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
-            
-            {/* Subtle overlay indicator */}
-            <div className="absolute top-[16px] left-[16px] bg-black/60 backdrop-blur-md px-[12px] py-[6px] rounded-full border border-white/10 flex items-center gap-[6px] pointer-events-none">
-              <span className="w-[6px] h-[6px] rounded-full bg-red-600 animate-pulse"></span>
-              <span className="text-[9px] font-bold tracking-widest text-white uppercase">Cinematic Intro</span>
-            </div>
-
-            {/* Quick Skip Intro Button */}
-            <button 
-              onClick={() => setHeroVideoState('exiting')}
-              className="absolute bottom-[16px] right-[16px] bg-white/10 hover:bg-white/20 active:bg-white/30 backdrop-blur-md border border-white/20 text-white font-serif italic text-[11px] tracking-wider py-[8px] px-[16px] rounded-full transition-all duration-300 pointer-events-auto"
-            >
-              Skip Intro →
-            </button>
-          </div>
-        )}
       </section>
 
       {/* ─── 2. EDITORIAL MARQUEE ─── */}
