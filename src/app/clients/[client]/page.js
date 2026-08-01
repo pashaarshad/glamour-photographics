@@ -62,27 +62,6 @@ export default function ClientPage({ params }) {
     "/images/our_portfolio/te3.jpg"
   ];
 
-  const jlrGalleryImages = [
-    '/images/JLR/NMK_0013.JPG',
-    '/images/JLR/NMK_0022.JPG',
-    '/images/JLR/NMK_0033.JPG',
-    '/images/JLR/NMK_0127.JPG',
-    '/images/JLR/NMK_0129.JPG',
-    '/images/JLR/NMK_0188.JPG',
-    '/images/JLR/NMK_0219.JPG',
-    '/images/JLR/NMK_0225.JPG',
-    '/images/JLR/NMK_0236.JPG',
-    '/images/JLR/NMK_0246.JPG',
-    '/images/JLR/NMK_0290.JPG',
-    '/images/JLR/NMK_0315.JPG',
-    '/images/JLR/NMK_0373.JPG',
-    '/images/JLR/NMK_0389.JPG',
-    '/images/JLR/NMK_0457.JPG',
-    '/images/JLR/NMK_0481.JPG',
-    '/images/JLR/NMK_0533.JPG',
-    '/images/JLR/NMK_0535.JPG'
-  ];
-
   let featuredImages = [];
   let galleryImages = [];
 
@@ -91,7 +70,7 @@ export default function ClientPage({ params }) {
     galleryImages = imagesMap['cii'] || [];
   } else if (clientSlug === 'jlr') {
     featuredImages = ['/images/Clients/JLR-inside-1.JPG', '/images/Clients/JLR-inside-2.JPG'];
-    galleryImages = jlrGalleryImages;
+    galleryImages = imagesMap['jlr'] || [];
   } else if (clientSlug === 'toyota') {
     featuredImages = ['/images/Clients/Toyata-inside-1.png', '/images/Clients/Toyata-inside-2.png'];
     galleryImages = [];
