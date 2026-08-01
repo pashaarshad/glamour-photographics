@@ -1600,7 +1600,7 @@ export default function Home() {
         <div className="relative flex items-center justify-end mt-[80px] max-w-[1200px] mx-auto reveal opacity-0 anim-fade-up">
           <div className="absolute left-0 right-[260px] h-[1px] bg-[var(--gold)] opacity-30"></div>
           <Link 
-            href="/services" 
+            href="/studio-services" 
             className="text-[10px] tracking-[0.25em] uppercase font-bold text-[var(--gold)] hover:text-[var(--light)] cursor-none transition-colors duration-300 flex items-center gap-[12px] group relative pl-[24px]"
           >
             View All Services <span className="transition-transform duration-300 group-hover:translate-x-[4px]">→</span>

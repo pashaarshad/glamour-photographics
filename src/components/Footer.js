@@ -85,7 +85,6 @@ export default function Footer() {
           <ul className="flex flex-col gap-[12px] list-none">
             <li><Link href="/" className="text-[12px] uppercase tracking-[0.1em] text-[rgba(255,255,255,0.75)] hover:text-[var(--gold)] transition-colors">Home</Link></li>
             <li><Link href="/about" className="text-[12px] uppercase tracking-[0.1em] text-[rgba(255,255,255,0.75)] hover:text-[var(--gold)] transition-colors">About Us</Link></li>
-            <li><Link href="/services" className="text-[12px] uppercase tracking-[0.1em] text-[rgba(255,255,255,0.75)] hover:text-[var(--gold)] transition-colors">Services</Link></li>
             <li><Link href="/studio-services" className="text-[12px] uppercase tracking-[0.1em] text-[rgba(255,255,255,0.75)] hover:text-[var(--gold)] transition-colors">Studio Services</Link></li>
             <li><Link href="/portfolio" className="text-[12px] uppercase tracking-[0.1em] text-[rgba(255,255,255,0.75)] hover:text-[var(--gold)] transition-colors">Portfolio</Link></li>
             <li><Link href="/clients" className="text-[12px] uppercase tracking-[0.1em] text-[rgba(255,255,255,0.75)] hover:text-[var(--gold)] transition-colors">Clients</Link></li>
