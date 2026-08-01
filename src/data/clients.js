@@ -145,9 +145,9 @@ export const clientsData = {
   },
   teamlease: {
     name: "TeamLease Services",
-    about: "TeamLease Services is India's leading human resource services company, established in 2002. With a presence across the nation, TeamLease offers a comprehensive suite of solutions including temporary staffing, permanent recruitment, payroll management, and regulatory compliance. Over the past two decades, TeamLease has played a pivotal role in shaping India's formal employment landscape, putting millions of people to work and partnering with thousands of corporate clients to drive business growth.",
-    ourWork: "Glamour Photographics has partnered with TeamLease to document their corporate milestones, leadership conferences, and employee engagement initiatives. Through high-impact corporate photography and storytelling videography, we showcase TeamLease's commitment to empowering talent, driving workplace innovation, and transforming India's employment and skilling ecosystem.",
-    tagline: "Empowering Talent, Driving Workplace Innovation",
+    about: "TeamLease is one of India's leading people supply chain companies, renowned for connecting businesses with skilled talent through staffing, recruitment, and workforce solutions. A Fortune India 500 company listed on the NSE & BSE, TeamLease has empowered millions of careers and thousands of employers across the country, continuing to set benchmarks in employment, employability, and ease of doing business, truly Putting India to Work.",
+    ourWork: "Glamour Photographics partnered with TeamLease to deliver premium corporate photography that reflects the brand's commitment to excellence. From capturing dynamic workplace moments to creating polished visual content, our work was crafted to uphold the professionalism, energy, and trusted identity synonymous with the TeamLease brand.",
+    tagline: "Driven by People. Captured with Purpose.",
     videos: [],
     slug: "teamlease"
   }

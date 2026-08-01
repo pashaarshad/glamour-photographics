@@ -74,6 +74,9 @@ export default function ClientPage({ params }) {
   } else if (clientSlug === 'tcs') {
     featuredImages = ['/images/Clients/tcs-inside-1.jpg', '/images/Clients/tcs-inside-2.jpg'];
     galleryImages = imagesMap['tcs'] || [];
+  } else if (clientSlug === 'teamlease') {
+    featuredImages = ['/images/Clients/teamlease-inside-1.jpg', '/images/Clients/teamlease-inside-2.jpg'];
+    galleryImages = imagesMap['teamlease'] || [];
   } else if (clientSlug === 'toyota') {
     featuredImages = ['/images/Clients/Toyata-inside-1.png', '/images/Clients/Toyata-inside-2.png'];
     galleryImages = [];
