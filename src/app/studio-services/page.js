@@ -55,7 +55,7 @@ export default function StudioServices() {
               <span className="italic text-[var(--gold)] font-medium">Every Need.</span>
             </h1>
             <p className="text-[14.5px] leading-[1.8] text-white/80 max-w-[620px] mt-[32px] font-medium">
-              From passport photos to professional headshots, photo restoration to album design — our studio offers a comprehensive range of precision services, all delivered with the quality Glamour Photographics is known for across four decades of service in Bengaluru.
+              From passport photos to professional headshots, photo restoration to frames, yearly books, and certificates — our studio offers a comprehensive range of precision services, all delivered with the quality Glamour Photographics is known for across four decades of service in Bengaluru.
             </p>
           </div>
         </div>
@@ -197,37 +197,69 @@ export default function StudioServices() {
         </div>
       </section>
 
-      {/* ─── SECTION 4: ALBUM DESIGN (STACKED) ─── */}
-      <section id="album-design" className="px-[5%] md:px-[8%] py-[80px] max-w-[1400px] mx-auto text-center reveal">
-        <div className="max-w-[900px] mx-auto mb-[40px]">
-          <h2 className="font-serif text-[clamp(24px,3.5vw,36px)] text-[#0A0A0A] uppercase tracking-wide font-normal">
-            album design
-          </h2>
-          <div className="w-[80px] h-[1px] bg-[var(--gold)] mx-auto relative my-[18px]">
-            <div className="w-[4px] h-[4px] bg-[var(--gold)] rotate-45 absolute left-[38px] -top-[1.5px]"></div>
+      {/* ─── SECTION 4: FRAMES, YEARLY BOOKS & CORPORATE CERTIFICATES ─── */}
+      <section id="frames-books-certificates" className="px-[5%] md:px-[8%] py-[80px] max-w-[1400px] mx-auto reveal border-t border-[rgba(10,10,10,0.06)]">
+        <div className="flex flex-col lg:flex-row items-center gap-[60px] lg:gap-[100px]">
+          
+          {/* Image Column */}
+          <div className="w-full lg:w-1/2 rounded-sm overflow-hidden border border-[rgba(10,10,10,0.06)] shadow-xl bg-white/40 backdrop-blur-[1px] p-[12px] group">
+            <img
+              src="/images/frames-services.png"
+              alt="Premium Frames, Yearly Books and Certificates Showcase"
+              className="w-full h-auto object-cover transition-transform duration-[1200ms] group-hover:scale-102"
+            />
           </div>
-          <p className="text-[14px] md:text-[14.5px] leading-[1.8] text-[var(--muted)] font-light max-w-[700px] mx-auto">
-            We design and produce premium photo albums that serve as lasting keepsakes of your most important moments. Every layout is carefully crafted to complement your photos, tell a cohesive story, and reflect your personal aesthetic — printed on archival-quality materials.
-          </p>
-        </div>
 
-        {/* Centered Image */}
-        <div className="max-w-[1000px] mx-auto rounded-sm overflow-hidden border border-[rgba(10,10,10,0.06)] shadow-md bg-white/40 backdrop-blur-[1px] p-[16px] mb-[40px] group">
-          <img
-            src="/images/album-services.jpg"
-            alt="Custom Premium Album Design Spread"
-            className="w-full h-auto object-contain transition-transform duration-[1200ms] group-hover:scale-[1.01]"
-          />
-        </div>
+          {/* Content Column */}
+          <div className="w-full lg:w-1/2 text-left">
+            <span className="text-[10px] tracking-[0.4em] uppercase text-[var(--gold)] mb-[12px] block font-semibold">Corporate Add-Ons</span>
+            <h2 className="font-serif text-[clamp(24px,3.5vw,36px)] text-[#0A0A0A] uppercase tracking-wide font-normal leading-[1.2]">
+              Frames, Yearly Books &<br />Corporate Certificates
+            </h2>
+            <div className="w-[80px] h-[1px] bg-[var(--gold)] relative my-[18px]">
+              <div className="w-[4px] h-[4px] bg-[var(--gold)] rotate-45 absolute left-[38px] -top-[1.5px]"></div>
+            </div>
+            <p className="text-[14px] md:text-[14.5px] leading-[1.8] text-[var(--muted)] font-light mb-[32px]">
+              Beyond premium photography, we offer curated add-on services to help corporates preserve and present their moments of excellence.
+            </p>
 
-        {/* Large Premium Call-To-Action Button */}
-        <div>
-          <Link
-            href="/contact"
-            className="inline-flex items-center justify-center gap-[10px] bg-[var(--gold)] text-white text-[11px] tracking-[0.2em] uppercase font-bold py-[18px] px-[44px] hover:bg-[var(--light)] hover:text-[var(--dark)] transition-all duration-300 cursor-none rounded-full shadow-md"
-          >
-            click here to design your first album
-          </Link>
+            <div className="space-y-[24px]">
+              <div>
+                <h4 className="text-[14.5px] tracking-[0.1em] uppercase text-[var(--light)] font-bold mb-[8px] flex items-center gap-[8px]">
+                  <span className="w-[6px] h-[6px] rounded-full bg-[var(--gold)]"></span>
+                  Frames
+                </h4>
+                <p className="text-[13.5px] leading-[1.7] text-[var(--muted)] font-light pl-[14px]">
+                  Elegantly designed photo frames for leadership portraits, team pictures, and milestone events, crafted to add a premium, lasting touch to every captured moment.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="text-[14.5px] tracking-[0.1em] uppercase text-[var(--light)] font-bold mb-[8px] flex items-center gap-[8px]">
+                  <span className="w-[6px] h-[6px] rounded-full bg-[var(--gold)]"></span>
+                  Yearly Books
+                </h4>
+                <p className="text-[13.5px] leading-[1.7] text-[var(--muted)] font-light pl-[14px]">
+                  Beautifully compiled coffee-table style yearly books documenting a year's worth of achievements, culture, and growth, a keepsake that tells your company's story frame by frame.
+                </p>
+              </div>
+
+              <div>
+                <h4 className="text-[14.5px] tracking-[0.1em] uppercase text-[var(--light)] font-bold mb-[8px] flex items-center gap-[8px]">
+                  <span className="w-[6px] h-[6px] rounded-full bg-[var(--gold)]"></span>
+                  Corporate Certificates
+                </h4>
+                <p className="text-[13.5px] leading-[1.7] text-[var(--muted)] font-light pl-[14px]">
+                  Thoughtfully designed and printed certificates for recognition, awards, and appreciation ceremonies, ensuring every achievement is honored with a polished, professional finish that reflects your brand's identity.
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-[40px] pt-[24px] border-t border-[rgba(10,10,10,0.06)] italic text-[14px] text-[var(--muted)] font-serif tracking-wide">
+              “Preserving your milestones with the same precision as our photography.”
+            </div>
+          </div>
+
         </div>
       </section>
 
