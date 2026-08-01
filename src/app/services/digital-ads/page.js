@@ -94,7 +94,7 @@ export default function DigitalAdsServices() {
             </Link>
           </div>
           <div className="relative aspect-video w-full rounded-[16px] overflow-hidden border border-[rgba(10,10,10,0.06)] group shadow-md bg-black">
-            <img src="/images/services/Digital ads herp11.png" alt="Scroll Stopping Concept" className="w-full h-full object-cover opacity-100 transition-transform duration-[1200ms] group-hover:scale-103" />
+            <img src="/images/our-services-img-for-outter/DIGITAL ADS-inside-img.png" alt="Scroll Stopping Concept" className="w-full h-full object-cover opacity-100 transition-transform duration-[1200ms] group-hover:scale-103" />
           </div>
         </div>
       </section>
