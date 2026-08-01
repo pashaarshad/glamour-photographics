@@ -63,6 +63,7 @@ export default function CorporatePortfolio() {
     else if (slug === 'toyota') logo = '/logo-clients/toyota.png';
     else if (slug === 'pai') logo = '/logo-clients/pai.png';
     else if (slug === 'jlr') logo = '/logo-clients/JLR_Primary_logo_BLK.jpg';
+    else if (slug === 'teamlease') logo = '/logo-clients/TEAMLEASE LOGO.png';
     
     // Custom bg overrides from public/images/Clients
     let bg = images[0] || '/images/our_portfolio/cp-7.jpg';

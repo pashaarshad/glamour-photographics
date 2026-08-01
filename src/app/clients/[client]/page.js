@@ -38,6 +38,20 @@ export default function ClientPage({ params }) {
 
   // Normalize slug matching for tata_elxsi underscores vs hyphens
   const mapSlug = clientSlug === 'tata-elxsi' ? 'tata_elxsi' : clientSlug;
+
+  const getClientLogo = (slug) => {
+    if (slug === 'cii') return '/logo-clients/cii.png';
+    if (slug === 'cgi') return '/logo-clients/cgi.png';
+    if (slug === 'presidency') return '/logo-clients/presidency.png';
+    if (slug === 'tata-elxsi') return '/logo-clients/tata-elxsi.png';
+    if (slug === 'tcs') return '/logo-clients/tcs.png';
+    if (slug === 'rtx') return '/logo-clients/rtx.png';
+    if (slug === 'toyota') return '/logo-clients/toyota.png';
+    if (slug === 'pai') return '/logo-clients/pai.png';
+    if (slug === 'jlr') return '/logo-clients/JLR_Primary_logo_BLK.jpg';
+    if (slug === 'teamlease') return '/logo-clients/TEAMLEASE LOGO.png';
+    return null;
+  };
   
   // Set fallback images in case client does not have a mapped folder
   const fallbackImages = [
@@ -103,6 +117,15 @@ export default function ClientPage({ params }) {
             <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] mb-[16px] block font-semibold">
               Client Overview
             </span>
+            {getClientLogo(clientSlug) && (
+              <div className="mb-[24px] bg-white/5 inline-block p-[16px] rounded-[12px] border border-white/10">
+                <img 
+                  src={getClientLogo(clientSlug)} 
+                  alt={`${client.name} Logo`}
+                  className="max-h-[50px] md:max-h-[60px] object-contain pointer-events-none select-none"
+                />
+              </div>
+            )}
             <h1 className="font-serif text-[clamp(36px,5vw,60px)] font-light leading-[1.1] tracking-[-0.02em] text-[var(--light)] mb-[32px]">
               {client.name}
             </h1>

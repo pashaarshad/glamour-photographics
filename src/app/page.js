@@ -1155,7 +1155,7 @@ export default function Home() {
               { name: "CII", slug: "cii", logo: "/logo-clients/cii.png" },
               { name: "CGI", slug: "cgi", logo: "/logo-clients/cgi.png" },
               { name: "Jaguar and Land Rover", slug: "jlr", logo: "/logo-clients/JLR_Primary_logo_BLK.jpg" },
-              { name: "RTX", slug: "rtx", logo: "/logo-clients/rtx.png" },
+              { name: "TeamLease", slug: "teamlease", logo: "/logo-clients/TEAMLEASE LOGO.png" },
               { name: "TCS", slug: "tcs", logo: "/logo-clients/tcs.png" },
               { name: "TATA ELXSI", slug: "tata-elxsi", logo: "/logo-clients/tata-elxsi.png" },
               { name: "Presidency University", slug: "presidency", logo: "/logo-clients/presidency.png" },
