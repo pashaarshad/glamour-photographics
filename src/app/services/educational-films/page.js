@@ -90,7 +90,7 @@ export default function EducationalFilmsServices() {
             </Link>
           </div>
           <div className="relative aspect-video w-full rounded-[16px] overflow-hidden border border-[rgba(10,10,10,0.06)] group shadow-md bg-black">
-            <img src="/images/presidency/highlights_SKV00290.jpg" alt="Student Active Learning" className="w-full h-full object-cover opacity-100 transition-transform duration-[1200ms] group-hover:scale-103" />
+            <img src="/images/presidency/PANA9415.jpg" alt="Student Active Learning" className="w-full h-full object-cover opacity-100 transition-transform duration-[1200ms] group-hover:scale-103" />
           </div>
         </div>
       </section>
