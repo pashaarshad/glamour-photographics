@@ -62,17 +62,17 @@ export default function About() {
             </div>
           </div>
           
-          {/* Right Column: Hero Double-Exposure Image */}
-          <div className="lg:col-span-7 relative reveal flex items-center justify-center">
+          {/* Right Column: Hero Image */}
+          <div className="lg:col-span-7 relative reveal flex items-center justify-center min-h-[350px] md:min-h-[500px] lg:self-stretch overflow-hidden rounded-[16px] border border-white/5 shadow-2xl">
             <img 
-              src="/images/about-hero-double-exposure.png" 
-              alt="A Legacy in Frames Double Exposure" 
-              className="w-full h-auto max-h-[650px] object-contain z-10" 
+              src="/images/about-us-here-new.png" 
+              alt="A Legacy in Frames" 
+              className="absolute inset-0 w-full h-full object-cover z-10" 
             />
             {/* Badge Overlay */}
-            <div className="absolute bottom-[35px] right-[8%] bg-[#FAF8F4] border-2 border-[var(--gold)] px-[24px] py-[14px] shadow-[0_8px_32px_rgba(0,0,0,0.06)] rounded-[2px] z-20">
+            <div className="absolute bottom-[35px] right-[8%] bg-black/60 backdrop-blur-md border border-[var(--gold)] px-[24px] py-[14px] shadow-[0_8px_32px_rgba(0,0,0,0.3)] rounded-[8px] z-20">
               <span className="font-serif text-[17px] tracking-[0.12em] uppercase text-[var(--gold)] font-bold block mb-[6px] text-center leading-none">Est. 1982</span>
-              <span className="text-[9px] tracking-[0.18em] uppercase text-[var(--light)] font-extrabold block text-center leading-none">Bengaluru, India</span>
+              <span className="text-[9px] tracking-[0.18em] uppercase text-white font-extrabold block text-center leading-none">Bengaluru, India</span>
             </div>
           </div>
         </div>
