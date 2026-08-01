@@ -75,6 +75,7 @@ export default function CorporatePortfolio() {
     else if (slug === 'toyota') bg = '/images/Clients/Toyata-outside-for-card.png';
     else if (slug === 'teamlease') bg = '/images/Clients/teamlease-outside-for-card.jpg';
     else if (slug === 'presidency') bg = '/images/Clients/presidency-outside-for-card.jpg';
+    else if (slug === 'tata-elxsi') bg = '/images/Clients/tata-elxsi-outside-for-card.jpg';
 
     // Thumbnails
     let thumbnails = images.slice(1, 4);
@@ -84,6 +85,7 @@ export default function CorporatePortfolio() {
     else if (slug === 'toyota') thumbnails = ['/images/Clients/Toyata-inside-1.png', '/images/Clients/Toyata-inside-2.png'];
     else if (slug === 'teamlease') thumbnails = ['/images/Clients/teamlease-inside-1.jpg', '/images/Clients/teamlease-inside-2.jpg'];
     else if (slug === 'presidency') thumbnails = ['/images/Clients/presidency-inside-1.jpg', '/images/Clients/presidency-inside-2.jpg'];
+    else if (slug === 'tata-elxsi') thumbnails = ['/images/Clients/tata-elxsi-inside-1.jpg', '/images/Clients/tata-elxsi-inside-2.jpg'];
 
     return {
       bg,
