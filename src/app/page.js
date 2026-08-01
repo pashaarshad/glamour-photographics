@@ -1169,7 +1169,9 @@ export default function Home() {
                 <img 
                   src={client.logo} 
                   alt={client.name} 
-                  className="max-h-[55px] md:max-h-[70px] max-w-full object-contain filter hover:brightness-95 transition-all duration-300 pointer-events-none select-none" 
+                  className={`max-w-full object-contain filter hover:brightness-95 transition-all duration-300 pointer-events-none select-none ${
+                    client.slug === 'jlr' ? 'max-h-[38px] md:max-h-[48px]' : 'max-h-[55px] md:max-h-[70px]'
+                  }`} 
                 />
               </Link>
             ))}
