@@ -1,6 +1,6 @@
 export const clientsData = {
   cii: {
-    name: "Confederation of Indian Industry (CII)",
+    name: "Confederation of Indian Industry CII",
     about: "The Confederation of Indian Industry (CII) is India’s leading industry body, shaping the nation’s growth since 1895. With over 9,000 members and a presence across the globe, CII drives policy, innovation, sustainability, and competitiveness—bridging industry, government, and communities to build a stronger future.",
     ourWork: "For more than 40 years, Glamour Photographics has been a trusted visual partner to CII. From high-impact event coverage to powerful storytelling videos, we’ve helped them showcase their vision of transforming knowledge into innovation, entrepreneurship, and economic growth.",
     tagline: "Four Decades of Capturing Industry Leadership",
@@ -136,11 +136,19 @@ export const clientsData = {
     slug: "pai"
   },
   jlr: {
-    name: "Jaguar Land Rover",
+    name: "Jaguar and Land Rover",
     about: "Jaguar Land Rover is one of the world's leading luxury automotive manufacturers, renowned for combining British craftsmanship, advanced engineering, and cutting-edge technology. With iconic brands including Range Rover, Defender, Discovery, and Jaguar, the company continues to set global benchmarks in performance, design, and innovation.",
     ourWork: "Glamour Photographics partnered with Jaguar Land Rover to deliver premium corporate photography that reflects the brand's commitment to excellence. From capturing sophisticated automotive experiences to creating polished visual content, our work was crafted to uphold the precision, elegance, and premium identity synonymous with the Jaguar Land Rover brand.",
     tagline: "Driven by Innovation. Captured with Precision.",
     videos: [],
     slug: "jlr"
+  },
+  teamlease: {
+    name: "TeamLease Services",
+    about: "TeamLease Services is India's leading human resource services company, established in 2002. With a presence across the nation, TeamLease offers a comprehensive suite of solutions including temporary staffing, permanent recruitment, payroll management, and regulatory compliance. Over the past two decades, TeamLease has played a pivotal role in shaping India's formal employment landscape, putting millions of people to work and partnering with thousands of corporate clients to drive business growth.",
+    ourWork: "Glamour Photographics has partnered with TeamLease to document their corporate milestones, leadership conferences, and employee engagement initiatives. Through high-impact corporate photography and storytelling videography, we showcase TeamLease's commitment to empowering talent, driving workplace innovation, and transforming India's employment and skilling ecosystem.",
+    tagline: "Empowering Talent, Driving Workplace Innovation",
+    videos: [],
+    slug: "teamlease"
   }
 };

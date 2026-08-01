@@ -10,22 +10,25 @@ export default function PortfolioPage() {
   const [visibleLimit, setVisibleLimit] = useState(12);
   const [allSectionExpanded, setAllSectionExpanded] = useState(false);
 
-  const SCREENSHOT_FIRST_15_IMAGES = [
-    '/images/our_portfolio/political/NMK_0047.JPG',
-    '/images/our_portfolio/political/IMG_0008.JPG',
-    '/images/our_portfolio/political/11.jpg',
-    '/images/our_portfolio/event/NMK_0002.jpg',
-    '/images/our_portfolio/political/NMK_0337.JPG',
-    '/images/our_portfolio/corporate/NMK_0219.JPG',
-    '/images/our_portfolio/corporate/_01A0411.jpg',
-    '/images/our_portfolio/corporate/_01A0760.jpg',
-    '/images/our_portfolio/corporate/rtx-1.jpg',
-    '/images/our_portfolio/political/NMK_0203.JPG',
-    '/images/our_portfolio/corporate/_01A0956.jpg',
-    '/images/our_portfolio/corporate/iqvia.jpg',
-    '/images/our_portfolio/corporate/_AMZ0023.JPG',
-    '/images/our_portfolio/celebrity/dilquar.jpg',
-    '/images/our_portfolio/corporate/SKV00446.jpg'
+  const SCREENSHOT_FIRST_18_IMAGES = [
+    '/images/interactive_showcase/1.jpeg',
+    '/images/interactive_showcase/2.JPG',
+    '/images/interactive_showcase/3.JPG',
+    '/images/interactive_showcase/4.jpg',
+    '/images/interactive_showcase/5.jpg',
+    '/images/interactive_showcase/6.JPG',
+    '/images/interactive_showcase/7.JPG',
+    '/images/interactive_showcase/8.jpg',
+    '/images/interactive_showcase/9.JPG',
+    '/images/interactive_showcase/10.jpg',
+    '/images/interactive_showcase/11.jpeg',
+    '/images/interactive_showcase/12.jpg',
+    '/images/interactive_showcase/13.jpg',
+    '/images/interactive_showcase/14.JPG',
+    '/images/interactive_showcase/15.jpg',
+    '/images/interactive_showcase/16.jpg',
+    '/images/interactive_showcase/17.jpg',
+    '/images/interactive_showcase/18.jpg'
   ];
 
 
@@ -227,20 +230,34 @@ export default function PortfolioPage() {
 
     const portfolioImages = {
     'ALL': [
+      '/images/interactive_showcase/1.jpeg',
+      '/images/interactive_showcase/2.JPG',
+      '/images/interactive_showcase/3.JPG',
+      '/images/interactive_showcase/4.jpg',
+      '/images/interactive_showcase/5.jpg',
+      '/images/interactive_showcase/6.JPG',
+      '/images/interactive_showcase/7.JPG',
+      '/images/interactive_showcase/8.jpg',
+      '/images/interactive_showcase/9.JPG',
+      '/images/interactive_showcase/10.jpg',
+      '/images/interactive_showcase/11.jpeg',
+      '/images/interactive_showcase/12.jpg',
+      '/images/interactive_showcase/13.jpg',
+      '/images/interactive_showcase/14.JPG',
+      '/images/interactive_showcase/15.jpg',
+      '/images/interactive_showcase/16.jpg',
+      '/images/interactive_showcase/17.jpg',
+      '/images/interactive_showcase/18.jpg',
       '/images/our_portfolio/event/NMK_0002.jpg',
       '/images/our_portfolio/event/NMK_0018.jpg',
-      '/images/our_portfolio/event/NMK_0047.JPG',
       '/images/our_portfolio/event/NMK_0130.JPG',
       '/images/our_portfolio/event/NMK_0209.JPG',
       '/images/our_portfolio/event/NMK_0315.JPG',
-      '/images/our_portfolio/event/WhatsApp Image 2026-02-09 at 8.29.33 PM (1).jpg',
       '/images/our_portfolio/event/_NMK2325.jpg',
       '/images/our_portfolio/event/_NMK2368.jpg',
       '/images/our_portfolio/event/_NMK2441.jpg',
       '/images/our_portfolio/event/_NMK2857.jpg',
       '/images/our_portfolio/event/_NMK3555.jpg',
-      '/images/our_portfolio/event/cp-12.jpg',
-      '/images/our_portfolio/event/highlights_NMKL0031.jpg',
       '/images/our_portfolio/event/highlights_SKV00387.jpg',
       '/images/our_portfolio/corporate/101A0087.jpg',
       '/images/our_portfolio/corporate/NMKL5612.jpg',
@@ -256,14 +273,9 @@ export default function PortfolioPage() {
       '/images/our_portfolio/corporate/NMK_0219.JPG',
       '/images/our_portfolio/corporate/NMK_0290.JPG',
       '/images/our_portfolio/corporate/NMK_0315.JPG',
-      '/images/our_portfolio/corporate/NMK_0457.JPG',
-      '/images/our_portfolio/corporate/PRS02780.jpg',
-      '/images/our_portfolio/corporate/SKV00446.jpg',
-      '/images/our_portfolio/corporate/_01A0411.jpg',
       '/images/our_portfolio/corporate/_01A0476.jpg',
       '/images/our_portfolio/corporate/_01A0705.jpg',
       '/images/our_portfolio/corporate/_01A0712.jpg',
-      '/images/our_portfolio/corporate/_01A0748.jpg',
       '/images/our_portfolio/corporate/_01A0760.jpg',
       '/images/our_portfolio/corporate/_01A0809.jpg',
       '/images/our_portfolio/corporate/_01A0871.jpg',
@@ -277,7 +289,6 @@ export default function PortfolioPage() {
       '/images/our_portfolio/corporate/rtx-1.jpg',
       '/images/our_portfolio/celebrity/3C1A0782.jpg',
       '/images/our_portfolio/celebrity/3C1A0823.jpg',
-      '/images/our_portfolio/celebrity/DSC_0204.JPG',
       '/images/our_portfolio/celebrity/IMG0_0186.JPG',
       '/images/our_portfolio/celebrity/IMG_0006.JPG',
       '/images/our_portfolio/celebrity/IMG_00122.JPG',
@@ -306,7 +317,6 @@ export default function PortfolioPage() {
       '/images/our_portfolio/celebrity/VED03320.jpg',
       '/images/our_portfolio/celebrity/VED03339.jpg',
       '/images/our_portfolio/celebrity/celeb.jpg',
-      '/images/our_portfolio/celebrity/dilquar.jpg',
       '/images/our_portfolio/celebrity/highlights_3C1A0761.jpg',
       '/images/our_portfolio/celebrity/highlights_3C1A0775.jpg',
       '/images/our_portfolio/celebrity/highlights_3C1A0841.jpg',
@@ -317,16 +327,10 @@ export default function PortfolioPage() {
       '/images/our_portfolio/documentary/NMKL0128.JPG',
       '/images/our_portfolio/documentary/highlights_SKV00290.jpg',
       '/images/our_portfolio/documentary/highlights_SKV00387.jpg',
-      '/images/our_portfolio/political/11.jpg',
       '/images/our_portfolio/political/22.jpg',
-      '/images/our_portfolio/political/Bill clinton.jpg',
       '/images/our_portfolio/political/Cameroon.jpg',
-      '/images/our_portfolio/political/IMG_0008.JPG',
       '/images/our_portfolio/political/IMG_0029.JPG',
-      '/images/our_portfolio/political/NMK_0047.JPG',
       '/images/our_portfolio/political/NMK_0199.JPG',
-      '/images/our_portfolio/political/NMK_0203.JPG',
-      '/images/our_portfolio/political/NMK_0337.JPG',
       '/images/our_portfolio/political/NMK_0402.JPG',
       '/images/our_portfolio/political/NMK_0463.JPG',
       '/images/our_portfolio/political/highlights_IMG_0069.jpg',
@@ -355,7 +359,7 @@ export default function PortfolioPage() {
       '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.21.09 PM.jpg',
       '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.21.32 PM.jpg',
       '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.21.43 PM.jpg',
-      '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.22.01 PM.jpg',
+      '/images/our_portfolio/outdoor/highlights_Screenshot 2024-11-30 at 1.22.01 PM.jpg'
     ],
     'EVENT': [
       '/images/our_portfolio/event/NMK_0002.jpg',
@@ -544,7 +548,7 @@ export default function PortfolioPage() {
   const getActivePhotos = () => {
     let images = [];
     if (activeTab === 'ALL') {
-      images = allSectionExpanded ? (portfolioImages['ALL'] || []) : SCREENSHOT_FIRST_15_IMAGES;
+      images = allSectionExpanded ? (portfolioImages['ALL'] || []) : SCREENSHOT_FIRST_18_IMAGES;
     }
     else if (activeTab === 'EVENT') images = portfolioImages['EVENT'] || [];
     else if (activeTab === 'CORPORATE') images = portfolioImages['CORPORATE'] || [];
@@ -670,9 +674,9 @@ export default function PortfolioPage() {
           <div className="w-full flex flex-col gap-[24px]">
             {activeTab === 'ALL' ? (
               <>
-                {/* INITIAL 15 HORIZONTAL PHOTOS (5 ROWS x 3 COLUMNS) */}
+                {/* INITIAL 18 HORIZONTAL PHOTOS (6 ROWS x 3 COLUMNS) */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[24px] w-full reveal">
-                  {SCREENSHOT_FIRST_15_IMAGES.map((src, idx) => (
+                  {SCREENSHOT_FIRST_18_IMAGES.map((src, idx) => (
                     <div 
                       key={`init-${src}-${idx}`}
                       onClick={() => setActivePhotoUrl(src)}
@@ -713,11 +717,11 @@ export default function PortfolioPage() {
                   </div>
                 )}
 
-                {/* EXPANDED SECTION AFTER 15TH PHOTO: RATIO-AWARE GRID */}
+                {/* EXPANDED SECTION AFTER 18TH PHOTO: RATIO-AWARE GRID */}
                 {allSectionExpanded && (
                   <div className="mt-[24px] w-full">
                     {(() => {
-                      const remaining = (portfolioImages['ALL'] || []).filter(src => !SCREENSHOT_FIRST_15_IMAGES.includes(src) && !src.includes('/outdoor/'));
+                      const remaining = (portfolioImages['ALL'] || []).filter(src => !SCREENSHOT_FIRST_18_IMAGES.includes(src) && !src.includes('/outdoor/'));
                       const verts = remaining.filter(src => VERTICAL_IMAGES.includes(src));
                       const horizs = remaining.filter(src => !VERTICAL_IMAGES.includes(src));
 

@@ -32,18 +32,19 @@ export default function CorporatePortfolio() {
   }, []);
 
   const featuredClients = [
-    { name: 'CII', slug: 'cii', desc: 'Four Decades of Industry Leadership', index: '01' },
-    { name: 'CGI', slug: 'cgi', desc: 'Global-Local Digital Engine', index: '02' },
-    { name: 'Presidency University', slug: 'presidency', desc: 'Framing Learning, Celebrating Legacy', index: '03' },
-    { name: 'Tata Elxsi', slug: 'tata-elxsi', desc: 'Design Led Innovation', index: '04' },
-    { name: 'Jaguar Land Rover', slug: 'jlr', desc: 'Driven by Innovation. Captured with Precision.', index: '05' },
-    { name: 'RTX', slug: 'rtx', desc: 'Spotlighting Aerospace Leadership', index: '06' }
+    { name: 'Confederation of Indian Industry CII', slug: 'cii', desc: 'Four Decades of Industry Leadership', index: '01' },
+    { name: 'Jaguar and Land Rover', slug: 'jlr', desc: 'Driven by Innovation. Captured with Precision.', index: '02' },
+    { name: 'TCS', slug: 'tcs', desc: 'Framing the Future of Technology', index: '03' },
+    { name: 'TeamLease', slug: 'teamlease', desc: 'Empowering Talent, Driving Workplace Innovation', index: '04' },
+    { name: 'Presidency University', slug: 'presidency', desc: 'Framing Learning, Celebrating Legacy', index: '05' },
+    { name: 'Tata Elxsi', slug: 'tata-elxsi', desc: 'Design Led Innovation', index: '06' }
   ];
 
   const otherClients = [
-    { name: 'TCS', slug: 'tcs', desc: 'Framing the Future of Technology' },
-    { name: 'PAI International', slug: 'pai', desc: 'Showcasing Retail Innovation' },
-    { name: 'Toyota Kirloskar', slug: 'toyota', desc: 'Driving Change' }
+    { name: 'CGI', slug: 'cgi', desc: 'Global-Local Digital Engine' },
+    { name: 'Toyota', slug: 'toyota', desc: 'Driving Change' },
+    { name: 'RTX', slug: 'rtx', desc: 'Spotlighting Aerospace Leadership' },
+    { name: 'PAI', slug: 'pai', desc: 'Showcasing Retail Innovation' }
   ];
 
   // Helper to extract background poster, thumbnails, and logo for each client card
@@ -61,6 +62,7 @@ export default function CorporatePortfolio() {
     else if (slug === 'rtx') logo = '/logo-clients/rtx.png';
     else if (slug === 'toyota') logo = '/logo-clients/toyota.png';
     else if (slug === 'pai') logo = '/logo-clients/pai.png';
+    else if (slug === 'jlr') logo = '/logo-clients/JLR_Primary_logo_BLK.jpg';
     
     // Custom bg overrides from public/images/Clients
     let bg = images[0] || '/images/our_portfolio/cp-7.jpg';
