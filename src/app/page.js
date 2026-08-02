@@ -853,36 +853,36 @@ export default function Home() {
 
           {/* Right Column Grid */}
           <div className="grid grid-cols-2 gap-[2px] bg-[rgba(10,10,10,0.08)] stagger-children border border-[rgba(10,10,10,0.06)]">
-            <div className="p-[40px] bg-[var(--dark)] hover:bg-[rgba(10,10,10,0.02)] transition-colors duration-300 relative group">
+            <div className="p-[24px] sm:p-[32px] md:p-[40px] bg-[var(--dark)] hover:bg-[rgba(10,10,10,0.02)] transition-colors duration-300 relative group">
               <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-[var(--gold)] transition-all duration-300 group-hover:w-full"></div>
-              <div className="font-serif text-[64px] md:text-[72px] line-height-[1] text-[var(--light)] font-light flex items-baseline lining-nums">
-                <span>{experienceCount}</span><span className="text-[var(--gold)] font-medium text-[40px] ml-[2px]">+</span>
+              <div className="font-serif text-[clamp(38px,6vw,72px)] leading-[1] text-[var(--light)] font-light flex items-baseline lining-nums">
+                <span>{experienceCount}</span><span className="text-[var(--gold)] font-medium text-[clamp(24px,3.5vw,40px)] ml-[2px]">+</span>
               </div>
-              <div className="text-[10px] tracking-[0.25em] uppercase text-[var(--muted)] mt-[10px] font-medium">Years of Experience</div>
+              <div className="text-[9px] sm:text-[10px] tracking-[0.25em] uppercase text-[var(--muted)] mt-[10px] font-medium">Years of Experience</div>
             </div>
             
-            <div className="p-[40px] bg-[var(--dark)] hover:bg-[rgba(10,10,10,0.02)] transition-colors duration-300 relative group">
+            <div className="p-[24px] sm:p-[32px] md:p-[40px] bg-[var(--dark)] hover:bg-[rgba(10,10,10,0.02)] transition-colors duration-300 relative group">
               <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-[var(--gold)] transition-all duration-300 group-hover:w-full"></div>
-              <div className="font-serif text-[64px] md:text-[72px] line-height-[1] text-[var(--light)] font-light flex items-baseline lining-nums">
-                <span>{clientsCount}</span><span className="text-[var(--gold)] font-medium text-[40px] ml-[2px]">+</span>
+              <div className="font-serif text-[clamp(38px,6vw,72px)] leading-[1] text-[var(--light)] font-light flex items-baseline lining-nums">
+                <span>{clientsCount}</span><span className="text-[var(--gold)] font-medium text-[clamp(24px,3.5vw,40px)] ml-[2px]">+</span>
               </div>
-              <div className="text-[10px] tracking-[0.25em] uppercase text-[var(--muted)] mt-[10px] font-medium">Clients Served</div>
+              <div className="text-[9px] sm:text-[10px] tracking-[0.25em] uppercase text-[var(--muted)] mt-[10px] font-medium">Clients Served</div>
             </div>
  
-            <div className="p-[40px] bg-[var(--dark)] hover:bg-[rgba(10,10,10,0.02)] transition-colors duration-300 relative group">
+            <div className="p-[24px] sm:p-[32px] md:p-[40px] bg-[var(--dark)] hover:bg-[rgba(10,10,10,0.02)] transition-colors duration-300 relative group">
               <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-[var(--gold)] transition-all duration-300 group-hover:w-full"></div>
-              <div className="font-serif text-[64px] md:text-[72px] line-height-[1] text-[var(--light)] font-light flex items-baseline lining-nums">
-                <span>{projectsCount}</span><span className="text-[var(--gold)] font-medium text-[40px] ml-[2px]">+</span>
+              <div className="font-serif text-[clamp(38px,6vw,72px)] leading-[1] text-[var(--light)] font-light flex items-baseline lining-nums">
+                <span>{projectsCount}</span><span className="text-[var(--gold)] font-medium text-[clamp(24px,3.5vw,40px)] ml-[2px]">+</span>
               </div>
-              <div className="text-[10px] tracking-[0.25em] uppercase text-[var(--muted)] mt-[10px] font-medium">Corporate Projects</div>
+              <div className="text-[9px] sm:text-[10px] tracking-[0.25em] uppercase text-[var(--muted)] mt-[10px] font-medium">Corporate Projects</div>
             </div>
  
-            <div className="p-[40px] bg-[var(--dark)] hover:bg-[rgba(10,10,10,0.02)] transition-colors duration-300 relative group">
+            <div className="p-[24px] sm:p-[32px] md:p-[40px] bg-[var(--dark)] hover:bg-[rgba(10,10,10,0.02)] transition-colors duration-300 relative group">
               <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-[var(--gold)] transition-all duration-300 group-hover:w-full"></div>
-              <div className="font-serif text-[64px] md:text-[72px] line-height-[1] text-[var(--light)] font-light flex items-baseline lining-nums">
-                <span>{weddingsCount}</span><span className="text-[var(--gold)] font-medium text-[40px] ml-[2px]">+</span>
+              <div className="font-serif text-[clamp(38px,6vw,72px)] leading-[1] text-[var(--light)] font-light flex items-baseline lining-nums">
+                <span>{weddingsCount}</span><span className="text-[var(--gold)] font-medium text-[clamp(24px,3.5vw,40px)] ml-[2px]">+</span>
               </div>
-              <div className="text-[10px] tracking-[0.25em] uppercase text-[var(--muted)] mt-[10px] font-medium">Weddings Captured</div>
+              <div className="text-[9px] sm:text-[10px] tracking-[0.25em] uppercase text-[var(--muted)] mt-[10px] font-medium">Weddings Captured</div>
             </div>
           </div>
 
