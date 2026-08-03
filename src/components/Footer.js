@@ -107,9 +107,9 @@ export default function Footer() {
         <div className="flex flex-col gap-[16px]">
           <h4 className="font-serif text-[18px] text-[var(--gold)] mb-[8px]">Contact</h4>
           <ul className="flex flex-col gap-[12px] list-none">
-            <li><a href="tel:+919845003786" className="text-[12px] uppercase tracking-[0.1em] text-[rgba(255,255,255,0.75)] hover:text-[var(--gold)] transition-colors">+91 984 5003 786</a></li>
-            <li><a href="mailto:info@glamourphotographics.com" className="text-[12px] uppercase tracking-[0.1em] text-[rgba(255,255,255,0.75)] hover:text-[var(--gold)] transition-colors">Email Us</a></li>
-            <li><a href="https://wa.me/918971168868" target="_blank" rel="noopener" className="text-[12px] uppercase tracking-[0.1em] text-[rgba(255,255,255,0.75)] hover:text-[var(--gold)] transition-colors">WhatsApp</a></li>
+            <li><a href="tel:+919945590539" className="text-[12px] uppercase tracking-[0.1em] text-[rgba(255,255,255,0.75)] hover:text-[var(--gold)] transition-colors">+91 99455 90539</a></li>
+            <li><a href="tel:+919611251559" className="text-[12px] uppercase tracking-[0.1em] text-[rgba(255,255,255,0.75)] hover:text-[var(--gold)] transition-colors">+91 96112 51559</a></li>
+            <li><a href="mailto:Ashraf@glamourphotographics.com,Glamourphoto9@gmail.com" className="text-[12px] uppercase tracking-[0.1em] text-[rgba(255,255,255,0.75)] hover:text-[var(--gold)] transition-colors">Email Us</a></li>
           </ul>
         </div>
       </div>

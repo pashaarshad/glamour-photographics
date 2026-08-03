@@ -1743,7 +1743,7 @@ export default function Home() {
                 </svg>
               </span>
               <div>
-                <h3 className="font-serif text-[20px] text-[var(--light)] mb-[6px] font-light">Studio Headquarters</h3>
+                <h3 className="font-serif text-[20px] text-[var(--light)] mb-[6px] font-light">Studio Address</h3>
                 <p className="text-[13.5px] leading-[1.7] text-[var(--muted)] font-light">
                   No. 33, Castle Street,<br />
                   Ashok Nagar, Near Shoolay Circle,<br />
@@ -1769,9 +1769,14 @@ export default function Home() {
                         <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
                       </svg>
                     </span>
-                    <a href="mailto:info@glamourphotographics.com" className="text-[13.5px] text-[var(--muted)] hover:text-[var(--gold)] transition-colors">
-                      info@glamourphotographics.com
-                    </a>
+                    <div className="flex flex-col gap-[4px]">
+                      <a href="mailto:Ashraf@glamourphotographics.com" className="text-[13.5px] text-[var(--muted)] hover:text-[var(--gold)] transition-colors">
+                        Ashraf@glamourphotographics.com
+                      </a>
+                      <a href="mailto:Glamourphoto9@gmail.com" className="text-[13.5px] text-[var(--muted)] hover:text-[var(--gold)] transition-colors">
+                        Glamourphoto9@gmail.com
+                      </a>
+                    </div>
                   </div>
                   
                   <div className="flex items-center gap-[12px] group">
@@ -1780,20 +1785,14 @@ export default function Home() {
                         <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-2.2 2.2a15.045 15.045 0 0 1-6.59-6.59l2.2-2.21a.96.96 0 0 0 .25-1A11.56 11.56 0 0 1 8.56 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1C3 13.39 10.61 21 20 21c.55 0 1-.45 1-1v-3.62c0-.55-.45-1-1-1z" />
                       </svg>
                     </span>
-                    <a href="tel:+919845003786" className="text-[13.5px] text-[var(--muted)] hover:text-[var(--gold)] transition-colors">
-                      +91 98450 03786
-                    </a>
-                  </div>
-
-                  <div className="flex items-center gap-[12px] group">
-                    <span className="p-[8px] rounded-full bg-[rgba(37,211,102,0.06)] text-[#25D366] group-hover:scale-110 transition-transform">
-                      <svg className="w-[16px] h-[16px]" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12.004 2C6.48 2 2.001 6.479 2.001 12c0 1.892.527 3.661 1.446 5.178L2 22l4.97-1.393A9.927 9.927 0 0 0 12.004 22c5.522 0 10.002-4.477 10.002-10S17.526 2 12.004 2zm0 18.002c-1.666 0-3.23-.443-4.595-1.217l-.328-.188-3.05.855.87-2.977-.208-.33a7.95 7.95 0 0 1-1.218-4.148c0-4.412 3.59-8.002 8.001-8.002 4.414 0 8.004 3.59 8.004 8.002-.001 4.413-3.591 8.003-8.004 8.003z"/>
-                      </svg>
-                    </span>
-                    <a href="https://wa.me/918971168868" target="_blank" rel="noopener noreferrer" className="text-[13.5px] text-[var(--muted)] hover:text-[var(--gold)] transition-colors">
-                      +91 89711 68868 (WhatsApp)
-                    </a>
+                    <div className="flex flex-col gap-[4px]">
+                      <a href="tel:+919945590539" className="text-[13.5px] text-[var(--muted)] hover:text-[var(--gold)] transition-colors">
+                        +91 99455 90539
+                      </a>
+                      <a href="tel:+919611251559" className="text-[13.5px] text-[var(--muted)] hover:text-[var(--gold)] transition-colors">
+                        +91 96112 51559
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
