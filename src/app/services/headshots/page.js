@@ -80,8 +80,8 @@ export default function HeadshotsServices() {
               See the Portfolio in Action <ArrowRight className="w-[12px] h-[12px]" />
             </Link>
           </div>
-          <div className="relative aspect-video w-full rounded-[16px] overflow-hidden border border-[rgba(10,10,10,0.06)] group shadow-md bg-black">
-            <img src="/images/services/ashok_reddy_headshot.jpg" alt="Executive Headshot Setup" className="w-full h-full object-cover object-top opacity-100 transition-transform duration-[1200ms] group-hover:scale-103" />
+          <div className="relative aspect-[3/4] max-w-[380px] mx-auto lg:ml-auto w-full rounded-[16px] overflow-hidden border border-[rgba(10,10,10,0.06)] group shadow-lg bg-black">
+            <img src="/images/our_portfolio/headshots/6ba3a857-c93e-4299-8740-45da7ff9e3f2.jpg" alt="Executive Headshot Setup" className="w-full h-full object-cover object-top opacity-100 transition-transform duration-[1200ms] group-hover:scale-103" />
           </div>
         </div>
       </section>
