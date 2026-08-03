@@ -95,7 +95,7 @@ export default function CorporatePortfolio() {
   };
 
   return (
-    <main className="w-full bg-[var(--dark)] text-[var(--light)] min-h-screen pt-[160px] pb-[100px] cursor-none">
+    <main className="w-full bg-[var(--dark)] text-[var(--light)] min-h-screen pt-[160px] pb-[100px] ">
       <section className="px-[5%] md:px-[8%] max-w-[1400px] mx-auto">
         <div className="reveal mb-[80px]">
           <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] mb-[16px] block font-bold">
@@ -121,7 +121,7 @@ export default function CorporatePortfolio() {
                 <Link
                   href={`/clients/${client.slug}`}
                   key={idx}
-                  className="group relative bg-[var(--darker)] border border-[rgba(10,10,10,0.06)] hover:border-[var(--gold)] rounded-sm overflow-hidden h-[360px] cursor-none block transition-all duration-500"
+                  className="group relative bg-[var(--darker)] border border-[rgba(10,10,10,0.06)] hover:border-[var(--gold)] rounded-sm overflow-hidden h-[360px]  block transition-all duration-500"
                 >                  {/* Card Background Poster */}
                   <div
                     className="absolute inset-0 bg-cover bg-center opacity-85 group-hover:opacity-100 transition-all duration-[800ms] group-hover:scale-[1.03]"
@@ -191,7 +191,7 @@ export default function CorporatePortfolio() {
                     window.dispatchEvent(new Event('scroll'));
                   }, 100);
                 }}
-                className="border border-[rgba(10,10,10,0.15)] text-[var(--light)] text-[10px] tracking-[0.2em] uppercase py-[16px] px-[40px] hover:bg-[var(--light)] hover:text-[var(--dark)] transition-all duration-300 cursor-none font-bold rounded-full"
+                className="border border-[rgba(10,10,10,0.15)] text-[var(--light)] text-[10px] tracking-[0.2em] uppercase py-[16px] px-[40px] hover:bg-[var(--light)] hover:text-[var(--dark)] transition-all duration-300  font-bold rounded-full"
               >
                 Explore More Partners
               </button>
@@ -205,7 +205,7 @@ export default function CorporatePortfolio() {
                 <button
                   suppressHydrationWarning
                   onClick={() => setShowOthers(false)}
-                  className="text-[10px] tracking-[0.15em] uppercase text-[var(--gold)] hover:text-[var(--light)] cursor-none transition-colors font-bold"
+                  className="text-[10px] tracking-[0.15em] uppercase text-[var(--gold)] hover:text-[var(--light)]  transition-colors font-bold"
                 >
                   Close Section &uarr;
                 </button>
@@ -217,7 +217,7 @@ export default function CorporatePortfolio() {
                     <Link
                       href={`/clients/${client.slug}`}
                       key={idx}
-                      className="group relative bg-[var(--darker)] border border-[rgba(10,10,10,0.06)] hover:border-[var(--gold)] rounded-sm overflow-hidden min-h-[240px] cursor-none block flex flex-col justify-between p-[30px] transition-all duration-400"
+                      className="group relative bg-[var(--darker)] border border-[rgba(10,10,10,0.06)] hover:border-[var(--gold)] rounded-sm overflow-hidden min-h-[240px]  block flex flex-col justify-between p-[30px] transition-all duration-400"
                     >
                       <div
                         className="absolute inset-0 bg-cover bg-center opacity-85 group-hover:opacity-100 transition-all duration-500"
@@ -304,7 +304,7 @@ export default function CorporatePortfolio() {
                 <SwiperSlide key={idx}>
                   <div
                     onClick={() => setActiveCert(logo.cert)}
-                    className="bg-white border border-[rgba(10,10,10,0.06)] p-[12px] rounded-sm h-[90px] flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.01)] transition-all duration-300 hover:scale-105 hover:border-[var(--gold)] cursor-none"
+                    className="bg-white border border-[rgba(10,10,10,0.06)] p-[12px] rounded-sm h-[90px] flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.01)] transition-all duration-300 hover:scale-105 hover:border-[var(--gold)] "
                   >
                     <img
                       src={logo.logo}
@@ -326,7 +326,7 @@ export default function CorporatePortfolio() {
           <button
             suppressHydrationWarning
             onClick={() => setActiveCert(null)}
-            className="absolute top-[30px] right-[5%] md:right-[8%] text-white text-[12px] tracking-[0.2em] uppercase flex items-center gap-[8px] cursor-none hover:text-[var(--gold)]"
+            className="absolute top-[30px] right-[5%] md:right-[8%] text-white text-[12px] tracking-[0.2em] uppercase flex items-center gap-[8px]  hover:text-[var(--gold)]"
           >
             Close <X className="w-[16px] h-[16px]" />
           </button>

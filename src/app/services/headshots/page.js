@@ -31,7 +31,7 @@ export default function HeadshotsServices() {
   ];
 
   return (
-    <main className="w-full bg-[var(--dark)] text-[var(--light)] pb-[100px] cursor-none relative overflow-x-hidden">
+    <main className="w-full bg-[var(--dark)] text-[var(--light)] pb-[100px]  relative overflow-x-hidden">
       
       {/* ─── HERO HEADER ─── */}
       <section className="relative min-h-[50vh] flex items-center px-[5%] md:px-[8%] bg-[#0A0A0A] pt-[120px] md:pt-[100px]">
@@ -76,7 +76,7 @@ export default function HeadshotsServices() {
                 </div>
               ))}
             </div>
-            <Link href="/portfolio" className="inline-flex items-center gap-[8px] border border-[rgba(10,10,10,0.15)] text-[var(--light)] text-[10px] tracking-[0.2em] uppercase py-[16px] px-[32px] hover:bg-[var(--light)] hover:text-[var(--dark)] transition-all duration-300 cursor-none font-medium">
+            <Link href="/portfolio" className="inline-flex items-center gap-[8px] border border-[rgba(10,10,10,0.15)] text-[var(--light)] text-[10px] tracking-[0.2em] uppercase py-[16px] px-[32px] hover:bg-[var(--light)] hover:text-[var(--dark)] transition-all duration-300  font-medium">
               See the Portfolio in Action <ArrowRight className="w-[12px] h-[12px]" />
             </Link>
           </div>
@@ -131,7 +131,7 @@ export default function HeadshotsServices() {
         <h2 className="font-serif text-[clamp(32px,4.5vw,52px)] font-light text-[var(--light)] mb-[40px]">
           Need professional headshots for your leadership?
         </h2>
-        <Link href="/contact" className="inline-flex items-center gap-[10px] bg-[var(--gold)] text-white text-[11px] tracking-[0.2em] uppercase font-bold py-[18px] px-[44px] hover:bg-[var(--light)] hover:text-[var(--dark)] transition-all duration-300 cursor-none rounded-full shadow-md">
+        <Link href="/contact" className="inline-flex items-center gap-[10px] bg-[var(--gold)] text-white text-[11px] tracking-[0.2em] uppercase font-bold py-[18px] px-[44px] hover:bg-[var(--light)] hover:text-[var(--dark)] transition-all duration-300  rounded-full shadow-md">
           Book a Session <ArrowRight className="w-[14px] h-[14px]" />
         </Link>
       </section>

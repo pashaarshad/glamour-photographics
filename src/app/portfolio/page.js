@@ -621,7 +621,7 @@ export default function PortfolioPage() {
   ];
 
   return (
-    <main className="w-full bg-[var(--dark)] text-[var(--light)] min-h-screen pt-[120px] md:pt-[160px] pb-[100px] cursor-none relative">
+    <main className="w-full bg-[var(--dark)] text-[var(--light)] min-h-screen pt-[120px] md:pt-[160px] pb-[100px]  relative">
       
       {/* ─── HERO SECTION ─── */}
       <section className="px-[5%] md:px-[8%] max-w-[1400px] mx-auto mb-[100px]">
@@ -652,7 +652,7 @@ export default function PortfolioPage() {
                 setVisibleLimit(12);
                 setAllSectionExpanded(false);
               }} 
-              className={`text-[9px] md:text-[9.5px] lg:text-[10px] tracking-[0.12em] md:tracking-[0.18em] uppercase pb-[15px] relative cursor-none transition-colors flex-shrink-0 whitespace-nowrap ${
+              className={`text-[9px] md:text-[9.5px] lg:text-[10px] tracking-[0.12em] md:tracking-[0.18em] uppercase pb-[15px] relative  transition-colors flex-shrink-0 whitespace-nowrap ${
                 activeTab === tab.id ? 'text-[var(--gold)] font-semibold' : 'text-[var(--muted)] hover:text-[var(--light)]'
               }`}
             >
@@ -680,7 +680,7 @@ export default function PortfolioPage() {
                     <div 
                       key={`init-${src}-${idx}`}
                       onClick={() => setActivePhotoUrl(src)}
-                      className="group relative overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] shadow-lg bg-[var(--darker)] cursor-none hover:shadow-2xl transition-all duration-500 w-full aspect-[3/2]"
+                      className="group relative overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] shadow-lg bg-[var(--darker)]  hover:shadow-2xl transition-all duration-500 w-full aspect-[3/2]"
                     >
                       <img 
                         src={src} 
@@ -710,7 +710,7 @@ export default function PortfolioPage() {
                           window.dispatchEvent(new Event('scroll'));
                         }, 100);
                       }}
-                      className="border border-[rgba(10,10,10,0.15)] text-[var(--light)] text-[10px] tracking-[0.2em] uppercase py-[14px] px-[36px] hover:bg-[var(--gold)] hover:text-black hover:border-[var(--gold)] transition-all duration-300 cursor-none font-bold rounded-full shadow-lg"
+                      className="border border-[rgba(10,10,10,0.15)] text-[var(--light)] text-[10px] tracking-[0.2em] uppercase py-[14px] px-[36px] hover:bg-[var(--gold)] hover:text-black hover:border-[var(--gold)] transition-all duration-300  font-bold rounded-full shadow-lg"
                     >
                       Show More
                     </button>
@@ -747,7 +747,7 @@ export default function PortfolioPage() {
                             <div key={`exp-block-${bIdx}`} className="flex flex-col lg:flex-row gap-[24px] items-stretch w-full reveal">
                               <div 
                                 onClick={() => setActivePhotoUrl(block.vertical)}
-                                className="w-full lg:w-1/3 relative group overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] bg-[var(--darker)] min-h-[450px] lg:min-h-0 shadow-lg cursor-none hover:shadow-2xl transition-all duration-500"
+                                className="w-full lg:w-1/3 relative group overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] bg-[var(--darker)] min-h-[450px] lg:min-h-0 shadow-lg  hover:shadow-2xl transition-all duration-500"
                               >
                                 <img 
                                   src={block.vertical} 
@@ -765,7 +765,7 @@ export default function PortfolioPage() {
                                   <div 
                                     key={idx} 
                                     onClick={() => setActivePhotoUrl(src)}
-                                    className="relative aspect-[3/2] group overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] bg-[var(--darker)] shadow-lg cursor-none hover:shadow-2xl transition-all duration-500"
+                                    className="relative aspect-[3/2] group overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] bg-[var(--darker)] shadow-lg  hover:shadow-2xl transition-all duration-500"
                                   >
                                     <img src={src} alt="Portfolio Work" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-[1.03]" />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-[20px]">
@@ -784,7 +784,7 @@ export default function PortfolioPage() {
                                 <div 
                                   key={`exp-v-${idx}`}
                                   onClick={() => setActivePhotoUrl(src)}
-                                  className="group relative overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] shadow-lg bg-[var(--darker)] cursor-none hover:shadow-2xl transition-all duration-500 w-full aspect-[2/3]"
+                                  className="group relative overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] shadow-lg bg-[var(--darker)]  hover:shadow-2xl transition-all duration-500 w-full aspect-[2/3]"
                                 >
                                   <img 
                                     src={src} 
@@ -808,7 +808,7 @@ export default function PortfolioPage() {
                                 <div 
                                   key={`exp-h-${idx}`}
                                   onClick={() => setActivePhotoUrl(src)}
-                                  className="group relative overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] shadow-lg bg-[var(--darker)] cursor-none hover:shadow-2xl transition-all duration-500 w-full aspect-[3/2]"
+                                  className="group relative overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] shadow-lg bg-[var(--darker)]  hover:shadow-2xl transition-all duration-500 w-full aspect-[3/2]"
                                 >
                                   <img src={src} alt="Portfolio Gallery" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-105" />
                                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-[20px]">
@@ -853,7 +853,7 @@ export default function PortfolioPage() {
                         <div key={`cat-block-${bIdx}`} className="flex flex-col lg:flex-row gap-[24px] items-stretch w-full mb-[24px] reveal">
                           <div 
                             onClick={() => setActivePhotoUrl(block.vertical)}
-                            className="w-full lg:w-1/3 relative group overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] bg-[var(--darker)] min-h-[450px] lg:min-h-0 shadow-lg cursor-none hover:shadow-2xl transition-all duration-500"
+                            className="w-full lg:w-1/3 relative group overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] bg-[var(--darker)] min-h-[450px] lg:min-h-0 shadow-lg  hover:shadow-2xl transition-all duration-500"
                           >
                             <img 
                               src={block.vertical} 
@@ -871,7 +871,7 @@ export default function PortfolioPage() {
                               <div 
                                 key={idx} 
                                 onClick={() => setActivePhotoUrl(src)}
-                                className="relative aspect-[3/2] group overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] bg-[var(--darker)] shadow-lg cursor-none hover:shadow-2xl transition-all duration-500"
+                                className="relative aspect-[3/2] group overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] bg-[var(--darker)] shadow-lg  hover:shadow-2xl transition-all duration-500"
                               >
                                 <img src={src} alt="Portfolio Work" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-[1.03]" />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-[20px]">
@@ -890,7 +890,7 @@ export default function PortfolioPage() {
                             <div 
                               key={`cat-v-${idx}`}
                               onClick={() => setActivePhotoUrl(src)}
-                              className="group relative overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] shadow-lg bg-[var(--darker)] cursor-none hover:shadow-2xl transition-all duration-500 w-full aspect-[2/3]"
+                              className="group relative overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] shadow-lg bg-[var(--darker)]  hover:shadow-2xl transition-all duration-500 w-full aspect-[2/3]"
                             >
                               <img 
                                 src={src} 
@@ -914,7 +914,7 @@ export default function PortfolioPage() {
                             <div 
                               key={`cat-h-${idx}`}
                               onClick={() => setActivePhotoUrl(src)}
-                              className="group relative overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] shadow-lg bg-[var(--darker)] cursor-none hover:shadow-2xl transition-all duration-500 w-full aspect-[3/2]"
+                              className="group relative overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] shadow-lg bg-[var(--darker)]  hover:shadow-2xl transition-all duration-500 w-full aspect-[3/2]"
                             >
                               <img src={src} alt="Portfolio Gallery" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-105" />
                               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-[20px]">
@@ -951,7 +951,7 @@ export default function PortfolioPage() {
                 <div 
                   key={`${video.id}-${idx}`}
                   onClick={() => setActiveVideoId(video.id)}
-                  className="group relative aspect-video rounded-[16px] overflow-hidden border border-[rgba(10,10,10,0.06)] shadow-lg bg-[var(--darker)] cursor-none hover:shadow-2xl transition-all duration-500"
+                  className="group relative aspect-video rounded-[16px] overflow-hidden border border-[rgba(10,10,10,0.06)] shadow-lg bg-[var(--darker)]  hover:shadow-2xl transition-all duration-500"
                 >
                   <img 
                     src={`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`} 
@@ -1003,7 +1003,7 @@ export default function PortfolioPage() {
                   window.dispatchEvent(new Event('scroll'));
                 }, 100);
               }}
-              className="border border-[rgba(10,10,10,0.15)] text-[var(--light)] text-[10px] tracking-[0.2em] uppercase py-[14px] px-[36px] hover:bg-[var(--light)] hover:text-[var(--dark)] transition-all duration-300 cursor-none font-bold rounded-full"
+              className="border border-[rgba(10,10,10,0.15)] text-[var(--light)] text-[10px] tracking-[0.2em] uppercase py-[14px] px-[36px] hover:bg-[var(--light)] hover:text-[var(--dark)] transition-all duration-300  font-bold rounded-full"
             >
               Show More
             </button>
@@ -1016,7 +1016,7 @@ export default function PortfolioPage() {
         <h2 className="font-serif text-[clamp(32px,4vw,52px)] font-light text-[var(--light)] leading-[1.1] mb-[40px]">
           Want to see more project work?
         </h2>
-        <Link href="/contact" className="inline-block border border-[rgba(10,10,10,0.15)] text-[var(--light)] uppercase tracking-[0.2em] text-[11px] font-semibold px-[36px] py-[18px] transition-all duration-400 hover:bg-[var(--light)] hover:text-[var(--dark)] hover:border-transparent cursor-none">
+        <Link href="/contact" className="inline-block border border-[rgba(10,10,10,0.15)] text-[var(--light)] uppercase tracking-[0.2em] text-[11px] font-semibold px-[36px] py-[18px] transition-all duration-400 hover:bg-[var(--light)] hover:text-[var(--dark)] hover:border-transparent ">
           Get In Touch
         </Link>
       </section>
@@ -1027,7 +1027,7 @@ export default function PortfolioPage() {
           <button 
             suppressHydrationWarning
             onClick={() => setActiveVideoId(null)} 
-            className="absolute top-[30px] right-[5%] md:right-[8%] text-white text-[12px] tracking-[0.2em] uppercase flex items-center gap-[8px] cursor-none hover:text-[var(--gold)] font-medium"
+            className="absolute top-[30px] right-[5%] md:right-[8%] text-white text-[12px] tracking-[0.2em] uppercase flex items-center gap-[8px]  hover:text-[var(--gold)] font-medium"
           >
             Close <X className="w-[16px] h-[16px]" />
           </button>
@@ -1050,7 +1050,7 @@ export default function PortfolioPage() {
           <button 
             suppressHydrationWarning
             onClick={() => setActivePhotoUrl(null)} 
-            className="absolute top-[30px] right-[5%] md:right-[8%] text-white text-[12px] tracking-[0.2em] uppercase flex items-center gap-[8px] cursor-none hover:text-[var(--gold)] font-medium"
+            className="absolute top-[30px] right-[5%] md:right-[8%] text-white text-[12px] tracking-[0.2em] uppercase flex items-center gap-[8px]  hover:text-[var(--gold)] font-medium"
           >
             Close <X className="w-[16px] h-[16px]" />
           </button>

@@ -64,7 +64,7 @@ export default function DigitalAdsServices() {
   ];
 
   return (
-    <main className="w-full bg-[var(--dark)] text-[var(--light)] pb-[100px] cursor-none relative overflow-x-hidden">
+    <main className="w-full bg-[var(--dark)] text-[var(--light)] pb-[100px]  relative overflow-x-hidden">
       
       {/* ─── HERO HEADER ─── */}
       <section className="relative min-h-[50vh] flex items-center px-[5%] md:px-[8%] bg-[#0A0A0A] pt-[120px] md:pt-[100px]">
@@ -99,7 +99,7 @@ export default function DigitalAdsServices() {
             <p className="text-[14.5px] leading-[1.85] text-[var(--muted)] font-light mb-[32px]">
               In a world of endless scrolling, great visuals make the difference. We produce cinematic digital ads that combine compelling storytelling, striking visuals, and purposeful creativity, helping brands capture attention, communicate their message, and leave a lasting impression.
             </p>
-            <Link href="/portfolio" className="inline-flex items-center gap-[8px] border border-[rgba(10,10,10,0.15)] text-[var(--light)] text-[10px] tracking-[0.2em] uppercase py-[16px] px-[32px] hover:bg-[var(--light)] hover:text-[var(--dark)] transition-all duration-300 cursor-none font-medium">
+            <Link href="/portfolio" className="inline-flex items-center gap-[8px] border border-[rgba(10,10,10,0.15)] text-[var(--light)] text-[10px] tracking-[0.2em] uppercase py-[16px] px-[32px] hover:bg-[var(--light)] hover:text-[var(--dark)] transition-all duration-300  font-medium">
               See the Portfolio in Action <ArrowRight className="w-[12px] h-[12px]" />
             </Link>
           </div>
@@ -135,7 +135,7 @@ export default function DigitalAdsServices() {
                 {/* Video Card Player */}
                 <div 
                   onClick={() => setActiveVideoId(video.id)}
-                  className="w-full lg:w-1/2 aspect-video rounded-[16px] overflow-hidden border border-[rgba(10,10,10,0.06)] bg-black shadow-md cursor-none relative group"
+                  className="w-full lg:w-1/2 aspect-video rounded-[16px] overflow-hidden border border-[rgba(10,10,10,0.06)] bg-black shadow-md  relative group"
                 >
                   <img 
                     src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`}
@@ -190,7 +190,7 @@ export default function DigitalAdsServices() {
         <h2 className="font-serif text-[clamp(32px,4.5vw,52px)] font-light text-[var(--light)] mb-[40px]">
           Ready to launch a high-impact ad campaign?
         </h2>
-        <Link href="/contact" className="inline-flex items-center gap-[10px] bg-[var(--gold)] text-white text-[11px] tracking-[0.2em] uppercase font-bold py-[18px] px-[44px] hover:bg-[var(--light)] hover:text-[var(--dark)] transition-all duration-300 cursor-none rounded-full shadow-md">
+        <Link href="/contact" className="inline-flex items-center gap-[10px] bg-[var(--gold)] text-white text-[11px] tracking-[0.2em] uppercase font-bold py-[18px] px-[44px] hover:bg-[var(--light)] hover:text-[var(--dark)] transition-all duration-300  rounded-full shadow-md">
           Work With Us <ArrowRight className="w-[14px] h-[14px]" />
         </Link>
       </section>
@@ -200,7 +200,7 @@ export default function DigitalAdsServices() {
         <div className="fixed inset-0 bg-black/95 z-[9999] flex items-center justify-center p-[20px]">
           <button 
             onClick={() => setActiveVideoId(null)}
-            className="absolute top-[30px] right-[5%] md:right-[8%] text-white text-[12px] tracking-[0.2em] uppercase flex items-center gap-[8px] cursor-none hover:text-[var(--gold)]"
+            className="absolute top-[30px] right-[5%] md:right-[8%] text-white text-[12px] tracking-[0.2em] uppercase flex items-center gap-[8px]  hover:text-[var(--gold)]"
           >
             Close <X className="w-[16px] h-[16px]" />
           </button>

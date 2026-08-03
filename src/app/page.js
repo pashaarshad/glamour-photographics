@@ -599,7 +599,7 @@ export default function Home() {
   const activeImages = getHomeActiveImages();
 
   return (
-    <main className="w-full bg-[var(--dark)] text-[var(--light)] pb-[100px] overflow-x-hidden cursor-none relative">
+    <main className="w-full bg-[var(--dark)] text-[var(--light)] pb-[100px] overflow-x-hidden  relative">
       
       {/* ─── 1. HERO SECTION ─── */}
       <section className="relative min-h-[100svh] flex flex-col lg:flex-row overflow-hidden bg-[#0A0A0A]">
@@ -617,7 +617,7 @@ export default function Home() {
               40+ Years of Storytelling Through The Lens of Excellence
             </p>
             <div className="opacity-0 anim-fade-up delay-380">
-              <Link href="/portfolio" className="inline-flex items-center justify-center border border-[rgba(255,255,255,0.3)] text-white uppercase tracking-[0.2em] text-[11px] font-bold px-[36px] py-[18px] transition-all duration-400 hover:bg-white hover:text-black hover:border-transparent cursor-none">
+              <Link href="/portfolio" className="inline-flex items-center justify-center border border-[rgba(255,255,255,0.3)] text-white uppercase tracking-[0.2em] text-[11px] font-bold px-[36px] py-[18px] transition-all duration-400 hover:bg-white hover:text-black hover:border-transparent ">
                 Explore Our Work
               </Link>
             </div>
@@ -850,7 +850,7 @@ export default function Home() {
             <p className="text-[14px] leading-[1.9] text-[var(--muted)] max-w-[420px] mb-[40px] font-light">
               Glamour Photographics, established by Hameed Hussain in 1982, has built a legacy of capturing the most meaningful moments for corporate clients and families across India.
             </p>
-            <Link href="/about" className="inline-flex items-center gap-[12px] text-[10px] tracking-[0.3em] uppercase font-semibold pb-[4px] border-b border-[var(--light)] hover:border-[var(--gold)] hover:text-[var(--gold)] hover:gap-[20px] transition-all duration-300 cursor-none">
+            <Link href="/about" className="inline-flex items-center gap-[12px] text-[10px] tracking-[0.3em] uppercase font-semibold pb-[4px] border-b border-[var(--light)] hover:border-[var(--gold)] hover:text-[var(--gold)] hover:gap-[20px] transition-all duration-300 ">
               Our Story <span>→</span>
             </Link>
           </div>
@@ -943,7 +943,7 @@ export default function Home() {
             <p className="text-[14.5px] leading-[1.85] text-[var(--muted)] mb-[36px] font-light">
               In 1982, Glamour Photographics was founded on a simple belief held by Hameed Hussain: every moment deserves to be captured with craft and care. That belief still shapes our work today.
             </p>
-            <Link href="/about" className="inline-flex items-center gap-[12px] text-[10px] tracking-[0.25em] uppercase text-[var(--light)] font-semibold hover:text-[var(--gold)] cursor-none transition-colors group pb-[4px] border-b border-[var(--light)] hover:border-[var(--gold)]">
+            <Link href="/about" className="inline-flex items-center gap-[12px] text-[10px] tracking-[0.25em] uppercase text-[var(--light)] font-semibold hover:text-[var(--gold)]  transition-colors group pb-[4px] border-b border-[var(--light)] hover:border-[var(--gold)]">
               Read Our Story <span className="transition-transform duration-300 group-hover:translate-x-[4px]">→</span>
             </Link>
           </div>
@@ -984,7 +984,7 @@ export default function Home() {
                 <button 
                   suppressHydrationWarning
                   onClick={() => setActiveVideoTab(tab)}
-                  className={`text-[10px] tracking-[0.25em] uppercase font-bold pb-[6px] relative cursor-none transition-colors duration-300 ${
+                  className={`text-[10px] tracking-[0.25em] uppercase font-bold pb-[6px] relative  transition-colors duration-300 ${
                     activeVideoTab === tab ? 'text-[var(--gold)] font-bold' : 'text-[var(--muted)] font-medium hover:text-[var(--light)]'
                   }`}
                 >
@@ -1007,7 +1007,7 @@ export default function Home() {
                   setActiveVideoId(video.id);
                   setShowreelOpen(true);
                 }}
-                className="group relative aspect-video rounded-[16px] overflow-hidden bg-black shadow-md cursor-none border border-[rgba(10,10,10,0.06)] hover:shadow-2xl transition-all duration-500"
+                className="group relative aspect-video rounded-[16px] overflow-hidden bg-black shadow-md  border border-[rgba(10,10,10,0.06)] hover:shadow-2xl transition-all duration-500"
               >
                 {/* Thumbnail */}
                 <img 
@@ -1064,7 +1064,7 @@ export default function Home() {
                     window.dispatchEvent(new Event('scroll'));
                   }, 100);
                 }}
-                className="border border-[rgba(10,10,10,0.15)] text-[var(--light)] text-[10px] tracking-[0.2em] uppercase py-[14px] px-[36px] hover:bg-[var(--light)] hover:text-[var(--dark)] transition-all duration-300 cursor-none font-bold rounded-full"
+                className="border border-[rgba(10,10,10,0.15)] text-[var(--light)] text-[10px] tracking-[0.2em] uppercase py-[14px] px-[36px] hover:bg-[var(--light)] hover:text-[var(--dark)] transition-all duration-300  font-bold rounded-full"
               >
                 Show More
               </button>
@@ -1076,7 +1076,7 @@ export default function Home() {
             <div className="absolute left-0 right-[260px] h-[1px] bg-[var(--gold)] opacity-30"></div>
             <Link 
               href="/portfolio?tab=VIDEOS" 
-              className="text-[10px] tracking-[0.25em] uppercase font-bold text-[var(--gold)] hover:text-[var(--light)] cursor-none transition-colors duration-300 flex items-center gap-[12px] group relative pl-[24px]"
+              className="text-[10px] tracking-[0.25em] uppercase font-bold text-[var(--gold)] hover:text-[var(--light)]  transition-colors duration-300 flex items-center gap-[12px] group relative pl-[24px]"
             >
               View All Portfolio <span className="transition-transform duration-300 group-hover:translate-x-[4px]">→</span>
             </Link>
@@ -1122,7 +1122,7 @@ export default function Home() {
               <Link 
                 href={`/clients/${client.slug}`} 
                 key={i} 
-                className="w-full flex items-center justify-center p-[10px] md:p-[20px] transition-transform duration-300 hover:scale-105 cursor-none relative"
+                className="w-full flex items-center justify-center p-[10px] md:p-[20px] transition-transform duration-300 hover:scale-105  relative"
               >
                 <img 
                   src={client.logo} 
@@ -1171,7 +1171,7 @@ export default function Home() {
                 setActivePortfolioTab(tab.id);
                 setShowAllHomeImages(false);
               }} 
-              className={`text-[10px] tracking-[0.2em] uppercase pb-[15px] relative cursor-none ${activePortfolioTab === tab.id ? 'text-[var(--gold)]' : 'text-[var(--muted)] hover:text-[var(--light)]'}`}
+              className={`text-[10px] tracking-[0.2em] uppercase pb-[15px] relative  ${activePortfolioTab === tab.id ? 'text-[var(--gold)]' : 'text-[var(--muted)] hover:text-[var(--light)]'}`}
             >
               {tab.label}
               {activePortfolioTab === tab.id && <div className="absolute bottom-[-16px] left-0 w-full h-[2px] bg-[var(--gold)]" />}
@@ -1237,7 +1237,7 @@ export default function Home() {
                     <div 
                       key={`home-init-${src}-${idx}`}
                       onClick={() => setActivePhotoUrl(src)}
-                      className="group relative overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] shadow-lg bg-[var(--darker)] cursor-none hover:shadow-2xl transition-all duration-500 w-full aspect-[3/2]"
+                      className="group relative overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] shadow-lg bg-[var(--darker)]  hover:shadow-2xl transition-all duration-500 w-full aspect-[3/2]"
                     >
                       <img 
                         src={src} 
@@ -1267,7 +1267,7 @@ export default function Home() {
                           window.dispatchEvent(new Event('scroll'));
                         }, 100);
                       }}
-                      className="border border-[rgba(10,10,10,0.15)] text-[var(--light)] text-[10px] tracking-[0.2em] uppercase py-[14px] px-[36px] hover:bg-[var(--gold)] hover:text-black hover:border-[var(--gold)] transition-all duration-300 cursor-none font-bold rounded-full shadow-lg"
+                      className="border border-[rgba(10,10,10,0.15)] text-[var(--light)] text-[10px] tracking-[0.2em] uppercase py-[14px] px-[36px] hover:bg-[var(--gold)] hover:text-black hover:border-[var(--gold)] transition-all duration-300  font-bold rounded-full shadow-lg"
                     >
                       Show More
                     </button>
@@ -1303,7 +1303,7 @@ export default function Home() {
                             <div key={`home-exp-block-${bIdx}`} className="flex flex-col md:flex-row gap-[24px] items-stretch w-full reveal opacity-0 anim-fade-up">
                               <div 
                                 onClick={() => setActivePhotoUrl(block.vertical)}
-                                className="w-full md:w-1/3 relative group overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] bg-[var(--darker)] min-h-[350px] md:min-h-0 shadow-lg cursor-none hover:shadow-2xl transition-all duration-500"
+                                className="w-full md:w-1/3 relative group overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] bg-[var(--darker)] min-h-[350px] md:min-h-0 shadow-lg  hover:shadow-2xl transition-all duration-500"
                               >
                                 <img 
                                   src={block.vertical} 
@@ -1321,7 +1321,7 @@ export default function Home() {
                                   <div 
                                     key={idx} 
                                     onClick={() => setActivePhotoUrl(src)}
-                                    className="relative aspect-[3/2] group overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] bg-[var(--darker)] shadow-lg cursor-none hover:shadow-2xl transition-all duration-500"
+                                    className="relative aspect-[3/2] group overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] bg-[var(--darker)] shadow-lg  hover:shadow-2xl transition-all duration-500"
                                   >
                                     <img src={src} alt="Portfolio Work" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-[1.03]" />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-[20px]">
@@ -1339,7 +1339,7 @@ export default function Home() {
                                 <div 
                                   key={`home-rem-v-${idx}`}
                                   onClick={() => setActivePhotoUrl(src)}
-                                  className="group relative overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] shadow-lg bg-[var(--darker)] cursor-none hover:shadow-2xl transition-all duration-500 w-full aspect-[2/3]"
+                                  className="group relative overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] shadow-lg bg-[var(--darker)]  hover:shadow-2xl transition-all duration-500 w-full aspect-[2/3]"
                                 >
                                   <img 
                                     src={src} 
@@ -1362,7 +1362,7 @@ export default function Home() {
                                 <div 
                                   key={`home-rem-h-${idx}`}
                                   onClick={() => setActivePhotoUrl(src)}
-                                  className="group relative overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] shadow-lg bg-[var(--darker)] cursor-none hover:shadow-2xl transition-all duration-500 w-full aspect-[3/2]"
+                                  className="group relative overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] shadow-lg bg-[var(--darker)]  hover:shadow-2xl transition-all duration-500 w-full aspect-[3/2]"
                                 >
                                   <img src={src} alt="Portfolio Work" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-105" />
                                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-[20px]">
@@ -1409,7 +1409,7 @@ export default function Home() {
                       <div key={`home-cat-block-${bIdx}`} className="flex flex-col md:flex-row gap-[24px] items-stretch w-full reveal opacity-0 anim-fade-up">
                         <div 
                           onClick={() => setActivePhotoUrl(block.vertical)}
-                          className="w-full md:w-1/3 relative group overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] bg-[var(--darker)] min-h-[350px] md:min-h-0 shadow-lg cursor-none hover:shadow-2xl transition-all duration-500"
+                          className="w-full md:w-1/3 relative group overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] bg-[var(--darker)] min-h-[350px] md:min-h-0 shadow-lg  hover:shadow-2xl transition-all duration-500"
                         >
                           <img 
                             src={block.vertical} 
@@ -1427,7 +1427,7 @@ export default function Home() {
                             <div 
                               key={idx} 
                               onClick={() => setActivePhotoUrl(src)}
-                              className="relative aspect-[3/2] group overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] bg-[var(--darker)] shadow-lg cursor-none hover:shadow-2xl transition-all duration-500"
+                              className="relative aspect-[3/2] group overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] bg-[var(--darker)] shadow-lg  hover:shadow-2xl transition-all duration-500"
                             >
                               <img src={src} alt="Portfolio Work" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-[1.03]" />
                               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-[20px]">
@@ -1445,7 +1445,7 @@ export default function Home() {
                           <div 
                             key={`home-cat-v-${idx}`}
                             onClick={() => setActivePhotoUrl(src)}
-                            className="group relative overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] shadow-lg bg-[var(--darker)] cursor-none hover:shadow-2xl transition-all duration-500 w-full aspect-[2/3]"
+                            className="group relative overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] shadow-lg bg-[var(--darker)]  hover:shadow-2xl transition-all duration-500 w-full aspect-[2/3]"
                           >
                             <img 
                               src={src} 
@@ -1468,7 +1468,7 @@ export default function Home() {
                           <div 
                             key={`home-cat-h-${idx}`}
                             onClick={() => setActivePhotoUrl(src)}
-                            className="group relative overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] shadow-lg bg-[var(--darker)] cursor-none hover:shadow-2xl transition-all duration-500 w-full aspect-[3/2]"
+                            className="group relative overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] shadow-lg bg-[var(--darker)]  hover:shadow-2xl transition-all duration-500 w-full aspect-[3/2]"
                           >
                             <img src={src} alt="Portfolio Work" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-105" />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-[20px]">
@@ -1564,7 +1564,7 @@ export default function Home() {
             <Link 
               href={service.href}
               key={service.id}
-              className="group relative aspect-video rounded-[16px] overflow-hidden bg-black shadow-lg cursor-none border border-[rgba(10,10,10,0.06)] hover:shadow-2xl transition-all duration-500"
+              className="group relative aspect-video rounded-[16px] overflow-hidden bg-black shadow-lg  border border-[rgba(10,10,10,0.06)] hover:shadow-2xl transition-all duration-500"
             >
               {/* Background Photo */}
               <img 
@@ -1605,7 +1605,7 @@ export default function Home() {
           <div className="absolute left-0 right-[260px] h-[1px] bg-[var(--gold)] opacity-30"></div>
           <Link 
             href="/studio-services" 
-            className="text-[10px] tracking-[0.25em] uppercase font-bold text-[var(--gold)] hover:text-[var(--light)] cursor-none transition-colors duration-300 flex items-center gap-[12px] group relative pl-[24px]"
+            className="text-[10px] tracking-[0.25em] uppercase font-bold text-[var(--gold)] hover:text-[var(--light)]  transition-colors duration-300 flex items-center gap-[12px] group relative pl-[24px]"
           >
             View All Services <span className="transition-transform duration-300 group-hover:translate-x-[4px]">→</span>
           </Link>
@@ -1628,7 +1628,7 @@ export default function Home() {
             return (
               <div 
                 key={idx} 
-                className="group relative rounded-[20px] overflow-hidden bg-[#1A1A1A] border border-[rgba(10,10,10,0.08)] transition-all duration-500 cursor-none flex flex-col h-[480px] sm:h-[520px] shadow-lg"
+                className="group relative rounded-[20px] overflow-hidden bg-[#1A1A1A] border border-[rgba(10,10,10,0.08)] transition-all duration-500  flex flex-col h-[480px] sm:h-[520px] shadow-lg"
               >
                 {/* Image Box */}
                 <div className="absolute inset-0 z-0">
@@ -1708,7 +1708,7 @@ export default function Home() {
                 <SwiperSlide key={idx}>
                   <div 
                     onClick={() => setActiveCert(logo.cert)}
-                    className="bg-white border border-[rgba(10,10,10,0.06)] p-[12px] rounded-sm h-[90px] flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.01)] transition-all duration-300 hover:scale-105 hover:border-[var(--gold)] cursor-none"
+                    className="bg-white border border-[rgba(10,10,10,0.06)] p-[12px] rounded-sm h-[90px] flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.01)] transition-all duration-300 hover:scale-105 hover:border-[var(--gold)] "
                   >
                     <img 
                       src={logo.logo} 
@@ -1986,7 +1986,7 @@ export default function Home() {
           <button 
             suppressHydrationWarning
             onClick={() => setShowreelOpen(false)} 
-            className="absolute top-[30px] right-[5%] md:right-[8%] text-white text-[12px] tracking-[0.2em] uppercase flex items-center gap-[8px] cursor-none hover:text-[var(--gold)]"
+            className="absolute top-[30px] right-[5%] md:right-[8%] text-white text-[12px] tracking-[0.2em] uppercase flex items-center gap-[8px]  hover:text-[var(--gold)]"
           >
             Close <X className="w-[16px] h-[16px]" />
           </button>
@@ -2009,7 +2009,7 @@ export default function Home() {
           <button 
             suppressHydrationWarning
             onClick={() => setActiveCert(null)} 
-            className="absolute top-[30px] right-[5%] md:right-[8%] text-white text-[12px] tracking-[0.2em] uppercase flex items-center gap-[8px] cursor-none hover:text-[var(--gold)]"
+            className="absolute top-[30px] right-[5%] md:right-[8%] text-white text-[12px] tracking-[0.2em] uppercase flex items-center gap-[8px]  hover:text-[var(--gold)]"
           >
             Close <X className="w-[16px] h-[16px]" />
           </button>

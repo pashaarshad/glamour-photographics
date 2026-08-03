@@ -18,9 +18,9 @@ export default function Navbar() {
     <>
       <nav 
         id="navbar" 
-        className={`fixed top-0 left-0 right-0 z-[1000] px-[5%] md:px-[8%] h-[90px] flex items-center justify-between transition-all duration-400 ease-in-out cursor-none bg-[#0A0A0A] border-b border-[rgba(255,255,255,0.08)]`}
+        className={`fixed top-0 left-0 right-0 z-[1000] px-[5%] md:px-[8%] h-[90px] flex items-center justify-between transition-all duration-400 ease-in-out  bg-[#0A0A0A] border-b border-[rgba(255,255,255,0.08)]`}
       >
-        <Link href="/" className="flex items-center gap-[10px] cursor-none">
+        <Link href="/" className="flex items-center gap-[10px] ">
           <img 
             src="/images/Glamour_Logo.png" 
             alt="Glamour Photographics Logo" 
@@ -37,7 +37,7 @@ export default function Navbar() {
             { label: 'Contact', href: '/contact' }
           ].map((item) => (
             <li key={item.label}>
-              <Link href={item.href} className="text-[10px] tracking-[0.25em] uppercase font-medium text-[rgba(255,255,255,0.7)] relative pb-[4px] transition-colors duration-300 hover:text-white cursor-none after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-[var(--gold)] after:transition-all after:duration-350 hover:after:w-full">
+              <Link href={item.href} className="text-[10px] tracking-[0.25em] uppercase font-medium text-[rgba(255,255,255,0.7)] relative pb-[4px] transition-colors duration-300 hover:text-white  after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-[var(--gold)] after:transition-all after:duration-350 hover:after:w-full">
                 {item.label}
               </Link>
             </li>
@@ -46,12 +46,12 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-[20px]">
           <Link 
             href="/contact" 
-            className="text-[10px] tracking-[0.25em] uppercase font-semibold py-[10px] px-[24px] border border-[rgba(255,255,255,0.2)] text-white transition-all duration-300 hover:bg-white hover:text-black cursor-none"
+            className="text-[10px] tracking-[0.25em] uppercase font-semibold py-[10px] px-[24px] border border-[rgba(255,255,255,0.2)] text-white transition-all duration-300 hover:bg-white hover:text-black "
           >
             Let's Talk
           </Link>
         </div>
-        <div className="flex md:hidden flex-col gap-[5px] cursor-none" onClick={() => setMobileOpen(!mobileOpen)}>
+        <div className="flex md:hidden flex-col gap-[5px] " onClick={() => setMobileOpen(!mobileOpen)}>
           <span className="block w-[24px] h-[1px] bg-white transition-all duration-300"></span>
           <span className="block w-[24px] h-[1px] bg-white transition-all duration-300"></span>
           <span className="block w-[24px] h-[1px] bg-white transition-all duration-300"></span>
@@ -60,11 +60,11 @@ export default function Navbar() {
  
       {/* MOBILE MENU */}
       <div 
-        className={`fixed inset-0 bg-[#0A0A0A] z-[2000] flex flex-col items-center justify-center gap-[30px] md:gap-[40px] transition-transform duration-600 ease-in-out cursor-none ${
+        className={`fixed inset-0 bg-[#0A0A0A] z-[2000] flex flex-col items-center justify-center gap-[30px] md:gap-[40px] transition-transform duration-600 ease-in-out  ${
           mobileOpen ? 'translate-y-0 pointer-events-auto visible' : '-translate-y-full pointer-events-none invisible'
         }`}
       >
-        <button suppressHydrationWarning onClick={() => setMobileOpen(false)} className="absolute top-[30px] right-[5%] md:right-[8%] text-white text-[12px] tracking-[0.2em] uppercase cursor-none">Close ✕</button>
+        <button suppressHydrationWarning onClick={() => setMobileOpen(false)} className="absolute top-[30px] right-[5%] md:right-[8%] text-white text-[12px] tracking-[0.2em] uppercase ">Close ✕</button>
         {[
           { label: 'Home', href: '/' },
           { label: 'About Us', href: '/about' },
@@ -76,7 +76,7 @@ export default function Navbar() {
           <Link 
             key={item.label}
             href={item.href} 
-            className={`font-serif text-[36px] sm:text-[42px] font-light text-white tracking-[-0.01em] transition-all duration-500 hover:text-[var(--gold)] cursor-none ${
+            className={`font-serif text-[36px] sm:text-[42px] font-light text-white tracking-[-0.01em] transition-all duration-500 hover:text-[var(--gold)]  ${
               mobileOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-[20px]'
             }`} 
             style={{ transitionDelay: `${idx * 80}ms` }}

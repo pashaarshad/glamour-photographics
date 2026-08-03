@@ -32,7 +32,7 @@ export default function About() {
   }, []);
 
   return (
-    <main className="w-full bg-[var(--dark)] text-[var(--light)] min-h-screen pt-0 pb-[100px] cursor-none relative">
+    <main className="w-full bg-[var(--dark)] text-[var(--light)] min-h-screen pt-0 pb-[100px]  relative">
       
       {/* ─── HERO SECTION: OUR STORY ─── */}
       <section className="px-[4%] md:px-[5%] max-w-[1600px] mx-auto pt-[160px] pb-[80px]">
@@ -180,7 +180,7 @@ export default function About() {
                     return [...baseItems, ...baseItems].map((item, idx) => {
                       if (item.type === 'img') {
                         return (
-                          <div key={idx} className="w-full aspect-[4/3] bg-black overflow-hidden relative border border-[rgba(10,10,10,0.12)] rounded-[3px] group cursor-none shrink-0">
+                          <div key={idx} className="w-full aspect-[4/3] bg-black overflow-hidden relative border border-[rgba(10,10,10,0.12)] rounded-[3px] group  shrink-0">
                             <img 
                               src={item.src} 
                               alt={`Film Strip Frame ${idx + 1}`} 
@@ -425,7 +425,7 @@ export default function About() {
             return (
               <div 
                 key={idx} 
-                className="group relative rounded-[20px] overflow-hidden bg-[#1A1A1A] border border-[rgba(10,10,10,0.08)] transition-all duration-500 cursor-none flex flex-col h-[480px] sm:h-[520px] shadow-lg"
+                className="group relative rounded-[20px] overflow-hidden bg-[#1A1A1A] border border-[rgba(10,10,10,0.08)] transition-all duration-500  flex flex-col h-[480px] sm:h-[520px] shadow-lg"
               >
                 {/* Image Box */}
                 <div className="absolute inset-0 z-0">
@@ -505,7 +505,7 @@ export default function About() {
                 <SwiperSlide key={idx}>
                   <div 
                     onClick={() => setActiveCert(logo.cert)}
-                    className="bg-white border border-[rgba(10,10,10,0.06)] p-[12px] rounded-sm h-[90px] flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.01)] transition-all duration-300 hover:scale-105 hover:border-[var(--gold)] cursor-none"
+                    className="bg-white border border-[rgba(10,10,10,0.06)] p-[12px] rounded-sm h-[90px] flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.01)] transition-all duration-300 hover:scale-105 hover:border-[var(--gold)] "
                   >
                     <img 
                       src={logo.logo} 
@@ -540,7 +540,7 @@ export default function About() {
           </div>
           {/* Right Side: Start a Project Button & Illustration */}
           <div className="z-10 flex items-center justify-between md:justify-end gap-[30px] w-full md:w-auto shrink-0">
-            <Link href="/contact" className="inline-flex items-center justify-center bg-[var(--gold)] text-white uppercase tracking-[0.2em] text-[11px] font-bold px-[36px] py-[16px] transition-all duration-400 hover:bg-black hover:text-white cursor-none">
+            <Link href="/contact" className="inline-flex items-center justify-center bg-[var(--gold)] text-white uppercase tracking-[0.2em] text-[11px] font-bold px-[36px] py-[16px] transition-all duration-400 hover:bg-black hover:text-white ">
               Start a Project &rarr;
             </Link>
             <img 
@@ -571,7 +571,7 @@ export default function About() {
           <button 
             suppressHydrationWarning
             onClick={() => setActiveCert(null)} 
-            className="absolute top-[30px] right-[5%] md:right-[8%] text-white text-[12px] tracking-[0.2em] uppercase flex items-center gap-[8px] cursor-none hover:text-[var(--gold)]"
+            className="absolute top-[30px] right-[5%] md:right-[8%] text-white text-[12px] tracking-[0.2em] uppercase flex items-center gap-[8px]  hover:text-[var(--gold)]"
           >
             Close <X className="w-[16px] h-[16px]" />
           </button>

@@ -24,7 +24,7 @@ export default function StudioServices() {
   }, []);
 
   return (
-    <main className="w-full min-h-screen pt-0 pb-0 cursor-none relative text-[var(--light)] bg-[var(--dark)]">
+    <main className="w-full min-h-screen pt-0 pb-0  relative text-[var(--light)] bg-[var(--dark)]">
 
       {/* ─── HERO SECTION WITH BACKGROUND YOUTUBE VIDEO ─── */}
       <section className="relative min-h-[60vh] md:min-h-[65vh] lg:min-h-[70vh] flex items-end px-[5%] md:px-[8%] overflow-hidden bg-[#0A0A0A] pt-[160px] md:pt-[180px] lg:pt-[220px] pb-[60px] md:pb-[80px] lg:pb-[100px]">
@@ -280,7 +280,7 @@ export default function StudioServices() {
             href="https://maps.google.com/?q=Glamour+Photographics+Ashok+Nagar+Bengaluru"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-[10px] border border-[rgba(10,10,10,0.2)] text-[var(--light)] uppercase tracking-[0.2em] text-[11px] font-bold px-[40px] py-[20px] transition-all duration-400 hover:bg-[var(--light)] hover:text-[var(--dark)] hover:border-transparent cursor-none rounded-sm"
+            className="inline-flex items-center gap-[10px] border border-[rgba(10,10,10,0.2)] text-[var(--light)] uppercase tracking-[0.2em] text-[11px] font-bold px-[40px] py-[20px] transition-all duration-400 hover:bg-[var(--light)] hover:text-[var(--dark)] hover:border-transparent  rounded-sm"
           >
             Find Us <ChevronRight className="w-[12px] h-[12px]" />
           </a>

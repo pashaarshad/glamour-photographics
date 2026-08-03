@@ -25,7 +25,7 @@ export default function ClientGallery({ images }) {
 
   return (
     <div className="w-full">
-      <div className="relative mb-[40px] cursor-none custom-swiper-wrapper border border-[rgba(10,10,10,0.06)] rounded-sm overflow-hidden">
+      <div className="relative mb-[40px]  custom-swiper-wrapper border border-[rgba(10,10,10,0.06)] rounded-sm overflow-hidden">
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
           spaceBetween={0}
@@ -52,7 +52,7 @@ export default function ClientGallery({ images }) {
           {!showAll ? (
             <button 
               onClick={() => setShowAll(true)}
-              className="inline-block border border-[rgba(10,10,10,0.15)] text-[var(--light)] uppercase tracking-[0.2em] text-[10px] px-8 py-4 transition-all duration-300 hover:bg-[var(--light)] hover:text-[var(--dark)] hover:border-transparent cursor-none font-medium"
+              className="inline-block border border-[rgba(10,10,10,0.15)] text-[var(--light)] uppercase tracking-[0.2em] text-[10px] px-8 py-4 transition-all duration-300 hover:bg-[var(--light)] hover:text-[var(--dark)] hover:border-transparent  font-medium"
             >
               View Full Gallery <span className="text-[11px] ml-1">({remainingImages.length} More)</span>
             </button>

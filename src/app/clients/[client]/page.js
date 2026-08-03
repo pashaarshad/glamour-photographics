@@ -29,7 +29,7 @@ export default function ClientPage({ params }) {
 
   if (!client) {
     return (
-      <main className="w-full bg-[var(--dark)] text-[var(--light)] min-h-[70vh] pt-[160px] pb-[100px] flex flex-col items-center justify-center text-center cursor-none">
+      <main className="w-full bg-[var(--dark)] text-[var(--light)] min-h-[70vh] pt-[160px] pb-[100px] flex flex-col items-center justify-center text-center ">
         <h1 className="font-serif text-[40px] text-[var(--light)] mb-4">Client Not Found</h1>
         <Link href="/clients" className="inline-block border border-[rgba(10,10,10,0.15)] text-[var(--light)] px-6 py-3 uppercase tracking-wider text-[10px] hover:bg-[var(--light)] hover:text-[var(--dark)] transition-all duration-300">Return to Clients</Link>
       </main>
@@ -96,7 +96,7 @@ export default function ClientPage({ params }) {
   }
 
   return (
-    <main className="w-full bg-[var(--dark)] text-[var(--light)] min-h-screen pt-[160px] pb-[100px] cursor-none relative">
+    <main className="w-full bg-[var(--dark)] text-[var(--light)] min-h-screen pt-[160px] pb-[100px]  relative">
       <section className="px-[5%] md:px-[8%] max-w-[1400px] mx-auto">
         
         <Link href="/clients" className="inline-flex items-center gap-2 text-[10px] tracking-[0.2em] uppercase text-[var(--gold)] hover:text-[var(--light)] transition-colors mb-[60px] reveal">
@@ -193,7 +193,7 @@ export default function ClientPage({ params }) {
             
             <div className={`grid grid-cols-1 ${client.videos.length === 1 ? 'max-w-[800px] mx-auto' : 'md:grid-cols-2'} gap-[40px]`}>
               {client.videos.map((video, idx) => (
-                <div key={idx} className="flex flex-col group shadow-md border border-[rgba(10,10,10,0.06)] hover:border-[var(--gold)] bg-white rounded-2xl overflow-hidden transition-all duration-300 cursor-none">
+                <div key={idx} className="flex flex-col group shadow-md border border-[rgba(10,10,10,0.06)] hover:border-[var(--gold)] bg-white rounded-2xl overflow-hidden transition-all duration-300 ">
                   {/* Top: Video Player Frame */}
                   <div className="w-full aspect-video overflow-hidden bg-black relative">
                     <iframe
@@ -220,7 +220,7 @@ export default function ClientPage({ params }) {
                       href={`https://www.youtube.com/watch?v=${video.id}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-auto text-[10px] tracking-[0.2em] uppercase font-bold text-[var(--light)] hover:text-[var(--gold)] flex items-center gap-[6px] transition-colors cursor-none w-fit"
+                      className="mt-auto text-[10px] tracking-[0.2em] uppercase font-bold text-[var(--light)] hover:text-[var(--gold)] flex items-center gap-[6px] transition-colors  w-fit"
                     >
                       ▶ Watch on Youtube
                     </a>
