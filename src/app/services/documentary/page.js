@@ -48,11 +48,16 @@ export default function DocumentaryServices() {
   ];
 
   const photos = [
-    '/images/our_portfolio/documentary/DSC_0149.JPG',
-    '/images/our_portfolio/documentary/DSC_0163.JPG',
-    '/images/our_portfolio/documentary/DSC_0204 Big.JPG',
-    '/images/our_portfolio/documentary/highlights_SKV00387.jpg',
-    '/images/our_portfolio/documentary/NMKL0128.JPG'
+    '/images/documentary/doc_1.jpg',
+    '/images/documentary/doc_2.jpg',
+    '/images/documentary/doc_3.jpg',
+    '/images/documentary/doc_4.jpg',
+    '/images/documentary/doc_5.jpg',
+    '/images/documentary/doc_6.jpg',
+    '/images/documentary/doc_7.jpg',
+    '/images/documentary/doc_8.jpg',
+    '/images/documentary/doc_9.jpg',
+    '/images/documentary/doc_10.jpg'
   ];
 
   return (

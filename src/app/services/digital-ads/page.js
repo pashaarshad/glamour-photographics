@@ -53,6 +53,16 @@ export default function DigitalAdsServices() {
     }
   ];
 
+  const photos = [
+    '/images/digital-ads/ad_1.jpg',
+    '/images/digital-ads/ad_2.jpg',
+    '/images/digital-ads/ad_3.jpg',
+    '/images/digital-ads/ad_4.jpg',
+    '/images/digital-ads/ad_5.jpg',
+    '/images/digital-ads/ad_6.jpg',
+    '/images/digital-ads/ad_7.jpg'
+  ];
+
   return (
     <main className="w-full bg-[var(--dark)] text-[var(--light)] pb-[100px] cursor-none relative overflow-x-hidden">
       
@@ -151,6 +161,27 @@ export default function DigitalAdsServices() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ─── PHOTOS GALLERY ─── */}
+      <section className="py-[100px] px-[5%] md:px-[8%] max-w-[1400px] mx-auto">
+        <div className="mb-[50px] text-center reveal">
+          <span className="text-[10px] tracking-[0.3em] uppercase text-[var(--gold)] mb-[12px] block font-bold">Gallery</span>
+          <h2 className="font-serif text-[clamp(28px,3vw,40px)] font-light text-[var(--light)]">Ad Campaign Frames</h2>
+          <div className="w-[60px] h-[1px] bg-[var(--gold)] mx-auto mt-[16px]"></div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[24px] reveal">
+          {photos.map((src, idx) => (
+            <div key={idx} className="relative aspect-[16/9] rounded-sm overflow-hidden border border-[rgba(10,10,10,0.06)] group shadow-sm bg-[rgba(10,10,10,0.02)]">
+              <img src={src} alt="Ad Campaign Grid Frame" className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-103" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-[16px]">
+                <span className="text-[8px] tracking-[0.2em] uppercase text-[var(--gold)] mb-[4px] font-bold">Digital Ads Portfolio</span>
+                <h4 className="font-serif text-[14px] text-white">Behind the Campaign</h4>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
