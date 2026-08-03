@@ -83,7 +83,7 @@ export default function About() {
               <img 
                 src="/images/IMG_8065.JPG" 
                 alt="Founder Hameed Hussain" 
-                className="w-full h-full object-cover object-top opacity-85"
+                className="w-full h-full object-cover object-center opacity-85"
               />
             </div>
             <div className="bg-[#0A0A0A] p-[30px] border-t border-[rgba(255,255,255,0.08)]">
