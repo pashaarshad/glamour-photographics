@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, EffectFade, Autoplay } from 'swiper/modules';
 import 'swiper/css';
@@ -57,20 +57,7 @@ export default function ClientGallery({ images }) {
               View Full Gallery <span className="text-[11px] ml-1">({remainingImages.length} More)</span>
             </button>
           ) : (
-            <div className="columns-1 sm:columns-2 md:columns-3 gap-[16px] w-full text-left">
-              {remainingImages.map((src, index) => (
-                <div key={index} className="mb-[16px] break-inside-avoid relative group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[var(--darker)] shadow-sm">
-                  <img 
-                    src={src} 
-                    alt={`Gallery Image ${index + 1}`} 
-                    className="w-full h-auto block transition-transform duration-[800ms] group-hover:scale-102"
-                    onError={(e) => {
-                      e.target.style.display = 'none';
-                    }}
-                  />
-                </div>
-              ))}
-            </div>
+            <GalleryLayout remainingImages={remainingImages} />
           )}
         </div>
       )}
@@ -93,6 +80,75 @@ export default function ClientGallery({ images }) {
           background: var(--gold);
         }
       `}</style>
+    </div>
+  );
+}
+
+// Custom Layout Engine
+function GalleryLayout({ remainingImages }) {
+  const [imagesMeta, setImagesMeta] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let loadedCount = 0;
+    const metaList = new Array(remainingImages.length);
+
+    remainingImages.forEach((src, index) => {
+      const img = new Image();
+      img.onload = () => {
+        metaList[index] = { src, isVertical: img.height > img.width };
+        loadedCount++;
+        if (loadedCount === remainingImages.length) {
+          setImagesMeta([...metaList]);
+          setLoading(false);
+        }
+      };
+      img.onerror = () => {
+        metaList[index] = { src, isVertical: false };
+        loadedCount++;
+        if (loadedCount === remainingImages.length) {
+          setImagesMeta([...metaList]);
+          setLoading(false);
+        }
+      };
+      img.src = src;
+    });
+  }, [remainingImages]);
+
+  if (loading) {
+    return (
+      <div className="w-full flex items-center justify-center py-[60px]">
+        <span className="text-[10px] tracking-[0.2em] uppercase text-[var(--muted)] animate-pulse">
+          Curating Layout...
+        </span>
+      </div>
+    );
+  }
+
+  return (
+    <div className="w-full text-left mt-[40px]">
+      <div 
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-[16px] w-full"
+        style={{ gridAutoFlow: 'dense' }}
+      >
+        {imagesMeta.map((item, index) => (
+          <div 
+            key={index} 
+            className={`relative group overflow-hidden rounded-sm border border-[rgba(10,10,10,0.06)] bg-[var(--darker)] shadow-sm ${
+              item.isVertical ? 'md:row-span-2' : 'md:row-span-1'
+            }`}
+          >
+            <img 
+              src={item.src} 
+              alt={`Gallery Image ${index + 1}`} 
+              className={`w-full block transition-transform duration-[800ms] group-hover:scale-102 object-cover ${
+                item.isVertical ? 'h-full min-h-[500px]' : 'h-full min-h-[242px]'
+              }`}
+              onError={(e) => { e.target.style.display = 'none'; }}
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
