@@ -304,7 +304,7 @@ export default function CorporatePortfolio() {
                 <SwiperSlide key={idx}>
                   <div
                     onClick={() => setActiveCert(logo.cert)}
-                    className="bg-white border border-[rgba(10,10,10,0.06)] p-[12px] rounded-sm h-[90px] flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.01)] transition-all duration-300 hover:scale-105 hover:border-[var(--gold)] "
+                    className="bg-white border border-[rgba(10,10,10,0.06)] p-[12px] rounded-sm h-[90px] flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.01)] transition-all duration-300 hover:scale-105 hover:border-[var(--gold)] cursor-pointer"
                   >
                     <img
                       src={logo.logo}

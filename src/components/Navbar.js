@@ -51,7 +51,7 @@ export default function Navbar() {
             Let's Talk
           </Link>
         </div>
-        <div className="flex md:hidden flex-col gap-[5px] " onClick={() => setMobileOpen(!mobileOpen)}>
+        <div className="flex md:hidden flex-col gap-[5px] cursor-pointer" onClick={() => setMobileOpen(!mobileOpen)}>
           <span className="block w-[24px] h-[1px] bg-white transition-all duration-300"></span>
           <span className="block w-[24px] h-[1px] bg-white transition-all duration-300"></span>
           <span className="block w-[24px] h-[1px] bg-white transition-all duration-300"></span>

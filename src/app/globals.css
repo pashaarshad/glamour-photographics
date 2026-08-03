@@ -376,11 +376,7 @@
 /* =========================================
    DEFAULT CURSOR RESTORATION
    ========================================= */
-* {
-  cursor: default !important;
-}
-
-a, button, select, input, textarea, [role="button"], 
+a, a *, button, button *, select, input, textarea, [role="button"], [role="button"] *,
 .swiper-pagination-bullet, .swiper-button-next, .swiper-button-prev, 
 .cursor-pointer, .cursor-pointer * {
   cursor: pointer !important;
