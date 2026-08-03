@@ -93,10 +93,14 @@ export default function Home() {
 
   const HERO_SLIDES = [
     { type: 'video', src: 'oz26LF0gvxg', isHorizontal: true, duration: 10000 },
-    { type: 'image', src: '/images/heroo-imgs/dilquar.jpg', isHorizontal: true, duration: 2000 },
-    { type: 'image', src: '/images/heroo-imgs/DSC_0204.JPG', isHorizontal: true, duration: 2000 },
-    { type: 'image', src: '/images/heroo-imgs/IMG_0029.JPG', isHorizontal: false, duration: 2000 },
-    { type: 'image', src: '/images/heroo-imgs/Untitled design(1) (1).png', isHorizontal: false, duration: 2000 }
+    { type: 'image', src: '/images/heroo-imgs/dilquar.jpg', isHorizontal: true, duration: 2500 },
+    { type: 'image', src: '/images/heroo-imgs/DSC_0204.JPG', isHorizontal: true, duration: 2500 },
+    { type: 'image', src: '/images/heroo-imgs/IMG_0029.JPG', isHorizontal: false, duration: 2500 },
+    { type: 'image', src: '/images/heroo-imgs/Untitled design(1) (1).png', isHorizontal: false, duration: 2500 },
+    { type: 'image', src: '/images/heroo-imgs/11.jpg', isHorizontal: true, duration: 2500 },
+    { type: 'image', src: '/images/heroo-imgs/IMG_0008.jpg', isHorizontal: true, duration: 2500 },
+    { type: 'image', src: '/images/heroo-imgs/NMK_0541.jpg', isHorizontal: true, duration: 2500 },
+    { type: 'image', src: '/images/heroo-imgs/WhatsApp Image 2026-02-09 at 8.29.33 PM (1).jpg', isHorizontal: true, duration: 2500 }
   ];
 
   useEffect(() => {
@@ -653,8 +657,8 @@ export default function Home() {
                 key={idx}
                 className={`absolute rounded-[12px] md:rounded-[20px] overflow-hidden border-[3px] border-white/10 shadow-[0_30px_70px_rgba(0,0,0,0.85)] bg-black transition-all duration-[1200ms] ease-[cubic-bezier(0.25,1,0.5,1)] ${
                   slide.isHorizontal 
-                    ? 'w-[80%] sm:w-[70%] md:w-[65%] lg:w-[60%] max-w-[500px] aspect-[3/2]' 
-                    : 'w-[60%] sm:w-[50%] md:w-[45%] lg:w-[40%] max-w-[340px] aspect-[2/3]'
+                    ? 'w-[90%] sm:w-[80%] md:w-[75%] lg:w-[72%] max-w-[620px] aspect-[3/2]' 
+                    : 'w-[70%] sm:w-[60%] md:w-[55%] lg:w-[50%] max-w-[420px] aspect-[2/3]'
                 } ${positionClass}`}
                 style={transformStyle}
               >
@@ -819,7 +823,7 @@ export default function Home() {
           </div>
 
           {/* Bottom Section: Video Player with large curved design */}
-          <div className="w-full max-w-[1100px] mx-auto aspect-video rounded-[24px] md:rounded-[40px] overflow-hidden border border-[rgba(10,10,10,0.08)] shadow-[0_30px_80px_rgba(10,10,10,0.12)] reveal opacity-0 anim-fade-up delay-100 isolate">
+          <div className="w-full max-w-[1400px] mx-auto aspect-video rounded-[24px] md:rounded-[40px] overflow-hidden border border-[rgba(10,10,10,0.08)] shadow-[0_30px_80px_rgba(10,10,10,0.12)] reveal opacity-0 anim-fade-up delay-100 isolate">
             <iframe
               className="w-full h-full"
               src="https://www.youtube.com/embed/oz26LF0gvxg?rel=0"
