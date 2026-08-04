@@ -11,6 +11,28 @@ import 'swiper/css';
 
 export default function About() {
   const [activeCert, setActiveCert] = useState(null);
+  const [reelItems, setReelItems] = useState([]);
+
+  useEffect(() => {
+    fetch('/api/reel-images')
+      .then(res => res.json())
+      .then(data => {
+        if ((data.main && data.main.length > 0) || (data.remaining && data.remaining.length > 0)) {
+          const mainList = (data.main || []).map(src => ({ type: 'img', src }));
+          const remainingList = (data.remaining || []).map(src => ({ type: 'img', src }));
+          
+          const sequence = [
+            ...mainList,
+            { type: 'badge' },
+            ...remainingList
+          ];
+          setReelItems(sequence);
+        }
+      })
+      .catch(err => {
+        console.error("Failed to fetch reel images:", err);
+      });
+  }, []);
 
   useEffect(() => {
     const checkReveals = () => {
@@ -155,7 +177,7 @@ export default function About() {
               <div className="h-full overflow-hidden relative z-10 select-none">
                 <div className="flex flex-col gap-[20px] animate-marquee-vertical">
                   {(() => {
-                    const baseItems = [
+                    const fallbackItems = [
                       { type: 'img', src: "/images/interactive_showcase/1.jpeg" },
                       { type: 'img', src: "/images/interactive_showcase/2.JPG" },
                       { type: 'img', src: "/images/interactive_showcase/3.JPG" },
@@ -177,6 +199,7 @@ export default function About() {
                       { type: 'img', src: "/images/interactive_showcase/17.jpg" },
                       { type: 'img', src: "/images/interactive_showcase/18.jpg" }
                     ];
+                    const baseItems = reelItems.length > 0 ? reelItems : fallbackItems;
                     return [...baseItems, ...baseItems].map((item, idx) => {
                       if (item.type === 'img') {
                         return (
