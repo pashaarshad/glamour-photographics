@@ -16,10 +16,31 @@ export default function About() {
   useEffect(() => {
     fetch('/api/reel-images')
       .then(res => res.json())
-      .then(data => {
+      .then(async (data) => {
         if ((data.main && data.main.length > 0) || (data.remaining && data.remaining.length > 0)) {
-          const mainList = (data.main || []).map(src => ({ type: 'img', src }));
-          const remainingList = (data.remaining || []).map(src => ({ type: 'img', src }));
+          const mainSrcs = data.main || [];
+          const remainingSrcs = data.remaining || [];
+          
+          const checkVertical = (src) => {
+            return new Promise((resolve) => {
+              const img = new Image();
+              img.onload = () => resolve(img.height > img.width);
+              img.onerror = () => resolve(false);
+              img.src = src;
+            });
+          };
+
+          const mainList = [];
+          for (const src of mainSrcs) {
+            const isVertical = await checkVertical(src);
+            mainList.push({ type: 'img', src, isVertical });
+          }
+
+          const remainingList = [];
+          for (const src of remainingSrcs) {
+            const isVertical = await checkVertical(src);
+            remainingList.push({ type: 'img', src, isVertical });
+          }
           
           const sequence = [
             ...mainList,
@@ -203,11 +224,16 @@ export default function About() {
                     return [...baseItems, ...baseItems].map((item, idx) => {
                       if (item.type === 'img') {
                         return (
-                          <div key={idx} className="w-full aspect-[4/3] bg-black overflow-hidden relative border border-[rgba(10,10,10,0.12)] rounded-[3px] group  shrink-0">
+                          <div 
+                            key={idx} 
+                            className={`w-full bg-black overflow-hidden relative border border-[rgba(10,10,10,0.12)] rounded-[3px] group shrink-0 ${
+                              item.isVertical ? 'aspect-[3/4]' : 'aspect-[4/3]'
+                            }`}
+                          >
                             <img 
                               src={item.src} 
                               alt={`Film Strip Frame ${idx + 1}`} 
-                              className="w-full h-full object-cover grayscale opacity-85 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" 
+                              className="w-full h-full object-cover grayscale opacity-85 hover:grayscale-0 group-hover:grayscale-0 group-hover:opacity-100 hover:opacity-100 transition-all duration-500 cursor-pointer" 
                             />
                           </div>
                         );
