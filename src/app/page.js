@@ -919,7 +919,7 @@ export default function Home() {
             </div>
 
             {/* Box 2 - Overlapping Golden/Ivory Styled Panel */}
-            <div className="absolute bottom-[-30px] md:bottom-[-40px] right-0 w-[55%] h-[160px] bg-[#FAF8F4] border border-[rgba(197,164,109,0.3)] rounded-sm p-[24px] flex flex-col justify-between z-20 shadow-xl backdrop-blur-md">
+            <div className="absolute bottom-[-80px] md:bottom-[-100px] right-0 w-[55%] h-[160px] bg-[#FAF8F4] border border-[rgba(197,164,109,0.3)] rounded-sm p-[24px] flex flex-col justify-between z-20 shadow-xl backdrop-blur-md">
               <div className="w-full">
                 <span className="text-[9px] tracking-[0.2em] uppercase text-[var(--gold)] font-bold block mb-[4px]">Visual Legacy</span>
                 <h5 className="font-serif text-[24px] text-[var(--light)] font-bold leading-none">Est. 1982</h5>
