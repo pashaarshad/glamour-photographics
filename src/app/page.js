@@ -68,11 +68,10 @@ function HeroSlotCard({ photoSrc, photoTitle, className, onClick }) {
       <img
         src={currentSrc}
         alt={photoTitle}
-        className={`w-full h-full object-cover transition-all duration-[900ms] cubic-bezier(0.22, 1, 0.36, 1) select-none pointer-events-none ${
-          isFading
+        className={`w-full h-full object-cover transition-all duration-[900ms] cubic-bezier(0.22, 1, 0.36, 1) select-none pointer-events-none ${isFading
             ? 'opacity-0 scale-[1.08] translate-y-[12px] blur-[1px]'
             : 'opacity-100 scale-100 translate-y-0 blur-0'
-        }`}
+          }`}
       />
     </div>
   );
@@ -139,7 +138,7 @@ export default function Home() {
 
   const handleHomeFormSubmit = async (e) => {
     e.preventDefault();
-    
+
     setHomeStatus({
       submitted: false,
       submitting: true,
@@ -321,7 +320,7 @@ export default function Home() {
   const projectsCount = useCountUp(1200, 1800, statsTriggered);
   const weddingsCount = useCountUp(300, 1800, statsTriggered);
 
-    const portfolioImages = {
+  const portfolioImages = {
     // ── CURATED ALL TAB: 12 hand-picked images matching the screenshot ──
     'ALL': [
       '/images/interactive_showcase/1.jpeg',
@@ -600,10 +599,10 @@ export default function Home() {
 
   return (
     <main className="w-full bg-[var(--dark)] text-[var(--light)] pb-[100px] overflow-x-hidden  relative">
-      
+
       {/* ─── 1. HERO SECTION ─── */}
       <section className="relative min-h-[100svh] flex flex-col lg:flex-row overflow-hidden bg-[#0A0A0A]">
-        
+
         {/* Left Column: Foreground layout with background card-sliding depth */}
         <div className="w-full lg:w-[45%] flex flex-col justify-center px-[6%] md:px-[8%] pt-[140px] pb-[80px] lg:py-[100px] z-20 relative bg-[#0A0A0A] shadow-[20px_0_40px_rgba(10,10,10,0.9)]">
           <div className="w-full max-w-[650px] text-left">
@@ -626,7 +625,7 @@ export default function Home() {
 
         {/* Right Column: Slide carousel with black fade gradient */}
         <div className="w-full lg:w-[55%] flex items-center justify-center min-h-[450px] sm:min-h-[500px] lg:min-h-screen relative overflow-hidden bg-black z-10">
-          
+
           {/* Left shadow fade gradient */}
           <div className="absolute inset-y-0 left-0 w-[120px] bg-gradient-to-r from-[#0A0A0A] to-transparent z-15 pointer-events-none hidden lg:block" />
 
@@ -653,13 +652,12 @@ export default function Home() {
             }
 
             return (
-              <div 
+              <div
                 key={idx}
-                className={`absolute rounded-[12px] md:rounded-[20px] overflow-hidden border-[3px] border-white/10 shadow-[0_30px_70px_rgba(0,0,0,0.85)] bg-black transition-all duration-[1200ms] ease-[cubic-bezier(0.25,1,0.5,1)] ${
-                  slide.isHorizontal 
-                    ? 'w-[90%] sm:w-[80%] md:w-[75%] lg:w-[72%] max-w-[620px] aspect-[3/2]' 
+                className={`absolute rounded-[12px] md:rounded-[20px] overflow-hidden border-[3px] border-white/10 shadow-[0_30px_70px_rgba(0,0,0,0.85)] bg-black transition-all duration-[1200ms] ease-[cubic-bezier(0.25,1,0.5,1)] ${slide.isHorizontal
+                    ? 'w-[90%] sm:w-[80%] md:w-[75%] lg:w-[72%] max-w-[620px] aspect-[3/2]'
                     : 'w-[70%] sm:w-[60%] md:w-[55%] lg:w-[50%] max-w-[420px] aspect-[2/3]'
-                } ${positionClass}`}
+                  } ${positionClass}`}
                 style={transformStyle}
               >
                 {slide.type === 'video' ? (
@@ -674,8 +672,8 @@ export default function Home() {
                     ></iframe>
                   </div>
                 ) : (
-                  <img 
-                    src={slide.src} 
+                  <img
+                    src={slide.src}
                     alt={`Slide ${idx + 1}`}
                     className="w-full h-full object-cover select-none pointer-events-none"
                   />
@@ -798,11 +796,11 @@ export default function Home() {
       {/* ─── 3. WE TELL STORIES THAT STAY (YOUTUBE EMBED) ─── */}
       <section className="py-[120px] px-[8%] md:px-[10%] bg-[var(--dark)] relative overflow-hidden">
         {/* Subtle historical/storytelling background watermark */}
-        <div 
+        <div
           className="absolute inset-0 bg-cover bg-center opacity-[0.035] mix-blend-luminosity pointer-events-none"
           style={{ backgroundImage: `url('/images/about-hero-double-exposure.png')` }}
         />
-        
+
         <div className="max-w-[1400px] mx-auto relative z-10">
           {/* Top Section: Text */}
           <div className="max-w-[800px] mx-auto text-center mb-[60px] reveal opacity-0 anim-fade-up">
@@ -839,7 +837,7 @@ export default function Home() {
       {/* ─── 4. STATS SECTION (Four Decades of Visual Excellence) ─── */}
       <section ref={statsRef} className="py-[120px] px-[8%] md:px-[10%] bg-[var(--darker)] border-y border-[rgba(10,10,10,0.06)]">
         <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-[80px] items-center">
-          
+
           {/* Left Column */}
           <div className="reveal opacity-0 anim-fade-up">
             <div className="w-[60px] h-[2px] bg-[var(--gold)] mb-[32px]" id="stats-gold-line"></div>
@@ -864,7 +862,7 @@ export default function Home() {
               </div>
               <div className="text-[9px] sm:text-[10px] tracking-[0.25em] uppercase text-[var(--muted)] mt-[10px] font-medium">Years of Experience</div>
             </div>
-            
+
             <div className="p-[24px] sm:p-[32px] md:p-[40px] bg-[var(--dark)] hover:bg-[rgba(10,10,10,0.02)] transition-colors duration-300 relative group">
               <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-[var(--gold)] transition-all duration-300 group-hover:w-full"></div>
               <div className="font-serif text-[clamp(38px,6vw,72px)] leading-[1] text-[var(--light)] font-light flex items-baseline lining-nums">
@@ -872,7 +870,7 @@ export default function Home() {
               </div>
               <div className="text-[9px] sm:text-[10px] tracking-[0.25em] uppercase text-[var(--muted)] mt-[10px] font-medium">Clients Served</div>
             </div>
- 
+
             <div className="p-[24px] sm:p-[32px] md:p-[40px] bg-[var(--dark)] hover:bg-[rgba(10,10,10,0.02)] transition-colors duration-300 relative group">
               <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-[var(--gold)] transition-all duration-300 group-hover:w-full"></div>
               <div className="font-serif text-[clamp(38px,6vw,72px)] leading-[1] text-[var(--light)] font-light flex items-baseline lining-nums">
@@ -880,7 +878,7 @@ export default function Home() {
               </div>
               <div className="text-[9px] sm:text-[10px] tracking-[0.25em] uppercase text-[var(--muted)] mt-[10px] font-medium">Corporate Projects</div>
             </div>
- 
+
             <div className="p-[24px] sm:p-[32px] md:p-[40px] bg-[var(--dark)] hover:bg-[rgba(10,10,10,0.02)] transition-colors duration-300 relative group">
               <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-[var(--gold)] transition-all duration-300 group-hover:w-full"></div>
               <div className="font-serif text-[clamp(38px,6vw,72px)] leading-[1] text-[var(--light)] font-light flex items-baseline lining-nums">
@@ -896,30 +894,30 @@ export default function Home() {
       {/* ─── 5. OUR STORY 1982 OVERLAPPING DESIGN ─── */}
       <section className="py-[160px] px-[8%] md:px-[10%] bg-[var(--dark)] relative border-b border-[rgba(10,10,10,0.06)]">
         <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-[100px] items-center">
-          
+
           {/* Left Column Overlapping Boxes */}
           <div className="relative h-[560px] md:h-[620px] w-full flex items-center justify-center reveal opacity-0 anim-fade-up">
             {/* Box 1 - Founder Portrait & Text Overlay */}
             <div className="absolute top-0 left-0 w-[82%] h-[400px] md:h-[480px] bg-[#0A0A0A] border border-[rgba(10,10,10,0.06)] rounded-sm overflow-hidden z-10 shadow-lg relative group">
-              <img 
-                src="/images/IMG_8065.JPG" 
-                alt="Hameed Hussain Founder" 
-                className="w-full h-full object-cover object-top opacity-85 transition-transform duration-700 group-hover:scale-105 select-none pointer-events-none" 
+              <img
+                src="/images/IMG_8065.JPG"
+                alt="Hameed Hussain Founder"
+                className="w-full h-full object-cover object-top opacity-85 transition-transform duration-700 group-hover:scale-105 select-none pointer-events-none"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-black/35 to-transparent p-[32px] flex flex-col justify-end">
                 <h4 className="font-serif text-[24px] text-white font-medium leading-none mb-[6px]">Hameed Hussain</h4>
                 <p className="text-[9px] tracking-[0.2em] uppercase text-[var(--gold)] font-bold mb-[16px]">Founder & Creative Visionary</p>
                 <div className="w-[50px] h-[1px] bg-[var(--gold)] mb-[16px]"></div>
-                <img 
-                  src="/images/signature.png" 
-                  alt="Founder Signature" 
-                  className="h-[36px] w-auto select-none pointer-events-none invert opacity-95 self-start" 
+                <img
+                  src="/images/signature.png"
+                  alt="Founder Signature"
+                  className="h-[36px] w-auto select-none pointer-events-none invert opacity-95 self-start"
                 />
               </div>
             </div>
 
             {/* Box 2 - Overlapping Golden/Ivory Styled Panel */}
-            <div className="absolute bottom-[-80px] md:bottom-[-100px] right-0 w-[55%] h-[160px] bg-[#FAF8F4] border border-[rgba(197,164,109,0.3)] rounded-sm p-[24px] flex flex-col justify-between z-20 shadow-xl backdrop-blur-md">
+            <div className="absolute bottom-[-40px] md:bottom-[-100px] right-0 w-[55%] h-[160px] bg-[#FAF8F4] border border-[rgba(197,164,109,0.3)] rounded-sm p-[24px] flex flex-col justify-between z-20 shadow-xl backdrop-blur-md">
               <div className="w-full">
                 <span className="text-[9px] tracking-[0.2em] uppercase text-[var(--gold)] font-bold block mb-[4px]">Visual Legacy</span>
                 <h5 className="font-serif text-[24px] text-[var(--light)] font-bold leading-none">Est. 1982</h5>
@@ -960,7 +958,7 @@ export default function Home() {
               <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] font-bold">Featured Work</span>
               <div className="w-[12px] h-[1px] bg-[var(--gold)]"></div>
             </div>
-            
+
             <h2 className="font-serif text-[clamp(36px,5vw,64px)] font-light leading-[1.1] text-[var(--light)] mb-[20px] tracking-[-0.01em]">
               Stories We've <br className="sm:hidden" /> Brought to <span className="italic text-[var(--gold)] font-medium">Life</span>
             </h2>
@@ -981,12 +979,11 @@ export default function Home() {
           <div className="reveal opacity-0 anim-fade-up delay-100 flex flex-wrap items-center justify-center gap-x-[20px] gap-y-[16px] mb-[60px] max-w-[1000px] mx-auto border-b border-[rgba(10,10,10,0.06)] pb-[12px]">
             {Object.keys(featuredVideos).map((tab, idx, arr) => (
               <div key={tab} className="flex items-center gap-[20px]">
-                <button 
+                <button
                   suppressHydrationWarning
                   onClick={() => setActiveVideoTab(tab)}
-                  className={`text-[10px] tracking-[0.25em] uppercase font-bold pb-[6px] relative  transition-colors duration-300 ${
-                    activeVideoTab === tab ? 'text-[var(--gold)] font-bold' : 'text-[var(--muted)] font-medium hover:text-[var(--light)]'
-                  }`}
+                  className={`text-[10px] tracking-[0.25em] uppercase font-bold pb-[6px] relative  transition-colors duration-300 ${activeVideoTab === tab ? 'text-[var(--gold)] font-bold' : 'text-[var(--muted)] font-medium hover:text-[var(--light)]'
+                    }`}
                 >
                   {tab}
                   {activeVideoTab === tab && <div className="absolute bottom-[-14px] left-0 w-full h-[2px] bg-[var(--gold)]" />}
@@ -1001,7 +998,7 @@ export default function Home() {
           {/* Video Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-[40px] max-w-[1200px] mx-auto reveal opacity-0 anim-fade-up delay-200">
             {((featuredVideos[activeVideoTab] || []).slice(0, showAllHomeVideos ? undefined : 2)).map((video, idx) => (
-              <div 
+              <div
                 key={video.id}
                 onClick={() => {
                   setActiveVideoId(video.id);
@@ -1010,15 +1007,15 @@ export default function Home() {
                 className="group relative aspect-video rounded-[16px] overflow-hidden bg-black shadow-md  border border-[rgba(10,10,10,0.06)] hover:shadow-2xl transition-all duration-500"
               >
                 {/* Thumbnail */}
-                <img 
-                  src={`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`} 
-                  alt={video.title} 
+                <img
+                  src={`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`}
+                  alt={video.title}
                   className="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:opacity-90 group-hover:scale-102 transition-all duration-700 select-none pointer-events-none"
                   onError={(e) => {
                     e.target.src = `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`;
                   }}
                 />
-                
+
                 {/* Gradient Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-transparent z-10" />
 
@@ -1074,8 +1071,8 @@ export default function Home() {
           {/* Footer View All Link */}
           <div className="relative flex items-center justify-end mt-[80px] max-w-[1200px] mx-auto reveal opacity-0 anim-fade-up">
             <div className="absolute left-0 right-[260px] h-[1px] bg-[var(--gold)] opacity-30"></div>
-            <Link 
-              href="/portfolio?tab=VIDEOS" 
+            <Link
+              href="/portfolio?tab=VIDEOS"
               className="text-[10px] tracking-[0.25em] uppercase font-bold text-[var(--gold)] hover:text-[var(--light)]  transition-colors duration-300 flex items-center gap-[12px] group relative pl-[24px]"
             >
               View All Portfolio <span className="transition-transform duration-300 group-hover:translate-x-[4px]">→</span>
@@ -1119,17 +1116,16 @@ export default function Home() {
               { name: "Presidency University", slug: "presidency", logo: "/logo-clients/presidency.png" },
               { name: "PAI", slug: "pai", logo: "/logo-clients/pai.png" }
             ].map((client, i) => (
-              <Link 
-                href={`/clients/${client.slug}`} 
-                key={i} 
+              <Link
+                href={`/clients/${client.slug}`}
+                key={i}
                 className="w-full flex items-center justify-center p-[10px] md:p-[20px] transition-transform duration-300 hover:scale-105  relative"
               >
-                <img 
-                  src={client.logo} 
-                  alt={client.name} 
-                  className={`max-w-full object-contain filter hover:brightness-95 transition-all duration-300 pointer-events-none select-none ${
-                    client.slug === 'jlr' ? 'max-h-[38px] md:max-h-[48px]' : 'max-h-[55px] md:max-h-[70px]'
-                  }`} 
+                <img
+                  src={client.logo}
+                  alt={client.name}
+                  className={`max-w-full object-contain filter hover:brightness-95 transition-all duration-300 pointer-events-none select-none ${client.slug === 'jlr' ? 'max-h-[38px] md:max-h-[48px]' : 'max-h-[55px] md:max-h-[70px]'
+                    }`}
                 />
               </Link>
             ))}
@@ -1164,13 +1160,13 @@ export default function Home() {
             { id: 'CELEBRITY', label: 'CELEBRITY' },
             { id: 'HEADSHOTS', label: 'HEADSHOTS' }
           ].map((tab) => (
-            <button 
+            <button
               suppressHydrationWarning
-              key={tab.id} 
+              key={tab.id}
               onClick={() => {
                 setActivePortfolioTab(tab.id);
                 setShowAllHomeImages(false);
-              }} 
+              }}
               className={`text-[10px] tracking-[0.2em] uppercase pb-[15px] relative  ${activePortfolioTab === tab.id ? 'text-[var(--gold)]' : 'text-[var(--muted)] hover:text-[var(--light)]'}`}
             >
               {tab.label}
@@ -1180,25 +1176,25 @@ export default function Home() {
         </div>
         {(() => {
           const SCREENSHOT_FIRST_18_IMAGES = [
-    '/images/interactive_showcase/1.jpeg',
-    '/images/interactive_showcase/2.JPG',
-    '/images/interactive_showcase/3.JPG',
-    '/images/interactive_showcase/4.jpg',
-    '/images/interactive_showcase/5.jpg',
-    '/images/interactive_showcase/6.JPG',
-    '/images/interactive_showcase/7.JPG',
-    '/images/interactive_showcase/8.jpg',
-    '/images/interactive_showcase/9.JPG',
-    '/images/interactive_showcase/10.jpg',
-    '/images/interactive_showcase/11.jpeg',
-    '/images/interactive_showcase/12.jpg',
-    '/images/interactive_showcase/13.jpg',
-    '/images/interactive_showcase/14.JPG',
-    '/images/interactive_showcase/15.jpg',
-    '/images/interactive_showcase/16.jpg',
-    '/images/interactive_showcase/17.jpg',
-    '/images/interactive_showcase/18.jpg'
-  ];
+            '/images/interactive_showcase/1.jpeg',
+            '/images/interactive_showcase/2.JPG',
+            '/images/interactive_showcase/3.JPG',
+            '/images/interactive_showcase/4.jpg',
+            '/images/interactive_showcase/5.jpg',
+            '/images/interactive_showcase/6.JPG',
+            '/images/interactive_showcase/7.JPG',
+            '/images/interactive_showcase/8.jpg',
+            '/images/interactive_showcase/9.JPG',
+            '/images/interactive_showcase/10.jpg',
+            '/images/interactive_showcase/11.jpeg',
+            '/images/interactive_showcase/12.jpg',
+            '/images/interactive_showcase/13.jpg',
+            '/images/interactive_showcase/14.JPG',
+            '/images/interactive_showcase/15.jpg',
+            '/images/interactive_showcase/16.jpg',
+            '/images/interactive_showcase/17.jpg',
+            '/images/interactive_showcase/18.jpg'
+          ];
 
           const VERTICAL_IMAGES = [
             '/images/our_portfolio/corporate/NMKL5612.jpg',
@@ -1234,15 +1230,15 @@ export default function Home() {
                 {/* 1. INITIAL 18 HORIZONTAL PHOTOS (6 ROWS x 3 COLUMNS) */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-[24px] w-full reveal opacity-0 anim-fade-up">
                   {SCREENSHOT_FIRST_18_IMAGES.map((src, idx) => (
-                    <div 
+                    <div
                       key={`home-init-${src}-${idx}`}
                       onClick={() => setActivePhotoUrl(src)}
                       className="group relative overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] shadow-lg bg-[var(--darker)]  hover:shadow-2xl transition-all duration-500 w-full aspect-[3/2]"
                     >
-                      <img 
-                        src={src} 
-                        alt="Portfolio Work" 
-                        className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-105" 
+                      <img
+                        src={src}
+                        alt="Portfolio Work"
+                        className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-[20px]">
                         <div className="text-left">
@@ -1301,16 +1297,15 @@ export default function Home() {
                         <div className="w-full flex flex-col gap-[32px]">
                           {smartBlocks.map((block, bIdx) => (
                             <div key={`home-exp-block-${bIdx}`} className="flex flex-col md:flex-row gap-[24px] items-stretch w-full reveal opacity-0 anim-fade-up">
-                              <div 
+                              <div
                                 onClick={() => setActivePhotoUrl(block.vertical)}
                                 className="w-full md:w-1/3 relative group overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] bg-[var(--darker)] min-h-[350px] md:min-h-0 shadow-lg  hover:shadow-2xl transition-all duration-500"
                               >
-                                <img 
-                                  src={block.vertical} 
-                                  alt="Portfolio Work" 
-                                  className={`absolute inset-0 w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-[1.03] ${
-                                    block.vertical.includes('/headshots/') ? 'object-top' : 'object-center'
-                                  }`} 
+                                <img
+                                  src={block.vertical}
+                                  alt="Portfolio Work"
+                                  className={`absolute inset-0 w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-[1.03] ${block.vertical.includes('/headshots/') ? 'object-top' : 'object-center'
+                                    }`}
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-[20px]">
                                   <span className="text-[9px] tracking-[0.2em] font-bold text-[var(--gold)] uppercase font-semibold">PORTRAIT</span>
@@ -1318,8 +1313,8 @@ export default function Home() {
                               </div>
                               <div className="w-full md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-[24px]">
                                 {block.horizontals.map((src, idx) => (
-                                  <div 
-                                    key={idx} 
+                                  <div
+                                    key={idx}
                                     onClick={() => setActivePhotoUrl(src)}
                                     className="relative aspect-[3/2] group overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] bg-[var(--darker)] shadow-lg  hover:shadow-2xl transition-all duration-500"
                                   >
@@ -1336,17 +1331,16 @@ export default function Home() {
                           {remVerts.length > 0 && (
                             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-[24px] w-full reveal opacity-0 anim-fade-up">
                               {remVerts.map((src, idx) => (
-                                <div 
+                                <div
                                   key={`home-rem-v-${idx}`}
                                   onClick={() => setActivePhotoUrl(src)}
                                   className="group relative overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] shadow-lg bg-[var(--darker)]  hover:shadow-2xl transition-all duration-500 w-full aspect-[2/3]"
                                 >
-                                  <img 
-                                    src={src} 
-                                    alt="Portfolio Work" 
-                                    className={`w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-105 ${
-                                      src.includes('/headshots/') ? 'object-top' : 'object-center'
-                                    }`} 
+                                  <img
+                                    src={src}
+                                    alt="Portfolio Work"
+                                    className={`w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-105 ${src.includes('/headshots/') ? 'object-top' : 'object-center'
+                                      }`}
                                   />
                                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-[20px]">
                                     <span className="text-[9px] tracking-[0.2em] font-bold text-[var(--gold)] uppercase font-semibold">PORTRAIT</span>
@@ -1359,7 +1353,7 @@ export default function Home() {
                           {remHorizs.length > 0 && (
                             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-[24px] w-full reveal opacity-0 anim-fade-up">
                               {remHorizs.map((src, idx) => (
-                                <div 
+                                <div
                                   key={`home-rem-h-${idx}`}
                                   onClick={() => setActivePhotoUrl(src)}
                                   className="group relative overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] shadow-lg bg-[var(--darker)]  hover:shadow-2xl transition-all duration-500 w-full aspect-[3/2]"
@@ -1407,16 +1401,15 @@ export default function Home() {
                   <div className="w-full flex flex-col gap-[32px]">
                     {smartBlocks.map((block, bIdx) => (
                       <div key={`home-cat-block-${bIdx}`} className="flex flex-col md:flex-row gap-[24px] items-stretch w-full reveal opacity-0 anim-fade-up">
-                        <div 
+                        <div
                           onClick={() => setActivePhotoUrl(block.vertical)}
                           className="w-full md:w-1/3 relative group overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] bg-[var(--darker)] min-h-[350px] md:min-h-0 shadow-lg  hover:shadow-2xl transition-all duration-500"
                         >
-                          <img 
-                            src={block.vertical} 
-                            alt="Portfolio Work" 
-                            className={`absolute inset-0 w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-[1.03] ${
-                              block.vertical.includes('/headshots/') ? 'object-top' : 'object-center'
-                            }`} 
+                          <img
+                            src={block.vertical}
+                            alt="Portfolio Work"
+                            className={`absolute inset-0 w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-[1.03] ${block.vertical.includes('/headshots/') ? 'object-top' : 'object-center'
+                              }`}
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-[20px]">
                             <span className="text-[9px] tracking-[0.2em] font-bold text-[var(--gold)] uppercase font-semibold">PORTRAIT</span>
@@ -1424,8 +1417,8 @@ export default function Home() {
                         </div>
                         <div className="w-full md:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-[24px]">
                           {block.horizontals.map((src, idx) => (
-                            <div 
-                              key={idx} 
+                            <div
+                              key={idx}
                               onClick={() => setActivePhotoUrl(src)}
                               className="relative aspect-[3/2] group overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] bg-[var(--darker)] shadow-lg  hover:shadow-2xl transition-all duration-500"
                             >
@@ -1442,17 +1435,16 @@ export default function Home() {
                     {remVerts.length > 0 && (
                       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-[24px] w-full reveal opacity-0 anim-fade-up">
                         {remVerts.map((src, idx) => (
-                          <div 
+                          <div
                             key={`home-cat-v-${idx}`}
                             onClick={() => setActivePhotoUrl(src)}
                             className="group relative overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] shadow-lg bg-[var(--darker)]  hover:shadow-2xl transition-all duration-500 w-full aspect-[2/3]"
                           >
-                            <img 
-                              src={src} 
-                              alt="Portfolio Work" 
-                              className={`w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-105 ${
-                                src.includes('/headshots/') ? 'object-top' : 'object-center'
-                              }`} 
+                            <img
+                              src={src}
+                              alt="Portfolio Work"
+                              className={`w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-105 ${src.includes('/headshots/') ? 'object-top' : 'object-center'
+                                }`}
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-[20px]">
                               <span className="text-[9px] tracking-[0.2em] font-bold text-[var(--gold)] uppercase font-semibold">PORTRAIT</span>
@@ -1465,7 +1457,7 @@ export default function Home() {
                     {remHorizs.length > 0 && (
                       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-[24px] w-full reveal opacity-0 anim-fade-up">
                         {remHorizs.map((src, idx) => (
-                          <div 
+                          <div
                             key={`home-cat-h-${idx}`}
                             onClick={() => setActivePhotoUrl(src)}
                             className="group relative overflow-hidden rounded-[16px] border border-[rgba(10,10,10,0.06)] shadow-lg bg-[var(--darker)]  hover:shadow-2xl transition-all duration-500 w-full aspect-[3/2]"
@@ -1495,7 +1487,7 @@ export default function Home() {
             <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--gold)] font-bold">Corporate Capabilities</span>
             <div className="w-[12px] h-[1px] bg-[var(--gold)]"></div>
           </div>
-          
+
           <h2 className="font-serif text-[clamp(36px,5vw,64px)] font-light leading-[1.1] text-[var(--light)] mb-[20px] tracking-[-0.01em]">
             Our Services
           </h2>
@@ -1561,20 +1553,19 @@ export default function Home() {
             }
           ].map((service) => (
 
-            <Link 
+            <Link
               href={service.href}
               key={service.id}
               className="group relative aspect-video rounded-[16px] overflow-hidden bg-black shadow-lg  border border-[rgba(10,10,10,0.06)] hover:shadow-2xl transition-all duration-500"
             >
               {/* Background Photo */}
-              <img 
-                src={service.bg} 
-                alt={service.title} 
-                className={`absolute inset-0 w-full h-full object-cover opacity-75 group-hover:opacity-90 group-hover:scale-102 transition-all duration-700 select-none pointer-events-none ${
-                  service.id === '06' ? 'object-top' : ''
-                }`}
+              <img
+                src={service.bg}
+                alt={service.title}
+                className={`absolute inset-0 w-full h-full object-cover opacity-75 group-hover:opacity-90 group-hover:scale-102 transition-all duration-700 select-none pointer-events-none ${service.id === '06' ? 'object-top' : ''
+                  }`}
               />
-              
+
               {/* Gradient Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-transparent z-10" />
 
@@ -1603,8 +1594,8 @@ export default function Home() {
         {/* Footer View All Link */}
         <div className="relative flex items-center justify-end mt-[80px] max-w-[1200px] mx-auto reveal opacity-0 anim-fade-up">
           <div className="absolute left-0 right-[260px] h-[1px] bg-[var(--gold)] opacity-30"></div>
-          <Link 
-            href="/studio-services" 
+          <Link
+            href="/studio-services"
             className="text-[10px] tracking-[0.25em] uppercase font-bold text-[var(--gold)] hover:text-[var(--light)]  transition-colors duration-300 flex items-center gap-[12px] group relative pl-[24px]"
           >
             View All Services <span className="transition-transform duration-300 group-hover:translate-x-[4px]">→</span>
@@ -1626,16 +1617,16 @@ export default function Home() {
           ].map((member, idx) => {
             const isPng = member.img.toLowerCase().endsWith('.png');
             return (
-              <div 
-                key={idx} 
+              <div
+                key={idx}
                 className="group relative rounded-[20px] overflow-hidden bg-[#1A1A1A] border border-[rgba(10,10,10,0.08)] transition-all duration-500  flex flex-col h-[480px] sm:h-[520px] shadow-lg"
               >
                 {/* Image Box */}
                 <div className="absolute inset-0 z-0">
-                  <img 
-                    src={member.img} 
-                    alt={member.name} 
-                    className="w-full h-full object-cover scale-100 group-hover:scale-105 transition-all duration-[700ms] pointer-events-none select-none object-top" 
+                  <img
+                    src={member.img}
+                    alt={member.name}
+                    className="w-full h-full object-cover scale-100 group-hover:scale-105 transition-all duration-[700ms] pointer-events-none select-none object-top"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-transparent z-10" />
                 </div>
@@ -1674,7 +1665,7 @@ export default function Home() {
             </h2>
             <div className="w-[80px] h-[2px] bg-[var(--gold)] mx-auto"></div>
           </div>
-          
+
           <div className="w-full">
             <Swiper
               modules={[Autoplay]}
@@ -1706,15 +1697,15 @@ export default function Home() {
                 { name: "Windsor Manor", logo: "/testimonials/logo-windsor-manor.png", cert: "/testimonials/cert-windsor-manor.jpg" }
               ].map((logo, idx) => (
                 <SwiperSlide key={idx}>
-                  <div 
+                  <div
                     onClick={() => setActiveCert(logo.cert)}
                     className="bg-white border border-[rgba(10,10,10,0.06)] p-[12px] rounded-sm h-[90px] flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.01)] transition-all duration-300 hover:scale-105 hover:border-[var(--gold)] cursor-pointer"
                   >
-                    <img 
-                      src={logo.logo} 
-                      alt={logo.name} 
-                      className="max-h-[60px] max-w-[85%] object-contain" 
-                      loading="lazy" 
+                    <img
+                      src={logo.logo}
+                      alt={logo.name}
+                      className="max-h-[60px] max-w-[85%] object-contain"
+                      loading="lazy"
                     />
                   </div>
                 </SwiperSlide>
@@ -1752,7 +1743,7 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            
+
             {/* Contact Us */}
             <div className="flex gap-[18px] items-start">
               <span className="p-[12px] rounded-full bg-[rgba(212,175,55,0.08)] text-[var(--gold)] shrink-0">
@@ -1778,7 +1769,7 @@ export default function Home() {
                       </a>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-center gap-[12px] group">
                     <span className="p-[8px] rounded-full bg-[rgba(10,102,194,0.06)] text-[#0A66C2] group-hover:scale-110 transition-transform">
                       <svg className="w-[16px] h-[16px]" fill="currentColor" viewBox="0 0 24 24">
@@ -1850,11 +1841,11 @@ export default function Home() {
                       )
                     }
                   ].map((social) => (
-                    <a 
-                      key={social.name} 
-                      href={social.url} 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
+                    <a
+                      key={social.name}
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       style={{ color: social.color }}
                       className="opacity-90 hover:opacity-100 hover:scale-110 transition-all duration-300 cursor-pointer"
                     >
@@ -1871,7 +1862,7 @@ export default function Home() {
         <div className="lg:col-span-7 reveal opacity-0 anim-fade-up delay-100">
           <div className="bg-[rgba(10,10,10,0.02)] border border-[rgba(10,10,10,0.05)] rounded-lg p-[24px] sm:p-[40px] md:p-[50px] shadow-sm">
             <h3 className="font-serif text-[28px] text-[var(--light)] mb-[30px] font-light">Send us a message</h3>
-            
+
             {homeStatus.submitted ? (
               <div className="flex flex-col items-center text-center py-[20px] reveal">
                 <div className="w-[64px] h-[64px] rounded-full bg-[rgba(212,175,55,0.1)] flex items-center justify-center text-[var(--gold)] mb-[24px]">
@@ -1884,17 +1875,17 @@ export default function Home() {
                   {homeStatus.info.msg || "Your message has been sent. Redirecting to WhatsApp to start a conversation..."}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-[16px] w-full justify-center">
-                  <a 
+                  <a
                     href={`https://wa.me/918971168868?text=${encodeURIComponent(
                       `Hello Glamour Photographics,\n\nI just submitted a contact inquiry from your Home page with the following details:\n\n*Name:* ${homeFormData.name}\n*Email:* ${homeFormData.email}\n*Phone:* ${homeFormData.phone || 'N/A'}\n*Message:* ${homeFormData.message}`
                     )}`}
-                    target="_blank" 
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-[10px] bg-[#25D366] text-white text-[11px] uppercase tracking-[0.2em] font-bold py-[16px] px-[28px] hover:bg-[#20ba59] transition-all duration-300 rounded-full shadow-sm"
                   >
                     Open WhatsApp Manually
                   </a>
-                  <button 
+                  <button
                     onClick={resetHomeForm}
                     className="inline-flex items-center justify-center border-2 border-[var(--gold)] bg-transparent text-[var(--light)] hover:bg-[var(--gold)] hover:text-white transition-all duration-300 text-[11px] uppercase tracking-[0.2em] font-bold py-[14px] px-[28px] rounded-full"
                   >
@@ -1907,25 +1898,25 @@ export default function Home() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-[24px]">
                   <div className="flex flex-col gap-[8px]">
                     <label className="text-[10px] tracking-[0.25em] uppercase text-[var(--light)] font-semibold">Your Name *</label>
-                    <input 
+                    <input
                       suppressHydrationWarning
-                      type="text" 
+                      type="text"
                       name="name"
                       value={homeFormData.name}
                       onChange={handleHomeInputChange}
-                      className="bg-white border border-[rgba(10,10,10,0.08)] focus:border-[var(--gold)] focus:ring-1 focus:ring-[var(--gold)] rounded-md outline-none px-[16px] py-[12px] text-[14px] text-[var(--light)] transition-all duration-300 font-light" 
-                      required 
+                      className="bg-white border border-[rgba(10,10,10,0.08)] focus:border-[var(--gold)] focus:ring-1 focus:ring-[var(--gold)] rounded-md outline-none px-[16px] py-[12px] text-[14px] text-[var(--light)] transition-all duration-300 font-light"
+                      required
                     />
                   </div>
                   <div className="flex flex-col gap-[8px]">
                     <label className="text-[10px] tracking-[0.25em] uppercase text-[var(--light)] font-semibold">Your Email *</label>
-                    <input 
+                    <input
                       suppressHydrationWarning
-                      type="email" 
+                      type="email"
                       name="email"
                       value={homeFormData.email}
                       onChange={handleHomeInputChange}
-                      className="bg-white border border-[rgba(10,10,10,0.08)] focus:border-[var(--gold)] focus:ring-1 focus:ring-[var(--gold)] rounded-md outline-none px-[16px] py-[12px] text-[14px] text-[var(--light)] transition-all duration-300 font-light" 
+                      className="bg-white border border-[rgba(10,10,10,0.08)] focus:border-[var(--gold)] focus:ring-1 focus:ring-[var(--gold)] rounded-md outline-none px-[16px] py-[12px] text-[14px] text-[var(--light)] transition-all duration-300 font-light"
                       required
                     />
                   </div>
@@ -1933,25 +1924,25 @@ export default function Home() {
 
                 <div className="flex flex-col gap-[8px]">
                   <label className="text-[10px] tracking-[0.25em] uppercase text-[var(--light)] font-semibold">Phone Number</label>
-                  <input 
+                  <input
                     suppressHydrationWarning
-                    type="tel" 
+                    type="tel"
                     name="phone"
                     value={homeFormData.phone}
                     onChange={handleHomeInputChange}
-                    className="bg-white border border-[rgba(10,10,10,0.08)] focus:border-[var(--gold)] focus:ring-1 focus:ring-[var(--gold)] rounded-md outline-none px-[16px] py-[12px] text-[14px] text-[var(--light)] transition-all duration-300 font-light" 
+                    className="bg-white border border-[rgba(10,10,10,0.08)] focus:border-[var(--gold)] focus:ring-1 focus:ring-[var(--gold)] rounded-md outline-none px-[16px] py-[12px] text-[14px] text-[var(--light)] transition-all duration-300 font-light"
                   />
                 </div>
 
                 <div className="flex flex-col gap-[8px]">
                   <label className="text-[10px] tracking-[0.25em] uppercase text-[var(--light)] font-semibold">Your Message *</label>
-                  <textarea 
+                  <textarea
                     suppressHydrationWarning
-                    rows="4" 
+                    rows="4"
                     name="message"
                     value={homeFormData.message}
                     onChange={handleHomeInputChange}
-                    className="bg-white border border-[rgba(10,10,10,0.08)] focus:border-[var(--gold)] focus:ring-1 focus:ring-[var(--gold)] rounded-md outline-none px-[16px] py-[12px] text-[14px] text-[var(--light)] transition-all duration-300 resize-none font-light" 
+                    className="bg-white border border-[rgba(10,10,10,0.08)] focus:border-[var(--gold)] focus:ring-1 focus:ring-[var(--gold)] rounded-md outline-none px-[16px] py-[12px] text-[14px] text-[var(--light)] transition-all duration-300 resize-none font-light"
                     required
                   ></textarea>
                 </div>
@@ -1963,13 +1954,12 @@ export default function Home() {
                 )}
 
                 <div className="mt-[10px]">
-                  <button 
+                  <button
                     suppressHydrationWarning
-                    type="submit" 
+                    type="submit"
                     disabled={homeStatus.submitting}
-                    className={`w-full md:w-auto text-center justify-center border-2 border-[var(--gold)] bg-transparent text-[var(--light)] hover:bg-[var(--gold)] hover:text-white transition-all duration-300 px-[40px] py-[14px] rounded-full uppercase tracking-[0.25em] text-[11px] font-semibold cursor-pointer shadow-sm hover:shadow-md ${
-                      homeStatus.submitting ? 'opacity-50 cursor-not-allowed' : ''
-                    }`}
+                    className={`w-full md:w-auto text-center justify-center border-2 border-[var(--gold)] bg-transparent text-[var(--light)] hover:bg-[var(--gold)] hover:text-white transition-all duration-300 px-[40px] py-[14px] rounded-full uppercase tracking-[0.25em] text-[11px] font-semibold cursor-pointer shadow-sm hover:shadow-md ${homeStatus.submitting ? 'opacity-50 cursor-not-allowed' : ''
+                      }`}
                   >
                     {homeStatus.submitting ? 'Sending...' : 'Send Message'}
                   </button>
@@ -1983,9 +1973,9 @@ export default function Home() {
       {/* ─── 15. SHOWREEL VIDEO MODAL OVERLAY ─── */}
       {showreelOpen && (
         <div className="fixed inset-0 bg-black/95 z-[9999] flex items-center justify-center p-[20px] transition-all">
-          <button 
+          <button
             suppressHydrationWarning
-            onClick={() => setShowreelOpen(false)} 
+            onClick={() => setShowreelOpen(false)}
             className="absolute top-[30px] right-[5%] md:right-[8%] text-white text-[12px] tracking-[0.2em] uppercase flex items-center gap-[8px]  hover:text-[var(--gold)]"
           >
             Close <X className="w-[16px] h-[16px]" />
@@ -2006,18 +1996,18 @@ export default function Home() {
       {/* ─── 16. TESTIMONIAL CERTIFICATE LIGHTBOX OVERLAY ─── */}
       {activeCert && (
         <div className="fixed inset-0 bg-black/95 z-[9999] flex items-center justify-center p-[20px] transition-all">
-          <button 
+          <button
             suppressHydrationWarning
-            onClick={() => setActiveCert(null)} 
+            onClick={() => setActiveCert(null)}
             className="absolute top-[30px] right-[5%] md:right-[8%] text-white text-[12px] tracking-[0.2em] uppercase flex items-center gap-[8px]  hover:text-[var(--gold)]"
           >
             Close <X className="w-[16px] h-[16px]" />
           </button>
           <div className="w-full max-w-[640px] max-h-[85vh] overflow-y-auto rounded-sm bg-white p-[8px] shadow-2xl relative flex items-center justify-center">
-            <img 
-              src={activeCert} 
-              alt="Testimonial Certificate Form" 
-              className="max-w-full max-h-[80vh] object-contain rounded-sm" 
+            <img
+              src={activeCert}
+              alt="Testimonial Certificate Form"
+              className="max-w-full max-h-[80vh] object-contain rounded-sm"
               loading="lazy"
             />
           </div>
