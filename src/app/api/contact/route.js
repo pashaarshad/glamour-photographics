@@ -1,11 +1,15 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
 const OWNER_EMAIL = 'bdm.glamour@gmail.com';
 
 export async function POST(request) {
   try {
+    if (!process.env.RESEND_API_KEY) {
+      console.error("Missing RESEND_API_KEY environment variable");
+      return NextResponse.json({ success: false, message: "Server configuration error" }, { status: 500 });
+    }
+    const resend = new Resend(process.env.RESEND_API_KEY);
     const formData = await request.formData();
     const name = formData.get('name') || '';
     const email = formData.get('email') || '';
