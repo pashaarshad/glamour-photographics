@@ -145,7 +145,7 @@ export default function Home() {
       info: { error: false, msg: null }
     });
 
-    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "YOUR_ACCESS_KEY_HERE";
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "2400d6ee-663e-4545-ba44-2a7cbeabf0fb";
 
     const getHomeWhatsAppLink = (data) => {
       const encodedMsg = encodeURIComponent(
@@ -154,35 +154,18 @@ export default function Home() {
       return `https://wa.me/918971168868?text=${encodedMsg}`;
     };
 
-    if (accessKey === "YOUR_ACCESS_KEY_HERE") {
-      setTimeout(() => {
-        const waLink = getHomeWhatsAppLink(homeFormData);
-        window.open(waLink, '_blank');
-        setHomeStatus({
-          submitted: true,
-          submitting: false,
-          info: { error: false, msg: "Demo Mode: Opening WhatsApp in a new tab..." }
-        });
-      }, 1000);
-      return;
-    }
-
     try {
+      const submissionData = new FormData(e.target);
+      submissionData.append("access_key", accessKey);
+      submissionData.append("from_name", "Glamour Photographics Website (Home Form)");
+      submissionData.append("subject", `New Lead from Home Page - ${submissionData.get('name')}`);
+
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json"
+          "Accept": "application/json"
         },
-        body: JSON.stringify({
-          access_key: accessKey,
-          name: homeFormData.name,
-          email: homeFormData.email,
-          phone: homeFormData.phone,
-          message: homeFormData.message,
-          from_name: "Glamour Photographics Website (Home Form)",
-          subject: `New Lead from Home Page - ${homeFormData.name}`
-        })
+        body: submissionData
       });
 
       const result = await response.json();
