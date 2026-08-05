@@ -50,21 +50,7 @@ export default function Contact() {
       info: { error: false, msg: null }
     });
 
-    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "YOUR_ACCESS_KEY_HERE";
-
-    // If key is not configured yet, simulate the submission to allow previewing the flow
-    if (accessKey === "YOUR_ACCESS_KEY_HERE") {
-      setTimeout(() => {
-        const waLink = getWhatsAppLink(formData);
-        window.open(waLink, '_blank');
-        setStatus({
-          submitted: true,
-          submitting: false,
-          info: { error: false, msg: "Demo Mode: Form submission simulated successfully! Opening WhatsApp in a new tab..." }
-        });
-      }, 1000);
-      return;
-    }
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "2400d6ee-663e-4545-ba44-2a7cbeabf0fb";
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
