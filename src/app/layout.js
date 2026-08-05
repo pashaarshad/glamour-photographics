@@ -59,6 +59,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${cormorant.variable} ${inter.variable} ${bebas.variable}`}>
+      <head>
+        <style dangerouslySetInnerHTML={{ __html: `
+          body { background-color: #FAF8F4; color: #0A0A0A; }
+          #loader { position: fixed; inset: 0; background-color: #0A0A0A; z-index: 9999; display: flex; align-items: center; justify-content: center; margin: 0; padding: 0; }
+        `}} />
+      </head>
       <body>
         <Cursor />
         <Preloader />
