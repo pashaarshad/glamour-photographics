@@ -53,22 +53,14 @@ export default function Contact() {
     const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "2400d6ee-663e-4545-ba44-2a7cbeabf0fb";
 
     try {
+      const submissionData = new FormData(e.target);
+      submissionData.append("access_key", accessKey);
+      submissionData.append("from_name", "Glamour Photographics Website");
+      submissionData.append("subject", `New Lead - ${submissionData.get('name')}`);
+
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json"
-        },
-        body: JSON.stringify({
-          access_key: accessKey,
-          name: formData.name,
-          email: formData.email,
-          company: formData.company,
-          phone: formData.phone,
-          message: formData.message,
-          from_name: "Glamour Photographics Website",
-          subject: `New Lead - ${formData.name}`
-        })
+        body: submissionData
       });
 
       const result = await response.json();
