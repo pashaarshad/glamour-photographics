@@ -50,19 +50,12 @@ export default function Contact() {
       info: { error: false, msg: null }
     });
 
-    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "2400d6ee-663e-4545-ba44-2a7cbeabf0fb";
-
     try {
       const submissionData = new FormData(e.target);
-      submissionData.append("access_key", accessKey);
-      submissionData.append("from_name", "Glamour Photographics Website");
-      submissionData.append("subject", `New Lead - ${submissionData.get('name')}`);
+      submissionData.append("source", "Contact Page");
 
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch("/api/contact", {
         method: "POST",
-        headers: {
-          "Accept": "application/json"
-        },
         body: submissionData
       });
 

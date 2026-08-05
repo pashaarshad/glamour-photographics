@@ -145,8 +145,6 @@ export default function Home() {
       info: { error: false, msg: null }
     });
 
-    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || "2400d6ee-663e-4545-ba44-2a7cbeabf0fb";
-
     const getHomeWhatsAppLink = (data) => {
       const encodedMsg = encodeURIComponent(
         `Hello Glamour Photographics,\n\nI just submitted a contact inquiry from your Home page with the following details:\n\n*Name:* ${data.name}\n*Email:* ${data.email}\n*Phone:* ${data.phone || 'N/A'}\n*Message:* ${data.message}`
@@ -156,15 +154,10 @@ export default function Home() {
 
     try {
       const submissionData = new FormData(e.target);
-      submissionData.append("access_key", accessKey);
-      submissionData.append("from_name", "Glamour Photographics Website (Home Form)");
-      submissionData.append("subject", `New Lead from Home Page - ${submissionData.get('name')}`);
+      submissionData.append("source", "Home Page");
 
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch("/api/contact", {
         method: "POST",
-        headers: {
-          "Accept": "application/json"
-        },
         body: submissionData
       });
 
