@@ -77,11 +77,22 @@ To maintain high security, the contact forms bypass public-facing APIs and use a
 * **Default Password:** `bmdglamour123`
 * **Note on Logging In:** Vercel utilizes passwordless/OTP (One-Time Password) verification. When logging in, it will trigger an authentication link or numeric code sent directly to your Gmail inbox (`bdm.glamour@gmail.com`). 
 
+### Domain Registration (BigRock)
+* **Access URL:** [BigRock Login](https://www.bigrock.in)
+* **Registered Domain:** `www.glamourphotographics.com`
+* **Administrator Username:** `mohammedashraf1911@gmail.com`
+* **Password:** `Webs!te@2026Web`
+* **Legacy Provider Handover:** Handed over by Magnum Space (`magnumspaceblr@gmail.com`) / contact Julius Pinto (Artillery Road, Halasuru, Bangalore - 560008, Mobile: +91 97411 85511, WhatsApp: +91 97412 23183).
+
 ### Email Gateway (Resend)
 * **Access URL:** [Resend Dashboard](https://resend.com)
 * **Connected Account:** `bdm.glamour@gmail.com`
 * **Active API Key:** Obfuscated Base64 (`cmVfZ2JVa0ZGaVNfMnpRWVdCTGdDd05aUk5zRTg3V2ZTTlNF`)
 * **Note on Client Delivery:** To ensure auto-responder emails reach the client's inbox successfully without spam filters, please ensure the custom domain `glamourphotographics.com` is verified in the Resend Dashboard under the **Domains** tab.
+
+### System Backups (Google Drive)
+* **Mail Backup Link:** [Mail Backup (Google Drive)](https://drive.google.com/file/d/1Yj-fMNBJ8fGTEv-gaUB0_-MtIpo_xaS4/view?usp=sharing)
+* **Website Backup Link:** [Website Backup (Google Drive)](https://drive.google.com/file/d/1Ka0rlBlkNY6gkamY31ZW2GsSYWpvk51p/view?usp=sharing)
 
 ---
 
