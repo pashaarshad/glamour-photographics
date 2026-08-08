@@ -876,7 +876,7 @@ export default function Home() {
             {/* Box 1 - Founder Portrait & Text Overlay */}
             <div className="absolute top-0 left-0 w-[82%] h-[400px] md:h-[480px] bg-[#0A0A0A] border border-[rgba(10,10,10,0.06)] rounded-sm overflow-hidden z-10 shadow-lg relative group">
               <img
-                src="/images/IMG_8065.JPG"
+                src="/images/our-team/Hammed sir .PNG"
                 alt="Hameed Hussain Founder"
                 className="w-full h-full object-cover object-top opacity-85 transition-transform duration-700 group-hover:scale-105 select-none pointer-events-none"
               />
@@ -1587,7 +1587,7 @@ export default function Home() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[30px] reveal opacity-0 anim-fade-up delay-100">
           {[
-            { name: "Hameed Hussain", role: "Owner & Founder", img: "/images/our-team/Hameed Hussain _ Owner and Founder .jpg" },
+            { name: "Hameed Hussain", role: "Owner & Founder", img: "/images/our-team/Hammed sir .PNG" },
             { name: "Ashraf Hussain", role: "Creative Director", img: "/images/our-team/Ashraf Hussain _ Creative Director.png" },
             { name: "Farah Hammed", role: "Co-Creative Director", img: "/images/our-team/Farah Hammed _ Co- creative Director .jpg" }
           ].map((member, idx) => {

@@ -124,7 +124,7 @@ export default function About() {
           <div className="lg:col-span-4 relative rounded-sm overflow-hidden border border-[rgba(10,10,10,0.06)] bg-[#0A0A0A] h-[580px] reveal flex flex-col justify-between">
             <div className="flex-1 w-full relative h-[380px] overflow-hidden">
               <img 
-                src="/images/IMG_8065.JPG" 
+                src="/images/our-team/Hammed sir .PNG" 
                 alt="Founder Hameed Hussain" 
                 className="w-full h-full object-cover object-center opacity-85"
               />
@@ -466,7 +466,7 @@ export default function About() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[30px] reveal opacity-0 anim-fade-up delay-100">
           {[
-            { name: "Hameed Hussain", role: "Owner & Founder", img: "/images/our-team/Hameed Hussain _ Owner and Founder .jpg" },
+            { name: "Hameed Hussain", role: "Owner & Founder", img: "/images/our-team/Hammed sir .PNG" },
             { name: "Ashraf Hussain", role: "Creative Director", img: "/images/our-team/Ashraf Hussain _ Creative Director.png" },
             { name: "Farah Hammed", role: "Co-Creative Director", img: "/images/our-team/Farah Hammed _ Co- creative Director .jpg" }
           ].map((member, idx) => {
