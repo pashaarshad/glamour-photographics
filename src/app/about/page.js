@@ -106,11 +106,11 @@ export default function About() {
           </div>
 
           {/* Right Column: Hero Image */}
-          <div className="lg:col-span-7 relative reveal flex items-center justify-center min-h-[350px] md:min-h-[500px] lg:self-stretch overflow-hidden rounded-none border border-white/5 shadow-2xl">
+          <div className="lg:col-span-7 relative reveal flex items-center justify-center lg:self-stretch overflow-hidden rounded-none border border-white/5 shadow-2xl">
             <img
               src="/images/about-us-here-new.png"
               alt="A Legacy in Frames"
-              className="absolute inset-0 w-full h-full object-cover z-10"
+              className="w-full h-auto object-contain z-10"
             />
           </div>
         </div>
