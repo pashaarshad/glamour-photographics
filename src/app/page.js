@@ -130,9 +130,13 @@ export default function Home() {
 
   const handleHomeInputChange = (e) => {
     const { name, value } = e.target;
+    let finalValue = value;
+    if (name === 'phone') {
+      finalValue = value.replace(/[^0-9]/g, '');
+    }
     setHomeFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: finalValue
     }));
   };
 

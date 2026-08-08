@@ -35,9 +35,13 @@ export default function Contact() {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+    let finalValue = value;
+    if (name === 'phone') {
+      finalValue = value.replace(/[^0-9]/g, '');
+    }
     setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: finalValue
     }));
   };
 
