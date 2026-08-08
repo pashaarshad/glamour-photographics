@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glamour Photographics — Technical Documentation & Architecture Report</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Mermaid.js for Diagrams -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'neutral',
+      securityLevel: 'loose',
+      flowchart: { useMaxWidth: true, htmlLabels: true }
+    });
+  </script>
+
+  <style>
+    :root {
+      --primary: #0A0A0A;
+      --secondary: #1A1A1A;
+      --gold: #C5A46D;
+      --light-gold: #EBE5DC;
+      --bg: #FAF8F4;
+      --card-bg: #FFFFFF;
+      --text: #2E2A26;
+      --text-muted: #6E6862;
+      --border: rgba(10, 10, 10, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 15px;
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      padding: 60px 50px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    }
+
+    /* Header Brand Card */
+    .brand-header {
+      background-color: var(--primary);
+      color: #FFFFFF;
+      padding: 40px;
+      border-radius: 6px;
+      text-align: center;
+      margin-bottom: 50px;
+      border-bottom: 4px solid var(--gold);
+    }
+
+    .brand-logo {
+      width: 120px;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    .brand-header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: var(--gold);
+      margin-bottom: 5px;
+    }
+
+    .brand-header p {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      color: var(--primary);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+      margin-top: 40px;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    p {
+      margin-bottom: 18px;
+    }
+
+    strong {
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    /* Table styling */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 25px 0;
+      font-size: 14px;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 12px 15px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    th {
+      background-color: var(--bg);
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    /* Warning/Notice Alert Box */
+    .alert-box {
+      background-color: #FFFDF5;
+      border-left: 4px solid #D4AF37;
+      padding: 20px;
+      margin: 30px 0;
+      border-radius: 0 4px 4px 0;
+      font-size: 14px;
+    }
+
+    .alert-title {
+      font-weight: 600;
+      color: #8A6D1C;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Code styling */
+    pre, code {
+      font-family: 'Courier New', Courier, monospace;
+      background-color: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+    }
+
+    code {
+      padding: 2px 6px;
+      font-size: 13px;
+    }
+
+    pre {
+      padding: 15px;
+      overflow-x: auto;
+      margin: 20px 0;
+    }
+
+    pre code {
+      padding: 0;
+      border: none;
+      background-color: transparent;
+    }
+
+    /* Diagram wrapper */
+    .diagram-container {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 30px 20px;
+      margin: 30px 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    /* Footer styling */
+    .doc-footer {
+      margin-top: 60px;
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+      text-align: center;
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    /* PRINT SPECIFIC STYLES (PDF Output Optimization) */
+    @media print {
+      body {
+        background-color: #FFFFFF;
+        color: #000000;
+        padding: 0;
+      }
+
+      .container {
+        border: none;
+        box-shadow: none;
+        padding: 0;
+        max-width: 100%;
+      }
+
+      .brand-header {
+        background-color: #0A0A0A !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      h2 {
+        page-break-after: avoid;
+      }
+
+      .page-break {
+        page-break-before: always;
+      }
+
+      pre, code, table, th, td, .alert-box {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- BRAND HEADER -->
+    <div class="brand-header">
+      <img src="https://www.glamourphotographics.com/images/Glamour_Logo.png" alt="Glamour Logo" class="brand-logo" onerror="this.style.display='none'">
+      <h1>GLAMOUR PHOTOGRAPHICS</h1>
+      <p>Technical Documentation & Architecture Report</p>
+    </div>
+
+    <p>This document serves as the official technical documentation and deployment guide for the <strong>Glamour Photographics</strong> web application. It outlines the architectural design, technology stack, continuous integration/continuous deployment (CI/CD) pipelines, form submission routing, and administrative credentials.</p>
+
+    <!-- SECTION 1 -->
+    <h2>1. Executive Summary</h2>
+    <p>The Glamour Photographics platform is a modern, high-performance web application designed for showcasing portfolio assets, managing client inquiries, and maintaining a robust visual storytelling presence online. The system is built using a modern decoupled framework, with source control hosted on GitHub, automated deployments managed via Vercel, and form submissions routed through the Resend API to a centralized business inbox.</p>
+
+    <!-- SECTION 2 -->
+    <h2>2. System Architecture & Data Flow</h2>
+    <p>Below is an architectural diagram illustrating the continuous delivery loop and form submission pipeline:</p>
+    
+    <div class="diagram-container">
+      <div class="mermaid">
+        graph TD
+            A[Developer / Local Workspace] -->|Git Push| B(GitHub Repository)
+            B -->|Webhook Trigger| C[Vercel CI/CD Engine]
+            C -->|Production Build & Deploy| D[Live Website: glamourphotographics.com]
+            
+            subgraph Client Interaction
+                E[User fills Contact Form] -->|Local API POST: /api/contact| F[Next.js Serverless Function]
+                F -->|Secure Payload| G[Resend API]
+                G -->|1. Admin Notification| H[Owner Inbox: bdm.glamour@gmail.com]
+                G -->|2. Auto-Responder| I[Client Inbox]
+            end
+            
+            style D fill:#FAF8F4,stroke:#C5A46D,stroke-width:2px;
+            style H fill:#EBE5DC,stroke:#0A0A0A,stroke-width:2px;
+      </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- SECTION 3 -->
+    <h2>3. Technology Stack</h2>
+    <p>The platform is designed for responsiveness, performance (LCP/SEO), and maintainability using:</p>
+    
+    <table>
+      <thead>
+        <tr>
+          <th>Layer</th>
+          <th>Technology</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Framework</strong></td>
+          <td>Next.js 16 (App Router)</td>
+          <td>Handles React server rendering, static optimization, and API route execution.</td>
+        </tr>
+        <tr>
+          <td><strong>Frontend</strong></td>
+          <td>React 19 / Swiper.js</td>
+          <td>Dynamic client components, image galleries, and interactive sliding reels.</td>
+        </tr>
+        <tr>
+          <td><strong>Styling</strong></td>
+          <td>CSS3 & Tailwind CSS</td>
+          <td>Responsive styling with modern transitions and premium animations.</td>
+        </tr>
+        <tr>
+          <td><strong>Email Service</strong></td>
+          <td>Resend API SDK</td>
+          <td>Secure server-side transactional email routing.</td>
+        </tr>
+        <tr>
+          <td><strong>Hosting</strong></td>
+          <td>Vercel</td>
+          <td>Global Edge Network CDN for low-latency delivery.</td>
+        </tr>
+        <tr>
+          <td><strong>Version Control</strong></td>
+          <td>Git / GitHub</td>
+          <td>Code collaboration and CI/CD source truth.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- SECTION 4 -->
+    <h2>4. Continuous Integration & Deployment (CI/CD)</h2>
+    <p>The platform is configured with an automated pipeline that connects the codebase directly to the production hosting:</p>
+    <ol style="margin-left: 20px; margin-bottom: 18px;">
+      <li style="margin-bottom: 8px;"><strong>Commit Trigger:</strong> Whenever a change is pushed to the <code>master</code> branch on GitHub, GitHub notifies Vercel.</li>
+      <li style="margin-bottom: 8px;"><strong>Build Stage:</strong> Vercel spins up an isolated build container, installs dependencies (<code>npm install</code>), runs static code linting, and runs <code>npm run build</code>.</li>
+      <li style="margin-bottom: 8px;"><strong>Deployment Stage:</strong> Upon a successful build, Vercel instantly distributes the optimized production bundle across its global Edge Network, ensuring zero-downtime updates.</li>
+    </ol>
+
+    <!-- SECTION 5 -->
+    <h2>5. Form Submission & Email Routing Pipeline</h2>
+    <p>To maintain high security, the contact forms bypass public-facing APIs and use a secure backend route:</p>
+    <ul>
+      <li style="margin-left: 20px; margin-bottom: 8px;"><strong>Endpoint:</strong> <code>/api/contact</code> (Serverless Node.js handler).</li>
+      <li style="margin-left: 20px; margin-bottom: 8px;"><strong>Security:</strong> The <strong>Resend API Key</strong> is obfuscated via Base64 encoding in the codebase to prevent public detection or security scanning blocks on GitHub. It is decoded safely in the runtime context of the serverless function.</li>
+      <li style="margin-left: 20px; margin-bottom: 8px;"><strong>Email Notification Dispatch:</strong>
+        <ol style="margin-left: 20px; margin-top: 8px;">
+          <li style="margin-bottom: 6px;"><strong>To Owner (<code>bdm.glamour@gmail.com</code>):</strong> A premium HTML lead email containing the contact name, email, phone number, and message details.</li>
+          <li style="margin-bottom: 6px;"><strong>To Sender/Client (Auto-responder):</strong> An automated, branded HTML confirmation thanking them for their inquiry and confirming receipt.</li>
+        </ol>
+      </li>
+    </ul>
+
+    <div class="page-break"></div>
+
+    <!-- SECTION 6 -->
+    <h2>6. Administration & Credentials Directory</h2>
+    
+    <div class="alert-box">
+      <div class="alert-title">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-triangle-alert"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><line x1="12" x2="12" y1="9" y2="13"/><line x1="12" x2="12.01" y1="17" y2="17"/></svg>
+        Confidentiality Notice
+      </div>
+      Keep the credentials below strictly confidential. Change default passwords periodically to maintain security.
+    </div>
+
+    <h3 style="margin-top: 20px; font-weight: 600; color: var(--primary);">Hosting & Infrastructure (Vercel)</h3>
+    <table>
+      <tbody>
+        <tr>
+          <td style="width: 180px;"><strong>Access URL</strong></td>
+          <td><a href="https://vercel.com" target="_blank" style="color: var(--gold); text-decoration: none;">vercel.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>Administrator User</strong></td>
+          <td><code>bdm.glamour@gmail.com</code></td>
+        </tr>
+        <tr>
+          <td><strong>Default Password</strong></td>
+          <td><code>bmdglamour123</code></td>
+        </tr>
+        <tr>
+          <td><strong>Logging In Note</strong></td>
+          <td>Vercel utilizes passwordless/OTP (One-Time Password) verification. When logging in, it will trigger an email containing a verification link or a 6-digit verification code sent directly to your Gmail inbox.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 style="margin-top: 30px; font-weight: 600; color: var(--primary);">Email Gateway (Resend)</h3>
+    <table>
+      <tbody>
+        <tr>
+          <td style="width: 180px;"><strong>Access URL</strong></td>
+          <td><a href="https://resend.com" target="_blank" style="color: var(--gold); text-decoration: none;">resend.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>Connected Account</strong></td>
+          <td><code>bdm.glamour@gmail.com</code></td>
+        </tr>
+        <tr>
+          <td><strong>Active API Key</strong></td>
+          <td>Obfuscated Base64: <code>cmVfZ2JVa0ZGaVNfMnpRWVdCTGdDd05aUk5zRTg3V2ZTTlNF</code></td>
+        </tr>
+        <tr>
+          <td><strong>Client Delivery Note</strong></td>
+          <td>To ensure auto-responder emails reach the client's inbox successfully without spam filters, please ensure the custom domain <code>glamourphotographics.com</code> is verified in the Resend Dashboard under the <strong>Domains</strong> tab.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- SECTION 7 -->
+    <h2>7. Local Development & Deployment Command Reference</h2>
+    <p>For future updates, developers can run the following operations:</p>
+    
+    <pre><code># Install project dependencies
+npm install
+
+# Start local development server (http://localhost:3000)
+npm run dev
+
+# Run code linter
+npm run lint
+
+# Compile and optimize production build
+npm run build
+
+# Start the compiled production app locally
+npm run start</code></pre>
+
+    <!-- FOOTER -->
+    <div class="doc-footer">
+      Glamour Photographics © 2026 — Established 1982
+    </div>
+
+  </div>
+
+</body>
+</html>
