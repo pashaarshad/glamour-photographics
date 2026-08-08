@@ -1,39 +1,37 @@
 import { NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
+
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export async function GET() {
   try {
-    const reelDir = path.join(process.cwd(), 'public/images/reel-imgs');
+    const mainImages = [
+      "/images/reel-imgs/main_img-reel/Bill clinton.jpeg",
+      "/images/reel-imgs/main_img-reel/DSC_0204.JPG",
+      "/images/reel-imgs/main_img-reel/IMG_0034.JPG",
+      "/images/reel-imgs/main_img-reel/Tkm 03.JPG",
+      "/images/reel-imgs/main_img-reel/WhatsApp Image 2026-02-09 at 8.29.33 PM (1).jpeg",
+      "/images/reel-imgs/main_img-reel/highlights_DSC_0038.jpg",
+      "/images/reel-imgs/main_img-reel/vladimir putin.jpg"
+    ];
+
+    const remainingImages = [
+      "/images/reel-imgs/12 x 18 -2-4x6.jpg",
+      "/images/reel-imgs/Cameroon.jpeg",
+      "/images/reel-imgs/IMG_0029.JPG",
+      "/images/reel-imgs/Srk.jpg"
+    ];
+
+    const response = NextResponse.json({ main: mainImages, remaining: remainingImages });
     
-    // Check if directory exists
-    if (!fs.existsSync(reelDir)) {
-      return NextResponse.json({ main: [], remaining: [] });
-    }
-
-    const items = fs.readdirSync(reelDir, { withFileTypes: true });
+    // Set headers to completely disable caching
+    response.headers.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+    response.headers.set('Pragma', 'no-cache');
+    response.headers.set('Expires', '0');
     
-    let mainImages = [];
-    let remainingImages = [];
-
-    // Find the main folder (e.g. main_img-reel or main_img)
-    const mainFolder = items.find(item => item.isDirectory() && (item.name === 'main_img' || item.name === 'main_img-reel'));
-    
-    if (mainFolder) {
-      const mainPath = path.join(reelDir, mainFolder.name);
-      mainImages = fs.readdirSync(mainPath)
-        .filter(file => /\.(jpg|jpeg|png|webp|gif|svg)$/i.test(file))
-        .map(file => `/images/reel-imgs/${mainFolder.name}/${file}`);
-    }
-
-    // Remaining images (files in root reel-imgs folder)
-    remainingImages = items
-      .filter(item => item.isFile() && /\.(jpg|jpeg|png|webp|gif|svg)$/i.test(item.name))
-      .map(item => `/images/reel-imgs/${item.name}`);
-
-    return NextResponse.json({ main: mainImages, remaining: remainingImages });
+    return response;
   } catch (error) {
-    console.error('Error reading reel images:', error);
+    console.error('Error fetching reel images:', error);
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
