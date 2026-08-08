@@ -20,7 +20,7 @@ export default function About() {
         if ((data.main && data.main.length > 0) || (data.remaining && data.remaining.length > 0)) {
           const mainSrcs = data.main || [];
           const remainingSrcs = data.remaining || [];
-          
+
           const checkVertical = (src) => {
             return new Promise((resolve) => {
               const img = new Image();
@@ -41,7 +41,7 @@ export default function About() {
             const isVertical = await checkVertical(src);
             remainingList.push({ type: 'img', src, isVertical });
           }
-          
+
           const sequence = [
             ...mainList,
             { type: 'badge' },
@@ -76,7 +76,7 @@ export default function About() {
 
   return (
     <main className="w-full bg-[var(--dark)] text-[var(--light)] min-h-screen pt-0 pb-[100px]  relative">
-      
+
       {/* ─── HERO SECTION: OUR STORY ─── */}
       <section className="px-[4%] md:px-[5%] max-w-[1600px] mx-auto pt-[160px] pb-[80px]">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-[60px] items-center">
@@ -92,11 +92,11 @@ export default function About() {
             <p className="text-[14px] leading-[1.8] text-[var(--muted)] mb-[36px] font-light">
               At Glamour Photographics, we believe in the power of storytelling to connect, inspire, and drive change. Our corporate films are carefully crafted to capture the essence of your brand, convey your unique message, and engage your audience on a deeper level. With a blend of artistic creativity and strategic insight, we bring your vision to life on screen.
             </p>
-            
+
             <div className="pt-[24px] border-t border-[rgba(10,10,10,0.06)]">
-              <img 
-                src="/images/signature.png" 
-                alt="Hameed Hussain Signature" 
+              <img
+                src="/images/signature.png"
+                alt="Hameed Hussain Signature"
                 className="h-[48px] w-auto object-contain mb-[8px] select-none pointer-events-none"
               />
               <span className="text-[10px] tracking-[0.1em] uppercase text-gray-400 block">
@@ -104,13 +104,13 @@ export default function About() {
               </span>
             </div>
           </div>
-          
+
           {/* Right Column: Hero Image */}
-          <div className="lg:col-span-7 relative reveal flex items-center justify-center min-h-[350px] md:min-h-[500px] lg:self-stretch overflow-hidden rounded-[16px] border border-white/5 shadow-2xl">
-            <img 
-              src="/images/about-us-here-new.png" 
-              alt="A Legacy in Frames" 
-              className="absolute inset-0 w-full h-full object-cover z-10" 
+          <div className="lg:col-span-7 relative reveal flex items-center justify-center min-h-[350px] md:min-h-[500px] lg:self-stretch overflow-hidden rounded-none border border-white/5 shadow-2xl">
+            <img
+              src="/images/about-us-here-new.png"
+              alt="A Legacy in Frames"
+              className="absolute inset-0 w-full h-full object-cover z-10"
             />
           </div>
         </div>
@@ -123,9 +123,9 @@ export default function About() {
           {/* Column 1: Founder Card */}
           <div className="lg:col-span-4 relative rounded-sm overflow-hidden border border-[rgba(10,10,10,0.06)] bg-[#0A0A0A] h-[580px] reveal flex flex-col justify-between">
             <div className="flex-1 w-full relative h-[380px] overflow-hidden">
-              <img 
-                src="/images/our-team/Hammed sir .PNG" 
-                alt="Founder Hameed Hussain" 
+              <img
+                src="/images/our-team/Hammed sir .PNG"
+                alt="Founder Hameed Hussain"
                 className="w-full h-full object-cover object-center opacity-85"
               />
             </div>
@@ -133,14 +133,14 @@ export default function About() {
               <span className="text-[9px] tracking-[0.25em] uppercase text-gray-400 block mb-[4px]">Founder</span>
               <h3 className="font-serif text-[24px] text-white leading-tight font-bold mb-[2px]">Hameed Hussain</h3>
               <span className="text-[11px] text-[var(--gold)] block mb-[20px]">Glamour Photographics, Est. 1982</span>
-              <img 
-                src="/images/signature.png" 
-                alt="Hameed Hussain Signature" 
+              <img
+                src="/images/signature.png"
+                alt="Hameed Hussain Signature"
                 className="h-[40px] w-auto object-contain select-none pointer-events-none invert opacity-90"
               />
             </div>
           </div>
-          
+
           {/* Column 2: Founder's Note Copy */}
           <div className="lg:col-span-5 reveal">
             <span className="text-[10px] tracking-[0.45em] uppercase text-[var(--muted)] mb-[12px] block">Founder's Note</span>
@@ -168,20 +168,20 @@ export default function About() {
               </p>
               <div className="pt-[16px] border-t border-[rgba(10,10,10,0.06)]">
                 <p className="text-[11px] uppercase tracking-[0.1em] text-gray-400 mb-[10px]">With deepest appreciation,</p>
-                <img 
-                  src="/images/signature.png" 
-                  alt="Hameed Hussain Signature" 
+                <img
+                  src="/images/signature.png"
+                  alt="Hameed Hussain Signature"
                   className="h-[44px] w-auto object-contain select-none pointer-events-none"
                 />
               </div>
             </div>
           </div>
-          
+
           {/* Column 3: Vertical Film Strip Collage */}
           <div className="lg:col-span-3 reveal flex justify-center items-center h-[580px]">
             {/* Narrow Filmstrip Window */}
             <div className="w-[215px] h-[580px] overflow-hidden relative bg-[#E2D8C9] border border-[rgba(10,10,10,0.08)] rounded-[4px] py-[20px] px-[22px] shadow-[0_8px_32px_rgba(0,0,0,0.03)] flex flex-col justify-between">
-              
+
               {/* Vertical Film Sprocket Holes (White squares) */}
               <div className="absolute left-[6px] top-0 bottom-0 flex flex-col justify-between py-[15px] select-none pointer-events-none z-20">
                 {Array.from({ length: 18 }).map((_, i) => (
@@ -193,7 +193,7 @@ export default function About() {
                   <div key={i} className="w-[10px] h-[10px] bg-white rounded-[1.5px] shadow-[inset_0_1px_2px_rgba(0,0,0,0.08)]" />
                 ))}
               </div>
-              
+
               {/* Infinite Scrolling Marquee list */}
               <div className="h-full overflow-hidden relative z-10 select-none">
                 <div className="flex flex-col gap-[20px] animate-marquee-vertical">
@@ -224,16 +224,15 @@ export default function About() {
                     return [...baseItems, ...baseItems].map((item, idx) => {
                       if (item.type === 'img') {
                         return (
-                          <div 
-                            key={idx} 
-                            className={`w-full bg-black overflow-hidden relative border border-[rgba(10,10,10,0.12)] rounded-[3px] group shrink-0 ${
-                              item.isVertical ? 'aspect-[3/4]' : 'aspect-[4/3]'
-                            }`}
+                          <div
+                            key={idx}
+                            className={`w-full bg-black overflow-hidden relative border border-[rgba(10,10,10,0.12)] rounded-[3px] group shrink-0 ${item.isVertical ? 'aspect-[3/4]' : 'aspect-[4/3]'
+                              }`}
                           >
-                            <img 
-                              src={item.src} 
-                              alt={`Film Strip Frame ${idx + 1}`} 
-                              className="w-full h-full object-cover grayscale opacity-85 hover:grayscale-0 group-hover:grayscale-0 group-hover:opacity-100 hover:opacity-100 transition-all duration-500 cursor-pointer" 
+                            <img
+                              src={item.src}
+                              alt={`Film Strip Frame ${idx + 1}`}
+                              className="w-full h-full object-cover grayscale opacity-85 hover:grayscale-0 group-hover:grayscale-0 group-hover:opacity-100 hover:opacity-100 transition-all duration-500 cursor-pointer"
                             />
                           </div>
                         );
@@ -283,7 +282,7 @@ export default function About() {
               We go beyond capturing moments – we craft visual stories that drive impact and leave a lasting impression.
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[0px] divide-y lg:divide-y-0 lg:divide-x divide-[rgba(10,10,10,0.08)]">
             {[
               {
@@ -361,12 +360,12 @@ export default function About() {
               <div className="w-[6px] h-[6px] bg-[var(--gold)] rotate-45 absolute left-[37px] -top-[2px]"></div>
             </div>
           </div>
-          
+
           {/* Vertical Alternating Timeline */}
           <div className="relative mt-[60px]">
             {/* Center Vertical Axis Line with glowing gold gradient */}
             <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-[rgba(197,164,109,0.05)] via-[var(--gold)] to-[rgba(197,164,109,0.05)] z-0" />
-            
+
             <div className="space-y-[80px] relative z-10">
               {[
                 {
@@ -398,11 +397,10 @@ export default function About() {
 
                 const isEven = idx % 2 === 0;
                 return (
-                  <div 
-                    key={idx} 
-                    className={`flex flex-col md:flex-row items-center justify-between gap-[30px] md:gap-0 relative ${
-                      isEven ? "md:flex-row" : "md:flex-row-reverse"
-                    }`}
+                  <div
+                    key={idx}
+                    className={`flex flex-col md:flex-row items-center justify-between gap-[30px] md:gap-0 relative ${isEven ? "md:flex-row" : "md:flex-row-reverse"
+                      }`}
                   >
                     {/* Center Node dot with animated pulsing glow ring */}
                     <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 z-20">
@@ -414,11 +412,10 @@ export default function About() {
                         <div className="w-[10px] h-[10px] rounded-full bg-[var(--gold)]" />
                       </div>
                     </div>
-                    
+
                     {/* Content (Half Width) */}
-                    <div className={`w-full md:w-[45%] flex flex-col justify-center text-left items-start ${
-                      isEven ? "md:text-right md:items-end" : "md:text-left md:items-start"
-                    }`}>
+                    <div className={`w-full md:w-[45%] flex flex-col justify-center text-left items-start ${isEven ? "md:text-right md:items-end" : "md:text-left md:items-start"
+                      }`}>
                       <div className="flex items-center gap-[14px] mb-[16px]">
                         {isEven ? (
                           <>
@@ -433,20 +430,19 @@ export default function About() {
                           </>
                         )}
                       </div>
-                      <p className={`text-[15px] md:text-[16px] text-[var(--light)]/90 leading-relaxed font-normal max-w-[480px] text-left ${
-                        isEven ? "md:text-right" : "md:text-left"
-                      }`}>
+                      <p className={`text-[15px] md:text-[16px] text-[var(--light)]/90 leading-relaxed font-normal max-w-[480px] text-left ${isEven ? "md:text-right" : "md:text-left"
+                        }`}>
                         {step.desc}
                       </p>
                     </div>
-                    
+
                     {/* Step Card Image (Half Width on opposite side) */}
                     <div className="w-full md:w-[45%]">
                       <div className="w-full aspect-[16/10] rounded-sm overflow-hidden border border-[rgba(10,10,10,0.06)] shadow-sm bg-white group">
-                        <img 
-                          src={step.img} 
-                          alt={step.title} 
-                          className="w-full h-full object-cover transition-transform duration-[600ms] group-hover:scale-103" 
+                        <img
+                          src={step.img}
+                          alt={step.title}
+                          className="w-full h-full object-cover transition-transform duration-[600ms] group-hover:scale-103"
                         />
                       </div>
                     </div>
@@ -472,16 +468,16 @@ export default function About() {
           ].map((member, idx) => {
             const isPng = member.img.toLowerCase().endsWith('.png');
             return (
-              <div 
-                key={idx} 
+              <div
+                key={idx}
                 className="group relative rounded-[20px] overflow-hidden bg-[#1A1A1A] border border-[rgba(10,10,10,0.08)] transition-all duration-500  flex flex-col h-[480px] sm:h-[520px] shadow-lg"
               >
                 {/* Image Box */}
                 <div className="absolute inset-0 z-0">
-                  <img 
-                    src={member.img} 
-                    alt={member.name} 
-                    className="w-full h-full object-cover scale-100 group-hover:scale-105 transition-all duration-[700ms] pointer-events-none select-none object-top" 
+                  <img
+                    src={member.img}
+                    alt={member.name}
+                    className="w-full h-full object-cover scale-100 group-hover:scale-105 transition-all duration-[700ms] pointer-events-none select-none object-top"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-transparent z-10" />
                 </div>
@@ -520,7 +516,7 @@ export default function About() {
             </h2>
             <div className="w-[80px] h-[2px] bg-[var(--gold)] mx-auto"></div>
           </div>
-          
+
           <div className="w-full">
             <Swiper
               modules={[Autoplay]}
@@ -552,15 +548,15 @@ export default function About() {
                 { name: "Windsor Manor", logo: "/testimonials/logo-windsor-manor.png", cert: "/testimonials/cert-windsor-manor.jpg" }
               ].map((logo, idx) => (
                 <SwiperSlide key={idx}>
-                  <div 
+                  <div
                     onClick={() => setActiveCert(logo.cert)}
                     className="bg-white border border-[rgba(10,10,10,0.06)] p-[12px] rounded-sm h-[90px] flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.01)] transition-all duration-300 hover:scale-105 hover:border-[var(--gold)] "
                   >
-                    <img 
-                      src={logo.logo} 
-                      alt={logo.name} 
-                      className="max-h-[60px] max-w-[85%] object-contain" 
-                      loading="lazy" 
+                    <img
+                      src={logo.logo}
+                      alt={logo.name}
+                      className="max-h-[60px] max-w-[85%] object-contain"
+                      loading="lazy"
                     />
                   </div>
                 </SwiperSlide>
@@ -575,10 +571,10 @@ export default function About() {
         <div className="bg-[rgba(10,10,10,0.015)] border border-[rgba(10,10,10,0.06)] rounded-[2px] py-[30px] px-[40px] md:px-[50px] flex flex-col md:flex-row items-center justify-between gap-[30px] relative overflow-hidden">
           {/* Left Side: Film Reel Icon & Text */}
           <div className="flex items-center gap-[30px] z-10 w-full md:w-auto">
-            <img 
-              src="/images/left-inabout-let-create-somethin.png" 
-              alt="Film Reel Videography Element" 
-              className="w-[120px] md:w-[150px] h-auto object-contain shrink-0" 
+            <img
+              src="/images/left-inabout-let-create-somethin.png"
+              alt="Film Reel Videography Element"
+              className="w-[120px] md:w-[150px] h-auto object-contain shrink-0"
             />
             <div>
               <h2 className="font-serif text-[clamp(24px,3vw,36px)] text-[var(--light)] leading-tight font-medium">
@@ -592,9 +588,9 @@ export default function About() {
             <Link href="/contact" className="inline-flex items-center justify-center bg-[var(--gold)] text-white uppercase tracking-[0.2em] text-[11px] font-bold px-[36px] py-[16px] transition-all duration-400 hover:bg-black hover:text-white ">
               Start a Project &rarr;
             </Link>
-            <img 
-              src="/images/about-cta-chair.png" 
-              alt="Director's Chair Illustration" 
+            <img
+              src="/images/about-cta-chair.png"
+              alt="Director's Chair Illustration"
               className="h-[120px] w-auto object-contain hidden lg:block lg:ml-[20px]"
             />
           </div>
@@ -617,18 +613,18 @@ export default function About() {
       {/* ─── TESTIMONIAL CERTIFICATE LIGHTBOX OVERLAY ─── */}
       {activeCert && (
         <div className="fixed inset-0 bg-black/95 z-[9999] flex items-center justify-center p-[20px] transition-all">
-          <button 
+          <button
             suppressHydrationWarning
-            onClick={() => setActiveCert(null)} 
+            onClick={() => setActiveCert(null)}
             className="absolute top-[30px] right-[5%] md:right-[8%] text-white text-[12px] tracking-[0.2em] uppercase flex items-center gap-[8px]  hover:text-[var(--gold)]"
           >
             Close <X className="w-[16px] h-[16px]" />
           </button>
           <div className="w-full max-w-[640px] max-h-[85vh] overflow-y-auto rounded-sm bg-white p-[8px] shadow-2xl relative flex items-center justify-center">
-            <img 
-              src={activeCert} 
-              alt="Testimonial Certificate Form" 
-              className="max-w-full max-h-[80vh] object-contain rounded-sm" 
+            <img
+              src={activeCert}
+              alt="Testimonial Certificate Form"
+              className="max-w-full max-h-[80vh] object-contain rounded-sm"
               loading="lazy"
             />
           </div>
